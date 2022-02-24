@@ -194,7 +194,16 @@ jobs:
           token: ${{ secrets.CODESCANALERTS_TOKEN }}
           repositories: ${{ join(matrix.sites.repositories) }}
           output: scans/codescanalerts.json
-
+          
+      - name: Betagouv API scan
+        if: ${{ matrix.sites.tools.betagouv }}
+        continue-on-error: true
+        timeout-minutes: 10
+        uses: betagouv/dashlord-startup-action@main
+        with:
+          id: "${{ matrix.sites.betaId }}"
+          output: "scans/betagouv.json"
+          
       - uses: SocialGouv/dashlord-actions/save@main
         with:
           url: ${{ matrix.sites.url }}
