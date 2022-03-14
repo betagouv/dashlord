@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Sun, 20 Feb 2022 06:17:28",
+	"@generated": "Sun, 13 Mar 2022 06:39:05",
 	"site":[ 
 		{
 			"@name": "https://www.jeveuxaider.gouv.fr",
@@ -8,6 +8,102 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10202",
+					"alertRef": "10202",
+					"alert": "Absence of Anti-CSRF Tokens",
+					"name": "Absence of Anti-CSRF Tokens",
+					"riskcode": "2",
+					"confidence": "1",
+					"riskdesc": "Medium (Low)",
+					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form aria-labelledby=\"newsletter-headline\" class=\"relative flex flex-col lg:flex-row lg:items-start\" data-v-56c01318>"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form aria-labelledby=\"newsletter-headline\" class=\"relative flex flex-col lg:flex-row lg:items-start\" data-v-56c01318>"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" class=\"gdpr-privacy-preferences-frm\" action=\"https://www.jeveuxaider.gouv.fr/engagement/wp-admin/admin-post.php\">"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/benevolat-ukraine/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" class=\"gdpr-privacy-preferences-frm\" action=\"https://www.jeveuxaider.gouv.fr/engagement/wp-admin/admin-post.php\">"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/ecoles-et-universites/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" class=\"gdpr-privacy-preferences-frm\" action=\"https://www.jeveuxaider.gouv.fr/engagement/wp-admin/admin-post.php\">"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" class=\"gdpr-privacy-preferences-frm\" action=\"https://www.jeveuxaider.gouv.fr/engagement/wp-admin/admin-post.php\">"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"el-form mt-4 el-form--label-top\">"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"el-form mt-4 el-form--label-top\">"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/register/volontaire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"el-form form-register-steps el-form--label-top\" data-v-f7bd9e88>"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/territoires",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form action=\"#\" method=\"GET\" class=\"w-full flex md:ml-0 mb-0\" data-v-4980c36c>"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/villes/paris",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"el-form flex flex-wrap sm:flex-nowrap gap-4 sm:gap-8\" data-v-d17aa68e>"
+						}
+					],
+					"count": "11",
+					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"\" ].</p>",
+					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038",
@@ -47,14 +143,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/benevolat-ukraine/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/inscription",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -122,6 +218,13 @@
 							"evidence": "access-control-allow-origin: *"
 						},
 						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/benevolat-ukraine/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *"
+						},
+						{
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/communication/",
 							"method": "GET",
 							"param": "",
@@ -150,17 +253,17 @@
 							"evidence": "access-control-allow-origin: *"
 						}
 					],
-					"count": "5",
+					"count": "6",
 					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
 					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "14989"
+					"sourceid": "15483"
 				},
 				{
 					"pluginid": "10020",
-					"alertRef": "10020",
+					"alertRef": "10020-1",
 					"alert": "Missing Anti-clickjacking Header",
 					"name": "Missing Anti-clickjacking Header",
 					"riskcode": "2",
@@ -190,7 +293,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/ecoles-et-universites/",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/benevolat-ukraine/",
 							"method": "GET",
 							"param": "X-Frame-Options",
 							"attack": "",
@@ -330,102 +433,6 @@
 					"sourceid": "1"
 				},
 				{
-					"pluginid": "10202",
-					"alertRef": "10202",
-					"alert": "Absence of Anti-CSRF Tokens",
-					"name": "Absence of Anti-CSRF Tokens",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form aria-labelledby=\"newsletter-headline\" class=\"relative flex flex-col lg:flex-row lg:items-start\" data-v-56c01318>"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form aria-labelledby=\"newsletter-headline\" class=\"relative flex flex-col lg:flex-row lg:items-start\" data-v-56c01318>"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form method=\"post\" class=\"gdpr-privacy-preferences-frm\" action=\"https://www.jeveuxaider.gouv.fr/engagement/wp-admin/admin-post.php\">"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/ecoles-et-universites/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form method=\"post\" class=\"gdpr-privacy-preferences-frm\" action=\"https://www.jeveuxaider.gouv.fr/engagement/wp-admin/admin-post.php\">"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form method=\"post\" class=\"gdpr-privacy-preferences-frm\" action=\"https://www.jeveuxaider.gouv.fr/engagement/wp-admin/admin-post.php\">"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/login",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"el-form mt-4 el-form--label-top\">"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"el-form mt-4 el-form--label-top\">"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/register/volontaire",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"el-form form-register-steps el-form--label-top\" data-v-f7bd9e88>"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/territoires",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form action=\"#\" method=\"GET\" class=\"w-full flex md:ml-0 mb-0\" data-v-4980c36c>"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/villes/paris",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"el-form flex flex-wrap sm:flex-nowrap gap-4 sm:gap-8\" data-v-d17aa68e>"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/villes/toulouse",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"el-form flex flex-wrap sm:flex-nowrap gap-4 sm:gap-8\" data-v-d17aa68e>"
-						}
-					],
-					"count": "11",
-					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"\" ].</p>",
-					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
-					"cweid": "352",
-					"wascid": "9",
-					"sourceid": "1"
-				},
-				{
 					"pluginid": "10010",
 					"alertRef": "10010",
 					"alert": "Cookie No HttpOnly Flag",
@@ -449,7 +456,7 @@
 					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
 					"cweid": "1004",
 					"wascid": "13",
-					"sourceid": "2529"
+					"sourceid": "5075"
 				},
 				{
 					"pluginid": "10017",
@@ -471,6 +478,13 @@
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
 							"method": "GET",
+							"param": "https://code.jquery.com/jquery-3.4.1.js",
+							"attack": "",
+							"evidence": "<script src=\"https://code.jquery.com/jquery-3.4.1.js\"></script>"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
 							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
 							"attack": "",
 							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>"
@@ -483,32 +497,39 @@
 							"evidence": "<script async src=\"https://platform.twitter.com/widgets.js\" charset=\"utf-8\"></script>"
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/communication/",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
+							"param": "https://plausible.io/js/plausible.js",
+							"attack": "",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/benevolat-ukraine/",
 							"method": "GET",
 							"param": "//tag.aticdn.net/610648/smarttag.js",
 							"attack": "",
 							"evidence": "<script src=\"//tag.aticdn.net/610648/smarttag.js\"></script>"
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/communication/",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/benevolat-ukraine/",
+							"method": "GET",
+							"param": "https://code.jquery.com/jquery-3.4.1.js",
+							"attack": "",
+							"evidence": "<script src=\"https://code.jquery.com/jquery-3.4.1.js\"></script>"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/benevolat-ukraine/",
 							"method": "GET",
 							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
 							"attack": "",
 							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>"
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/ecoles-et-universites/",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/benevolat-ukraine/",
 							"method": "GET",
-							"param": "//tag.aticdn.net/610648/smarttag.js",
+							"param": "https://plausible.io/js/plausible.js",
 							"attack": "",
-							"evidence": "<script src=\"//tag.aticdn.net/610648/smarttag.js\"></script>"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/ecoles-et-universites/",
-							"method": "GET",
-							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>"
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
@@ -520,32 +541,32 @@
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
 							"method": "GET",
+							"param": "https://code.jquery.com/jquery-3.4.1.js",
+							"attack": "",
+							"evidence": "<script src=\"https://code.jquery.com/jquery-3.4.1.js\"></script>"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
+							"method": "GET",
 							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
 							"attack": "",
 							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>"
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
 							"method": "GET",
-							"param": "//tag.aticdn.net/610648/smarttag.js",
+							"param": "https://plausible.io/js/plausible.js",
 							"attack": "",
-							"evidence": "<script src=\"//tag.aticdn.net/610648/smarttag.js\"></script>"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
-							"method": "GET",
-							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>"
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>"
 						}
 					],
-					"count": "11",
+					"count": "13",
 					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
 					"otherinfo": "",
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "14989"
+					"sourceid": "15483"
 				},
 				{
 					"pluginid": "10110",
@@ -558,7 +579,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/d32baf8.modern.js",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/2bae83b.modern.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -571,103 +592,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "15435"
-				},
-				{
-					"pluginid": "10015",
-					"alertRef": "10015",
-					"alert": "Incomplete or No Cache-control Header Set",
-					"name": "Incomplete or No Cache-control Header Set",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content.</p>",
-					"instances":[ 
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=60, public, no-transform"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=60, public, no-transform"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/inscription/organisation",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=60, public, no-transform"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/login",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=60, public, no-transform"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=60, public, no-transform"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/register/volontaire",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=60, public, no-transform"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=60, public, no-transform"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=60, public, no-transform"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/territoires",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=60, public, no-transform"
-						}
-					],
-					"count": "11",
-					"solution": "<p>Whenever possible ensure the cache-control HTTP header is set with no-cache, no-store, must-revalidate.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p>",
-					"cweid": "525",
-					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "15975"
 				},
 				{
 					"pluginid": "10063",
@@ -708,14 +633,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/benevolat-ukraine/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/inscription",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -780,14 +705,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "0610450400"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "0649890677"
+							"evidence": "0153413939"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr",
@@ -818,9 +736,9 @@
 							"evidence": "50677248"
 						}
 					],
-					"count": "6",
+					"count": "5",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>0610450400, which evaluates to: 1989-05-06 09:33:20</p>",
+					"otherinfo": "<p>0153413939, which evaluates to: 1974-11-11 14:58:59</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
@@ -965,28 +883,28 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "fr/engagement/wp-content/uploads/2020/12/ZupDeCo-uai-258x155"
+							"evidence": "fr/engagement/wp-content/uploads/2020/12/Armee-du-Salut-uai-258x258"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/organisation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "9fd8-US78XC/wIyd2zFooau0bZcBA8tk"
+							"evidence": "a182-7GEqwZPdh1m8PesrCrwxJl5DyrI"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/login",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "dd15-zF9FhimUljfpTYC173+tR9IcQPI"
+							"evidence": "debf-XAaes6B3eBJsXoMhV52xxk0lo8M"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "d12f-urp5SSdAbifduvcO/76SsdZjUn8"
+							"evidence": "d2d9-BWcp/u8ofa2+70OPRWaFucLNs3I"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/register/volontaire",
@@ -1000,14 +918,14 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "232b46-Qm5s3/jsz6zniKb4DYqzfJDtfM8"
+							"evidence": "245f6a-Y3BALuwlxJB2Dp/HZ8ZF5poLUgo"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/territoires",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "125d4b-sVx4V4PuygWAVqePuLuw9llqKZM"
+							"evidence": "1304d9-Ze4zCtdvTb1cEhcYauuh+ZLu1Ag"
 						}
 					],
 					"count": "11",
@@ -1057,6 +975,13 @@
 							"evidence": "admin"
 						},
 						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query"
+						},
+						{
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
 							"method": "GET",
 							"param": "",
@@ -1064,11 +989,11 @@
 							"evidence": "admin"
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/inscription",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "db"
+							"evidence": "query"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/organisation",
@@ -1106,7 +1031,7 @@
 							"evidence": "BUG"
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
 					"otherinfo": "<p>The following pattern was used: \\bDB\\b and was detected in the element starting with: \"<script>window.__NUXT__=(function(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
@@ -1129,14 +1054,14 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"text-[#696974] hover:underline cursor-pointer\" data-v-0d399b51>\n      Plus de missions \u203A\n    </a>"
+							"evidence": "<a class=\"text-[#696974] hover:underline cursor-pointer\" data-v-1419de14>\n      Plus de missions \u203A\n    </a>"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"text-[#696974] hover:underline cursor-pointer\" data-v-0d399b51>\n      Plus de missions \u203A\n    </a>"
+							"evidence": "<a class=\"text-[#696974] hover:underline cursor-pointer\" data-v-1419de14>\n      Plus de missions \u203A\n    </a>"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/*",
@@ -1153,18 +1078,18 @@
 							"evidence": "<a href=\"#\" data-filter=\"*\" class=\"active isotope-nav-link\">Tout</a>"
 						},
 						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/benevolat-ukraine/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"#\" class=\"scroll-top\"><i class=\"fa fa-angle-up fa-stack btn-default btn-hover-nobg\"></i></a>"
+						},
+						{
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<a href=\"#\" data-filter=\"*\" class=\"active isotope-nav-link\">Tout</a>"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/inscription",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript data-n-head=\"ssr\" data-hid=\"gtm-noscript\" data-pbody=\"true\"><iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-5S3DCV6&\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\" title=\"gtm\"></iframe></noscript>"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/organisation",
@@ -1211,6 +1136,102 @@
 					"sourceid": "1"
 				},
 				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=60, public, no-transform"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=60, public, no-transform"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/inscription/organisation",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=60, public, no-transform"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=60, public, no-transform"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=60, public, no-transform"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/register/volontaire",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=60, public, no-transform"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=60, public, no-transform"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=60, public, no-transform"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/territoires",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=60, public, no-transform"
+						}
+					],
+					"count": "11",
+					"solution": "<p>Whenever possible ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
 					"pluginid": "10050",
 					"alertRef": "10050",
 					"alert": "Retrieved from Cache",
@@ -1221,88 +1242,88 @@
 					"desc": "<p>The content was retrieved from a shared cache. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance. </p>",
 					"instances":[ 
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/013c100.modern.js",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/2bae83b.modern.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 25382"
+							"evidence": "Age: 458887"
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/5810830.modern.js",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/413fd72.modern.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 25382"
+							"evidence": "Age: 234977"
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/css/033bf57.css",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/971a518.modern.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 25382"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/css/5e2b645.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Age: 25382"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/css/71a80c7.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Age: 25387"
-						},
-						{
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/css/c1c3cf4.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Age: 1425454"
+							"evidence": "Age: 234975"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/css/c251d6e.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 25382"
+							"evidence": "Age: 289325"
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/d32baf8.modern.js",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/css/e33ba0a.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 140491"
+							"evidence": "Age: 463517"
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/d9cafb6.modern.js",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/css/f96b6cc.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 25387"
+							"evidence": "Age: 463518"
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/e1ba6c722bc33f1f1209d3047467f6c0.svg",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/e82b8d2.modern.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 1027917"
+							"evidence": "Age: 234976"
 						},
 						{
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/fddc10b.modern.js",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/fc08dd9.modern.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 25382"
+							"evidence": "Age: 458887"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/fonts/element-icons.313f7da.woff",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 229148"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/fonts/element-icons.4520188.ttf",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 220749"
+						},
+						{
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/fonts/Marianne-Light.e6623e9.woff2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 229147"
 						},
 						{
 							"uri": "https://www.jeveuxaider.gouv.fr/favicon.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 154553"
+							"evidence": "Age: 434120"
 						}
 					],
 					"count": "12",
@@ -1311,7 +1332,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "15451"
+					"sourceid": "15975"
 				},
 				{
 					"pluginid": "10049",
@@ -1433,7 +1454,7 @@
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "15200"
+					"sourceid": "15757"
 				}
 			]
 		}

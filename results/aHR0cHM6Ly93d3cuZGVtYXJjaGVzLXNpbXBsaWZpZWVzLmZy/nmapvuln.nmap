@@ -1,11 +1,11 @@
-# Nmap 7.91 scan initiated Sun Feb 20 06:07:12 2022 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.demarches-simplifiees.fr
+# Nmap 7.91 scan initiated Sun Mar 13 06:29:19 2022 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.demarches-simplifiees.fr
 Nmap scan report for www.demarches-simplifiees.fr (54.38.64.230)
-Host is up (0.090s latency).
+Host is up (0.087s latency).
 Not shown: 998 closed ports
 PORT    STATE SERVICE   VERSION
 80/tcp  open  http
 | fingerprint-strings: 
-|   DNSStatusRequestTCP, DNSVersionBindReqTCP, Help, X11Probe: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, Help, RPCCheck, X11Probe: 
 |     HTTP/1.1 400 Bad request
 |     content-length: 90
 |     cache-control: no-cache
@@ -23,12 +23,6 @@ PORT    STATE SERVICE   VERSION
 |     HTTP/1.1 301 Moved Permanently
 |     content-length: 0
 |     location: https://www.demarches-simplifiees.fr/
-|     connection: close
-|   RPCCheck: 
-|     HTTP/1.1 400 Bad request
-|     content-length: 90
-|     cache-control: no-cache
-|     content-type: text/html
 |_    connection: close
 443/tcp open  ssl/https nginx
 | fingerprint-strings: 
@@ -54,7 +48,7 @@ PORT    STATE SERVICE   VERSION
 |_http-server-header: nginx
 2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port80-TCP:V=7.91%I=7%D=2/20%Time=6211DA99%P=x86_64-alpine-linux-musl%r
+SF-Port80-TCP:V=7.91%I=7%D=3/13%Time=622D8F48%P=x86_64-alpine-linux-musl%r
 SF:(GetRequest,79,"HTTP/1\.1\x20301\x20Moved\x20Permanently\r\ncontent-len
 SF:gth:\x200\r\nlocation:\x20https://www\.demarches-simplifiees\.fr/\r\nco
 SF:nnection:\x20close\r\n\r\n")%r(HTTPOptions,79,"HTTP/1\.1\x20301\x20Move
@@ -69,23 +63,25 @@ SF:x20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20request\.\
 SF:n</body></html>\n")%r(FourOhFourRequest,9C,"HTTP/1\.1\x20301\x20Moved\x
 SF:20Permanently\r\ncontent-length:\x200\r\nlocation:\x20https://www\.dema
 SF:rches-simplifiees\.fr/nice%20ports%2C/Tri%6Eity\.txt%2ebak\r\nconnectio
-SF:n:\x20close\r\n\r\n")%r(RPCCheck,75,"HTTP/1\.1\x20400\x20Bad\x20request
+SF:n:\x20close\r\n\r\n")%r(RPCCheck,CF,"HTTP/1\.1\x20400\x20Bad\x20request
 SF:\r\ncontent-length:\x2090\r\ncache-control:\x20no-cache\r\ncontent-type
-SF::\x20text/html\r\nconnection:\x20close\r\n\r\n")%r(DNSVersionBindReqTCP
-SF:,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\ncontent-length:\x2090\r\ncac
-SF:he-control:\x20no-cache\r\ncontent-type:\x20text/html\r\nconnection:\x2
-SF:0close\r\n\r\n<html><body><h1>400\x20Bad\x20request</h1>\nYour\x20brows
-SF:er\x20sent\x20an\x20invalid\x20request\.\n</body></html>\n")%r(DNSStatu
-SF:sRequestTCP,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\ncontent-length:\x
-SF:2090\r\ncache-control:\x20no-cache\r\ncontent-type:\x20text/html\r\ncon
-SF:nection:\x20close\r\n\r\n<html><body><h1>400\x20Bad\x20request</h1>\nYo
-SF:ur\x20browser\x20sent\x20an\x20invalid\x20request\.\n</body></html>\n")
-SF:%r(Help,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\ncontent-length:\x2090
-SF:\r\ncache-control:\x20no-cache\r\ncontent-type:\x20text/html\r\nconnect
-SF:ion:\x20close\r\n\r\n<html><body><h1>400\x20Bad\x20request</h1>\nYour\x
-SF:20browser\x20sent\x20an\x20invalid\x20request\.\n</body></html>\n");
+SF::\x20text/html\r\nconnection:\x20close\r\n\r\n<html><body><h1>400\x20Ba
+SF:d\x20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20request\
+SF:.\n</body></html>\n")%r(DNSVersionBindReqTCP,CF,"HTTP/1\.1\x20400\x20Ba
+SF:d\x20request\r\ncontent-length:\x2090\r\ncache-control:\x20no-cache\r\n
+SF:content-type:\x20text/html\r\nconnection:\x20close\r\n\r\n<html><body><
+SF:h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid
+SF:\x20request\.\n</body></html>\n")%r(DNSStatusRequestTCP,CF,"HTTP/1\.1\x
+SF:20400\x20Bad\x20request\r\ncontent-length:\x2090\r\ncache-control:\x20n
+SF:o-cache\r\ncontent-type:\x20text/html\r\nconnection:\x20close\r\n\r\n<h
+SF:tml><body><h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20an
+SF:\x20invalid\x20request\.\n</body></html>\n")%r(Help,CF,"HTTP/1\.1\x2040
+SF:0\x20Bad\x20request\r\ncontent-length:\x2090\r\ncache-control:\x20no-ca
+SF:che\r\ncontent-type:\x20text/html\r\nconnection:\x20close\r\n\r\n<html>
+SF:<body><h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20an\x20
+SF:invalid\x20request\.\n</body></html>\n");
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port443-TCP:V=7.91%T=SSL%I=7%D=2/20%Time=6211DA9F%P=x86_64-alpine-linux
+SF-Port443-TCP:V=7.91%T=SSL%I=7%D=3/13%Time=622D8F4E%P=x86_64-alpine-linux
 SF:-musl%r(GetRequest,79,"HTTP/1\.1\x20301\x20Moved\x20Permanently\r\ncont
 SF:ent-length:\x200\r\nlocation:\x20https://www\.demarches-simplifiees\.fr
 SF:/\r\nconnection:\x20close\r\n\r\n")%r(HTTPOptions,79,"HTTP/1\.1\x20301\
@@ -119,4 +115,4 @@ SF:n\r\n<html><body><h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sen
 SF:t\x20an\x20invalid\x20request\.\n</body></html>\n");
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Feb 20 06:07:44 2022 -- 1 IP address (1 host up) scanned in 31.17 seconds
+# Nmap done at Sun Mar 13 06:29:50 2022 -- 1 IP address (1 host up) scanned in 31.12 seconds

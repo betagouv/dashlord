@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Sun, 20 Feb 2022 05:02:57",
+	"@generated": "Sun, 13 Mar 2022 05:22:22",
 	"site":[ 
 		{
 			"@name": "https://resorption-bidonvilles.beta.gouv.fr",
@@ -8,6 +8,74 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10202",
+					"alertRef": "10202",
+					"alert": "Absence of Anti-CSRF Tokens",
+					"name": "Absence of Anti-CSRF Tokens",
+					"riskcode": "2",
+					"confidence": "1",
+					"riskdesc": "Medium (Low)",
+					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
+					"instances":[ 
+						{
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"flex flex-row justify-center mt-4 w-full max-w-md mx-auto\">"
+						},
+						{
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"flex flex-row justify-center mt-4 w-full max-w-md mx-auto\">"
+						},
+						{
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"flex flex-row justify-center mt-4 w-full max-w-md mx-auto\">"
+						},
+						{
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"flex flex-row justify-center mt-4 w-full max-w-md mx-auto\">"
+						},
+						{
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/connexion/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form>"
+						},
+						{
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"max-w-xl mt-12\">"
+						},
+						{
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/nouveau-mot-de-passe/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form>"
+						}
+					],
+					"count": "7",
+					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"\" ].</p>",
+					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038",
@@ -106,7 +174,7 @@
 				},
 				{
 					"pluginid": "10020",
-					"alertRef": "10020",
+					"alertRef": "10020-1",
 					"alert": "Missing Anti-clickjacking Header",
 					"name": "Missing Anti-clickjacking Header",
 					"riskcode": "2",
@@ -201,74 +269,6 @@
 					"sourceid": "1"
 				},
 				{
-					"pluginid": "10202",
-					"alertRef": "10202",
-					"alert": "Absence of Anti-CSRF Tokens",
-					"name": "Absence of Anti-CSRF Tokens",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
-					"instances":[ 
-						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"flex flex-row justify-center mt-4 w-full max-w-md mx-auto\">"
-						},
-						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"flex flex-row justify-center mt-4 w-full max-w-md mx-auto\">"
-						},
-						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"flex flex-row justify-center mt-4 w-full max-w-md mx-auto\">"
-						},
-						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"flex flex-row justify-center mt-4 w-full max-w-md mx-auto\">"
-						},
-						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/connexion/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form>"
-						},
-						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/contact/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"max-w-xl mt-12\">"
-						},
-						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/nouveau-mot-de-passe/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form>"
-						}
-					],
-					"count": "7",
-					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"\" ].</p>",
-					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
-					"cweid": "352",
-					"wascid": "9",
-					"sourceid": "1"
-				},
-				{
 					"pluginid": "10063",
 					"alertRef": "10063",
 					"alert": "Permissions Policy Header Not Set",
@@ -300,14 +300,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/50.eb521d51.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/50.1c922765.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.8ef5dc8d.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.0a6fd3fa.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -328,7 +328,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.a9e80251.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.0d892ac2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -499,56 +499,49 @@
 							"evidence": "999999999"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/50.eb521d51.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/50.1c922765.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "31076817"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/50.eb521d51.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/50.1c922765.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "999999999"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.8ef5dc8d.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "56533509"
-						},
-						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.8ef5dc8d.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.0a6fd3fa.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "71249480"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.8ef5dc8d.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.0a6fd3fa.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "73257700"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.8ef5dc8d.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.0a6fd3fa.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "74955213"
+							"evidence": "80290026"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.8ef5dc8d.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/mentions-legales/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "80290026"
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>31076817, which evaluates to: 1970-12-26 16:26:57</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
@@ -574,14 +567,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/css/47.styles.85227f06.css",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/css/47.styles.d2241c19.css",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/css/styles.adeaa405.css",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/css/styles.0a6c8b43.css",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
@@ -609,14 +602,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.8ef5dc8d.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.0a6fd3fa.js",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.a9e80251.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.0d892ac2.js",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
@@ -698,14 +691,14 @@
 							"evidence": "1DcaronDcroatEcaronEmacronEbreveEdotaccentEogonekGcircumflexGbreveGdotaccentGcedillaHcircumflexHbarItildeImacronIbreveIdotaccentIogonekJcircumflexIJKcedillaLacuteLcaronLcedillaLdotNacuteNcaronNcedillaEngOmacronObreveOhungarumlautQ"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/50.eb521d51.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/50.1c922765.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "2c/9j/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAArAEADASIAAhEBAxEB/8QAHAAAAgMAAwEAAAAAAAAAAAAABgcDBAUAAQII/8QANBAAAgEDAwIDBgQGAwAAAAAAAQIDBAURABIhBjEiQVEHExRhcZEyUoGxFSMkc4KhksHw/8QAGQEAAgMBAAAAAAAAAAAAAAAABAYAAwUC/8QAJBEAAQQBAgcBAQAAAAAAAAAAAQACAxEEBRMSFCEiMUFxUWH/2gAMAwEAAhEDEQA/APoqkp9j7ht455111FeoLdaamaSQRyJGSMjz7D/er/ugO2NAXtik"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.a9e80251.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.0d892ac2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -738,21 +731,21 @@
 							"evidence": "user"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/50.eb521d51.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/50.1c922765.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/78.084d471d.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/76.7e3f9911.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "query"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/80.01e1b4e5.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/80.04743d40.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -766,42 +759,42 @@
 							"evidence": "query"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.8ef5dc8d.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/app.0a6fd3fa.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "query"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.a9e80251.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.0d892ac2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "bug"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.a9e80251.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.0d892ac2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "db"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.a9e80251.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.0d892ac2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.a9e80251.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.0d892ac2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "query"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.a9e80251.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.0d892ac2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -848,7 +841,7 @@
 							"evidence": "<noscript data-vue-tag=\"ssr\"><style>.g-image--loading{display:none;}</style></noscript>"
 						},
 						{
-							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.a9e80251.js",
+							"uri": "https://resorption-bidonvilles.beta.gouv.fr/assets/js/vendors~app.0d892ac2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",

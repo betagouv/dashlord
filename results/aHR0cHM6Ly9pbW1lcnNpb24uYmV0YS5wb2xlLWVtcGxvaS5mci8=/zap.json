@@ -1,0 +1,1253 @@
+{
+	"@version": "2.11.1",
+	"@generated": "Sun, 13 Mar 2022 03:39:03",
+	"site":[ 
+		{
+			"@name": "https://immersion.beta.pole-emploi.fr",
+			"@host": "immersion.beta.pole-emploi.fr",
+			"@port": "443",
+			"@ssl": "true",
+			"alerts": [ 
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-4",
+					"alert": "CSP: Wildcard Directive",
+					"name": "CSP: Wildcard Directive",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "default-src 'none'"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "default-src 'none'"
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>frame-ancestors, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10038",
+					"alertRef": "10038",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header, to achieve optimal browser support: \"Content-Security-Policy\" for Chrome 25+, Firefox 23+ and Safari 7+, \"X-Content-Security-Policy\" for Firefox 4.0+ and Internet Explorer 10+, and \"X-WebKit-CSP\" for Chrome 14+ and Safari 6+.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10098",
+					"alertRef": "10098",
+					"alert": "Cross-Domain Misconfiguration",
+					"name": "Cross-Domain Misconfiguration",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/favicon.0e0a5e52.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/favicon.43b3c676.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.26767bb7.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.c360ae5a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/env-config.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *"
+						}
+					],
+					"count": "9",
+					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
+					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
+					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
+					"cweid": "264",
+					"wascid": "14",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10020",
+					"alertRef": "10020-1",
+					"alert": "Missing Anti-clickjacking Header",
+					"name": "Missing Anti-clickjacking Header",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>The response does not include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options to protect against 'ClickJacking' attacks.</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/",
+							"method": "GET",
+							"param": "X-Frame-Options",
+							"attack": "",
+							"evidence": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
+					"cweid": "1021",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063",
+					"alert": "Permissions Policy Header Not Set",
+					"name": "Permissions Policy Header Not Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.c360ae5a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/env-config.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						}
+					],
+					"count": "6",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy</p><p>https://developers.google.com/web/updates/2018/06/feature-policy</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/favicon.0e0a5e52.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "444444444"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.26767bb7.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "23000091"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.26767bb7.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "83178013"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.c360ae5a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "000645818"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.c360ae5a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "0101100110"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.c360ae5a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "0606060607"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.c360ae5a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "0606060707"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.c360ae5a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "0612345678"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "00000052"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "0123456789"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1019803690"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1044525330"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1069501632"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1073741823"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1073741824"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1073741825"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1094730640"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1120210379"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1126891415"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1163531501"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1200080426"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1236535329"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1272893353"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1309151649"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "134217727"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "134217728"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1416354905"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1444681467"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "145523070"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1473231341"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1502002290"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1518500249"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1530992060"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1540483477"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "155497632"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1560198380"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "165796510"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1700485571"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1732584193"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1732584194"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1735328473"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "176418897"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1770035416"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1804603682"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1839030562"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1859775393"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1873313359"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "187363961"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1894986606"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1926607734"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1958414417"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "198630844"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1990404162"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2022574463"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2054922799"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2146828260"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "23161616"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "23929292"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "268435455"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "268435456"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "271733878"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "271733879"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "30611744"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "33554432"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "343485551"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "35309556"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "358537222"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "373897302"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "38016083"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "389564586"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "40341101"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "405537848"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "421815835"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "45705983"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "51403784"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "530742520"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "568446438"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "57434055"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "606105819"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "62914560"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "640364487"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "643717713"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "660478335"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "67108864"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "680876936"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "681279174"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "701558691"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "718787259"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "722521979"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "76029189"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "805306368"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "995338651"
+						}
+					],
+					"count": "92",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>444444444, which evaluates to: 1984-02-01 00:47:24</p>",
+					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "17"
+				},
+				{
+					"pluginid": "10021",
+					"alertRef": "10021",
+					"alert": "X-Content-Type-Options Header Missing",
+					"name": "X-Content-Type-Options Header Missing",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/favicon.0e0a5e52.ico",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/favicon.43b3c676.svg",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.26767bb7.css",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.c360ae5a.js",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/env-config.js",
+							"method": "GET",
+							"param": "X-Content-Type-Options",
+							"attack": "",
+							"evidence": ""
+						}
+					],
+					"count": "7",
+					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
+					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
+					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10094",
+					"alertRef": "10094",
+					"alert": "Base64 Disclosure",
+					"name": "Base64 Disclosure",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "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"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.26767bb7.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "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"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.c360ae5a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "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"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "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"
+						}
+					],
+					"count": "4",
+					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
+					"otherinfo": "<p>\uFFFDPNG</p><p>\\x001a</p><p>\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0000\uFFFD\\x0000\\x0000\\x0000\uFFFD\\x0008\\x0003\\x0000\\x0000\\x0000</p><p>\\x0013\uFFFD\\x0000\\x0000\\x0000\\x0003\\x0000PLTE\uFFFD\uFFFD\uFFFD\uFFFD\\x0000\\x0006\\x0000\\x0000\uFFFD\uFFFD\uFFFD\uFFFD\\x0000\\x0000\uFFFD\uFFFD\uFFFD\uFFFD\\x0006\\x0006\uFFFD\\x0000\\x0000\uFFFD\\x0003\\x0003\uFFFD\uFFFD\\x0000</p><p>\\x0001\\x0001\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\r\r\uFFFD00\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0001\\x000c\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0010\\x0010\uFFFD,,\uFFFD\uFFFD\uFFFD\uFFFD\\x0012\\x0012\uFFFD22\uFFFD77\uFFFD\uFFFD\uFFFD\u05EF\uFFFD\u0774\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001e\\x001e\uFFFDBB\uFFFD\uFFFD\\x0012!II\uFFFDKK\uFFFDSS\uFFFDcc\uFFFDzz\u01D1\uFFFD\u042D\uFFFD\u0738\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD</p><p></p><p>\uFFFD$$\uFFFD\uFFFD\\x0000\\x0007\uFFFD\\x000b\\x001bZZ\uFFFD\\\\\uFFFD\uFFFDAMww\uFFFD~~\uFFFD\uFFFD\\f\uFFFD\uFFFD\u02D7\uFFFD\u04E0\uFFFD\u05F2\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\t\t\uFFFD\\x0017\\x0017\uFFFD\\x0019\\x0019\uFFFD))\uFFFD\uFFFD\\x0002\\x0010??\uFFFD\uFFFD\\x001b*PP\uFFFDUU\uFFFD\uFFFD1>\uFFFD6Cff\uFFFDjj\uFFFDuu\uFFFD||\u01C9\uFFFD\uFFFD\uFFFDhr\uFFFDmw\uFFFDrz\uDA05\uDE35\uFFFD\u0F7D\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0014\\x0014\uFFFD\\x001c\\x001c\uFFFD  \uFFFD55\uFFFD\uFFFD\\x0008\\x0019@@\uFFFDFF\uFFFDWW\uFFFDgg\uFFFDrr\uFFFD\uFFFDYc\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u038D\uFFFD\u03D3\uFFFD\u045B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uD8E5\uDC24\uFFFD\u0634\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u2FFF\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\"\"\uFFFD99\uFFFD\uFFFD\\x0004\\x0013\uFFFD\\x0006\\x0016\uFFFD\\x0015$\uFFFD\\x0018'\uFFFD /\uFFFD(5\uFFFD=Ill\uFFFDnn\uFFFD\uFFFDT_\uFFFD\uFFFD\u0245\uFFFD\u02CD\uFFFD\uFFFD\uFFFDen\uFFFD\uFFFD\u04A6\uFFFD\u0667\uFFFD\u06B9\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD<<\uFFFD==\uFFFD\uFFFD\\x000e\\x001f\uFFFD\\x0019(MM\uFFFD\uFFFD$3^^\uFFFD``\uFFFD\uFFFDKV\uFFFDP[\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD`i\uFFFD\uFFFD\uFFFD\uFFFDpy\uFFFDx\uFFFD\uFFFD\uDA0D\uDE6B\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD''\uFFFD\uFFFD-;\uFFFD3@oo\uFFFD\uFFFDGS\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDt|\uFFFDz\uFFFD\uFFFD|\uFFFD\uFFFD\uD9F9\uDD68\uFFFD\uFFFD\uDB32\uDCBC\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD8E\uFFFDFR\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u02DC\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDg=\\x0000\\x0000</p><p>3IDATh\uFFFD\uFFFD\uFFFDu\\T\uFFFD\\x001e\\x0000\uFFFD\\x001f83\\x000eC\r=twwI7\\x0008\\x0008HJ)\uFFFD\uFFFD\uFFFD\uFFFD\\x0002\uFFFD\uFFFD`\uFFFDkw\uFFFD\\x001a\uFFFD\u06BA\uFFFD\uFFFDn\uFFFD\uFFFD\uFFFDm\uFFFD\uFFFD\uFFFD\uFFFDu\\x0007\\x001c\uFFFD\uFFFDSw\uFFFD93\uFFFD\uFFFD\uFFFDa\\x0018\uFFFD\uFFFD\u03F9'~\uFFFDw@\\x001fe\uFFFD\uFFFD\\x0008\uFFFD\uFFFDx\uFFFD\uFFFDeWc\uFFFD\uFFFD4\r@H\uFFFD\\x0008\\x0006Ub\uFFFD\uFFFD\uFFFDY\uFFFDt\\x0005\\x001d3\\x0006*\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x00014o'\uFFFD\\x0019w\uFFFDl\uFFFD2\uFFFD\uFFFDYP?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\"\uFFFD1\\x000c\uFFFDE\uFFFD\uFFFD\uFFFDB\\x000bV\\x0002\uFFFDx\uFFFD\uFFFDV\uFFFD1\u01A0I\uFFFD\uFFFD\uFFFD&\uFFFD.b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDL\\x0016m\uFFFD\\x0002\\x0008\u00BDw-A\uFFFD\uFFFD\\x0011\uFFFD\uFFFDo%\uFFFD.\uFFFD\\x0002d\uFFFD\uFFFDM\\x0004ms\\x001bPF\uFFFDl\\x0002\uFFFD\uFFFD0@\\x001b\uFFFDcG{\uFFFD\\x0001\uFFFDx\uFFFD\\x00163z\uFFFD1\uFFFD\uFFFDkx\uFFFD\\x0002\\x001cf\uFFFD5\uFFFD\uFFFD\uFFFD\uFFFD\\x0003,q\\x0006'\uFFFD\\x0011\uFFFD\uFFFD\\x001dgKG\uFFFD1\uFFFD2\uFFFD}:|\\x0004\\x0013\uFFFD\"Ft\"&\uFFFD!\\x0003|\uFFFD\\x0006\uFFFD#\uFFFD\t\uFFFD\\x00175\uFFFD\\x0018'\uFFFD\uFFFDh\u06F7\uFFFD\uFFFD\uFFFD\uFFFDW\uFFFD^-\uFFFD7\uFFFD9\uFFFD\uFFFD\"\uFFFD\\x0017\uFFFD\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD0\uFFFDf\uFFFD\uFFFDq\uFFFD\\x0005\uFFFD\uFFFD\uFFFD\uFFFD\\x001d\uFFFD\uFFFD\uFFFDG\\x0001W\uFFFD\tW\uFFFD\uFFFD8\\x000c\uFFFD\uFFFD3s,hN\\x0018\uFFFD\uFFFD\uFFFDX\uFFFDN\uFFFD7v`@\uFFFD\\x0003\uFFFD8\u44B3f\uFFFDH\uFFFD\uFFFD\\x0005G\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD}\uFFFDw\\x0010\uFFFD\uFFFD\uFFFDtS=\uFFFDw\uFFFD\uFFFD\uFFFD@*\uFFFD C\uFFFD\\x000c!\uFFFD\uFFFD\\x0008\\x0019z31\uFFFDM\\x0003Th\uFFFD\\x0011!\uFFFD\uFFFD\uFFFD\r\uFFFD\ry\uFFFD\uFFFD\uFFFDy+\uFFFDq\uFFFD1\uFFFD\uFFFD\uFFFD\uFFFD\\x0000\\x001d\u0689X\uFFFD\u0788\\x000cmoH\\x000c\uFFFD\\x00192\uFFFD3\uFFFD\uFFFD\r\uFFFD\uFFFD6l\uFFFD\uFFFDRD\uFFFD\\x0002\uFFFDf8\uFFFD\\x0008\uFFFDG\\x0012m\uFFFD\uFFFD\\x0006\uFFFDw\uFFFDh\uFFFD\uFFFD\\x0006\\x001dJ\\x0014\uFFFDs4\uFFFD\\x0010\uFFFD\uFFFD\uFFFDh\uFFFD\\x001e\\x0003D\uFFFDp\\x0001\t\uFFFD\uFFFD,z\\x0019\\x0012t!Y\uFFFD(\uFFFD\uFFFDd\uFFFD\uFFFD\\x0014</p><p>4\u01D0,\uFFFD\\x0004\uFFFD\uFFFDc\uFFFD\\x000euj\u0425\uFFFD\uFFFDX|\uFFFD\\x0004\\x001dG\\x0016m\\x001d\uFFFD\\x0002\uFFFDE\uFFFDI\uFFFDG\uFFFDN#\uFFFD$\uFFFDB\uFFFD\u077AO\uFFFD\uFFFD\uFFFD\\x000fO<\uFFFD\uFFFD=$h\uFFFDO\uFFFD+_\uFFFD\uFFFD\uFFFDf\u018C\\x0019\uFFFD\uFFFD\uFFFD\\x0014\uFFFD?@\uFFFD\\x000e\uFFFD*\uFFFD\uFFFD\uFFFD\\x0019S\uFFFD\uFFFDQ\uFFFD2$\uFFFDE\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001f?\uFFFD\uFFFD\uFFFD_\uFFFD\uFFFD<9\uFFFD\uFFFD\\x0016\uFFFD:\\x0012t86\uFFFDO\uFFFD\uFFFDo\uFFFD)\uFFFD\uFFFD\uFFFD\\x0000\uFFFD\uFFFD0Uc2?|(\uFFFD$RM\uFFFD\uFFFDsJ6\uFFFDj\uFFFD?$0z\u0723\uFFFD\uFFFDB3\uFFFD</p><p>\r:\\x0006;9u\uFFFD\uFFFDT\uFFFD\uFFFD\\x0016~\uFFFD\\x001e\r\uFFFD\\x000e\uFFFD\uFFFD\uFFFD\uFFFD\\x0013O\uFFFD\uFFFD\uFFFD\uFFFD\u04F89\uFFFD\uFFFD\uFFFD\\x000bx\uFFFD\uFFFD/&G\uFFFDOF\\x0001%\uFFFD\\x0015+\uFFFDr\uFFFD\uFFFD\uFFFDr\uFFFDAE</p><p>6\uFFFD\uFFFDs\uFFFDK\uFFFD$\uFFFD\\x0017\uFFFD^*C\uFFFDN\uFFFD\uFFFD\uFFFD_\uFFFD\uFFFDfC\\x0011\uFFFDH\\x0016\\x001a\uFFFD\\x000f\u0395\u04AD\uFFFD\uFFFDM\uFFFD_\\x0012\uFFFD\uFFFD.\\x001a4k%\uFFFDN\uFFFDp\uFFFD\uFFFD\\x0014\uFFFD\\x0007\u0477\uFFFD\uFFFD9G\uFFFD\uFFFDy\uFFFD\uFFFD\\x0011oipAtb\uFFFD19f\uFFFD\uFFFD\u07E8\uFFFD\uFFFD\uFFFD\\x000fby\uFFFDA'\uFFFDL\uFFFD\uFFFDwtt\uFFFDZ\uFFFD\uFFFDZyE\uFFFD\uFFFD6S\\x001d5\uFFFD\\x0003}\uFFFD\uFFFD#'\\x000fI\uFFFD\uFFFDh\uFFFDY\uFFFD\u045Dd7\uFFFDr\uFFFD\uFFFDP\\x000e\uFFFD\uFFFD8\uFFFD\\x000f ND\uFFFDrF\\x00100Y\uFFFDV\uFFFD\uFFFD>KT\uFFFD\uFFFD\uFFFD\u019D<\uFFFD%\uFFFD\u07A1\\x0019\uFFFDT\uFFFDd/\u02B4$z&\uFFFDN\\x001e\uFFFD\uFFFD%\uFFFD\u06D9\\x001f\\x0016\uFFFD:4\uFFFD\uFFFDP\uFFFDkjG_\uFFFDd\uFFFDFh3 \\x001eU\uFFFD\uFFFDh?\uFFFDn\uFFFDz?%i\uFFFD\uFFFD\uFFFDtb\uFFFD\uFFFD\\x0000\uFFFD\u0089&\\x0016\u04E03$\\x0016\uFFFDu|\uFFFD\uFFFD\uFFFD\uFFFD+\uFFFD\uFFFD'j\uFFFD\uFFFD\uFFFD\uFFFDl/>\uFFFDw\uFFFD\uFFFDz\uFFFD\u00A4\\x001bI\uFFFD\uFFFD5\uFFFD\uFFFD~h\uFFFD\uFFFD\uFFFD/0\r\\x0018\uFFFD*E\uFFFD,\\x0012+\\x0016\\x0003v\uFFFD\uFFFDq,\"\uFFFD\u0533\uFFFD&\\x0017\uFFFD\uFFFD9\uFFFD$\uFFFD\uFFFD\uFFFDH{\uFFFD:w\uFFFD\\x000e\uFFFD\uFFFDE\uFFFD\uFFFDto]r|A\uFFFD\uFFFD\uFFFD\\x0007\uFFFD\uFFFD\uFFFD\uFFFD\\x001f\uFFFD\uFFFD\\x001d?(\uFFFD\\x0008\uFFFD\uFFFDU\\x001a\u6B18\u0090]7A[&\uFFFD7p\uFFFDC\uFFFD/\uFFFDU|\uFFFD-\uFFFD5\uFFFD\uFFFDr\\x000f\uFFFD\u5E3B\uFFFDf\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD;_\uFFFD\uFFFD\uFFFDb\uFFFDP\uFFFD\uFFFD_\uFFFD7[\u064C\uFFFD9\uFFFDf\\x0012\uFFFDJw\u02076\uFFFD\uFFFD\t\uFFFDz\\x0015\uFFFD\uFFFD\\x0008\uFFFD\uFFFDZ;\uFFFD\uFFFDx[]@\uFFFD\uFFFDE\uFFFD\u04EF\uFFFD}\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0015\\x0006\uFFFD\uFFFD\uFFFD\\x0000\uFFFDF\u02E9i\uFFFD\uFFFD\uFFFD\\x001c\uFFFD9\uFFFDn@\uFFFD\\x000cv\uFFFDr\uFFFD\uFFFD\uFFFD\uFFFD<\\x0013\uFFFD\uFFFDp\uFFFDy\\x000e\uFFFD>O}\uFFFD0r\uFFFD\uFFFD\\4\uFFFDa]%\uFFFD\uFFFD\uFFFDM\uFFFD\uFFFD\uFFFD\\x0003\\x001b\uFFFD\uFFFD\uFFFD\tv\uFFFD\uFFFD\\x0015\uFFFD\uFFFDp->E\uFFFD+\uFFFD\uFFFD\\x0016\uFFFD\uFFFD\uFFFD\uFFFD\u056C\uFFFD\uFFFD\uFFFD$\uFFFD\u07AF\\x0018M\uFFFD[PL\uFFFD,\uFFFDig\uFFFD@q^\uFFFD\u0536\uFFFD\uFFFD'g>\uFFFD\uFFFD\\x0014M\\x0005{h\uFFFD\uFFFD\uFFFDM\uFFFD\\x0016\\x001d\uFFFD[\uFFFDd\uFFFD\uFFFDZ\uFFFD\uFFFD\uFFFD\u013AX\uFFFD/\uFFFD\\x0016@\uFFFDv\uFFFD\uFFFDh\uFFFDY\uFFFD\uFFFD\u00E4\uFFFD\uFFFD*Q\\x0007M\uFFFDm\\x001b\uFFFDp\uFFFD\uFFFDKZI\uFFFD{\uFFFD\uFFFDQ\\x000fM\uFFFD\\x000c\uFFFD\uFFFDh\uFFFD_T\\x0010\uFFFD\u0197\uFFFD\uFFFD\\x0006\uFFFD\uFFFD+\uFFFD>\uFFFD'\uFFFD\uFFFDI}4\uFFFD\uFFFD4)t\\x0018Q3|\uFFFD\\x0004\r\uFFFD\\x0012\uFFFD)n\\x0000\uFFFD=NU3\\x0003\uFFFDY\uFFFD\uFFFD\uFFFD\uFFFD\\x0014haL\uFFFDG\\x001b\u8A4D\uFFFDJ\r &\t\uFFFDI\uFFFD\uFFFD\uFFFDjd\uFFFD_\uFFFDJik\uFFFD\uFFFD\u039E\uFFFD\uFFFDd;\uFFFD\\x0015\uFFFD\u0436\uFFFD\uFFFDW\uFFFD\uFFFDhg\uFFFD[\uFFFD\uFFFD*\uFFFDC\\x001d\uFFFD\\x001bh\uFFFDd\uFFFD\uFFFD#8\uFFFD\uFFFDl\uFFFD\\x000c:9\uFFFD\uFFFDv_\uFFFD\uFFFD\uFFFD>o\u0388\uFFFD\uFFFD\\x0005\uFFFD\"p\uFFFDD\uFFFDm[\uFFFD\uFFFD\\x0007\uFFFDr\uFFFDp\uFFFD\uFFFD,\uFFFDw\uFFFD\uFFFD\uFFFD\\x0004ZZA]/\uFFFD|\uFFFD\uFFFD)<\\x0010? \uFFFDi7x&#\uFFFD\u070B\uFFFD\uFFFD\\x0010r[h\uFFFD\\x0002\uFFFD\u0546a\uFFFD\uFFFD\uFFFDn\\x0012K\u04F5J\u044D\uFFFDT\uFFFDZH\uFFFD\\x0000l\uFFFDe\\x0006\uFFFD\uFFFD\\B\t\uFFFD*\uFFFD\uFFFD\\x001e\uFFFDl`\uFFFD\\x0018\uFFFD*\uFFFD\uFFFD\uFFFD\\x0005\uFFFD\uFFFD|T%\uFFFD\\x001d\uFFFDCd\uFFFD{F)\uFFFDu\uFFFD\uFFFD%\uFFFD3\\x001ali\uFFFD\\x001e,}\\x001e\uFFFD\uFFFD\uFFFDA\\x0003\\x0006\uFFFD5\uFFFD\uFFFD`\uFFFD\\x000f</p><p>\uFFFD\uFFFD9{X\uFFFD\uFFFDB\\x0007\uFFFDdf\uFFFD\uFFFD\uFFFD\\x000b\uFFFDQ9\uFFFD\uFFFD\uFFFD]z\uFFFDV\uFFFD\uFFFD\u0324R\u075E:\u04D0L\uFFFDZ8\\x0008\uFFFD\uFFFD%g\uFFFD\\x0010\uFFFD\uFFFD\uFFFD\uFFFDP&\uFFFDl\uFFFD\uFFFD\uFFFDgmQ\uFFFDJ\uFFFDW\\x001d\\x0011\uFFFD\uFFFD\uFFFDRsF\uFFFD\\2\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD.\uFFFD\uFFFD\uFFFD\uFFFD\u0466\uFFFD$\\x0007\uFFFDNjw\uFFFDJ\uFFFD\\x00140\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDNH\uFFFD\u058F>\uFFFDr\uFFFDUv\uFFFDV\uFFFDm\uFFFD\uFFFDs73\uFFFD\\x0002\uFFFD\"\uFFFDC\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDsh5]\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDz\\x001a\uFFFD\\x001c4/W\uFFFDO\\x000cMqJ\\x000c\uFFFD\uFFFD\uFFFD\uFFFD\u3ACB\uFFFDm\uFFFD\uFFFD\uFFFD\uFFFD\\x000e\uFFFD\uFFFD9\\x0019,\uFFFDj\uFFFD\uFFFD0\uFFFD\\x0005\\x000b3m\uFFFD\\x0006@\uFFFD\uFFFD\uFFFD]\uFFFDk\uFFFD\u02A6\uFFFDw&0\uFFFD\uFFFDO\uFFFD\uFFFD@\uFFFD\uFFFD\uFFFD1\uFFFD</p><p>e\u04CC|\uFFFDA\uFFFD\\x001b\uFFFD\\x0018\uFFFD\t\uFFFD\uFFFDP\uFFFD\uFFFD\uFFFD\uFFFDbz(\uFFFDqN\uFFFD\uFFFDE\uFFFD\uFFFDH\\x000ch\uFFFD\uFFFDB\uFFFD.\uFFFD=.=\uFFFD7g2\uFFFD\uFFFD\uFFFD\uFFFD[OSt\uFFFD\uFFFDT\uFFFDZ\uFFFD\uFFFD\uFFFD\uFFFD9W\uFFFD\uFFFD\t3\uFFFD\uFFFD\\x000b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDSH-\uFFFD\\x0014\uFFFD5C\uFFFD\\x0015\\x0005\uFFFD\uFFFD\uFFFD##\uFFFD\u66A3\uFFFDWv\uFFFD\uFFFDT\uFFFD\uFFFD\u073A\"X\\x0012+\uFFFD\\x000ef\uFFFDw\uFFFD\uFFFD\uFFFDh\uFFFD\uFFFD\\x0015N#4\uFFFD\\x001cnfT\uFFFD\\x001b\uFFFD\u0393NI\uFFFD1\u0314\uFFFDE\uFFFD>eQ\\x0011(q\uFFFD\uFFFD\uFFFD\\x0014\uFFFDg*\uFFFD\uFFFD-\uFFFD\uFFFD6q\uFFFD\\x001e:\uFFFD*\uFFFD\uFFFD\uFFFD\uFFFD\\x000f`u\uFFFD\\x0016\\x0007\uFFFD\uFFFDKsL\uFFFDM\\x0017\\x0011\uFFFD\uFFFD\\x001d\uFFFD*\uFFFD\uFFFD\\x0012O\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD3\uFFFD\\x0008\uFFFD\uFFFDB\uFFFD\u626A\uFFFD\uFFFD\\x0012\u0095\uFFFD\uFFFD\t\u0318.\uFFFD\uFFFDC\uFFFDv`{\uFFFD\\x0012~\u8C1D</p><p>%z\\x0011F\uFFFDw$\uFFFD\\x0011\uFFFDY|\uFFFD\uFFFDm`e\\x0014\u2A42\uFFFDS\uFFFD#\uFFFD\uFFFD\\x0008\uFFFD\uFFFD\u01BE\uFFFD\u00D0\uFFFD\uFFFDS\uFFFD\uFFFD\uFFFDI\uFFFD\uFFFD\\x0005\uFFFDh\uFFFD\\x0002*\uFFFDQ\u0764\uFFFD\uFFFD\"\uFFFD.coB\uFFFD^@m\uFFFD\uFFFD\uFFFDtg}\uFFFD\\x0010\\iEu\uFFFD3\uFFFD%G\uFFFDJU\u052Fix\uFFFD\uFFFD\\x0006:t\uFFFD\uFFFD\uFFFD9\uFFFDJ{\uFFFDh\uFFFDZ\uFFFDE\uFFFD\\x000eN\uFFFDS\uFFFDL[\uFFFD\uFFFD^,F\uFFFD.\uFFFD\\\uFFFD\\x0002\uFFFD\uFFFD\\x0019A\uFFFDh\t*\uFFFDI\uFFFD</p><p>f\u03A51\\x0014\uFFFD.\\x0017Th\uFFFDl\uFFFD\uFFFDmf\uFFFD$j\uFFFDQ.\uFFFD\\x0014\uFFFDM`\\x001d\uFFFD\uFFFD\uFFFDb2h\uFFFDd*O7\uFFFD\\x001c?\uFFFD$\uFFFD\\x000c\uFFFD\uFFFD\uFFFDK\uFFFD\uFFFD=\\x001dq\uFFFD,\\x001f\uFFFD`\\x0003>\uFFFD*\uFFFDT\\I\uFFFD\uFFFD\uFFFD\\x0012\\x0005hSg\uFFFD\uFFFD\uFFFDGz\uFFFD#G7U`?\uFFFD\\x0018w\uFFFD\uFFFDD\uFFFD\uFFFDw&S\\x0001\u03AC\uFFFD\u0422\uFFFD*\uFFFD\\x001d\uFFFD\\x001f/[\uFFFD\\x0002\uFFFD\uFFFD y\uFFFD\uFFFD\u55DA\uFFFD#\uFFFD\uFFFD|\uFFFD\uFFFDK\uFFFD\uFFFD\\x00197\uFFFDt\uFFFD\uFFFD\uFFFD\uFFFD,\uFFFDhN\uFFFD%h-\uFFFD\u02FC\uFFFD\uFFFD}V\uFFFDV\uFFFD~\uFFFD\\x0006u\uFFFD\uFFFD\uFFFD\uFFFD\\x0018w\uFFFD\uFFFD\\x000e\uFFFD\\x0015g\t\uFFFD\\x0010\uFFFDF\uFFFD\uFFFD6\t\\x0006]\uFFFDcW\\x000cTC\uFFFD\\x001a\uFFFD\\x000e\uFFFD7\\x001bU@\uFFFD\uFFFD\uFFFDA\uFFFD\uFFFD\uFFFD\\x0019\uFFFD\uFFFD\\x0001\u0439\u061B\uFFFD\\x0018\uFFFDq\\x0000t0\uFFFD(z\\x001eA`\\x0004:\\x0019\u03EFS\uFFFD\\x001e\\x0001\\x001d\uFFFD\uFFFD\\x001c\uFFFD\uFFFDzu\uFFFD\uFFFD\uFFFD\uFFFD!\\x001a\uFFFD\uFFFD\uFFFD\uFFFDh\uFFFD4r\\x001a\uFFFD\uFFFD\uFFFD\u921E\uFFFD\uFFFD4D\uFFFD\uFFFDk\uFFFD!\uFFFD>\uFFFD\uFFFD\uFFFD\uFFFD\\x0013ts\uFFFD\uFFFD\\x00019<\\x0000qC\\x001f\\x0017\uFFFD\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD</p>",
+					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10019",
+					"alertRef": "10019",
+					"alert": "Content-Type Header Missing",
+					"name": "Content-Type Header Missing",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The Content-Type header was either missing or empty.</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/favicon.0e0a5e52.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</p>",
+					"otherinfo": "",
+					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
+					"cweid": "345",
+					"wascid": "12",
+					"sourceid": "17"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.c360ae5a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "bugs"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Db"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select"
+						}
+					],
+					"count": "4",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"var e=Object.defineProperty,i=Object.defineProperties,t=Object.getOwnPropertyDescriptors,r=Object.getOwnPropertySymbols,n=Object\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "19"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script>\n      var _paq = (window._paq = window._paq || []);\n      /* tracker methods like \"setCustomDimension\" should be called before \"trackPageView\" */\n      _paq.push([\"trackPageView\"]);\n      _paq.push([\"enableLinkTracking\"]);\n      (function () {\n        var u = \"https://stats.data.gouv.fr/\";\n        _paq.push([\"setTrackerUrl\", u + \"matomo.php\"]);\n        _paq.push([\"setSiteId\", \"207\"]);\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = u + \"matomo.js\";\n        s.parentNode.insertBefore(g, s);\n      })();\n    </script>"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script>"
+						}
+					],
+					"count": "2",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "no-cache"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Whenever possible ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
+					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable but Non-Cacheable Content",
+					"name": "Storable but Non-Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users. </p>",
+					"instances":[ 
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/favicon.0e0a5e52.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/favicon.43b3c676.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.26767bb7.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/main.c360ae5a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/assets/vendor.87c18819.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache"
+						},
+						{
+							"uri": "https://immersion.beta.pole-emploi.fr/env-config.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache"
+						}
+					],
+					"count": "7",
+					"solution": "",
+					"otherinfo": "",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "1"
+				}
+			]
+		}
+	]
+}

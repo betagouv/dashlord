@@ -1,6 +1,6 @@
 {
 	"@version": "2.11.1",
-	"@generated": "Sun, 20 Feb 2022 01:26:02",
+	"@generated": "Sun, 13 Mar 2022 01:23:45",
 	"site":[ 
 		{
 			"@name": "https://acceslibre.beta.gouv.fr",
@@ -8,6 +8,102 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10202",
+					"alertRef": "10202",
+					"alert": "Absence of Anti-CSRF Tokens",
+					"name": "Absence of Anti-CSRF Tokens",
+					"riskcode": "2",
+					"confidence": "1",
+					"riskdesc": "Medium (Low)",
+					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
+					"instances":[ 
+						{
+							"uri": "https://acceslibre.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"fr-col-12 a4a-search-form fr-search-bar fr-search-bar--lg\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"fr-col-12 a4a-search-form fr-search-bar fr-search-bar--lg\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"fr-col-12 a4a-search-form fr-search-bar fr-search-bar--lg\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/api/docs/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"fr-col-12 a4a-search-form fr-search-bar fr-search-bar--lg\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/communes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"fr-col-12 a4a-search-form fr-search-bar fr-search-bar--lg\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/compte/password_reset/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"fr-col-12 a4a-search-form fr-search-bar fr-search-bar--lg\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/compte/register/?next=/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"fr-col-12 a4a-search-form fr-search-bar fr-search-bar--lg\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/partenaires",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"fr-col-12 a4a-search-form fr-search-bar fr-search-bar--lg\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/recherche/?code&lat&lon&what&where",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"fr-col-12 a4a-search-form fr-search-bar fr-search-bar--lg\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"fr-col-12 a4a-search-form fr-search-bar fr-search-bar--lg\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/stats/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"fr-col-12 a4a-search-form fr-search-bar fr-search-bar--lg\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
+						}
+					],
+					"count": "11",
+					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"code\" \"lat\" \"lon\" \"what-input\" \"where-input\" ].</p>",
+					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038",
@@ -61,14 +157,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
+							"uri": "https://acceslibre.beta.gouv.fr/conditions-generales-d-utilisation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/conditions-generales-d-utilisation",
+							"uri": "https://acceslibre.beta.gouv.fr/contact/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -82,14 +178,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/recherche/?what=centres+de+vaccination",
+							"uri": "https://acceslibre.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/robots.txt",
+							"uri": "https://acceslibre.beta.gouv.fr/stats/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -115,14 +211,14 @@
 					"desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server</p>",
 					"instances":[ 
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.484c91f0a082.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.c64d2b583e41.css",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -143,42 +239,42 @@
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/fiabilite-des-donnees.da83f39dbb8e.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/check.6cd3c2e26464.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/mctrct.5d6c432de8f2.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/formulaire.6f83777878cb.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/participez-enrichissement-donnees.9a4c019e1212.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/heart.20073c8dffc5.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/rassurez-vous.800bd7d0c390.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/partage.742a436b3015.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/stopwatch.e7e63e9218f6.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/puzzle.d00b128d936b.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "Access-Control-Allow-Origin: *"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/visibilite.ed3fed9e2baa.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/widget.022bf329d838.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -205,103 +301,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "148"
-				},
-				{
-					"pluginid": "10202",
-					"alertRef": "10202",
-					"alert": "Absence of Anti-CSRF Tokens",
-					"name": "Absence of Anti-CSRF Tokens",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
-					"instances":[ 
-						{
-							"uri": "https://acceslibre.beta.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"a4a-search-form\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"a4a-search-form\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"a4a-search-form\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/api/docs/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"a4a-search-form\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/communes/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"a4a-search-form\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"a4a-search-form\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"a4a-search-form\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/conditions-generales-d-utilisation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"a4a-search-form\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/partenaires",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"a4a-search-form\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/recherche/?what=centres+de+vaccination",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"a4a-search-form\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"a4a-search-form\" id=\"search-form\" role=\"search\" action=\"/recherche/\">"
-						}
-					],
-					"count": "11",
-					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"code\" \"lat\" \"lon\" \"what-input\" \"where-input\" ].</p>",
-					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>http://cwe.mitre.org/data/definitions/352.html</p>",
-					"cweid": "352",
-					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "126"
 				},
 				{
 					"pluginid": "10010",
@@ -321,14 +321,14 @@
 							"evidence": "Set-Cookie: csrftoken"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/login/",
+							"uri": "https://acceslibre.beta.gouv.fr/app/29-quimper/a/restauration-rapide/erp/ty-bubble/",
 							"method": "GET",
 							"param": "csrftoken",
 							"attack": "",
 							"evidence": "Set-Cookie: csrftoken"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next",
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/",
 							"method": "GET",
 							"param": "csrftoken",
 							"attack": "",
@@ -349,6 +349,13 @@
 							"evidence": "Set-Cookie: csrftoken"
 						},
 						{
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/",
+							"method": "GET",
+							"param": "csrftoken",
+							"attack": "",
+							"evidence": "Set-Cookie: csrftoken"
+						},
+						{
 							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/login/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -356,7 +363,7 @@
 							"evidence": "Set-Cookie: csrftoken"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/register/",
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/contrib/start/",
 							"method": "GET",
 							"param": "csrftoken",
 							"attack": "",
@@ -364,13 +371,6 @@
 						},
 						{
 							"uri": "https://acceslibre.beta.gouv.fr/compte/password_reset/",
-							"method": "GET",
-							"param": "csrftoken",
-							"attack": "",
-							"evidence": "Set-Cookie: csrftoken"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
 							"method": "GET",
 							"param": "csrftoken",
 							"attack": "",
@@ -391,7 +391,7 @@
 							"evidence": "Set-Cookie: csrftoken"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/",
 							"method": "POST",
 							"param": "csrftoken",
 							"attack": "",
@@ -404,7 +404,7 @@
 					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
 					"cweid": "1004",
 					"wascid": "13",
-					"sourceid": "121"
+					"sourceid": "95"
 				},
 				{
 					"pluginid": "10017",
@@ -430,7 +430,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "121"
+					"sourceid": "95"
 				},
 				{
 					"pluginid": "10110",
@@ -443,7 +443,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -456,103 +456,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "148"
-				},
-				{
-					"pluginid": "10015",
-					"alertRef": "10015",
-					"alert": "Incomplete or No Cache-control Header Set",
-					"name": "Incomplete or No Cache-control Header Set",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content.</p>",
-					"instances":[ 
-						{
-							"uri": "https://acceslibre.beta.gouv.fr",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/accessibilite",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/api/docs/",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/communes/",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/conditions-generales-d-utilisation",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/contact/",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/partenaires",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/recherche/?what=centres+de+vaccination",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cache-Control",
-							"attack": "",
-							"evidence": "max-age=86400"
-						}
-					],
-					"count": "11",
-					"solution": "<p>Whenever possible ensure the cache-control HTTP header is set with no-cache, no-store, must-revalidate.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p>",
-					"cweid": "525",
-					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "123"
 				},
 				{
 					"pluginid": "10063",
@@ -607,14 +511,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
+							"uri": "https://acceslibre.beta.gouv.fr/conditions-generales-d-utilisation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/conditions-generales-d-utilisation",
+							"uri": "https://acceslibre.beta.gouv.fr/contact/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -628,14 +532,14 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/recherche/?what=centres+de+vaccination",
+							"uri": "https://acceslibre.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/robots.txt",
+							"uri": "https://acceslibre.beta.gouv.fr/stats/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -661,6 +565,13 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
 					"instances":[ 
 						{
+							"uri": "https://acceslibre.beta.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "78640559"
+						},
+						{
 							"uri": "https://acceslibre.beta.gouv.fr/api/docs/",
 							"method": "GET",
 							"param": "",
@@ -675,13 +586,6 @@
 							"evidence": "31449600"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "31449600"
-						},
-						{
 							"uri": "https://acceslibre.beta.gouv.fr/contact/",
 							"method": "GET",
 							"param": "",
@@ -689,20 +593,90 @@
 							"evidence": "31449600"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.c64d2b583e41.css",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "70710678"
+							"evidence": "0511287798"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "15496570"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "18764656"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "20037508"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2147483647"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "23592600"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "314245179"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "40075017"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "50452675"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "62425156"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "94906265"
 						}
 					],
-					"count": "5",
+					"count": "15",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>31449600, which evaluates to: 1970-12-31 00:00:00</p>",
+					"otherinfo": "<p>78640559, which evaluates to: 1972-06-29 04:35:59</p>",
 					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "121"
+					"sourceid": "82"
 				},
 				{
 					"pluginid": "10021",
@@ -715,14 +689,14 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.484c91f0a082.css",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.c64d2b583e41.css",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
@@ -743,42 +717,42 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/fiabilite-des-donnees.da83f39dbb8e.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/check.6cd3c2e26464.png",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/mctrct.5d6c432de8f2.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/formulaire.6f83777878cb.png",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/participez-enrichissement-donnees.9a4c019e1212.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/heart.20073c8dffc5.png",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/rassurez-vous.800bd7d0c390.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/partage.742a436b3015.png",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/stopwatch.e7e63e9218f6.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/puzzle.d00b128d936b.png",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/visibilite.ed3fed9e2baa.png",
+							"uri": "https://acceslibre.beta.gouv.fr/static/img/landing/widget.022bf329d838.png",
 							"method": "GET",
 							"param": "X-Content-Type-Options",
 							"attack": "",
@@ -805,7 +779,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "148"
+					"sourceid": "126"
 				},
 				{
 					"pluginid": "10094",
@@ -843,7 +817,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "FwIFLz6C2th0vUfxFq464R1kXXZefmQ7SleQw7T60grpVvFp8Skre6FLJbBxCMmP"
+							"evidence": "BrwP0ZcZHKwRHItW64C2plxJxHak8DBjD8LInodwHpWEyGgmR3N63ctIYI1AaWSf"
 						},
 						{
 							"uri": "https://acceslibre.beta.gouv.fr/communes/",
@@ -857,14 +831,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "FwIFLz6C2th0vUfxFq464R1kXXZefmQ7SleQw7T60grpVvFp8Skre6FLJbBxCMmP"
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "FwIFLz6C2th0vUfxFq464R1kXXZefmQ7SleQw7T60grpVvFp8Skre6FLJbBxCMmP"
+							"evidence": "BrwP0ZcZHKwRHItW64C2plxJxHak8DBjD8LInodwHpWEyGgmR3N63ctIYI1AaWSf"
 						},
 						{
 							"uri": "https://acceslibre.beta.gouv.fr/conditions-generales-d-utilisation",
@@ -874,6 +841,13 @@
 							"evidence": "iBstxzAU71oINQgMSrxoHh9rzedpj_49A953H788D5I"
 						},
 						{
+							"uri": "https://acceslibre.beta.gouv.fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "BrwP0ZcZHKwRHItW64C2plxJxHak8DBjD8LInodwHpWEyGgmR3N63ctIYI1AaWSf"
+						},
+						{
 							"uri": "https://acceslibre.beta.gouv.fr/partenaires",
 							"method": "GET",
 							"param": "",
@@ -881,14 +855,14 @@
 							"evidence": "iBstxzAU71oINQgMSrxoHh9rzedpj_49A953H788D5I"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/recherche/?what=centres+de+vaccination",
+							"uri": "https://acceslibre.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "iBstxzAU71oINQgMSrxoHh9rzedpj_49A953H788D5I"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/robots.txt",
+							"uri": "https://acceslibre.beta.gouv.fr/stats/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -914,84 +888,84 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/app/06-vence/a/centre-de-vaccination/erp/centre-de-vaccination-de-vence-villa-alexandrine/",
+							"uri": "https://acceslibre.beta.gouv.fr/app/29-quimper/a/restauration-rapide/erp/ty-bubble/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "TODO"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/app/46-gramat/a/centre-de-vaccination/erp/centre-de-vaccination-gramat/",
+							"uri": "https://acceslibre.beta.gouv.fr/app/31-sarremezan/a/salle-des-fetes/erp/salle-des-fetes-23/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "TODO"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/app/54-nancy/a/centre-de-vaccination/erp/centre-de-vaccination-superman/",
+							"uri": "https://acceslibre.beta.gouv.fr/app/44-nantes/a/boulangerie-patisserie/erp/boulangerie-patisserie-de-leraudiere/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "TODO"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "admin"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "bug"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "db"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "from"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "query"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "select"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "username"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.7af523dc4cad.js",
+							"uri": "https://acceslibre.beta.gouv.fr/static/dist/main.baf85c4b5106.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1004,7 +978,7 @@
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "435"
+					"sourceid": "456"
 				},
 				{
 					"pluginid": "10109",
@@ -1059,14 +1033,14 @@
 							"evidence": "<noscript>\n    <img src=\"//stats.data.gouv.fr/matomo.php?idsite=118&amp;rec=1\" alt=\"\">\n  </noscript>"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
+							"uri": "https://acceslibre.beta.gouv.fr/conditions-generales-d-utilisation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<noscript>\n    <img src=\"//stats.data.gouv.fr/matomo.php?idsite=118&amp;rec=1\" alt=\"\">\n  </noscript>"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/conditions-generales-d-utilisation",
+							"uri": "https://acceslibre.beta.gouv.fr/contact/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1080,14 +1054,14 @@
 							"evidence": "<noscript>\n    <img src=\"//stats.data.gouv.fr/matomo.php?idsite=118&amp;rec=1\" alt=\"\">\n  </noscript>"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/recherche/?what=centres+de+vaccination",
+							"uri": "https://acceslibre.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a class=\"page-link\" href=\"#\">&laquo;&nbsp;Page pr\u00E9c\u00E9dente</a>"
+							"evidence": "<noscript>\n    <img src=\"//stats.data.gouv.fr/matomo.php?idsite=118&amp;rec=1\" alt=\"\">\n  </noscript>"
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/robots.txt",
+							"uri": "https://acceslibre.beta.gouv.fr/stats/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1113,6 +1087,13 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
+							"uri": "https://acceslibre.beta.gouv.fr/compte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "302"
+						},
+						{
 							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/",
 							"method": "GET",
 							"param": "",
@@ -1127,13 +1108,109 @@
 							"evidence": "302"
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).   </p>",
 					"otherinfo": "",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "44"
+					"sourceid": "35"
+				},
+				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"uri": "https://acceslibre.beta.gouv.fr",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/api/docs/",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/communes/",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/conditions-generales-d-utilisation",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/contact/",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/partenaires",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": "max-age=86400"
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/static/manifest.4c2dfab4446e.webmanifest",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/stats/",
+							"method": "GET",
+							"param": "Cache-Control",
+							"attack": "",
+							"evidence": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Whenever possible ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1167,6 +1244,13 @@
 							"evidence": ""
 						},
 						{
+							"uri": "https://acceslibre.beta.gouv.fr/api/docs/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": ""
+						},
+						{
 							"uri": "https://acceslibre.beta.gouv.fr/communes/",
 							"method": "GET",
 							"param": "",
@@ -1174,21 +1258,7 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
 							"uri": "https://acceslibre.beta.gouv.fr/partenaires",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/recherche/?what=centres+de+vaccination",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1209,7 +1279,7 @@
 							"evidence": "max-age=86400"
 						}
 					],
-					"count": "9",
+					"count": "8",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html (obsoleted by rfc7234)</p>",
@@ -1228,7 +1298,56 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/login/",
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/accessibilite",
+							"method": "GET",
+							"param": "next",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/accessibilite",
+							"method": "GET",
+							"param": "next",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/communes/",
+							"method": "GET",
+							"param": "next",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/",
+							"method": "GET",
+							"param": "next",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/",
+							"method": "GET",
+							"param": "next",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/",
+							"method": "GET",
+							"param": "next",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/",
+							"method": "GET",
+							"param": "next",
+							"attack": "",
+							"evidence": ""
+						},
+						{
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/",
 							"method": "GET",
 							"param": "next",
 							"attack": "",
@@ -1242,83 +1361,41 @@
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/register/",
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/login/",
 							"method": "GET",
 							"param": "next",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/register/",
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/contrib/start/",
 							"method": "GET",
 							"param": "next",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/register/",
-							"method": "GET",
-							"param": "next",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/recherche/?what=centres+de+vaccination",
-							"method": "GET",
-							"param": "what",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/",
 							"method": "POST",
-							"param": "email",
+							"param": "password",
 							"attack": "",
 							"evidence": ""
 						},
 						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
-							"method": "POST",
-							"param": "first_name",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
-							"method": "POST",
-							"param": "last_name",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
-							"method": "POST",
-							"param": "password1",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
-							"method": "POST",
-							"param": "password2",
-							"attack": "",
-							"evidence": ""
-						},
-						{
-							"uri": "https://acceslibre.beta.gouv.fr/compte/register/",
+							"uri": "https://acceslibre.beta.gouv.fr/compte/login/",
 							"method": "POST",
 							"param": "username",
 							"attack": "",
 							"evidence": ""
 						}
 					],
-					"count": "12",
+					"count": "13",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
-					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://acceslibre.beta.gouv.fr/compte/login/?next=/compte/login/</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [href] attribute </p><p></p><p>The user input found was:</p><p>next=/compte/login/</p><p></p><p>The user-controlled value was:</p><p>/compte/login/?next=/compte/login/</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://acceslibre.beta.gouv.fr/compte/login/?next=/accessibilite</p><p></p><p>appears to include user input in: </p><p></p><p>a(n) [a] tag [href] attribute </p><p></p><p>The user input found was:</p><p>next=/accessibilite</p><p></p><p>The user-controlled value was:</p><p>/accessibilite</p>",
 					"reference": "<p>http://websecuritytool.codeplex.com/wikipage?title=Checks#user-controlled-html-attribute</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "167"
+					"sourceid": "753"
 				}
 			]
 		}
