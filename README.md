@@ -26,8 +26,8 @@ Ces workflows sont également déclenchables manuellement dans l'onglet "Actions
 ## Customisation
 
 - Le fichier [`dashlord.yml`](./dashlord.yml) permet de paramétrer les urls et quelques options du tableau de bord
-- Le workflow [`scans.yml`](./github/workflows/scans.yml) permet d'activer/désactiver certains scanners
-- Le workflow [`report.yml`](./github/workflows/report.yml) permet de modifier le rapport généré en se basant sur [SocialGouv/dashlord-report-action](https://github.com/SocialGouv/dashlord-report-action).
+- Le workflow [`scans.yml`](./.github/workflows/scans.yml) permet d'activer/désactiver certains scanners
+- Le workflow [`report.yml`](./.github/workflows/report.yml) permet de modifier le rapport généré en se basant sur [SocialGouv/dashlord-actions](https://github.com/SocialGouv/dashlord-actions).
 
 ## Outils
 

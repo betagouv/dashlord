@@ -168,12 +168,14 @@ jobs:
       - name: Stats page
         continue-on-error: true
         timeout-minutes: 10
-        uses: "MTES-MCT/stats-action@main"
+        uses: "betagouv/check-url-action@main"
         if: ${{ matrix.sites.tools.stats }}
         with:
           url: ${{ matrix.sites.url }}
-          uri: 'stats'
+          uri: stats
           output: scans/stats.json
+          minExpectedRegex: ^stat
+          exactExpectedRegex: ^stats$
 
       - name: Dependabot vulnerabilities alerts
         continue-on-error: true
