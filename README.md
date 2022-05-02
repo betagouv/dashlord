@@ -59,14 +59,11 @@ DashLord fonctionne en deux étapes :
 
 | Repo                                                                                        | desc                                                       |
 | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| [SocialGouv/dashlord-report-action](https://github.com/SocialGouv/dashlord-report-action)   | action to aggregate scanners data and produce a web report |
 | [SocialGouv/dashlord-nuclei-action](https://github.com/SocialGouv/dashlord-nuclei-action)   | Dump nuclei result                                         |
-| [SocialGouv/dashlord-httpobs-action](https://github.com/SocialGouv/dashlord-httpobs-action) | Dump Mozilla HTTP Observatory result                       |
+| [SocialGouv/dashlord-actions](https://github.com/SocialGouv/dashlord-actions)   | basic Github actions result                                         |
 | [SocialGouv/thirdparties-action](https://github.com/SocialGouv/thirdparties-action)         | Dump third party scripts scan result                       |
 | [SocialGouv/wappalyzer-action](https://github.com/SocialGouv/wappalyzer-action)             | Dump Wappalyzer scan result                                |
 | [SocialGouv/thirdparties](https://github.com/SocialGouv/thirdparties)                       | thirdparty scripts database                                |
-| [SocialGouv/dashlord-init-action](https://github.com/SocialGouv/dashlord-report-action)     | action that parse the configuration for a job matrix       |
-| [SocialGouv/dashlord-save-action](https://github.com/SocialGouv/dashlord-save-action)       | aggregate all scanners data and saves it locally           |
 
 ### Ajouter un scanner
 
