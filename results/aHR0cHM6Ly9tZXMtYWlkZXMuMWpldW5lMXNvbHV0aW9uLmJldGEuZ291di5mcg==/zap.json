@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 7 Jan 2024 07:12:45",
+	"@generated": "Sun, 14 Jan 2024 06:54:45",
 	"site":[ 
 		{
 			"@name": "https://mes-aides.1jeune1solution.beta.gouv.fr",
@@ -186,14 +186,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/contact",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/foyer/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -258,13 +250,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10110",
@@ -277,7 +269,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/index-cc9d7193.js",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704989040641/js/index-f3a3355c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -285,7 +277,7 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/polyfills-legacy-f7efb5d8.js",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704989040641/js/polyfills-legacy-f7efb5d8.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -299,7 +291,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "424"
+					"sourceid": "358"
 				},
 				{
 					"pluginid": "10063",
@@ -321,14 +313,6 @@
 						},
 						{
 							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/polyfills-legacy-f7efb5d8.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -361,6 +345,14 @@
 						},
 						{
 							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/redirection",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/simulation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -406,7 +398,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10037",
@@ -418,6 +410,14 @@
 					"riskdesc": "Low (Medium)",
 					"desc": "<p>The web/application server is leaking information via one or more \"X-Powered-By\" HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</p>",
 					"instances":[ 
+						{
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Express",
+							"otherinfo": ""
+						},
 						{
 							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/api",
 							"method": "GET",
@@ -436,14 +436,6 @@
 						},
 						{
 							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/communication/2020-04-08-fonds-solidarites-logement-75-aides",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						},
-						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/contact",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -521,7 +513,7 @@
 					"reference": "<p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "25"
+					"sourceid": "184"
 				},
 				{
 					"pluginid": "10036",
@@ -708,14 +700,6 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/polyfills-legacy-f7efb5d8.js",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
 							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/communication/2020-04-08-fonds-solidarites-logement-75-aides",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -772,7 +756,15 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/simulation/",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/tests",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/tests/",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -786,7 +778,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10094",
@@ -799,21 +791,21 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/css/index-caad3681.css",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704989040641/css/index-723bcdab.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/assets/1704468093966/woff2/Marianne-Light-7b92c55f",
-							"otherinfo": "\uFFFD\uFFFD,z\uFFFD?\u05FD8\uFFFD4\uFFFDz\uFFFD\uFFFD(}\uFFFD\uFFFD1\uFFFD\uFFFDjy\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u07FBo\u075C\uFFFD"
+							"evidence": "/assets/1704989040641/woff2/Marianne-Light-7b92c55f",
+							"otherinfo": "\uFFFD\uFFFD,z\uFFFD?\u05FD8\uFFFD\uFFFDt\uFFFDN\uFFFD\uFFFD\uFFFD(}\uFFFD\uFFFD1\uFFFD\uFFFDjy\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u07FBo\u075C\uFFFD"
 						}
 					],
 					"count": "1",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\uFFFD,z\uFFFD?\u05FD8\uFFFD4\uFFFDz\uFFFD\uFFFD(}\uFFFD\uFFFD1\uFFFD\uFFFDjy\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u07FBo\u075C\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\uFFFD,z\uFFFD?\u05FD8\uFFFD\uFFFDt\uFFFDN\uFFFD\uFFFD\uFFFD(}\uFFFD\uFFFD1\uFFFD\uFFFDjy\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u07FBo\u075C\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "480"
+					"sourceid": "420"
 				},
 				{
 					"pluginid": "10027",
@@ -826,15 +818,15 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
 					"instances":[ 
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/index-cc9d7193.js",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704989040641/js/index-f3a3355c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"Error: `+a)}}}catch(a){n={error:a}}finally{try{s&&!s.done&&(r=i.return)&&r.call(i)}finally{if(n)throw n.error}}}function NO(){\"c\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"Error: `+a)}}}catch(a){n={error:a}}finally{try{s&&!s.done&&(r=i.return)&&r.call(i)}finally{if(n)throw n.error}}}function N1(){\"c\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/index-cc9d7193.js",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704989040641/js/index-f3a3355c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -842,15 +834,15 @@
 							"otherinfo": "The following pattern was used: \\bDB\\b and was detected in the element starting with: \"  */let Fh;const na=e=>Fh=e,Vh=Symbol();function Ju(e){return e&&typeof e==\"object\"&&Object.prototype.toString.call(e)===\"[objec\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/index-cc9d7193.js",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704989040641/js/index-f3a3355c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "debug",
-							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in the element starting with: \"`+p.body;p.body=A}return p}function a1(e,t){var n;t.debug===!0&&je.enable();var r=Mt();(n=r.getScope())===null||n===void 0||n.up\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in the element starting with: \"`+p.body;p.body=A}return p}function aO(e,t){var n;t.debug===!0&&je.enable();var r=Mt();(n=r.getScope())===null||n===void 0||n.up\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/index-cc9d7193.js",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704989040641/js/index-f3a3355c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -858,7 +850,7 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected 2 times, the first in the element starting with: \"Unable to get HTTP header: \"content-length\"`),this.update()}):this.length=-1}update(){if(this.isLegacy&&(this.length=-1),!this.l\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/index-cc9d7193.js",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704989040641/js/index-f3a3355c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -866,7 +858,7 @@
 							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected 4 times, the first in the element starting with: \"`);for(const i of e.children)r+=this._branch(i,t+1,n)}},ql=e=>{document.readyState!==\"loading\"?window.requestAnimationFrame(e):d\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/index-cc9d7193.js",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704989040641/js/index-f3a3355c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -874,7 +866,7 @@
 							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected 2 times, the first in the element starting with: \"var om=Object.defineProperty;var am=(e,t,n)=>t in e?om(e,t,{enumerable:!0,configurable:!0,writable:!0,value:n}):e[t]=n;var Ba=(e\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/index-cc9d7193.js",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704989040641/js/index-f3a3355c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -882,7 +874,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"***************************************************************************** */var uc=function(e,t){return uc=Object.setPrototy\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704468093966/js/index-cc9d7193.js",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/assets/1704989040641/js/index-f3a3355c.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -892,11 +884,11 @@
 					],
 					"count": "8",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"Error: `+a)}}}catch(a){n={error:a}}finally{try{s&&!s.done&&(r=i.return)&&r.call(i)}finally{if(n)throw n.error}}}function NO(){\"c\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"Error: `+a)}}}catch(a){n={error:a}}finally{try{s&&!s.done&&(r=i.return)&&r.call(i)}finally{if(n)throw n.error}}}function N1(){\"c\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "424"
+					"sourceid": "358"
 				},
 				{
 					"pluginid": "10109",
@@ -913,7 +905,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704989040641/js/index-f3a3355c.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -921,7 +913,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704989040641/js/index-f3a3355c.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -929,15 +921,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
-							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
-						},
-						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/contact",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704989040641/js/index-f3a3355c.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -945,7 +929,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704989040641/js/index-f3a3355c.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -953,7 +937,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704989040641/js/index-f3a3355c.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -961,7 +945,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704989040641/js/index-f3a3355c.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -969,7 +953,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704989040641/js/index-f3a3355c.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -977,7 +961,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704989040641/js/index-f3a3355c.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -985,7 +969,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704989040641/js/index-f3a3355c.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -993,7 +977,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704989040641/js/index-f3a3355c.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
@@ -1001,11 +985,11 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704468093966/js/index-cc9d7193.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/1704989040641/js/index-f3a3355c.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
 					"reference": "",
@@ -1153,7 +1137,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1174,7 +1158,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/robots.txt",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/api",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/api/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1182,7 +1174,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1209,7 +1201,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/robots.txt",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/api",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/api/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1217,7 +1217,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1244,7 +1244,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/robots.txt",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/api",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/api/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1252,7 +1260,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1279,7 +1287,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/robots.txt",
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/api",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://mes-aides.1jeune1solution.beta.gouv.fr/api/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1287,7 +1303,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
