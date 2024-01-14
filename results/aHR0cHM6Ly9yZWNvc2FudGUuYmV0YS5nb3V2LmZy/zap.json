@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.14.0",
-	"@generated": "Sun, 7 Jan 2024 10:15:30",
+	"@generated": "Sun, 14 Jan 2024 09:48:54",
 	"site":[ 
 		{
 			"@name": "https://recosante.beta.gouv.fr",
@@ -84,30 +84,6 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 3: \"\" ]."
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/place/75056/paris/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"z-[100] mx-auto w-full border border-b-2 border-main/5 border-b-main bg-white/30 text-[2rem] focus:border-main/20 max-w-xs xl:left-auto xl:mx-0 xl:max-w-2xl xl:translate-x-0 text-xl xl:text-base w-80\" focus=\"false\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"\" ]."
-						},
-						{
-							"uri": "https://recosante.beta.gouv.fr/place/75056/paris/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"z-[100] mx-auto w-full border border-b-2 border-main/5 border-b-main bg-white/30 text-[2rem] focus:border-main/20 max-w-xs xl:left-auto xl:mx-0 xl:max-w-2xl xl:translate-x-0 text-xl xl:text-base\" focus=\"false\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"\" ]."
-						},
-						{
-							"uri": "https://recosante.beta.gouv.fr/place/75056/paris/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<form class=\"z-[100] mx-auto w-full border border-b-2 border-main/5 border-b-main bg-white/30 text-[2rem] focus:border-main/20 max-w-xs xl:left-auto xl:mx-0 xl:max-w-2xl xl:translate-x-0 text-xl xl:text-base\" focus=\"false\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 3: \"\" ]."
-						},
-						{
 							"uri": "https://recosante.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -140,7 +116,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"\" ]."
 						}
 					],
-					"count": "15",
+					"count": "12",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"\" ].</p>",
 					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
@@ -197,7 +173,7 @@
 					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "855"
+					"sourceid": "1100"
 				},
 				{
 					"pluginid": "10038",
@@ -242,14 +218,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/place/31555/toulouse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://recosante.beta.gouv.fr/place/34172/montpellier/",
 							"method": "GET",
 							"param": "",
@@ -259,6 +227,14 @@
 						},
 						{
 							"uri": "https://recosante.beta.gouv.fr/place/44109/nantes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/place/67482/strasbourg/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -349,14 +325,6 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/place/31555/toulouse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
 							"uri": "https://recosante.beta.gouv.fr/place/34172/montpellier/",
 							"method": "GET",
 							"param": "",
@@ -366,6 +334,14 @@
 						},
 						{
 							"uri": "https://recosante.beta.gouv.fr/place/44109/nantes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/place/67482/strasbourg/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -563,14 +539,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/place/31555/toulouse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"preconnect\" href=\"https://matomo.fabrique.social.gouv.fr\"/>",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://recosante.beta.gouv.fr/place/34172/montpellier/",
 							"method": "GET",
 							"param": "",
@@ -580,6 +548,14 @@
 						},
 						{
 							"uri": "https://recosante.beta.gouv.fr/place/44109/nantes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preconnect\" href=\"https://matomo.fabrique.social.gouv.fr\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/place/67482/strasbourg/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -625,7 +601,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10063",
@@ -670,14 +646,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/place/31555/toulouse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://recosante.beta.gouv.fr/place/34172/montpellier/",
 							"method": "GET",
 							"param": "",
@@ -687,6 +655,14 @@
 						},
 						{
 							"uri": "https://recosante.beta.gouv.fr/place/44109/nantes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/place/67482/strasbourg/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -777,14 +753,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/place/31555/toulouse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://recosante.beta.gouv.fr/place/34172/montpellier/",
 							"method": "GET",
 							"param": "",
@@ -794,6 +762,14 @@
 						},
 						{
 							"uri": "https://recosante.beta.gouv.fr/place/44109/nantes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Express",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/place/67482/strasbourg/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -839,7 +815,7 @@
 					"reference": "<p>http://blogs.msdn.com/b/varunm/archive/2013/04/23/remove-unwanted-http-response-headers.aspx</p><p>http://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10021",
@@ -861,14 +837,6 @@
 						},
 						{
 							"uri": "https://recosante.beta.gouv.fr/",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"uri": "https://recosante.beta.gouv.fr/articles/",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -916,6 +884,14 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
+							"uri": "https://recosante.beta.gouv.fr/place/67482/strasbourg/",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
 							"uri": "https://recosante.beta.gouv.fr/place/69123/lyon/",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -946,7 +922,7 @@
 					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10094",
@@ -991,14 +967,6 @@
 							"otherinfo": "\\x0007\uFFFD\uFFFD\u07BB\uFFFD*N\uFFFDn\uFFFDW/b\uFFFD\u01DE\uFFFD;\uFFFD\\x001b\uFFFD\uFFFDPl?\uFFFD6\\x001c\uFFFDC"
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/place/31555/toulouse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "B5n63rvRKk7tboZXL2L6x56_O4gbl8NQbD_lNhzih0M",
-							"otherinfo": "\\x0007\uFFFD\uFFFD\u07BB\uFFFD*N\uFFFDn\uFFFDW/b\uFFFD\u01DE\uFFFD;\uFFFD\\x001b\uFFFD\uFFFDPl?\uFFFD6\\x001c\uFFFDC"
-						},
-						{
 							"uri": "https://recosante.beta.gouv.fr/place/34172/montpellier/",
 							"method": "GET",
 							"param": "",
@@ -1008,6 +976,14 @@
 						},
 						{
 							"uri": "https://recosante.beta.gouv.fr/place/44109/nantes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "B5n63rvRKk7tboZXL2L6x56_O4gbl8NQbD_lNhzih0M",
+							"otherinfo": "\\x0007\uFFFD\uFFFD\u07BB\uFFFD*N\uFFFDn\uFFFDW/b\uFFFD\u01DE\uFFFD;\uFFFD\\x001b\uFFFD\uFFFDPl?\uFFFD6\\x001c\uFFFDC"
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/place/67482/strasbourg/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1053,7 +1029,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "200",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10027",
@@ -1098,14 +1074,6 @@
 							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in the element starting with: \"<script>\n    window.dev = undefined\n    if (window.dev === true || !(navigator.doNotTrack === '1' || window.doNotTrack === '1'))\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/place/31555/toulouse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "debug",
-							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in the element starting with: \"<script>\n    window.dev = undefined\n    if (window.dev === true || !(navigator.doNotTrack === '1' || window.doNotTrack === '1'))\", see evidence field for the suspicious comment/snippet."
-						},
-						{
 							"uri": "https://recosante.beta.gouv.fr/place/34172/montpellier/",
 							"method": "GET",
 							"param": "",
@@ -1115,6 +1083,14 @@
 						},
 						{
 							"uri": "https://recosante.beta.gouv.fr/place/44109/nantes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "debug",
+							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in the element starting with: \"<script>\n    window.dev = undefined\n    if (window.dev === true || !(navigator.doNotTrack === '1' || window.doNotTrack === '1'))\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/place/67482/strasbourg/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1205,14 +1181,6 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/place/31555/toulouse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
 							"uri": "https://recosante.beta.gouv.fr/place/34172/montpellier/",
 							"method": "GET",
 							"param": "",
@@ -1222,6 +1190,14 @@
 						},
 						{
 							"uri": "https://recosante.beta.gouv.fr/place/44109/nantes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<noscript><style>.gatsby-image-wrapper noscript [data-main-image]{opacity:1!important}.gatsby-image-wrapper [data-placeholder-image]{opacity:0!important}</style></noscript>",
+							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/place/67482/strasbourg/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1296,14 +1272,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/articles/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "public, max-age=0",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://recosante.beta.gouv.fr/place/06088/nice/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1366,6 +1334,14 @@
 							"attack": "",
 							"evidence": "public, max-age=0",
 							"otherinfo": ""
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/recommandations/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0",
+							"otherinfo": ""
 						}
 					],
 					"count": "11",
@@ -1374,7 +1350,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1395,7 +1371,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/sitemap.xml",
+							"uri": "https://recosante.beta.gouv.fr/",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1403,13 +1387,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1430,7 +1414,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/sitemap.xml",
+							"uri": "https://recosante.beta.gouv.fr/",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1438,13 +1430,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1465,7 +1457,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/sitemap.xml",
+							"uri": "https://recosante.beta.gouv.fr/",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1473,13 +1473,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -1500,7 +1500,15 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/sitemap.xml",
+							"uri": "https://recosante.beta.gouv.fr/",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1508,13 +1516,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1559,14 +1567,6 @@
 							"otherinfo": ""
 						},
 						{
-							"uri": "https://recosante.beta.gouv.fr/place/31555/toulouse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
 							"uri": "https://recosante.beta.gouv.fr/place/34172/montpellier/",
 							"method": "GET",
 							"param": "",
@@ -1576,6 +1576,14 @@
 						},
 						{
 							"uri": "https://recosante.beta.gouv.fr/place/44109/nantes/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://recosante.beta.gouv.fr/place/67482/strasbourg/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1621,7 +1629,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				}
 			]
 		}
