@@ -1,6 +1,84 @@
 [
   [
     {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "mrs.beta.gouv.fr.",
+      "matched-at": "mrs.beta.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 27205\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 27205\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nmrs.beta.gouv.fr.\t300\tIN\tSOA\tdns1.alwaysdata.com. hostmaster.alwaysdata.com. 1679009461 3600 900 1209600 300\n",
+      "timestamp": "2024-01-14T07:47:21.292815302Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/txt-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
+      "template-id": "txt-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
+      "info": {
+        "name": "DNS TXT Record Detected",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "txt"
+        ],
+        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+        "reference": [
+          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "mrs.beta.gouv.fr.",
+      "matched-at": "mrs.beta.gouv.fr",
+      "extracted-results": [
+        "\"v=spf1 include:spf.mailjet.com ip4:162.19.18.40/32 ~all\"",
+        "\"google-site-verification=g8F_SJHY9iEXLva-8QpFM42tFhaEPyI92cDkFUMOPe0\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 55167\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 55167\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nmrs.beta.gouv.fr.\t60\tIN\tTXT\t\"v=spf1 include:spf.mailjet.com ip4:162.19.18.40/32 ~all\"\nmrs.beta.gouv.fr.\t300\tIN\tTXT\t\"google-site-verification=g8F_SJHY9iEXLva-8QpFM42tFhaEPyI92cDkFUMOPe0\"\n",
+      "timestamp": "2024-01-14T07:47:21.52597395Z",
+      "matcher-status": true
+    },
+    {
       "template": "dns/mx-fingerprint.yaml",
       "template-url": "https://templates.nuclei.sh/public/mx-fingerprint",
       "template-id": "mx-fingerprint",
@@ -37,50 +115,9 @@
         "10 mx1.alwaysdata.com.",
         "20 mx2.alwaysdata.com."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 35961\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t MX\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 35961\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nmrs.beta.gouv.fr.\t300\tIN\tMX\t10 mx1.alwaysdata.com.\nmrs.beta.gouv.fr.\t300\tIN\tMX\t20 mx2.alwaysdata.com.\n",
-      "timestamp": "2024-01-07T07:55:45.432106292Z",
-      "matcher-status": true
-    },
-    {
-      "template": "dns/txt-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
-      "template-id": "txt-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
-      "info": {
-        "name": "DNS TXT Record Detected",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "txt"
-        ],
-        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
-        "reference": [
-          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "mrs.beta.gouv.fr.",
-      "matched-at": "mrs.beta.gouv.fr",
-      "extracted-results": [
-        "\"google-site-verification=g8F_SJHY9iEXLva-8QpFM42tFhaEPyI92cDkFUMOPe0\"",
-        "\"v=spf1 include:spf.mailjet.com ip4:162.19.18.40/32 ~all\""
-      ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 6121\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 6121\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nmrs.beta.gouv.fr.\t300\tIN\tTXT\t\"google-site-verification=g8F_SJHY9iEXLva-8QpFM42tFhaEPyI92cDkFUMOPe0\"\nmrs.beta.gouv.fr.\t60\tIN\tTXT\t\"v=spf1 include:spf.mailjet.com ip4:162.19.18.40/32 ~all\"\n",
-      "timestamp": "2024-01-07T07:55:45.448987844Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 13416\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t MX\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 13416\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nmrs.beta.gouv.fr.\t300\tIN\tMX\t20 mx2.alwaysdata.com.\nmrs.beta.gouv.fr.\t300\tIN\tMX\t10 mx1.alwaysdata.com.\n",
+      "timestamp": "2024-01-14T07:47:22.200218181Z",
       "matcher-status": true
     },
     {
@@ -113,49 +150,12 @@
       "host": "mrs.beta.gouv.fr.",
       "matched-at": "mrs.beta.gouv.fr",
       "extracted-results": [
-        "dns2.alwaysdata.com.",
-        "dns1.alwaysdata.com."
+        "dns1.alwaysdata.com.",
+        "dns2.alwaysdata.com."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 54787\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t NS\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 54787\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nmrs.beta.gouv.fr.\t300\tIN\tNS\tdns2.alwaysdata.com.\nmrs.beta.gouv.fr.\t300\tIN\tNS\tdns1.alwaysdata.com.\n",
-      "timestamp": "2024-01-07T07:55:45.452518989Z",
-      "matcher-status": true
-    },
-    {
-      "template": "dns/caa-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
-      "template-id": "caa-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
-      "info": {
-        "name": "CAA Record",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "caa"
-        ],
-        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
-        "reference": [
-          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "mrs.beta.gouv.fr.",
-      "matched-at": "mrs.beta.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 29781\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 29781\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nmrs.beta.gouv.fr.\t300\tIN\tSOA\tdns1.alwaysdata.com. hostmaster.alwaysdata.com. 1679009461 3600 900 1209600 300\n",
-      "timestamp": "2024-01-07T07:55:46.455192503Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 55566\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t NS\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 55566\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mrs.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nmrs.beta.gouv.fr.\t300\tIN\tNS\tdns1.alwaysdata.com.\nmrs.beta.gouv.fr.\t300\tIN\tNS\tdns2.alwaysdata.com.\n",
+      "timestamp": "2024-01-14T07:47:22.510662196Z",
       "matcher-status": true
     },
     {
@@ -188,14 +188,14 @@
       "host": "https://mrs.beta.gouv.fr",
       "matched-at": "https://www.mrs.beta.gouv.fr/",
       "extracted-results": [
-        "https://code.jquery.com/jquery-3.3.1.slim.min.js",
         "https://stats.data.gouv.fr/matomo.js",
-        "https://cdn.ravenjs.com/3.26.4/raven.min.js"
+        "https://cdn.ravenjs.com/3.26.4/raven.min.js",
+        "https://code.jquery.com/jquery-3.3.1.slim.min.js"
       ],
       "request": "GET / HTTP/1.1\r\nHost: mrs.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 12153\r\nContent-Language: fr\r\nContent-Security-Policy: form-action 'self'; upgrade-insecure-requests; frame-ancestors 'self'; default-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://stats.data.gouv.fr https://cdnjs.cloudflare.com; img-src 'self' https://stats.data.gouv.fr; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://stackpath.bootstrapcdn.com https://cdnjs.cloudflare.com; base-uri 'self'; frame-src 'self' https://www.youtube.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com https://fonts.googleapis.com https://fonts.gstatic.com https://stats.data.gouv.fr https://cdn.ravenjs.com\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 07 Jan 2024 07:57:29 GMT\r\nReferrer-Policy: same-origin\r\nStrict-Transport-Security: max-age=15768000; includeSubDomains; preload\r\nVary: Accept-Language\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\nX-Xss-Protection: 1; mode=block\r\n\r\n\n\n<!DOCTYPE html>\n<html>\n<head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n    <title>Découvrez MRS | MRS </title>\n    \n        <link rel=\"stylesheet\" href=\"/static/bootstrap/bootstrap.min.css\">\n        <link type=\"text/css\" href=\"/static/webpack_bundles/mrsbootstrap.c02f6f49e2fb59a7db79.css\" rel=\"stylesheet\" />\n        <link href=\"https://fonts.googleapis.com/css?family=Barlow+Condensed|Barlow:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Faustina\"\n              rel=\"stylesheet\"/>\n        <link rel=\"manifest\" href=\"/static/manifest.json\"/>\n        <meta property=\"og:title\" content=\"Mes Remboursements Simplifiés\"/>\n        <meta property=\"og:type\" content=\"website\"/>\n        <meta property=\"og:image\" content=\"/static/img/logos/mrs.png\"/>\n        <meta property=\"og:description\"\n              content=\"Mes Remboursements Simplifiés (MRS) est un service innovant de l'Assurance Maladie pour accélérer\n    et faciliter le remboursement des frais d’utilisation du véhicule particulier ou du transport en commun suite à une\n    prescription médicale. MRS permet de déclarer directement en ligne et d’être remboursé en une semaine.\"/>\n        <link rel=\"icon\" type=\"image/png\" href=\"/static/img/favicon.png\"/>\n        <link rel=\"icon\" sizes=\"48x48\" href=\"/static/img/logos/launcher-icon-1x.png\">\n        <link rel=\"icon\" sizes=\"96x96\" href=\"/static/img/logos/launcher-icon-2x.png\">\n        <link rel=\"manifest\" href=\"/manifest.json\"/>\n        <meta name=\"mobile-web-app-capable\" content=\"yes\"/>\n        <meta name=\"apple-mobile-web-app-capable\" content=\"yes\"/>\n    \n    <style type=\"text/css\">\n        /* doesn't seem to work when through SASS */\n        progress::-webkit-progress-value {\n            background: #0dc5b9;\n        }\n\n        progress::-moz-progress-bar {\n            background: #0dc5b9;\n        }\n    </style>\n    \n\n<script type=\"text/javascript\" src=\"/static/js/stats.js\"></script>\n<script type=\"text/javascript\" src=\"https://stats.data.gouv.fr/matomo.js\" async defer></script>\n\n\n</head>\n<body class=\"index\">\n\n\n\n<div id=\"app--wrapper\">\n\n    \n        \n<div id=\"header-big\" class=\"d-none d-lg-block\">\n    <div class=\"header-bg\"></div>\n    <div class=\"cnam-wrapper\">\n        <a href=\"/\" class=\"cnam-logo\">\n            <img src=\"/static/img/logos/cnam.png\" alt=\"Caisse Nationale d'Assurance Maladie\">\n        </a>\n    </div>\n\n    <nav class=\"navbar navbar-expand-lg py-0\">\n        <a class=\"navbar-brand\" href=\"/\">\n            <img src=\"/static/img/logos/mrs.png\" alt=\"MRS\" class=\"mrs-logo\">\n        </a>\n\n        <div class=\"d-flex justify-content-end w-100\" id=\"mrs-navbar\">\n            <ul class=\"navbar-nav text-center\">\n                \n                    <li class=\"nav-item\">\n                        <a class=\"btn mrs-bouton mrs-rose-plein \"\n                           href=\"/demande\">Demander un remboursement</a>\n                    </li>\n                \n                    <li class=\"nav-item\">\n                        <a class=\"btn mrs-bouton mrs-bleu-plein \"\n                           href=\"/faq\">Aide</a>\n                    </li>\n                \n            </ul>\n        </div>\n    </nav>\n</div>\n\n<div id=\"header-small\" class=\"d-block d-lg-none\">\n    <nav class=\"navbar\">\n        <a href=\"/\" alt=\"Accueil\" class=\"navbar-nav\" style=\"background-image: url('/static/img/icones/home.svg')\"></a>\n        <div class=\"navbar-brand\">\n            <a href=\"/\" class=\"cnam-logo\">\n                <img src=\"/static/img/logos/cnam.png\" alt=\"Caisse Nationale d'Assurance Maladie\">\n            </a>\n        </div>\n        <a href=\"/faq\" alt=\"Aide\" class=\"navbar-nav\" style=\"background-image: url('/static/img/icones/icon_question.svg')\"></a>\n    </nav>\n    <a class=\"navbar-brand\" href=\"/\">\n            <img src=\"/static/img/logos/mrs.png\" alt=\"MRS\" class=\"mrs-logo\">\n        </a>\n</div>\n\n    \n\n    \n    <div id=\"hero\" style=\"background-image: url('/static/img/illu_accueil.svg')\"></div>\n\n    <h1 id=\"baseline\">\n        En 3 clics, mon transport personnel remboursé en moins d’une semaine.\n    </h1>\n\n    <div id=\"cta\">\n        <a class=\"btn mrs-bouton mrs-rose-plein\" href=\"/demande\">Demander un remboursement</a>\n    </div>\n\n    <div id=\"cmm\" class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col\">\n                <h2>\n                    Comment ça marche ?\n                </h2>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-lg-7\">\n                <div class=\"embed-responsive embed-responsive-16by9\">\n                    <iframe\n                            width=\"100%\"\n                            height=\"100%\"\n                            src=\"https://www.youtube.com/embed/KgMkHtFO-xs?rel=0\"\n                            frameborder=\"0\"\n                            allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\"\n                            allowfullscreen\n                    ></iframe>\n                </div>\n            </div>\n\n            <div class=\"col-lg-5\">\n                <div class=\"row\">\n                    <div class=\"col-3\" style=\"background-image:url('/static/img/icones/line.svg')\">\n                        <div style=\"background-image:url('/static/img/icones/icon_prescr.svg')\"></div>\n                    </div>\n                    <div class=\"col-9\">\n                        <h3>Recevez votre prescription médicale</h3>\n                        <p>\n                            Votre médecin vous prescrit un transport médical en fonction de votre situation.\n                        </p>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-3\" style=\"background-image:url('/static/img/icones/line.svg')\">\n                        <div style=\"background-image:url('/static/img/icones/icon_transport.svg')\"></div>\n                    </div>\n                    <div class=\"col-9\">\n                        <h3>Réalisez le transport</h3>\n                        <p>\n                            Vous vous rendez à vos soins en voiture ou en transport en commun, seul(e) ou accompagné(e)\n                        </p>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-3\" style=\"background-image:url('/static/img/icones/line.svg')\">\n                        <div style=\"background-image:url('/static/img/icones/icon_demande.svg')\"></div>\n                    </div>\n                    <div class=\"col-9\">\n                        <h3>Demandez le remboursement</h3>\n                        <p>\n                            Remplissez votre demande en joignant vos documents (prescription médicale de transport et\n                            justificatifs de déplacement).\n                        </p>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-3\">\n                        <div style=\"background-image:url('/static/img/icones/icon_euro.svg')\"></div>\n                    </div>\n                    <div class=\"col-9\">\n                        <h3>Obtenez le remboursement</h3>\n                        <p>\n                            Sous réserve de validité, vous êtes remboursé en moins d’une semaine !\n                        </p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n    <div id=\"service\" class=\"container-fluid\">\n        <div id=\"service-header\" class=\"row\">\n            <div class=\"col-12 col-xl-4\">\n                <h2>\n                    Le service en 3 chiffres\n                </h2>\n            </div>\n        </div>\n\n        <div id=\"service-chiffres\" class=\"row\">\n            <div class=\"col-12 col-md-4\">\n                <div id=\"countup-users\" class=\"countup\">350038</div>\n                <h3>Nombre d'utilisateurs</h3>\n            </div>\n            <div class=\"col-12 col-md-4\">\n                <div id=\"countup-requests\" class=\"countup\">1851160</div>\n                <h3>Nombre de demandes</h3>\n            </div>\n            <div class=\"col-12 col-md-4\">\n                <div id=\"countup-delay\" class=\"countup\">4.41</div>\n                <h3>Délai de remboursement</h3>\n            </div>\n        </div>\n    </div>\n\n    <div id=\"temoignages\" class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col\">\n                <h2>\n                    Ils ont utilisé notre service\n                </h2>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-2 temoignages-images\">\n                <img src=\"/static/img/bus2.svg\">\n            </div>\n            <div class=\"col-12 col-md-8 temoignage\">\n                <div class=\"row\">\n                    <div class=\"col-1\">\n                        <img src=\"/static/img/guillemetouvrant.svg\">\n                    </div>\n                    <div class=\"col-10\" id=\"temoignage\">\n                        J’ai bien reçu le remboursement pour mes frais de transport en voiture particulière,\n                        paiement très rapide et simplifié grâce à l’envoi par internet ! Merci !\n                        <br>\n                        <b>Amelie F.</b>\n                    </div>\n                    <div class=\"col-1\">\n                        <img src=\"/static/img/guillemetfermant.svg\">\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-12\">\n                        <div class=\"d-flex justify-content-center mt-3\">\n                            <div class=\"btn mrs-bouton mrs-blanc-plein\" id=\"temoignage-suivant\">Autre témoignage</div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-2 temoignages-images\">\n                <img src=\"/static/img/voiture2.svg\">\n            </div>\n        </div>\n    </div>\n\n\n    \n        \n<div id=\"footer\" class=\"container-fluid\">\n    <div class=\"row\">\n        <div class=\"col-12 col-lg-5 footer-images\">\n            <a href=\"https://www.ameli.fr\" target=\"_blank\">\n                <img class=\"logo\" src=\"/static/img/logos/ameli.png\" alt=\"Logo ameli.fr\" />\n            </a>\n            <a href=\"https://www.oups.gouv.fr/\" target=\"_blank\">\n                <img class=\"logo\" src=\"/static/img/logos/logo_oups.svg\" alt=\"Logo oups.gouv.fr\" />\n            </a>\n        </div>\n        <div class=\"col-12 col-lg-7 footer-links\">\n            <ul class=\"nav\">\n                <li class=\"nav-item\">\n                    <span>© <script>document.write(new Date().getFullYear())</script> - CNAM</span>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"nav-link active\" href=\"/mentions-legales\">Mentions légales</a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"nav-link\" href=\"/contact\">Contact</a>\n                </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n    \n\n</div>\n\n\n    <script src=\"https://cdn.ravenjs.com/3.26.4/raven.min.js\" crossorigin=\"anonymous\"></script>\n    <script id=\"sentry-config\" type=\"application/json\">{\"environment\": \"production\", \"release\": \"8e1b002211d5eeb12d21abfe0f2218fe78adb923\"}</script>\n    <script type=\"text/javascript\">\n        Raven.config(\n            'https://75842b06c1ea42b297c8a56c5b82d723@o433239.ingest.sentry.io/5387962',\n            JSON.parse(document.getElementById('sentry-config').textContent)\n        ).install()\n    </script>\n\n\n\n    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\"\n            integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\"\n            crossorigin=\"anonymous\"></script>\n    <script src=\"/static/bootstrap/bootstrap.bundle.min.js\"></script>\n\n\n\n    \n    <script type=\"text/javascript\" src=\"/static/webpack_bundles/mrsbootstrap.c02f6f49e2fb59a7db79.js\" ></script>\n\n    <script type=\"text/javascript\" src=\"/static/webpack_bundles/mrsindex.c02f6f49e2fb59a7db79.js\" ></script>\n\n\n<!-- PROJECT_INSTANCE=mrs-production -->\n</body>\n</html>\n",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 12153\r\nContent-Language: fr\r\nContent-Security-Policy: form-action 'self'; upgrade-insecure-requests; frame-ancestors 'self'; default-src 'self' 'unsafe-inline' https://fonts.gstatic.com https://stats.data.gouv.fr https://cdnjs.cloudflare.com; img-src 'self' https://stats.data.gouv.fr; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://stackpath.bootstrapcdn.com https://cdnjs.cloudflare.com; base-uri 'self'; frame-src 'self' https://www.youtube.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://code.jquery.com https://cdnjs.cloudflare.com https://stackpath.bootstrapcdn.com https://fonts.googleapis.com https://fonts.gstatic.com https://stats.data.gouv.fr https://cdn.ravenjs.com\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 14 Jan 2024 07:48:26 GMT\r\nReferrer-Policy: same-origin\r\nStrict-Transport-Security: max-age=15768000; includeSubDomains; preload\r\nVary: Accept-Language\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\nX-Xss-Protection: 1; mode=block\r\n\r\n\n\n<!DOCTYPE html>\n<html>\n<head>\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n    <title>Découvrez MRS | MRS </title>\n    \n        <link rel=\"stylesheet\" href=\"/static/bootstrap/bootstrap.min.css\">\n        <link type=\"text/css\" href=\"/static/webpack_bundles/mrsbootstrap.c02f6f49e2fb59a7db79.css\" rel=\"stylesheet\" />\n        <link href=\"https://fonts.googleapis.com/css?family=Barlow+Condensed|Barlow:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Faustina\"\n              rel=\"stylesheet\"/>\n        <link rel=\"manifest\" href=\"/static/manifest.json\"/>\n        <meta property=\"og:title\" content=\"Mes Remboursements Simplifiés\"/>\n        <meta property=\"og:type\" content=\"website\"/>\n        <meta property=\"og:image\" content=\"/static/img/logos/mrs.png\"/>\n        <meta property=\"og:description\"\n              content=\"Mes Remboursements Simplifiés (MRS) est un service innovant de l'Assurance Maladie pour accélérer\n    et faciliter le remboursement des frais d’utilisation du véhicule particulier ou du transport en commun suite à une\n    prescription médicale. MRS permet de déclarer directement en ligne et d’être remboursé en une semaine.\"/>\n        <link rel=\"icon\" type=\"image/png\" href=\"/static/img/favicon.png\"/>\n        <link rel=\"icon\" sizes=\"48x48\" href=\"/static/img/logos/launcher-icon-1x.png\">\n        <link rel=\"icon\" sizes=\"96x96\" href=\"/static/img/logos/launcher-icon-2x.png\">\n        <link rel=\"manifest\" href=\"/manifest.json\"/>\n        <meta name=\"mobile-web-app-capable\" content=\"yes\"/>\n        <meta name=\"apple-mobile-web-app-capable\" content=\"yes\"/>\n    \n    <style type=\"text/css\">\n        /* doesn't seem to work when through SASS */\n        progress::-webkit-progress-value {\n            background: #0dc5b9;\n        }\n\n        progress::-moz-progress-bar {\n            background: #0dc5b9;\n        }\n    </style>\n    \n\n<script type=\"text/javascript\" src=\"/static/js/stats.js\"></script>\n<script type=\"text/javascript\" src=\"https://stats.data.gouv.fr/matomo.js\" async defer></script>\n\n\n</head>\n<body class=\"index\">\n\n\n\n<div id=\"app--wrapper\">\n\n    \n        \n<div id=\"header-big\" class=\"d-none d-lg-block\">\n    <div class=\"header-bg\"></div>\n    <div class=\"cnam-wrapper\">\n        <a href=\"/\" class=\"cnam-logo\">\n            <img src=\"/static/img/logos/cnam.png\" alt=\"Caisse Nationale d'Assurance Maladie\">\n        </a>\n    </div>\n\n    <nav class=\"navbar navbar-expand-lg py-0\">\n        <a class=\"navbar-brand\" href=\"/\">\n            <img src=\"/static/img/logos/mrs.png\" alt=\"MRS\" class=\"mrs-logo\">\n        </a>\n\n        <div class=\"d-flex justify-content-end w-100\" id=\"mrs-navbar\">\n            <ul class=\"navbar-nav text-center\">\n                \n                    <li class=\"nav-item\">\n                        <a class=\"btn mrs-bouton mrs-rose-plein \"\n                           href=\"/demande\">Demander un remboursement</a>\n                    </li>\n                \n                    <li class=\"nav-item\">\n                        <a class=\"btn mrs-bouton mrs-bleu-plein \"\n                           href=\"/faq\">Aide</a>\n                    </li>\n                \n            </ul>\n        </div>\n    </nav>\n</div>\n\n<div id=\"header-small\" class=\"d-block d-lg-none\">\n    <nav class=\"navbar\">\n        <a href=\"/\" alt=\"Accueil\" class=\"navbar-nav\" style=\"background-image: url('/static/img/icones/home.svg')\"></a>\n        <div class=\"navbar-brand\">\n            <a href=\"/\" class=\"cnam-logo\">\n                <img src=\"/static/img/logos/cnam.png\" alt=\"Caisse Nationale d'Assurance Maladie\">\n            </a>\n        </div>\n        <a href=\"/faq\" alt=\"Aide\" class=\"navbar-nav\" style=\"background-image: url('/static/img/icones/icon_question.svg')\"></a>\n    </nav>\n    <a class=\"navbar-brand\" href=\"/\">\n            <img src=\"/static/img/logos/mrs.png\" alt=\"MRS\" class=\"mrs-logo\">\n        </a>\n</div>\n\n    \n\n    \n    <div id=\"hero\" style=\"background-image: url('/static/img/illu_accueil.svg')\"></div>\n\n    <h1 id=\"baseline\">\n        En 3 clics, mon transport personnel remboursé en moins d’une semaine.\n    </h1>\n\n    <div id=\"cta\">\n        <a class=\"btn mrs-bouton mrs-rose-plein\" href=\"/demande\">Demander un remboursement</a>\n    </div>\n\n    <div id=\"cmm\" class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col\">\n                <h2>\n                    Comment ça marche ?\n                </h2>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-lg-7\">\n                <div class=\"embed-responsive embed-responsive-16by9\">\n                    <iframe\n                            width=\"100%\"\n                            height=\"100%\"\n                            src=\"https://www.youtube.com/embed/KgMkHtFO-xs?rel=0\"\n                            frameborder=\"0\"\n                            allow=\"accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture\"\n                            allowfullscreen\n                    ></iframe>\n                </div>\n            </div>\n\n            <div class=\"col-lg-5\">\n                <div class=\"row\">\n                    <div class=\"col-3\" style=\"background-image:url('/static/img/icones/line.svg')\">\n                        <div style=\"background-image:url('/static/img/icones/icon_prescr.svg')\"></div>\n                    </div>\n                    <div class=\"col-9\">\n                        <h3>Recevez votre prescription médicale</h3>\n                        <p>\n                            Votre médecin vous prescrit un transport médical en fonction de votre situation.\n                        </p>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-3\" style=\"background-image:url('/static/img/icones/line.svg')\">\n                        <div style=\"background-image:url('/static/img/icones/icon_transport.svg')\"></div>\n                    </div>\n                    <div class=\"col-9\">\n                        <h3>Réalisez le transport</h3>\n                        <p>\n                            Vous vous rendez à vos soins en voiture ou en transport en commun, seul(e) ou accompagné(e)\n                        </p>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-3\" style=\"background-image:url('/static/img/icones/line.svg')\">\n                        <div style=\"background-image:url('/static/img/icones/icon_demande.svg')\"></div>\n                    </div>\n                    <div class=\"col-9\">\n                        <h3>Demandez le remboursement</h3>\n                        <p>\n                            Remplissez votre demande en joignant vos documents (prescription médicale de transport et\n                            justificatifs de déplacement).\n                        </p>\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-3\">\n                        <div style=\"background-image:url('/static/img/icones/icon_euro.svg')\"></div>\n                    </div>\n                    <div class=\"col-9\">\n                        <h3>Obtenez le remboursement</h3>\n                        <p>\n                            Sous réserve de validité, vous êtes remboursé en moins d’une semaine !\n                        </p>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n\n    <div id=\"service\" class=\"container-fluid\">\n        <div id=\"service-header\" class=\"row\">\n            <div class=\"col-12 col-xl-4\">\n                <h2>\n                    Le service en 3 chiffres\n                </h2>\n            </div>\n        </div>\n\n        <div id=\"service-chiffres\" class=\"row\">\n            <div class=\"col-12 col-md-4\">\n                <div id=\"countup-users\" class=\"countup\">352009</div>\n                <h3>Nombre d'utilisateurs</h3>\n            </div>\n            <div class=\"col-12 col-md-4\">\n                <div id=\"countup-requests\" class=\"countup\">1864772</div>\n                <h3>Nombre de demandes</h3>\n            </div>\n            <div class=\"col-12 col-md-4\">\n                <div id=\"countup-delay\" class=\"countup\">4.42</div>\n                <h3>Délai de remboursement</h3>\n            </div>\n        </div>\n    </div>\n\n    <div id=\"temoignages\" class=\"container-fluid\">\n        <div class=\"row\">\n            <div class=\"col\">\n                <h2>\n                    Ils ont utilisé notre service\n                </h2>\n            </div>\n        </div>\n\n        <div class=\"row\">\n            <div class=\"col-2 temoignages-images\">\n                <img src=\"/static/img/bus2.svg\">\n            </div>\n            <div class=\"col-12 col-md-8 temoignage\">\n                <div class=\"row\">\n                    <div class=\"col-1\">\n                        <img src=\"/static/img/guillemetouvrant.svg\">\n                    </div>\n                    <div class=\"col-10\" id=\"temoignage\">\n                        J’ai bien reçu le remboursement pour mes frais de transport en voiture particulière,\n                        paiement très rapide et simplifié grâce à l’envoi par internet ! Merci !\n                        <br>\n                        <b>Amelie F.</b>\n                    </div>\n                    <div class=\"col-1\">\n                        <img src=\"/static/img/guillemetfermant.svg\">\n                    </div>\n                </div>\n                <div class=\"row\">\n                    <div class=\"col-12\">\n                        <div class=\"d-flex justify-content-center mt-3\">\n                            <div class=\"btn mrs-bouton mrs-blanc-plein\" id=\"temoignage-suivant\">Autre témoignage</div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-2 temoignages-images\">\n                <img src=\"/static/img/voiture2.svg\">\n            </div>\n        </div>\n    </div>\n\n\n    \n        \n<div id=\"footer\" class=\"container-fluid\">\n    <div class=\"row\">\n        <div class=\"col-12 col-lg-5 footer-images\">\n            <a href=\"https://www.ameli.fr\" target=\"_blank\">\n                <img class=\"logo\" src=\"/static/img/logos/ameli.png\" alt=\"Logo ameli.fr\" />\n            </a>\n            <a href=\"https://www.oups.gouv.fr/\" target=\"_blank\">\n                <img class=\"logo\" src=\"/static/img/logos/logo_oups.svg\" alt=\"Logo oups.gouv.fr\" />\n            </a>\n        </div>\n        <div class=\"col-12 col-lg-7 footer-links\">\n            <ul class=\"nav\">\n                <li class=\"nav-item\">\n                    <span>© <script>document.write(new Date().getFullYear())</script> - CNAM</span>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"nav-link active\" href=\"/mentions-legales\">Mentions légales</a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"nav-link\" href=\"/contact\">Contact</a>\n                </li>\n            </ul>\n        </div>\n    </div>\n</div>\n\n    \n\n</div>\n\n\n    <script src=\"https://cdn.ravenjs.com/3.26.4/raven.min.js\" crossorigin=\"anonymous\"></script>\n    <script id=\"sentry-config\" type=\"application/json\">{\"environment\": \"production\", \"release\": \"8e1b002211d5eeb12d21abfe0f2218fe78adb923\"}</script>\n    <script type=\"text/javascript\">\n        Raven.config(\n            'https://75842b06c1ea42b297c8a56c5b82d723@o433239.ingest.sentry.io/5387962',\n            JSON.parse(document.getElementById('sentry-config').textContent)\n        ).install()\n    </script>\n\n\n\n    <script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\"\n            integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\"\n            crossorigin=\"anonymous\"></script>\n    <script src=\"/static/bootstrap/bootstrap.bundle.min.js\"></script>\n\n\n\n    \n    <script type=\"text/javascript\" src=\"/static/webpack_bundles/mrsbootstrap.c02f6f49e2fb59a7db79.js\" ></script>\n\n    <script type=\"text/javascript\" src=\"/static/webpack_bundles/mrsindex.c02f6f49e2fb59a7db79.js\" ></script>\n\n\n<!-- PROJECT_INSTANCE=mrs-production -->\n</body>\n</html>\n",
       "ip": "162.19.18.40",
-      "timestamp": "2024-01-07T07:57:29.833332821Z",
+      "timestamp": "2024-01-14T07:48:26.933152402Z",
       "curl-command": "curl -X 'GET' -d '' -H 'Host: mrs.beta.gouv.fr' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mrs.beta.gouv.fr/'",
       "matcher-status": true
     },
@@ -246,7 +246,7 @@
       ],
       "response": "SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.6\r\n",
       "ip": "162.19.18.40",
-      "timestamp": "2024-01-07T07:58:45.481618754Z",
+      "timestamp": "2024-01-14T07:49:21.734448387Z",
       "matcher-status": true
     },
     {
@@ -276,7 +276,7 @@
         "Let's Encrypt"
       ],
       "ip": "162.19.18.40",
-      "timestamp": "2024-01-07T07:59:36.340038786Z",
+      "timestamp": "2024-01-14T07:50:15.856729988Z",
       "matcher-status": true
     },
     {
@@ -307,7 +307,7 @@
         "www.mrs.beta.gouv.fr"
       ],
       "ip": "162.19.18.40",
-      "timestamp": "2024-01-07T07:59:36.340173416Z",
+      "timestamp": "2024-01-14T07:50:15.856841696Z",
       "matcher-status": true
     },
     {
@@ -338,7 +338,7 @@
         "tls12"
       ],
       "ip": "162.19.18.40",
-      "timestamp": "2024-01-07T07:59:38.44166056Z",
+      "timestamp": "2024-01-14T07:50:17.444822965Z",
       "matcher-status": true
     },
     {
@@ -369,7 +369,7 @@
         "tls13"
       ],
       "ip": "162.19.18.40",
-      "timestamp": "2024-01-07T07:59:38.859745732Z",
+      "timestamp": "2024-01-14T07:50:17.664456742Z",
       "matcher-status": true
     }
   ]
