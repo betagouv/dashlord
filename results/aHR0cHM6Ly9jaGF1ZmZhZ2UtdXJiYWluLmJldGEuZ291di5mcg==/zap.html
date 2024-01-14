@@ -127,7 +127,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Sun, 7 Jan 2024 03:35:11
+		Generated on Sun, 14 Jan 2024 03:31:36
 	</h3>
 
 	<h3>
@@ -156,7 +156,7 @@ td {
 					<div>Medium</div>
 				</td>
 				<td align="center">
-					<div>4</div>
+					<div>3</div>
 				</td>
 			</tr>
 			<tr>
@@ -198,11 +198,6 @@ td {
 					align="center">Number of Instances</th>
 			</tr>
 			<tr>
-				<td><a href="#10202">Absence of Anti-CSRF Tokens</a></td>
-				<td align="center" class="risk-2">Medium</td>
-				<td align="center">1</td>
-			</tr>
-			<tr>
 				<td><a href="#10055">CSP: Wildcard Directive</a></td>
 				<td align="center" class="risk-2">Medium</td>
 				<td align="center">1</td>
@@ -235,7 +230,7 @@ td {
 			<tr>
 				<td><a href="#10035">Strict-Transport-Security Header Not Set</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">2</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10094">Base64 Disclosure</a></td>
@@ -292,153 +287,6 @@ td {
 			<table class="results">
 				<tr height="24">
 					<th width="20%" class="risk-2"><a
-						id="10202"></a>
-						<div>Medium</div></th>
-					<th class="risk-2">Absence of Anti-CSRF Tokens</th>
-				</tr>
-				<tr>
-					<td width="20%">Description</td>
-					<td width="80%">
-							<div>No Anti-CSRF tokens were found in a HTML submission form.</div>
-							<br />
-						
-							<div>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</div>
-							<br />
-						
-							<div>CSRF attacks are effective in a number of situations, including:</div>
-							<br />
-						
-							<div>    * The victim has an active session on the target site.</div>
-							<br />
-						
-							<div>    * The victim is authenticated via HTTP auth on the target site.</div>
-							<br />
-						
-							<div>    * The victim is on the same local network as the target site.</div>
-							<br />
-						
-							<div>CSRF has primarily been used to perform an action against a target site using the victim&#39;s privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</div>
-							
-						</td>
-				</tr>
-				<TR vAlign="top">
-					<TD colspan="2"></TD>
-				</TR>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://chauffage-urbain.beta.gouv.fr">https://chauffage-urbain.beta.gouv.fr</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">&lt;form action=&quot;#&quot;&gt;</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: &quot;5b8f91a2-a144-4df8-ac17-74f3d42663f5&quot; &quot;5cbb0f1d-be77-48a5-ad58-4bcff762a6cc&quot; &quot;a8d66964-c0dd-4e7b-81ef-4598a960524f&quot; &quot;autre&quot; &quot;bailleur&quot; &quot;copropriete&quot; &quot;electricite&quot; &quot;f32e6ac6-388f-4db3-8623-23a120f96589&quot; &quot;fioul&quot; &quot;gaz&quot; &quot;maison&quot; &quot;termOfUse-aad6a08a-897d-4dc5-a47a-7732102e26ae&quot; &quot;tertiaire&quot; ].</td>
-					</tr>
-				
-				<tr>
-					<td width="20%">Instances</td>
-					<td width="80%">1</td>
-				</tr>
-				<tr>
-					<td width="20%">Solution</td>
-					<td width="80%">
-							<div>Phase: Architecture and Design</div>
-							<br />
-						
-							<div>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</div>
-							<br />
-						
-							<div>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</div>
-							<br />
-						
-							<div>Phase: Implementation</div>
-							<br />
-						
-							<div>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</div>
-							<br />
-						
-							<div>Phase: Architecture and Design</div>
-							<br />
-						
-							<div>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</div>
-							<br />
-						
-							<div>Note that this can be bypassed using XSS.</div>
-							<br />
-						
-							<div>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</div>
-							<br />
-						
-							<div>Note that this can be bypassed using XSS.</div>
-							<br />
-						
-							<div>Use the ESAPI Session Management control.</div>
-							<br />
-						
-							<div>This control includes a component for CSRF.</div>
-							<br />
-						
-							<div>Do not use the GET method for any request that triggers a state change.</div>
-							<br />
-						
-							<div>Phase: Implementation</div>
-							<br />
-						
-							<div>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</div>
-							
-						</td>
-				</tr>
-				<tr>
-					<td width="20%">Reference</td>
-					<td width="80%">
-							<a href="http://projects.webappsec.org/Cross-Site-Request-Forgery">http://projects.webappsec.org/Cross-Site-Request-Forgery</a>
-							<br />
-						
-							<a href="https://cwe.mitre.org/data/definitions/352.html">https://cwe.mitre.org/data/definitions/352.html</a>
-							
-						</td>
-				</tr>
-				<tr>
-					<td width="20%">CWE Id</td>
-					<td width="80%"><a
-						href="https://cwe.mitre.org/data/definitions/352.html">352</a></td>
-				</tr>
-				<tr>
-					<td width="20%">WASC Id</td>
-					<td width="80%">9</td>
-				</tr>
-				<tr>
-					<td width="20%">Plugin Id</td>
-					<td width="80%"><a
-						href="https://www.zaproxy.org/docs/alerts/10202/">10202</a></td>
-				</tr>
-			</table>
-			<div class="spacer"></div>
-		
-			<table class="results">
-				<tr height="24">
-					<th width="20%" class="risk-2"><a
 						id="10055"></a>
 						<div>Medium</div></th>
 					<th class="risk-2">CSP: Wildcard Directive</th>
@@ -477,7 +325,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;;base-uri &#39;self&#39;;font-src &#39;self&#39; https: data:;form-action &#39;self&#39;;frame-ancestors &#39;self&#39;;img-src &#39;self&#39; https: data:;object-src &#39;none&#39;;script-src &#39;self&#39; &#39;sha256-TXnVHDn1j7ztxp+9fAgGYQt5MDdGcfG3DMT2sJR4v/I=&#39; &#39;sha256-uoDYfYhkG1Rred64INgKWU540cb8GBpVb+EoZcz/Zyo=&#39; &#39;sha256-eGdlwoVjdfoAxTtVJ5JOqj8MsevToXdxA0rkY5IXIxk=&#39; &#39;sha256-5nUSiKlxGJiE3JicLfPYxYZShtQfFZM0jtHZyyPijTE=&#39; &#39;sha256-PAh6kZHWrs47demJXB9x6PfCgghwAf4BZ4ncKf/BhiU=&#39; &#39;sha256-vHLisyhJqlXs8efpQOmla3M8/VBRwdzde5ZgWIhJQEA=&#39; &#39;sha256-3I33qFPfa/PLrN/3rrrC4vJBjmKYiuXWQ+ZfnHiEWmo=&#39; &#39;sha256-ksltjYbI6Uoozfn80t6ROvA1rBbTP9X8qGPGwHmWBpA=&#39; &#39;sha256-6SC04Y6nNQLzwzyqa3SfGlAJoGLEAasou2bnNnkusvM=&#39; &#39;sha256-H2mRU+3M13HkAJfH6/b74hVw3UOtytXrVI3MuPwDTj0=&#39; https://stats.data.gouv.fr https://stats.beta.gouv.fr https://static.axept.io https://connect.facebook.net https://www.gstatic.com/ https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://connect.facebook.net https://snap.licdn.com https://api.mapbox.com/;script-src-attr &#39;none&#39;;style-src &#39;self&#39; https: &#39;unsafe-inline&#39;;upgrade-insecure-requests ;connect-src &#39;self&#39; https://openmaptiles.geo.data.gouv.fr https://openmaptiles.github.io https://france-chaleur-urbaine.beta.gouv.fr/ https://france-chaleur-urbaine-dev.osc-fr1.scalingo.io/ https://api-adresse.data.gouv.fr/ https://stats.data.gouv.fr https://stats.beta.gouv.fr https://cdn.linkedin.oribi.io https://wxs.ign.fr https://api.mapbox.com/;frame-src https://www.youtube.com/;worker-src &#39;self&#39; blob:</td>
+						<td width="80%">default-src &#39;self&#39;;base-uri &#39;self&#39;;font-src &#39;self&#39; https: data:;form-action &#39;self&#39;;frame-ancestors &#39;self&#39;;img-src &#39;self&#39; https: data:;object-src &#39;none&#39;;script-src &#39;self&#39; &#39;sha256-TXnVHDn1j7ztxp+9fAgGYQt5MDdGcfG3DMT2sJR4v/I=&#39; &#39;sha256-uoDYfYhkG1Rred64INgKWU540cb8GBpVb+EoZcz/Zyo=&#39; &#39;sha256-eGdlwoVjdfoAxTtVJ5JOqj8MsevToXdxA0rkY5IXIxk=&#39; &#39;sha256-5nUSiKlxGJiE3JicLfPYxYZShtQfFZM0jtHZyyPijTE=&#39; &#39;sha256-PAh6kZHWrs47demJXB9x6PfCgghwAf4BZ4ncKf/BhiU=&#39; &#39;sha256-vHLisyhJqlXs8efpQOmla3M8/VBRwdzde5ZgWIhJQEA=&#39; &#39;sha256-3I33qFPfa/PLrN/3rrrC4vJBjmKYiuXWQ+ZfnHiEWmo=&#39; &#39;sha256-ksltjYbI6Uoozfn80t6ROvA1rBbTP9X8qGPGwHmWBpA=&#39; &#39;sha256-6SC04Y6nNQLzwzyqa3SfGlAJoGLEAasou2bnNnkusvM=&#39; &#39;sha256-H2mRU+3M13HkAJfH6/b74hVw3UOtytXrVI3MuPwDTj0=&#39; &#39;sha256-344ePyJp7yxx64WKWpbs/ZvEDHA6mve7lS3i90cEPT4=&#39; https://stats.data.gouv.fr https://stats.beta.gouv.fr https://static.axept.io https://connect.facebook.net https://www.gstatic.com/ https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://connect.facebook.net https://snap.licdn.com https://api.mapbox.com/;script-src-attr &#39;none&#39;;style-src &#39;self&#39; https: &#39;unsafe-inline&#39;;upgrade-insecure-requests ;connect-src &#39;self&#39; https://openmaptiles.geo.data.gouv.fr https://openmaptiles.github.io https://france-chaleur-urbaine.beta.gouv.fr/ https://france-chaleur-urbaine-dev.osc-fr1.scalingo.io/ https://api-adresse.data.gouv.fr/ https://stats.data.gouv.fr https://stats.beta.gouv.fr https://cdn.linkedin.oribi.io https://google.com/ https://px.ads.linkedin.com https://wxs.ign.fr https://api.mapbox.com/;frame-src https://td.doubleclick.net https://www.facebook.com/ https://www.youtube.com/;worker-src &#39;self&#39; blob:</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -577,7 +425,7 @@ style-src, img-src, font-src</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;;base-uri &#39;self&#39;;font-src &#39;self&#39; https: data:;form-action &#39;self&#39;;frame-ancestors &#39;self&#39;;img-src &#39;self&#39; https: data:;object-src &#39;none&#39;;script-src &#39;self&#39; &#39;sha256-TXnVHDn1j7ztxp+9fAgGYQt5MDdGcfG3DMT2sJR4v/I=&#39; &#39;sha256-uoDYfYhkG1Rred64INgKWU540cb8GBpVb+EoZcz/Zyo=&#39; &#39;sha256-eGdlwoVjdfoAxTtVJ5JOqj8MsevToXdxA0rkY5IXIxk=&#39; &#39;sha256-5nUSiKlxGJiE3JicLfPYxYZShtQfFZM0jtHZyyPijTE=&#39; &#39;sha256-PAh6kZHWrs47demJXB9x6PfCgghwAf4BZ4ncKf/BhiU=&#39; &#39;sha256-vHLisyhJqlXs8efpQOmla3M8/VBRwdzde5ZgWIhJQEA=&#39; &#39;sha256-3I33qFPfa/PLrN/3rrrC4vJBjmKYiuXWQ+ZfnHiEWmo=&#39; &#39;sha256-ksltjYbI6Uoozfn80t6ROvA1rBbTP9X8qGPGwHmWBpA=&#39; &#39;sha256-6SC04Y6nNQLzwzyqa3SfGlAJoGLEAasou2bnNnkusvM=&#39; &#39;sha256-H2mRU+3M13HkAJfH6/b74hVw3UOtytXrVI3MuPwDTj0=&#39; https://stats.data.gouv.fr https://stats.beta.gouv.fr https://static.axept.io https://connect.facebook.net https://www.gstatic.com/ https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://connect.facebook.net https://snap.licdn.com https://api.mapbox.com/;script-src-attr &#39;none&#39;;style-src &#39;self&#39; https: &#39;unsafe-inline&#39;;upgrade-insecure-requests ;connect-src &#39;self&#39; https://openmaptiles.geo.data.gouv.fr https://openmaptiles.github.io https://france-chaleur-urbaine.beta.gouv.fr/ https://france-chaleur-urbaine-dev.osc-fr1.scalingo.io/ https://api-adresse.data.gouv.fr/ https://stats.data.gouv.fr https://stats.beta.gouv.fr https://cdn.linkedin.oribi.io https://wxs.ign.fr https://api.mapbox.com/;frame-src https://www.youtube.com/;worker-src &#39;self&#39; blob:</td>
+						<td width="80%">default-src &#39;self&#39;;base-uri &#39;self&#39;;font-src &#39;self&#39; https: data:;form-action &#39;self&#39;;frame-ancestors &#39;self&#39;;img-src &#39;self&#39; https: data:;object-src &#39;none&#39;;script-src &#39;self&#39; &#39;sha256-TXnVHDn1j7ztxp+9fAgGYQt5MDdGcfG3DMT2sJR4v/I=&#39; &#39;sha256-uoDYfYhkG1Rred64INgKWU540cb8GBpVb+EoZcz/Zyo=&#39; &#39;sha256-eGdlwoVjdfoAxTtVJ5JOqj8MsevToXdxA0rkY5IXIxk=&#39; &#39;sha256-5nUSiKlxGJiE3JicLfPYxYZShtQfFZM0jtHZyyPijTE=&#39; &#39;sha256-PAh6kZHWrs47demJXB9x6PfCgghwAf4BZ4ncKf/BhiU=&#39; &#39;sha256-vHLisyhJqlXs8efpQOmla3M8/VBRwdzde5ZgWIhJQEA=&#39; &#39;sha256-3I33qFPfa/PLrN/3rrrC4vJBjmKYiuXWQ+ZfnHiEWmo=&#39; &#39;sha256-ksltjYbI6Uoozfn80t6ROvA1rBbTP9X8qGPGwHmWBpA=&#39; &#39;sha256-6SC04Y6nNQLzwzyqa3SfGlAJoGLEAasou2bnNnkusvM=&#39; &#39;sha256-H2mRU+3M13HkAJfH6/b74hVw3UOtytXrVI3MuPwDTj0=&#39; &#39;sha256-344ePyJp7yxx64WKWpbs/ZvEDHA6mve7lS3i90cEPT4=&#39; https://stats.data.gouv.fr https://stats.beta.gouv.fr https://static.axept.io https://connect.facebook.net https://www.gstatic.com/ https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://connect.facebook.net https://snap.licdn.com https://api.mapbox.com/;script-src-attr &#39;none&#39;;style-src &#39;self&#39; https: &#39;unsafe-inline&#39;;upgrade-insecure-requests ;connect-src &#39;self&#39; https://openmaptiles.geo.data.gouv.fr https://openmaptiles.github.io https://france-chaleur-urbaine.beta.gouv.fr/ https://france-chaleur-urbaine-dev.osc-fr1.scalingo.io/ https://api-adresse.data.gouv.fr/ https://stats.data.gouv.fr https://stats.beta.gouv.fr https://cdn.linkedin.oribi.io https://google.com/ https://px.ads.linkedin.com https://wxs.ign.fr https://api.mapbox.com/;frame-src https://td.doubleclick.net https://www.facebook.com/ https://www.youtube.com/;worker-src &#39;self&#39; blob:</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -760,7 +608,7 @@ style-src, img-src, font-src</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">default-src &#39;self&#39;;base-uri &#39;self&#39;;font-src &#39;self&#39; https: data:;form-action &#39;self&#39;;frame-ancestors &#39;self&#39;;img-src &#39;self&#39; https: data:;object-src &#39;none&#39;;script-src &#39;self&#39; &#39;sha256-TXnVHDn1j7ztxp+9fAgGYQt5MDdGcfG3DMT2sJR4v/I=&#39; &#39;sha256-uoDYfYhkG1Rred64INgKWU540cb8GBpVb+EoZcz/Zyo=&#39; &#39;sha256-eGdlwoVjdfoAxTtVJ5JOqj8MsevToXdxA0rkY5IXIxk=&#39; &#39;sha256-5nUSiKlxGJiE3JicLfPYxYZShtQfFZM0jtHZyyPijTE=&#39; &#39;sha256-PAh6kZHWrs47demJXB9x6PfCgghwAf4BZ4ncKf/BhiU=&#39; &#39;sha256-vHLisyhJqlXs8efpQOmla3M8/VBRwdzde5ZgWIhJQEA=&#39; &#39;sha256-3I33qFPfa/PLrN/3rrrC4vJBjmKYiuXWQ+ZfnHiEWmo=&#39; &#39;sha256-ksltjYbI6Uoozfn80t6ROvA1rBbTP9X8qGPGwHmWBpA=&#39; &#39;sha256-6SC04Y6nNQLzwzyqa3SfGlAJoGLEAasou2bnNnkusvM=&#39; &#39;sha256-H2mRU+3M13HkAJfH6/b74hVw3UOtytXrVI3MuPwDTj0=&#39; https://stats.data.gouv.fr https://stats.beta.gouv.fr https://static.axept.io https://connect.facebook.net https://www.gstatic.com/ https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://connect.facebook.net https://snap.licdn.com https://api.mapbox.com/;script-src-attr &#39;none&#39;;style-src &#39;self&#39; https: &#39;unsafe-inline&#39;;upgrade-insecure-requests ;connect-src &#39;self&#39; https://openmaptiles.geo.data.gouv.fr https://openmaptiles.github.io https://france-chaleur-urbaine.beta.gouv.fr/ https://france-chaleur-urbaine-dev.osc-fr1.scalingo.io/ https://api-adresse.data.gouv.fr/ https://stats.data.gouv.fr https://stats.beta.gouv.fr https://cdn.linkedin.oribi.io https://wxs.ign.fr https://api.mapbox.com/;frame-src https://www.youtube.com/;worker-src &#39;self&#39; blob:</td>
+						<td width="80%">default-src &#39;self&#39;;base-uri &#39;self&#39;;font-src &#39;self&#39; https: data:;form-action &#39;self&#39;;frame-ancestors &#39;self&#39;;img-src &#39;self&#39; https: data:;object-src &#39;none&#39;;script-src &#39;self&#39; &#39;sha256-TXnVHDn1j7ztxp+9fAgGYQt5MDdGcfG3DMT2sJR4v/I=&#39; &#39;sha256-uoDYfYhkG1Rred64INgKWU540cb8GBpVb+EoZcz/Zyo=&#39; &#39;sha256-eGdlwoVjdfoAxTtVJ5JOqj8MsevToXdxA0rkY5IXIxk=&#39; &#39;sha256-5nUSiKlxGJiE3JicLfPYxYZShtQfFZM0jtHZyyPijTE=&#39; &#39;sha256-PAh6kZHWrs47demJXB9x6PfCgghwAf4BZ4ncKf/BhiU=&#39; &#39;sha256-vHLisyhJqlXs8efpQOmla3M8/VBRwdzde5ZgWIhJQEA=&#39; &#39;sha256-3I33qFPfa/PLrN/3rrrC4vJBjmKYiuXWQ+ZfnHiEWmo=&#39; &#39;sha256-ksltjYbI6Uoozfn80t6ROvA1rBbTP9X8qGPGwHmWBpA=&#39; &#39;sha256-6SC04Y6nNQLzwzyqa3SfGlAJoGLEAasou2bnNnkusvM=&#39; &#39;sha256-H2mRU+3M13HkAJfH6/b74hVw3UOtytXrVI3MuPwDTj0=&#39; &#39;sha256-344ePyJp7yxx64WKWpbs/ZvEDHA6mve7lS3i90cEPT4=&#39; https://stats.data.gouv.fr https://stats.beta.gouv.fr https://static.axept.io https://connect.facebook.net https://www.gstatic.com/ https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://connect.facebook.net https://snap.licdn.com https://api.mapbox.com/;script-src-attr &#39;none&#39;;style-src &#39;self&#39; https: &#39;unsafe-inline&#39;;upgrade-insecure-requests ;connect-src &#39;self&#39; https://openmaptiles.geo.data.gouv.fr https://openmaptiles.github.io https://france-chaleur-urbaine.beta.gouv.fr/ https://france-chaleur-urbaine-dev.osc-fr1.scalingo.io/ https://api-adresse.data.gouv.fr/ https://stats.data.gouv.fr https://stats.beta.gouv.fr https://cdn.linkedin.oribi.io https://google.com/ https://px.ads.linkedin.com https://wxs.ign.fr https://api.mapbox.com/;frame-src https://td.doubleclick.net https://www.facebook.com/ https://www.youtube.com/;worker-src &#39;self&#39; blob:</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1083,9 +931,40 @@ Duplicate host https://connect.facebook.net
 						<td width="80%"></td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://chauffage-urbain.beta.gouv.fr/sitemap.xml">https://chauffage-urbain.beta.gouv.fr/sitemap.xml</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">2</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1171,12 +1050,12 @@ Duplicate host https://connect.facebook.net
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">/_next/static/_yGxFlhowUVZlVMk0MUX1/_buildManifest</td>
+						<td width="80%">/_next/static/PO-hyz4A_A_K9wcxTHywY/_buildManifest</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">�����쵫bs��e��U�U2MQ}������&#39;޲</td>
+						<td width="80%">�����쵫bs��������ps��?������&#39;޲</td>
 					</tr>
 				
 				<tr>
@@ -1260,7 +1139,7 @@ Duplicate host https://connect.facebook.net
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bQUERY\b and was detected in the element starting with: &quot;&lt;script id=&quot;__NEXT_DATA__&quot; type=&quot;application/json&quot;&gt;{&quot;props&quot;:{&quot;pageProps&quot;:{}},&quot;page&quot;:&quot;/&quot;,&quot;query&quot;:{},&quot;buildId&quot;:&quot;_yGxFlhowUVZlVMk0M&quot;, see evidence field for the suspicious comment/snippet.</td>
+						<td width="80%">The following pattern was used: \bQUERY\b and was detected in the element starting with: &quot;&lt;script id=&quot;__NEXT_DATA__&quot; type=&quot;application/json&quot; crossorigin=&quot;&quot;&gt;{&quot;props&quot;:{&quot;pageProps&quot;:{}},&quot;page&quot;:&quot;/&quot;,&quot;query&quot;:{},&quot;buildId&quot;:&quot;PO-&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
@@ -1292,7 +1171,7 @@ Duplicate host https://connect.facebook.net
 						<td width="20%"
 							class="indent2">Other Info</td>
 						<td width="80%">The following pattern was used: \bUSER\b and was detected 3 times, the first in the element starting with: &quot;&lt;script&gt;
-          tarteaucitron.user.gtagUa = &#39;AW-10794036298&#39;;
+          tarteaucitron.user.gtagUa = &#39;AW-11414741136&#39;;
           // tarteaucitron.user.gtagCrossdomain = [&#39;example.com&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
