@@ -1,0 +1,749 @@
+[
+  [
+    {
+      "template": "dns/dns-saas-service-detection.yaml",
+      "template-url": "https://templates.nuclei.sh/public/dns-saas-service-detection",
+      "template-id": "dns-saas-service-detection",
+      "template-path": "/home/runner/nuclei-templates/dns/dns-saas-service-detection.yaml",
+      "info": {
+        "name": "DNS SaaS Service Detection",
+        "author": [
+          "noah @thesubtlety",
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "service"
+        ],
+        "description": "A CNAME DNS record was discovered",
+        "reference": [
+          "https://ns1.com/resources/cname",
+          "https://www.theregister.com/2021/02/24/dns_cname_tracking/",
+          "https://www.ionos.com/digitalguide/hosting/technical-matters/cname-record/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "dns",
+      "host": "cje.beta.gouv.fr.",
+      "matched-at": "cje.beta.gouv.fr",
+      "extracted-results": [
+        "domain.par.clever-cloud.com."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 24448\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cje.beta.gouv.fr.\tIN\t CNAME\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 24448\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;cje.beta.gouv.fr.\tIN\t CNAME\n\n;; ANSWER SECTION:\ncje.beta.gouv.fr.\t10800\tIN\tCNAME\tdomain.par.clever-cloud.com.\n",
+      "timestamp": "2024-01-14T21:56:02.252225687Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "cje.beta.gouv.fr.",
+      "matched-at": "cje.beta.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 31154\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;cje.beta.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 31154\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;cje.beta.gouv.fr.\tIN\t CAA\n\n;; ANSWER SECTION:\ncje.beta.gouv.fr.\t10800\tIN\tCNAME\tdomain.par.clever-cloud.com.\n\n;; AUTHORITY SECTION:\nclever-cloud.com.\t1800\tIN\tSOA\tangela.ns.cloudflare.com. dns.cloudflare.com. 2330378374 10000 2400 604800 1800\n",
+      "timestamp": "2024-01-14T21:56:02.287100938Z",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/switch-protocol.yaml",
+      "template-url": "https://templates.nuclei.sh/public/switch-protocol",
+      "template-id": "switch-protocol",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/switch-protocol.yaml",
+      "info": {
+        "name": "Switching Protocol Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "protocol",
+          "switching",
+          "tech",
+          "websocket",
+          "h2c"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1,
+          "shodan-query": "\"connection: upgrade\"",
+          "verified": true
+        }
+      },
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:56:19.481967427Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/technologies/metatag-cms.yaml",
+      "template-url": "https://templates.nuclei.sh/public/metatag-cms",
+      "template-id": "metatag-cms",
+      "template-path": "/home/runner/nuclei-templates/http/technologies/metatag-cms.yaml",
+      "info": {
+        "name": "Metatag CMS Detection",
+        "author": [
+          "dadevel"
+        ],
+        "tags": [
+          "tech",
+          "cms"
+        ],
+        "description": "Generic CMS Detection using html meta generator tag",
+        "reference": [
+          "https://www.w3schools.com/tags/att_meta_name.asp"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "extracted-results": [
+        "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org"
+      ],
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:56:53.153887311Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "strict-transport-security",
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:57:06.529651616Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "permissions-policy",
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:57:06.529693374Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-content-type-options",
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:57:06.529707941Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "referrer-policy",
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:57:06.52972369Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "clear-site-data",
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:57:06.529767061Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:57:06.529783783Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-opener-policy",
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:57:06.529798059Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-resource-policy",
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:57:06.529812056Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "content-security-policy",
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:57:06.529828416Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-frame-options",
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:57:06.529844256Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-permitted-cross-domain-policies",
+      "type": "http",
+      "host": "https://cje.beta.gouv.fr",
+      "matched-at": "https://cje.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: cje.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 503 Service Unavailable\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE html>\n<!--[if lt IE 7]><html class=\"no-js lt-ie9 lt-ie8 lt-ie7\"><![endif]--><!--[if IE 7]><html class=\"no-js lt-ie9 lt-ie8\"><![endif]--><!--[if IE 8]><html class=\"no-js lt-ie9\"><![endif]--><!--[if gt IE 8]><!-->\n<html>\n<!--<![endif]-->\n<head>\n<meta name=\"generator\" content=\"HTML Tidy for Linux (vers 25 March 2009), see www.w3.org\">\n<meta>\n<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge,chrome=1\">\n<title>This app is starting, please wait</title>\n<meta name=\"description\" content=\"Clever Cloud - This applications is starting\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<link rel=\"icon\" type=\"image/png\" href=\"https://www.clever-cloud.com/blog/img/favicon.png\">\n<style type=\"text/css\">\n@font-face {\n    font-family: 'pt_sansregular';\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot');\n    src: url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.woff') format('woff'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.ttf') format('truetype'),\n         url('https://cleverstatic.cleverapps.io/login-assets/fonts/PTS55F-webfont.svg#pt_sansregular') format('svg');\n    font-weight: normal;\n    font-style: normal;\n\n}html{font-size:1em;line-height:1.4}::-moz-selection{background:#dedede;text-shadow:none}::selection{background:#dedede;text-shadow:none}@font-face{font-family:pt_sansregular;;font-weight:400;font-style:normal}h1{font-family: \"Lucida Grande\", \"Lucida Sans Unicode\", \"Lucida Sans\", Geneva, Verdana, sans-serif;margin: .9em 0 .67em;font-weight: 300;}a{color:#414141;text-decoration:none;border-bottom:1px dotted #414141}.container{max-width:500px;min-width:200px;margin:5% auto;padding:0 80px;border:1px solid #dedede;border-radius: 3px}.container p{font-size:13px;text-align:left;font-family:\"Lucida Grande\",\"Lucida Sans Unicode\",\"Lucida Sans\",Geneva,Verdana,sans-serif}.loading-spinner{width:28px;position:relative;margin:50px auto;display:block;height:28px}.dot{background:#000;border-radius:100%;color:#fff;height:8px;line-height:8px;text-align:center;width:8px}.dotOne{will-change:all;-webkit-animation:dotOneKeyframes 5s ease infinite;animation:dotOneKeyframes 5s ease infinite;background:#b0424a;position:absolute;top:0;left:0}.dotTwo{will-change:all;-webkit-animation:dotTwoKeyframes 5s ease .4166666666666s infinite;animation:dotTwoKeyframes 5s ease .4166666666666s infinite;background:#293441;position:absolute;top:0;left:14px}.dotThree{will-change:all;-webkit-animation:dotThreeKeyframes 5s ease .83333333333s infinite;animation:dotThreeKeyframes 5s ease .83333333333s infinite;background:#333e4a;position:absolute;top:14px;left:14px}@-webkit-keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@keyframes dotOneKeyframes{0%{top:0;left:0}8.3333333333%{top:14px;left:0}25%{top:14px;left:0}33.3333333333%{top:14px;left:14px}50%{top:14px;left:14px}58.3333333333%{top:0;left:14px}75%{top:0;left:14px}83.3333333333%{top:0;left:0}}@-webkit-keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@keyframes dotTwoKeyframes{0%{top:0;left:14px}8.3333333333%{top:0;left:0}25%{top:0;left:0}33.3333333333%{top:14px;left:0}50%{top:14px;left:0}58.3333333333%{top:14px;left:14px}75%{top:14px;left:14px}83.3333333333%{top:0;left:14px}}@-webkit-keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}@keyframes dotThreeKeyframes{0%{top:14px;left:14px}8.3333333333%{top:0;left:14px}25%{top:0;left:14px}33.3333333333%{top:0;left:0}50%{top:0;left:0}58.3333333333%{top:14px;left:0}75%{top:14px;left:0}83.3333333333%{top:14px;left:14px}}\n</style>\n</head>\n<body>\n<div class=\"container\">\n<h1>Please wait</h1>\n<p>This application is starting, you will be redirected once it is ready.</p>\n<p>If your are the application owner, check your logs for details.</p>\n<div class=\"loading-spinner\">\n<div class=\"dot dotOne\"></div>\n<div class=\"dot dotTwo\"></div>\n<div class=\"dot dotThree\"></div>\n</div>\n</div>\n<script type=\"text/javascript\">\nfunction reload(){var e=window.ActiveXObject?new window.ActiveXObject(\"Microsoft.XMLHTTP\"):new XMLHttpRequest;e.onreadystatechange=function(){if(e.readyState==4){if(e.getResponseHeader(\"X-CleverCloudUpgrade\")!=\"true\"){window.location.href=window.location.href}else{setTimeout(reload,2e3)}}};e.open(\"GET\",window.location.href);e.send()}reload()\n</script>\n</body>\n</html>\n",
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:57:06.529854816Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cje.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "network/detection/openssh-detect.yaml",
+      "template-url": "https://templates.nuclei.sh/public/openssh-detect",
+      "template-id": "openssh-detect",
+      "template-path": "/home/runner/nuclei-templates/network/detection/openssh-detect.yaml",
+      "info": {
+        "name": "OpenSSH Service - Detect",
+        "author": [
+          "r3dg33k",
+          "daffainfo",
+          "iamthefrogy"
+        ],
+        "tags": [
+          "seclists",
+          "network",
+          "ssh",
+          "openssh",
+          "detect"
+        ],
+        "description": "OpenSSH service was detected.\n",
+        "reference": [
+          "http://www.openwall.com/lists/oss-security/2016/08/01/2",
+          "http://www.openwall.com/lists/oss-security/2018/08/15/5",
+          "http://seclists.org/fulldisclosure/2016/jul/51",
+          "https://nvd.nist.gov/vuln/detail/cve-2016-6210",
+          "https://nvd.nist.gov/vuln/detail/cve-2018-15473"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ],
+          "cvss-metrics": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:N"
+        }
+      },
+      "type": "tcp",
+      "host": "cje.beta.gouv.fr:22",
+      "matched-at": "cje.beta.gouv.fr:22",
+      "extracted-results": [
+        "SSH-2.0-OpenSSH_9.4"
+      ],
+      "response": "SSH-2.0-OpenSSH_9.4\r\n",
+      "ip": "91.208.207.214",
+      "timestamp": "2024-01-14T21:58:41.582271811Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/detect-ssl-issuer.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-issuer",
+      "template-id": "ssl-issuer",
+      "template-path": "/home/runner/nuclei-templates/ssl/detect-ssl-issuer.yaml",
+      "info": {
+        "name": "Detect SSL Certificate Issuer",
+        "author": [
+          "lingtren"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the issuer's organization from the target's certificate. Issuers are entities which sign and distribute certificates.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "cje.beta.gouv.fr",
+      "matched-at": "cje.beta.gouv.fr:443",
+      "extracted-results": [
+        "Let's Encrypt"
+      ],
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:58:52.944740023Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/ssl-dns-names.yaml",
+      "template-url": "https://templates.nuclei.sh/public/ssl-dns-names",
+      "template-id": "ssl-dns-names",
+      "template-path": "/home/runner/nuclei-templates/ssl/ssl-dns-names.yaml",
+      "info": {
+        "name": "SSL DNS Names",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "Extract the Subject Alternative Name (SAN) from the target's certificate. SAN facilitates the usage of additional hostnames with the same certificate.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "type": "ssl",
+      "host": "cje.beta.gouv.fr",
+      "matched-at": "cje.beta.gouv.fr:443",
+      "extracted-results": [
+        "cje.beta.gouv.fr"
+      ],
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:58:52.944862813Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "cje.beta.gouv.fr",
+      "matched-at": "cje.beta.gouv.fr:443",
+      "extracted-results": [
+        "tls12"
+      ],
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:59:15.030628108Z",
+      "matcher-status": true
+    },
+    {
+      "template": "ssl/tls-version.yaml",
+      "template-url": "https://templates.nuclei.sh/public/tls-version",
+      "template-id": "tls-version",
+      "template-path": "/home/runner/nuclei-templates/ssl/tls-version.yaml",
+      "info": {
+        "name": "TLS Version - Detect",
+        "author": [
+          "pdteam",
+          "pussycat0x"
+        ],
+        "tags": [
+          "ssl",
+          "tls"
+        ],
+        "description": "TLS version detection is a security process used to determine the version of the Transport Layer Security (TLS) protocol used by a computer or server.\nIt is important to detect the TLS version in order to ensure secure communication between two computers or servers.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 4
+        }
+      },
+      "type": "ssl",
+      "host": "cje.beta.gouv.fr",
+      "matched-at": "cje.beta.gouv.fr:443",
+      "extracted-results": [
+        "tls13"
+      ],
+      "ip": "185.42.117.108",
+      "timestamp": "2024-01-14T21:59:27.81517241Z",
+      "matcher-status": true
+    }
+  ]
+]
