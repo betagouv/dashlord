@@ -1,6 +1,47 @@
 [
   [
     {
+      "template": "dns/mx-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/mx-fingerprint",
+      "template-id": "mx-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/mx-fingerprint.yaml",
+      "info": {
+        "name": "MX Record Detection",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "mx"
+        ],
+        "description": "An MX record was detected. MX records direct emails to a mail exchange server.",
+        "reference": [
+          "https://www.cloudflare.com/learning/dns/dns-records/dns-mx-record/",
+          "https://mxtoolbox.com/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "mediature.beta.gouv.fr.",
+      "matched-at": "mediature.beta.gouv.fr",
+      "extracted-results": [
+        "0 parse.mailjet.com."
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 11567\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t MX\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 11567\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nmediature.beta.gouv.fr.\t300\tIN\tMX\t0 parse.mailjet.com.\n",
+      "timestamp": "2024-01-14T06:38:07.183134585Z",
+      "matcher-status": true
+    },
+    {
       "template": "dns/dmarc-detect.yaml",
       "template-url": "https://templates.nuclei.sh/public/dmarc-detect",
       "template-id": "dmarc-detect",
@@ -37,87 +78,9 @@
       "extracted-results": [
         "\"v=DMARC1;p=none;\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 55996\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;_dmarc.mediature.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 55996\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;_dmarc.mediature.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\n_dmarc.mediature.beta.gouv.fr.\t300\tIN\tTXT\t\"v=DMARC1;p=none;\"\n",
-      "timestamp": "2024-01-07T06:57:39.047686241Z",
-      "matcher-status": true
-    },
-    {
-      "template": "dns/caa-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
-      "template-id": "caa-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
-      "info": {
-        "name": "CAA Record",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "caa"
-        ],
-        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
-        "reference": [
-          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "mediature.beta.gouv.fr.",
-      "matched-at": "mediature.beta.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 49553\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 49553\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nmediature.beta.gouv.fr.\t300\tIN\tSOA\tdns1.alwaysdata.com. hostmaster.alwaysdata.com. 1681823281 3600 900 1209600 300\n",
-      "timestamp": "2024-01-07T06:57:39.06013812Z",
-      "matcher-status": true
-    },
-    {
-      "template": "dns/mx-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/mx-fingerprint",
-      "template-id": "mx-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/mx-fingerprint.yaml",
-      "info": {
-        "name": "MX Record Detection",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "mx"
-        ],
-        "description": "An MX record was detected. MX records direct emails to a mail exchange server.",
-        "reference": [
-          "https://www.cloudflare.com/learning/dns/dns-records/dns-mx-record/",
-          "https://mxtoolbox.com/"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "mediature.beta.gouv.fr.",
-      "matched-at": "mediature.beta.gouv.fr",
-      "extracted-results": [
-        "0 parse.mailjet.com."
-      ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 12895\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t MX\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 12895\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nmediature.beta.gouv.fr.\t300\tIN\tMX\t0 parse.mailjet.com.\n",
-      "timestamp": "2024-01-07T06:57:39.061315808Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 61584\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;_dmarc.mediature.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 61584\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;_dmarc.mediature.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\n_dmarc.mediature.beta.gouv.fr.\t300\tIN\tTXT\t\"v=DMARC1;p=none;\"\n",
+      "timestamp": "2024-01-14T06:38:07.280254913Z",
       "matcher-status": true
     },
     {
@@ -150,12 +113,12 @@
       "host": "mediature.beta.gouv.fr.",
       "matched-at": "mediature.beta.gouv.fr",
       "extracted-results": [
-        "dns2.alwaysdata.com.",
-        "dns1.alwaysdata.com."
+        "dns1.alwaysdata.com.",
+        "dns2.alwaysdata.com."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 52692\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t NS\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 52692\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nmediature.beta.gouv.fr.\t300\tIN\tNS\tdns1.alwaysdata.com.\nmediature.beta.gouv.fr.\t300\tIN\tNS\tdns2.alwaysdata.com.\n",
-      "timestamp": "2024-01-07T06:57:39.076831927Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 29224\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t NS\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 29224\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nmediature.beta.gouv.fr.\t300\tIN\tNS\tdns1.alwaysdata.com.\nmediature.beta.gouv.fr.\t300\tIN\tNS\tdns2.alwaysdata.com.\n",
+      "timestamp": "2024-01-14T06:38:07.498133702Z",
       "matcher-status": true
     },
     {
@@ -194,9 +157,46 @@
         "\"sendinblue-code:15754e1df38b862433eadf5bfaf41a3e\"",
         "\"v=spf1 include:spf.mailjet.com include:spf.sendinblue.com mx ~all\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 5204\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 5204\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nmediature.beta.gouv.fr.\t300\tIN\tTXT\t\"sendinblue-code:15754e1df38b862433eadf5bfaf41a3e\"\nmediature.beta.gouv.fr.\t300\tIN\tTXT\t\"v=spf1 include:spf.mailjet.com include:spf.sendinblue.com mx ~all\"\n",
-      "timestamp": "2024-01-07T06:57:40.063197047Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 20718\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 20718\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nmediature.beta.gouv.fr.\t300\tIN\tTXT\t\"sendinblue-code:15754e1df38b862433eadf5bfaf41a3e\"\nmediature.beta.gouv.fr.\t300\tIN\tTXT\t\"v=spf1 include:spf.mailjet.com include:spf.sendinblue.com mx ~all\"\n",
+      "timestamp": "2024-01-14T06:38:08.189939133Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
+      "info": {
+        "name": "CAA Record",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "caa"
+        ],
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
+        "reference": [
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "mediature.beta.gouv.fr.",
+      "matched-at": "mediature.beta.gouv.fr",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 46355\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 46355\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;mediature.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nmediature.beta.gouv.fr.\t300\tIN\tSOA\tdns1.alwaysdata.com. hostmaster.alwaysdata.com. 1681823281 3600 900 1209600 300\n",
+      "timestamp": "2024-01-14T06:38:08.323582207Z",
       "matcher-status": true
     },
     {
@@ -233,9 +233,9 @@
         " https://github.com/inclusion-numerique/mediature/issues"
       ],
       "request": "GET /.well-known/security.txt HTTP/1.1\r\nHost: mediature.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 126\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests\r\nCross-Origin-Embedder-Policy: require-corp\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 07 Jan 2024 06:58:31 GMT\r\nEtag: \"fq0dxlpea03i\"\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-Dns-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 70ea083c-786e-4093-9c53-e78a42047772\r\nX-Xss-Protection: 0\r\n\r\nContact: https://github.com/inclusion-numerique/mediature/issues\nExpires: 2024-01-14T06:58:31.192Z\nPreferred-Languages: fr, en",
-      "ip": "185.21.194.105",
-      "timestamp": "2024-01-07T06:58:31.235346554Z",
+      "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nContent-Length: 126\r\nContent-Security-Policy: default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests\r\nCross-Origin-Embedder-Policy: require-corp\r\nCross-Origin-Opener-Policy: same-origin\r\nCross-Origin-Resource-Policy: same-origin\r\nDate: Sun, 14 Jan 2024 06:39:08 GMT\r\nEtag: \"t6whg33fdl3i\"\r\nOrigin-Agent-Cluster: ?1\r\nReferrer-Policy: no-referrer\r\nStrict-Transport-Security: max-age=31536000\r\nStrict-Transport-Security: max-age=15552000; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-Dns-Prefetch-Control: off\r\nX-Download-Options: noopen\r\nX-Frame-Options: SAMEORIGIN\r\nX-Permitted-Cross-Domain-Policies: none\r\nX-Request-Id: 93ca6188-b175-489d-96eb-16e740197c23\r\nX-Xss-Protection: 0\r\n\r\nContact: https://github.com/inclusion-numerique/mediature/issues\nExpires: 2024-01-21T06:39:08.894Z\nPreferred-Languages: fr, en",
+      "ip": "148.253.96.193",
+      "timestamp": "2024-01-14T06:39:08.94526243Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://mediature.beta.gouv.fr/.well-known/security.txt'",
       "matcher-status": true
     },
@@ -265,8 +265,8 @@
       "extracted-results": [
         "Let's Encrypt"
       ],
-      "ip": "185.21.194.105",
-      "timestamp": "2024-01-07T07:01:42.670996152Z",
+      "ip": "148.253.96.193",
+      "timestamp": "2024-01-14T06:42:26.411665676Z",
       "matcher-status": true
     },
     {
@@ -295,8 +295,8 @@
       "extracted-results": [
         "mediature.beta.gouv.fr"
       ],
-      "ip": "185.21.194.105",
-      "timestamp": "2024-01-07T07:01:42.671108391Z",
+      "ip": "148.253.96.193",
+      "timestamp": "2024-01-14T06:42:26.411777535Z",
       "matcher-status": true
     },
     {
@@ -326,8 +326,8 @@
       "extracted-results": [
         "tls12"
       ],
-      "ip": "185.21.194.105",
-      "timestamp": "2024-01-07T07:01:44.013209234Z",
+      "ip": "148.253.96.193",
+      "timestamp": "2024-01-14T06:42:27.999397098Z",
       "matcher-status": true
     },
     {
@@ -357,8 +357,8 @@
       "extracted-results": [
         "tls13"
       ],
-      "ip": "185.21.194.105",
-      "timestamp": "2024-01-07T07:01:44.20381702Z",
+      "ip": "148.253.96.193",
+      "timestamp": "2024-01-14T06:42:28.212695919Z",
       "matcher-status": true
     }
   ]
