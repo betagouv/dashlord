@@ -45,6 +45,36 @@ jobs:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
+      - name: get HTML
+        continue-on-error: true
+        timeout-minutes: 5
+        uses: "socialgouv/dashlord-actions/get-html@v1"
+        if: ${{ matrix.sites.tools['dsfr'] }}
+        with:
+          url: ${{ matrix.sites.url }}
+          output: get-html.html
+
+      - name: eco-index
+        continue-on-error: true
+        timeout-minutes: 10
+        uses: "socialgouv/dashlord-actions/ecoindex@v1"
+        if: ${{ matrix.sites.tools.ecoindex }}
+        with:
+          url: ${{ matrix.sites.url }}
+          output: scans/ecoindex.json
+
+      - name: Détection DSFR
+        id: html
+        continue-on-error: true
+        timeout-minutes: 1
+        if: ${{ matrix.sites.tools['dsfr'] }}
+        run: |
+          (cat get-html.html | grep -q fr-header__brand) && echo '{"detected": true}' > dsfr.json || echo '{"detected": false}' > dsfr.json
+          cat dsfr.json
+        # with:
+        #   url: ${{ matrix.sites.url }}
+        #   output: scans/dsfr.json
+
       - name: Screenshot Website
         if: ${{ matrix.sites.tools.screenshot }}
         uses: swinton/screenshot-website@v1.x
@@ -104,7 +134,7 @@ jobs:
         with:
           url: "${{ matrix.sites.url }}"
           output: "scans/http.json"
-          
+
       - name: Mozilla HTTP Observatory retry
         if: steps.http.outcome=='failure'
         continue-on-error: true
@@ -181,7 +211,7 @@ jobs:
           apiKey: ${{ secrets.UPDOWNIO_API_KEY }}
           url: ${{ matrix.sites.url }}
           output: scans/updownio.json
-      
+
       - name: Betagouv API scan
         if: ${{ matrix.sites.tools.betagouv }}
         continue-on-error: true
@@ -241,7 +271,6 @@ jobs:
           token: ${{ secrets.CODESCANALERTS_TOKEN }}
           repositories: ${{ join(matrix.sites.repositories) }}
           output: scans/codescanalerts.json
-          
 
       - uses: SocialGouv/dashlord-actions/save@main
         with:
