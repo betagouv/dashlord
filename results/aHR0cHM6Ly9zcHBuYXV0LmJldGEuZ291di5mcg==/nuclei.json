@@ -1,22 +1,22 @@
 [
   [
     {
-      "template": "dns/txt-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
-      "template-id": "txt-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
+      "template": "dns/caa-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
+      "template-id": "caa-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
       "info": {
-        "name": "DNS TXT Record Detected",
+        "name": "CAA Record",
         "author": [
           "pdteam"
         ],
         "tags": [
           "dns",
-          "txt"
+          "caa"
         ],
-        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
         "reference": [
-          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
         ],
         "severity": "info",
         "metadata": {
@@ -32,12 +32,9 @@
       "type": "dns",
       "host": "sppnaut.beta.gouv.fr.",
       "matched-at": "sppnaut.beta.gouv.fr",
-      "extracted-results": [
-        "\"v=spf1 include:_spf.alwaysdata.com ~all\""
-      ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 956\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 956\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nsppnaut.beta.gouv.fr.\t300\tIN\tTXT\t\"v=spf1 include:_spf.alwaysdata.com ~all\"\n",
-      "timestamp": "2024-01-07T19:44:02.030328912Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 34307\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t CAA\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 34307\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nsppnaut.beta.gouv.fr.\t300\tIN\tSOA\tdns1.alwaysdata.com. hostmaster.alwaysdata.com. 1687167421 3600 900 1209600 300\n",
+      "timestamp": "2024-01-14T19:22:52.795102974Z",
       "matcher-status": true
     },
     {
@@ -73,9 +70,9 @@
         "dns1.alwaysdata.com.",
         "dns2.alwaysdata.com."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 1072\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t NS\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 1072\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nsppnaut.beta.gouv.fr.\t300\tIN\tNS\tdns1.alwaysdata.com.\nsppnaut.beta.gouv.fr.\t300\tIN\tNS\tdns2.alwaysdata.com.\n",
-      "timestamp": "2024-01-07T19:44:02.051306274Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 11298\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t NS\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 11298\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t NS\n\n;; ANSWER SECTION:\nsppnaut.beta.gouv.fr.\t300\tIN\tNS\tdns1.alwaysdata.com.\nsppnaut.beta.gouv.fr.\t300\tIN\tNS\tdns2.alwaysdata.com.\n",
+      "timestamp": "2024-01-14T19:22:53.071697603Z",
       "matcher-status": true
     },
     {
@@ -115,9 +112,49 @@
       "extracted-results": [
         "\"v=DMARC1;p=none;\""
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 6296\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;_dmarc.sppnaut.beta.gouv.fr.\tIN\t TXT\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 6296\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;_dmarc.sppnaut.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\n_dmarc.sppnaut.beta.gouv.fr.\t300\tIN\tTXT\t\"v=DMARC1;p=none;\"\n",
-      "timestamp": "2024-01-07T19:44:02.057885455Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 59265\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;_dmarc.sppnaut.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 59265\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;_dmarc.sppnaut.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\n_dmarc.sppnaut.beta.gouv.fr.\t300\tIN\tTXT\t\"v=DMARC1;p=none;\"\n",
+      "timestamp": "2024-01-14T19:22:53.227868529Z",
+      "matcher-status": true
+    },
+    {
+      "template": "dns/txt-fingerprint.yaml",
+      "template-url": "https://templates.nuclei.sh/public/txt-fingerprint",
+      "template-id": "txt-fingerprint",
+      "template-path": "/home/runner/nuclei-templates/dns/txt-fingerprint.yaml",
+      "info": {
+        "name": "DNS TXT Record Detected",
+        "author": [
+          "pdteam"
+        ],
+        "tags": [
+          "dns",
+          "txt"
+        ],
+        "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+        "reference": [
+          "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+        ],
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        },
+        "classification": {
+          "cve-id": null,
+          "cwe-id": [
+            "cwe-200"
+          ]
+        }
+      },
+      "type": "dns",
+      "host": "sppnaut.beta.gouv.fr.",
+      "matched-at": "sppnaut.beta.gouv.fr",
+      "extracted-results": [
+        "\"v=spf1 include:_spf.alwaysdata.com ~all\""
+      ],
+      "request": ";; opcode: QUERY, status: NOERROR, id: 26692\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t TXT\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 26692\n;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 512\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t TXT\n\n;; ANSWER SECTION:\nsppnaut.beta.gouv.fr.\t300\tIN\tTXT\t\"v=spf1 include:_spf.alwaysdata.com ~all\"\n",
+      "timestamp": "2024-01-14T19:22:53.789832301Z",
       "matcher-status": true
     },
     {
@@ -154,49 +191,12 @@
       "host": "sppnaut.beta.gouv.fr.",
       "matched-at": "sppnaut.beta.gouv.fr",
       "extracted-results": [
-        "10 mx1.alwaysdata.com.",
-        "20 mx2.alwaysdata.com."
+        "20 mx2.alwaysdata.com.",
+        "10 mx1.alwaysdata.com."
       ],
-      "request": ";; opcode: QUERY, status: NOERROR, id: 52066\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t MX\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 52066\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nsppnaut.beta.gouv.fr.\t300\tIN\tMX\t10 mx1.alwaysdata.com.\nsppnaut.beta.gouv.fr.\t300\tIN\tMX\t20 mx2.alwaysdata.com.\n",
-      "timestamp": "2024-01-07T19:44:02.165464796Z",
-      "matcher-status": true
-    },
-    {
-      "template": "dns/caa-fingerprint.yaml",
-      "template-url": "https://templates.nuclei.sh/public/caa-fingerprint",
-      "template-id": "caa-fingerprint",
-      "template-path": "/home/runner/nuclei-templates/dns/caa-fingerprint.yaml",
-      "info": {
-        "name": "CAA Record",
-        "author": [
-          "pdteam"
-        ],
-        "tags": [
-          "dns",
-          "caa"
-        ],
-        "description": "A CAA record was discovered. A CAA record is used to specify which certificate authorities (CAs) are allowed to issue certificates for a domain.",
-        "reference": [
-          "https://support.dnsimple.com/articles/caa-record/#whats-a-caa-record"
-        ],
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        },
-        "classification": {
-          "cve-id": null,
-          "cwe-id": [
-            "cwe-200"
-          ]
-        }
-      },
-      "type": "dns",
-      "host": "sppnaut.beta.gouv.fr.",
-      "matched-at": "sppnaut.beta.gouv.fr",
-      "request": ";; opcode: QUERY, status: NOERROR, id: 56886\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t CAA\n",
-      "response": ";; opcode: QUERY, status: NOERROR, id: 56886\n;; flags: qr rd ra; QUERY: 1, ANSWER: 0, AUTHORITY: 1, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t CAA\n\n;; AUTHORITY SECTION:\nsppnaut.beta.gouv.fr.\t300\tIN\tSOA\tdns1.alwaysdata.com. hostmaster.alwaysdata.com. 1687167421 3600 900 1209600 300\n",
-      "timestamp": "2024-01-07T19:44:02.20251032Z",
+      "request": ";; opcode: QUERY, status: NOERROR, id: 57969\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 4096\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t MX\n",
+      "response": ";; opcode: QUERY, status: NOERROR, id: 57969\n;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags:; udp: 1232\n\n;; QUESTION SECTION:\n;sppnaut.beta.gouv.fr.\tIN\t MX\n\n;; ANSWER SECTION:\nsppnaut.beta.gouv.fr.\t300\tIN\tMX\t20 mx2.alwaysdata.com.\nsppnaut.beta.gouv.fr.\t300\tIN\tMX\t10 mx1.alwaysdata.com.\n",
+      "timestamp": "2024-01-14T19:22:54.061734576Z",
       "matcher-status": true
     },
     {
@@ -227,8 +227,8 @@
       ],
       "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
       "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:44:26.551882762Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:23:17.246879788Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -259,8 +259,8 @@
       "matched-at": "https://sppnaut.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
       "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:44:26.554222067Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:23:17.249355395Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -293,86 +293,8 @@
       "matched-at": "https://sppnaut.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
       "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:44:26.557126327Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "x-frame-options",
-      "type": "http",
-      "host": "https://sppnaut.beta.gouv.fr",
-      "matched-at": "https://sppnaut.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.872954663Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "x-content-type-options",
-      "type": "http",
-      "host": "https://sppnaut.beta.gouv.fr",
-      "matched-at": "https://sppnaut.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.872998565Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:23:17.252217634Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -410,47 +332,8 @@
       "matched-at": "https://sppnaut.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
       "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.873011148Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-embedder-policy",
-      "type": "http",
-      "host": "https://sppnaut.beta.gouv.fr",
-      "matched-at": "https://sppnaut.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.873026327Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.757438439Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -488,164 +371,8 @@
       "matched-at": "https://sppnaut.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
       "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.873042537Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "cross-origin-resource-policy",
-      "type": "http",
-      "host": "https://sppnaut.beta.gouv.fr",
-      "matched-at": "https://sppnaut.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.873058968Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "strict-transport-security",
-      "type": "http",
-      "host": "https://sppnaut.beta.gouv.fr",
-      "matched-at": "https://sppnaut.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.873072964Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "content-security-policy",
-      "type": "http",
-      "host": "https://sppnaut.beta.gouv.fr",
-      "matched-at": "https://sppnaut.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.873086219Z",
-      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
-      "matcher-status": true
-    },
-    {
-      "template": "http/misconfiguration/http-missing-security-headers.yaml",
-      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
-      "template-id": "http-missing-security-headers",
-      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
-      "info": {
-        "name": "HTTP Missing Security Headers",
-        "author": [
-          "socketz",
-          "geeknik",
-          "g4l1t0",
-          "convisoappsec",
-          "kurohost",
-          "dawid-czarnecki",
-          "forgedhallpass",
-          "jub0bs"
-        ],
-        "tags": [
-          "misconfig",
-          "headers",
-          "generic"
-        ],
-        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
-        "severity": "info",
-        "metadata": {
-          "max-request": 1
-        }
-      },
-      "matcher-name": "referrer-policy",
-      "type": "http",
-      "host": "https://sppnaut.beta.gouv.fr",
-      "matched-at": "https://sppnaut.beta.gouv.fr",
-      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
-      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.873099273Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.757487881Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -683,8 +410,86 @@
       "matched-at": "https://sppnaut.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
       "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.873107569Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.757501947Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-frame-options",
+      "type": "http",
+      "host": "https://sppnaut.beta.gouv.fr",
+      "matched-at": "https://sppnaut.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.757517126Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "x-content-type-options",
+      "type": "http",
+      "host": "https://sppnaut.beta.gouv.fr",
+      "matched-at": "https://sppnaut.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.757536111Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -722,8 +527,203 @@
       "matched-at": "https://sppnaut.beta.gouv.fr",
       "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
       "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.873118359Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.757550167Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "referrer-policy",
+      "type": "http",
+      "host": "https://sppnaut.beta.gouv.fr",
+      "matched-at": "https://sppnaut.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.75756773Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-embedder-policy",
+      "type": "http",
+      "host": "https://sppnaut.beta.gouv.fr",
+      "matched-at": "https://sppnaut.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.757587407Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "strict-transport-security",
+      "type": "http",
+      "host": "https://sppnaut.beta.gouv.fr",
+      "matched-at": "https://sppnaut.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.757603136Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "content-security-policy",
+      "type": "http",
+      "host": "https://sppnaut.beta.gouv.fr",
+      "matched-at": "https://sppnaut.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.757617784Z",
+      "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
+      "matcher-status": true
+    },
+    {
+      "template": "http/misconfiguration/http-missing-security-headers.yaml",
+      "template-url": "https://templates.nuclei.sh/public/http-missing-security-headers",
+      "template-id": "http-missing-security-headers",
+      "template-path": "/home/runner/nuclei-templates/http/misconfiguration/http-missing-security-headers.yaml",
+      "info": {
+        "name": "HTTP Missing Security Headers",
+        "author": [
+          "socketz",
+          "geeknik",
+          "g4l1t0",
+          "convisoappsec",
+          "kurohost",
+          "dawid-czarnecki",
+          "forgedhallpass",
+          "jub0bs"
+        ],
+        "tags": [
+          "misconfig",
+          "headers",
+          "generic"
+        ],
+        "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
+      },
+      "matcher-name": "cross-origin-resource-policy",
+      "type": "http",
+      "host": "https://sppnaut.beta.gouv.fr",
+      "matched-at": "https://sppnaut.beta.gouv.fr",
+      "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+      "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.757635597Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -741,14 +741,16 @@
           "misconfig"
         ],
         "description": "This check detects if there are any active content loaded over HTTP instead of HTTPS.\n",
-        "impact": "Loading third-party scripts over HTTP can expose sensitive user data and lead to potential security vulnerabilities.\n",
         "reference": [
           "https://developer.mozilla.org/en-us/docs/web/security/mixed_content",
           "https://portswigger.net/kb/issues/01000400_mixed-content",
           "https://resources.infosecinstitute.com/topics/vulnerabilities/https-mixed-content-vulnerability/",
           "https://docs.gitlab.com/ee/user/application_security/dast/checks/319.1.html"
         ],
-        "severity": "info"
+        "severity": "info",
+        "metadata": {
+          "max-request": 1
+        }
       },
       "matcher-name": "link",
       "type": "http",
@@ -759,8 +761,8 @@
       ],
       "request": "GET / HTTP/1.1\r\nHost: sppnaut.beta.gouv.fr\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
       "response": "HTTP/1.1 404 Not Found\r\nConnection: close\r\nCache-Control: no-cache\r\nContent-Type: text/html\r\nX-Clevercloudupgrade: true\r\n\r\n<!DOCTYPE HTML>\n<html lang=\"en\">\n<head>\n        <meta charset=\"UTF-8\">\n        <title>404 - Not found</title>\n  <style type=\"text/css\">\n    body {\n      background:  #f6f6f6;\n      color:       #3f3f3f;\n      font-family: Helvetica,Arial,Verdana,sans-serif;\n      font-size:   12px;\n      line-height: 16px;\n      margin:      0;\n    }\n    .cc_error {\n      margin:     10% auto 0;\n      max-width:  500px;\n      text-align: center;\n    }\n    .cc_error__advice {\n      color:      #aaa;\n      font-size:  14px;\n      font-style: italic;\n    }\n    .cc_error__advice a {\n      color: #aaa;\n    }\n    .cc_error__code {\n      color:       #333;\n      font-size:   50px;\n      line-height: 50px;\n      margin:      10px 0;\n    }\n    .cc_error__message {\n      font-size:   24px;\n      font-weight: normal;\n      margin:      0;\n    }\n    .cc_panel--center {\n      margin-top: 160px;\n      padding: 1px 20px;\n    }\n  </style>\n  <link rel=\"shortcut icon\" href=\"http://clever-cloud.com/img/favicon.png\">\n\n</head>\n<body>\n  <div class=\"cc_panel--center\">\n    <div class=\"cc_error\">\n      <h2 class=\"cc_error__code\">404</h2>\n      <h3 class=\"cc_error__message\">Not Found</h3>\n      <p class=\"cc_error__advice\">\n        The application you're trying to access doesn't seem to exist.<br/>\n        Otherwise, please contact\n        <a href=\"mailto:support@clever-cloud.com\">our support</a>.\n      </p>\n    </div>\n  </div>\n</body>\n</html>\n",
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:45:32.873166038Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:24:23.75768516Z",
       "curl-command": "curl -X 'GET' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://sppnaut.beta.gouv.fr'",
       "matcher-status": true
     },
@@ -790,8 +792,8 @@
       "extracted-results": [
         "Let's Encrypt"
       ],
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:48:37.798348297Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:26:03.36477385Z",
       "matcher-status": true
     },
     {
@@ -820,8 +822,8 @@
       "extracted-results": [
         "sppnaut.beta.gouv.fr"
       ],
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:48:37.798457531Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:26:03.364894215Z",
       "matcher-status": true
     },
     {
@@ -851,8 +853,8 @@
       "extracted-results": [
         "tls12"
       ],
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:48:40.618009421Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:26:07.743065037Z",
       "matcher-status": true
     },
     {
@@ -882,8 +884,8 @@
       "extracted-results": [
         "tls13"
       ],
-      "ip": "87.98.180.173",
-      "timestamp": "2024-01-07T19:48:41.197624039Z",
+      "ip": "87.98.182.136",
+      "timestamp": "2024-01-14T19:26:08.270396831Z",
       "matcher-status": true
     }
   ]
