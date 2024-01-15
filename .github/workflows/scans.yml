@@ -7,6 +7,21 @@ on:
         description: "Single url to scan or scan all urls"
         required: false
         default: ""
+      tool:
+        description: "Single tool to run or use all tools"
+        type: choice
+        default: all
+        options:
+          - all
+          - codescan
+          - dependabot
+          - ecoindex
+          - lighthouse
+          - sonarcloud
+          - trivy
+          - zap
+          - ecoindex
+          - dsfr
   schedule:
     - cron: "0 0 * * 0" # At 00:00 on Sunday
 
@@ -20,10 +35,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: init
-        uses: "SocialGouv/dashlord-actions/init@main"
+        uses: "SocialGouv/dashlord-actions/init@v1"
         with:
           url: ${{ github.event.inputs.url }}
-
+          tool: ${{ github.event.inputs.tool }}
+        env:
+          UPDOWNIO_API_KEY: ${{ secrets.UPDOWNIO_API_KEY }}
   scans:
     runs-on: ubuntu-latest
     name: Scan
@@ -54,15 +71,6 @@ jobs:
           url: ${{ matrix.sites.url }}
           output: get-html.html
 
-      - name: eco-index
-        continue-on-error: true
-        timeout-minutes: 10
-        uses: "socialgouv/dashlord-actions/ecoindex@v1"
-        if: ${{ matrix.sites.tools.ecoindex }}
-        with:
-          url: ${{ matrix.sites.url }}
-          output: scans/ecoindex.json
-
       - name: Détection DSFR
         id: html
         continue-on-error: true
@@ -71,9 +79,15 @@ jobs:
         run: |
           (cat get-html.html | grep -q fr-header__brand) && echo '{"detected": true}' > dsfr.json || echo '{"detected": false}' > dsfr.json
           cat dsfr.json
-        # with:
-        #   url: ${{ matrix.sites.url }}
-        #   output: scans/dsfr.json
+
+      - name: eco-index
+        continue-on-error: true
+        timeout-minutes: 10
+        uses: "socialgouv/dashlord-actions/ecoindex@v1"
+        if: ${{ matrix.sites.tools.ecoindex }}
+        with:
+          url: ${{ matrix.sites.url }}
+          output: scans/ecoindex.json
 
       - name: Screenshot Website
         if: ${{ matrix.sites.tools.screenshot }}
