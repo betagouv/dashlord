@@ -51,4 +51,5 @@ const startupsToRemove = startups.data
 dashlordConfig.urls = dashlordConfig.urls.filter(
   (url) => !startupsToRemove.includes(url.betaId)
 );
+
 console.log(stringify(dashlordConfig, null, 2));
