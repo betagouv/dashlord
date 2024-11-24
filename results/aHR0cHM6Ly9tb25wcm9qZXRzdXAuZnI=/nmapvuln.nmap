@@ -1,10 +1,11 @@
-# Nmap 7.92 scan initiated Sun Nov 17 16:38:02 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln monprojetsup.fr
+# Nmap 7.92 scan initiated Sun Nov 24 18:40:39 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln monprojetsup.fr
+WARNING: Service 162.19.61.97:5003 had already soft-matched rtsp, but now soft-matched sip; ignoring second value
 Nmap scan report for monprojetsup.fr (162.19.61.97)
-Host is up (0.084s latency).
+Host is up (0.087s latency).
 rDNS record for 162.19.61.97: ns3093771.ip-162-19-61.eu
-Not shown: 997 filtered tcp ports (no-response)
-PORT    STATE SERVICE  VERSION
-22/tcp  open  ssh      OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)
+Not shown: 995 filtered tcp ports (no-response)
+PORT     STATE SERVICE    VERSION
+22/tcp   open  ssh        OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)
 | vulners: 
 |   cpe:/a:openbsd:openssh:8.9p1: 
 |     	95499236-C9FE-56A6-9D7D-E943A24B633A	10.0	https://vulners.com/githubexploit/95499236-C9FE-56A6-9D7D-E943A24B633A	*EXPLOIT*
@@ -98,11 +99,85 @@ PORT    STATE SERVICE  VERSION
 |     	PACKETSTORM:140261	0.0	https://vulners.com/packetstorm/PACKETSTORM:140261	*EXPLOIT*
 |     	5C971D4B-2DD3-5894-9EC2-DAB952B4740D	0.0	https://vulners.com/githubexploit/5C971D4B-2DD3-5894-9EC2-DAB952B4740D	*EXPLOIT*
 |_    	39E70D1A-F5D8-59D5-A0CF-E73D9BAA3118	0.0	https://vulners.com/githubexploit/39E70D1A-F5D8-59D5-A0CF-E73D9BAA3118	*EXPLOIT*
-80/tcp  open  http     nginx 1.18.0 (Ubuntu)
+80/tcp   open  http       nginx 1.18.0 (Ubuntu)
 |_http-server-header: nginx/1.18.0 (Ubuntu)
-443/tcp open  ssl/http nginx 1.18.0 (Ubuntu)
+443/tcp  open  ssl/http   nginx 1.18.0 (Ubuntu)
 |_http-server-header: nginx/1.18.0 (Ubuntu)
+5003/tcp open  rtsp
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.0 404 Not Found
+|     content-length: 146
+|     Content-Type: application/json
+|     {"error":"Unable to find matching target resource method","error_description":"For more on this error consult the server log at the debug level."}
+|   GetRequest: 
+|     HTTP/1.0 500 Internal Server Error
+|     content-length: 113
+|     Content-Type: application/json
+|     Referrer-Policy: no-referrer
+|     Strict-Transport-Security: max-age=31536000; includeSubDomains
+|     X-Content-Type-Options: nosniff
+|     X-Frame-Options: SAMEORIGIN
+|     X-XSS-Protection: 1; mode=block
+|     {"error":"unknown_error","error_description":"For more on this error consult the server log at the debug level."}
+|   HTTPOptions: 
+|     HTTP/1.0 200 OK
+|     Allow: HEAD, POST, GET, OPTIONS
+|     content-length: 0
+|   RTSPRequest: 
+|     RTSP/1.0 200 OK
+|     Allow: HEAD, POST, GET, OPTIONS
+|     content-length: 0
+|   SIPOptions: 
+|     SIP/2.0 404 Not Found
+|_    content-length: 0
+5431/tcp open  postgresql PostgreSQL DB 9.6.0 or later
+| fingerprint-strings: 
+|   Kerberos: 
+|     SFATAL
+|     VFATAL
+|     C0A000
+|     Munsupported frontend protocol 27265.28208: server supports 3.0 to 3.0
+|     Fpostmaster.c
+|     L2198
+|     RProcessStartupPacket
+|   SMBProgNeg: 
+|     SFATAL
+|     VFATAL
+|     C0A000
+|     Munsupported frontend protocol 65363.19778: server supports 3.0 to 3.0
+|     Fpostmaster.c
+|     L2198
+|_    RProcessStartupPacket
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5003-TCP:V=7.92%I=7%D=11/24%Time=6743733D%P=x86_64-alpine-linux-mus
+SF:l%r(GetRequest,189,"HTTP/1\.0\x20500\x20Internal\x20Server\x20Error\r\n
+SF:content-length:\x20113\r\nContent-Type:\x20application/json\r\nReferrer
+SF:-Policy:\x20no-referrer\r\nStrict-Transport-Security:\x20max-age=315360
+SF:00;\x20includeSubDomains\r\nX-Content-Type-Options:\x20nosniff\r\nX-Fra
+SF:me-Options:\x20SAMEORIGIN\r\nX-XSS-Protection:\x201;\x20mode=block\r\n\
+SF:r\n{\"error\":\"unknown_error\",\"error_description\":\"For\x20more\x20
+SF:on\x20this\x20error\x20consult\x20the\x20server\x20log\x20at\x20the\x20
+SF:debug\x20level\.\"}")%r(HTTPOptions,47,"HTTP/1\.0\x20200\x20OK\r\nAllow
+SF::\x20HEAD,\x20POST,\x20GET,\x20OPTIONS\r\ncontent-length:\x200\r\n\r\n"
+SF:)%r(RTSPRequest,47,"RTSP/1\.0\x20200\x20OK\r\nAllow:\x20HEAD,\x20POST,\
+SF:x20GET,\x20OPTIONS\r\ncontent-length:\x200\r\n\r\n")%r(FourOhFourReques
+SF:t,E1,"HTTP/1\.0\x20404\x20Not\x20Found\r\ncontent-length:\x20146\r\nCon
+SF:tent-Type:\x20application/json\r\n\r\n{\"error\":\"Unable\x20to\x20find
+SF:\x20matching\x20target\x20resource\x20method\",\"error_description\":\"
+SF:For\x20more\x20on\x20this\x20error\x20consult\x20the\x20server\x20log\x
+SF:20at\x20the\x20debug\x20level\.\"}")%r(SIPOptions,2C,"SIP/2\.0\x20404\x
+SF:20Not\x20Found\r\ncontent-length:\x200\r\n\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port5431-TCP:V=7.92%I=7%D=11/24%Time=6743733A%P=x86_64-alpine-linux-mus
+SF:l%r(Kerberos,8C,"E\0\0\0\x8bSFATAL\0VFATAL\0C0A000\0Munsupported\x20fro
+SF:ntend\x20protocol\x2027265\.28208:\x20server\x20supports\x203\.0\x20to\
+SF:x203\.0\0Fpostmaster\.c\0L2198\0RProcessStartupPacket\0\0")%r(SMBProgNe
+SF:g,8C,"E\0\0\0\x8bSFATAL\0VFATAL\0C0A000\0Munsupported\x20frontend\x20pr
+SF:otocol\x2065363\.19778:\x20server\x20supports\x203\.0\x20to\x203\.0\0Fp
+SF:ostmaster\.c\0L2198\0RProcessStartupPacket\0\0");
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Nov 17 16:38:24 2024 -- 1 IP address (1 host up) scanned in 22.48 seconds
+# Nmap done at Sun Nov 24 18:41:05 2024 -- 1 IP address (1 host up) scanned in 25.98 seconds
