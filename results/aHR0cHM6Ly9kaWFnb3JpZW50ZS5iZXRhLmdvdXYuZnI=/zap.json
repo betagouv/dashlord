@@ -1,0 +1,1700 @@
+{
+	"@programName": "ZAP",
+	"@version": "2.14.0",
+	"@generated": "Sun, 14 Jan 2024 04:49:48",
+	"site":[ 
+		{
+			"@name": "https://diagoriente.beta.gouv.fr",
+			"@host": "diagoriente.beta.gouv.fr",
+			"@port": "443",
+			"@ssl": "true",
+			"alerts": [ 
+				{
+					"pluginid": "10202",
+					"alertRef": "10202",
+					"alert": "Absence of Anti-CSRF Tokens",
+					"name": "Absence of Anti-CSRF Tokens",
+					"riskcode": "2",
+					"confidence": "1",
+					"riskdesc": "Medium (Low)",
+					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/contact",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form>",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"email\" \"firstName\" \"lastName\" ]."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/contact?email=zaproxy%40example.com&firstName=ZAP&lastName=ZAP&message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&type=1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form>",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"email\" \"firstName\" \"lastName\" ]."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/newsletter",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form>",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"email\" \"firstName\" \"lastName\" \"organization\" ]."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/newsletter?email=zaproxy%40example.com&firstName=ZAP&lastName=ZAP&organization=ZAP",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form>",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"email\" \"firstName\" \"lastName\" \"organization\" ]."
+						}
+					],
+					"count": "4",
+					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"email\" \"firstName\" \"lastName\" ].</p>",
+					"reference": "<p>http://projects.webappsec.org/Cross-Site-Request-Forgery</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "460"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-4",
+					"alert": "CSP: Wildcard Directive",
+					"name": "CSP: Wildcard Directive",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors https://diagoriente.beta.gouv.fr/ app.diagoriente.beta.gouv.fr diagoriente.beta.gouv.fr",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors https://diagoriente.beta.gouv.fr/ app.diagoriente.beta.gouv.fr diagoriente.beta.gouv.fr",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/conditions-generales",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors https://diagoriente.beta.gouv.fr/ app.diagoriente.beta.gouv.fr diagoriente.beta.gouv.fr",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>script-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, form-action</p><p></p><p>The directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-5",
+					"alert": "CSP: script-src unsafe-inline",
+					"name": "CSP: script-src unsafe-inline",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors https://diagoriente.beta.gouv.fr/ app.diagoriente.beta.gouv.fr diagoriente.beta.gouv.fr",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors https://diagoriente.beta.gouv.fr/ app.diagoriente.beta.gouv.fr diagoriente.beta.gouv.fr",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/conditions-generales",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors https://diagoriente.beta.gouv.fr/ app.diagoriente.beta.gouv.fr diagoriente.beta.gouv.fr",
+							"otherinfo": "script-src includes unsafe-inline."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-6",
+					"alert": "CSP: style-src unsafe-inline",
+					"name": "CSP: style-src unsafe-inline",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors https://diagoriente.beta.gouv.fr/ app.diagoriente.beta.gouv.fr diagoriente.beta.gouv.fr",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors https://diagoriente.beta.gouv.fr/ app.diagoriente.beta.gouv.fr diagoriente.beta.gouv.fr",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/conditions-generales",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors https://diagoriente.beta.gouv.fr/ app.diagoriente.beta.gouv.fr diagoriente.beta.gouv.fr",
+							"otherinfo": "style-src includes unsafe-inline."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
+					"reference": "<p>http://www.w3.org/TR/CSP2/</p><p>http://www.w3.org/TR/CSP/</p><p>http://caniuse.com/#search=content+security+policy</p><p>http://content-security-policy.com/</p><p>https://github.com/shapesecurity/salvation</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10038",
+					"alertRef": "10038-1",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Fdgefp-fond-blanc.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Fdgefp-fond-blanc.webp&w=96&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Fgrand-plan.webp&w=128&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Fgrand-plan.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Flogo-hcc-fond-blanc.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Flogo-hcc-fond-blanc.webp&w=384&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Flogo-hcc-fond-gris.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Flogo-hcc-fond-gris.webp&w=384&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Flogo-ministere-travail-fond-blanc.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Flogo-ministere-travail-fond-blanc.webp&w=96&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Flogo_id6_orange.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Flogo_id6_orange.webp&w=96&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "12",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>http://www.w3.org/TR/CSP/</p><p>http://w3c.github.io/webappsec/specs/content-security-policy/csp-specification.dev.html</p><p>http://www.html5rocks.com/en/tutorials/security/content-security-policy/</p><p>http://caniuse.com/#feat=contentsecuritypolicy</p><p>http://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "459"
+				},
+				{
+					"pluginid": "90003",
+					"alertRef": "90003",
+					"alert": "Sub Resource Integrity Attribute Missing",
+					"name": "Sub Resource Integrity Attribute Missing",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content. </p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preconnect\" href=\"https://www.youtube.com\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preconnect\" href=\"https://www.youtube.com\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources/10-experience-de-service-civique-et-bilan-nominatif",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preconnect\" href=\"https://www.youtube.com\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources/11-introduction-aux-competences",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preconnect\" href=\"https://www.youtube.com\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources/12-presentations-croisees",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preconnect\" href=\"https://www.youtube.com\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources/15-points-communs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preconnect\" href=\"https://www.youtube.com\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources/16-photolangage-introduction-aux-centres-dinteret",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preconnect\" href=\"https://www.youtube.com\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources/25-accompagner-tout-au-long-du-service-civique",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preconnect\" href=\"https://www.youtube.com\"/>",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources/27-animation-cv-de-competences",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preconnect\" href=\"https://www.youtube.com\"/>",
+							"otherinfo": ""
+						}
+					],
+					"count": "9",
+					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
+					"cweid": "345",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "90022",
+					"alertRef": "90022",
+					"alert": "Application Error Disclosure",
+					"name": "Application Error Disclosure",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide/%2Ffooter%2Fdgefp-fond-gris.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide/%2Ffooter%2Fdgefp-fond-gris.webp&w=96&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide/%2Ffooter%2Fgrand-plan.webp&w=128&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide/%2Ffooter%2Fgrand-plan.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide/%2Ffooter%2Flogo-hcc-fond-gris.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide/%2Ffooter%2Flogo-hcc-fond-gris.webp&w=384&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide/%2Ffooter%2Flogo-ministere-travail-fond-gris.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide/%2Ffooter%2Flogo-ministere-travail-fond-gris.webp&w=96&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide/%2Ffooter%2Flogo_id6_orange.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide/%2Ffooter%2Flogo_id6_orange.webp&w=96&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						}
+					],
+					"count": "10",
+					"solution": "<p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1042"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063-1",
+					"alert": "Permissions Policy Header Not Set",
+					"name": "Permissions Policy Header Not Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/_next/static/chunks/polyfills-5cd94c89d3acac5f.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/_next/static/chunks/webpack-984e19768e1e574e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/conditions-generales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/confidentialite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/nos-partenaires",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/statistiques",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10035",
+					"alertRef": "10035",
+					"alert": "Strict-Transport-Security Header Not Set",
+					"name": "Strict-Transport-Security Header Not Set",
+					"riskcode": "1",
+					"confidence": "3",
+					"riskdesc": "Low (High)",
+					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/apple-touch-icon.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/conditions-generales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/confidentialite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/favicon-32x32.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/nos-partenaires",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/site.webmanifest",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>http://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>http://caniuse.com/stricttransportsecurity</p><p>http://tools.ietf.org/html/rfc6797</p>",
+					"cweid": "319",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/_next/static/chunks/pages/_app-da1454bbc28affdd.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1540483477",
+							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>1540483477, which evaluates to: 2018-10-25 16:04:37</p>",
+					"reference": "<p>http://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "393"
+				},
+				{
+					"pluginid": "10021",
+					"alertRef": "10021",
+					"alert": "X-Content-Type-Options Header Missing",
+					"name": "X-Content-Type-Options Header Missing",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/apple-touch-icon.png",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/conditions-generales",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/confidentialite",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/favicon-32x32.png",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/nos-partenaires",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/site.webmanifest",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
+					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
+					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p><p>https://owasp.org/www-community/Security_Headers</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10094",
+					"alertRef": "10094-3",
+					"alert": "Base64 Disclosure",
+					"name": "Base64 Disclosure",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "U6rkyyE4oxod7Z0rsxkiaprC6N_Aw6v84e1LSKEdu8E",
+							"otherinfo": "S\uFFFD\uFFFD\uFFFD!8\uFFFD\\x001a\\x001d\uFFFD+\uFFFD\\x0019\"j\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u00EB\uFFFD\uFFFD\uFFFDKH\uFFFD\\x001d\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "U6rkyyE4oxod7Z0rsxkiaprC6N_Aw6v84e1LSKEdu8E",
+							"otherinfo": "S\uFFFD\uFFFD\uFFFD!8\uFFFD\\x001a\\x001d\uFFFD+\uFFFD\\x0019\"j\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u00EB\uFFFD\uFFFD\uFFFDKH\uFFFD\\x001d\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/_next/static/chunks/4521-556f55772d4acaeb.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/channel/UCfh-72vbjMaa-ZFzKIAF1Dw",
+							"otherinfo": "r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP'\uFFFD\uFFFD\uFFFD\uFFFDn3\\x001ak\uFFFDE\u0322\\x0000\\x0017P\uFFFD"
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "U6rkyyE4oxod7Z0rsxkiaprC6N_Aw6v84e1LSKEdu8E",
+							"otherinfo": "S\uFFFD\uFFFD\uFFFD!8\uFFFD\\x001a\\x001d\uFFFD+\uFFFD\\x0019\"j\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u00EB\uFFFD\uFFFD\uFFFDKH\uFFFD\\x001d\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/conditions-generales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "U6rkyyE4oxod7Z0rsxkiaprC6N_Aw6v84e1LSKEdu8E",
+							"otherinfo": "S\uFFFD\uFFFD\uFFFD!8\uFFFD\\x001a\\x001d\uFFFD+\uFFFD\\x0019\"j\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u00EB\uFFFD\uFFFD\uFFFDKH\uFFFD\\x001d\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/confidentialite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "U6rkyyE4oxod7Z0rsxkiaprC6N_Aw6v84e1LSKEdu8E",
+							"otherinfo": "S\uFFFD\uFFFD\uFFFD!8\uFFFD\\x001a\\x001d\uFFFD+\uFFFD\\x0019\"j\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u00EB\uFFFD\uFFFD\uFFFDKH\uFFFD\\x001d\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "U6rkyyE4oxod7Z0rsxkiaprC6N_Aw6v84e1LSKEdu8E",
+							"otherinfo": "S\uFFFD\uFFFD\uFFFD!8\uFFFD\\x001a\\x001d\uFFFD+\uFFFD\\x0019\"j\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u00EB\uFFFD\uFFFD\uFFFDKH\uFFFD\\x001d\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/nos-partenaires",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "U6rkyyE4oxod7Z0rsxkiaprC6N_Aw6v84e1LSKEdu8E",
+							"otherinfo": "S\uFFFD\uFFFD\uFFFD!8\uFFFD\\x001a\\x001d\uFFFD+\uFFFD\\x0019\"j\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u00EB\uFFFD\uFFFD\uFFFDKH\uFFFD\\x001d\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "U6rkyyE4oxod7Z0rsxkiaprC6N_Aw6v84e1LSKEdu8E",
+							"otherinfo": "S\uFFFD\uFFFD\uFFFD!8\uFFFD\\x001a\\x001d\uFFFD+\uFFFD\\x0019\"j\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u00EB\uFFFD\uFFFD\uFFFDKH\uFFFD\\x001d\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/safari-pinned-tab.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "org/TR/2001/REC-SVG-20010904/DTD/svg10",
+							"otherinfo": "\uFFFD\uFFFD?M\\x001f\uFFFD\uFFFDMD@\uFFFDIQ\uFFFD\uFFFDM5\uFFFD\uFFFD8\uFFFD4\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/statistiques",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "U6rkyyE4oxod7Z0rsxkiaprC6N_Aw6v84e1LSKEdu8E",
+							"otherinfo": "S\uFFFD\uFFFD\uFFFD!8\uFFFD\\x001a\\x001d\uFFFD+\uFFFD\\x0019\"j\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u00EB\uFFFD\uFFFD\uFFFDKH\uFFFD\\x001d\uFFFD\uFFFD"
+						}
+					],
+					"count": "11",
+					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
+					"otherinfo": "<p>S\uFFFD\uFFFD\uFFFD!8\uFFFD\\x001a\\x001d\uFFFD+\uFFFD\\x0019\"j\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u00EB\uFFFD\uFFFD\uFFFDKH\uFFFD\\x001d\uFFFD\uFFFD</p>",
+					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10019",
+					"alertRef": "10019",
+					"alert": "Content-Type Header Missing",
+					"name": "Content-Type Header Missing",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The Content-Type header was either missing or empty.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/%2Ffooter%2Fdgefp-fond-gris.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/%2Ffooter%2Fdgefp-fond-gris.webp&w=96&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/%2Ffooter%2Flogo-hcc-fond-gris.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/%2Ffooter%2Flogo-hcc-fond-gris.webp&w=384&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/%2Ffooter%2Flogo-ministere-travail-fond-gris.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/%2Ffooter%2Flogo-ministere-travail-fond-gris.webp&w=96&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/https%3A%2F%2Fcms.diagoriente.fr%2Fuploads%2FCapture_d_ecran_2022_03_08_a_16_45_18_5c1acbb6bd.png&w=1536&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/https%3A%2F%2Fcms.diagoriente.fr%2Fuploads%2FCapture_d_ecran_2022_09_30_a_10_46_00_9657863d9d.png&w=1200&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/https%3A%2F%2Fcms.diagoriente.fr%2Fuploads%2FCapture_d_ecran_2022_09_30_a_10_46_00_9657863d9d.png&w=1536&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/https%3A%2F%2Fcms.diagoriente.fr%2Fuploads%2FCapture_d_ecran_2022_09_30_a_10_46_00_9657863d9d.png&w=320&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/https%3A%2F%2Fcms.diagoriente.fr%2Fuploads%2FCapture_d_ecran_2022_09_30_a_10_46_00_9657863d9d.png&w=768&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog/https%3A%2F%2Fcms.diagoriente.fr%2Fuploads%2FCapture_d_ecran_2022_09_30_a_10_46_00_9657863d9d.png&w=960&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "12",
+					"solution": "<p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</p>",
+					"otherinfo": "",
+					"reference": "<p>http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx</p>",
+					"cweid": "345",
+					"wascid": "12",
+					"sourceid": "1060"
+				},
+				{
+					"pluginid": "10024",
+					"alertRef": "10024",
+					"alert": "Information Disclosure - Sensitive Information in URL",
+					"name": "Information Disclosure - Sensitive Information in URL",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The request appeared to contain sensitive information leaked in the URL. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/contact?email=zaproxy%40example.com&firstName=ZAP&lastName=ZAP&message=Zaproxy+alias+impedit+expedita+quisquam+pariatur+exercitationem.+Nemo+rerum+eveniet+dolores+rem+quia+dignissimos.&type=1",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "zaproxy@example.com",
+							"otherinfo": "The URL contains email address(es)."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/newsletter?email=zaproxy%40example.com&firstName=ZAP&lastName=ZAP&organization=ZAP",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "zaproxy@example.com",
+							"otherinfo": "The URL contains email address(es)."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Do not pass sensitive information in URIs.</p>",
+					"otherinfo": "<p>The URL contains email address(es).</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1035"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"totalUser\":267498,\"currentUser\":168433,\"__APOLLO_STAT\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"totalUser\":267498,\"currentUser\":168433,\"__APOLLO_STAT\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/_next/static/chunks/framework-e4fe6a4fc9298e74.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "db",
+							"otherinfo": "The following pattern was used: \\bDB\\b and was detected in the element starting with: \"\"use strict\";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[9774],{64448:function(a3,f,x){var y,W,X,Y,Z,$,z=x(67294),d\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/_next/static/chunks/main-4aac5846705451d5.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[179],{96086:function(a){\"use strict\";var b=Object.assign.bind(Object);a\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/_next/static/chunks/polyfills-5cd94c89d3acac5f.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"!function(){var t=\"undefined\"!=typeof globalThis?globalThis:\"undefined\"!=typeof window?window:\"undefined\"!=typeof global?global:\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"faq_frequents\":[{\"__typename\":\"FaqFrequent\",\"id\":\"4\",\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/conditions-generales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"items\":{\"content\":\"# Conditions G\u00E9n\u00E9rales d'Utilisati\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/confidentialite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"items\":{\"content\":\"**Mentions d\u2019information relatives\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{}},\"page\":\"/mentions-legales\",\"query\":{},\"buildId\":\"zG\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/nos-partenaires",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{}},\"page\":\"/nos-partenaires\",\"query\":{},\"buildId\":\"zGI\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"resourceContent\":{\"__typename\":\"ResourceContent\",\"con\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/statistiques",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"users\":{\"data\":[{\"nb\":649,\"month\":\"janvier 20\"},{\"nb\"\", see evidence field for the suspicious comment/snippet."
+						}
+					],
+					"count": "12",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"<script id=\"__NEXT_DATA__\" type=\"application/json\">{\"props\":{\"pageProps\":{\"totalUser\":267498,\"currentUser\":168433,\"__APOLLO_STAT\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" rel=\"noopener noreferrer\" href=\"/aide\"><style data-emotion=\"css 95eg8m\">.css-95eg8m{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;white-space:nowrap;vertical-align:middle;outline:2px solid transparent;outline-offset:2px;width:auto;line-height:1.2;border-radius:var(--chakra-radii-md);font-weight:400;transition-property:var(--chakra-transition-property-common);transition-duration:var(--chakra-transition-duration-normal);height:var(--chakra-sizes-10);min-width:var(--chakra-sizes-10);font-size:15px;-webkit-padding-start:var(--chakra-space-4);padding-inline-start:var(--chakra-space-4);-webkit-padding-end:var(--chakra-space-4);padding-inline-end:var(--chakra-space-4);background:var(--chakra-colors-gray-100);cursor:pointer;padding-top:15px;padding-bottom:15px;color:var(--chakra-colors-marine);background-color:var(--chakra-colors-transparent);padding:10px;text-transform:uppercase;}.css-95eg8m:focus,.css-95eg8m[data-focus]{box-shadow:var(--chakra-shadows-outline);}.css-95eg8m[disabled],.css-95eg8m[aria-disabled=true],.css-95eg8m[data-disabled]{opacity:0.4;cursor:not-allowed;box-shadow:var(--chakra-shadows-none);}.css-95eg8m:hover,.css-95eg8m[data-hover]{background-color:#F3F2F4;border-radius:5px;}.css-95eg8m:active,.css-95eg8m[data-active]{background:var(--chakra-colors-gray-300);}</style><button type=\"button\" class=\"chakra-button css-95eg8m\">Aide</button></a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" rel=\"noopener noreferrer\" href=\"/aide\"><style data-emotion=\"css 95eg8m\">.css-95eg8m{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;white-space:nowrap;vertical-align:middle;outline:2px solid transparent;outline-offset:2px;width:auto;line-height:1.2;border-radius:var(--chakra-radii-md);font-weight:400;transition-property:var(--chakra-transition-property-common);transition-duration:var(--chakra-transition-duration-normal);height:var(--chakra-sizes-10);min-width:var(--chakra-sizes-10);font-size:15px;-webkit-padding-start:var(--chakra-space-4);padding-inline-start:var(--chakra-space-4);-webkit-padding-end:var(--chakra-space-4);padding-inline-end:var(--chakra-space-4);background:var(--chakra-colors-gray-100);cursor:pointer;padding-top:15px;padding-bottom:15px;color:var(--chakra-colors-marine);background-color:var(--chakra-colors-transparent);padding:10px;text-transform:uppercase;}.css-95eg8m:focus,.css-95eg8m[data-focus]{box-shadow:var(--chakra-shadows-outline);}.css-95eg8m[disabled],.css-95eg8m[aria-disabled=true],.css-95eg8m[data-disabled]{opacity:0.4;cursor:not-allowed;box-shadow:var(--chakra-shadows-none);}.css-95eg8m:hover,.css-95eg8m[data-hover]{background-color:#F3F2F4;border-radius:5px;}.css-95eg8m:active,.css-95eg8m[data-active]{background:var(--chakra-colors-gray-300);}</style><button type=\"button\" class=\"chakra-button css-95eg8m\">Aide</button></a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/%2Ffooter%2Flogo-hcc-fond-blanc.webp&w=256&q=75",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" rel=\"noopener noreferrer\" href=\"/aide\"><style data-emotion=\"css 95eg8m\">.css-95eg8m{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;white-space:nowrap;vertical-align:middle;outline:2px solid transparent;outline-offset:2px;width:auto;line-height:1.2;border-radius:var(--chakra-radii-md);font-weight:400;transition-property:var(--chakra-transition-property-common);transition-duration:var(--chakra-transition-duration-normal);height:var(--chakra-sizes-10);min-width:var(--chakra-sizes-10);font-size:15px;-webkit-padding-start:var(--chakra-space-4);padding-inline-start:var(--chakra-space-4);-webkit-padding-end:var(--chakra-space-4);padding-inline-end:var(--chakra-space-4);background:var(--chakra-colors-gray-100);cursor:pointer;padding-top:15px;padding-bottom:15px;color:var(--chakra-colors-marine);background-color:var(--chakra-colors-transparent);padding:10px;text-transform:uppercase;}.css-95eg8m:focus,.css-95eg8m[data-focus]{box-shadow:var(--chakra-shadows-outline);}.css-95eg8m[disabled],.css-95eg8m[aria-disabled=true],.css-95eg8m[data-disabled]{opacity:0.4;cursor:not-allowed;box-shadow:var(--chakra-shadows-none);}.css-95eg8m:hover,.css-95eg8m[data-hover]{background-color:#F3F2F4;border-radius:5px;}.css-95eg8m:active,.css-95eg8m[data-active]{background:var(--chakra-colors-gray-300);}</style><button type=\"button\" class=\"chakra-button css-95eg8m\">Aide</button></a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" rel=\"noopener noreferrer\" href=\"/aide\"><style data-emotion=\"css yforqt\">.css-yforqt{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;white-space:nowrap;vertical-align:middle;outline:2px solid transparent;outline-offset:2px;width:auto;line-height:1.2;border-radius:var(--chakra-radii-md);font-weight:700;transition-property:var(--chakra-transition-property-common);transition-duration:var(--chakra-transition-duration-normal);height:var(--chakra-sizes-10);min-width:var(--chakra-sizes-10);font-size:15px;-webkit-padding-start:var(--chakra-space-4);padding-inline-start:var(--chakra-space-4);-webkit-padding-end:var(--chakra-space-4);padding-inline-end:var(--chakra-space-4);background:var(--chakra-colors-gray-100);cursor:pointer;padding-top:15px;padding-bottom:15px;color:var(--chakra-colors-marine);background-color:var(--chakra-colors-transparent);padding:10px;text-transform:uppercase;}.css-yforqt:focus,.css-yforqt[data-focus]{box-shadow:var(--chakra-shadows-outline);}.css-yforqt[disabled],.css-yforqt[aria-disabled=true],.css-yforqt[data-disabled]{opacity:0.4;cursor:not-allowed;box-shadow:var(--chakra-shadows-none);}.css-yforqt:hover,.css-yforqt[data-hover]{background-color:#F3F2F4;border-radius:5px;}.css-yforqt:active,.css-yforqt[data-active]{background:var(--chakra-colors-gray-300);}</style><button type=\"button\" class=\"chakra-button css-yforqt\">Aide</button></a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/blog",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" rel=\"noopener noreferrer\" href=\"/aide\"><style data-emotion=\"css 95eg8m\">.css-95eg8m{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;white-space:nowrap;vertical-align:middle;outline:2px solid transparent;outline-offset:2px;width:auto;line-height:1.2;border-radius:var(--chakra-radii-md);font-weight:400;transition-property:var(--chakra-transition-property-common);transition-duration:var(--chakra-transition-duration-normal);height:var(--chakra-sizes-10);min-width:var(--chakra-sizes-10);font-size:15px;-webkit-padding-start:var(--chakra-space-4);padding-inline-start:var(--chakra-space-4);-webkit-padding-end:var(--chakra-space-4);padding-inline-end:var(--chakra-space-4);background:var(--chakra-colors-gray-100);cursor:pointer;padding-top:15px;padding-bottom:15px;color:var(--chakra-colors-marine);background-color:var(--chakra-colors-transparent);padding:10px;text-transform:uppercase;}.css-95eg8m:focus,.css-95eg8m[data-focus]{box-shadow:var(--chakra-shadows-outline);}.css-95eg8m[disabled],.css-95eg8m[aria-disabled=true],.css-95eg8m[data-disabled]{opacity:0.4;cursor:not-allowed;box-shadow:var(--chakra-shadows-none);}.css-95eg8m:hover,.css-95eg8m[data-hover]{background-color:#F3F2F4;border-radius:5px;}.css-95eg8m:active,.css-95eg8m[data-active]{background:var(--chakra-colors-gray-300);}</style><button type=\"button\" class=\"chakra-button css-95eg8m\">Aide</button></a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/conditions-generales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" rel=\"noopener noreferrer\" href=\"/aide\"><style data-emotion=\"css 95eg8m\">.css-95eg8m{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;white-space:nowrap;vertical-align:middle;outline:2px solid transparent;outline-offset:2px;width:auto;line-height:1.2;border-radius:var(--chakra-radii-md);font-weight:400;transition-property:var(--chakra-transition-property-common);transition-duration:var(--chakra-transition-duration-normal);height:var(--chakra-sizes-10);min-width:var(--chakra-sizes-10);font-size:15px;-webkit-padding-start:var(--chakra-space-4);padding-inline-start:var(--chakra-space-4);-webkit-padding-end:var(--chakra-space-4);padding-inline-end:var(--chakra-space-4);background:var(--chakra-colors-gray-100);cursor:pointer;padding-top:15px;padding-bottom:15px;color:var(--chakra-colors-marine);background-color:var(--chakra-colors-transparent);padding:10px;text-transform:uppercase;}.css-95eg8m:focus,.css-95eg8m[data-focus]{box-shadow:var(--chakra-shadows-outline);}.css-95eg8m[disabled],.css-95eg8m[aria-disabled=true],.css-95eg8m[data-disabled]{opacity:0.4;cursor:not-allowed;box-shadow:var(--chakra-shadows-none);}.css-95eg8m:hover,.css-95eg8m[data-hover]{background-color:#F3F2F4;border-radius:5px;}.css-95eg8m:active,.css-95eg8m[data-active]{background:var(--chakra-colors-gray-300);}</style><button type=\"button\" class=\"chakra-button css-95eg8m\">Aide</button></a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/confidentialite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" rel=\"noopener noreferrer\" href=\"/aide\"><style data-emotion=\"css 95eg8m\">.css-95eg8m{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;white-space:nowrap;vertical-align:middle;outline:2px solid transparent;outline-offset:2px;width:auto;line-height:1.2;border-radius:var(--chakra-radii-md);font-weight:400;transition-property:var(--chakra-transition-property-common);transition-duration:var(--chakra-transition-duration-normal);height:var(--chakra-sizes-10);min-width:var(--chakra-sizes-10);font-size:15px;-webkit-padding-start:var(--chakra-space-4);padding-inline-start:var(--chakra-space-4);-webkit-padding-end:var(--chakra-space-4);padding-inline-end:var(--chakra-space-4);background:var(--chakra-colors-gray-100);cursor:pointer;padding-top:15px;padding-bottom:15px;color:var(--chakra-colors-marine);background-color:var(--chakra-colors-transparent);padding:10px;text-transform:uppercase;}.css-95eg8m:focus,.css-95eg8m[data-focus]{box-shadow:var(--chakra-shadows-outline);}.css-95eg8m[disabled],.css-95eg8m[aria-disabled=true],.css-95eg8m[data-disabled]{opacity:0.4;cursor:not-allowed;box-shadow:var(--chakra-shadows-none);}.css-95eg8m:hover,.css-95eg8m[data-hover]{background-color:#F3F2F4;border-radius:5px;}.css-95eg8m:active,.css-95eg8m[data-active]{background:var(--chakra-colors-gray-300);}</style><button type=\"button\" class=\"chakra-button css-95eg8m\">Aide</button></a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" rel=\"noopener noreferrer\" href=\"/aide\"><style data-emotion=\"css 95eg8m\">.css-95eg8m{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;white-space:nowrap;vertical-align:middle;outline:2px solid transparent;outline-offset:2px;width:auto;line-height:1.2;border-radius:var(--chakra-radii-md);font-weight:400;transition-property:var(--chakra-transition-property-common);transition-duration:var(--chakra-transition-duration-normal);height:var(--chakra-sizes-10);min-width:var(--chakra-sizes-10);font-size:15px;-webkit-padding-start:var(--chakra-space-4);padding-inline-start:var(--chakra-space-4);-webkit-padding-end:var(--chakra-space-4);padding-inline-end:var(--chakra-space-4);background:var(--chakra-colors-gray-100);cursor:pointer;padding-top:15px;padding-bottom:15px;color:var(--chakra-colors-marine);background-color:var(--chakra-colors-transparent);padding:10px;text-transform:uppercase;}.css-95eg8m:focus,.css-95eg8m[data-focus]{box-shadow:var(--chakra-shadows-outline);}.css-95eg8m[disabled],.css-95eg8m[aria-disabled=true],.css-95eg8m[data-disabled]{opacity:0.4;cursor:not-allowed;box-shadow:var(--chakra-shadows-none);}.css-95eg8m:hover,.css-95eg8m[data-hover]{background-color:#F3F2F4;border-radius:5px;}.css-95eg8m:active,.css-95eg8m[data-active]{background:var(--chakra-colors-gray-300);}</style><button type=\"button\" class=\"chakra-button css-95eg8m\">Aide</button></a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/nos-partenaires",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" rel=\"noopener noreferrer\" href=\"/aide\"><style data-emotion=\"css 95eg8m\">.css-95eg8m{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;white-space:nowrap;vertical-align:middle;outline:2px solid transparent;outline-offset:2px;width:auto;line-height:1.2;border-radius:var(--chakra-radii-md);font-weight:400;transition-property:var(--chakra-transition-property-common);transition-duration:var(--chakra-transition-duration-normal);height:var(--chakra-sizes-10);min-width:var(--chakra-sizes-10);font-size:15px;-webkit-padding-start:var(--chakra-space-4);padding-inline-start:var(--chakra-space-4);-webkit-padding-end:var(--chakra-space-4);padding-inline-end:var(--chakra-space-4);background:var(--chakra-colors-gray-100);cursor:pointer;padding-top:15px;padding-bottom:15px;color:var(--chakra-colors-marine);background-color:var(--chakra-colors-transparent);padding:10px;text-transform:uppercase;}.css-95eg8m:focus,.css-95eg8m[data-focus]{box-shadow:var(--chakra-shadows-outline);}.css-95eg8m[disabled],.css-95eg8m[aria-disabled=true],.css-95eg8m[data-disabled]{opacity:0.4;cursor:not-allowed;box-shadow:var(--chakra-shadows-none);}.css-95eg8m:hover,.css-95eg8m[data-hover]{background-color:#F3F2F4;border-radius:5px;}.css-95eg8m:active,.css-95eg8m[data-active]{background:var(--chakra-colors-gray-300);}</style><button type=\"button\" class=\"chakra-button css-95eg8m\">Aide</button></a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" rel=\"noopener noreferrer\" href=\"/aide\"><style data-emotion=\"css 95eg8m\">.css-95eg8m{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;white-space:nowrap;vertical-align:middle;outline:2px solid transparent;outline-offset:2px;width:auto;line-height:1.2;border-radius:var(--chakra-radii-md);font-weight:400;transition-property:var(--chakra-transition-property-common);transition-duration:var(--chakra-transition-duration-normal);height:var(--chakra-sizes-10);min-width:var(--chakra-sizes-10);font-size:15px;-webkit-padding-start:var(--chakra-space-4);padding-inline-start:var(--chakra-space-4);-webkit-padding-end:var(--chakra-space-4);padding-inline-end:var(--chakra-space-4);background:var(--chakra-colors-gray-100);cursor:pointer;padding-top:15px;padding-bottom:15px;color:var(--chakra-colors-marine);background-color:var(--chakra-colors-transparent);padding:10px;text-transform:uppercase;}.css-95eg8m:focus,.css-95eg8m[data-focus]{box-shadow:var(--chakra-shadows-outline);}.css-95eg8m[disabled],.css-95eg8m[aria-disabled=true],.css-95eg8m[data-disabled]{opacity:0.4;cursor:not-allowed;box-shadow:var(--chakra-shadows-none);}.css-95eg8m:hover,.css-95eg8m[data-hover]{background-color:#F3F2F4;border-radius:5px;}.css-95eg8m:active,.css-95eg8m[data-active]{background:var(--chakra-colors-gray-300);}</style><button type=\"button\" class=\"chakra-button css-95eg8m\">Aide</button></a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/statistiques",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" rel=\"noopener noreferrer\" href=\"/aide\"><style data-emotion=\"css 95eg8m\">.css-95eg8m{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-appearance:none;-moz-appearance:none;-ms-appearance:none;appearance:none;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;position:relative;white-space:nowrap;vertical-align:middle;outline:2px solid transparent;outline-offset:2px;width:auto;line-height:1.2;border-radius:var(--chakra-radii-md);font-weight:400;transition-property:var(--chakra-transition-property-common);transition-duration:var(--chakra-transition-duration-normal);height:var(--chakra-sizes-10);min-width:var(--chakra-sizes-10);font-size:15px;-webkit-padding-start:var(--chakra-space-4);padding-inline-start:var(--chakra-space-4);-webkit-padding-end:var(--chakra-space-4);padding-inline-end:var(--chakra-space-4);background:var(--chakra-colors-gray-100);cursor:pointer;padding-top:15px;padding-bottom:15px;color:var(--chakra-colors-marine);background-color:var(--chakra-colors-transparent);padding:10px;text-transform:uppercase;}.css-95eg8m:focus,.css-95eg8m[data-focus]{box-shadow:var(--chakra-shadows-outline);}.css-95eg8m[disabled],.css-95eg8m[aria-disabled=true],.css-95eg8m[data-disabled]{opacity:0.4;cursor:not-allowed;box-shadow:var(--chakra-shadows-none);}.css-95eg8m:hover,.css-95eg8m[data-hover]{background-color:#F3F2F4;border-radius:5px;}.css-95eg8m:active,.css-95eg8m[data-active]{background:var(--chakra-colors-gray-300);}</style><button type=\"button\" class=\"chakra-button css-95eg8m\">Aide</button></a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						}
+					],
+					"count": "11",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=600, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=600, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=600, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/conditions-generales",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/confidentialite",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/nos-partenaires",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=60, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/site.webmanifest",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/statistiques",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=600, stale-while-revalidate",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-3",
+					"alert": "Sec-Fetch-Dest Header is Missing",
+					"name": "Sec-Fetch-Dest Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-2",
+					"alert": "Sec-Fetch-Mode Header is Missing",
+					"name": "Sec-Fetch-Mode Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-1",
+					"alert": "Sec-Fetch-Site Header is Missing",
+					"name": "Sec-Fetch-Site Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-4",
+					"alert": "Sec-Fetch-User Header is Missing",
+					"name": "Sec-Fetch-User Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/aide",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=600",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/conditions-generales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/confidentialite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/nos-partenaires",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/ressources",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=60",
+							"otherinfo": ""
+						}
+					],
+					"count": "7",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable but Non-Cacheable Content",
+					"name": "Storable but Non-Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users. </p>",
+					"instances":[ 
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/apple-touch-icon.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/favicon-32x32.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://diagoriente.beta.gouv.fr/site.webmanifest",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						}
+					],
+					"count": "4",
+					"solution": "",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "139"
+				}
+			]
+		}
+	]
+}

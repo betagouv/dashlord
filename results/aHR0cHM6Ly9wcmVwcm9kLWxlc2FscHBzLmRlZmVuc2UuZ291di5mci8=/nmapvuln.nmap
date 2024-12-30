@@ -1,0 +1,117 @@
+# Nmap 7.91 scan initiated Sun Oct 31 13:46:50 2021 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln preprod-lesalpps.defense.gouv.fr
+Nmap scan report for preprod-lesalpps.defense.gouv.fr (77.196.241.8)
+Host is up (0.15s latency).
+rDNS record for 77.196.241.8: 8.241.196.77.rev.sfr.net
+Not shown: 995 filtered ports
+PORT     STATE  SERVICE     VERSION
+80/tcp   open   http
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, Help, RPCCheck, SSLSessionReq, X11Probe: 
+|     HTTP/1.1 400 Bad request
+|     Content-length: 90
+|     Cache-Control: no-cache
+|     Connection: close
+|     Content-Type: text/html
+|     <html><body><h1>400 Bad request</h1>
+|     Your browser sent an invalid request.
+|     </body></html>
+|   GetRequest, HTTPOptions, RTSPRequest: 
+|     HTTP/1.1 302 Found
+|     content-length: 0
+|     location: https:///
+|     cache-control: no-cache
+|_    connection: close
+113/tcp  closed ident
+443/tcp  open   ssl/https   nginx/1.20.1
+| fingerprint-strings: 
+|   DNSVersionBindReqTCP, RPCCheck, tor-versions: 
+|     HTTP/1.1 400 Bad request
+|     Content-length: 90
+|     Cache-Control: no-cache
+|     Connection: close
+|     Content-Type: text/html
+|     <html><body><h1>400 Bad request</h1>
+|     Your browser sent an invalid request.
+|     </body></html>
+|   FourOhFourRequest, GetRequest, HTTPOptions, RTSPRequest: 
+|     HTTP/1.1 503 Service Unavailable
+|     content-length: 107
+|     cache-control: no-cache
+|     content-type: text/html
+|     connection: close
+|     <html><body><h1>503 Service Unavailable</h1>
+|     server is available to handle this request.
+|_    </body></html>
+|_http-server-header: nginx/1.20.1
+2000/tcp open   cisco-sccp?
+5060/tcp open   sip?
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.91%I=7%D=10/31%Time=617E9E5A%P=x86_64-alpine-linux-musl%
+SF:r(GetRequest,6A,"HTTP/1\.1\x20302\x20Found\r\ncontent-length:\x200\r\nl
+SF:ocation:\x20https:///\r\ncache-control:\x20no-cache\r\nconnection:\x20c
+SF:lose\r\n\r\n")%r(HTTPOptions,6A,"HTTP/1\.1\x20302\x20Found\r\ncontent-l
+SF:ength:\x200\r\nlocation:\x20https:///\r\ncache-control:\x20no-cache\r\n
+SF:connection:\x20close\r\n\r\n")%r(RTSPRequest,6A,"HTTP/1\.1\x20302\x20Fo
+SF:und\r\ncontent-length:\x200\r\nlocation:\x20https:///\r\ncache-control:
+SF:\x20no-cache\r\nconnection:\x20close\r\n\r\n")%r(X11Probe,CF,"HTTP/1\.1
+SF:\x20400\x20Bad\x20request\r\nContent-length:\x2090\r\nCache-Control:\x2
+SF:0no-cache\r\nConnection:\x20close\r\nContent-Type:\x20text/html\r\n\r\n
+SF:<html><body><h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20
+SF:an\x20invalid\x20request\.\n</body></html>\n")%r(RPCCheck,CF,"HTTP/1\.1
+SF:\x20400\x20Bad\x20request\r\nContent-length:\x2090\r\nCache-Control:\x2
+SF:0no-cache\r\nConnection:\x20close\r\nContent-Type:\x20text/html\r\n\r\n
+SF:<html><body><h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\x20
+SF:an\x20invalid\x20request\.\n</body></html>\n")%r(DNSVersionBindReqTCP,C
+SF:F,"HTTP/1\.1\x20400\x20Bad\x20request\r\nContent-length:\x2090\r\nCache
+SF:-Control:\x20no-cache\r\nConnection:\x20close\r\nContent-Type:\x20text/
+SF:html\r\n\r\n<html><body><h1>400\x20Bad\x20request</h1>\nYour\x20browser
+SF:\x20sent\x20an\x20invalid\x20request\.\n</body></html>\n")%r(DNSStatusR
+SF:equestTCP,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\nContent-length:\x20
+SF:90\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\nContent-Typ
+SF:e:\x20text/html\r\n\r\n<html><body><h1>400\x20Bad\x20request</h1>\nYour
+SF:\x20browser\x20sent\x20an\x20invalid\x20request\.\n</body></html>\n")%r
+SF:(Help,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\nContent-length:\x2090\r
+SF:\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\nContent-Type:\x
+SF:20text/html\r\n\r\n<html><body><h1>400\x20Bad\x20request</h1>\nYour\x20
+SF:browser\x20sent\x20an\x20invalid\x20request\.\n</body></html>\n")%r(SSL
+SF:SessionReq,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\nContent-length:\x2
+SF:090\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\nContent-Ty
+SF:pe:\x20text/html\r\n\r\n<html><body><h1>400\x20Bad\x20request</h1>\nYou
+SF:r\x20browser\x20sent\x20an\x20invalid\x20request\.\n</body></html>\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port443-TCP:V=7.91%T=SSL%I=7%D=10/31%Time=617E9E61%P=x86_64-alpine-linu
+SF:x-musl%r(GetRequest,E9,"HTTP/1\.1\x20503\x20Service\x20Unavailable\r\nc
+SF:ontent-length:\x20107\r\ncache-control:\x20no-cache\r\ncontent-type:\x2
+SF:0text/html\r\nconnection:\x20close\r\n\r\n<html><body><h1>503\x20Servic
+SF:e\x20Unavailable</h1>\nNo\x20server\x20is\x20available\x20to\x20handle\
+SF:x20this\x20request\.\n</body></html>\n")%r(HTTPOptions,E9,"HTTP/1\.1\x2
+SF:0503\x20Service\x20Unavailable\r\ncontent-length:\x20107\r\ncache-contr
+SF:ol:\x20no-cache\r\ncontent-type:\x20text/html\r\nconnection:\x20close\r
+SF:\n\r\n<html><body><h1>503\x20Service\x20Unavailable</h1>\nNo\x20server\
+SF:x20is\x20available\x20to\x20handle\x20this\x20request\.\n</body></html>
+SF:\n")%r(FourOhFourRequest,E9,"HTTP/1\.1\x20503\x20Service\x20Unavailable
+SF:\r\ncontent-length:\x20107\r\ncache-control:\x20no-cache\r\ncontent-typ
+SF:e:\x20text/html\r\nconnection:\x20close\r\n\r\n<html><body><h1>503\x20S
+SF:ervice\x20Unavailable</h1>\nNo\x20server\x20is\x20available\x20to\x20ha
+SF:ndle\x20this\x20request\.\n</body></html>\n")%r(tor-versions,CF,"HTTP/1
+SF:\.1\x20400\x20Bad\x20request\r\nContent-length:\x2090\r\nCache-Control:
+SF:\x20no-cache\r\nConnection:\x20close\r\nContent-Type:\x20text/html\r\n\
+SF:r\n<html><body><h1>400\x20Bad\x20request</h1>\nYour\x20browser\x20sent\
+SF:x20an\x20invalid\x20request\.\n</body></html>\n")%r(RTSPRequest,E9,"HTT
+SF:P/1\.1\x20503\x20Service\x20Unavailable\r\ncontent-length:\x20107\r\nca
+SF:che-control:\x20no-cache\r\ncontent-type:\x20text/html\r\nconnection:\x
+SF:20close\r\n\r\n<html><body><h1>503\x20Service\x20Unavailable</h1>\nNo\x
+SF:20server\x20is\x20available\x20to\x20handle\x20this\x20request\.\n</bod
+SF:y></html>\n")%r(RPCCheck,CF,"HTTP/1\.1\x20400\x20Bad\x20request\r\nCont
+SF:ent-length:\x2090\r\nCache-Control:\x20no-cache\r\nConnection:\x20close
+SF:\r\nContent-Type:\x20text/html\r\n\r\n<html><body><h1>400\x20Bad\x20req
+SF:uest</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20request\.\n</bod
+SF:y></html>\n")%r(DNSVersionBindReqTCP,CF,"HTTP/1\.1\x20400\x20Bad\x20req
+SF:uest\r\nContent-length:\x2090\r\nCache-Control:\x20no-cache\r\nConnecti
+SF:on:\x20close\r\nContent-Type:\x20text/html\r\n\r\n<html><body><h1>400\x
+SF:20Bad\x20request</h1>\nYour\x20browser\x20sent\x20an\x20invalid\x20requ
+SF:est\.\n</body></html>\n");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Oct 31 13:48:41 2021 -- 1 IP address (1 host up) scanned in 110.86 seconds

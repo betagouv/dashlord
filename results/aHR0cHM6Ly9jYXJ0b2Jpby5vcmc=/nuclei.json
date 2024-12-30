@@ -1,0 +1,715 @@
+[
+  {
+    "template": "technologies/tech-detect.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/technologies/tech-detect.yaml",
+    "template-id": "tech-detect",
+    "info": {
+      "name": "Wappalyzer Technology Detection",
+      "author": [
+        "hakluke"
+      ],
+      "tags": [
+        "tech"
+      ],
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "nginx",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:04 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:04 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:04.756606948Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "network/openssh-detection.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/network/openssh-detection.yaml",
+    "template-id": "openssh-detection",
+    "info": {
+      "name": "OpenSSH Detection",
+      "author": [
+        "r3dg33k",
+        "daffainfo",
+        "iamthefrogy"
+      ],
+      "tags": [
+        "seclists",
+        "network",
+        "ssh",
+        "openssh"
+      ],
+      "description": "OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.\n",
+      "reference": [
+        "http://www.openwall.com/lists/oss-security/2016/08/01/2",
+        "http://www.openwall.com/lists/oss-security/2018/08/15/5",
+        "https://nvd.nist.gov/vuln/detail/cve-2016-6210",
+        "https://nvd.nist.gov/vuln/detail/cve-2018-15473",
+        "http://seclists.org/fulldisclosure/2016/jul/51"
+      ],
+      "severity": "info"
+    },
+    "type": "network",
+    "host": "https://cartobio.org",
+    "matched-at": "cartobio.org:22",
+    "extracted-results": [
+      "SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.3"
+    ],
+    "response": "SSH-2.0-OpenSSH_8.2p1 Ubuntu-4ubuntu0.3\r\n",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:12.029928015Z",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "miscellaneous/robots-txt-endpoint.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/miscellaneous/robots-txt-endpoint.yaml",
+    "template-id": "robots-txt-endpoint",
+    "info": {
+      "name": "robots.txt endpoint prober",
+      "author": [
+        "caspergn",
+        "pdteam"
+      ],
+      "tags": null,
+      "reference": null,
+      "severity": "info"
+    },
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org/robots.txt",
+    "request": "GET /robots.txt HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:23 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:23 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:23.222576567Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org/robots.txt'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "ssl/ssl-dns-names.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/ssl/ssl-dns-names.yaml",
+    "template-id": "ssl-dns-names",
+    "info": {
+      "name": "SSL DNS Names",
+      "author": [
+        "pdteam"
+      ],
+      "tags": [
+        "ssl"
+      ],
+      "reference": null,
+      "severity": "info"
+    },
+    "type": "ssl",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "extracted-results": [
+      "cartobio.org",
+      "www.cartobio.org"
+    ],
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:31.894913165Z",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "clear-site-data",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.595607118Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "cross-origin-embedder-policy",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.59575332Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "access-control-allow-origin",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.598992457Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "access-control-expose-headers",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.599213459Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "access-control-max-age",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.599366961Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "access-control-allow-methods",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.599521563Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "x-permitted-cross-domain-policies",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.599664864Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "cross-origin-opener-policy",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.599819166Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "cross-origin-resource-policy",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.599965768Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "access-control-allow-credentials",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.600115969Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "access-control-allow-headers",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.600256271Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "misconfiguration/http-missing-security-headers.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/misconfiguration/http-missing-security-headers.yaml",
+    "template-id": "http-missing-security-headers",
+    "info": {
+      "name": "HTTP Missing Security Headers",
+      "author": [
+        "socketz",
+        "geeknik",
+        "g4l1t0",
+        "convisoappsec",
+        "kurohost",
+        "dawid-czarnecki",
+        "forgedhallpass"
+      ],
+      "tags": [
+        "misconfig",
+        "generic"
+      ],
+      "description": "This template searches for missing HTTP security headers. The impact of these missing headers can vary.\n",
+      "reference": null,
+      "severity": "info"
+    },
+    "matcher-name": "permission-policy",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "request": "GET / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 OK\r\nConnection: close\r\nTransfer-Encoding: chunked\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:04:37 GMT\r\nEtag: W/\"62f22ec0-69a\"\r\nExpires: Sun, 04 Sep 2022 04:04:37 GMT\r\nLast-Modified: Tue, 09 Aug 2022 09:54:08 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nVary: Accept-Encoding\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html><html lang=\"fr\"><head><meta charset=\"utf-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"/apple-touch-icon.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"/favicon-32x32.png\"><link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"/favicon-16x16.png\"><title>CartoBio</title><meta name=\"version\" content=\"v0.10.3\"><link href=\"/css/map.cf4a34f1.css\" rel=\"prefetch\"><link href=\"/css/map~prototypes.8f485d92.css\" rel=\"prefetch\"><link href=\"/css/operator.5341c8e9.css\" rel=\"prefetch\"><link href=\"/css/prototypes.0cdf3955.css\" rel=\"prefetch\"><link href=\"/js/chunk-2d22497b.d003fd80.js\" rel=\"prefetch\"><link href=\"/js/map.9ad39750.js\" rel=\"prefetch\"><link href=\"/js/map~operator~prototypes.3cdc4044.js\" rel=\"prefetch\"><link href=\"/js/map~prototypes.a27f379f.js\" rel=\"prefetch\"><link href=\"/js/operator.28fe4e4f.js\" rel=\"prefetch\"><link href=\"/js/prototypes.9dba91b3.js\" rel=\"prefetch\"><link href=\"/css/app.67e013e2.css\" rel=\"preload\" as=\"style\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"preload\" as=\"style\"><link href=\"/js/app.77364467.js\" rel=\"preload\" as=\"script\"><link href=\"/js/chunk-vendors.4937e24a.js\" rel=\"preload\" as=\"script\"><link href=\"/css/chunk-vendors.652796c7.css\" rel=\"stylesheet\"><link href=\"/css/app.67e013e2.css\" rel=\"stylesheet\"></head><body><noscript><strong lang=\"en\">We're sorry but app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id=\"app\"></div><script src=\"/js/chunk-vendors.4937e24a.js\"></script><script src=\"/js/app.77364467.js\"></script></body></html>",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:37.600402072Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "ssl/tls-version.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/ssl/tls-version.yaml",
+    "template-id": "tls-version",
+    "info": {
+      "name": "TLS Version",
+      "author": [
+        "pdteam"
+      ],
+      "tags": [
+        "ssl"
+      ],
+      "reference": null,
+      "severity": "info"
+    },
+    "type": "ssl",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "extracted-results": [
+      "TLS13"
+    ],
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:54.34344094Z",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "exposed-panels/geoserver-login-panel.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/exposed-panels/geoserver-login-panel.yaml",
+    "template-id": "geoserver-login-panel",
+    "info": {
+      "name": "GeoServer Login Panel",
+      "author": [
+        "ritikchaddha"
+      ],
+      "tags": [
+        "panel",
+        "geoserver"
+      ],
+      "reference": null,
+      "severity": "info",
+      "metadata": {
+        "verified": true,
+        "shodan-query": "title:\"GeoServer\""
+      }
+    },
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org/geoserver/web/",
+    "extracted-results": [
+      "2.20.1"
+    ],
+    "request": "GET /geoserver/web/ HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nAccept: */*\r\nAccept-Language: en\r\nAccept-Encoding: gzip\r\n\r\n",
+    "response": "HTTP/1.1 200 \r\nConnection: close\r\nTransfer-Encoding: chunked\r\nAccess-Control-Allow-Origin: *\r\nAccess-Control-Expose-Headers: Access-Control-Allow-Origin,Access-Control-Allow-Credentials\r\nCache-Control: max-age=0\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html;charset=UTF-8\r\nDate: Sun, 04 Sep 2022 04:04:57 GMT\r\nExpires: Sun, 04 Sep 2022 04:04:57 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nPragma: no-cache\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nSet-Cookie: JSESSIONID=E21C72B9B3FE3D904A9835463C8764B6; Path=/geoserver; HttpOnly\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: SAMEORIGIN\r\nX-Frame-Options: DENY\r\n\r\n<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\"\n    \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n<head><script type=\"text/javascript\" src=\"./wicket/resource/org.apache.wicket.resource.JQueryResourceReference/jquery/jquery-3.5.1-ver-C09A105EC81DB596488CF1F95E764BF8.js\"></script>\n\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=10\" />\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\n\t<title>GeoServer: Welcome</title>\n    <link href=\"./wicket/resource/org.geoserver.web.GeoServerBasePage/favicon-ver-CD7C91844A87FE589C62DFE238A2ACA7.ico\" rel=\"shortcut icon\"/>\n\t\n      <link rel=\"stylesheet\" href=\"./wicket/resource/org.geoserver.web.GeoServerBasePage/css/blueprint/screen-ver-5E7BA86A4C3BEA6B457AC3C7F9ADF9B4.css\" type=\"text/css\" media=\"screen, projection\"/>\n      \n      \n      <link rel=\"stylesheet\" href=\"./wicket/resource/org.geoserver.web.GeoServerBasePage/css/blueprint/print-ver-BBB913C92FDF844CBAD576E7BB0B2A96.css\" type=\"text/css\" media=\"print\"/>\n      \n       \n\t  <link rel=\"stylesheet\" href=\"./wicket/resource/org.geoserver.web.GeoServerBasePage/css/geoserver-ver-9C5C02B6FDAE19EBCFF9C00129FA3C56.css\" type=\"text/css\" media=\"screen, projection\"/>\n\t  \n      <!--[if IE]>\n      \n        <link rel=\"stylesheet\" href=\"./wicket/resource/org.geoserver.web.GeoServerBasePage/css/blueprint/ie-ver-830652BCF971CCAF4FB29B4A140F9430.css\" type=\"text/css\" media=\"screen, projection\"/>\n        \n      <![endif]-->\n      \n      <script type=\"text/javascript\" src=\"./wicket/resource/org.geoserver.web.GeoServerBasePage/js/jquery.placeholder-ver-6E6E735FF3A1792243C593D1E48D6AE1.js\"></script>\n      \n    \n        <script type=\"text/javascript\" src=\"./wicket/resource/org.geoserver.web.GeoServerBasePage/js/jquery.fullscreen-ver-A1341414A7D106EAE077E0332CD01573.js\"></script>\n    \n\t<script type=\"text/javascript\" src=\"./wicket/resource/org.geoserver.web.demo.MapPreviewPage/mappreview_keyshortcut-ver-53DBA8B7B51005F654E624BEE0441D3B.js\"></script>\n</head>\n<body>\n  <div id=\"header\">\n    <div class=\"wrap\">\n      <h2><a class=\"pngfix\" href=\"./\"><span>GeoServer 2.20.1</span></a></h2>\n      <div class=\"button-group selfclear\">\n\t      <span>\n\t      \t<form style=\"display: inline-block;\" method=\"post\" action=\"https://cartobio.org/geoserver/j_spring_security_check\">\n\t      \t\t<span><label class=\"noshow\" for=\"username\"><wicket:message key=\"username\">Username</wicket:message></label>\n<input autocomplete=\"on\" id=\"username\" type=\"text\" name=\"username\" value=\"\" title=\"username\" placeholder=\"username\" wicket:message=\"title:username,placeholder:username\"/>\n<label class=\"noshow\" for=\"password\"><wicket:message key=\"password\">Password</wicket:message></label>\n<input autocomplete=\"on\" id=\"password\" type=\"password\" name=\"password\" value=\"\" title=\"password\" placeholder=\"password\" wicket:message=\"title:password,placeholder:passwordGeoServer\"/>\n<label class=\"shown\" for=\"_spring_security_remember_me\"><wicket:message key=\"rememberMe\">Remember me</wicket:message></label>\n<input id=\"_spring_security_remember_me\" type=\"checkbox\" name=\"_spring_security_remember_me\" />\n</span>\n\t      \t\t<button class=\"positive icon\" type=\"submit\">\n\t      \t\t\t<div><img src=\"./wicket/resource/org.geoserver.web.GeoServerBasePage/img/icons/silk/door-in-ver-4871EA9656EEBF15C2F83BF4E25B0EBB.png\" alt=\"Login\"/><span>Login</span></div>\n\t      \t\t</button>\n\t\t        <script type=\"text/javascript\">\n/*<![CDATA[*/\n\n\t\t            $('input, textarea').placeholder();\n\t\t        \n/*]]>*/\n</script>\t      \t\t\n\t      \t</form>\n\t      </span>\n\t      \n\t      \n            \t\t      \n      </div>\n    </div><!-- /.wrap -->\n  </div><!-- /#header -->\n  <div id=\"main\">\n    <div class=\"wrap selfclear\">\n    <div id=\"sidebar\">\n      \n      <ul id=\"navigation\">\n        <li class=\"navigation-tab\">\n          <div class=\"navigation-tab-header\">\n            <span>About &amp; Status</span>\n          </div>\n          <ul class=\"navigation-tab-content plain\">\n            <li class=\"nav-administer-service\">\n              <a href=\"./wicket/bookmarkable/org.geoserver.web.AboutGeoServerPage;jsessionid=E21C72B9B3FE3D904A9835463C8764B6?filter=false\" title=\"General information about GeoServer\">\n                <img src=\"./wicket/resource/org.geoserver.web.AboutGeoServerPage/img/icons/silk/help-ver-C3812C74BC524179F4CCF5D2DB7B3CBF.png\" alt=\"About GeoServer\"/><span>About GeoServer</span>\n              </a>\n            </li>\n          </ul>\n        </li><li class=\"navigation-tab\">\n          <div class=\"navigation-tab-header\">\n            <span>Data</span>\n          </div>\n          <ul class=\"navigation-tab-content plain\">\n            <li class=\"nav-administer-service\">\n              <a href=\"./wicket/bookmarkable/org.geoserver.web.demo.MapPreviewPage;jsessionid=E21C72B9B3FE3D904A9835463C8764B6?filter=false\" title=\"List of all layers configured in GeoServer and provides previews in various formats for each.\">\n                <img src=\"./wicket/resource/org.geoserver.web.demo.MapPreviewPage/::/img/icons/geosilk/map-ver-3085230CE03A9A93A074669E4C194432.png\" alt=\"Layer Preview\"/><span>Layer Preview</span>\n              </a>\n            </li>\n          </ul>\n        </li>\n        <li class=\"navigation-tab\">\n          <div class=\"navigation-tab-single\">\n             <a href=\"./wicket/bookmarkable/org.geoserver.web.DemoPage;jsessionid=E21C72B9B3FE3D904A9835463C8764B6\" title=\"GeoServer Demonstrations\"><span>Demos</span></a>\n          </div>\n        </li>\n      </ul>\n      \n    </div><!-- /#sidebar -->\n    <div id=\"page\" class=\"selfclear\">\n      <div class=\"page-header\">\n        <div id=\"topFeedback\">\n  \n</div>\n        <h1 id=\"header-title\">Welcome</h1>\n        <p id=\"header-description\">Welcome</p>\n        <div class=\"header-panel\"></div>\n      </div>\n        \n      <div class=\"page-pane selfclear\" id=\"page-pane\">\n        \n<div id=\"welcome\">\n<p>\nThis GeoServer belongs to <a><span></span></a>.\n</p>\n<p>\n\n</p>\n<p>\n<div>\n      \n</div><div>\n      \n</div>\n</p>\n<p>\n  <span>This GeoServer instance is running version <strong>2.20.1</strong>. For more information please contact the <a href=\"mailto:geoserver@example.org\">administrator</a>.</span>\n</p>\n</div>\n<div id=\"capabilities\">\n  <ul>\n    <li class=\"navigation-tab\">\n      <div class=\"navigation-tab-header\">\n        <span>Service Capabilities</span>\n      </div>\n      <div>\n        <ul class=\"navigation-tab-content plain\">\n          <li class=\"selfclear\">\n            <span>\n  <li>\n  <span>TMS</span>\n  <ul class=\"flat\">\n    <li>\n      <a class=\"external icon\" href=\"../gwc/service/tms/1.0.0\">\n        <span>1.0.0</span></a>\n    </li>\n  </ul>\n  </li><li>\n  <span>WMS-C</span>\n  <ul class=\"flat\">\n    <li>\n      <a class=\"external icon\" href=\"../gwc/service/wms?request=GetCapabilities&amp;version=1.1.1&amp;tiled=true\">\n        <span>1.1.1</span></a>\n    </li>\n  </ul>\n  </li>\n</span>\n          </li><li class=\"selfclear\">\n            <span>\n  <li>\n  <span>CSW</span>\n  <ul class=\"flat\">\n    <li>\n      <a class=\"external icon\" href=\"../ows?service=csw&amp;version=2.0.2&amp;request=GetCapabilities\">\n        <span>2.0.2</span></a>\n    </li>\n  </ul>\n  </li><li>\n  <span>WCS</span>\n  <ul class=\"flat\">\n    <li>\n      <a class=\"external icon\" href=\"../ows?service=WCS&amp;version=2.0.1&amp;request=GetCapabilities\">\n        <span>2.0.1</span></a>\n    </li><li>\n      <a class=\"external icon\" href=\"../ows?service=wcs&amp;version=1.0.0&amp;request=GetCapabilities\">\n        <span>1.0.0</span></a>\n    </li><li>\n      <a class=\"external icon\" href=\"../ows?service=wcs&amp;version=1.1.0&amp;request=GetCapabilities\">\n        <span>1.1.0</span></a>\n    </li><li>\n      <a class=\"external icon\" href=\"../ows?service=wcs&amp;version=1.1.1&amp;request=GetCapabilities\">\n        <span>1.1.1</span></a>\n    </li><li>\n      <a class=\"external icon\" href=\"../ows?service=wcs&amp;version=1.1&amp;request=GetCapabilities\">\n        <span>1.1</span></a>\n    </li>\n  </ul>\n  </li><li>\n  <span>WFS</span>\n  <ul class=\"flat\">\n    <li>\n      <a class=\"external icon\" href=\"../ows?service=wfs&amp;version=1.0.0&amp;request=GetCapabilities\">\n        <span>1.0.0</span></a>\n    </li><li>\n      <a class=\"external icon\" href=\"../ows?service=wfs&amp;version=1.1.0&amp;request=GetCapabilities\">\n        <span>1.1.0</span></a>\n    </li><li>\n      <a class=\"external icon\" href=\"../ows?service=wfs&amp;version=2.0.0&amp;request=GetCapabilities\">\n        <span>2.0.0</span></a>\n    </li>\n  </ul>\n  </li><li>\n  <span>WMS</span>\n  <ul class=\"flat\">\n    <li>\n      <a class=\"external icon\" href=\"../ows?service=wms&amp;version=1.1.1&amp;request=GetCapabilities\">\n        <span>1.1.1</span></a>\n    </li><li>\n      <a class=\"external icon\" href=\"../ows?service=wms&amp;version=1.3.0&amp;request=GetCapabilities\">\n        <span>1.3.0</span></a>\n    </li>\n  </ul>\n  </li><li>\n  <span>WPS</span>\n  <ul class=\"flat\">\n    <li>\n      <a class=\"external icon\" href=\"../ows?service=wps&amp;version=1.0.0&amp;request=GetCapabilities\">\n        <span>1.0.0</span></a>\n    </li>\n  </ul>\n  </li>\n</span>\n          </li>\n        </ul>\n      </div>\n    </li>\n  </ul>\n</div>\n\n\n\n\n      </div>\n      <div class=\"page-footer\">\n        <div id=\"bottomFeedback\">\n  \n</div>\n      </div>\n    </div><!-- /#page -->\n    </div><!-- /.wrap> -->\n  </div><!-- /#main -->\n  <div id=\"ajaxFeedback\" style=\"display: none\">\n    <img alt=\"Loading...\" src=\"./wicket/resource/org.geoserver.web.GeoServerBasePage/img/ajax-loader-ver-A51C5608D01ACF32DF728F299767F82B.gif\"/>\n  </div>\n</body>\n</html>\n",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:04:57.272069741Z",
+    "curl-command": "curl -X 'GET' -d '' -H 'Accept: */*' -H 'Accept-Language: en' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org/geoserver/web/'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "technologies/waf-detect.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/technologies/waf-detect.yaml",
+    "template-id": "waf-detect",
+    "info": {
+      "name": "WAF Detection",
+      "author": [
+        "dwisiswant0",
+        "lu4nx"
+      ],
+      "tags": [
+        "waf",
+        "tech",
+        "misc"
+      ],
+      "description": "A web application firewall was detected.",
+      "reference": [
+        "https://github.com/ekultek/whatwaf"
+      ],
+      "severity": "info",
+      "classification": {
+        "cve-id": null,
+        "cwe-id": [
+          "cwe-200"
+        ]
+      }
+    },
+    "matcher-name": "nginxgeneric",
+    "type": "http",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org/",
+    "request": "POST / HTTP/1.1\r\nHost: cartobio.org\r\nUser-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)\r\nConnection: close\r\nContent-Length: 27\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept-Encoding: gzip\r\n\r\n_=<script>alert(1)</script>",
+    "response": "HTTP/1.1 405 Not Allowed\r\nConnection: close\r\nContent-Length: 150\r\nContent-Security-Policy: default-src 'self'; worker-src blob:; connect-src 'self' https://cartobio.org/api/ https://www.data.gouv.fr/api/1/ https://cartobio.agencebio.org/api/ https://cartobio.org/geoserver/ https://api-adresse.data.gouv.fr/search/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://wxs.ign.fr/essentiels/geoportail/wmts https://back.datapass.api.gouv.fr/api/; font-src 'self' https://openmaptiles.geo.data.gouv.fr/fonts/; img-src 'self' data: blob:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; upgrade-insecure-requests; frame-ancestors 'none'; child-src blob:; frame-src 'none'; form-action 'self' https://cartobio.org/api/ https://cartobio.agencebio.org/api/; base-uri 'self';\r\nContent-Type: text/html; charset=utf-8\r\nDate: Sun, 04 Sep 2022 04:05:18 GMT\r\nPermissions-Policy: accelerometer=(),autoplay=(),camera=(),display-capture=(),document-domain=(),encrypted-media=(),fullscreen=(),geolocation=(),gyroscope=(),magnetometer=(),microphone=(),midi=(),payment=(),picture-in-picture=(),publickey-credentials-get=(),screen-wake-lock=(),sync-xhr=(self),usb=(),web-share=(),xr-spatial-tracking=()\r\nReferrer-Policy: strict-origin-when-cross-origin\r\nServer: nginx\r\nStrict-Transport-Security: max-age=16070400; includeSubDomains\r\nX-Content-Type-Options: nosniff\r\nX-Frame-Options: DENY\r\n\r\n<html>\r\n<head><title>405 Not Allowed</title></head>\r\n<body>\r\n<center><h1>405 Not Allowed</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "ip": "91.134.137.224",
+    "timestamp": "2022-09-04T04:05:18.124511058Z",
+    "curl-command": "curl -X 'POST' -d '_=<script>alert(1)</script>' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Host: cartobio.org' -H 'User-Agent: Nuclei - Open-source project (github.com/projectdiscovery/nuclei)' 'https://cartobio.org/'",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "dns/nameserver-fingerprint.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/dns/nameserver-fingerprint.yaml",
+    "template-id": "nameserver-fingerprint",
+    "info": {
+      "name": "NS Record Detection",
+      "author": [
+        "pdteam"
+      ],
+      "tags": [
+        "dns",
+        "ns"
+      ],
+      "description": "An NS record was detected. An NS record delegates a subdomain to a set of name servers.",
+      "reference": null,
+      "severity": "info",
+      "classification": {
+        "cve-id": null,
+        "cwe-id": [
+          "cwe-200"
+        ]
+      }
+    },
+    "type": "dns",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "extracted-results": [
+      "ns-28-a.gandi.net.",
+      "ns-181-b.gandi.net.",
+      "ns-210-c.gandi.net."
+    ],
+    "request": ";; opcode: QUERY, status: NOERROR, id: 50409\n;; flags: rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags: ; udp: 4096\n\n;; QUESTION SECTION:\n;cartobio.org.\tIN\t NS\n",
+    "response": ";; opcode: QUERY, status: NOERROR, id: 50409\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags: ; udp: 1232\n\n;; QUESTION SECTION:\n;cartobio.org.\tIN\t NS\n\n;; ANSWER SECTION:\ncartobio.org.\t10800\tIN\tNS\tns-28-a.gandi.net.\ncartobio.org.\t10800\tIN\tNS\tns-181-b.gandi.net.\ncartobio.org.\t10800\tIN\tNS\tns-210-c.gandi.net.\n",
+    "timestamp": "2022-09-04T04:05:20.683333392Z",
+    "matcher-status": true,
+    "matched-line": null
+  },
+  {
+    "template": "dns/txt-fingerprint.yaml",
+    "template-url": "https://github.com/projectdiscovery/nuclei-templates/blob/master/dns/txt-fingerprint.yaml",
+    "template-id": "txt-fingerprint",
+    "info": {
+      "name": "DNS TXT Record Detected",
+      "author": [
+        "pdteam"
+      ],
+      "tags": [
+        "dns",
+        "txt"
+      ],
+      "description": "A DNS TXT record was detected. The TXT record lets a domain admin leave notes on a DNS server.",
+      "reference": [
+        "https://www.netspi.com/blog/technical/network-penetration-testing/analyzing-dns-txt-records-to-fingerprint-service-providers/"
+      ],
+      "severity": "info",
+      "classification": {
+        "cve-id": null,
+        "cwe-id": [
+          "cwe-200"
+        ]
+      }
+    },
+    "type": "dns",
+    "host": "https://cartobio.org",
+    "matched-at": "https://cartobio.org",
+    "extracted-results": [
+      "\"Sendinblue-code:79bebeb865339f7cbf5c61f71be3a1ae\"",
+      "\"1|www.cartobio.org\"",
+      "\"3gk03wzztbd12c8mrm3hwk9r49kqx7dv\""
+    ],
+    "request": ";; opcode: QUERY, status: NOERROR, id: 29365\n;; flags: rd ad; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags: ; udp: 4096\n\n;; QUESTION SECTION:\n;cartobio.org.\tIN\t TXT\n",
+    "response": ";; opcode: QUERY, status: NOERROR, id: 29365\n;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1\n\n;; OPT PSEUDOSECTION:\n; EDNS: version 0; flags: ; udp: 1232\n\n;; QUESTION SECTION:\n;cartobio.org.\tIN\t TXT\n\n;; ANSWER SECTION:\ncartobio.org.\t600\tIN\tTXT\t\"Sendinblue-code:79bebeb865339f7cbf5c61f71be3a1ae\"\ncartobio.org.\t600\tIN\tTXT\t\"1|www.cartobio.org\"\ncartobio.org.\t600\tIN\tTXT\t\"3gk03wzztbd12c8mrm3hwk9r49kqx7dv\"\n",
+    "timestamp": "2022-09-04T04:05:26.741899093Z",
+    "matcher-status": true,
+    "matched-line": null
+  }
+]

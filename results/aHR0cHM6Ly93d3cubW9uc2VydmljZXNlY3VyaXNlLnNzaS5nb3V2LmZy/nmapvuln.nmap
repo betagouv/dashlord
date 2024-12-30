@@ -1,0 +1,180 @@
+# Nmap 7.92 scan initiated Sun May 12 09:09:38 2024 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln www.monservicesecurise.ssi.gouv.fr
+Nmap scan report for www.monservicesecurise.ssi.gouv.fr (185.231.164.99)
+Host is up (0.083s latency).
+Not shown: 998 filtered tcp ports (no-response)
+PORT    STATE SERVICE   VERSION
+80/tcp  open  http
+| fingerprint-strings: 
+|   FourOhFourRequest: 
+|     HTTP/1.1 301 Moved Permanently
+|     Date: Sun, 12 May 2024 09:09:52 GMT
+|     Content-Type: text/html
+|     Content-Length: 166
+|     Connection: close
+|     Location: https://www.monservicesecurise.ssi.gouv.fr/nice%20ports%2C/Tri%6Eity.txt%2ebak
+|     <html>
+|     <head><title>301 Moved Permanently</title></head>
+|     <body>
+|     <center><h1>301 Moved Permanently</h1></center>
+|     <hr><center>openresty</center>
+|     </body>
+|     </html>
+|   GetRequest, HTTPOptions: 
+|     HTTP/1.1 301 Moved Permanently
+|     Date: Sun, 12 May 2024 09:09:52 GMT
+|     Content-Type: text/html
+|     Content-Length: 166
+|     Connection: close
+|     Location: https://www.monservicesecurise.ssi.gouv.fr/
+|     <html>
+|     <head><title>301 Moved Permanently</title></head>
+|     <body>
+|     <center><h1>301 Moved Permanently</h1></center>
+|     <hr><center>openresty</center>
+|     </body>
+|     </html>
+|   RTSPRequest, X11Probe: 
+|     HTTP/1.1 400 Bad Request
+|     Date: Sun, 12 May 2024 09:09:52 GMT
+|     Content-Type: text/html
+|     Content-Length: 154
+|     Connection: close
+|     <html>
+|     <head><title>400 Bad Request</title></head>
+|     <body>
+|     <center><h1>400 Bad Request</h1></center>
+|     <hr><center>openresty</center>
+|     </body>
+|_    </html>
+443/tcp open  ssl/https
+| fingerprint-strings: 
+|   GetRequest: 
+|     HTTP/1.1 202 Accepted
+|     Date: Sun, 12 May 2024 09:09:58 GMT
+|     Content-Type: text/html
+|     Content-Length: 3584
+|     Connection: close
+|     Cache-Control: no-cache
+|     Strict-Transport-Security: max-age=63072000
+|     X-Frame-Options: DENY
+|     X-Content-Type-Options: nosniff
+|     Referrer-Policy: origin-when-cross-origin
+|     X-XSS-Protection: 1; mode=block
+|     <!DOCTYPE HTML>
+|     <html>
+|     <head>
+|     <title>Captcha</title>
+|     <meta name="viewport" content="width=device-width">
+|     <meta charset="utf-8">
+|     <script>
+|     function submitForm() {
+|     http = new XMLHttpRequest();
+|     '/.well-known/baleen/captcha/check';
+|     captcha = new FormData(document.getElementById("captcha-form")).get('g-recaptcha-response')
+|     params = 'g-recaptcha-response=' + encodeURIComponent(captcha) + '&captcha_token=BklKrqyM4lVV79Dl4oRn6Ii8v-nTlg--uG27iEI_dd0mSzbV9Kmr7Z9RRk9j8X_0LRECIy9ZcHkY4oOE88SzCwWpgbXOlWxxHGNQBFHCbOBFcdxOJZ0
+|   HTTPOptions: 
+|     HTTP/1.1 404 Not Found
+|     Date: Sun, 12 May 2024 09:09:58 GMT
+|     Content-Type: text/html
+|     Content-Length: 15532
+|     Connection: close
+|     ETag: "662276d9-3cac"
+|     X-Varnish: 2895789
+|     Age: 0
+|     Via: 1.1 varnish (Varnish/6.0)
+|     Strict-Transport-Security: max-age=63072000
+|     X-Frame-Options: DENY
+|     X-Content-Type-Options: nosniff
+|     Referrer-Policy: origin-when-cross-origin
+|     X-XSS-Protection: 1; mode=block
+|     <!DOCTYPE html>
+|     <html>
+|     <head>
+|     <title>Baleen - Error Page</title>
+|     <meta content="width=device-width" name="viewport"/>
+|     <meta charset="utf-8"/>
+|     <link
+|     href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap"
+|     rel="stylesheet"
+|     <link href="/.well-known/baleen/error-pages-out/assets/style.css" rel="stylesheet"/>
+|     </head>
+|     <body>
+|     <div>
+|     class="error-title">Error 404</h1>
+|     <div class="error-message">Krill not found</div>
+|_    <div c
+2 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port80-TCP:V=7.92%I=7%D=5/12%Time=66408760%P=x86_64-alpine-linux-musl%r
+SF:(GetRequest,165,"HTTP/1\.1\x20301\x20Moved\x20Permanently\r\nDate:\x20S
+SF:un,\x2012\x20May\x202024\x2009:09:52\x20GMT\r\nContent-Type:\x20text/ht
+SF:ml\r\nContent-Length:\x20166\r\nConnection:\x20close\r\nLocation:\x20ht
+SF:tps://www\.monservicesecurise\.ssi\.gouv\.fr/\r\n\r\n<html>\r\n<head><t
+SF:itle>301\x20Moved\x20Permanently</title></head>\r\n<body>\r\n<center><h
+SF:1>301\x20Moved\x20Permanently</h1></center>\r\n<hr><center>openresty</c
+SF:enter>\r\n</body>\r\n</html>\r\n")%r(HTTPOptions,165,"HTTP/1\.1\x20301\
+SF:x20Moved\x20Permanently\r\nDate:\x20Sun,\x2012\x20May\x202024\x2009:09:
+SF:52\x20GMT\r\nContent-Type:\x20text/html\r\nContent-Length:\x20166\r\nCo
+SF:nnection:\x20close\r\nLocation:\x20https://www\.monservicesecurise\.ssi
+SF:\.gouv\.fr/\r\n\r\n<html>\r\n<head><title>301\x20Moved\x20Permanently</
+SF:title></head>\r\n<body>\r\n<center><h1>301\x20Moved\x20Permanently</h1>
+SF:</center>\r\n<hr><center>openresty</center>\r\n</body>\r\n</html>\r\n")
+SF:%r(RTSPRequest,11C,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nDate:\x20Sun,
+SF:\x2012\x20May\x202024\x2009:09:52\x20GMT\r\nContent-Type:\x20text/html\
+SF:r\nContent-Length:\x20154\r\nConnection:\x20close\r\n\r\n<html>\r\n<hea
+SF:d><title>400\x20Bad\x20Request</title></head>\r\n<body>\r\n<center><h1>
+SF:400\x20Bad\x20Request</h1></center>\r\n<hr><center>openresty</center>\r
+SF:\n</body>\r\n</html>\r\n")%r(X11Probe,11C,"HTTP/1\.1\x20400\x20Bad\x20R
+SF:equest\r\nDate:\x20Sun,\x2012\x20May\x202024\x2009:09:52\x20GMT\r\nCont
+SF:ent-Type:\x20text/html\r\nContent-Length:\x20154\r\nConnection:\x20clos
+SF:e\r\n\r\n<html>\r\n<head><title>400\x20Bad\x20Request</title></head>\r\
+SF:n<body>\r\n<center><h1>400\x20Bad\x20Request</h1></center>\r\n<hr><cent
+SF:er>openresty</center>\r\n</body>\r\n</html>\r\n")%r(FourOhFourRequest,1
+SF:88,"HTTP/1\.1\x20301\x20Moved\x20Permanently\r\nDate:\x20Sun,\x2012\x20
+SF:May\x202024\x2009:09:52\x20GMT\r\nContent-Type:\x20text/html\r\nContent
+SF:-Length:\x20166\r\nConnection:\x20close\r\nLocation:\x20https://www\.mo
+SF:nservicesecurise\.ssi\.gouv\.fr/nice%20ports%2C/Tri%6Eity\.txt%2ebak\r\
+SF:n\r\n<html>\r\n<head><title>301\x20Moved\x20Permanently</title></head>\
+SF:r\n<body>\r\n<center><h1>301\x20Moved\x20Permanently</h1></center>\r\n<
+SF:hr><center>openresty</center>\r\n</body>\r\n</html>\r\n");
+==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
+SF-Port443-TCP:V=7.92%T=SSL%I=7%D=5/12%Time=66408766%P=x86_64-alpine-linux
+SF:-musl%r(GetRequest,F4A,"HTTP/1\.1\x20202\x20Accepted\r\nDate:\x20Sun,\x
+SF:2012\x20May\x202024\x2009:09:58\x20GMT\r\nContent-Type:\x20text/html\r\
+SF:nContent-Length:\x203584\r\nConnection:\x20close\r\nCache-Control:\x20n
+SF:o-cache\r\nStrict-Transport-Security:\x20max-age=63072000\r\nX-Frame-Op
+SF:tions:\x20DENY\r\nX-Content-Type-Options:\x20nosniff\r\nReferrer-Policy
+SF::\x20origin-when-cross-origin\r\nX-XSS-Protection:\x201;\x20mode=block\
+SF:r\n\r\n<!DOCTYPE\x20HTML>\n<html>\n\n<head>\n\x20\x20<title>Captcha</ti
+SF:tle>\n\x20\x20<meta\x20name=\"viewport\"\x20content=\"width=device-widt
+SF:h\">\n\x20\x20<meta\x20charset=\"utf-8\">\n\x20\x20<script>\n\x20\x20\x
+SF:20\x20function\x20submitForm\(\)\x20{\n\x20\x20\x20\x20\x20\x20var\x20h
+SF:ttp\x20=\x20new\x20XMLHttpRequest\(\);\n\x20\x20\x20\x20\x20\x20var\x20
+SF:url\x20=\x20'/\.well-known/baleen/captcha/check';\n\x20\x20\x20\x20\x20
+SF:\x20captcha\x20=\x20new\x20FormData\(document\.getElementById\(\"captch
+SF:a-form\"\)\)\.get\('g-recaptcha-response'\)\n\x20\x20\x20\x20\x20\x20va
+SF:r\x20params\x20=\x20'g-recaptcha-response='\x20\+\x20encodeURIComponent
+SF:\(captcha\)\x20\+\x20'&captcha_token=BklKrqyM4lVV79Dl4oRn6Ii8v-nTlg--uG
+SF:27iEI_dd0mSzbV9Kmr7Z9RRk9j8X_0LRECIy9ZcHkY4oOE88SzCwWpgbXOlWxxHGNQBFHCb
+SF:OBFcdxOJZ0")%r(HTTPOptions,3138,"HTTP/1\.1\x20404\x20Not\x20Found\r\nDa
+SF:te:\x20Sun,\x2012\x20May\x202024\x2009:09:58\x20GMT\r\nContent-Type:\x2
+SF:0text/html\r\nContent-Length:\x2015532\r\nConnection:\x20close\r\nETag:
+SF:\x20\"662276d9-3cac\"\r\nX-Varnish:\x202895789\r\nAge:\x200\r\nVia:\x20
+SF:1\.1\x20varnish\x20\(Varnish/6\.0\)\r\nStrict-Transport-Security:\x20ma
+SF:x-age=63072000\r\nX-Frame-Options:\x20DENY\r\nX-Content-Type-Options:\x
+SF:20nosniff\r\nReferrer-Policy:\x20origin-when-cross-origin\r\nX-XSS-Prot
+SF:ection:\x201;\x20mode=block\r\n\r\n<!DOCTYPE\x20html>\n<html>\n<head>\n
+SF:\x20\x20\x20\x20<title>Baleen\x20-\x20Error\x20Page</title>\n\x20\x20\x
+SF:20\x20<meta\x20content=\"width=device-width\"\x20name=\"viewport\"/>\n\
+SF:x20\x20\x20\x20<meta\x20charset=\"utf-8\"/>\n\x20\x20\x20\x20<link\n\x2
+SF:0\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20href=\"https://fonts\.goog
+SF:leapis\.com/css2\?family=Roboto:wght@100;400&display=swap\"\n\x20\x20\x
+SF:20\x20\x20\x20\x20\x20\x20\x20\x20\x20rel=\"stylesheet\"\n\x20\x20\x20\
+SF:x20/>\n\x20\x20\x20\x20<link\x20href=\"/\.well-known/baleen/error-pages
+SF:-out/assets/style\.css\"\x20rel=\"stylesheet\"/>\n</head>\n\n<body>\n<d
+SF:iv>\n\x20\x20\x20\x20<h1\x20class=\"error-title\">Error\x20404</h1>\n\x
+SF:20\x20\x20\x20<div\x20class=\"error-message\">Krill\x20not\x20found</di
+SF:v>\n\x20\x20\x20\x20<div\x20c");
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun May 12 09:10:14 2024 -- 1 IP address (1 host up) scanned in 35.73 seconds

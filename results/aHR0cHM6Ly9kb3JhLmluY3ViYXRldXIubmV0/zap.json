@@ -1,0 +1,1221 @@
+{
+	"@programName": "ZAP",
+	"@version": "2.14.0",
+	"@generated": "Sun, 17 Mar 2024 08:33:00",
+	"site":[ 
+		{
+			"@name": "https://dora.incubateur.net",
+			"@host": "dora.incubateur.net",
+			"@port": "443",
+			"@ssl": "true",
+			"alerts": [ 
+				{
+					"pluginid": "10202",
+					"alertRef": "10202",
+					"alert": "Absence of Anti-CSRF Tokens",
+					"name": "Absence of Anti-CSRF Tokens",
+					"riskcode": "2",
+					"confidence": "1",
+					"riskdesc": "Medium (Low)",
+					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"svelte-qvm6rm\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"address\" ]."
+						},
+						{
+							"uri": "https://dora.incubateur.net/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"svelte-qvm6rm\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"address\" ]."
+						},
+						{
+							"uri": "https://dora.incubateur.net/?address=688+Zaproxy+Ridge",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"svelte-qvm6rm\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"address\" ]."
+						},
+						{
+							"uri": "https://dora.incubateur.net/contribuer/saisie",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form novalidate>",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"\" ]."
+						}
+					],
+					"count": "4",
+					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"address\" ].</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-4",
+					"alert": "CSP: Wildcard Directive",
+					"name": "CSP: Wildcard Directive",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-VdOghryPs+UYMJTZbmrD0A=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nframe-ancestors, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
+							"uri": "https://dora.incubateur.net",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-usHv51EUEeuciLNvGUKmSw=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nframe-ancestors, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
+							"uri": "https://dora.incubateur.net/cgu",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-VGJjZc8eSPNTuxavpyXZ5w=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nframe-ancestors, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
+							"uri": "https://dora.incubateur.net/contribuer",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-+ARFefcZSodrbdExhScIAw=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nframe-ancestors, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
+							"uri": "https://dora.incubateur.net/mentions-legales",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-Ub30awYpb+by5sw6kUPOkg=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nframe-ancestors, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						},
+						{
+							"uri": "https://dora.incubateur.net/services/creer",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-11zBQSPe70/IODeFZe1dJQ=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: \nframe-ancestors, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+						}
+					],
+					"count": "6",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined: </p><p>frame-ancestors, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-6",
+					"alert": "CSP: style-src unsafe-inline",
+					"name": "CSP: style-src unsafe-inline",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-VdOghryPs+UYMJTZbmrD0A=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://dora.incubateur.net",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-usHv51EUEeuciLNvGUKmSw=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://dora.incubateur.net/cgu",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-VGJjZc8eSPNTuxavpyXZ5w=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://dora.incubateur.net/contribuer",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-+ARFefcZSodrbdExhScIAw=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://dora.incubateur.net/mentions-legales",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-Ub30awYpb+by5sw6kUPOkg=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"uri": "https://dora.incubateur.net/services/creer",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.beta.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; worker-src 'self' blob:; connect-src 'self' https://api.dora.incubateur.net https://*.sentry.gip-inclusion.org https://*.sentry.gip-inclusion.cloud-ed.fr https://sentry.gip-inclusion.org https://sentry.gip-inclusion.cloud-ed.fr https://api-adresse.data.gouv.fr/ https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr; font-src 'self'; img-src 'self' data:; script-src 'self' 'strict-dynamic' 'unsafe-inline' https://tally.so/widgets/embed.js 'nonce-11zBQSPe70/IODeFZe1dJQ=='; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline'; base-uri 'self'",
+							"otherinfo": "style-src includes unsafe-inline."
+						}
+					],
+					"count": "6",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10038",
+					"alertRef": "10038-1",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "337"
+				},
+				{
+					"pluginid": "10110",
+					"alertRef": "10110",
+					"alert": "Dangerous JS Functions",
+					"name": "Dangerous JS Functions",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/entry/app.u-9osAjV.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "eval",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>See the references for security advice on the use of these functions.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://angular.io/guide/security</p>",
+					"cweid": "749",
+					"wascid": "-1",
+					"sourceid": "124"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063-1",
+					"alert": "Permissions Policy Header Not Set",
+					"name": "Permissions Policy Header Not Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/auth.GBMgzKNY.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/entry.DwNXzNQU.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/env.DL1HufLu.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/index.D2QqI2NE.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/load.Bfm_nb9j.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/scheduler.B7N5-LaI.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/semanticAttributes.D-8TOI23.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/sentry-release-injection-file.CI9jDzxT.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/stores.BdLmBPlu.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/entry/start.DY2tFSjD.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server - Unix</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/basic-input-field.B-lRvE5O.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2013269055",
+							"otherinfo": "2013269055, which evaluates to: 2033-10-18 17:24:15"
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/select.F6Re06Yz.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1610612736",
+							"otherinfo": "1610612736, which evaluates to: 2021-01-14 08:25:36"
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/select.F6Re06Yz.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1610612760",
+							"otherinfo": "1610612760, which evaluates to: 2021-01-14 08:26:00"
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/nodes/24.C-lEoJ2o.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1675174056",
+							"otherinfo": "1675174056, which evaluates to: 2023-01-31 14:07:36"
+						},
+						{
+							"uri": "https://dora.incubateur.net/politique-de-confidentialite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1675174056",
+							"otherinfo": "1675174056, which evaluates to: 2023-01-31 14:07:36"
+						}
+					],
+					"count": "5",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>2013269055, which evaluates to: 2033-10-18 17:24:15</p>",
+					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "327"
+				},
+				{
+					"pluginid": "10021",
+					"alertRef": "10021",
+					"alert": "X-Content-Type-Options Header Missing",
+					"name": "X-Content-Type-Options Header Missing",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/0.77ggkCdo.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/7.CglxIoW9.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/field-wrapper.BdRwC6TB.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/modal.HT6512dc.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/radio-buttons.D7-uZUmf.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/select.DDb_lgVT.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/service-search.iWY-6st-.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/tally-popup.BJIsYb74.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/scheduler.B7N5-LaI.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/sentry-release-injection-file.CI9jDzxT.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/stores.BdLmBPlu.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/entry/start.DY2tFSjD.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						}
+					],
+					"count": "12",
+					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
+					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "95"
+				},
+				{
+					"pluginid": "10094",
+					"alertRef": "10094-3",
+					"alert": "Base64 Disclosure",
+					"name": "Base64 Disclosure",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/channel/UCadIsy9gfHgLmLkutRGC5ew/playlists",
+							"otherinfo": "r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP&\uFFFD\"\u033D\uFFFD\uFFFD\uFFFD.b\uFFFD\uFFFDF\\x000b\uFFFD\uFFFD\uFFFD\uFFFDZ\uFFFDX\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://dora.incubateur.net/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/channel/UCadIsy9gfHgLmLkutRGC5ew/playlists",
+							"otherinfo": "r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP&\uFFFD\"\u033D\uFFFD\uFFFD\uFFFD.b\uFFFD\uFFFDF\\x000b\uFFFD\uFFFD\uFFFD\uFFFDZ\uFFFDX\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/misc.Cx1mvKWJ.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "disableForced4SpacesIndentedSublists",
+							"otherinfo": "v+\\x001anW\uFFFD\uFFFD\uFFFD\\x001ew\uFFFD\uFFFDi\u01EC\"w^\uFFFD\u05DDJ\uFFFD\uFFFD\uFFFDl"
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/nodes/0.CK5CWV8G.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/serve/MUIEAEkY4naptXBIq5NdRg5UPxP1wmwbGCinne5c1gynY-wfrZ0Dz0QP_NqkXtfyYqhdaq3AO8VFZJ9giRi9ZT0eah7Ut2U0LeKSTVIHQb_5nhvTLUMWXo9ZMeIYCHVlzmjkXGQ66S5ewcYpSADUgV--2RVZ_mrnsRJQoCNwZ8y-sWzfQsEzfKuTA7SLbZ_dWeqaigudym3EaiHT",
+							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD{\uFFFD\\x0014 @\\x0004\uFFFD\uFFFD'j\uFFFDW\\x0004\uFFFD\uFFFD5\uFFFD`\uFFFDC\uFFFD?\\&\uFFFD\uFFFD\uFFFD\uFFFDy\uFFFD\uFFFD\uFFFD`\uFFFDv>\uFFFD\uFFFD\uFFFD\uFFFD<\uFFFD@\uFFFD\u036AE\uFFFD&*\uFFFD\u05AA\uFFFD\\x0003\uFFFDTVI\uFFFD\\x0008\uFFFD\uFFFD\uFFFDS\uFFFD\uFFFD\uFFFDKvSB\uFFFD)$\uFFFD t\\x001b\uFFFD\uFFFD\uFFFD2\uFFFD1e\uFFFD\uFFFD\uFFFD\\x001e!\uFFFD\uFFFDV\\\uFFFDE\uFFFDC\uFFFD\uFFFD\uFFFD\uFFFD\\x001cb\uFFFD\uFFFD\rH\\x0015\uFFFD\uFFFDU\uFFFD\uFFFD{\\x0011%\n\\x00027\\x0006|\uFFFD\uFFFD\\x0016\uFFFD\uFFFD,\\x00137\u02B90;H\uFFFD\uFFFD\uFFFD\u055E\uFFFD\uFFFD\uFFFD\uFFFD\u0726\uFFFDF\uFFFD\\x001d"
+						},
+						{
+							"uri": "https://dora.incubateur.net/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/channel/UCadIsy9gfHgLmLkutRGC5ew/playlists",
+							"otherinfo": "r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP&\uFFFD\"\u033D\uFFFD\uFFFD\uFFFD.b\uFFFD\uFFFDF\\x000b\uFFFD\uFFFD\uFFFD\uFFFDZ\uFFFDX\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://dora.incubateur.net/cgu",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/channel/UCadIsy9gfHgLmLkutRGC5ew/playlists",
+							"otherinfo": "r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP&\uFFFD\"\u033D\uFFFD\uFFFD\uFFFD.b\uFFFD\uFFFDF\\x000b\uFFFD\uFFFD\uFFFD\uFFFDZ\uFFFDX\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://dora.incubateur.net/contribuer",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/channel/UCadIsy9gfHgLmLkutRGC5ew/playlists",
+							"otherinfo": "r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP&\uFFFD\"\u033D\uFFFD\uFFFD\uFFFD.b\uFFFD\uFFFDF\\x000b\uFFFD\uFFFD\uFFFD\uFFFDZ\uFFFDX\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://dora.incubateur.net/contribuer/saisie",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/channel/UCadIsy9gfHgLmLkutRGC5ew/playlists",
+							"otherinfo": "r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP&\uFFFD\"\u033D\uFFFD\uFFFD\uFFFD.b\uFFFD\uFFFDF\\x000b\uFFFD\uFFFD\uFFFD\uFFFDZ\uFFFDX\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://dora.incubateur.net/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/channel/UCadIsy9gfHgLmLkutRGC5ew/playlists",
+							"otherinfo": "r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP&\uFFFD\"\u033D\uFFFD\uFFFD\uFFFD.b\uFFFD\uFFFDF\\x000b\uFFFD\uFFFD\uFFFD\uFFFDZ\uFFFDX\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://dora.incubateur.net/nos-partenaires",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/channel/UCadIsy9gfHgLmLkutRGC5ew/playlists",
+							"otherinfo": "r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP&\uFFFD\"\u033D\uFFFD\uFFFD\uFFFD.b\uFFFD\uFFFDF\\x000b\uFFFD\uFFFD\uFFFD\uFFFDZ\uFFFDX\uFFFD\uFFFD"
+						},
+						{
+							"uri": "https://dora.incubateur.net/politique-de-confidentialite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2Fpolitique-de-confidentialite",
+							"otherinfo": "\uFFFDZh\uFFFD+b\uFFFD\uFFFDu\uF722w\uFFFDu\uFFFD\uD269b\uFFFD"
+						}
+					],
+					"count": "11",
+					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
+					"otherinfo": "<p>r\uFFFD\uFFFDr\\x0016\uFFFD\uFFFD\uFFFDP&\uFFFD\"\u033D\uFFFD\uFFFD\uFFFD.b\uFFFD\uFFFDF\\x000b\uFFFD\uFFFD\uFFFD\uFFFDZ\uFFFDX\uFFFD\uFFFD</p>",
+					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10019",
+					"alertRef": "10019-1",
+					"alert": "Content-Type Header Missing",
+					"name": "Content-Type Header Missing",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The Content-Type header was either missing or empty.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/favicon.v2.ico",
+							"method": "GET",
+							"param": "content-type",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
+					"cweid": "345",
+					"wascid": "12",
+					"sourceid": "225"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/auth.GBMgzKNY.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"import{A as p}from\"./env.DL1HufLu.js\";import\"./sentry-release-injection-file.CI9jDzxT.js\";import{w as c}from\"./entry.DwNXzNQU.js\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/cgu.C_1Djr-F.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"import{J as n}from\"./scheduler.B7N5-LaI.js\";import{t as s,g as c}from\"./auth.GBMgzKNY.js\";import{C as e}from\"./version.NPmAcTCj.\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/entry.DwNXzNQU.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected 2 times, the first in the element starting with: \"import{n as it,s as ie,Q as ce,o as le}from\"./scheduler.B7N5-LaI.js\";new URL(\"sveltekit-internal://\");function fe(t,n){return t=\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/hub.CqwJL_dy.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "debug",
+							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in the element starting with: \"const ft=Object.prototype.toString;function kt(e){switch(ft.call(e)){case\"[object Error]\":case\"[object Exception]\":case\"[object \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/hub.CqwJL_dy.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"`);for(let o=r;o<i.length;o++){const c=i[o];if(c.length>1024)continue;const a=nt.test(c)?c.replace(nt,\"$1\"):c;if(!a.match(/\\S*Er\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/index.D2QqI2NE.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"var Z=Object.defineProperty;var k=(t,e,n)=>e in t?Z(t,e,{enumerable:!0,configurable:!0,writable:!0,value:n}):t[e]=n;var M=(t,e,n\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/index.DjEGNnd9.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"import{H as e,R as o}from\"./entry.DwNXzNQU.js\";function i(r,t){throw new e(r,t)}function c(r,t){throw new o(r,t.toString())}new \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/load.Bfm_nb9j.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"import{b as i,o as c,c as p}from\"./hub.CqwJL_dy.js\";import{s as l,S as d,h as f}from\"./semanticAttributes.D-8TOI23.js\";function \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/logger.mn2qY3wT.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"import\"./entry.DwNXzNQU.js\";import\"./sentry-release-injection-file.CI9jDzxT.js\";import{c as r,a}from\"./hub.CqwJL_dy.js\";function\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/scheduler.B7N5-LaI.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"var W=Object.defineProperty;var I=(t,e,n)=>e in t?W(t,e,{enumerable:!0,configurable:!0,writable:!0,value:n}):t[e]=n;var f=(t,e,n\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/semanticAttributes.D-8TOI23.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"import{i as E,g as C,r as g,s as R,w as A,d as u,e as d,f as N,h,j as y,b as T,k as O}from\"./hub.CqwJL_dy.js\";function P(t,n,e=(\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/stores.BdLmBPlu.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"import{s as r}from\"./entry.DwNXzNQU.js\";const e=()=>{const s=r;return{page:{subscribe:s.page.subscribe},navigating:{subscribe:s.\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/entry/start.DY2tFSjD.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"import{c as a}from\"../chunks/entry.DwNXzNQU.js\";export{a as start};\", see evidence field for the suspicious comment/snippet."
+						}
+					],
+					"count": "13",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"import{A as p}from\"./env.DL1HufLu.js\";import\"./sentry-release-injection-file.CI9jDzxT.js\";import{w as c}from\"./entry.DwNXzNQU.js\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "121"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/services/creer",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"11zBQSPe70/IODeFZe1dJQ==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_xg8aydM9.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"uri": "https://dora.incubateur.net/stats",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"RCJxIAkFiS1h+IIiDpMj0w==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_xg8aydM9.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						}
+					],
+					"count": "2",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "169"
+				},
+				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/accessibilite",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/cgu",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/contribuer",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/mentions-legales",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/nos-partenaires",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/politique-de-confidentialite",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/robots.txt",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/services/creer",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/stats",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-3",
+					"alert": "Sec-Fetch-Dest Header is Missing",
+					"name": "Sec-Fetch-Dest Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/7.CglxIoW9.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/field-wrapper.BdRwC6TB.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "101"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-2",
+					"alert": "Sec-Fetch-Mode Header is Missing",
+					"name": "Sec-Fetch-Mode Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/7.CglxIoW9.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/field-wrapper.BdRwC6TB.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "101"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-1",
+					"alert": "Sec-Fetch-Site Header is Missing",
+					"name": "Sec-Fetch-Site Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/7.CglxIoW9.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/field-wrapper.BdRwC6TB.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "101"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-4",
+					"alert": "Sec-Fetch-User Header is Missing",
+					"name": "Sec-Fetch-User Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/7.CglxIoW9.css",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/field-wrapper.BdRwC6TB.css",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "101"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users.  If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/0.77ggkCdo.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/7.CglxIoW9.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/field-wrapper.BdRwC6TB.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/modal.HT6512dc.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/radio-buttons.D7-uZUmf.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/select.DDb_lgVT.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/service-search.iWY-6st-.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/assets/tally-popup.BJIsYb74.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/scheduler.B7N5-LaI.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/chunks/sentry-release-injection-file.CI9jDzxT.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/_app/immutable/entry/start.DY2tFSjD.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"uri": "https://dora.incubateur.net/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						}
+					],
+					"count": "12",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information.  If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request. </p>",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "95"
+				}
+			]
+		}
+	]
+}
