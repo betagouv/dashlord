@@ -1,0 +1,2460 @@
+{
+	"@programName": "ZAP",
+	"@version": "2.16.0",
+	"@generated": "Sun, 2 Mar 2025 07:11:25",
+	"site":[ 
+		{
+			"@name": "https://www.jeveuxaider.gouv.fr",
+			"@host": "www.jeveuxaider.gouv.fr",
+			"@port": "443",
+			"@ssl": "true",
+			"alerts": [ 
+				{
+					"pluginid": "10062",
+					"alertRef": "10062",
+					"alert": "PII Disclosure",
+					"name": "PII Disclosure",
+					"riskcode": "3",
+					"confidence": "3",
+					"riskdesc": "High (High)",
+					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
+					"instances":[ 
+						{
+							"id": "254",
+							"uri": "https://www.jeveuxaider.gouv.fr/organisations/52-restos-du-coeur-47",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "38973714900044",
+							"otherinfo": "Credit Card Type detected: DinersClub\nBank Identification Number: 389737\nBrand: DISCOVER\nCategory: BUSINESS CARD\nIssuer: "
+						}
+					],
+					"count": "1",
+					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
+					"otherinfo": "<p>Credit Card Type detected: DinersClub</p><p>Bank Identification Number: 389737</p><p>Brand: DISCOVER</p><p>Category: BUSINESS CARD</p><p>Issuer: </p>",
+					"reference": "",
+					"cweid": "359",
+					"wascid": "13",
+					"sourceid": "17295"
+				},
+				{
+					"pluginid": "10038",
+					"alertRef": "10038-1",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"id": "10",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "149",
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "70",
+							"uri": "https://www.jeveuxaider.gouv.fr/*",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "162",
+							"uri": "https://www.jeveuxaider.gouv.fr/en-ce-moment",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "178",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "156",
+							"uri": "https://www.jeveuxaider.gouv.fr/inscription/responsable",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "110",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "173",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "169",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat?type=Mission%2520%C3%A0%2520distance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "193",
+							"uri": "https://www.jeveuxaider.gouv.fr/organisations",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "108",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10098",
+					"alertRef": "10098",
+					"alert": "Cross-Domain Misconfiguration",
+					"name": "Cross-Domain Misconfiguration",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.</p>",
+					"instances":[ 
+						{
+							"id": "227",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Banner.F7xahtZq.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "159",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/D1-tuuHm.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "80",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/entry.DpDmy2pG.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "229",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Header.DjdjO7Hb.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "224",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/HeaderBanner.CQtEcGdW.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "232",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Heading.B2d0t4F5.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "236",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/index.CLUeDVDv.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "238",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/InputAutocomplete.BPHa6hTg.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "231",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Link.BKLg8Omi.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "240",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Select.rnWcSPtd.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "234",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/SelectAutocomplete.CL3Yf8aR.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "84",
+							"uri": "https://www.jeveuxaider.gouv.fr/favicon.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						}
+					],
+					"count": "12",
+					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
+					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
+					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
+					"cweid": "264",
+					"wascid": "14",
+					"sourceid": "17140"
+				},
+				{
+					"pluginid": "10020",
+					"alertRef": "10020-1",
+					"alert": "Missing Anti-clickjacking Header",
+					"name": "Missing Anti-clickjacking Header",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
+					"instances":[ 
+						{
+							"id": "4",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "147",
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "196",
+							"uri": "https://www.jeveuxaider.gouv.fr/activites/alphabetisation-apprentissage-du-francais-fle",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "161",
+							"uri": "https://www.jeveuxaider.gouv.fr/en-ce-moment",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "176",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "155",
+							"uri": "https://www.jeveuxaider.gouv.fr/inscription/responsable",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "94",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "170",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "167",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat?type=Mission%2520%C3%A0%2520distance",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "192",
+							"uri": "https://www.jeveuxaider.gouv.fr/organisations",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "91",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
+					"cweid": "1021",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "90003",
+					"alertRef": "90003",
+					"alert": "Sub Resource Integrity Attribute Missing",
+					"name": "Sub Resource Integrity Attribute Missing",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
+					"instances":[ 
+						{
+							"id": "187",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"apple-touch-icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "186",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" sizes=\"192x192\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "185",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" sizes=\"32x32\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "184",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"profile\" href=\"https://gmpg.org/xfn/11\">",
+							"otherinfo": ""
+						},
+						{
+							"id": "190",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "189",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "188",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "219",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"apple-touch-icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "218",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" sizes=\"192x192\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "217",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" sizes=\"32x32\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "216",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"profile\" href=\"https://gmpg.org/xfn/11\">",
+							"otherinfo": ""
+						},
+						{
+							"id": "222",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "221",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "220",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "202",
+							"uri": "https://www.jeveuxaider.gouv.fr/fresque-benevolat",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link href=\"https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap\" rel=\"stylesheet\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "201",
+							"uri": "https://www.jeveuxaider.gouv.fr/fresque-benevolat",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preconnect\" href=\"https://fonts.bunny.net\">",
+							"otherinfo": ""
+						},
+						{
+							"id": "203",
+							"uri": "https://www.jeveuxaider.gouv.fr/fresque-benevolat",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/script.js\"></script>",
+							"otherinfo": ""
+						}
+					],
+					"count": "17",
+					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
+					"cweid": "345",
+					"wascid": "15",
+					"sourceid": "3651"
+				},
+				{
+					"pluginid": "90022",
+					"alertRef": "90022",
+					"alert": "Application Error Disclosure",
+					"name": "Application Error Disclosure",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>",
+					"instances":[ 
+						{
+							"id": "255",
+							"uri": "https://www.jeveuxaider.gouv.fr/organisations/152-aaeena-association-des-anciens-eleves-de-lena",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"id": "257",
+							"uri": "https://www.jeveuxaider.gouv.fr/organisations/153-association-pain-partage",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"id": "259",
+							"uri": "https://www.jeveuxaider.gouv.fr/organisations/158-banque-alimentaire-de-bayonne-et-du-pays-basque",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						},
+						{
+							"id": "261",
+							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/1-benenova",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "HTTP/1.1 500 Internal Server Error",
+							"otherinfo": ""
+						}
+					],
+					"count": "4",
+					"solution": "<p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "17357"
+				},
+				{
+					"pluginid": "10010",
+					"alertRef": "10010",
+					"alert": "Cookie No HttpOnly Flag",
+					"name": "Cookie No HttpOnly Flag",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</p>",
+					"instances":[ 
+						{
+							"id": "198",
+							"uri": "https://www.jeveuxaider.gouv.fr/fresque-benevolat",
+							"method": "GET",
+							"param": "XSRF-TOKEN",
+							"attack": "",
+							"evidence": "Set-Cookie: XSRF-TOKEN",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that the HttpOnly flag is set for all cookies.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
+					"cweid": "1004",
+					"wascid": "13",
+					"sourceid": "16959"
+				},
+				{
+					"pluginid": "10017",
+					"alertRef": "10017",
+					"alert": "Cross-Domain JavaScript Source File Inclusion",
+					"name": "Cross-Domain JavaScript Source File Inclusion",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
+					"instances":[ 
+						{
+							"id": "207",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
+							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
+							"attack": "",
+							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "208",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
+							"param": "https://plausible.io/js/plausible.js",
+							"attack": "",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "209",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
+							"param": "https://www.googletagmanager.com/gtag/js?id=AW-10823658855",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "179",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
+							"attack": "",
+							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "180",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "https://plausible.io/js/plausible.js",
+							"attack": "",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "181",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "https://www.googletagmanager.com/gtag/js?id=AW-10823658855",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "210",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/communication/",
+							"method": "GET",
+							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
+							"attack": "",
+							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "211",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/communication/",
+							"method": "GET",
+							"param": "https://plausible.io/js/plausible.js",
+							"attack": "",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "212",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/communication/",
+							"method": "GET",
+							"param": "https://www.googletagmanager.com/gtag/js?id=AW-10823658855",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "204",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"method": "GET",
+							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
+							"attack": "",
+							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "205",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"method": "GET",
+							"param": "https://plausible.io/js/plausible.js",
+							"attack": "",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "206",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"method": "GET",
+							"param": "https://www.googletagmanager.com/gtag/js?id=AW-10823658855",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "199",
+							"uri": "https://www.jeveuxaider.gouv.fr/fresque-benevolat",
+							"method": "GET",
+							"param": "https://plausible.io/js/script.js",
+							"attack": "",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/script.js\"></script>",
+							"otherinfo": ""
+						}
+					],
+					"count": "13",
+					"solution": "<p>Ensure JavaScript source files are loaded from only trusted sources, and the sources can't be controlled by end users of the application.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "829",
+					"wascid": "15",
+					"sourceid": "17040"
+				},
+				{
+					"pluginid": "10023",
+					"alertRef": "10023",
+					"alert": "Information Disclosure - Debug Error Messages",
+					"name": "Information Disclosure - Debug Error Messages",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The response appeared to contain common error messages returned by platforms such as ASP.NET, and Web-servers such as IIS and Apache. You can configure the list of common debug messages.</p>",
+					"instances":[ 
+						{
+							"id": "256",
+							"uri": "https://www.jeveuxaider.gouv.fr/organisations/152-aaeena-association-des-anciens-eleves-de-lena",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "internal server error",
+							"otherinfo": ""
+						},
+						{
+							"id": "258",
+							"uri": "https://www.jeveuxaider.gouv.fr/organisations/153-association-pain-partage",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "internal server error",
+							"otherinfo": ""
+						},
+						{
+							"id": "260",
+							"uri": "https://www.jeveuxaider.gouv.fr/organisations/158-banque-alimentaire-de-bayonne-et-du-pays-basque",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "internal server error",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Disable debugging messages before pushing to production.</p>",
+					"otherinfo": "",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "17357"
+				},
+				{
+					"pluginid": "90004",
+					"alertRef": "90004-1",
+					"alert": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"name": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
+					"instances":[ 
+						{
+							"id": "66",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "106",
+							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/pages.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "102",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/builds/meta/691cc7c6-1cf1-4d4c-8cd5-4aaa2b6d7c87.json",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "127",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "120",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "3",
+							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "78",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "67",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "128",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "121",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "68",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "129",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "122",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "13",
+					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
+					"cweid": "693",
+					"wascid": "14",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063-1",
+					"alert": "Permissions Policy Header Not Set",
+					"name": "Permissions Policy Header Not Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+					"instances":[ 
+						{
+							"id": "65",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "153",
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "101",
+							"uri": "https://www.jeveuxaider.gouv.fr/*",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "165",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/D1-tuuHm.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "164",
+							"uri": "https://www.jeveuxaider.gouv.fr/en-ce-moment",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "183",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "158",
+							"uri": "https://www.jeveuxaider.gouv.fr/inscription/responsable",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "126",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "177",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "172",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat?type=Mission%2520%C3%A0%2520distance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "119",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10037",
+					"alertRef": "10037",
+					"alert": "Server Leaks Information via \"X-Powered-By\" HTTP Response Header Field(s)",
+					"name": "Server Leaks Information via \"X-Powered-By\" HTTP Response Header Field(s)",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The web/application server is leaking information via one or more \"X-Powered-By\" HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</p>",
+					"instances":[ 
+						{
+							"id": "63",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "152",
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "96",
+							"uri": "https://www.jeveuxaider.gouv.fr/*",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "197",
+							"uri": "https://www.jeveuxaider.gouv.fr/activites/alphabetisation-apprentissage-du-francais-fle",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "163",
+							"uri": "https://www.jeveuxaider.gouv.fr/en-ce-moment",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "157",
+							"uri": "https://www.jeveuxaider.gouv.fr/inscription/responsable",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "124",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "174",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "171",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat?type=Mission%2520%C3%A0%2520distance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "194",
+							"uri": "https://www.jeveuxaider.gouv.fr/organisations",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "117",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress \"X-Powered-By\" headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
+					"instances":[ 
+						{
+							"id": "13",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1737022153",
+							"otherinfo": "1737022153, which evaluates to: 2025-01-16 10:09:13."
+						},
+						{
+							"id": "43",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1737022174",
+							"otherinfo": "1737022174, which evaluates to: 2025-01-16 10:09:34."
+						},
+						{
+							"id": "28",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1737369547",
+							"otherinfo": "1737369547, which evaluates to: 2025-01-20 10:39:07."
+						},
+						{
+							"id": "35",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1737369553",
+							"otherinfo": "1737369553, which evaluates to: 2025-01-20 10:39:13."
+						},
+						{
+							"id": "21",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1737369562",
+							"otherinfo": "1737369562, which evaluates to: 2025-01-20 10:39:22."
+						}
+					],
+					"count": "5",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>1737022153, which evaluates to: 2025-01-16 10:09:13.</p>",
+					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10021",
+					"alertRef": "10021",
+					"alert": "X-Content-Type-Options Header Missing",
+					"name": "X-Content-Type-Options Header Missing",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+					"instances":[ 
+						{
+							"id": "62",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "142",
+							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/departements.xml",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "104",
+							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/pages.xml",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "144",
+							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/reseaux.xml",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "99",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/builds/meta/691cc7c6-1cf1-4d4c-8cd5-4aaa2b6d7c87.json",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "89",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/entry.DpDmy2pG.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "86",
+							"uri": "https://www.jeveuxaider.gouv.fr/favicon.png",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "123",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "116",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "1",
+							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "74",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
+					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10111",
+					"alertRef": "10111",
+					"alert": "Authentication Request Identified",
+					"name": "Authentication Request Identified",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>The given request has been identified as an authentication request. The 'Other Info' field contains a set of key=value lines which identify any relevant fields. If the request is in a context which has an Authentication Method set to \"Auto-Detect\" then this rule will change the authentication to match the request identified.</p>",
+					"instances":[ 
+						{
+							"id": "253",
+							"uri": "https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "password",
+							"otherinfo": "userParam=email\nuserValue=zaproxy@example.com\npasswordParam=password\nreferer=https://www.jeveuxaider.gouv.fr/login"
+						}
+					],
+					"count": "1",
+					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
+					"otherinfo": "<p>userParam=email</p><p>userValue=zaproxy@example.com</p><p>passwordParam=password</p><p>referer=https://www.jeveuxaider.gouv.fr/login</p>",
+					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "17249"
+				},
+				{
+					"pluginid": "10094",
+					"alertRef": "10094-3",
+					"alert": "Base64 Disclosure",
+					"name": "Base64 Disclosure",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
+					"instances":[ 
+						{
+							"id": "95",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "DISnitZp80zFZ1haUqW6hK05-JxAx5myd4DfCST2JAo",
+							"otherinfo": "\\x000c\uFFFD\uFFFD\uFFFD\uFFFDi\uFFFDL\uFFFDgXZR\uFFFD\uFFFD\uFFFD\uFFFD9\uFFFD\uFFFD@\u01D9\uFFFDw\uFFFD\uFFFD\t$\uFFFD$\n"
+						},
+						{
+							"id": "154",
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "DISnitZp80zFZ1haUqW6hK05-JxAx5myd4DfCST2JAo",
+							"otherinfo": "\\x000c\uFFFD\uFFFD\uFFFD\uFFFDi\uFFFDL\uFFFDgXZR\uFFFD\uFFFD\uFFFD\uFFFD9\uFFFD\uFFFD@\u01D9\uFFFDw\uFFFD\uFFFD\t$\uFFFD$\n"
+						},
+						{
+							"id": "132",
+							"uri": "https://www.jeveuxaider.gouv.fr/*",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "0NsllqYC1WoW3UcctUd3UBABzvJgFfhq99AxFDt0",
+							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
+						},
+						{
+							"id": "166",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/D1-tuuHm.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
+							"otherinfo": "\\x0000\\x0010\uFFFD\\x0010Q\uFFFD \uFFFD\uFFFD0\u04CFA\\x0014\uFFFDQU\uFFFDa\uFFFD\uFFFDq\u05DF\uFFFD\\x0018\uFFFD\uFFFDY\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06EF\uFFFD\\x001c\uFFFD\uFFFD]\uFFFD\u37BB\uFFFD"
+						},
+						{
+							"id": "168",
+							"uri": "https://www.jeveuxaider.gouv.fr/en-ce-moment",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "0NsllqYC1WoW3UcctUd3UBABzvJgFfhq99AxFDt0",
+							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
+						},
+						{
+							"id": "191",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/uploads/2025/01/AdobeStock_589439071-scaled",
+							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFDhi\uFFFD?\uFFFDM\uFFFD\uFFFDM\\x0001\uFFFD\\x001by+hrO\uFFFD\uFFFD\uFFFD7\uFFFDN\uFFFD\uFFFD\uFFFD\\x001a\uFFFD\uFFFD"
+						},
+						{
+							"id": "160",
+							"uri": "https://www.jeveuxaider.gouv.fr/inscription/responsable",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "0NsllqYC1WoW3UcctUd3UBABzvJgFfhq99AxFDt0",
+							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
+						},
+						{
+							"id": "140",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "0NsllqYC1WoW3UcctUd3UBABzvJgFfhq99AxFDt0",
+							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
+						},
+						{
+							"id": "195",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/public/production/8474/responsive/h3YXPJ7jZgDJxpp___medium_1280_720",
+							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u9B87nr\u0628\uFFFD\uFFFD8\uFFFD\uFFFDz\uFFFDh\uFFFD\u022F{\uFFFDwas\uFFFD\uFFFD6`\\x000c\uFFFDi\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDb\uFFFDo\uFFFD\uFFFD\uFFFD?\uFFFDm"
+						},
+						{
+							"id": "175",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat?type=Mission%2520%C3%A0%2520distance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "com/public/production/16693/responsive/eXPWII6JeqiyUB6dH0FoRZKobiOy1H___medium_1280_720",
+							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u9B87nr\u0628\uFFFD\uFFFDz\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD)\uFFFD{\"\uFFFD\uFFFD\uFFFD\\\uFFFD\uFFFD#\uFFFD^\uFFFD,\uFFFD\\x0007\uFFFDG\uFFFDZ\\x0011d\uFFFD\\x001b\uFFFD\uFFFD\\x001f\uFFFD\uFFFD\uFFFD\uFFFDb\uFFFDo\uFFFD\uFFFD\uFFFD?\uFFFDm"
+						},
+						{
+							"id": "139",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "0NsllqYC1WoW3UcctUd3UBABzvJgFfhq99AxFDt0",
+							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
+						}
+					],
+					"count": "11",
+					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
+					"otherinfo": "<p>\\x000c\uFFFD\uFFFD\uFFFD\uFFFDi\uFFFDL\uFFFDgXZR\uFFFD\uFFFD\uFFFD\uFFFD9\uFFFD\uFFFD@\u01D9\uFFFDw\uFFFD\uFFFD\t$\uFFFD$</p><p></p>",
+					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10024",
+					"alertRef": "10024",
+					"alert": "Information Disclosure - Sensitive Information in URL",
+					"name": "Information Disclosure - Sensitive Information in URL",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The request appeared to contain sensitive information leaked in the URL. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.</p>",
+					"instances":[ 
+						{
+							"id": "247",
+							"uri": "https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "zaproxy@example.com",
+							"otherinfo": "The URL contains email address(es)."
+						},
+						{
+							"id": "248",
+							"uri": "https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP",
+							"method": "GET",
+							"param": "password",
+							"attack": "",
+							"evidence": "password",
+							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: pass\npassword"
+						},
+						{
+							"id": "251",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset?email=zaproxy%40example.com",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "zaproxy@example.com",
+							"otherinfo": "The URL contains email address(es)."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Do not pass sensitive information in URIs.</p>",
+					"otherinfo": "<p>The URL contains email address(es).</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "17249"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"instances":[ 
+						{
+							"id": "11",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "admin",
+							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in the element starting with: \"<script>window.__NUXT__={};window.__NUXT__.config={public:{apiUrl:\"https://www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxai\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "12",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-nuxt-data=\"nuxt-app\" data-ssr=\"true\" id=\"__NUXT_DATA__\">[[\"ShallowReactive\",1],{\"data\":2,\"s\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "150",
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "admin",
+							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in the element starting with: \"<script>window.__NUXT__={};window.__NUXT__.config={public:{apiUrl:\"https://www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxai\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "151",
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-nuxt-data=\"nuxt-app\" data-ssr=\"true\" id=\"__NUXT_DATA__\">[[\"ShallowReactive\",1],{\"data\":2,\"s\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "92",
+							"uri": "https://www.jeveuxaider.gouv.fr/*",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "admin",
+							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in the element starting with: \"<script>window.__NUXT__={};window.__NUXT__.config={public:{apiUrl:\"https://www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxai\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "93",
+							"uri": "https://www.jeveuxaider.gouv.fr/*",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-nuxt-data=\"nuxt-app\" data-ssr=\"true\" id=\"__NUXT_DATA__\">[[\"ShallowReactive\",1],{\"error\":2,\"\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "114",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "admin",
+							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in the element starting with: \"<script>window.__NUXT__={};window.__NUXT__.config={public:{apiUrl:\"https://www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxai\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "115",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-nuxt-data=\"nuxt-app\" data-ssr=\"true\" id=\"__NUXT_DATA__\">[[\"ShallowReactive\",1],{\"data\":2,\"s\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "112",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "admin",
+							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in the element starting with: \"<script>window.__NUXT__={};window.__NUXT__.config={public:{apiUrl:\"https://www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxai\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "113",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<script type=\"application/json\" data-nuxt-data=\"nuxt-app\" data-ssr=\"true\" id=\"__NUXT_DATA__\">[[\"ShallowReactive\",1],{\"data\":2,\"s\", see evidence field for the suspicious comment/snippet."
+						}
+					],
+					"count": "10",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bADMIN\\b and was detected in the element starting with: \"<script>window.__NUXT__={};window.__NUXT__.config={public:{apiUrl:\"https://www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxai\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"id": "214",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"#\" data-filter=\"*\" class=\"active isotope-nav-link grid-nav-link\">\n\t\t\t\t\t\t\t\t\t\t\tTout</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "182",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a tabindex=\"-1\" href=\"#\" class=\"inactive-link pushed\"><div class=\"t-entry-visual-overlay\"><div class=\"t-entry-visual-overlay-in color-jevc style-color-jevc-bg\" style=\"opacity: 1;\"></div></div><div class=\"t-overlay-wrap\"><div class=\"t-overlay-inner\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"t-overlay-content\">\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"t-overlay-text single-block-padding\"><div class=\"t-entry\"><h3 class=\"t-entry-title h4 font-weight-600\">Je participe \u00E0 des distributions alimentaires</h3></div></div></div></div></div><img decoding=\"async\" class=\"wp-image-134623\" src=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/pexels-cottonbro-6591151-scaled-uai-1707x2133.jpg\" width=\"1707\" height=\"2133\" alt=\"\" /></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "244",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/campagnes-mobilisation-nationale/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a tabindex=\"-1\" href=\"#\" class=\"inactive-link pushed\" data-lb-index=\"0\"><div class=\"t-entry-visual-overlay\"><div class=\"t-entry-visual-overlay-in style-dark-bg\" style=\"opacity: 0.5;\"></div></div><img decoding=\"async\" class=\"wp-image-134159\" src=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/10/Logo-le-bon-coin.png\" width=\"494\" height=\"102\" alt=\"\" srcset=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/10/Logo-le-bon-coin.png 494w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/10/Logo-le-bon-coin-300x62.png 300w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/10/Logo-le-bon-coin-350x72.png 350w\" sizes=\"(max-width: 494px) 100vw, 494px\" /></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "246",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/category/actualite/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"#\" data-filter=\"*\" class=\"active isotope-nav-link grid-nav-link\">\n\t\t\t\t\t\t\t\t\t\t\tTout</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "215",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/communication/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<noscript><style> .wpb_animate_when_almost_visible { opacity: 1; }</style></noscript>",
+							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
+						},
+						{
+							"id": "245",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/mesure-dimpact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a tabindex=\"-1\" href=\"\" class=\"pushed\" data-lb-index=\"0\"><div class=\"t-entry-visual-overlay\"><div class=\"t-entry-visual-overlay-in style-dark-bg\" style=\"opacity: 0.5;\"></div></div><img decoding=\"async\" class=\"wp-image-132791\" src=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1.png\" width=\"2236\" height=\"837\" alt=\"\" srcset=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1.png 2236w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-300x112.png 300w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-1024x383.png 1024w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-768x287.png 768w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-1536x575.png 1536w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-2048x767.png 2048w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-350x131.png 350w\" sizes=\"(max-width: 2236px) 100vw, 2236px\" /></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "223",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/organisations/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"#\" data-filter=\"*\" class=\"active isotope-nav-link grid-nav-link\">Tout</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "213",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a tabindex=\"-1\" href=\"#\" class=\"inactive-link pushed\" data-lb-index=\"3\"><div class=\"t-entry-visual-overlay\"><div class=\"t-entry-visual-overlay-in style-dark-bg\" style=\"opacity: 0.5;\"></div></div><img decoding=\"async\" class=\"wp-image-914\" src=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2020/07/article-1.jpg\" width=\"434\" height=\"127\" alt=\"\" srcset=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2020/07/article-1.jpg 434w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2020/07/article-1-300x88.jpg 300w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2020/07/article-1-350x102.jpg 350w\" sizes=\"(max-width: 434px) 100vw, 434px\" /></a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "226",
+							"uri": "https://www.jeveuxaider.gouv.fr/stats?end_date=2025-03-02&start_date=2024-03-02",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"module\" src=\"/_nuxt/D1-tuuHm.js\" crossorigin></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						}
+					],
+					"count": "9",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "17040"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Non-Storable Content",
+					"name": "Non-Storable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
+					"instances":[ 
+						{
+							"id": "69",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "307",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).</p>",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "10"
+				},
+				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"id": "9",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=300, public, no-transform",
+							"otherinfo": ""
+						},
+						{
+							"id": "148",
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=300, public, no-transform",
+							"otherinfo": ""
+						},
+						{
+							"id": "141",
+							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/departements.xml",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=86400, stale-while-revalidate, no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "103",
+							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/pages.xml",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=86400, stale-while-revalidate, no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "143",
+							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/reseaux.xml",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=86400, stale-while-revalidate, no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "145",
+							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/villes.xml",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=86400, stale-while-revalidate, no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "98",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/builds/meta/691cc7c6-1cf1-4d4c-8cd5-4aaa2b6d7c87.json",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "public, max-age=31536000, immutable, no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "109",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "107",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "0",
+							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "73",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=86400, stale-while-revalidate, no-cache",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10050",
+					"alertRef": "10050-2",
+					"alert": "Retrieved from Cache",
+					"name": "Retrieved from Cache",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The content was retrieved from a shared cache. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"id": "242",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/AccordionsGroup.JOVz2YyS.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 43134",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "228",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Banner.F7xahtZq.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 1023320",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "88",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/entry.DpDmy2pG.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 1023291",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "230",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Header.DjdjO7Hb.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 853000",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "225",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/HeaderBanner.CQtEcGdW.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 1023320",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "233",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Heading.B2d0t4F5.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 43135",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "237",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/index.CLUeDVDv.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 43135",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "243",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Input.B2X1WRSL.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 43135",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "239",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/InputAutocomplete.BPHa6hTg.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 1023320",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "241",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Select.rnWcSPtd.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 43135",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "235",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/SelectAutocomplete.CL3Yf8aR.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 1023320",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "85",
+							"uri": "https://www.jeveuxaider.gouv.fr/favicon.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 6134845",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						}
+					],
+					"count": "12",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
+					"otherinfo": "<p>The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.</p>",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>https://www.rfc-editor.org/rfc/rfc9110.html</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "17157"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-3",
+					"alert": "Sec-Fetch-Dest Header is Missing",
+					"name": "Sec-Fetch-Dest Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
+					"instances":[ 
+						{
+							"id": "7",
+							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "75",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "82",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-2",
+					"alert": "Sec-Fetch-Mode Header is Missing",
+					"name": "Sec-Fetch-Mode Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
+					"instances":[ 
+						{
+							"id": "6",
+							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "72",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "81",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-1",
+					"alert": "Sec-Fetch-Site Header is Missing",
+					"name": "Sec-Fetch-Site Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
+					"instances":[ 
+						{
+							"id": "5",
+							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "71",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "79",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-4",
+					"alert": "Sec-Fetch-User Header is Missing",
+					"name": "Sec-Fetch-User Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
+					"instances":[ 
+						{
+							"id": "8",
+							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "76",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "83",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10112",
+					"alertRef": "10112",
+					"alert": "Session Management Response Identified",
+					"name": "Session Management Response Identified",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
+					"instances":[ 
+						{
+							"id": "200",
+							"uri": "https://www.jeveuxaider.gouv.fr/fresque-benevolat",
+							"method": "GET",
+							"param": "la_fresque_du_benevolat_session",
+							"attack": "",
+							"evidence": "eyJpdiI6InZDZjdUQzFHQm03VHdnTmxxYlBXV2c9PSIsInZhbHVlIjoiMTJ6ZGR6NE11ckh0QmpjVEFhbHczbm9BT0p1VzdVWEIzMFU0K2IyWXZTNGVkY2dHS1JkZlc5Yithc2Z2RGRwbWRDdTlsQXpQVVlnSjU4RDRLeURaeDRtTEQxcVZKNG1BQ2RHY1g5aUhkRm1zQ1lXUmhhVWdPR2JlaXVUa1NaZHoiLCJtYWMiOiI4OTJlYTFlMWUzMGUxOTJjZjYyNDhkOTQzYzRiMjYzNWZhMjllMmUwZWZiMGQ0ZDRmYzg4Y2U5MTI1MmE5NjFhIiwidGFnIjoiIn0%3D",
+							"otherinfo": "\ncookie:la_fresque_du_benevolat_session\ncookie:XSRF-TOKEN"
+						}
+					],
+					"count": "1",
+					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
+					"otherinfo": "<p></p><p>cookie:la_fresque_du_benevolat_session</p><p>cookie:XSRF-TOKEN</p>",
+					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "16959"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"id": "64",
+							"uri": "https://www.jeveuxaider.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=300",
+							"otherinfo": ""
+						},
+						{
+							"id": "97",
+							"uri": "https://www.jeveuxaider.gouv.fr/*",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"id": "90",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/entry.DpDmy2pG.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "87",
+							"uri": "https://www.jeveuxaider.gouv.fr/favicon.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						}
+					],
+					"count": "4",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable but Non-Cacheable Content",
+					"name": "Storable but Non-Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
+					"instances":[ 
+						{
+							"id": "105",
+							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/pages.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "100",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/builds/meta/691cc7c6-1cf1-4d4c-8cd5-4aaa2b6d7c87.json",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "125",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "118",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "2",
+							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "77",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						}
+					],
+					"count": "6",
+					"solution": "",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "88"
+				},
+				{
+					"pluginid": "10031",
+					"alertRef": "10031",
+					"alert": "User Controllable HTML Element Attribute (Potential XSS)",
+					"name": "User Controllable HTML Element Attribute (Potential XSS)",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
+					"instances":[ 
+						{
+							"id": "249",
+							"uri": "https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
+						},
+						{
+							"id": "250",
+							"uri": "https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP",
+							"method": "GET",
+							"param": "password",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\npassword=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
+						},
+						{
+							"id": "252",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset?email=zaproxy%40example.com",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.jeveuxaider.gouv.fr/password-reset?email=zaproxy%40example.com\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
+						}
+					],
+					"count": "3",
+					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP</p><p></p><p>appears to include user input in:</p><p>a(n) [input] tag [value] attribute</p><p></p><p>The user input found was:</p><p>email=zaproxy@example.com</p><p></p><p>The user-controlled value was:</p><p>zaproxy@example.com</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
+					"cweid": "20",
+					"wascid": "20",
+					"sourceid": "17249"
+				}
+			]
+		}
+	],
+	"sequences":[
+	]
+
+}
