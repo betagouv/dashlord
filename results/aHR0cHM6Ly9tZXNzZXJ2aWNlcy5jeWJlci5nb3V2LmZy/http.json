@@ -1,24 +1,24 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "F",
+    "grade": "B",
     "error": null,
-    "score": 10,
+    "score": 75,
     "statusCode": 200,
-    "testsFailed": 5,
-    "testsPassed": 5,
+    "testsFailed": 1,
+    "testsPassed": 9,
     "testsQuantity": 10,
     "responseHeaders": {
-      "x-powered-by": "Express",
-      "content-type": "text/html; charset=utf-8",
-      "accept-ranges": "bytes",
-      "cache-control": "public, max-age=0",
-      "last-modified": "Wed, 19 Feb 2025 15:42:16 GMT",
-      "etag": "W/\"6d8e-1951edfc3c0\"",
-      "content-length": "28046",
-      "date": "Mon, 24 Feb 2025 00:05:17 GMT",
+      "date": "Sun, 02 Mar 2025 10:01:35 GMT",
+      "content-type": "text/html",
+      "transfer-encoding": "chunked",
       "connection": "close",
-      "sozu-id": "01JMTMBF4E056EJ1Y449TJECD3"
+      "referrer-policy": "no-referrer",
+      "cache-control": "no-cache",
+      "strict-transport-security": "max-age=63072000",
+      "x-frame-options": "DENY",
+      "x-content-type-options": "nosniff",
+      "x-xss-protection": "1; mode=block"
     }
   },
   "tests": {
@@ -50,33 +50,34 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": false,
-      "result": "redirection-missing",
-      "scoreModifier": -20,
-      "destination": "http://messervices.cyber.gouv.fr/",
-      "redirects": false,
+      "pass": true,
+      "result": "redirection-to-https",
+      "scoreModifier": 0,
+      "destination": "https://messervices.cyber.gouv.fr/",
+      "redirects": true,
       "route": [
-        "http://messervices.cyber.gouv.fr/"
+        "http://messervices.cyber.gouv.fr/",
+        "https://messervices.cyber.gouv.fr/"
       ],
       "statusCode": 200
     },
     "referrer-policy": {
       "expectation": "referrer-policy-private",
       "pass": true,
-      "result": "referrer-policy-not-implemented",
-      "scoreModifier": 0,
-      "data": null,
-      "http": false,
+      "result": "referrer-policy-private",
+      "scoreModifier": 5,
+      "data": "no-referrer",
+      "http": true,
       "meta": false
     },
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
-      "pass": false,
-      "result": "hsts-not-implemented",
-      "scoreModifier": -20,
-      "data": null,
+      "pass": true,
+      "result": "hsts-implemented-max-age-at-least-six-months",
+      "scoreModifier": 0,
+      "data": "max-age=63072000",
       "includeSubDomains": false,
-      "maxAge": null,
+      "maxAge": 63072000,
       "preload": false,
       "preloaded": false
     },
@@ -89,17 +90,17 @@
     },
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
-      "pass": false,
-      "result": "x-content-type-options-not-implemented",
-      "scoreModifier": -5,
-      "data": null
+      "pass": true,
+      "result": "x-content-type-options-nosniff",
+      "scoreModifier": 0,
+      "data": "nosniff"
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
-      "pass": false,
-      "result": "x-frame-options-not-implemented",
-      "scoreModifier": -20,
-      "data": null
+      "pass": true,
+      "result": "x-frame-options-sameorigin-or-deny",
+      "scoreModifier": 0,
+      "data": "DENY"
     },
     "cross-origin-resource-policy": {
       "expectation": "corp-implemented-with-same-site",
