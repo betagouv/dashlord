@@ -1,0 +1,1440 @@
+{
+	"@programName": "ZAP",
+	"@version": "2.16.0",
+	"@generated": "Sun, 2 Mar 2025 02:16:35",
+	"site":[ 
+		{
+			"@name": "https://cartobio.agencebio.org",
+			"@host": "cartobio.agencebio.org",
+			"@port": "443",
+			"@ssl": "true",
+			"alerts": [ 
+				{
+					"pluginid": "10038",
+					"alertRef": "10038-1",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"id": "9",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "123",
+							"uri": "https://cartobio.agencebio.org/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "114",
+							"uri": "https://cartobio.agencebio.org/api",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "14",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "75",
+							"uri": "https://cartobio.agencebio.org/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "5",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10020",
+					"alertRef": "10020-1",
+					"alert": "Missing Anti-clickjacking Header",
+					"name": "Missing Anti-clickjacking Header",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
+					"instances":[ 
+						{
+							"id": "121",
+							"uri": "https://cartobio.agencebio.org/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "111",
+							"uri": "https://cartobio.agencebio.org/api",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "1",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "73",
+							"uri": "https://cartobio.agencebio.org/sitemap.xml",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "4",
+					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
+					"cweid": "1021",
+					"wascid": "15",
+					"sourceid": "31"
+				},
+				{
+					"pluginid": "90004",
+					"alertRef": "90004-1",
+					"alert": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"name": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
+					"instances":[ 
+						{
+							"id": "32",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "7",
+							"uri": "https://cartobio.agencebio.org/assets/favicon-DDh1SYw1.ico",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "69",
+							"uri": "https://cartobio.agencebio.org/assets/polyfills-Dmvj34Jb.js",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "71",
+							"uri": "https://cartobio.agencebio.org/registerSW.js",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "37",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "35",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "40",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "36",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "42",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "9",
+					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
+					"cweid": "693",
+					"wascid": "14",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063-1",
+					"alert": "Permissions Policy Header Not Set",
+					"name": "Permissions Policy Header Not Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+					"instances":[ 
+						{
+							"id": "30",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "125",
+							"uri": "https://cartobio.agencebio.org/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "119",
+							"uri": "https://cartobio.agencebio.org/api",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "127",
+							"uri": "https://cartobio.agencebio.org/assets/framework-D48332a_.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "105",
+							"uri": "https://cartobio.agencebio.org/assets/index-gYFxZyiP.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "146",
+							"uri": "https://cartobio.agencebio.org/assets/maplibre-gl-B9CXKHce.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "66",
+							"uri": "https://cartobio.agencebio.org/assets/polyfills-Dmvj34Jb.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "103",
+							"uri": "https://cartobio.agencebio.org/assets/sentry-bUTMi_WK.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "68",
+							"uri": "https://cartobio.agencebio.org/registerSW.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "34",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "80",
+							"uri": "https://cartobio.agencebio.org/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10035",
+					"alertRef": "10035-1",
+					"alert": "Strict-Transport-Security Header Not Set",
+					"name": "Strict-Transport-Security Header Not Set",
+					"riskcode": "1",
+					"confidence": "3",
+					"riskdesc": "Low (High)",
+					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
+					"instances":[ 
+						{
+							"id": "22",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "116",
+							"uri": "https://cartobio.agencebio.org/api",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "4",
+							"uri": "https://cartobio.agencebio.org/assets/favicon-DDh1SYw1.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "102",
+							"uri": "https://cartobio.agencebio.org/assets/framework-D48332a_.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "92",
+							"uri": "https://cartobio.agencebio.org/assets/index-gYFxZyiP.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "107",
+							"uri": "https://cartobio.agencebio.org/assets/logo-agence-bio-Cdaw3v-R.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "46",
+							"uri": "https://cartobio.agencebio.org/assets/polyfills-Dmvj34Jb.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "87",
+							"uri": "https://cartobio.agencebio.org/assets/sentry-bUTMi_WK.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "64",
+							"uri": "https://cartobio.agencebio.org/registerSW.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "25",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "77",
+							"uri": "https://cartobio.agencebio.org/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to enforce Strict-Transport-Security.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
+					"cweid": "319",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
+					"instances":[ 
+						{
+							"id": "144",
+							"uri": "https://cartobio.agencebio.org/assets/maplibre-gl-B9CXKHce.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1431655765",
+							"otherinfo": "1431655765, which evaluates to: 2015-05-15 02:09:25."
+						},
+						{
+							"id": "134",
+							"uri": "https://cartobio.agencebio.org/assets/maplibre-gl-B9CXKHce.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1540483477",
+							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>1431655765, which evaluates to: 2015-05-15 02:09:25.</p>",
+					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "28"
+				},
+				{
+					"pluginid": "10021",
+					"alertRef": "10021",
+					"alert": "X-Content-Type-Options Header Missing",
+					"name": "X-Content-Type-Options Header Missing",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+					"instances":[ 
+						{
+							"id": "26",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "117",
+							"uri": "https://cartobio.agencebio.org/api",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "5",
+							"uri": "https://cartobio.agencebio.org/assets/favicon-DDh1SYw1.ico",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "110",
+							"uri": "https://cartobio.agencebio.org/assets/framework-D48332a_.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "97",
+							"uri": "https://cartobio.agencebio.org/assets/index-gYFxZyiP.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "108",
+							"uri": "https://cartobio.agencebio.org/assets/logo-agence-bio-Cdaw3v-R.png",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "57",
+							"uri": "https://cartobio.agencebio.org/assets/polyfills-Dmvj34Jb.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "93",
+							"uri": "https://cartobio.agencebio.org/assets/sentry-bUTMi_WK.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "65",
+							"uri": "https://cartobio.agencebio.org/registerSW.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "27",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "78",
+							"uri": "https://cartobio.agencebio.org/sitemap.xml",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						}
+					],
+					"count": "11",
+					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
+					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10094",
+					"alertRef": "10094-3",
+					"alert": "Base64 Disclosure",
+					"name": "Base64 Disclosure",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
+					"instances":[ 
+						{
+							"id": "45",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "34D2qiJf4svXMWIBil4TvQoYH9pzlEpo",
+							"otherinfo": "\u07C0\uFFFD\uFFFD\"_\uFFFD\uFFFD\uFFFD1b\\x0001\uFFFD^\\x0013\uFFFD\n\\x0018\\x001f\uFFFDs\uFFFDJh"
+						},
+						{
+							"id": "51",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2Fdx72ORrAlhcieeSjnezbVB5cZ1Nx7dYaz",
+							"otherinfo": "\uFFFDWq\uFFFDc\uFFFD\uFFFD\tar'\uFFFDJ9\uFFFD\u0375A\uFFFD\uFFFDu7\\x001e\uFFFDa\uFFFD"
+						},
+						{
+							"id": "126",
+							"uri": "https://cartobio.agencebio.org/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "crc2Fl1LpHZyPbcCKI1LcTZiHQNohxSVNwuRBwLM81ZIE69hKtyKBVxumDFbZE",
+							"otherinfo": "r\uFFFD6\\x0016]K\uFFFDvr=\uFFFD\\x0002(\uFFFDKq6b\\x001d\\x0003h\uFFFD\\x0014\uFFFD7\\x000b\uFFFD\\x0007\\x0002\uFFFD\uFFFDVH\\x0013\uFFFDa*\u070A\\x0005\\n\uFFFD1[d"
+						},
+						{
+							"id": "120",
+							"uri": "https://cartobio.agencebio.org/api",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/assets/logo-agence-bio-Cdaw3v-R",
+							"otherinfo": "\uFFFD\uFFFD,z\uFFFD?\uFFFD\uFFFD(\uFFFD\uFFFD\\x001e\uFFFD\u01FEn*>\t\u05B0\uFFFD\uFFFD\uFFFD"
+						},
+						{
+							"id": "12",
+							"uri": "https://cartobio.agencebio.org/assets/favicon-DDh1SYw1.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Xw50uCg1WaXzbpBcpNgFfcXyAo5gMN3kuntUkxPR22aJ4s5lUei8OELFo55s0NZaIvuheIqTL9ctmfCAestwl6knYkHCc4U",
+							"otherinfo": "_\\x000et\uFFFD(5Y\uFFFD\uFFFDn\uFFFD\\\uFFFD\uFFFD\\x0005}\uFFFD\uFFFD\\x0002\uFFFD`0\uFFFD\uFFFD{T\uFFFD\\x0013\uFFFD\uFFFDf\uFFFD\uFFFD\uFFFDeQ\uFFFD8B\u0163\uFFFDl\uFFFD\uFFFDZ\"\uFFFD\uFFFDx\uFFFD\uFFFD/\uFFFD-\uFFFD\uFFFD\uFFFDz\uFFFDp\uFFFD\uFFFD'bA\uFFFDs\uFFFD"
+						},
+						{
+							"id": "128",
+							"uri": "https://cartobio.agencebio.org/assets/framework-D48332a_.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2BaJpq4vNPklfH7fMWtgmAHL51RnGQgIxN",
+							"otherinfo": "\uFFFD\\x0016\uFFFD\uFFFD\uFFFD/4\uFFFD%|~\uFFFD1k`\uFFFD\\x0001\uFFFD\uFFFDTg\\x0019\\x0008\\x0008\uFFFD"
+						},
+						{
+							"id": "106",
+							"uri": "https://cartobio.agencebio.org/assets/index-gYFxZyiP.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2B7f6BEZHWXGWKwMHW5tGJsWOo5xkiNWeVAMv2gaMHrNLgg3DaQ4niait7jlGCzNssxVWkqTvXPDqylkrjJ",
+							"otherinfo": "\uFFFD\\x001e\uFFFD\uFFFD\\x0011\\x0019\\x001de\uFFFDX\uFFFD\\x000c\\x001dnm\\x0018\uFFFD\\x0016:\uFFFDq\uFFFD#VyP\\x000c\uFFFDh\\x001a0z\uFFFD.\\x00087\r\uFFFD8\uFFFD&\uFFFD\uFFFD\uFFFD\uFFFD\\x0018,\u0372\uFFFDUZJ\uFFFD\uFFFDs\u00EB)d\uFFFD2"
+						},
+						{
+							"id": "70",
+							"uri": "https://cartobio.agencebio.org/assets/polyfills-Dmvj34Jb.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2BuZInrXITDQ9CIWX5ICBP2EAv1iG6nFdwbwJnuYPguzdwkgeVW",
+							"otherinfo": "\uFFFD\\x001b\uFFFD\"z\uFFFD!0\uFFFD\uFFFD\"\\x0016_\uFFFD\\x0002\\x0004\uFFFD\uFFFD\\x0002\uFFFDb\\x001b\uFFFD\uFFFDw\\x0006\uFFFD&{\uFFFD>\\x000b\uFFFDw\t yU"
+						},
+						{
+							"id": "104",
+							"uri": "https://cartobio.agencebio.org/assets/sentry-bUTMi_WK.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2B7eltsD3vjJySuqmKsMgcVfpGDzidA4jbzLy73rvbFWWPh8uWsBwzH2Nn3sy8",
+							"otherinfo": "\uFFFD\\x001e\u0796\uFFFD\\x0003\uFFFD\uFFFD\uFFFD\uFFFD+\uFFFD\uFFFD\uFFFD\\x000c\uFFFD\uFFFD_\uFFFD`\uFFFD\uFFFD8\uFFFD\uFFFD\uFFFD\u02FD\uBF71VX\uFFFD|\uFFFDk\\x0001\uFFFD1\uFFFD6}\uFFFD\uFFFD"
+						},
+						{
+							"id": "72",
+							"uri": "https://cartobio.agencebio.org/registerSW.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2F71eu428eTIVSlvuHDzaCdZUKiT9aLXlL0ER6ytBmjFGIXqdNDBdoTxLoA1JWvWvxXQ5lVS3n8TIu1KrZyoloedlcDKmEY9ac4C9Zpx2J",
+							"otherinfo": "\uFFFD^\uFFFDz\uFFFD6\uFFFD\uFFFD\uFFFDU)o\uFFFDp\uFFFDh'YP\uFFFD\uFFFD\uFFFD\uFFFD\u05D4\uFFFD\\x0004G\uFFFD\uFFFD\\x0006h\uFFFD\\x0018\uFFFD\uFFFDt\uFFFD\uFFFDv\uFFFD\uFFFD.\uFFFD5%k\u05BF\\x0015\uFFFD\uFFFDUR\uFFFD\\x0013\"\uFFFDJ\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u0298F=i\uFFFD\\x0002\uFFFD\uFFFDq\uFFFD"
+						},
+						{
+							"id": "52",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "/assets/logo-agence-bio-Cdaw3v-R",
+							"otherinfo": "\uFFFD\uFFFD,z\uFFFD?\uFFFD\uFFFD(\uFFFD\uFFFD\\x001e\uFFFD\u01FEn*>\t\u05B0\uFFFD\uFFFD\uFFFD"
+						},
+						{
+							"id": "81",
+							"uri": "https://cartobio.agencebio.org/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2F84yFElF7iyKzblFQo2y4LlG8ZbLNtFURaXJgPF",
+							"otherinfo": "\uFFFD_8\uFFFDQ%\\x0017\uFFFD\uFFFD+6\uFFFD\\x0015\n6\u02C2\uFFFD\\x001b\uFFFD[,\uFFFDEQ\\x0016\uFFFD&\\x0003\uFFFD"
+						}
+					],
+					"count": "12",
+					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
+					"otherinfo": "<p>\u07C0\uFFFD\uFFFD\"_\uFFFD\uFFFD\uFFFD1b\\x0001\uFFFD^\\x0013\uFFFD</p><p>\\x0018\\x001f\uFFFDs\uFFFDJh</p>",
+					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"instances":[ 
+						{
+							"id": "100",
+							"uri": "https://cartobio.agencebio.org/assets/framework-D48332a_.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected 3 times, the first in the element starting with: \"**/function mt(e,t,n,r){try{return r?e(...r):e()}catch(s){Gt(s,t,n)}}function $e(e,t,n,r){if(W(e)){const s=mt(e,t,n,r);return s&\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "95",
+							"uri": "https://cartobio.agencebio.org/assets/framework-D48332a_.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"  */const Lt=typeof document<\"u\";function Ka(e){return e.__esModule||e[Symbol.toStringTag]===\"Module\"}const ne=Object.assign;fun\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "98",
+							"uri": "https://cartobio.agencebio.org/assets/framework-D48332a_.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in the element starting with: \"**/const wa=\"http://www.w3.org/2000/svg\",Ea=\"http://www.w3.org/1998/Math/MathML\",Ze=typeof document<\"u\"?document:null,bo=Ze&&Ze.\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "96",
+							"uri": "https://cartobio.agencebio.org/assets/framework-D48332a_.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "User",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"`)}get[Symbol.toStringTag](){return\"AxiosHeaders\"}static from(t){return t instanceof this?t:new this(t)}static concat(t,...n){co\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "88",
+							"uri": "https://cartobio.agencebio.org/assets/index-gYFxZyiP.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "DB",
+							"otherinfo": "The following pattern was used: \\bDB\\b and was detected in the element starting with: \"const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=[\"assets/index-DB-ZAF1F.js\",\"assets/framework-D48332a_.js\",\"assets/Modal\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "90",
+							"uri": "https://cartobio.agencebio.org/assets/index-gYFxZyiP.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"import{e as yt,r as $,m as bt,i as Et,w as we,a as Q,b as me,c as Qe,t as j,h as to,d as oo,g as no,o as so,n as Re,f as ro,j as\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "89",
+							"uri": "https://cartobio.agencebio.org/assets/index-gYFxZyiP.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \" */let It;const De=e=>It=e,kt=Symbol();function Ve(e){return e&&typeof e==\"object\"&&Object.prototype.toString.call(e)===\"[object\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "130",
+							"uri": "https://cartobio.agencebio.org/assets/maplibre-gl-B9CXKHce.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "debug",
+							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in the element starting with: \"}`,\"uniform mat4 u_matrix;uniform vec2 u_world;attribute vec2 a_pos;varying vec2 v_pos;void main() {gl_Position=u_matrix*vec4(a_\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "132",
+							"uri": "https://cartobio.agencebio.org/assets/maplibre-gl-B9CXKHce.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \" */(function(Mi,ga){(function(sr,Ri){Mi.exports=Ri()})(Ap,function(){var sr={},Ri={};function ms(L,p,Ci){if(Ri[L]=Ci,L===\"index\"\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "131",
+							"uri": "https://cartobio.agencebio.org/assets/maplibre-gl-B9CXKHce.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected 2 times, the first in the element starting with: \"Use an identity property function instead: \\`{ \"type\": \"identity\", \"property\": ${JSON.stringify(w[1])} }\\`.`)];const I=[];return\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "82",
+							"uri": "https://cartobio.agencebio.org/assets/sentry-bUTMi_WK.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "debug",
+							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected 3 times, the first in the element starting with: \"const Ur=Object.prototype.toString;function Tn(t){switch(Ur.call(t)){case\"[object Error]\":case\"[object Exception]\":case\"[object \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "85",
+							"uri": "https://cartobio.agencebio.org/assets/sentry-bUTMi_WK.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in the element starting with: \"`);for(let a=r;a<i.length;a++){const c=i[a];if(c.length>1024)continue;const u=zn.test(c)?c.replace(zn,\"$1\"):c;if(!u.match(/\\S*Er\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "83",
+							"uri": "https://cartobio.agencebio.org/assets/sentry-bUTMi_WK.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in the element starting with: \"(found in ${Zt(t)})`},Ud=(t,e)=>{const{errorHandler:n,warnHandler:r,silent:s}=t.config;t.config.errorHandler=(o,i,a)=>{const c=Z\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "84",
+							"uri": "https://cartobio.agencebio.org/assets/sentry-bUTMi_WK.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 4 times, the first in the element starting with: \"`),typeof a==\"string\"||a instanceof Uint8Array)s(a);else{let c;try{c=JSON.stringify(a)}catch{c=JSON.stringify(mt(a))}s(c)}}retur\", see evidence field for the suspicious comment/snippet."
+						}
+					],
+					"count": "14",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bFROM\\b and was detected 3 times, the first in the element starting with: \"**/function mt(e,t,n,r){try{return r?e(...r):e()}catch(s){Gt(s,t,n)}}function $e(e,t,n,r){if(W(e)){const s=mt(e,t,n,r);return s&\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "200",
+					"wascid": "13",
+					"sourceid": "20"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"id": "16",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/polyfills-Dmvj34Jb.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "124",
+							"uri": "https://cartobio.agencebio.org/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/polyfills-Dmvj34Jb.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "115",
+							"uri": "https://cartobio.agencebio.org/api",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/polyfills-Dmvj34Jb.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "20",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/polyfills-Dmvj34Jb.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "76",
+							"uri": "https://cartobio.agencebio.org/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/polyfills-Dmvj34Jb.js\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						}
+					],
+					"count": "5",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"id": "8",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "122",
+							"uri": "https://cartobio.agencebio.org/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "113",
+							"uri": "https://cartobio.agencebio.org/api",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "11",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=16070400",
+							"otherinfo": ""
+						},
+						{
+							"id": "74",
+							"uri": "https://cartobio.agencebio.org/sitemap.xml",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						}
+					],
+					"count": "5",
+					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10050",
+					"alertRef": "10050-2",
+					"alert": "Retrieved from Cache",
+					"name": "Retrieved from Cache",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The content was retrieved from a shared cache. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"id": "101",
+							"uri": "https://cartobio.agencebio.org/assets/framework-D48332a_.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 93784",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "129",
+							"uri": "https://cartobio.agencebio.org/assets/index-C20HaYls.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 93779",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "91",
+							"uri": "https://cartobio.agencebio.org/assets/index-gYFxZyiP.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 93776",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "133",
+							"uri": "https://cartobio.agencebio.org/assets/maplibre-gl-B9CXKHce.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 93775",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "44",
+							"uri": "https://cartobio.agencebio.org/assets/polyfills-Dmvj34Jb.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 93770",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "86",
+							"uri": "https://cartobio.agencebio.org/assets/sentry-bUTMi_WK.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 93767",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "63",
+							"uri": "https://cartobio.agencebio.org/registerSW.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 93763",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "24",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 49",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						}
+					],
+					"count": "8",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
+					"otherinfo": "<p>The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use.</p>",
+					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>https://www.rfc-editor.org/rfc/rfc9110.html</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "20"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-3",
+					"alert": "Sec-Fetch-Dest Header is Missing",
+					"name": "Sec-Fetch-Dest Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
+					"instances":[ 
+						{
+							"id": "49",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "18",
+							"uri": "https://cartobio.agencebio.org/assets/favicon-DDh1SYw1.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "60",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-2",
+					"alert": "Sec-Fetch-Mode Header is Missing",
+					"name": "Sec-Fetch-Mode Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
+					"instances":[ 
+						{
+							"id": "48",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "17",
+							"uri": "https://cartobio.agencebio.org/assets/favicon-DDh1SYw1.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "56",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-1",
+					"alert": "Sec-Fetch-Site Header is Missing",
+					"name": "Sec-Fetch-Site Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
+					"instances":[ 
+						{
+							"id": "47",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "15",
+							"uri": "https://cartobio.agencebio.org/assets/favicon-DDh1SYw1.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "54",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "90005",
+					"alertRef": "90005-4",
+					"alert": "Sec-Fetch-User Header is Missing",
+					"name": "Sec-Fetch-User Header is Missing",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
+					"instances":[ 
+						{
+							"id": "50",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "21",
+							"uri": "https://cartobio.agencebio.org/assets/favicon-DDh1SYw1.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "61",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
+					"cweid": "352",
+					"wascid": "9",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"id": "6",
+							"uri": "https://cartobio.agencebio.org/assets/favicon-DDh1SYw1.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=16070400",
+							"otherinfo": ""
+						},
+						{
+							"id": "112",
+							"uri": "https://cartobio.agencebio.org/assets/framework-D48332a_.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "99",
+							"uri": "https://cartobio.agencebio.org/assets/index-gYFxZyiP.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "109",
+							"uri": "https://cartobio.agencebio.org/assets/logo-agence-bio-Cdaw3v-R.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "62",
+							"uri": "https://cartobio.agencebio.org/assets/polyfills-Dmvj34Jb.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "94",
+							"uri": "https://cartobio.agencebio.org/assets/sentry-bUTMi_WK.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "67",
+							"uri": "https://cartobio.agencebio.org/registerSW.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "33",
+							"uri": "https://cartobio.agencebio.org/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=16070400",
+							"otherinfo": ""
+						}
+					],
+					"count": "8",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "17"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable but Non-Cacheable Content",
+					"name": "Storable but Non-Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
+					"instances":[ 
+						{
+							"id": "28",
+							"uri": "https://cartobio.agencebio.org",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "118",
+							"uri": "https://cartobio.agencebio.org/api",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "79",
+							"uri": "https://cartobio.agencebio.org/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "7"
+				}
+			]
+		}
+	],
+	"sequences":[
+	]
+
+}
