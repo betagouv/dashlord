@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.0",
-	"@generated": "Sun, 2 Mar 2025 12:02:14",
+	"@generated": "Sun, 16 Mar 2025 14:13:07",
 	"site":[ 
 		{
 			"@name": "https://orion.inserjeunes.beta.gouv.fr",
@@ -10,6 +10,52 @@
 			"@ssl": "true",
 			"alerts": [ 
 				{
+					"pluginid": "10062",
+					"alertRef": "10062",
+					"alert": "PII Disclosure",
+					"name": "PII Disclosure",
+					"riskcode": "3",
+					"confidence": "3",
+					"riskdesc": "High (High)",
+					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
+					"instances":[ 
+						{
+							"id": "95",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/auth/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4543997018022627",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 454399\nBrand: VISA\nCategory: \nIssuer: VISA JAPAN ASSOCIATION"
+						},
+						{
+							"id": "93",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/lien-metier-formation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4543997018022627",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 454399\nBrand: VISA\nCategory: \nIssuer: VISA JAPAN ASSOCIATION"
+						},
+						{
+							"id": "94",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/region",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "5793762986543580",
+							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 579376\nBrand: MAESTRO\nCategory: STANDARD\nIssuer: "
+						}
+					],
+					"count": "3",
+					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
+					"otherinfo": "<p>Credit Card Type detected: Visa</p><p>Bank Identification Number: 454399</p><p>Brand: VISA</p><p>Category: </p><p>Issuer: VISA JAPAN ASSOCIATION</p>",
+					"reference": "",
+					"cweid": "359",
+					"wascid": "13",
+					"sourceid": "102"
+				},
+				{
 					"pluginid": "10003",
 					"alertRef": "10003",
 					"alert": "Vulnerable JS Library",
@@ -17,25 +63,25 @@
 					"riskcode": "3",
 					"confidence": "2",
 					"riskdesc": "High (Medium)",
-					"desc": "<p>The identified library lodash, version 4a9171ca-ff60-480c-8242-59020ceaaba0 is vulnerable.</p>",
+					"desc": "<p>The identified library appears to be vulnerable.</p>",
 					"instances":[ 
 						{
-							"id": "119",
+							"id": "121",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/f67032f2-ecfbf4476cdf1e9b.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "=\"4a9171ca-ff60-480c-8242-59020ceaaba0\",n._sentryDebugIdIdentifier=\"sentry-dbid-4a9171ca-ff60-480c-8242-59020ceaaba0\")}catch(n){}}(),(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[4741],{84992:function(n,t,r){var e;n=r.nmd(n),(function(){var u,i=\"Expected a function\",o=\"__lodash_hash_undefined__",
-							"otherinfo": "CVE-2019-1010266\nCVE-2021-23337\nCVE-2020-28500\nCVE-2019-10744\nCVE-2018-3721\nCVE-2018-16487\n"
+							"otherinfo": "The identified library lodash, version 4a9171ca-ff60-480c-8242-59020ceaaba0 is vulnerable.\nCVE-2019-1010266\nCVE-2021-23337\nCVE-2020-28500\nCVE-2019-10744\nCVE-2018-3721\nCVE-2018-16487\nhttps://www.oracle.com/security-alerts/cpuoct2020.html\nhttps://github.com/advisories/GHSA-jf85-cpcp-j695\nhttps://github.com/advisories/GHSA-fvqr-27wr-82fm\nhttps://hackerone.com/reports/310443\nhttps://support.f5.com/csp/article/K47105354?utm_source=f5support&amp;utm_medium=RSS\nhttps://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a\nhttps://hackerone.com/reports/380873\nhttps://github.com/lodash/lodash/pull/4336\nhttps://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074893\nhttps://www.oracle.com/security-alerts/cpuoct2021.html\nhttps://github.com/lodash/lodash/pull/5065\nhttps://github.com/lodash/lodash/commit/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a\nhttps://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf\nhttps://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js#L14851\nhttps://nvd.nist.gov/vuln/detail/CVE-2021-23337\nhttps://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932\nhttps://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929\nhttps://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074896\nhttps://www.npmjs.com/advisories/782\nhttps://github.com/lodash/lodash/wiki/Changelog\nhttps://github.com/lodash/lodash/pull/5065/commits/02906b8191d3c100c193fe6f7b27d1c40f200bb7\nhttps://nvd.nist.gov/vuln/detail/CVE-2018-3721\nhttps://security.netapp.com/advisory/ntap-20190919-0004/\nhttps://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074895\nhttps://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931\nhttps://github.com/lodash/lodash/commit/90e6199a161b6445b01454517b40ef65ebecd2ad\nhttps://github.com/advisories/GHSA-x5rq-j2xg-h7qm\nhttps://nvd.nist.gov/vuln/detail/CVE-2019-10744\nhttps://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c\nhttps://nvd.nist.gov/vuln/detail/CVE-2019-1010266\nhttps://security.netapp.com/advisory/ntap-20210312-0006/\nhttps://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930\nhttps://security.netapp.com/advisory/ntap-20191004-0005/\nhttps://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074894\nhttps://github.com/advisories/GHSA-29mw-wpgm-hmr9\nhttps://github.com/lodash/lodash\nhttps://www.oracle.com/security-alerts/cpujan2021.html\nhttps://www.oracle.com/security-alerts/cpujan2022.html\nhttps://github.com/lodash/lodash/blob/npm/trimEnd.js%23L8\nhttps://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851\nhttps://snyk.io/vuln/SNYK-JS-LODASH-450202\nhttps://www.npmjs.com/advisories/577\nhttps://access.redhat.com/errata/RHSA-2019:3024\nhttps://www.npmjs.com/advisories/1065\nhttps://nvd.nist.gov/vuln/detail/CVE-2018-16487\nhttps://github.com/lodash/lodash/commit/5c08f18d365b64063bfbfa686cbb97cdd6267347\nhttps://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928\nhttps://snyk.io/vuln/SNYK-JS-LODASH-1018905\nhttps://github.com/advisories/GHSA-4xc9-xhrj-v574\nhttps://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074892\nhttps://snyk.io/vuln/SNYK-JS-LODASH-1040724\nhttps://github.com/lodash/lodash/issues/3359\nhttps://snyk.io/vuln/SNYK-JS-LODASH-73639\nhttps://www.oracle.com//security-alerts/cpujul2021.html\nhttps://github.com/advisories/GHSA-35jh-r3h4-6jhm\nhttps://www.oracle.com/security-alerts/cpujul2022.html\nhttps://nvd.nist.gov/vuln/detail/CVE-2020-28500\n"
 						}
 					],
 					"count": "1",
-					"solution": "<p>Please upgrade to the latest version of lodash.</p>",
-					"otherinfo": "<p>CVE-2019-1010266</p><p>CVE-2021-23337</p><p>CVE-2020-28500</p><p>CVE-2019-10744</p><p>CVE-2018-3721</p><p>CVE-2018-16487</p><p></p>",
-					"reference": "<p>https://www.oracle.com/security-alerts/cpuoct2020.html</p><p>https://github.com/advisories/GHSA-jf85-cpcp-j695</p><p>https://github.com/advisories/GHSA-fvqr-27wr-82fm</p><p>https://hackerone.com/reports/310443</p><p>https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp;utm_medium=RSS</p><p>https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a</p><p>https://hackerone.com/reports/380873</p><p>https://github.com/lodash/lodash/pull/4336</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074893</p><p>https://www.oracle.com/security-alerts/cpuoct2021.html</p><p>https://github.com/lodash/lodash/pull/5065</p><p>https://github.com/lodash/lodash/commit/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a</p><p>https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf</p><p>https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js#L14851</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-23337</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074896</p><p>https://www.npmjs.com/advisories/782</p><p>https://github.com/lodash/lodash/wiki/Changelog</p><p>https://github.com/lodash/lodash/pull/5065/commits/02906b8191d3c100c193fe6f7b27d1c40f200bb7</p><p>https://nvd.nist.gov/vuln/detail/CVE-2018-3721</p><p>https://security.netapp.com/advisory/ntap-20190919-0004/</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074895</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931</p><p>https://github.com/lodash/lodash/commit/90e6199a161b6445b01454517b40ef65ebecd2ad</p><p>https://github.com/advisories/GHSA-x5rq-j2xg-h7qm</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-10744</p><p>https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-1010266</p><p>https://security.netapp.com/advisory/ntap-20210312-0006/</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930</p><p>https://security.netapp.com/advisory/ntap-20191004-0005/</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074894</p><p>https://github.com/advisories/GHSA-29mw-wpgm-hmr9</p><p>https://github.com/lodash/lodash</p><p>https://www.oracle.com/security-alerts/cpujan2021.html</p><p>https://www.oracle.com/security-alerts/cpujan2022.html</p><p>https://github.com/lodash/lodash/blob/npm/trimEnd.js%23L8</p><p>https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851</p><p>https://snyk.io/vuln/SNYK-JS-LODASH-450202</p><p>https://www.npmjs.com/advisories/577</p><p>https://access.redhat.com/errata/RHSA-2019:3024</p><p>https://www.npmjs.com/advisories/1065</p><p>https://nvd.nist.gov/vuln/detail/CVE-2018-16487</p><p>https://github.com/lodash/lodash/commit/5c08f18d365b64063bfbfa686cbb97cdd6267347</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928</p><p>https://snyk.io/vuln/SNYK-JS-LODASH-1018905</p><p>https://github.com/advisories/GHSA-4xc9-xhrj-v574</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074892</p><p>https://snyk.io/vuln/SNYK-JS-LODASH-1040724</p><p>https://github.com/lodash/lodash/issues/3359</p><p>https://snyk.io/vuln/SNYK-JS-LODASH-73639</p><p>https://www.oracle.com//security-alerts/cpujul2021.html</p><p>https://github.com/advisories/GHSA-35jh-r3h4-6jhm</p><p>https://www.oracle.com/security-alerts/cpujul2022.html</p><p>https://nvd.nist.gov/vuln/detail/CVE-2020-28500</p><p></p>",
+					"solution": "<p>Upgrade to the latest version of the affected library.</p>",
+					"otherinfo": "<p>The identified library lodash, version 4a9171ca-ff60-480c-8242-59020ceaaba0 is vulnerable.</p><p>CVE-2019-1010266</p><p>CVE-2021-23337</p><p>CVE-2020-28500</p><p>CVE-2019-10744</p><p>CVE-2018-3721</p><p>CVE-2018-16487</p><p>https://www.oracle.com/security-alerts/cpuoct2020.html</p><p>https://github.com/advisories/GHSA-jf85-cpcp-j695</p><p>https://github.com/advisories/GHSA-fvqr-27wr-82fm</p><p>https://hackerone.com/reports/310443</p><p>https://support.f5.com/csp/article/K47105354?utm_source=f5support&amp;utm_medium=RSS</p><p>https://github.com/lodash/lodash/commit/d8e069cc3410082e44eb18fcf8e7f3d08ebe1d4a</p><p>https://hackerone.com/reports/380873</p><p>https://github.com/lodash/lodash/pull/4336</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074893</p><p>https://www.oracle.com/security-alerts/cpuoct2021.html</p><p>https://github.com/lodash/lodash/pull/5065</p><p>https://github.com/lodash/lodash/commit/c4847ebe7d14540bb28a8b932a9ce1b9ecbfee1a</p><p>https://cert-portal.siemens.com/productcert/pdf/ssa-637483.pdf</p><p>https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js#L14851</p><p>https://nvd.nist.gov/vuln/detail/CVE-2021-23337</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074932</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSNPM-1074929</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGFUJIONWEBJARS-1074896</p><p>https://www.npmjs.com/advisories/782</p><p>https://github.com/lodash/lodash/wiki/Changelog</p><p>https://github.com/lodash/lodash/pull/5065/commits/02906b8191d3c100c193fe6f7b27d1c40f200bb7</p><p>https://nvd.nist.gov/vuln/detail/CVE-2018-3721</p><p>https://security.netapp.com/advisory/ntap-20190919-0004/</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074895</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWERGITHUBLODASH-1074931</p><p>https://github.com/lodash/lodash/commit/90e6199a161b6445b01454517b40ef65ebecd2ad</p><p>https://github.com/advisories/GHSA-x5rq-j2xg-h7qm</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-10744</p><p>https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c</p><p>https://nvd.nist.gov/vuln/detail/CVE-2019-1010266</p><p>https://security.netapp.com/advisory/ntap-20210312-0006/</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074930</p><p>https://security.netapp.com/advisory/ntap-20191004-0005/</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARS-1074894</p><p>https://github.com/advisories/GHSA-29mw-wpgm-hmr9</p><p>https://github.com/lodash/lodash</p><p>https://www.oracle.com/security-alerts/cpujan2021.html</p><p>https://www.oracle.com/security-alerts/cpujan2022.html</p><p>https://github.com/lodash/lodash/blob/npm/trimEnd.js%23L8</p><p>https://github.com/lodash/lodash/blob/ddfd9b11a0126db2302cb70ec9973b66baec0975/lodash.js%23L14851</p><p>https://snyk.io/vuln/SNYK-JS-LODASH-450202</p><p>https://www.npmjs.com/advisories/577</p><p>https://access.redhat.com/errata/RHSA-2019:3024</p><p>https://www.npmjs.com/advisories/1065</p><p>https://nvd.nist.gov/vuln/detail/CVE-2018-16487</p><p>https://github.com/lodash/lodash/commit/5c08f18d365b64063bfbfa686cbb97cdd6267347</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074928</p><p>https://snyk.io/vuln/SNYK-JS-LODASH-1018905</p><p>https://github.com/advisories/GHSA-4xc9-xhrj-v574</p><p>https://snyk.io/vuln/SNYK-JAVA-ORGWEBJARSBOWER-1074892</p><p>https://snyk.io/vuln/SNYK-JS-LODASH-1040724</p><p>https://github.com/lodash/lodash/issues/3359</p><p>https://snyk.io/vuln/SNYK-JS-LODASH-73639</p><p>https://www.oracle.com//security-alerts/cpujul2021.html</p><p>https://github.com/advisories/GHSA-35jh-r3h4-6jhm</p><p>https://www.oracle.com/security-alerts/cpujul2022.html</p><p>https://nvd.nist.gov/vuln/detail/CVE-2020-28500</p><p></p>",
+					"reference": "<p>https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/</p>",
 					"cweid": "1395",
 					"wascid": "-1",
-					"sourceid": "144"
+					"sourceid": "184"
 				},
 				{
 					"pluginid": "10038",
@@ -57,7 +103,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "68",
+							"id": "90",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/auth/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "80",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/changelog",
 							"method": "GET",
 							"param": "",
@@ -66,7 +121,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "98",
+							"id": "66",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/etablissements",
 							"method": "GET",
 							"param": "",
@@ -75,7 +130,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "100",
+							"id": "33",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/formations",
 							"method": "GET",
 							"param": "",
@@ -84,7 +139,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "69",
+							"id": "104",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "31",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
 							"method": "GET",
 							"param": "",
@@ -93,7 +157,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "70",
+							"id": "60",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/domaine-de-formation",
 							"method": "GET",
 							"param": "",
@@ -102,7 +166,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
+							"id": "61",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
 							"method": "GET",
 							"param": "",
@@ -111,26 +175,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "42",
+							"id": "32",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/region",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "99",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/politique-de-confidentialite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "67",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -166,7 +212,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "25",
+							"id": "29",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -175,7 +221,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "118",
+							"id": "105",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/auth/login",
 							"method": "GET",
 							"param": "",
@@ -184,7 +230,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "89",
+							"id": "101",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/changelog",
 							"method": "GET",
 							"param": "",
@@ -193,7 +239,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "107",
+							"id": "84",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/etablissements",
 							"method": "GET",
 							"param": "",
@@ -202,7 +248,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "111",
+							"id": "59",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/formations",
 							"method": "GET",
 							"param": "",
@@ -211,7 +257,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "91",
+							"id": "112",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://plausible.io/js/script.js\" as=\"script\"/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "57",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
 							"method": "GET",
 							"param": "",
@@ -220,7 +275,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "93",
+							"id": "75",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/domaine-de-formation",
 							"method": "GET",
 							"param": "",
@@ -229,7 +284,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "61",
+							"id": "79",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
 							"method": "GET",
 							"param": "",
@@ -238,7 +293,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "65",
+							"id": "106",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/region",
 							"method": "GET",
 							"param": "",
@@ -247,17 +302,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "109",
+							"id": "113",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/politique-de-confidentialite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"preload\" href=\"https://plausible.io/js/script.js\" as=\"script\"/>",
-							"otherinfo": ""
-						},
-						{
-							"id": "96",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -284,31 +330,31 @@
 					"desc": "<p>The server has responded with a redirect that seems to provide a large response. This may indicate that although the server sent a redirect it also responded with body content (which may include sensitive details, PII, etc.).</p>",
 					"instances":[ 
 						{
-							"id": "274",
+							"id": "111",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "Location header URI length: 16 [/panorama/region].\nPredicted response size: 316.\nResponse Body Length: 75,451."
+							"otherinfo": "Location header URI length: 16 [/panorama/region].\nPredicted response size: 316.\nResponse Body Length: 74,326."
 						},
 						{
-							"id": "31",
+							"id": "83",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/lien-metier-formation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "Location header URI length: 41 [/panorama/lien-metier-formation/formation].\nPredicted response size: 341.\nResponse Body Length: 76,137."
+							"otherinfo": "Location header URI length: 41 [/panorama/lien-metier-formation/formation].\nPredicted response size: 341.\nResponse Body Length: 75,940."
 						}
 					],
 					"count": "2",
 					"solution": "<p>Ensure that no sensitive information is leaked via redirect responses. Redirect responses should have almost no content.</p>",
-					"otherinfo": "<p>Location header URI length: 16 [/panorama/region].</p><p>Predicted response size: 316.</p><p>Response Body Length: 75,451.</p>",
+					"otherinfo": "<p>Location header URI length: 16 [/panorama/region].</p><p>Predicted response size: 316.</p><p>Response Body Length: 74,326.</p>",
 					"reference": "",
 					"cweid": "201",
 					"wascid": "13",
-					"sourceid": "262"
+					"sourceid": "118"
 				},
 				{
 					"pluginid": "90004",
@@ -321,62 +367,71 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "22",
+							"id": "26",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "47",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "12",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "27",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
 						},
 						{
 							"id": "48",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "4",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "23",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "13",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "28",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
 						},
 						{
 							"id": "49",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "6",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "24",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
 							"attack": "",
@@ -384,16 +439,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "50",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "7",
+							"id": "15",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -421,7 +467,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "21",
+							"id": "25",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -430,71 +476,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "101",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/webpack-6ca58c12576e0d98.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "82",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/changelog",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "105",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/etablissements",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "86",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "88",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/domaine-de-formation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "47",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "60",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/region",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "106",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/politique-de-confidentialite",
+							"id": "102",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/auth/login",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -503,7 +486,7 @@
 						},
 						{
 							"id": "87",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/ressources",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/changelog",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -511,7 +494,70 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "5",
+							"id": "78",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/etablissements",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "56",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/formations",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "110",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "46",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "69",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/domaine-de-formation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "72",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "103",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/region",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "14",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -539,8 +585,8 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "120",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/5016-3128c4eebe81ade5.js",
+							"id": "119",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/5016-527742f4cfc22425.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -548,7 +594,7 @@
 							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37."
 						},
 						{
-							"id": "113",
+							"id": "114",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/5700-e0e0f6b3e626aa9a.js",
 							"method": "GET",
 							"param": "",
@@ -575,7 +621,7 @@
 							"otherinfo": "1432725776, which evaluates to: 2015-05-27 11:22:56."
 						},
 						{
-							"id": "259",
+							"id": "256",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -593,7 +639,7 @@
 							"otherinfo": "1467031594, which evaluates to: 2016-06-27 12:46:34."
 						},
 						{
-							"id": "252",
+							"id": "250",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -620,7 +666,7 @@
 							"otherinfo": "1501505948, which evaluates to: 2017-07-31 12:59:08."
 						},
 						{
-							"id": "258",
+							"id": "255",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -656,7 +702,7 @@
 							"otherinfo": "1522805485, which evaluates to: 2018-04-04 01:31:25."
 						},
 						{
-							"id": "264",
+							"id": "261",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -710,7 +756,7 @@
 							"otherinfo": "1555081692, which evaluates to: 2019-04-12 15:08:12."
 						},
 						{
-							"id": "269",
+							"id": "266",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -800,7 +846,7 @@
 							"otherinfo": "1732584193, which evaluates to: 2024-11-26 01:23:13."
 						},
 						{
-							"id": "251",
+							"id": "249",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -917,7 +963,7 @@
 							"otherinfo": "1873313359, which evaluates to: 2029-05-12 20:49:19."
 						},
 						{
-							"id": "195",
+							"id": "194",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -926,7 +972,7 @@
 							"otherinfo": "1894007588, which evaluates to: 2030-01-07 09:13:08."
 						},
 						{
-							"id": "266",
+							"id": "263",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -962,7 +1008,7 @@
 							"otherinfo": "1925078388, which evaluates to: 2031-01-01 23:59:48."
 						},
 						{
-							"id": "261",
+							"id": "258",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -980,7 +1026,7 @@
 							"otherinfo": "1955562222, which evaluates to: 2031-12-20 19:43:42."
 						},
 						{
-							"id": "254",
+							"id": "252",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -998,7 +1044,7 @@
 							"otherinfo": "1986661051, which evaluates to: 2032-12-14 18:17:31."
 						},
 						{
-							"id": "256",
+							"id": "253",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -1034,7 +1080,7 @@
 							"otherinfo": "2007800933, which evaluates to: 2033-08-16 10:28:53."
 						},
 						{
-							"id": "262",
+							"id": "259",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -1061,7 +1107,7 @@
 							"otherinfo": "2053994217, which evaluates to: 2035-02-02 01:56:57."
 						},
 						{
-							"id": "267",
+							"id": "264",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/_next/static/chunks/8970bc03-75d63c9e74931ec6.js",
 							"method": "GET",
 							"param": "",
@@ -1074,9 +1120,9 @@
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1540483477, which evaluates to: 2018-10-25 16:04:37.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
-					"cweid": "200",
+					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "133"
+					"sourceid": "152"
 				},
 				{
 					"pluginid": "10111",
@@ -1089,7 +1135,7 @@
 					"desc": "<p>The given request has been identified as an authentication request. The 'Other Info' field contains a set of key=value lines which identify any relevant fields. If the request is in a context which has an Authentication Method set to \"Auto-Detect\" then this rule will change the authentication to match the request identified.</p>",
 					"instances":[ 
 						{
-							"id": "255",
+							"id": "270",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/auth/login?email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
@@ -1104,7 +1150,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "251"
+					"sourceid": "238"
 				},
 				{
 					"pluginid": "10094",
@@ -1117,7 +1163,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "26",
+							"id": "19",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -1126,7 +1172,16 @@
 							"otherinfo": "\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "90",
+							"id": "97",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/auth/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "--chakra-colors-whiteAlpha-100",
+							"otherinfo": "\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD"
+						},
+						{
+							"id": "85",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/changelog",
 							"method": "GET",
 							"param": "",
@@ -1135,7 +1190,7 @@
 							"otherinfo": "\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "108",
+							"id": "76",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/etablissements",
 							"method": "GET",
 							"param": "",
@@ -1144,7 +1199,7 @@
 							"otherinfo": "\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "112",
+							"id": "54",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/formations",
 							"method": "GET",
 							"param": "",
@@ -1153,7 +1208,16 @@
 							"otherinfo": "\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "92",
+							"id": "109",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "--chakra-colors-whiteAlpha-100",
+							"otherinfo": "\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD"
+						},
+						{
+							"id": "42",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
 							"method": "GET",
 							"param": "",
@@ -1162,7 +1226,7 @@
 							"otherinfo": "\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "94",
+							"id": "64",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/domaine-de-formation",
 							"method": "GET",
 							"param": "",
@@ -1171,7 +1235,7 @@
 							"otherinfo": "\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "62",
+							"id": "70",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
 							"method": "GET",
 							"param": "",
@@ -1180,35 +1244,17 @@
 							"otherinfo": "\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "38",
+							"id": "96",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/lien-metier-formation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2FwEaCXVzLXdlc3QtMiJIMEYCIQCNMa4qF4nnFk75rZPHgwL4hXadiSFfToPcHFmryimAsQIhAJCXzdUHR5s6BcOjvs3jOejVOEihHOZWDeGukFVKtxA4KogECLz",
-							"otherinfo": "\uFFFD\\\\x0004h%\uFFFD\u0335\u0755\uFFFD\u0434\u0209 \uFFFD\\x0018\\x0008\uFFFD\\x00024\u01B8\uFFFD^'\uFFFDY;\uFFFDO\\x001e\\x000c\\x000b\uFFFD\\x0015\uFFFDv$\uFFFD}:\\x000fpqf\uFFFD(\uFFFD\\x0002\uFFFD\\x0008\uFFFD\\x0002B_7T\\x001d\\x001el\uFFFD\\x0017\\x000e\uFFFD\uFFFD7\uFFFD\uFFFDT\uFFFD\"\uFFFDs\uFFFDX7\uFFFD\uFFFDAU*\uFFFD@\uFFFD \\x0010\"\uFFFD"
+							"evidence": "2BFRWKbwgIRuceoQieJ6WQWBwefsPdJdjef9xkQAGLCkzKk91u",
+							"otherinfo": "\uFFFD\\x0011QX\uFFFD\uFFFD\uFFFD\uFFFDnq\uFFFD\\x0010\uFFFD\uFFFDzY\\x0005\uFFFD\uFFFD\uFFFD\uFFFD=\uFFFD]\uFFFD\uFFFD\uFFFD\uFFFDD\\x0000\\x0018\uFFFD\uFFFD\u0329=\uFFFD"
 						},
 						{
-							"id": "66",
+							"id": "99",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/region",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "--chakra-colors-whiteAlpha-100",
-							"otherinfo": "\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD"
-						},
-						{
-							"id": "110",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/politique-de-confidentialite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "--chakra-colors-whiteAlpha-100",
-							"otherinfo": "\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD"
-						},
-						{
-							"id": "97",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1220,7 +1266,7 @@
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFD\uFFFD!jJ\uFFFD\uFFFD\uFFFD%\uFFFD\uFFFD>\uFFFD\\x0018\uFFFDx\ti\uFFFD\uFFFD\uFFFD\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
-					"cweid": "200",
+					"cweid": "319",
 					"wascid": "13",
 					"sourceid": "1"
 				},
@@ -1235,7 +1281,7 @@
 					"desc": "<p>The request appeared to contain sensitive information leaked in the URL. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.</p>",
 					"instances":[ 
 						{
-							"id": "190",
+							"id": "271",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/auth/login?email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "email",
@@ -1244,7 +1290,7 @@
 							"otherinfo": "The URL contains email address(es)."
 						},
 						{
-							"id": "197",
+							"id": "272",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/auth/login?email=zaproxy%40example.com&password=ZAP",
 							"method": "GET",
 							"param": "password",
@@ -1266,9 +1312,9 @@
 					"solution": "<p>Do not pass sensitive information in URIs.</p>",
 					"otherinfo": "<p>The URL contains email address(es).</p>",
 					"reference": "",
-					"cweid": "200",
+					"cweid": "598",
 					"wascid": "13",
-					"sourceid": "251"
+					"sourceid": "238"
 				},
 				{
 					"pluginid": "10027",
@@ -1278,7 +1324,7 @@
 					"riskcode": "0",
 					"confidence": "1",
 					"riskdesc": "Informational (Low)",
-					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
 							"id": "17",
@@ -1286,141 +1332,105 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"8:[\\\"$\\\",\\\"$Lf\\\",null,{\\\"auth\\\":\\\"$undefined\\\",\\\"changelog\\\":[{\\\"id\\\":\\\"18fd0d8e-c015-800d-a79d-e\", see evidence field for the suspicious comment/snippet."
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "18",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
+							"id": "91",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/auth/login",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"sek5Do7u4p2UA5rWP6lyyeB4qIsR4SKtYcCz6zRwSdxV1pgd130lkrCmMAkuSzwrdxbe57mibcI3taj3RzJ%2BPwuRzEM7Pdn\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "44",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"X-Amz-Signature=efeab7e0a4bd23486d8ccdac6d8b2e0032030f569e741be93dc3eef306b7ed8d\\u0026X-Amz-Signe\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "74",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/changelog",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"a:[\\\"$\\\",\\\"$Lf\\\",null,{\\\"auth\\\":\\\"$undefined\\\",\\\"changelog\\\":[{\\\"id\\\":\\\"18fd0d8e-c015-800d-a79d-e\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "75",
+							"id": "81",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/changelog",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"7aee329be27530346f30ba610d3686e20772fa2c1ee2ba\\u0026X-Amz-SignedHeaders=host\\u0026x-id=GetObject2\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "76",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"a:[\\\"$\\\",\\\"$L10\\\",null,{\\\"auth\\\":\\\"$undefined\\\",\\\"changelog\\\":[{\\\"id\\\":\\\"18fd0d8e-c015-800d-a79d-\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "77",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
+							"id": "73",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/etablissements",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"11a95d073c7daf9a83e1ef887f83e4b2a3fa4da4325ce96\\u0026X-Amz-SignedHeaders=host\\u0026x-id=GetObject\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "39",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"a:[\\\"$\\\",\\\"$L10\\\",null,{\\\"auth\\\":\\\"$undefined\\\",\\\"changelog\\\":[{\\\"id\\\":\\\"18fd0d8e-c015-800d-a79d-\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"id": "40",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/formations",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "107",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "38",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "62",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/domaine-de-formation",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "67",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"90a3cba5842\\u0026X-Amz-SignedHeaders=host\\u0026x-id=GetObject23:T685,https://prod-files-secure.s3\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "32",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/lien-metier-formation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"c:[\\\"$\\\",\\\"$L11\\\",null,{\\\"auth\\\":\\\"$undefined\\\",\\\"changelog\\\":[{\\\"id\\\":\\\"18fd0d8e-c015-800d-a79d-\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "33",
+							"id": "88",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/lien-metier-formation",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"8zCDtQbLl0imq6kT60GuSsj3MnsbzL5EXz\\u0026X-Amz-Signature=5732f15551edeccaac1483e8d7d28c116418b1a02\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "56",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/region",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"a:[\\\"$\\\",\\\"$L10\\\",null,{\\\"auth\\\":\\\"$undefined\\\",\\\"changelog\\\":[{\\\"id\\\":\\\"18fd0d8e-c015-800d-a79d-\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "57",
+							"id": "34",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/region",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"27aee329be27530346f30ba610d3686e20772fa2c1ee2ba\\u0026X-Amz-SignedHeaders=host\\u0026x-id=GetObject\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "71",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/ressources",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"a:[\\\"$\\\",\\\"$L10\\\",null,{\\\"auth\\\":\\\"$undefined\\\",\\\"changelog\\\":[{\\\"id\\\":\\\"18fd0d8e-c015-800d-a79d-\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "72",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/ressources",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in the element starting with: \"<script>self.__next_f.push([1,\"11a95d073c7daf9a83e1ef887f83e4b2a3fa4da4325ce96\\u0026X-Amz-SignedHeaders=host\\u0026x-id=GetObject\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "15",
+					"count": "11",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bBUG\\b and was detected in the element starting with: \"<script>self.__next_f.push([1,\"8:[\\\"$\\\",\\\"$Lf\\\",null,{\\\"auth\\\":\\\"$undefined\\\",\\\"changelog\\\":[{\\\"id\\\":\\\"18fd0d8e-c015-800d-a79d-e\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected 2 times, the first in likely comment: \"//prod-files-secure.s3.us-west-2.amazonaws.com/8a438825-96a5-4316-8063-feedb7290d37/1c90e374-5c73-4507-95dd-fb9c5c81b94a/user-st\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
-					"cweid": "200",
+					"cweid": "615",
 					"wascid": "13",
 					"sourceid": "1"
 				},
@@ -1435,7 +1445,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "19",
+							"id": "18",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -1444,7 +1454,16 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "78",
+							"id": "92",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/auth/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" class=\"chakra-link css-3lznb0\" href=\"/\">Accueil</a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"id": "82",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/changelog",
 							"method": "GET",
 							"param": "",
@@ -1453,7 +1472,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "102",
+							"id": "74",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/etablissements",
 							"method": "GET",
 							"param": "",
@@ -1462,7 +1481,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "104",
+							"id": "41",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/formations",
 							"method": "GET",
 							"param": "",
@@ -1471,7 +1490,16 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "79",
+							"id": "108",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/mentions-legales",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a target=\"_self\" class=\"chakra-link css-3lznb0\" href=\"/\">Accueil</a>",
+							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
+						},
+						{
+							"id": "39",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
 							"method": "GET",
 							"param": "",
@@ -1480,7 +1508,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "80",
+							"id": "63",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/domaine-de-formation",
 							"method": "GET",
 							"param": "",
@@ -1489,7 +1517,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "41",
+							"id": "68",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
 							"method": "GET",
 							"param": "",
@@ -1498,7 +1526,7 @@
 							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
 						},
 						{
-							"id": "34",
+							"id": "89",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/lien-metier-formation",
 							"method": "GET",
 							"param": "",
@@ -1507,26 +1535,8 @@
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "58",
+							"id": "35",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/region",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a target=\"_self\" class=\"chakra-link css-3lznb0\" href=\"/\">Accueil</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
-						},
-						{
-							"id": "103",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/politique-de-confidentialite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a target=\"_self\" class=\"chakra-link css-3lznb0\" href=\"/\">Accueil</a>",
-							"otherinfo": "Links have been found with a target of '_self' - this is often used by modern frameworks to force a full page reload."
-						},
-						{
-							"id": "73",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1553,7 +1563,7 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"id": "20",
+							"id": "24",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -1562,7 +1572,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "81",
+							"id": "98",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/auth/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
+							"id": "86",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/changelog",
 							"method": "GET",
 							"param": "",
@@ -1571,7 +1590,25 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "83",
+							"id": "77",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/etablissements",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
+							"id": "55",
+							"uri": "https://orion.inserjeunes.beta.gouv.fr/console/formations",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						},
+						{
+							"id": "44",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/departement",
 							"method": "GET",
 							"param": "",
@@ -1580,7 +1617,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "85",
+							"id": "65",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/domaine-de-formation",
 							"method": "GET",
 							"param": "",
@@ -1589,7 +1626,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "45",
+							"id": "71",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/etablissement",
 							"method": "GET",
 							"param": "",
@@ -1598,26 +1635,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "35",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/lien-metier-formation",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "no-store",
-							"otherinfo": ""
-						},
-						{
-							"id": "59",
+							"id": "100",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/panorama/region",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "no-store",
-							"otherinfo": ""
-						},
-						{
-							"id": "84",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/ressources",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1625,7 +1644,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "8",
+					"count": "9",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
@@ -1672,7 +1691,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "29",
+							"id": "22",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1681,7 +1700,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "8",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1690,7 +1709,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "6",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1718,7 +1737,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "28",
+							"id": "21",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1727,7 +1746,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "9",
+							"id": "4",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1736,7 +1755,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "13",
+							"id": "5",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1764,7 +1783,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "27",
+							"id": "20",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1773,7 +1792,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "2",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1782,7 +1801,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "12",
+							"id": "3",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1810,7 +1829,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "30",
+							"id": "23",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1819,7 +1838,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "9",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1828,7 +1847,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "7",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1856,7 +1875,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "11",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1884,16 +1903,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
 					"instances":[ 
 						{
-							"id": "95",
-							"uri": "https://orion.inserjeunes.beta.gouv.fr/logo_orion.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"id": "3",
+							"id": "10",
 							"uri": "https://orion.inserjeunes.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1902,13 +1912,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "109"
+					"sourceid": "7"
 				}
 			]
 		}
