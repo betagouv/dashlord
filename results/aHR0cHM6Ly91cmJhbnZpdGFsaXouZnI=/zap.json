@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.0",
-	"@generated": "Sun, 2 Mar 2025 11:26:02",
+	"@generated": "Sun, 16 Mar 2025 13:37:56",
 	"site":[ 
 		{
 			"@name": "https://urbanvitaliz.fr",
@@ -20,22 +20,31 @@
 					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
 					"instances":[ 
 						{
-							"id": "251",
-							"uri": "https://urbanvitaliz.fr/accounts/login/",
-							"method": "POST",
+							"id": "114",
+							"uri": "https://urbanvitaliz.fr/cookies/",
+							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<form action=\"/accounts/oidc/proconnect/login/?process=process\">",
+							"evidence": "<form class=\"cookie-consent-accept\"\n                                              action=\"/cookies/accept/\"\n                                              method=\"post\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"\" ]."
+						},
+						{
+							"id": "115",
+							"uri": "https://urbanvitaliz.fr/cookies/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form class=\"cookie-consent-accept\"\n                                              action=\"/cookies/decline/\"\n                                              method=\"post\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 2: \"\" ]."
 						}
 					],
-					"count": "1",
+					"count": "2",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token] was found in the following HTML form: [Form 1: \"\" ].</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "395"
+					"sourceid": "125"
 				},
 				{
 					"pluginid": "10038",
@@ -48,7 +57,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "25",
+							"id": "19",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "",
@@ -57,7 +66,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "76",
+							"id": "85",
 							"uri": "https://urbanvitaliz.fr/",
 							"method": "GET",
 							"param": "",
@@ -66,7 +75,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "110",
+							"id": "62",
+							"uri": "https://urbanvitaliz.fr/accounts/login/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "77",
 							"uri": "https://urbanvitaliz.fr/acteurs-locaux",
 							"method": "GET",
 							"param": "",
@@ -75,7 +93,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "19",
+							"id": "29",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "",
@@ -84,7 +102,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "71",
+							"id": "103",
+							"uri": "https://urbanvitaliz.fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "109",
 							"uri": "https://urbanvitaliz.fr/cookies/",
 							"method": "GET",
 							"param": "",
@@ -93,7 +120,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "98",
+							"id": "68",
 							"uri": "https://urbanvitaliz.fr/methodologie",
 							"method": "GET",
 							"param": "",
@@ -102,7 +129,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "22",
+							"id": "129",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/",
 							"method": "GET",
 							"param": "",
@@ -111,16 +138,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "100",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/college-isere/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "106",
+							"id": "132",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/dammartin-sur-meuse/",
 							"method": "GET",
 							"param": "",
@@ -129,16 +147,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "123",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/mayet-ancienne-laiterie/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "10",
+							"id": "2",
 							"uri": "https://urbanvitaliz.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -153,7 +162,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90003",
@@ -166,7 +175,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "66",
+							"id": "58",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "",
@@ -175,7 +184,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "92",
+							"id": "127",
 							"uri": "https://urbanvitaliz.fr/",
 							"method": "GET",
 							"param": "",
@@ -184,7 +193,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "135",
+							"id": "89",
+							"uri": "https://urbanvitaliz.fr/accounts/login/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "124",
 							"uri": "https://urbanvitaliz.fr/acteurs-locaux",
 							"method": "GET",
 							"param": "",
@@ -193,7 +211,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "53",
+							"id": "57",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "",
@@ -202,7 +220,25 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "94",
+							"id": "126",
+							"uri": "https://urbanvitaliz.fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "125",
+							"uri": "https://urbanvitaliz.fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"https://www.google.com/recaptcha/api.js?hl=fr\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "135",
 							"uri": "https://urbanvitaliz.fr/cookies/",
 							"method": "GET",
 							"param": "",
@@ -211,7 +247,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "118",
+							"id": "92",
 							"uri": "https://urbanvitaliz.fr/methodologie",
 							"method": "GET",
 							"param": "",
@@ -220,7 +256,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "64",
+							"id": "144",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/",
 							"method": "GET",
 							"param": "",
@@ -229,35 +265,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "126",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/college-isere/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "128",
+							"id": "146",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/dammartin-sur-meuse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "140",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/mayet-ancienne-laiterie/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "141",
-							"uri": "https://urbanvitaliz.fr/p/qui-sommes-nous/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -284,7 +293,7 @@
 					"desc": "<p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</p>",
 					"instances":[ 
 						{
-							"id": "26",
+							"id": "20",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "csrftoken",
@@ -293,7 +302,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "77",
+							"id": "86",
 							"uri": "https://urbanvitaliz.fr/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -302,7 +311,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "132",
+							"id": "63",
 							"uri": "https://urbanvitaliz.fr/accounts/login/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -311,7 +320,34 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "137",
+							"id": "218",
+							"uri": "https://urbanvitaliz.fr/accounts/oidc/proconnect/login/?process=process",
+							"method": "GET",
+							"param": "sessionid",
+							"attack": "",
+							"evidence": "set-cookie: sessionid",
+							"otherinfo": ""
+						},
+						{
+							"id": "212",
+							"uri": "https://urbanvitaliz.fr/accounts/password/reset/",
+							"method": "GET",
+							"param": "csrftoken",
+							"attack": "",
+							"evidence": "set-cookie: csrftoken",
+							"otherinfo": ""
+						},
+						{
+							"id": "221",
+							"uri": "https://urbanvitaliz.fr/accounts/signup/",
+							"method": "GET",
+							"param": "csrftoken",
+							"attack": "",
+							"evidence": "set-cookie: csrftoken",
+							"otherinfo": ""
+						},
+						{
+							"id": "104",
 							"uri": "https://urbanvitaliz.fr/contact/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -320,7 +356,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "72",
+							"id": "229",
+							"uri": "https://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e",
+							"method": "GET",
+							"param": "csrftoken",
+							"attack": "",
+							"evidence": "set-cookie: csrftoken",
+							"otherinfo": ""
+						},
+						{
+							"id": "111",
 							"uri": "https://urbanvitaliz.fr/cookies/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -329,57 +374,21 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "227",
-							"uri": "https://urbanvitaliz.fr/cookies/accept/",
-							"method": "POST",
-							"param": "cookie_consent",
+							"id": "215",
+							"uri": "https://urbanvitaliz.fr/login/",
+							"method": "GET",
+							"param": "csrftoken",
 							"attack": "",
-							"evidence": "set-cookie: cookie_consent",
+							"evidence": "set-cookie: csrftoken",
 							"otherinfo": ""
 						},
 						{
-							"id": "234",
-							"uri": "https://urbanvitaliz.fr/cookies/accept/analytics/",
+							"id": "225",
+							"uri": "https://urbanvitaliz.fr/accounts/login/",
 							"method": "POST",
-							"param": "cookie_consent",
+							"param": "csrftoken",
 							"attack": "",
-							"evidence": "set-cookie: cookie_consent",
-							"otherinfo": ""
-						},
-						{
-							"id": "239",
-							"uri": "https://urbanvitaliz.fr/cookies/accept/tracking_media/",
-							"method": "POST",
-							"param": "cookie_consent",
-							"attack": "",
-							"evidence": "set-cookie: cookie_consent",
-							"otherinfo": ""
-						},
-						{
-							"id": "230",
-							"uri": "https://urbanvitaliz.fr/cookies/decline/",
-							"method": "POST",
-							"param": "cookie_consent",
-							"attack": "",
-							"evidence": "set-cookie: cookie_consent",
-							"otherinfo": ""
-						},
-						{
-							"id": "236",
-							"uri": "https://urbanvitaliz.fr/cookies/decline/analytics/",
-							"method": "POST",
-							"param": "cookie_consent",
-							"attack": "",
-							"evidence": "set-cookie: cookie_consent",
-							"otherinfo": ""
-						},
-						{
-							"id": "241",
-							"uri": "https://urbanvitaliz.fr/cookies/decline/tracking_media/",
-							"method": "POST",
-							"param": "cookie_consent",
-							"attack": "",
-							"evidence": "set-cookie: cookie_consent",
+							"evidence": "set-cookie: csrftoken",
 							"otherinfo": ""
 						}
 					],
@@ -389,7 +398,7 @@
 					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
 					"cweid": "1004",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10011",
@@ -402,7 +411,7 @@
 					"desc": "<p>A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.</p>",
 					"instances":[ 
 						{
-							"id": "228",
+							"id": "232",
 							"uri": "https://urbanvitaliz.fr/cookies/accept/",
 							"method": "POST",
 							"param": "cookie_consent",
@@ -420,7 +429,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "240",
+							"id": "236",
 							"uri": "https://urbanvitaliz.fr/cookies/accept/tracking_media/",
 							"method": "POST",
 							"param": "cookie_consent",
@@ -429,7 +438,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "232",
+							"id": "233",
 							"uri": "https://urbanvitaliz.fr/cookies/decline/",
 							"method": "POST",
 							"param": "cookie_consent",
@@ -438,7 +447,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "238",
+							"id": "234",
 							"uri": "https://urbanvitaliz.fr/cookies/decline/analytics/",
 							"method": "POST",
 							"param": "cookie_consent",
@@ -447,7 +456,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "243",
+							"id": "237",
 							"uri": "https://urbanvitaliz.fr/cookies/decline/tracking_media/",
 							"method": "POST",
 							"param": "cookie_consent",
@@ -462,7 +471,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p>",
 					"cweid": "614",
 					"wascid": "13",
-					"sourceid": "320"
+					"sourceid": "341"
 				},
 				{
 					"pluginid": "10054",
@@ -475,7 +484,7 @@
 					"desc": "<p>A cookie has been set with its SameSite attribute set to \"none\", which means that the cookie can be sent as a result of a 'cross-site' request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>",
 					"instances":[ 
 						{
-							"id": "27",
+							"id": "22",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "csrftoken",
@@ -484,7 +493,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "78",
+							"id": "87",
 							"uri": "https://urbanvitaliz.fr/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -493,7 +502,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "133",
+							"id": "64",
 							"uri": "https://urbanvitaliz.fr/accounts/login/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -502,7 +511,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "249",
+							"id": "219",
 							"uri": "https://urbanvitaliz.fr/accounts/oidc/proconnect/login/?process=process",
 							"method": "GET",
 							"param": "sessionid",
@@ -511,7 +520,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "246",
+							"id": "213",
 							"uri": "https://urbanvitaliz.fr/accounts/password/reset/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -520,7 +529,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "247",
+							"id": "222",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -529,7 +538,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "138",
+							"id": "106",
 							"uri": "https://urbanvitaliz.fr/contact/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -538,7 +547,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "244",
+							"id": "230",
 							"uri": "https://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e",
 							"method": "GET",
 							"param": "csrftoken",
@@ -547,7 +556,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "74",
+							"id": "112",
 							"uri": "https://urbanvitaliz.fr/cookies/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -556,7 +565,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "248",
+							"id": "216",
 							"uri": "https://urbanvitaliz.fr/login/",
 							"method": "GET",
 							"param": "csrftoken",
@@ -565,7 +574,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "250",
+							"id": "226",
 							"uri": "https://urbanvitaliz.fr/accounts/login/",
 							"method": "POST",
 							"param": "csrftoken",
@@ -580,7 +589,7 @@
 					"reference": "<p>https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site</p>",
 					"cweid": "1275",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10017",
@@ -593,7 +602,7 @@
 					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
 					"instances":[ 
 						{
-							"id": "28",
+							"id": "26",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
@@ -602,7 +611,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "79",
+							"id": "88",
 							"uri": "https://urbanvitaliz.fr/",
 							"method": "GET",
 							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
@@ -611,7 +620,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "111",
+							"id": "65",
+							"uri": "https://urbanvitaliz.fr/accounts/login/",
+							"method": "GET",
+							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
+							"attack": "",
+							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "78",
 							"uri": "https://urbanvitaliz.fr/acteurs-locaux",
 							"method": "GET",
 							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
@@ -620,7 +638,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "20",
+							"id": "30",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
@@ -629,35 +647,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "75",
-							"uri": "https://urbanvitaliz.fr/cookies/",
-							"method": "GET",
-							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "99",
-							"uri": "https://urbanvitaliz.fr/methodologie",
-							"method": "GET",
-							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "23",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/",
-							"method": "GET",
-							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "101",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/college-isere/",
+							"id": "110",
+							"uri": "https://urbanvitaliz.fr/contact/",
 							"method": "GET",
 							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
 							"attack": "",
@@ -666,25 +657,43 @@
 						},
 						{
 							"id": "108",
+							"uri": "https://urbanvitaliz.fr/contact/",
+							"method": "GET",
+							"param": "https://www.google.com/recaptcha/api.js?hl=fr",
+							"attack": "",
+							"evidence": "<script src=\"https://www.google.com/recaptcha/api.js?hl=fr\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "113",
+							"uri": "https://urbanvitaliz.fr/cookies/",
+							"method": "GET",
+							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
+							"attack": "",
+							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "69",
+							"uri": "https://urbanvitaliz.fr/methodologie",
+							"method": "GET",
+							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
+							"attack": "",
+							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "130",
+							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/",
+							"method": "GET",
+							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
+							"attack": "",
+							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "133",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/dammartin-sur-meuse/",
-							"method": "GET",
-							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "124",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/mayet-ancienne-laiterie/",
-							"method": "GET",
-							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
-							"attack": "",
-							"evidence": "<script src=\"https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js\"\n                        crossorigin=\"anonymous\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "131",
-							"uri": "https://urbanvitaliz.fr/p/qui-sommes-nous/",
 							"method": "GET",
 							"param": "https://sentry.incubateur.net/js-sdk-loader/5b872cee93efddce4396cc52605838c1.min.js",
 							"attack": "",
@@ -698,7 +707,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90004",
@@ -711,7 +720,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "51",
+							"id": "50",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -720,8 +729,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "90",
-							"uri": "https://urbanvitaliz.fr/",
+							"id": "73",
+							"uri": "https://urbanvitaliz.fr/accounts/login/",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -729,7 +738,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
+							"id": "98",
+							"uri": "https://urbanvitaliz.fr/acteurs-locaux",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "54",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -738,8 +756,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "85",
-							"uri": "https://urbanvitaliz.fr/cookies/",
+							"id": "82",
+							"uri": "https://urbanvitaliz.fr/methodologie",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -747,16 +765,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "45",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "5",
+							"id": "17",
 							"uri": "https://urbanvitaliz.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -774,8 +783,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "91",
-							"uri": "https://urbanvitaliz.fr/",
+							"id": "74",
+							"uri": "https://urbanvitaliz.fr/accounts/login/",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
 							"attack": "",
@@ -783,7 +792,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "43",
+							"id": "99",
+							"uri": "https://urbanvitaliz.fr/acteurs-locaux",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "56",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -792,17 +810,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "86",
-							"uri": "https://urbanvitaliz.fr/cookies/",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "46",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/",
+							"id": "83",
+							"uri": "https://urbanvitaliz.fr/methodologie",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
 							"attack": "",
@@ -816,7 +825,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
 					"cweid": "693",
 					"wascid": "14",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10063",
@@ -829,7 +838,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "50",
+							"id": "49",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "",
@@ -838,7 +847,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "89",
+							"id": "105",
 							"uri": "https://urbanvitaliz.fr/",
 							"method": "GET",
 							"param": "",
@@ -847,7 +856,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "121",
+							"id": "72",
+							"uri": "https://urbanvitaliz.fr/accounts/login/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "97",
 							"uri": "https://urbanvitaliz.fr/acteurs-locaux",
 							"method": "GET",
 							"param": "",
@@ -856,7 +874,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "40",
+							"id": "47",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "",
@@ -865,7 +883,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "84",
+							"id": "119",
+							"uri": "https://urbanvitaliz.fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "123",
 							"uri": "https://urbanvitaliz.fr/cookies/",
 							"method": "GET",
 							"param": "",
@@ -874,7 +901,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "107",
+							"id": "81",
 							"uri": "https://urbanvitaliz.fr/methodologie",
 							"method": "GET",
 							"param": "",
@@ -883,7 +910,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "42",
+							"id": "138",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/",
 							"method": "GET",
 							"param": "",
@@ -892,16 +919,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "114",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/college-isere/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "117",
+							"id": "141",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/dammartin-sur-meuse/",
 							"method": "GET",
 							"param": "",
@@ -910,16 +928,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "130",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/mayet-ancienne-laiterie/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "13",
+							"id": "16",
 							"uri": "https://urbanvitaliz.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -934,7 +943,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10035",
@@ -947,7 +956,7 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"id": "1",
+							"id": "4",
 							"uri": "https://urbanvitaliz.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -956,7 +965,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "155",
+							"id": "197",
 							"uri": "https://urbanvitaliz.fr/static/_commonjsHelpers-de833af9.js",
 							"method": "GET",
 							"param": "",
@@ -965,7 +974,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "151",
+							"id": "199",
 							"uri": "https://urbanvitaliz.fr/static/app-5dba7720.js",
 							"method": "GET",
 							"param": "",
@@ -974,7 +983,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "149",
+							"id": "195",
 							"uri": "https://urbanvitaliz.fr/static/bootstrap.esm-05e587d8.js",
 							"method": "GET",
 							"param": "",
@@ -983,7 +992,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "166",
+							"id": "207",
 							"uri": "https://urbanvitaliz.fr/static/css/base.css",
 							"method": "GET",
 							"param": "",
@@ -992,7 +1001,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "172",
+							"id": "209",
 							"uri": "https://urbanvitaliz.fr/static/css/markdownx.css",
 							"method": "GET",
 							"param": "",
@@ -1001,7 +1010,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "153",
+							"id": "201",
 							"uri": "https://urbanvitaliz.fr/static/cssUtils-fae3db0a.js",
 							"method": "GET",
 							"param": "",
@@ -1010,7 +1019,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "147",
+							"id": "150",
 							"uri": "https://urbanvitaliz.fr/static/gravatar-7c250dec.js",
 							"method": "GET",
 							"param": "",
@@ -1019,7 +1028,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "161",
+							"id": "205",
 							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
 							"method": "GET",
 							"param": "",
@@ -1028,7 +1037,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "157",
+							"id": "152",
 							"uri": "https://urbanvitaliz.fr/static/module.esm-128413c1.js",
 							"method": "GET",
 							"param": "",
@@ -1037,7 +1046,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "159",
+							"id": "203",
 							"uri": "https://urbanvitaliz.fr/static/popper-effa1d03.js",
 							"method": "GET",
 							"param": "",
@@ -1046,7 +1055,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "145",
+							"id": "148",
 							"uri": "https://urbanvitaliz.fr/static/user-5db4b460.css",
 							"method": "GET",
 							"param": "",
@@ -1074,178 +1083,7 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "173",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1444681467",
-							"otherinfo": "1444681467, which evaluates to: 2015-10-12 20:24:27."
-						},
-						{
-							"id": "164",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1473231341",
-							"otherinfo": "1473231341, which evaluates to: 2016-09-07 06:55:41."
-						},
-						{
-							"id": "171",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1502002290",
-							"otherinfo": "1502002290, which evaluates to: 2017-08-06 06:51:30."
-						},
-						{
-							"id": "179",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1530992060",
-							"otherinfo": "1530992060, which evaluates to: 2018-07-07 19:34:20."
-						},
-						{
-							"id": "189",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1560198380",
-							"otherinfo": "1560198380, which evaluates to: 2019-06-10 20:26:20."
-						},
-						{
-							"id": "180",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1700485571",
-							"otherinfo": "1700485571, which evaluates to: 2023-11-20 13:06:11."
-						},
-						{
-							"id": "162",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1732584193",
-							"otherinfo": "1732584193, which evaluates to: 2024-11-26 01:23:13."
-						},
-						{
-							"id": "163",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1732584194",
-							"otherinfo": "1732584194, which evaluates to: 2024-11-26 01:23:14."
-						},
-						{
-							"id": "174",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1735328473",
-							"otherinfo": "1735328473, which evaluates to: 2024-12-27 19:41:13."
-						},
-						{
-							"id": "165",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1770035416",
-							"otherinfo": "1770035416, which evaluates to: 2026-02-02 12:30:16."
-						},
-						{
-							"id": "170",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1804603682",
-							"otherinfo": "1804603682, which evaluates to: 2027-03-09 14:48:02."
-						},
-						{
-							"id": "178",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1839030562",
-							"otherinfo": "1839030562, which evaluates to: 2028-04-11 01:49:22."
-						},
-						{
-							"id": "188",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1873313359",
-							"otherinfo": "1873313359, which evaluates to: 2029-05-12 20:49:19."
-						},
-						{
-							"id": "181",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1894986606",
-							"otherinfo": "1894986606, which evaluates to: 2030-01-18 17:10:06."
-						},
-						{
-							"id": "176",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1926607734",
-							"otherinfo": "1926607734, which evaluates to: 2031-01-19 16:48:54."
-						},
-						{
-							"id": "167",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1958414417",
-							"otherinfo": "1958414417, which evaluates to: 2032-01-22 20:00:17."
-						},
-						{
-							"id": "168",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1990404162",
-							"otherinfo": "1990404162, which evaluates to: 2033-01-27 02:02:42."
-						},
-						{
-							"id": "177",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "2022574463",
-							"otherinfo": "2022574463, which evaluates to: 2034-02-03 10:14:23."
-						},
-						{
-							"id": "183",
-							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "2054922799",
-							"otherinfo": "2054922799, which evaluates to: 2035-02-12 19:53:19."
-						},
-						{
-							"id": "219",
+							"id": "187",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1254,7 +1092,7 @@
 							"otherinfo": "1441659144, which evaluates to: 2015-09-07 20:52:24."
 						},
 						{
-							"id": "190",
+							"id": "159",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1263,7 +1101,7 @@
 							"otherinfo": "1515466021, which evaluates to: 2018-01-09 02:47:01."
 						},
 						{
-							"id": "216",
+							"id": "184",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1272,7 +1110,7 @@
 							"otherinfo": "1534255214, which evaluates to: 2018-08-14 14:00:14."
 						},
 						{
-							"id": "206",
+							"id": "174",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1281,7 +1119,7 @@
 							"otherinfo": "1536648574, which evaluates to: 2018-09-11 06:49:34."
 						},
 						{
-							"id": "222",
+							"id": "190",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1290,7 +1128,7 @@
 							"otherinfo": "1548458149, which evaluates to: 2019-01-25 23:15:49."
 						},
 						{
-							"id": "195",
+							"id": "163",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1299,7 +1137,7 @@
 							"otherinfo": "1562672241, which evaluates to: 2019-07-09 11:37:21."
 						},
 						{
-							"id": "207",
+							"id": "175",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1308,7 +1146,7 @@
 							"otherinfo": "1575348436, which evaluates to: 2019-12-03 04:47:16."
 						},
 						{
-							"id": "192",
+							"id": "160",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1317,7 +1155,7 @@
 							"otherinfo": "1609419116, which evaluates to: 2020-12-31 12:51:56."
 						},
 						{
-							"id": "198",
+							"id": "166",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1326,7 +1164,7 @@
 							"otherinfo": "1640902035, which evaluates to: 2021-12-30 22:07:15."
 						},
 						{
-							"id": "203",
+							"id": "171",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1335,7 +1173,7 @@
 							"otherinfo": "1652399898, which evaluates to: 2022-05-12 23:58:18."
 						},
 						{
-							"id": "221",
+							"id": "189",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1344,7 +1182,7 @@
 							"otherinfo": "1722913827, which evaluates to: 2024-08-06 03:10:27."
 						},
 						{
-							"id": "215",
+							"id": "183",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1353,7 +1191,7 @@
 							"otherinfo": "1762338904, which evaluates to: 2025-11-05 10:35:04."
 						},
 						{
-							"id": "185",
+							"id": "156",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1362,7 +1200,7 @@
 							"otherinfo": "1779901346, which evaluates to: 2026-05-27 17:02:26."
 						},
 						{
-							"id": "201",
+							"id": "169",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1371,7 +1209,7 @@
 							"otherinfo": "1807913533, which evaluates to: 2027-04-16 22:12:13."
 						},
 						{
-							"id": "226",
+							"id": "194",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1380,7 +1218,7 @@
 							"otherinfo": "1819055812, which evaluates to: 2027-08-23 21:16:52."
 						},
 						{
-							"id": "202",
+							"id": "170",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1389,7 +1227,7 @@
 							"otherinfo": "1835862006, which evaluates to: 2028-03-05 09:40:06."
 						},
 						{
-							"id": "204",
+							"id": "172",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1398,7 +1236,7 @@
 							"otherinfo": "1844564784, which evaluates to: 2028-06-14 03:06:24."
 						},
 						{
-							"id": "225",
+							"id": "193",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1407,7 +1245,7 @@
 							"otherinfo": "1847936737, which evaluates to: 2028-07-23 03:45:37."
 						},
 						{
-							"id": "187",
+							"id": "158",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1416,7 +1254,7 @@
 							"otherinfo": "1864769196, which evaluates to: 2029-02-02 23:26:36."
 						},
 						{
-							"id": "214",
+							"id": "182",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1425,7 +1263,7 @@
 							"otherinfo": "1870163521, which evaluates to: 2029-04-06 09:52:01."
 						},
 						{
-							"id": "197",
+							"id": "165",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1434,7 +1272,7 @@
 							"otherinfo": "1874640255, which evaluates to: 2029-05-28 05:24:15."
 						},
 						{
-							"id": "193",
+							"id": "161",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1443,7 +1281,7 @@
 							"otherinfo": "1884482159, which evaluates to: 2029-09-19 03:15:59."
 						},
 						{
-							"id": "223",
+							"id": "191",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1452,7 +1290,7 @@
 							"otherinfo": "1909730986, which evaluates to: 2030-07-08 08:49:46."
 						},
 						{
-							"id": "182",
+							"id": "154",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1461,7 +1299,7 @@
 							"otherinfo": "1911088395, which evaluates to: 2030-07-24 01:53:15."
 						},
 						{
-							"id": "205",
+							"id": "173",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1470,7 +1308,7 @@
 							"otherinfo": "1911782213, which evaluates to: 2030-08-01 02:36:53."
 						},
 						{
-							"id": "196",
+							"id": "164",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1479,7 +1317,7 @@
 							"otherinfo": "1918062542, which evaluates to: 2030-10-12 19:09:02."
 						},
 						{
-							"id": "217",
+							"id": "185",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1488,7 +1326,7 @@
 							"otherinfo": "1924942272, which evaluates to: 2030-12-31 10:11:12."
 						},
 						{
-							"id": "218",
+							"id": "186",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1497,7 +1335,7 @@
 							"otherinfo": "1926410861, which evaluates to: 2031-01-17 10:07:41."
 						},
 						{
-							"id": "208",
+							"id": "176",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1506,7 +1344,7 @@
 							"otherinfo": "1932456026, which evaluates to: 2031-03-28 09:20:26."
 						},
 						{
-							"id": "194",
+							"id": "162",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1515,7 +1353,7 @@
 							"otherinfo": "1954185813, which evaluates to: 2031-12-04 21:23:33."
 						},
 						{
-							"id": "211",
+							"id": "179",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1524,7 +1362,7 @@
 							"otherinfo": "1955245421, which evaluates to: 2031-12-17 03:43:41."
 						},
 						{
-							"id": "212",
+							"id": "180",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1533,7 +1371,7 @@
 							"otherinfo": "1956727015, which evaluates to: 2032-01-03 07:16:55."
 						},
 						{
-							"id": "210",
+							"id": "178",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1542,7 +1380,7 @@
 							"otherinfo": "1960138107, which evaluates to: 2032-02-11 18:48:27."
 						},
 						{
-							"id": "184",
+							"id": "155",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1551,7 +1389,7 @@
 							"otherinfo": "1962706351, which evaluates to: 2032-03-12 12:12:31."
 						},
 						{
-							"id": "209",
+							"id": "177",
 							"uri": "https://urbanvitaliz.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -1560,13 +1398,13 @@
 							"otherinfo": "1983211463, which evaluates to: 2032-11-04 20:04:23."
 						}
 					],
-					"count": "54",
+					"count": "35",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1444681467, which evaluates to: 2015-10-12 20:24:27.</p>",
+					"otherinfo": "<p>1441659144, which evaluates to: 2015-09-07 20:52:24.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
-					"cweid": "200",
+					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "212"
+					"sourceid": "184"
 				},
 				{
 					"pluginid": "10021",
@@ -1579,7 +1417,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "5",
 							"uri": "https://urbanvitaliz.fr/robots.txt",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1588,7 +1426,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "156",
+							"id": "198",
 							"uri": "https://urbanvitaliz.fr/static/_commonjsHelpers-de833af9.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1597,7 +1435,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "152",
+							"id": "200",
 							"uri": "https://urbanvitaliz.fr/static/app-5dba7720.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1606,7 +1444,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "150",
+							"id": "196",
 							"uri": "https://urbanvitaliz.fr/static/bootstrap.esm-05e587d8.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1615,7 +1453,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "169",
+							"id": "208",
 							"uri": "https://urbanvitaliz.fr/static/css/base.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1624,7 +1462,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "175",
+							"id": "210",
 							"uri": "https://urbanvitaliz.fr/static/css/markdownx.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1633,7 +1471,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "154",
+							"id": "202",
 							"uri": "https://urbanvitaliz.fr/static/cssUtils-fae3db0a.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1642,7 +1480,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "148",
+							"id": "151",
 							"uri": "https://urbanvitaliz.fr/static/gravatar-7c250dec.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1651,7 +1489,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "191",
+							"id": "206",
 							"uri": "https://urbanvitaliz.fr/static/md5-abb2bb93.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1660,7 +1498,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "158",
+							"id": "153",
 							"uri": "https://urbanvitaliz.fr/static/module.esm-128413c1.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1669,7 +1507,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "160",
+							"id": "204",
 							"uri": "https://urbanvitaliz.fr/static/popper-effa1d03.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1678,7 +1516,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "146",
+							"id": "149",
 							"uri": "https://urbanvitaliz.fr/static/user-5db4b460.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1706,7 +1544,7 @@
 					"desc": "<p>The given request has been identified as an authentication request. The 'Other Info' field contains a set of key=value lines which identify any relevant fields. If the request is in a context which has an Authentication Method set to \"Auto-Detect\" then this rule will change the authentication to match the request identified.</p>",
 					"instances":[ 
 						{
-							"id": "253",
+							"id": "223",
 							"uri": "https://urbanvitaliz.fr/accounts/login/",
 							"method": "POST",
 							"param": "login",
@@ -1721,7 +1559,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "395"
+					"sourceid": "313"
 				},
 				{
 					"pluginid": "10094",
@@ -1734,34 +1572,43 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "69",
+							"id": "43",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "CwYU9FjU7SQedx7Nr3LnR1jejGrhqq1j",
-							"otherinfo": "\\x000b\\x0006\\x0014\uFFFDX\uFFFD\uFFFD$\\x001ew\\x001e\u036Fr\uFFFDGX\u078Cj\u1AADc"
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
+							"otherinfo": "X\uFFFDG\uFFFD\uFFFD\\x0005\uFFFDs\uFFFD\uFFFD\\x0015\\x000e\uFFFD\\x0005\\x0014U+\u0771\uFFFD~,."
 						},
 						{
-							"id": "67",
+							"id": "34",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Y6c58D2OVPw2EtUrmwlRnm2mTpwlzIBO",
-							"otherinfo": "c\uFFFD9\uFFFD=\uFFFDT\uFFFD6\\x0012\uFFFD+\uFFFD\tQ\uFFFDm\uFFFDN\uFFFD%\u0300N"
+							"evidence": "mwDWDcsmNR0ibGX3LBliUEzGkT3wCsjR",
+							"otherinfo": "\uFFFD\\x0000\uFFFD\r\uFFFD&5\\x001d\"le\uFFFD,\\x0019bPL\u0191=\uFFFD\n\uFFFD\uFFFD"
 						},
 						{
-							"id": "93",
+							"id": "100",
 							"uri": "https://urbanvitaliz.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Y6c58D2OVPw2EtUrmwlRnm2mTpwlzIBO",
-							"otherinfo": "c\uFFFD9\uFFFD=\uFFFDT\uFFFD6\\x0012\uFFFD+\uFFFD\tQ\uFFFDm\uFFFDN\uFFFD%\u0300N"
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
+							"otherinfo": "X\uFFFDG\uFFFD\uFFFD\\x0005\uFFFDs\uFFFD\uFFFD\\x0015\\x000e\uFFFD\\x0005\\x0014U+\u0771\uFFFD~,."
 						},
 						{
-							"id": "136",
+							"id": "70",
+							"uri": "https://urbanvitaliz.fr/accounts/login/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
+							"otherinfo": "X\uFFFDG\uFFFD\uFFFD\\x0005\uFFFDs\uFFFD\uFFFD\\x0015\\x000e\uFFFD\\x0005\\x0014U+\u0771\uFFFD~,."
+						},
+						{
+							"id": "95",
 							"uri": "https://urbanvitaliz.fr/acteurs-locaux",
 							"method": "GET",
 							"param": "",
@@ -1770,7 +1617,7 @@
 							"otherinfo": "\uFFFD\uFFFDZ\uFFFD'?\\x0013\\x001aZ\uFFFD\u059B\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\u069D\uFFFD^\uFFFD\uFFFD{}\uFFFD\uFFFD"
 						},
 						{
-							"id": "54",
+							"id": "35",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "",
@@ -1779,16 +1626,25 @@
 							"otherinfo": "\uFFFD\uFFFDZ\uFFFD'?\\x0013\\x001aZ\uFFFD\u059B\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\u069D\uFFFD^\uFFFD\uFFFD{}\uFFFD\uFFFD"
 						},
 						{
-							"id": "95",
+							"id": "117",
+							"uri": "https://urbanvitaliz.fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
+							"otherinfo": "X\uFFFDG\uFFFD\uFFFD\\x0005\uFFFDs\uFFFD\uFFFD\\x0015\\x000e\uFFFD\\x0005\\x0014U+\u0771\uFFFD~,."
+						},
+						{
+							"id": "121",
 							"uri": "https://urbanvitaliz.fr/cookies/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Y6c58D2OVPw2EtUrmwlRnm2mTpwlzIBO",
-							"otherinfo": "c\uFFFD9\uFFFD=\uFFFDT\uFFFD6\\x0012\uFFFD+\uFFFD\tQ\uFFFDm\uFFFDN\uFFFD%\u0300N"
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
+							"otherinfo": "X\uFFFDG\uFFFD\uFFFD\\x0005\uFFFDs\uFFFD\uFFFD\\x0015\\x000e\uFFFD\\x0005\\x0014U+\u0771\uFFFD~,."
 						},
 						{
-							"id": "119",
+							"id": "79",
 							"uri": "https://urbanvitaliz.fr/methodologie",
 							"method": "GET",
 							"param": "",
@@ -1797,7 +1653,7 @@
 							"otherinfo": "\uFFFD\uFFFDZ\uFFFD'?\\x0013\\x001aZ\uFFFD\u059B\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\u069D\uFFFD^\uFFFD\uFFFD{}\uFFFD\uFFFD"
 						},
 						{
-							"id": "65",
+							"id": "136",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/",
 							"method": "GET",
 							"param": "",
@@ -1806,7 +1662,7 @@
 							"otherinfo": "\uFFFD\uFFFDZ\uFFFD'?\\x0013\\x001aZ\uFFFD\u059B\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\u069D\uFFFD^\uFFFD\uFFFD{}\uFFFD\uFFFD"
 						},
 						{
-							"id": "127",
+							"id": "145",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/college-isere/",
 							"method": "GET",
 							"param": "",
@@ -1815,26 +1671,8 @@
 							"otherinfo": "\uFFFD\uFFFDZ\uFFFD'?\\x0013\\x001aZ\uFFFD\u059B\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\u069D\uFFFD^\uFFFD\uFFFD{}\uFFFD\uFFFD"
 						},
 						{
-							"id": "129",
+							"id": "140",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/dammartin-sur-meuse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/static/ExpandableMenuHandler-6ee32f2c",
-							"otherinfo": "\uFFFD\uFFFDZ\uFFFD'?\\x0013\\x001aZ\uFFFD\u059B\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\u069D\uFFFD^\uFFFD\uFFFD{}\uFFFD\uFFFD"
-						},
-						{
-							"id": "142",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/mayet-ancienne-laiterie/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/static/ExpandableMenuHandler-6ee32f2c",
-							"otherinfo": "\uFFFD\uFFFDZ\uFFFD'?\\x0013\\x001aZ\uFFFD\u059B\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\u069D\uFFFD^\uFFFD\uFFFD{}\uFFFD\uFFFD"
-						},
-						{
-							"id": "143",
-							"uri": "https://urbanvitaliz.fr/p/qui-sommes-nous/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1844,11 +1682,11 @@
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\\x000b\\x0006\\x0014\uFFFDX\uFFFD\uFFFD$\\x001ew\\x001e\u036Fr\uFFFDGX\u078Cj\u1AADc</p>",
+					"otherinfo": "<p>X\uFFFDG\uFFFD\uFFFD\\x0005\uFFFDs\uFFFD\uFFFD\\x0015\\x000e\uFFFD\\x0005\\x0014U+\u0771\uFFFD~,.</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
-					"cweid": "200",
+					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10027",
@@ -1858,161 +1696,124 @@
 					"riskcode": "0",
 					"confidence": "2",
 					"riskdesc": "Informational (Medium)",
-					"desc": "<p>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</p>",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "44",
+							"id": "31",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "User",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "81",
+							"id": "94",
 							"uri": "https://urbanvitaliz.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "User",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "115",
+							"id": "66",
+							"uri": "https://urbanvitaliz.fr/accounts/login/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "User",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "90",
 							"uri": "https://urbanvitaliz.fr/acteurs-locaux",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "User",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "29",
+							"id": "32",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "User",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "80",
+							"id": "116",
+							"uri": "https://urbanvitaliz.fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "User",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "120",
 							"uri": "https://urbanvitaliz.fr/cookies/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "User",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "102",
+							"id": "75",
 							"uri": "https://urbanvitaliz.fr/methodologie",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "User",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "33",
+							"id": "134",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "User",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "104",
+							"id": "143",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/college-isere/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "User",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "113",
+							"id": "139",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/dammartin-sur-meuse/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "User",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "125",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/mayet-ancienne-laiterie/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "User",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "134",
+							"id": "147",
 							"uri": "https://urbanvitaliz.fr/p/qui-sommes-nous/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "User",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in the element starting with: \"<!-- User -->\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- User -->\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
-					"cweid": "200",
+					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "6"
-				},
-				{
-					"pluginid": "90033",
-					"alertRef": "90033",
-					"alert": "Loosely Scoped Cookie",
-					"name": "Loosely Scoped Cookie",
-					"riskcode": "0",
-					"confidence": "1",
-					"riskdesc": "Informational (Low)",
-					"desc": "<p>Cookies can be scoped by domain or path. This check is only concerned with domain scope.The domain scope applied to a cookie determines which domains can access it. For example, a cookie can be scoped strictly to a subdomain e.g. www.nottrusted.com, or loosely scoped to a parent domain e.g. nottrusted.com. In the latter case, any subdomain of nottrusted.com can access the cookie. Loosely scoped cookies are common in mega-applications like google.com and live.com. Cookies set from a subdomain like app.foo.bar are transmitted only to that domain by the browser. However, cookies scoped to a parent-level domain may be transmitted to the parent, or any subdomain of the parent.</p>",
-					"instances":[ 
-						{
-							"id": "231",
-							"uri": "https://urbanvitaliz.fr/cookies/decline/",
-							"method": "POST",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was:\nurbanvitaliz.fr\nPosthog=\"\"\nDailymotion=\"\"\nYoutube=\"\"\n"
-						},
-						{
-							"id": "237",
-							"uri": "https://urbanvitaliz.fr/cookies/decline/analytics/",
-							"method": "POST",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was:\nurbanvitaliz.fr\nPosthog=\"\"\n"
-						},
-						{
-							"id": "242",
-							"uri": "https://urbanvitaliz.fr/cookies/decline/tracking_media/",
-							"method": "POST",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "The origin domain used for comparison was:\nurbanvitaliz.fr\nDailymotion=\"\"\nYoutube=\"\"\n"
-						}
-					],
-					"count": "3",
-					"solution": "<p>Always scope cookies to a FQDN (Fully Qualified Domain Name).</p>",
-					"otherinfo": "<p>The origin domain used for comparison was:</p><p>urbanvitaliz.fr</p><p>Posthog=\"\"</p><p>Dailymotion=\"\"</p><p>Youtube=\"\"</p><p></p>",
-					"reference": "<p>https://tools.ietf.org/html/rfc6265#section-4.1</p><p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html</p><p>https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies</p>",
-					"cweid": "565",
-					"wascid": "15",
-					"sourceid": "322"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10109",
@@ -2025,7 +1826,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "306",
+							"id": "281",
 							"uri": "https://urbanvitaliz.fr/ressource/151/",
 							"method": "GET",
 							"param": "",
@@ -2034,7 +1835,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "309",
+							"id": "284",
 							"uri": "https://urbanvitaliz.fr/ressource/179/",
 							"method": "GET",
 							"param": "",
@@ -2043,7 +1844,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "299",
+							"id": "275",
 							"uri": "https://urbanvitaliz.fr/ressource/269/",
 							"method": "GET",
 							"param": "",
@@ -2052,7 +1853,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "300",
+							"id": "277",
 							"uri": "https://urbanvitaliz.fr/ressource/28/",
 							"method": "GET",
 							"param": "",
@@ -2061,7 +1862,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "308",
+							"id": "283",
 							"uri": "https://urbanvitaliz.fr/ressource/29/",
 							"method": "GET",
 							"param": "",
@@ -2070,7 +1871,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "305",
+							"id": "280",
 							"uri": "https://urbanvitaliz.fr/ressource/292/",
 							"method": "GET",
 							"param": "",
@@ -2079,7 +1880,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "304",
+							"id": "279",
 							"uri": "https://urbanvitaliz.fr/ressource/406/",
 							"method": "GET",
 							"param": "",
@@ -2088,7 +1889,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "301",
+							"id": "276",
 							"uri": "https://urbanvitaliz.fr/ressource/444/",
 							"method": "GET",
 							"param": "",
@@ -2097,7 +1898,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "303",
+							"id": "278",
 							"uri": "https://urbanvitaliz.fr/ressource/446/",
 							"method": "GET",
 							"param": "",
@@ -2106,7 +1907,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "307",
+							"id": "282",
 							"uri": "https://urbanvitaliz.fr/ressource/59/",
 							"method": "GET",
 							"param": "",
@@ -2115,7 +1916,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "302",
+							"id": "274",
 							"uri": "https://urbanvitaliz.fr/ressource/64/",
 							"method": "GET",
 							"param": "",
@@ -2124,7 +1925,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "256",
+							"id": "269",
 							"uri": "https://urbanvitaliz.fr/ressource/9/",
 							"method": "GET",
 							"param": "",
@@ -2139,7 +1940,35 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1508"
+					"sourceid": "1510"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Non-Storable Content",
+					"name": "Non-Storable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
+					"instances":[ 
+						{
+							"id": "71",
+							"uri": "https://urbanvitaliz.fr/accounts/login/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-store",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).</p>",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "92"
 				},
 				{
 					"pluginid": "10015",
@@ -2152,7 +1981,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "24",
+							"id": "18",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -2161,7 +1990,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "73",
+							"id": "84",
 							"uri": "https://urbanvitaliz.fr/",
 							"method": "GET",
 							"param": "cache-control",
@@ -2170,7 +1999,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "109",
+							"id": "76",
 							"uri": "https://urbanvitaliz.fr/acteurs-locaux",
 							"method": "GET",
 							"param": "cache-control",
@@ -2179,7 +2008,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "18",
+							"id": "28",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "cache-control",
@@ -2188,7 +2017,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "70",
+							"id": "102",
+							"uri": "https://urbanvitaliz.fr/contact/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "107",
 							"uri": "https://urbanvitaliz.fr/cookies/",
 							"method": "GET",
 							"param": "cache-control",
@@ -2197,7 +2035,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "96",
+							"id": "67",
 							"uri": "https://urbanvitaliz.fr/methodologie",
 							"method": "GET",
 							"param": "cache-control",
@@ -2206,7 +2044,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "21",
+							"id": "128",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/",
 							"method": "GET",
 							"param": "cache-control",
@@ -2215,7 +2053,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "97",
+							"id": "142",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/college-isere/",
 							"method": "GET",
 							"param": "cache-control",
@@ -2224,7 +2062,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "103",
+							"id": "131",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/dammartin-sur-meuse/",
 							"method": "GET",
 							"param": "cache-control",
@@ -2233,16 +2071,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "122",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/mayet-ancienne-laiterie/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "0",
+							"id": "3",
 							"uri": "https://urbanvitaliz.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -2257,7 +2086,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -2270,7 +2099,16 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "59",
+							"id": "44",
+							"uri": "https://urbanvitaliz.fr",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "39",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -2279,7 +2117,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "11",
 							"uri": "https://urbanvitaliz.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -2288,7 +2126,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "16",
+							"id": "10",
 							"uri": "https://urbanvitaliz.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -2297,13 +2135,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "86"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -2316,7 +2154,16 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "56",
+							"id": "42",
+							"uri": "https://urbanvitaliz.fr",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "38",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -2334,7 +2181,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "9",
 							"uri": "https://urbanvitaliz.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -2343,13 +2190,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "86"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -2362,7 +2209,16 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "55",
+							"id": "36",
+							"uri": "https://urbanvitaliz.fr",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "37",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -2380,7 +2236,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "8",
 							"uri": "https://urbanvitaliz.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -2389,13 +2245,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "86"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -2408,7 +2264,16 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "60",
+							"id": "45",
+							"uri": "https://urbanvitaliz.fr",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "40",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -2417,7 +2282,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "9",
+							"id": "12",
 							"uri": "https://urbanvitaliz.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -2426,7 +2291,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "17",
+							"id": "14",
 							"uri": "https://urbanvitaliz.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -2435,13 +2300,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "86"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10112",
@@ -2454,88 +2319,106 @@
 					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
 					"instances":[ 
 						{
-							"id": "57",
+							"id": "0",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "csrftoken",
 							"attack": "",
-							"evidence": "CwYU9FjU7SQedx7Nr3LnR1jejGrhqq1j",
+							"evidence": "mwDWDcsmNR0ibGX3LBliUEzGkT3wCsjR",
 							"otherinfo": "\ncookie:csrftoken"
 						},
 						{
-							"id": "48",
-							"uri": "https://urbanvitaliz.fr",
-							"method": "GET",
-							"param": "csrftoken",
-							"attack": "",
-							"evidence": "Y6c58D2OVPw2EtUrmwlRnm2mTpwlzIBO",
-							"otherinfo": "\ncookie:csrftoken"
-						},
-						{
-							"id": "87",
+							"id": "61",
 							"uri": "https://urbanvitaliz.fr/",
 							"method": "GET",
 							"param": "csrftoken",
 							"attack": "",
-							"evidence": "Y6c58D2OVPw2EtUrmwlRnm2mTpwlzIBO",
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
 							"otherinfo": "\ncookie:csrftoken"
 						},
 						{
-							"id": "139",
+							"id": "60",
 							"uri": "https://urbanvitaliz.fr/accounts/login/",
 							"method": "GET",
 							"param": "csrftoken",
 							"attack": "",
-							"evidence": "Y6c58D2OVPw2EtUrmwlRnm2mTpwlzIBO",
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
 							"otherinfo": "\ncookie:csrftoken"
 						},
 						{
-							"id": "144",
+							"id": "217",
+							"uri": "https://urbanvitaliz.fr/accounts/oidc/proconnect/login/?process=process",
+							"method": "GET",
+							"param": "sessionid",
+							"attack": "",
+							"evidence": "cdrg66lk3nnnqbx6fcmt3vsiy3lrglsu",
+							"otherinfo": "\ncookie:sessionid"
+						},
+						{
+							"id": "211",
+							"uri": "https://urbanvitaliz.fr/accounts/password/reset/",
+							"method": "GET",
+							"param": "csrftoken",
+							"attack": "",
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
+							"otherinfo": "\ncookie:csrftoken"
+						},
+						{
+							"id": "220",
+							"uri": "https://urbanvitaliz.fr/accounts/signup/",
+							"method": "GET",
+							"param": "csrftoken",
+							"attack": "",
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
+							"otherinfo": "\ncookie:csrftoken"
+						},
+						{
+							"id": "93",
 							"uri": "https://urbanvitaliz.fr/contact/",
 							"method": "GET",
 							"param": "csrftoken",
 							"attack": "",
-							"evidence": "Y6c58D2OVPw2EtUrmwlRnm2mTpwlzIBO",
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
 							"otherinfo": "\ncookie:csrftoken"
 						},
 						{
-							"id": "82",
+							"id": "228",
+							"uri": "https://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e",
+							"method": "GET",
+							"param": "csrftoken",
+							"attack": "",
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
+							"otherinfo": "\ncookie:csrftoken"
+						},
+						{
+							"id": "91",
 							"uri": "https://urbanvitaliz.fr/cookies/",
 							"method": "GET",
 							"param": "csrftoken",
 							"attack": "",
-							"evidence": "Y6c58D2OVPw2EtUrmwlRnm2mTpwlzIBO",
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
 							"otherinfo": "\ncookie:csrftoken"
 						},
 						{
-							"id": "229",
-							"uri": "https://urbanvitaliz.fr/cookies/accept/",
-							"method": "POST",
-							"param": "cookie_consent",
-							"attack": "",
-							"evidence": "analytics=2023-01-24T16:15:59.934000+00:00|tracking_media=2024-12-10T08:25:26.761336+00:00",
-							"otherinfo": "\ncookie:cookie_consent"
-						},
-						{
-							"id": "233",
-							"uri": "https://urbanvitaliz.fr/cookies/decline/",
-							"method": "POST",
-							"param": "cookie_consent",
-							"attack": "",
-							"evidence": "analytics=-1|tracking_media=-1",
-							"otherinfo": "\ncookie:cookie_consent"
-						},
-						{
-							"id": "3",
-							"uri": "https://urbanvitaliz.fr/",
+							"id": "214",
+							"uri": "https://urbanvitaliz.fr/login/",
 							"method": "GET",
 							"param": "csrftoken",
 							"attack": "",
-							"evidence": "Y6c58D2OVPw2EtUrmwlRnm2mTpwlzIBO",
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
+							"otherinfo": "\ncookie:csrftoken"
+						},
+						{
+							"id": "224",
+							"uri": "https://urbanvitaliz.fr/accounts/login/",
+							"method": "POST",
+							"param": "csrftoken",
+							"attack": "",
+							"evidence": "WJdHoeYF6XPd2RUOjwUUVSvdseuufiwu",
 							"otherinfo": "\ncookie:csrftoken"
 						}
 					],
-					"count": "9",
+					"count": "11",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
 					"otherinfo": "<p></p><p>cookie:csrftoken</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
@@ -2554,7 +2437,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "49",
+							"id": "46",
 							"uri": "https://urbanvitaliz.fr",
 							"method": "GET",
 							"param": "",
@@ -2563,7 +2446,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "88",
+							"id": "101",
 							"uri": "https://urbanvitaliz.fr/",
 							"method": "GET",
 							"param": "",
@@ -2572,7 +2455,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "120",
+							"id": "96",
 							"uri": "https://urbanvitaliz.fr/acteurs-locaux",
 							"method": "GET",
 							"param": "",
@@ -2581,7 +2464,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "37",
+							"id": "41",
 							"uri": "https://urbanvitaliz.fr/confidentialite",
 							"method": "GET",
 							"param": "",
@@ -2590,7 +2473,16 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "83",
+							"id": "118",
+							"uri": "https://urbanvitaliz.fr/contact/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"id": "122",
 							"uri": "https://urbanvitaliz.fr/cookies/",
 							"method": "GET",
 							"param": "",
@@ -2599,7 +2491,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "105",
+							"id": "80",
 							"uri": "https://urbanvitaliz.fr/methodologie",
 							"method": "GET",
 							"param": "",
@@ -2608,7 +2500,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "39",
+							"id": "137",
 							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/",
 							"method": "GET",
 							"param": "",
@@ -2617,25 +2509,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "112",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/college-isere/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"id": "116",
-							"uri": "https://urbanvitaliz.fr/p/exemples-daccompagnements/dammartin-sur-meuse/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"id": "4",
+							"id": "13",
 							"uri": "https://urbanvitaliz.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -2644,7 +2518,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "12",
+							"id": "15",
 							"uri": "https://urbanvitaliz.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -2653,13 +2527,13 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10031",
@@ -2672,7 +2546,7 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"id": "245",
+							"id": "231",
 							"uri": "https://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e",
 							"method": "GET",
 							"param": "subject",
@@ -2681,7 +2555,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nsubject=Demande d\u2019acc\u00E8s \u00E0 UrbanVitaliz en tant que conseiller\u00B7e\n\nThe user-controlled value was:\ndemande d\u2019acc\u00E8s \u00E0 urbanvitaliz en tant que conseiller\u00B7e"
 						},
 						{
-							"id": "252",
+							"id": "227",
 							"uri": "https://urbanvitaliz.fr/accounts/login/",
 							"method": "POST",
 							"param": "login",
@@ -2690,7 +2564,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/login/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nlogin=foo-bar@example.com\n\nThe user-controlled value was:\nfoo-bar@example.com"
 						},
 						{
-							"id": "281",
+							"id": "261",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "email",
@@ -2699,7 +2573,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"id": "260",
+							"id": "240",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "first_name",
@@ -2708,7 +2582,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nfirst_name=ZAP\n\nThe user-controlled value was:\nzap"
 						},
 						{
-							"id": "282",
+							"id": "262",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "first_name",
@@ -2717,7 +2591,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nfirst_name=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"id": "261",
+							"id": "241",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "last_name",
@@ -2726,7 +2600,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nlast_name=ZAP\n\nThe user-controlled value was:\nzap"
 						},
 						{
-							"id": "283",
+							"id": "263",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "last_name",
@@ -2735,7 +2609,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nlast_name=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"id": "270",
+							"id": "250",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "organization",
@@ -2744,7 +2618,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [div] tag [x-data] attribute\n\nThe user input found was:\norganization=organization\n\nThe user-controlled value was:\norganizationsearch(\"organization\", false, true, \"post\")"
 						},
 						{
-							"id": "273",
+							"id": "253",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "organization",
@@ -2753,7 +2627,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [name] attribute\n\nThe user input found was:\norganization=organization\n\nThe user-controlled value was:\norganization"
 						},
 						{
-							"id": "275",
+							"id": "255",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "organization",
@@ -2762,7 +2636,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [name] attribute\n\nThe user input found was:\norganization=organization\n\nThe user-controlled value was:\norganization_position"
 						},
 						{
-							"id": "274",
+							"id": "254",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "organization",
@@ -2771,7 +2645,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\norganization=organization\n\nThe user-controlled value was:\norganization"
 						},
 						{
-							"id": "271",
+							"id": "251",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "organization",
@@ -2780,7 +2654,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [x-model] attribute\n\nThe user input found was:\norganization=organization\n\nThe user-controlled value was:\norganization"
 						},
 						{
-							"id": "272",
+							"id": "252",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "organization",
@@ -2789,7 +2663,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [x-ref] attribute\n\nThe user input found was:\norganization=organization\n\nThe user-controlled value was:\norganization"
 						},
 						{
-							"id": "262",
+							"id": "242",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "organization_position",
@@ -2798,7 +2672,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\norganization_position=ZAP\n\nThe user-controlled value was:\nzap"
 						},
 						{
-							"id": "284",
+							"id": "264",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "organization_position",
@@ -2807,7 +2681,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\norganization_position=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"id": "263",
+							"id": "243",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "password1",
@@ -2816,7 +2690,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\npassword1=ZAP\n\nThe user-controlled value was:\nzap"
 						},
 						{
-							"id": "285",
+							"id": "265",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "password1",
@@ -2825,7 +2699,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\npassword1=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"id": "264",
+							"id": "244",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "password2",
@@ -2834,7 +2708,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\npassword2=ZAP\n\nThe user-controlled value was:\nzap"
 						},
 						{
-							"id": "286",
+							"id": "266",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "password2",
@@ -2843,7 +2717,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\npassword2=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
 						},
 						{
-							"id": "287",
+							"id": "267",
 							"uri": "https://urbanvitaliz.fr/accounts/signup/",
 							"method": "POST",
 							"param": "phone_no",
@@ -2852,7 +2726,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/accounts/signup/\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nphone_no=9999999999\n\nThe user-controlled value was:\n9999999999"
 						},
 						{
-							"id": "254",
+							"id": "238",
 							"uri": "https://urbanvitaliz.fr/contact/",
 							"method": "POST",
 							"param": "content",
@@ -2861,49 +2735,22 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/contact/\n\nappears to include user input in:\na(n) [textarea] tag [value] attribute\n\nThe user input found was:\ncontent=Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.\n\nThe user-controlled value was:\nzaproxy alias impedit expedita quisquam pariatur exercitationem. nemo rerum eveniet dolores rem quia dignissimos."
 						},
 						{
-							"id": "255",
+							"id": "239",
 							"uri": "https://urbanvitaliz.fr/contact/",
 							"method": "POST",
 							"param": "name",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/contact/\n\nappears to include user input in:\na(n) [textarea] tag [value] attribute\n\nThe user input found was:\nname=ZAP\n\nThe user-controlled value was:\nzaproxy alias impedit expedita quisquam pariatur exercitationem. nemo rerum eveniet dolores rem quia dignissimos."
-						},
-						{
-							"id": "258",
-							"uri": "https://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e",
-							"method": "POST",
-							"param": "content",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e\n\nappears to include user input in:\na(n) [textarea] tag [value] attribute\n\nThe user input found was:\ncontent=Zaproxy alias impedit expedita quisquam pariatur exercitationem. Nemo rerum eveniet dolores rem quia dignissimos.\n\nThe user-controlled value was:\nzaproxy alias impedit expedita quisquam pariatur exercitationem. nemo rerum eveniet dolores rem quia dignissimos."
-						},
-						{
-							"id": "259",
-							"uri": "https://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e",
-							"method": "POST",
-							"param": "name",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e\n\nappears to include user input in:\na(n) [textarea] tag [value] attribute\n\nThe user input found was:\nname=ZAP\n\nThe user-controlled value was:\nzaproxy alias impedit expedita quisquam pariatur exercitationem. nemo rerum eveniet dolores rem quia dignissimos."
-						},
-						{
-							"id": "257",
-							"uri": "https://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e",
-							"method": "POST",
-							"param": "subject",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nsubject=Demande d\u2019acc\u00E8s \u00E0 UrbanVitaliz en tant que conseiller\u00B7e\n\nThe user-controlled value was:\ndemande d\u2019acc\u00E8s \u00E0 urbanvitaliz en tant que conseiller\u00B7e"
 						}
 					],
-					"count": "25",
+					"count": "22",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
 					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://urbanvitaliz.fr/contact/?subject=Demande%20d%E2%80%99acc%C3%A8s%20%C3%A0%20UrbanVitaliz%20en%20tant%20que%20conseiller%C2%B7e</p><p></p><p>appears to include user input in:</p><p>a(n) [input] tag [value] attribute</p><p></p><p>The user input found was:</p><p>subject=Demande d\u2019acc\u00E8s \u00E0 UrbanVitaliz en tant que conseiller\u00B7e</p><p></p><p>The user-controlled value was:</p><p>demande d\u2019acc\u00E8s \u00E0 urbanvitaliz en tant que conseiller\u00B7e</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "339"
+					"sourceid": "320"
 				}
 			]
 		}
