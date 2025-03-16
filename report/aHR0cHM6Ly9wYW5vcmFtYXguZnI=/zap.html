@@ -212,7 +212,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Sun, 2 Mar 2025 11:16:32
+		Generated on Sun, 16 Mar 2025 13:28:23
 	</h3>
 
 	<h3>
@@ -245,7 +245,7 @@ td {
 					<div>Medium</div>
 				</td>
 				<td align="center">
-					<div>2</div>
+					<div>3</div>
 				</td>
 			</tr>
 			<tr>
@@ -298,7 +298,12 @@ td {
 			<tr>
 				<td><a href="#10038">Content Security Policy (CSP) Header Not Set</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">2</td>
+				<td align="center">3</td>
+			</tr>
+			<tr>
+				<td><a href="#10020">Missing Anti-clickjacking Header</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">1</td>
 			</tr>
 			<tr>
 				<td><a href="#90003">Sub Resource Integrity Attribute Missing</a></td>
@@ -333,7 +338,7 @@ td {
 			<tr>
 				<td><a href="#10027">Information Disclosure - Suspicious Comments</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">10</td>
+				<td align="center">1</td>
 			</tr>
 			<tr>
 				<td><a href="#10109">Modern Web Application</a></td>
@@ -429,6 +434,37 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://panoramax.fr/robots.txt">https://panoramax.fr/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://panoramax.fr/sitemap.xml">https://panoramax.fr/sitemap.xml</a></td>
 					</tr>
 					<tr>
@@ -459,7 +495,7 @@ td {
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">2</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -506,6 +542,93 @@ td {
 					<td width="20%">Plugin Id</td>
 					<td width="80%"><a
 						href="https://www.zaproxy.org/docs/alerts/10038/">10038</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="10020"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">Missing Anti-clickjacking Header</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The response does not protect against &#39;ClickJacking&#39; attacks. It should include either Content-Security-Policy with &#39;frame-ancestors&#39; directive or X-Frame-Options.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://panoramax.fr">https://panoramax.fr</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">x-frame-options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</div>
+							<br />
+						
+							<div>If you expect the page to be framed only by pages on your server (e.g. it&#39;s part of a FRAMESET) then you&#39;ll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy&#39;s &quot;frame-ancestors&quot; directive.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/1021.html">1021</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10020/">10020</a></td>
 				</tr>
 			</table>
 			<div class="spacer"></div>
@@ -739,7 +862,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.5b014cc5.css">https://panoramax.fr/assets/index.5b014cc5.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -770,7 +893,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.501e3f26.css">https://panoramax.fr/assets/index.501e3f26.css</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.f9b3169f.js">https://panoramax.fr/assets/index.f9b3169f.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -987,7 +1110,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.5b014cc5.css">https://panoramax.fr/assets/index.5b014cc5.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1018,7 +1141,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.501e3f26.css">https://panoramax.fr/assets/index.501e3f26.css</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.f9b3169f.js">https://panoramax.fr/assets/index.f9b3169f.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1176,7 +1299,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.f9b3169f.js">https://panoramax.fr/assets/index.f9b3169f.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1207,7 +1330,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.f9b3169f.js">https://panoramax.fr/assets/index.f9b3169f.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1238,7 +1361,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.f9b3169f.js">https://panoramax.fr/assets/index.f9b3169f.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1269,7 +1392,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.f9b3169f.js">https://panoramax.fr/assets/index.f9b3169f.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1318,7 +1441,7 @@ td {
 				<tr>
 					<td width="20%">CWE Id</td>
 					<td width="80%"><a
-						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+						href="https://cwe.mitre.org/data/definitions/497.html">497</a></td>
 				</tr>
 				<tr>
 					<td width="20%">WASC Id</td>
@@ -1417,7 +1540,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.5b014cc5.css">https://panoramax.fr/assets/index.5b014cc5.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1449,7 +1572,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.501e3f26.css">https://panoramax.fr/assets/index.501e3f26.css</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.f9b3169f.js">https://panoramax.fr/assets/index.f9b3169f.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1540,7 +1663,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.f9b3169f.js">https://panoramax.fr/assets/index.f9b3169f.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1595,7 +1718,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 				<tr>
 					<td width="20%">CWE Id</td>
 					<td width="80%"><a
-						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+						href="https://cwe.mitre.org/data/definitions/319.html">319</a></td>
 				</tr>
 				<tr>
 					<td width="20%">WASC Id</td>
@@ -1619,7 +1742,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 				<tr>
 					<td width="20%">Description</td>
 					<td width="80%">
-							<div>The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.</div>
+							<div>The response appears to contain suspicious comments which may help an attacker.</div>
 							
 						</td>
 				</tr>
@@ -1630,7 +1753,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.f9b3169f.js">https://panoramax.fr/assets/index.f9b3169f.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1655,291 +1778,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bDB\b and was detected 6 times, the first in the element starting with: &quot;**/function Oy(e,t,i,n){try{return n?e(...n):e()}catch(l){O0(l,t,i)}}function of(e,t,i,n){if(Br(e)){const l=Oy(e,t,i,n);return l&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">debug</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bDEBUG\b and was detected 3 times, the first in the element starting with: &quot;`).forEach((Rn,Ni)=&gt;{Qt.fillText(Rn,zt.width/2,zt.height/2+pi*(.3+Ni))}),ht}(At,fe.config.level,be(fe)));const Oe=this.config.an&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">from</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bFROM\b and was detected 52 times, the first in the element starting with: &quot;`,f4=String.fromCharCode(8232),m4=String.fromCharCode(8233);function g4(e){const t=e;let i=0,n=1,l=1,p=0;const _=ve=&gt;t[ve]===p4&amp;&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">later</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bLATER\b and was detected 3 times, the first in the element starting with: &quot;For these particular cases, a FAQ for data re-users could be added to the Panoramax website at a later date.`},block_consent:{ti&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">query</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bQUERY\b and was detected 7 times, the first in the element starting with: &quot;  */const C_=typeof document&lt;&quot;u&quot;;function zT(e){return typeof e==&quot;object&quot;||&quot;displayName&quot;in e||&quot;props&quot;in e||&quot;__vccOpts&quot;in e}funct&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">select</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bSELECT\b and was detected 4 times, the first in the element starting with: &quot;				&lt;select id=&quot;gvs-map-theme&quot; style=&quot;width: 100%;&quot;&gt;&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">user</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bUSER\b and was detected 19 times, the first in the element starting with: &quot; */(function(e,t){(function(i,n){e.exports=n()})(Xz,()=&gt;(()=&gt;{var i={9555:(_,v,x)=&gt;{x.d(v,{A:()=&gt;we}),x(980);var S=x(6803),k=x(1&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">username</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bUSERNAME\b and was detected in the element starting with: &quot;\u2022 Make sure to protect the lenses with the two protective covers as soon as the collection is finished.`,send_title:&quot;Sendin&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">where</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bWHERE\b and was detected 8 times, the first in the element starting with: &quot;`,title:N,dissmisable:!1})}hideError(){this.overlay.hide(Xe.ERROR)}rotate(N){const Q=new jr(this.dataHelper.cleanPosition(N));th&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">xxx</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bXXX\b and was detected in the element starting with: &quot;					texture2DCompare( shadowMap, cubeToUV( bd3D + offset.xxx, texelSize.y ), dp ) +&quot;, see evidence field for the suspicious comment/snippet.</td>
+						<td width="80%">The following pattern was used: \bDB\b and was detected in likely comment: &quot;//vuejs.org/error-reference/#runtime-${i}`;for(;v;){const k=v.ec;if(k){for(let A=0;A&lt;k.length;A++)if(k[A](e,x,S)===!1)return}v=v&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">10</td>
+					<td width="80%">1</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -1955,7 +1799,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 				<tr>
 					<td width="20%">CWE Id</td>
 					<td width="80%"><a
-						href="https://cwe.mitre.org/data/definitions/200.html">200</a></td>
+						href="https://cwe.mitre.org/data/definitions/615.html">615</a></td>
 				</tr>
 				<tr>
 					<td width="20%">WASC Id</td>
@@ -2010,7 +1854,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">&lt;script type=&quot;module&quot; crossorigin src=&quot;/assets/index.00b96d89.js&quot;&gt;&lt;/script&gt;</td>
+						<td width="80%">&lt;script type=&quot;module&quot; crossorigin src=&quot;/assets/index.f9b3169f.js&quot;&gt;&lt;/script&gt;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2041,7 +1885,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">&lt;script type=&quot;module&quot; crossorigin src=&quot;/assets/index.00b96d89.js&quot;&gt;&lt;/script&gt;</td>
+						<td width="80%">&lt;script type=&quot;module&quot; crossorigin src=&quot;/assets/index.f9b3169f.js&quot;&gt;&lt;/script&gt;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2072,7 +1916,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">&lt;script type=&quot;module&quot; crossorigin src=&quot;/assets/index.00b96d89.js&quot;&gt;&lt;/script&gt;</td>
+						<td width="80%">&lt;script type=&quot;module&quot; crossorigin src=&quot;/assets/index.f9b3169f.js&quot;&gt;&lt;/script&gt;</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2868,7 +2712,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.00b96d89.js">https://panoramax.fr/assets/index.00b96d89.js</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.5b014cc5.css">https://panoramax.fr/assets/index.5b014cc5.css</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2899,7 +2743,7 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://panoramax.fr/assets/index.501e3f26.css">https://panoramax.fr/assets/index.501e3f26.css</a></td>
+						<td width="80%"><a href="https://panoramax.fr/assets/index.f9b3169f.js">https://panoramax.fr/assets/index.f9b3169f.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
