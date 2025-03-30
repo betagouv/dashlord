@@ -1,103 +1,37 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "B+",
+    "grade": "B",
     "error": null,
-    "score": 80,
+    "score": 75,
     "statusCode": 200,
     "testsFailed": 1,
     "testsPassed": 9,
     "testsQuantity": 10,
     "responseHeaders": {
-      "ratelimit-limit": "100",
-      "ratelimit-remaining": "89",
-      "ratelimit-reset": "257",
-      "content-security-policy": "default-src 'self'; script-src 'report-sample' 'self' https://stats.beta.gouv.fr/matomo.js https://stats.beta.gouv.fr/js/container_5FRF0Y8m.js https://stats.beta.gouv.fr/plugins/HeatmapSessionRecording/; style-src 'report-sample' 'self'; object-src 'none'; base-uri 'self'; connect-src 'self' https://stats.beta.gouv.fr; font-src 'self'; frame-src 'self' https://metabase.monaidecyber.beta.gouv.fr; img-src 'self' data: https; manifest-src 'self'; media-src 'self'; frame-ancestors 'none'; form-action 'self';",
-      "strict-transport-security": "max-age=63072000; includeSubDomains; preload",
-      "x-content-type-options": "nosniff",
-      "accept-ranges": "bytes",
-      "cache-control": "public, max-age=0",
-      "last-modified": "Thu, 20 Mar 2025 14:12:04 GMT",
-      "etag": "W/\"46f-195b3e59cf6\"",
-      "content-type": "text/html; charset=UTF-8",
-      "content-length": "1135",
-      "date": "Sun, 23 Mar 2025 12:03:21 GMT",
+      "date": "Sun, 30 Mar 2025 12:15:25 GMT",
+      "content-type": "text/html",
+      "transfer-encoding": "chunked",
       "connection": "close",
-      "sozu-id": "01JQ1E5PF3Y53WN0ZF5Y429KP3"
+      "referrer-policy": "no-referrer",
+      "cache-control": "no-cache",
+      "strict-transport-security": "max-age=63072000",
+      "x-frame-options": "DENY",
+      "x-content-type-options": "nosniff",
+      "x-xss-protection": "1; mode=block"
     }
   },
   "tests": {
     "content-security-policy": {
       "expectation": "csp-implemented-with-no-unsafe",
-      "pass": true,
-      "result": "csp-implemented-with-no-unsafe",
-      "scoreModifier": 5,
-      "data": {
-        "default-src": [
-          "'self'"
-        ],
-        "script-src": [
-          "'report-sample'",
-          "'self'",
-          "https://stats.beta.gouv.fr/js/container_5frf0y8m.js",
-          "https://stats.beta.gouv.fr/matomo.js",
-          "https://stats.beta.gouv.fr/plugins/heatmapsessionrecording/"
-        ],
-        "style-src": [
-          "'report-sample'",
-          "'self'"
-        ],
-        "object-src": [
-          "'none'"
-        ],
-        "base-uri": [
-          "'self'"
-        ],
-        "connect-src": [
-          "'self'",
-          "https://stats.beta.gouv.fr"
-        ],
-        "font-src": [
-          "'self'"
-        ],
-        "frame-src": [
-          "'self'",
-          "https://metabase.monaidecyber.beta.gouv.fr"
-        ],
-        "img-src": [
-          "'self'",
-          "data:",
-          "https"
-        ],
-        "manifest-src": [
-          "'self'"
-        ],
-        "media-src": [
-          "'self'"
-        ],
-        "frame-ancestors": [
-          "'none'"
-        ],
-        "form-action": [
-          "'self'"
-        ]
-      },
-      "http": true,
+      "pass": false,
+      "result": "csp-not-implemented",
+      "scoreModifier": -25,
+      "data": null,
+      "http": false,
       "meta": false,
-      "policy": {
-        "antiClickjacking": true,
-        "defaultNone": false,
-        "insecureBaseUri": false,
-        "insecureFormAction": false,
-        "insecureSchemeActive": false,
-        "insecureSchemePassive": false,
-        "strictDynamic": false,
-        "unsafeEval": false,
-        "unsafeInline": false,
-        "unsafeInlineStyle": false,
-        "unsafeObjects": false
-      },
-      "numPolicies": 1
+      "policy": null,
+      "numPolicies": 0
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
@@ -116,23 +50,24 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": false,
-      "result": "redirection-missing",
-      "scoreModifier": -20,
-      "destination": "http://monaide.cyber.gouv.fr/",
-      "redirects": false,
+      "pass": true,
+      "result": "redirection-to-https",
+      "scoreModifier": 0,
+      "destination": "https://monaide.cyber.gouv.fr/",
+      "redirects": true,
       "route": [
-        "http://monaide.cyber.gouv.fr/"
+        "http://monaide.cyber.gouv.fr/",
+        "https://monaide.cyber.gouv.fr/"
       ],
       "statusCode": 200
     },
     "referrer-policy": {
       "expectation": "referrer-policy-private",
       "pass": true,
-      "result": "referrer-policy-not-implemented",
-      "scoreModifier": 0,
-      "data": null,
-      "http": false,
+      "result": "referrer-policy-private",
+      "scoreModifier": 5,
+      "data": "no-referrer",
+      "http": true,
       "meta": false
     },
     "strict-transport-security": {
@@ -140,10 +75,10 @@
       "pass": true,
       "result": "hsts-implemented-max-age-at-least-six-months",
       "scoreModifier": 0,
-      "data": "max-age=63072000; includeSubDomains; preload",
-      "includeSubDomains": true,
+      "data": "max-age=63072000",
+      "includeSubDomains": false,
       "maxAge": 63072000,
-      "preload": true,
+      "preload": false,
       "preloaded": false
     },
     "subresource-integrity": {
@@ -163,9 +98,9 @@
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
       "pass": true,
-      "result": "x-frame-options-implemented-via-csp",
-      "scoreModifier": 5,
-      "data": null
+      "result": "x-frame-options-sameorigin-or-deny",
+      "scoreModifier": 0,
+      "data": "DENY"
     },
     "cross-origin-resource-policy": {
       "expectation": "corp-implemented-with-same-site",
