@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
-	"@version": "2.16.0",
-	"@generated": "Sun, 23 Mar 2025 05:46:53",
+	"@version": "2.16.1",
+	"@generated": "Sun, 30 Mar 2025 05:50:54",
 	"site":[ 
 		{
 			"@name": "https://passculture.pro",
@@ -9,6 +9,79 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-13",
+					"alert": "CSP: Failure to Define Directive with No Fallback",
+					"name": "CSP: Failure to Define Directive with No Fallback",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.</p>",
+					"instances":[ 
+						{
+							"id": "23",
+							"uri": "https://passculture.pro",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "default-src 'self' blob: data: https: http: gap://ready https://*.hotjar.com:* https://*.hotjar.io wss://*.hotjar.com https://*.getbeamer.com/; style-src 'self' https://app.getbeamer.com/styles/beamer-embed.css https://fonts.googleapis.com/css 'unsafe-inline'",
+							"otherinfo": "The directive(s): form-action is/are among the directives that do not fallback to default-src."
+						},
+						{
+							"id": "11",
+							"uri": "https://passculture.pro",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self' https://adage-pr.phm.education.gouv.fr https://adage-pr.in.phm.education.gouv.fr",
+							"otherinfo": "The directive(s): form-action is/are among the directives that do not fallback to default-src."
+						},
+						{
+							"id": "25",
+							"uri": "https://passculture.pro/robots.txt",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "default-src 'self' blob: data: https: http: gap://ready https://*.hotjar.com:* https://*.hotjar.io wss://*.hotjar.com https://*.getbeamer.com/; style-src 'self' https://app.getbeamer.com/styles/beamer-embed.css https://fonts.googleapis.com/css 'unsafe-inline'",
+							"otherinfo": "The directive(s): form-action is/are among the directives that do not fallback to default-src."
+						},
+						{
+							"id": "9",
+							"uri": "https://passculture.pro/robots.txt",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self' https://adage-pr.phm.education.gouv.fr https://adage-pr.in.phm.education.gouv.fr",
+							"otherinfo": "The directive(s): form-action is/are among the directives that do not fallback to default-src."
+						},
+						{
+							"id": "27",
+							"uri": "https://passculture.pro/sitemap.xml",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "default-src 'self' blob: data: https: http: gap://ready https://*.hotjar.com:* https://*.hotjar.io wss://*.hotjar.com https://*.getbeamer.com/; style-src 'self' https://app.getbeamer.com/styles/beamer-embed.css https://fonts.googleapis.com/css 'unsafe-inline'",
+							"otherinfo": "The directive(s): form-action is/are among the directives that do not fallback to default-src."
+						},
+						{
+							"id": "8",
+							"uri": "https://passculture.pro/sitemap.xml",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self' https://adage-pr.phm.education.gouv.fr https://adage-pr.in.phm.education.gouv.fr",
+							"otherinfo": "The directive(s): form-action is/are among the directives that do not fallback to default-src."
+						}
+					],
+					"count": "6",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>The directive(s): form-action is/are among the directives that do not fallback to default-src.</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
 				{
 					"pluginid": "10055",
 					"alertRef": "10055-4",
@@ -20,49 +93,67 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "16",
+							"id": "29",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
 							"evidence": "default-src 'self' blob: data: https: http: gap://ready https://*.hotjar.com:* https://*.hotjar.io wss://*.hotjar.com https://*.getbeamer.com/; style-src 'self' https://app.getbeamer.com/styles/beamer-embed.css https://fonts.googleapis.com/css 'unsafe-inline'",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nscript-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nscript-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src"
 						},
 						{
-							"id": "8",
+							"id": "15",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "frame-ancestors 'self' https://adage-pr.phm.education.gouv.fr https://adage-pr.in.phm.education.gouv.fr",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src"
 						},
 						{
-							"id": "20",
+							"id": "28",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
 							"evidence": "default-src 'self' blob: data: https: http: gap://ready https://*.hotjar.com:* https://*.hotjar.io wss://*.hotjar.com https://*.getbeamer.com/; style-src 'self' https://app.getbeamer.com/styles/beamer-embed.css https://fonts.googleapis.com/css 'unsafe-inline'",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nscript-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nscript-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src"
 						},
 						{
-							"id": "7",
+							"id": "13",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
 							"evidence": "frame-ancestors 'self' https://adage-pr.phm.education.gouv.fr https://adage-pr.in.phm.education.gouv.fr",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, form-action\n\nThe directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src"
+						},
+						{
+							"id": "33",
+							"uri": "https://passculture.pro/sitemap.xml",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "default-src 'self' blob: data: https: http: gap://ready https://*.hotjar.com:* https://*.hotjar.io wss://*.hotjar.com https://*.getbeamer.com/; style-src 'self' https://app.getbeamer.com/styles/beamer-embed.css https://fonts.googleapis.com/css 'unsafe-inline'",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nscript-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src"
+						},
+						{
+							"id": "10",
+							"uri": "https://passculture.pro/sitemap.xml",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self' https://adage-pr.phm.education.gouv.fr https://adage-pr.in.phm.education.gouv.fr",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nscript-src, style-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src"
 						}
 					],
-					"count": "4",
+					"count": "6",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
-					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:</p><p>script-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src, form-action</p><p></p><p>The directive(s): form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:</p><p>script-src, img-src, connect-src, frame-src, font-src, media-src, object-src, manifest-src, worker-src</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -75,7 +166,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "9",
+							"id": "16",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -84,8 +175,17 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "13",
+							"id": "17",
 							"uri": "https://passculture.pro/robots.txt",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self' https://adage-pr.phm.education.gouv.fr https://adage-pr.in.phm.education.gouv.fr",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"id": "18",
+							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -93,7 +193,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -112,7 +212,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "17",
+							"id": "30",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -121,7 +221,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "12",
+							"id": "20",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -130,7 +230,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "23",
+							"id": "31",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -139,8 +239,26 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "14",
+							"id": "21",
 							"uri": "https://passculture.pro/robots.txt",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "frame-ancestors 'self' https://adage-pr.phm.education.gouv.fr https://adage-pr.in.phm.education.gouv.fr",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"id": "38",
+							"uri": "https://passculture.pro/sitemap.xml",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self' blob: data: https: http: gap://ready https://*.hotjar.com:* https://*.hotjar.io wss://*.hotjar.com https://*.getbeamer.com/; style-src 'self' https://app.getbeamer.com/styles/beamer-embed.css https://fonts.googleapis.com/css 'unsafe-inline'",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"id": "24",
+							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -148,13 +266,13 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
-					"count": "4",
+					"count": "6",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90003",
@@ -167,7 +285,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "77",
+							"id": "99",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
@@ -176,7 +294,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "79",
+							"id": "102",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
@@ -185,7 +303,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "78",
+							"id": "101",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
@@ -194,7 +312,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "72",
+							"id": "97",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
@@ -203,7 +321,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "71",
+							"id": "93",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
@@ -212,7 +330,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "84",
+							"id": "106",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -221,7 +339,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "87",
+							"id": "109",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -230,7 +348,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "85",
+							"id": "108",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -239,7 +357,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "80",
+							"id": "95",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -248,8 +366,53 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "74",
+							"id": "92",
 							"uri": "https://passculture.pro/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCuM73w5aXx-p7K4KLg.woff\" as=\"font\" type=\"font/woff2\" crossorigin/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "98",
+							"uri": "https://passculture.pro/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://fonts.gstatic.com/s/montserrat/v26/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq3p6WXh0oJC8MLnbtg.woff\" as=\"font\" type=\"font/woff2\" crossorigin/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "104",
+							"uri": "https://passculture.pro/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://fonts.gstatic.com/s/montserrat/v26/JTUFjIg1_i6t8kCHKm459Wx7xQYXK0vOoz6jq5Z9WXh0oJC8MLnbtg.woff\" as=\"font\" type=\"font/woff2\" crossorigin/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "103",
+							"uri": "https://passculture.pro/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtZ6Hw5aXx-p7K4KLg.woff\" as=\"font\" type=\"font/woff2\" crossorigin/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "94",
+							"uri": "https://passculture.pro/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"preload\" href=\"https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCu173w5aXx-p7K4KLg.woff\" as=\"font\" type=\"font/woff2\" crossorigin/>",
+							"otherinfo": ""
+						},
+						{
+							"id": "91",
+							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -257,7 +420,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "10",
+					"count": "15",
 					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
@@ -276,7 +439,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "61",
+							"id": "80",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -285,25 +448,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "33",
-							"uri": "https://passculture.pro/favicon.ico",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "95",
-							"uri": "https://passculture.pro/icon/app-icon-iphone.png",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "65",
+							"id": "82",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -312,7 +457,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "98",
+							"id": "77",
 							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -321,7 +466,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "66",
+							"id": "83",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -330,7 +475,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "67",
+							"id": "84",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -339,7 +484,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "100",
+							"id": "87",
 							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -348,7 +493,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "68",
+							"id": "85",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -357,7 +502,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "70",
+							"id": "86",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -366,7 +511,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "101",
+							"id": "88",
 							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -375,13 +520,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "9",
 					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
 					"cweid": "693",
 					"wascid": "14",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10063",
@@ -394,7 +539,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "60",
+							"id": "75",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
@@ -403,8 +548,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "109",
-							"uri": "https://passculture.pro/assets/index-CT9_Lh-K.js",
+							"id": "126",
+							"uri": "https://passculture.pro/assets/index-3FnGhM4o.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -412,7 +557,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "63",
+							"id": "74",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -421,7 +566,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "97",
+							"id": "76",
 							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -436,7 +581,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10021",
@@ -449,7 +594,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"id": "39",
+							"id": "48",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -458,8 +603,8 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "102",
-							"uri": "https://passculture.pro/assets/index-Bswv0iK8.css",
+							"id": "123",
+							"uri": "https://passculture.pro/assets/index-3FnGhM4o.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -467,8 +612,8 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "106",
-							"uri": "https://passculture.pro/assets/index-CT9_Lh-K.js",
+							"id": "119",
+							"uri": "https://passculture.pro/assets/index-Cs9WCSnw.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -476,7 +621,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "19",
+							"id": "117",
 							"uri": "https://passculture.pro/favicon.ico",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -485,7 +630,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "90",
+							"id": "112",
 							"uri": "https://passculture.pro/icon/app-icon-iphone.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -494,7 +639,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "91",
+							"id": "114",
 							"uri": "https://passculture.pro/manifest.json",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -503,7 +648,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "38",
+							"id": "47",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -512,7 +657,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "92",
+							"id": "50",
 							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -527,7 +672,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10094",
@@ -540,7 +685,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "41",
+							"id": "54",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
@@ -549,8 +694,17 @@
 							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001e2 \uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0002\\x001c\uFFFD\uFFFD\uFFFD}\uFFFD$\uFFFDy\uFFFD\\x0003E\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "103",
-							"uri": "https://passculture.pro/assets/index-Bswv0iK8.css",
+							"id": "124",
+							"uri": "https://passculture.pro/assets/index-3FnGhM4o.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "assets/IndividualOfferDetails-Unv16TXv",
+							"otherinfo": "j\uFFFD\\x001e\uFFFD\uFFFD\u021D\u062F\uFFFD\u06DA\uFFFD\uFFFD\uFFFDz\uFFFD\u07B5\uFFFD\uFFFD\uFFFD\uFFFD'\uFFFD^\uFFFD^"
+						},
+						{
+							"id": "120",
+							"uri": "https://passculture.pro/assets/index-Cs9WCSnw.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -558,16 +712,7 @@
 							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001e2 \uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0002\\x001c\uFFFD\uFFFD\uFFFD}\uFFFD$\uFFFDy\uFFFD\\x0003E\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "107",
-							"uri": "https://passculture.pro/assets/index-CT9_Lh-K.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "assets/IndividualOfferDetails-CdB1Qs9N",
-							"otherinfo": "j\uFFFD\\x001e\uFFFD\uFFFD\u021D\u062F\uFFFD\u06DA\uFFFD\uFFFD\uFFFDz\uFFFD\u07B5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0007T,\uFFFD"
-						},
-						{
-							"id": "42",
+							"id": "53",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -576,7 +721,7 @@
 							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001e2 \uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0002\\x001c\uFFFD\uFFFD\uFFFD}\uFFFD$\uFFFDy\uFFFD\\x0003E\uFFFD\uFFFD\uFFFD3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "94",
+							"id": "51",
 							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -591,7 +736,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -604,7 +749,7 @@
 					"desc": "<p>The message contained both CSP specified via header and via Meta tag. It was not possible to union these policies in order to perform an analysis. Therefore, they have been evaluated individually.</p>",
 					"instances":[ 
 						{
-							"id": "18",
+							"id": "34",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
@@ -613,8 +758,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "25",
+							"id": "32",
 							"uri": "https://passculture.pro/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "39",
+							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -622,13 +776,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10038",
@@ -641,7 +795,7 @@
 					"desc": "<p>The response contained a Content-Security-Policy-Report-Only header, this may indicate a work-in-progress implementation, or an oversight in promoting pre-Prod to Prod, etc.</p><p></p><p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "1",
+							"id": "7",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
@@ -650,7 +804,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "5",
+							"id": "6",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -659,7 +813,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "86",
+							"id": "4",
 							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -674,7 +828,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP2/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10027",
@@ -687,8 +841,8 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "105",
-							"uri": "https://passculture.pro/assets/index-CT9_Lh-K.js",
+							"id": "122",
+							"uri": "https://passculture.pro/assets/index-3FnGhM4o.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -715,30 +869,30 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "31",
+							"id": "40",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/index-CT9_Lh-K.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/index-3FnGhM4o.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "34",
+							"id": "42",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/index-CT9_Lh-K.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/index-3FnGhM4o.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "88",
+							"id": "43",
 							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/index-CT9_Lh-K.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/index-3FnGhM4o.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
@@ -761,7 +915,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "0",
+							"id": "1",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "cache-control",
@@ -770,26 +924,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "89",
+							"id": "111",
 							"uri": "https://passculture.pro/manifest.json",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=3600",
-							"otherinfo": ""
-						},
-						{
-							"id": "2",
-							"uri": "https://passculture.pro/robots.txt",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "max-age=3600",
-							"otherinfo": ""
-						},
-						{
-							"id": "83",
-							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -797,7 +933,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "2",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -816,7 +952,7 @@
 					"desc": "<p>The content was retrieved from a shared cache. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "36",
+							"id": "45",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
@@ -825,7 +961,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "6",
+							"id": "113",
 							"uri": "https://passculture.pro/favicon.ico",
 							"method": "GET",
 							"param": "",
@@ -834,7 +970,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "35",
+							"id": "44",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -849,7 +985,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>https://www.rfc-editor.org/rfc/rfc9110.html</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -862,7 +998,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "49",
+							"id": "63",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -871,8 +1007,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "28",
-							"uri": "https://passculture.pro/favicon.ico",
+							"id": "67",
+							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -880,8 +1016,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "53",
-							"uri": "https://passculture.pro/robots.txt",
+							"id": "65",
+							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -895,7 +1031,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -908,7 +1044,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "47",
+							"id": "61",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -917,8 +1053,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "27",
-							"uri": "https://passculture.pro/favicon.ico",
+							"id": "59",
+							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -926,8 +1062,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "50",
-							"uri": "https://passculture.pro/robots.txt",
+							"id": "60",
+							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -954,7 +1090,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "44",
+							"id": "55",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -963,8 +1099,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "26",
-							"uri": "https://passculture.pro/favicon.ico",
+							"id": "56",
+							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -972,8 +1108,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "45",
-							"uri": "https://passculture.pro/robots.txt",
+							"id": "58",
+							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1000,7 +1136,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "52",
+							"id": "66",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1009,8 +1145,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "29",
-							"uri": "https://passculture.pro/favicon.ico",
+							"id": "68",
+							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1018,8 +1154,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "58",
-							"uri": "https://passculture.pro/robots.txt",
+							"id": "70",
+							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1046,7 +1182,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "55",
+							"id": "73",
 							"uri": "https://passculture.pro",
 							"method": "GET",
 							"param": "",
@@ -1055,8 +1191,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "104",
-							"uri": "https://passculture.pro/assets/index-Bswv0iK8.css",
+							"id": "125",
+							"uri": "https://passculture.pro/assets/index-3FnGhM4o.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1064,8 +1200,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "108",
-							"uri": "https://passculture.pro/assets/index-CT9_Lh-K.js",
+							"id": "121",
+							"uri": "https://passculture.pro/assets/index-Cs9WCSnw.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1073,7 +1209,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "30",
+							"id": "118",
 							"uri": "https://passculture.pro/favicon.ico",
 							"method": "GET",
 							"param": "",
@@ -1082,7 +1218,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "93",
+							"id": "115",
 							"uri": "https://passculture.pro/icon/app-icon-iphone.png",
 							"method": "GET",
 							"param": "",
@@ -1091,7 +1227,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "99",
+							"id": "116",
 							"uri": "https://passculture.pro/manifest.json",
 							"method": "GET",
 							"param": "",
@@ -1100,7 +1236,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "59",
+							"id": "72",
 							"uri": "https://passculture.pro/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1109,7 +1245,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "96",
+							"id": "71",
 							"uri": "https://passculture.pro/sitemap.xml",
 							"method": "GET",
 							"param": "",
