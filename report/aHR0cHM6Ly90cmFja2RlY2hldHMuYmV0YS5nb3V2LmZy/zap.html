@@ -212,11 +212,11 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Sun, 23 Mar 2025 06:48:06
+		Generated on Sun, 30 Mar 2025 06:53:38
 	</h3>
 
 	<h3>
-		ZAP Version: 2.16.0
+		ZAP Version: 2.16.1
 	</h3>
 
 	<h4>
@@ -296,9 +296,9 @@ td {
 					align="center">Number of Instances</th>
 			</tr>
 			<tr>
-				<td><a href="#10055">CSP: Wildcard Directive</a></td>
+				<td><a href="#10055">CSP: Failure to Define Directive with No Fallback</a></td>
 				<td align="center" class="risk-2">Medium</td>
-				<td align="center">2</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10055">CSP: script-src unsafe-inline</a></td>
@@ -338,7 +338,7 @@ td {
 			<tr>
 				<td><a href="#10094">Base64 Disclosure</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">9</td>
+				<td align="center">8</td>
 			</tr>
 			<tr>
 				<td><a href="#10027">Information Disclosure - Suspicious Comments</a></td>
@@ -378,7 +378,7 @@ td {
 			<tr>
 				<td><a href="#10112">Session Management Response Identified</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">7</td>
+				<td align="center">5</td>
 			</tr>
 			<tr>
 				<td><a href="#10049">Storable and Cacheable Content</a></td>
@@ -397,12 +397,12 @@ td {
 					<th width="20%" class="risk-2"><a
 						id="10055"></a>
 						<div>Medium</div></th>
-					<th class="risk-2">CSP: Wildcard Directive</th>
+					<th class="risk-2">CSP: Failure to Define Directive with No Fallback</th>
 				</tr>
 				<tr>
 					<td width="20%">Description</td>
 					<td width="80%">
-							<div>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page — covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</div>
+							<div>The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.</div>
 							
 						</td>
 				</tr>
@@ -433,15 +433,43 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">style-src &#39;self&#39; &#39;unsafe-inline&#39; static/; connect-src &#39;self&#39;; font-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:</td>
+						<td width="80%">connect-src &#39;self&#39;; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:; font-src &#39;self&#39; data: static/; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; static/</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:
-frame-ancestors, form-action
-
-The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</td>
+						<td width="80%">The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/robots.txt">https://trackdechets.beta.gouv.fr/robots.txt</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Content-Security-Policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">connect-src &#39;self&#39;; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:; font-src &#39;self&#39; data: static/; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; static/</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src.</td>
 					</tr>
 				
 					<tr>
@@ -467,20 +495,17 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">style-src &#39;self&#39; &#39;unsafe-inline&#39; static/; connect-src &#39;self&#39;; font-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:</td>
+						<td width="80%">connect-src &#39;self&#39;; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:; font-src &#39;self&#39; data: static/; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; static/</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:
-frame-ancestors, form-action
-
-The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</td>
+						<td width="80%">The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src.</td>
 					</tr>
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">2</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -566,7 +591,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">style-src &#39;self&#39; &#39;unsafe-inline&#39; static/; connect-src &#39;self&#39;; font-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:</td>
+						<td width="80%">connect-src &#39;self&#39;; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:; font-src &#39;self&#39; data: static/; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; static/</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -597,7 +622,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">style-src &#39;self&#39; &#39;unsafe-inline&#39; static/; connect-src &#39;self&#39;; font-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:</td>
+						<td width="80%">connect-src &#39;self&#39;; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:; font-src &#39;self&#39; data: static/; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; static/</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -628,7 +653,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">style-src &#39;self&#39; &#39;unsafe-inline&#39; static/; connect-src &#39;self&#39;; font-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:</td>
+						<td width="80%">connect-src &#39;self&#39;; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:; font-src &#39;self&#39; data: static/; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; static/</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -724,7 +749,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">style-src &#39;self&#39; &#39;unsafe-inline&#39; static/; connect-src &#39;self&#39;; font-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:</td>
+						<td width="80%">connect-src &#39;self&#39;; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:; font-src &#39;self&#39; data: static/; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; static/</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -755,7 +780,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">style-src &#39;self&#39; &#39;unsafe-inline&#39; static/; connect-src &#39;self&#39;; font-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:</td>
+						<td width="80%">connect-src &#39;self&#39;; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:; font-src &#39;self&#39; data: static/; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; static/</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -786,7 +811,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">style-src &#39;self&#39; &#39;unsafe-inline&#39; static/; connect-src &#39;self&#39;; font-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:</td>
+						<td width="80%">connect-src &#39;self&#39;; default-src &#39;self&#39; trackdechets.beta.gouv.fr/ blob:; font-src &#39;self&#39; data: static/; script-src &#39;self&#39; &#39;unsafe-inline&#39; static/; img-src &#39;self&#39; data: static/; frame-src &#39;self&#39; https://statistiques.trackdechets.beta.gouv.fr; style-src &#39;self&#39; &#39;unsafe-inline&#39; static/</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1079,7 +1104,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/static/img/trackdechets.png">https://trackdechets.beta.gouv.fr/static/img/trackdechets.png</a></td>
+						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/static/js/dsfr.module.min.js">https://trackdechets.beta.gouv.fr/static/js/dsfr.module.min.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1110,7 +1135,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/static/js/htmx.js">https://trackdechets.beta.gouv.fr/static/js/htmx.js</a></td>
+						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/static/medias/illustrationCollector.svg">https://trackdechets.beta.gouv.fr/static/medias/illustrationCollector.svg</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1790,7 +1815,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/accessibilite/">https://trackdechets.beta.gouv.fr/accessibilite/</a></td>
+						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/cgu/">https://trackdechets.beta.gouv.fr/cgu/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1945,7 +1970,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/accessibilite/">https://trackdechets.beta.gouv.fr/accessibilite/</a></td>
+						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/cgu/">https://trackdechets.beta.gouv.fr/cgu/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2120,13 +2145,12 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">5HVNSQrhx55GANdt2FV5YY1liCwzLH8p</td>
+						<td width="80%">LEKF3yrJGc7s1L3A5elO5RwCm5nvlCPz</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">�uMI
-�ǞF �m�Uya�e�,3,)</td>
+						<td width="80%">,B��*���Խ���N����#�</td>
 					</tr>
 				
 					<tr>
@@ -2152,12 +2176,12 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">l7ryaCRcl4dlbJcozYgp0e5sV93dKgTG</td>
+						<td width="80%">nYo6hWMvaNhkn2UuFTx2027Vu6VdfhVj</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���h$\��el�(͈)��lW��*�</td>
+						<td width="80%">��:�c/h�d�e.&lt;v�nջ�]~c</td>
 					</tr>
 				
 					<tr>
@@ -2183,12 +2207,12 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">l7ryaCRcl4dlbJcozYgp0e5sV93dKgTG</td>
+						<td width="80%">nYo6hWMvaNhkn2UuFTx2027Vu6VdfhVj</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���h$\��el�(͈)��lW��*�</td>
+						<td width="80%">��:�c/h�d�e.&lt;v�nջ�]~c</td>
 					</tr>
 				
 					<tr>
@@ -2256,37 +2280,6 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/static/js/dsfr.nomodule.min.js">https://trackdechets.beta.gouv.fr/static/js/dsfr.nomodule.min.js</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">com/Financial-Times/polyfill-service/issues/317</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">r��)ڝȚ����?��r~)e�ǫ�&#39;�+,��?�^</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/static/pdf/homologation-trackdechets-version-courte.pdf">https://trackdechets.beta.gouv.fr/static/pdf/homologation-trackdechets-version-courte.pdf</a></td>
 					</tr>
 					<tr>
@@ -2338,12 +2331,12 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">l7ryaCRcl4dlbJcozYgp0e5sV93dKgTG</td>
+						<td width="80%">nYo6hWMvaNhkn2UuFTx2027Vu6VdfhVj</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���h$\��el�(͈)��lW��*�</td>
+						<td width="80%">��:�c/h�d�e.&lt;v�nջ�]~c</td>
 					</tr>
 				
 					<tr>
@@ -2369,17 +2362,17 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">l7ryaCRcl4dlbJcozYgp0e5sV93dKgTG</td>
+						<td width="80%">nYo6hWMvaNhkn2UuFTx2027Vu6VdfhVj</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">���h$\��el�(͈)��lW��*�</td>
+						<td width="80%">��:�c/h�d�e.&lt;v�nջ�]~c</td>
 					</tr>
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">9</td>
+					<td width="80%">8</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -3709,39 +3702,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">5HVNSQrhx55GANdt2FV5YY1liCwzLH8p</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">
-cookie:csrftoken</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://trackdechets.beta.gouv.fr">https://trackdechets.beta.gouv.fr</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">csrftoken</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">l7ryaCRcl4dlbJcozYgp0e5sV93dKgTG</td>
+						<td width="80%">LEKF3yrJGc7s1L3A5elO5RwCm5nvlCPz</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3773,7 +3734,7 @@ cookie:csrftoken</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">l7ryaCRcl4dlbJcozYgp0e5sV93dKgTG</td>
+						<td width="80%">nYo6hWMvaNhkn2UuFTx2027Vu6VdfhVj</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3805,7 +3766,7 @@ cookie:csrftoken</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">l7ryaCRcl4dlbJcozYgp0e5sV93dKgTG</td>
+						<td width="80%">nYo6hWMvaNhkn2UuFTx2027Vu6VdfhVj</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3837,7 +3798,7 @@ cookie:csrftoken</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">l7ryaCRcl4dlbJcozYgp0e5sV93dKgTG</td>
+						<td width="80%">nYo6hWMvaNhkn2UuFTx2027Vu6VdfhVj</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3869,39 +3830,7 @@ cookie:csrftoken</td>
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">l7ryaCRcl4dlbJcozYgp0e5sV93dKgTG</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">
-cookie:csrftoken</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/nl-signup/tech/">https://trackdechets.beta.gouv.fr/nl-signup/tech/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">csrftoken</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">l7ryaCRcl4dlbJcozYgp0e5sV93dKgTG</td>
+						<td width="80%">nYo6hWMvaNhkn2UuFTx2027Vu6VdfhVj</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3912,7 +3841,7 @@ cookie:csrftoken</td>
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">7</td>
+					<td width="80%">5</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -4027,7 +3956,7 @@ cookie:csrftoken</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/accessibilite/">https://trackdechets.beta.gouv.fr/accessibilite/</a></td>
+						<td width="80%"><a href="https://trackdechets.beta.gouv.fr/cgu/">https://trackdechets.beta.gouv.fr/cgu/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
