@@ -212,11 +212,11 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Sun, 23 Mar 2025 11:28:28
+		Generated on Sun, 30 Mar 2025 11:41:20
 	</h3>
 
 	<h3>
-		ZAP Version: 2.16.0
+		ZAP Version: 2.16.1
 	</h3>
 
 	<h4>
@@ -245,7 +245,7 @@ td {
 					<div>Medium</div>
 				</td>
 				<td align="center">
-					<div>4</div>
+					<div>5</div>
 				</td>
 			</tr>
 			<tr>
@@ -294,6 +294,11 @@ td {
 					align="center">Risk Level</th>
 				<th width="20%"
 					align="center">Number of Instances</th>
+			</tr>
+			<tr>
+				<td><a href="#10055">CSP: Failure to Define Directive with No Fallback</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">1</td>
 			</tr>
 			<tr>
 				<td><a href="#10055">CSP: Wildcard Directive</a></td>
@@ -387,6 +392,102 @@ td {
 					<th width="20%" class="risk-2"><a
 						id="10055"></a>
 						<div>Medium</div></th>
+					<th class="risk-2">CSP: Failure to Define Directive with No Fallback</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://rdv-insertion.fr">https://rdv-insertion.fr</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">content-security-policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">default-src &#39;self&#39; https:; font-src &#39;self&#39; https: data:; img-src &#39;self&#39; https: data: rdv-insertion-medias-production.s3.fr-par.scw.cloud; media-src &#39;self&#39; rdv-insertion-medias-production.s3.fr-par.scw.cloud; frame-src &#39;self&#39; flo.uri.sh *.maze.co; object-src &#39;none&#39;; script-src &#39;self&#39; https: &#39;unsafe-inline&#39;; style-src &#39;self&#39; https: &#39;unsafe-inline&#39;; connect-src &#39;self&#39; https://www.rdv-solidarites.fr sentry.incubateur.net matomo.inclusion.beta.gouv.fr *.maze.co *.crisp.chat wss://client.relay.crisp.chat; worker-src &#39;self&#39; blob:</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src.</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">1</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://www.w3.org/TR/CSP/">https://www.w3.org/TR/CSP/</a>
+							<br />
+						
+							<a href="https://caniuse.com/#search=content+security+policy">https://caniuse.com/#search=content+security+policy</a>
+							<br />
+						
+							<a href="https://content-security-policy.com/">https://content-security-policy.com/</a>
+							<br />
+						
+							<a href="https://github.com/HtmlUnit/htmlunit-csp">https://github.com/HtmlUnit/htmlunit-csp</a>
+							<br />
+						
+							<a href="https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources">https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/693.html">693</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">15</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10055/">10055</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="10055"></a>
+						<div>Medium</div></th>
 					<th class="risk-2">CSP: Wildcard Directive</th>
 				</tr>
 				<tr>
@@ -429,9 +530,7 @@ td {
 						<td width="20%"
 							class="indent2">Other Info</td>
 						<td width="80%">The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:
-script-src, style-src, img-src, frame-ancestors, font-src, manifest-src, form-action
-
-The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</td>
+script-src, style-src, img-src, font-src, manifest-src</td>
 					</tr>
 				
 				<tr>
@@ -1192,12 +1291,12 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">2FDDr7FEAa2bTnRetLsme2ogUkIYCUonzkJ8q7ODqxGxLWt2qZRBULM4YHZ34Ck4CW4Al20</td>
+						<td width="80%">2B8e46COS9LLUjk8eoR0xkfrmFHTIXrnSJ6ku98vpu5h</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">�Pï�D��Nt^��&amp;{j RB	J&#39;�B|�����-kv��AP�8`vw�)8	n �m</td>
+						<td width="80%">�㠎K��R9&lt;z�t�G�Q�!z�H����/��a</td>
 					</tr>
 				
 				<tr>
@@ -2073,7 +2172,7 @@ The directive(s): frame-ancestors, form-action are among the directives that do 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">9Yk%2BEYfMW3SNc5iATSDzPFVM%2FDDr7FEAa2bTnRetLsme2ogUkIYCUonzkJ8q7ODqxGxLWt2qZRBULM4YHZ34Ck4CW4Al20%2FKfSKeD%2Fra8loTR%2FS%2BHqCJknpgbZrLxNfn0KHYJw50uc3raHf73uYWifaeEzV60hvdE4yA2IBBrwoiTEk3kmQEQx66XOgispoMh%2ByWQO1r0KDQUk6JQEJp5Ksm6odh%2FlwSVwSS8JtpG6auQkV9VdqzgM3I3YvXpE2CupDzCFYJwQF01E6birQoa8ezS9fyvZ39Juo%2B0P8T--r4izdYLr%2F%2Fq%2FlAhA--CTiEjDOPyIXgUM4xY%2BEiUg%3D%3D</td>
+						<td width="80%">mJJZbA7C0NhYWY7oDBkQTyvqU%2FzaaZo8F7xqyNDqU8eZp%2B8e46COS9LLUjk8eoR0xkfrmFHTIXrnSJ6ku98vpu5h%2FQkeAe1rkpszNHjlV%2Bwrpdx2RO3gpQ6RNE8mZgf9e3gojITKB%2Fg3d%2F15UgJQSeut%2BGMtY67zqQQQgcoO5jMAr2a54GCPb%2FlHF5QnZHyGnSjuhhzJ9dvZyVOtqvZfUaaRReQG3auKlXPsc1zz8kpm4LSdPimSzpDKhJR%2F2YE%2Bqnt0CVVHHlsvFUgg%2BCxuyybXWQBjYWHNzCDjFHZN--y13Fiy5eKdyQ%2BtJa--Uyj78jhR3%2F7Z5%2F98NseOwg%3D%3D</td>
 					</tr>
 					<tr>
 						<td width="20%"
