@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
-	"@version": "2.16.0",
-	"@generated": "Sun, 23 Mar 2025 05:28:09",
+	"@version": "2.16.1",
+	"@generated": "Sun, 30 Mar 2025 05:31:34",
 	"site":[ 
 		{
 			"@name": "https://pad.incubateur.net",
@@ -20,7 +20,7 @@
 					"desc": "<p>The identified library appears to be vulnerable.</p>",
 					"instances":[ 
 						{
-							"id": "147",
+							"id": "142",
 							"uri": "https://pad.incubateur.net/build/cover-pack.a9f950f41d76c45e8553.js",
 							"method": "GET",
 							"param": "",
@@ -29,7 +29,7 @@
 							"otherinfo": "The identified library moment.js, version 2.29.1 is vulnerable.\nCVE-2022-31129\nCVE-2022-24785\nhttps://github.com/moment/moment/security/advisories/GHSA-wc69-rhjr-hc9g\nhttps://security.snyk.io/vuln/SNYK-JS-MOMENT-2944238\nhttps://github.com/moment/moment/security/advisories/GHSA-8hfj-j24r-96c4\n"
 						},
 						{
-							"id": "164",
+							"id": "172",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -44,7 +44,53 @@
 					"reference": "<p>https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/</p>",
 					"cweid": "1395",
 					"wascid": "-1",
-					"sourceid": "98"
+					"sourceid": "110"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-13",
+					"alert": "CSP: Failure to Define Directive with No Fallback",
+					"name": "CSP: Failure to Define Directive with No Fallback",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.</p>",
+					"instances":[ 
+						{
+							"id": "12",
+							"uri": "https://pad.incubateur.net",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-1a0371de-7a0b-4a79-b79c-80a38fb1ceba' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
+						},
+						{
+							"id": "10",
+							"uri": "https://pad.incubateur.net",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-c342862f-70fe-4150-a11a-2c5f6bcfec30' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
+						},
+						{
+							"id": "74",
+							"uri": "https://pad.incubateur.net/s/terms-of-use",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-14f8bcbd-35b3-4f0d-a219-c1324f2e7915' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src.</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -57,49 +103,40 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "4",
+							"id": "13",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-3662cf26-f6e6-4703-b430-a3dd0467cfb6' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nimg-src, connect-src, frame-src, frame-ancestors, media-src, object-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-1a0371de-7a0b-4a79-b79c-80a38fb1ceba' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nimg-src, connect-src, frame-src, media-src, object-src, worker-src"
 						},
 						{
-							"id": "5",
+							"id": "11",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-40657ed4-13ad-4d90-85b0-b7cfdac68352' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nimg-src, connect-src, frame-src, frame-ancestors, media-src, object-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-c342862f-70fe-4150-a11a-2c5f6bcfec30' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nimg-src, connect-src, frame-src, media-src, object-src, worker-src"
 						},
 						{
-							"id": "61",
-							"uri": "https://pad.incubateur.net/",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-1149ea81-d043-490e-84e0-59b63b491907' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nimg-src, connect-src, frame-src, frame-ancestors, media-src, object-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
-						},
-						{
-							"id": "54",
+							"id": "77",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-8f9d0985-14f3-4e86-9e0c-790fe7adc725' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nimg-src, connect-src, frame-src, frame-ancestors, media-src, object-src, worker-src, form-action\n\nThe directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything."
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-14f8bcbd-35b3-4f0d-a219-c1324f2e7915' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nimg-src, connect-src, frame-src, media-src, object-src, worker-src"
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
-					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:</p><p>img-src, connect-src, frame-src, frame-ancestors, media-src, object-src, worker-src, form-action</p><p></p><p>The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:</p><p>img-src, connect-src, frame-src, media-src, object-src, worker-src</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -112,49 +149,40 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "7",
+							"id": "17",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-3662cf26-f6e6-4703-b430-a3dd0467cfb6' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-1a0371de-7a0b-4a79-b79c-80a38fb1ceba' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
 							"otherinfo": "script-src includes unsafe-eval."
 						},
 						{
-							"id": "9",
+							"id": "16",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-40657ed4-13ad-4d90-85b0-b7cfdac68352' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-c342862f-70fe-4150-a11a-2c5f6bcfec30' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
 							"otherinfo": "script-src includes unsafe-eval."
 						},
 						{
-							"id": "64",
-							"uri": "https://pad.incubateur.net/",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-1149ea81-d043-490e-84e0-59b63b491907' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
-							"otherinfo": "script-src includes unsafe-eval."
-						},
-						{
-							"id": "57",
+							"id": "81",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-8f9d0985-14f3-4e86-9e0c-790fe7adc725' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-14f8bcbd-35b3-4f0d-a219-c1324f2e7915' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
 							"otherinfo": "script-src includes unsafe-eval."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-eval.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10055",
@@ -167,49 +195,40 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "6",
+							"id": "15",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-3662cf26-f6e6-4703-b430-a3dd0467cfb6' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-1a0371de-7a0b-4a79-b79c-80a38fb1ceba' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "8",
+							"id": "14",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-40657ed4-13ad-4d90-85b0-b7cfdac68352' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-c342862f-70fe-4150-a11a-2c5f6bcfec30' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "63",
-							"uri": "https://pad.incubateur.net/",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-1149ea81-d043-490e-84e0-59b63b491907' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
-							"otherinfo": "style-src includes unsafe-inline."
-						},
-						{
-							"id": "56",
+							"id": "79",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-8f9d0985-14f3-4e86-9e0c-790fe7adc725' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
+							"evidence": "default-src 'self';script-src 'self' vimeo.com https://gist.github.com www.slideshare.net 'unsafe-eval' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com 'nonce-14f8bcbd-35b3-4f0d-a219-c1324f2e7915' 'sha256-81acLZNZISnyGYZrSuoYhpzwDTTxi7vC1YM4uNxqWaM=';img-src *;style-src 'self' 'unsafe-inline' https://github.githubassets.com https://*.disquscdn.com;font-src 'self' data: https://public.slidesharecdn.com https://*.disquscdn.com;object-src *;media-src *;child-src *;connect-src *",
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10020",
@@ -222,7 +241,7 @@
 					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
 					"instances":[ 
 						{
-							"id": "1",
+							"id": "3",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -231,7 +250,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "40",
+							"id": "76",
 							"uri": "https://pad.incubateur.net/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -240,7 +259,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "119",
+							"id": "92",
 							"uri": "https://pad.incubateur.net/features",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -249,7 +268,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "121",
+							"id": "109",
 							"uri": "https://pad.incubateur.net/s/release-notes",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -258,7 +277,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
+							"id": "62",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -267,7 +286,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "137",
+							"id": "132",
 							"uri": "https://pad.incubateur.net/slide-example",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -276,7 +295,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "142",
+							"id": "131",
 							"uri": "https://pad.incubateur.net/yaml-metadata",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -291,7 +310,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90003",
@@ -304,7 +323,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "134",
+							"id": "129",
 							"uri": "https://pad.incubateur.net/build/MathJax/config/Safe.js",
 							"method": "GET",
 							"param": "",
@@ -319,7 +338,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "94"
+					"sourceid": "93"
 				},
 				{
 					"pluginid": "10003",
@@ -332,7 +351,7 @@
 					"desc": "<p>The identified library appears to be vulnerable.</p>",
 					"instances":[ 
 						{
-							"id": "163",
+							"id": "170",
 							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
 							"method": "GET",
 							"param": "",
@@ -347,7 +366,7 @@
 					"reference": "<p>https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/</p>",
 					"cweid": "1395",
 					"wascid": "-1",
-					"sourceid": "109"
+					"sourceid": "108"
 				},
 				{
 					"pluginid": "10110",
@@ -360,7 +379,7 @@
 					"desc": "<p>A dangerous JS function seems to be in use that would leave the site vulnerable.</p>",
 					"instances":[ 
 						{
-							"id": "146",
+							"id": "143",
 							"uri": "https://pad.incubateur.net/build/cover-pack.a9f950f41d76c45e8553.js",
 							"method": "GET",
 							"param": "",
@@ -369,7 +388,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "162",
+							"id": "171",
 							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
 							"method": "GET",
 							"param": "",
@@ -393,7 +412,7 @@
 					"reference": "<p>https://angular.io/guide/security</p>",
 					"cweid": "749",
 					"wascid": "-1",
-					"sourceid": "98"
+					"sourceid": "110"
 				},
 				{
 					"pluginid": "90004",
@@ -406,7 +425,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "32",
+							"id": "52",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -415,8 +434,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "90",
-							"uri": "https://pad.incubateur.net/",
+							"id": "69",
+							"uri": "https://pad.incubateur.net/icons/apple-touch-icon.png",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -424,7 +443,25 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "79",
+							"id": "95",
+							"uri": "https://pad.incubateur.net/icons/favicon-16x16.png",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "84",
+							"uri": "https://pad.incubateur.net/icons/favicon-32x32.png",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "99",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -433,7 +470,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "33",
+							"id": "55",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -442,16 +479,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "91",
-							"uri": "https://pad.incubateur.net/",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "80",
+							"id": "100",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -460,7 +488,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "34",
+							"id": "56",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -469,16 +497,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "92",
-							"uri": "https://pad.incubateur.net/",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "82",
+							"id": "101",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -506,7 +525,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "30",
+							"id": "49",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "",
@@ -515,7 +534,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "89",
+							"id": "114",
 							"uri": "https://pad.incubateur.net/",
 							"method": "GET",
 							"param": "",
@@ -524,16 +543,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "135",
-							"uri": "https://pad.incubateur.net/build/common.9a80e4667cfe74cd3793.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "133",
+							"id": "128",
 							"uri": "https://pad.incubateur.net/build/MathJax/config/Safe.js",
 							"method": "GET",
 							"param": "",
@@ -542,7 +552,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "132",
+							"id": "127",
 							"uri": "https://pad.incubateur.net/build/MathJax/config/TeX-AMS-MML_HTMLorMML.js",
 							"method": "GET",
 							"param": "",
@@ -551,16 +561,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "141",
-							"uri": "https://pad.incubateur.net/build/MathJax/MathJax.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "120",
+							"id": "118",
 							"uri": "https://pad.incubateur.net/config",
 							"method": "GET",
 							"param": "",
@@ -569,7 +570,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "128",
+							"id": "124",
 							"uri": "https://pad.incubateur.net/features",
 							"method": "GET",
 							"param": "",
@@ -578,7 +579,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "131",
+							"id": "123",
 							"uri": "https://pad.incubateur.net/js/mathjax-config-extra.js",
 							"method": "GET",
 							"param": "",
@@ -587,7 +588,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "129",
+							"id": "126",
 							"uri": "https://pad.incubateur.net/s/release-notes",
 							"method": "GET",
 							"param": "",
@@ -596,8 +597,26 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "78",
+							"id": "98",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "138",
+							"uri": "https://pad.incubateur.net/slide-example",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "137",
+							"uri": "https://pad.incubateur.net/yaml-metadata",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -624,7 +643,7 @@
 					"desc": "<p>The web/application server is leaking information via one or more \"X-Powered-By\" HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</p>",
 					"instances":[ 
 						{
-							"id": "15",
+							"id": "41",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "",
@@ -633,16 +652,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "85",
-							"uri": "https://pad.incubateur.net/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						},
-						{
-							"id": "71",
+							"id": "83",
 							"uri": "https://pad.incubateur.net/auth/oauth2",
 							"method": "GET",
 							"param": "",
@@ -651,7 +661,25 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "108",
+							"id": "63",
+							"uri": "https://pad.incubateur.net/icons/apple-touch-icon.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Express",
+							"otherinfo": ""
+						},
+						{
+							"id": "89",
+							"uri": "https://pad.incubateur.net/icons/favicon-16x16.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Express",
+							"otherinfo": ""
+						},
+						{
+							"id": "80",
 							"uri": "https://pad.incubateur.net/icons/favicon-32x32.png",
 							"method": "GET",
 							"param": "",
@@ -660,7 +688,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "94",
+							"id": "65",
 							"uri": "https://pad.incubateur.net/logout",
 							"method": "GET",
 							"param": "",
@@ -669,7 +697,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "72",
+							"id": "64",
 							"uri": "https://pad.incubateur.net/me/delete/",
 							"method": "GET",
 							"param": "",
@@ -678,16 +706,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "102",
-							"uri": "https://pad.incubateur.net/me/export",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						},
-						{
-							"id": "96",
+							"id": "35",
 							"uri": "https://pad.incubateur.net/new",
 							"method": "GET",
 							"param": "",
@@ -696,7 +715,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "44",
+							"id": "6",
 							"uri": "https://pad.incubateur.net/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -705,7 +724,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "70",
+							"id": "94",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "",
@@ -714,7 +733,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "42",
+							"id": "7",
 							"uri": "https://pad.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -742,7 +761,115 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
+							"id": "167",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1431655768",
+							"otherinfo": "1431655768, which evaluates to: 2015-05-15 02:09:28."
+						},
+						{
+							"id": "169",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1481765933",
+							"otherinfo": "1481765933, which evaluates to: 2016-12-15 01:38:53."
+						},
+						{
+							"id": "158",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1668509029",
+							"otherinfo": "1668509029, which evaluates to: 2022-11-15 10:43:49."
+						},
+						{
+							"id": "161",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1685025377",
+							"otherinfo": "1685025377, which evaluates to: 2023-05-25 14:36:17."
+						},
+						{
+							"id": "168",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1794895138",
+							"otherinfo": "1794895138, which evaluates to: 2026-11-17 05:58:58."
+						},
+						{
+							"id": "163",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1819895653",
+							"otherinfo": "1819895653, which evaluates to: 2027-09-02 14:34:13."
+						},
+						{
+							"id": "162",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1852075885",
+							"otherinfo": "1852075885, which evaluates to: 2028-09-09 01:31:25."
+						},
+						{
+							"id": "164",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1852142177",
+							"otherinfo": "1852142177, which evaluates to: 2028-09-09 19:56:17."
+						},
+						{
+							"id": "160",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1886610805",
+							"otherinfo": "1886610805, which evaluates to: 2029-10-13 18:33:25."
+						},
+						{
 							"id": "159",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1936682341",
+							"otherinfo": "1936682341, which evaluates to: 2031-05-16 07:19:01."
+						},
+						{
+							"id": "165",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1952801890",
+							"otherinfo": "1952801890, which evaluates to: 2031-11-18 20:58:10."
+						},
+						{
+							"id": "166",
+							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2037671283",
+							"otherinfo": "2037671283, which evaluates to: 2034-07-28 03:48:03."
+						},
+						{
+							"id": "155",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -751,7 +878,7 @@
 							"otherinfo": "1431655768, which evaluates to: 2015-05-15 02:09:28."
 						},
 						{
-							"id": "161",
+							"id": "157",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -760,7 +887,7 @@
 							"otherinfo": "1481765933, which evaluates to: 2016-12-15 01:38:53."
 						},
 						{
-							"id": "149",
+							"id": "146",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -769,7 +896,7 @@
 							"otherinfo": "1668509029, which evaluates to: 2022-11-15 10:43:49."
 						},
 						{
-							"id": "152",
+							"id": "149",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -778,7 +905,7 @@
 							"otherinfo": "1685025377, which evaluates to: 2023-05-25 14:36:17."
 						},
 						{
-							"id": "160",
+							"id": "156",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -787,7 +914,7 @@
 							"otherinfo": "1794895138, which evaluates to: 2026-11-17 05:58:58."
 						},
 						{
-							"id": "154",
+							"id": "151",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -796,7 +923,7 @@
 							"otherinfo": "1819895653, which evaluates to: 2027-09-02 14:34:13."
 						},
 						{
-							"id": "153",
+							"id": "150",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -805,7 +932,7 @@
 							"otherinfo": "1852075885, which evaluates to: 2028-09-09 01:31:25."
 						},
 						{
-							"id": "155",
+							"id": "152",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -814,7 +941,7 @@
 							"otherinfo": "1852142177, which evaluates to: 2028-09-09 19:56:17."
 						},
 						{
-							"id": "151",
+							"id": "148",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -823,7 +950,7 @@
 							"otherinfo": "1886610805, which evaluates to: 2029-10-13 18:33:25."
 						},
 						{
-							"id": "150",
+							"id": "147",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -832,7 +959,7 @@
 							"otherinfo": "1936682341, which evaluates to: 2031-05-16 07:19:01."
 						},
 						{
-							"id": "156",
+							"id": "153",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -841,7 +968,7 @@
 							"otherinfo": "1952801890, which evaluates to: 2031-11-18 20:58:10."
 						},
 						{
-							"id": "157",
+							"id": "154",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -850,13 +977,13 @@
 							"otherinfo": "2037671283, which evaluates to: 2034-07-28 03:48:03."
 						}
 					],
-					"count": "12",
+					"count": "24",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1431655768, which evaluates to: 2015-05-15 02:09:28.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "110"
+					"sourceid": "108"
 				},
 				{
 					"pluginid": "10021",
@@ -869,7 +996,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"id": "14",
+							"id": "39",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -878,7 +1005,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "75",
+							"id": "111",
 							"uri": "https://pad.incubateur.net/",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -896,7 +1023,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "113",
+							"id": "110",
 							"uri": "https://pad.incubateur.net/build/font-pack.7f8ad7b6ec95ff6949ef.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -914,7 +1041,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "106",
+							"id": "59",
 							"uri": "https://pad.incubateur.net/icons/apple-touch-icon.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -923,7 +1050,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "110",
+							"id": "88",
 							"uri": "https://pad.incubateur.net/icons/favicon-16x16.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -932,7 +1059,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "107",
+							"id": "78",
 							"uri": "https://pad.incubateur.net/icons/favicon-32x32.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -941,7 +1068,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "117",
+							"id": "106",
 							"uri": "https://pad.incubateur.net/icons/safari-pinned-tab.svg",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -950,7 +1077,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "114",
+							"id": "104",
 							"uri": "https://pad.incubateur.net/icons/site.webmanifest",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -959,7 +1086,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "69",
+							"id": "93",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -987,121 +1114,121 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "20",
+							"id": "46",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE",
-							"otherinfo": "\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD"
+							"evidence": "3AXNtNNY_WmTv3Tn1dxKj8lXtzigR8aXXW",
+							"otherinfo": "\uFFFD\\x0005\u0374\uFFFDX\uFFFDi\uFFFD\uFFFDt\uFFFD\uFFFD\uFFFDJ\uFFFD\uFFFDW\uFFFD8\uFFFDG\u0197]"
 						},
 						{
-							"id": "18",
+							"id": "48",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AlFgo3GsJOxEl8xhncZgpPxzBS77ws5bD",
-							"otherinfo": "\uFFFD\tE\uFFFD\uFFFD\u01B0\uFFFD\uFFFD\\x0012_1\uFFFDw\\x0019\uFFFD\uFFFD\uFFFD\uFFFD\\x0014\uFFFD\uFFFD\\x000b9l"
+							"evidence": "3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv",
+							"otherinfo": "\uFFFD\n6+nP\uFFFD/o\uFFFD\\y\\x0010\\x000c\\x0016\uFFFD\uFFFD>\uFFFDO!\\x001dn:\uFFFD"
 						},
 						{
-							"id": "86",
+							"id": "113",
 							"uri": "https://pad.incubateur.net/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE",
-							"otherinfo": "\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD"
+							"evidence": "3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv",
+							"otherinfo": "\uFFFD\n6+nP\uFFFD/o\uFFFD\\y\\x0010\\x000c\\x0016\uFFFD\uFFFD>\uFFFDO!\\x001dn:\uFFFD"
 						},
 						{
-							"id": "81",
+							"id": "85",
 							"uri": "https://pad.incubateur.net/auth/oauth2",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE",
-							"otherinfo": "\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD"
+							"evidence": "3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv",
+							"otherinfo": "\uFFFD\n6+nP\uFFFD/o\uFFFD\\y\\x0010\\x000c\\x0016\uFFFD\uFFFD>\uFFFDO!\\x001dn:\uFFFD"
 						},
 						{
-							"id": "118",
+							"id": "117",
 							"uri": "https://pad.incubateur.net/config",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE",
-							"otherinfo": "\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD"
+							"evidence": "3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv",
+							"otherinfo": "\uFFFD\n6+nP\uFFFD/o\uFFFD\\y\\x0010\\x000c\\x0016\uFFFD\uFFFD>\uFFFDO!\\x001dn:\uFFFD"
 						},
 						{
-							"id": "95",
+							"id": "122",
+							"uri": "https://pad.incubateur.net/features",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv",
+							"otherinfo": "\uFFFD\n6+nP\uFFFD/o\uFFFD\\y\\x0010\\x000c\\x0016\uFFFD\uFFFD>\uFFFDO!\\x001dn:\uFFFD"
+						},
+						{
+							"id": "70",
 							"uri": "https://pad.incubateur.net/logout",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE",
-							"otherinfo": "\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD"
+							"evidence": "3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv",
+							"otherinfo": "\uFFFD\n6+nP\uFFFD/o\uFFFD\\y\\x0010\\x000c\\x0016\uFFFD\uFFFD>\uFFFDO!\\x001dn:\uFFFD"
 						},
 						{
-							"id": "74",
+							"id": "67",
 							"uri": "https://pad.incubateur.net/me/delete/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE",
-							"otherinfo": "\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD"
+							"evidence": "3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv",
+							"otherinfo": "\uFFFD\n6+nP\uFFFD/o\uFFFD\\y\\x0010\\x000c\\x0016\uFFFD\uFFFD>\uFFFDO!\\x001dn:\uFFFD"
 						},
 						{
-							"id": "103",
-							"uri": "https://pad.incubateur.net/me/export",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE",
-							"otherinfo": "\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD"
-						},
-						{
-							"id": "98",
+							"id": "36",
 							"uri": "https://pad.incubateur.net/new",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE",
-							"otherinfo": "\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD"
+							"evidence": "3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv",
+							"otherinfo": "\uFFFD\n6+nP\uFFFD/o\uFFFD\\y\\x0010\\x000c\\x0016\uFFFD\uFFFD>\uFFFDO!\\x001dn:\uFFFD"
 						},
 						{
-							"id": "46",
+							"id": "20",
 							"uri": "https://pad.incubateur.net/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE",
-							"otherinfo": "\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD"
+							"evidence": "3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv",
+							"otherinfo": "\uFFFD\n6+nP\uFFFD/o\uFFFD\\y\\x0010\\x000c\\x0016\uFFFD\uFFFD>\uFFFDO!\\x001dn:\uFFFD"
 						},
 						{
-							"id": "73",
+							"id": "96",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE",
-							"otherinfo": "\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD"
+							"evidence": "3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv",
+							"otherinfo": "\uFFFD\n6+nP\uFFFD/o\uFFFD\\y\\x0010\\x000c\\x0016\uFFFD\uFFFD>\uFFFDO!\\x001dn:\uFFFD"
 						},
 						{
-							"id": "45",
+							"id": "18",
 							"uri": "https://pad.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE",
-							"otherinfo": "\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD"
+							"evidence": "3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv",
+							"otherinfo": "\uFFFD\n6+nP\uFFFD/o\uFFFD\\y\\x0010\\x000c\\x0016\uFFFD\uFFFD>\uFFFDO!\\x001dn:\uFFFD"
 						}
 					],
 					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\\x0002~\uFFFD\uFFFDE<bh\uFFFD\uFFFDwC\uFFFDzI_LFR\\x000b\uFFFD\uFFFD\\x000c\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x0005\u0374\uFFFDX\uFFFDi\uFFFD\uFFFDt\uFFFD\uFFFD\uFFFDJ\uFFFD\uFFFDW\uFFFD8\uFFFDG\u0197]</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10027",
@@ -1123,7 +1250,7 @@
 							"otherinfo": "The following pattern was used: \\bUSERNAME\\b and was detected in likely comment: \"//,hn={},Ki={},pn=\"*/\".concat(\"*\"),Gi=V.createElement(\"a\");Gi.href=Ei.href;function gn(e){return function(t,i){typeof t!=\"string\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "145",
+							"id": "141",
 							"uri": "https://pad.incubateur.net/build/cover-pack.a9f950f41d76c45e8553.js",
 							"method": "GET",
 							"param": "",
@@ -1132,7 +1259,7 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//momentjs.com/guides/#/warnings/define-locale/ for more info.\"),_=Be[i]._config;else if(c.parentLocale!=null)if(Be[c.parentLoca\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "158",
+							"id": "145",
 							"uri": "https://pad.incubateur.net/build/index-pack.97dac0ffaf7a668b2a3e.js",
 							"method": "GET",
 							"param": "",
@@ -1141,7 +1268,7 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//momentjs.com/guides/#/warnings/define-locale/ for more info.\"),$e=gr[J]._config;else if(Ee.parentLocale!=null)if(gr[Ee.parentL\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "136",
+							"id": "139",
 							"uri": "https://pad.incubateur.net/build/MathJax/MathJax.js",
 							"method": "GET",
 							"param": "",
@@ -1150,7 +1277,7 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//  Get author configuration from MathJax variable, if any\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "148",
+							"id": "144",
 							"uri": "https://pad.incubateur.net/build/pretty-pack.611842abfbc0c87adec1.js",
 							"method": "GET",
 							"param": "",
@@ -1159,7 +1286,7 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//momentjs.com/guides/#/warnings/define-locale/ for more info.\"),je=fn[W]._config;else if(ge.parentLocale!=null)if(fn[ge.parentL\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "10",
+							"id": "19",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "",
@@ -1168,7 +1295,7 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"<!-- delete user modal -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "67",
+							"id": "105",
 							"uri": "https://pad.incubateur.net/",
 							"method": "GET",
 							"param": "",
@@ -1183,7 +1310,7 @@
 					"reference": "",
 					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "86"
+					"sourceid": "88"
 				},
 				{
 					"pluginid": "10109",
@@ -1196,7 +1323,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "12",
+							"id": "26",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "",
@@ -1205,7 +1332,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "68",
+							"id": "107",
 							"uri": "https://pad.incubateur.net/",
 							"method": "GET",
 							"param": "",
@@ -1214,7 +1341,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "126",
+							"id": "120",
 							"uri": "https://pad.incubateur.net/features",
 							"method": "GET",
 							"param": "",
@@ -1223,7 +1350,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "127",
+							"id": "125",
 							"uri": "https://pad.incubateur.net/s/release-notes",
 							"method": "GET",
 							"param": "",
@@ -1232,7 +1359,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "66",
+							"id": "87",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "",
@@ -1241,7 +1368,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "139",
+							"id": "136",
 							"uri": "https://pad.incubateur.net/slide-example",
 							"method": "GET",
 							"param": "",
@@ -1250,7 +1377,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "144",
+							"id": "135",
 							"uri": "https://pad.incubateur.net/yaml-metadata",
 							"method": "GET",
 							"param": "",
@@ -1265,7 +1392,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1278,7 +1405,7 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"id": "83",
+							"id": "86",
 							"uri": "https://pad.incubateur.net/auth/oauth2",
 							"method": "GET",
 							"param": "",
@@ -1287,7 +1414,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "97",
+							"id": "71",
 							"uri": "https://pad.incubateur.net/logout",
 							"method": "GET",
 							"param": "",
@@ -1296,16 +1423,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "104",
-							"uri": "https://pad.incubateur.net/me/export",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "302",
-							"otherinfo": ""
-						},
-						{
-							"id": "99",
+							"id": "44",
 							"uri": "https://pad.incubateur.net/new",
 							"method": "GET",
 							"param": "",
@@ -1314,7 +1432,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "60",
+							"id": "32",
 							"uri": "https://pad.incubateur.net/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1323,7 +1441,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "76",
+							"id": "97",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "",
@@ -1332,7 +1450,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "58",
+							"id": "30",
 							"uri": "https://pad.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1341,13 +1459,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "7",
+					"count": "6",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "49"
+					"sourceid": "52"
 				},
 				{
 					"pluginid": "10015",
@@ -1360,7 +1478,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "8",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "cache-control",
@@ -1369,7 +1487,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "59",
+							"id": "102",
 							"uri": "https://pad.incubateur.net/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1378,7 +1496,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "124",
+							"id": "112",
 							"uri": "https://pad.incubateur.net/features",
 							"method": "GET",
 							"param": "cache-control",
@@ -1387,7 +1505,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "123",
+							"id": "119",
 							"uri": "https://pad.incubateur.net/icons/browserconfig.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -1396,7 +1514,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "112",
+							"id": "103",
 							"uri": "https://pad.incubateur.net/icons/site.webmanifest",
 							"method": "GET",
 							"param": "cache-control",
@@ -1405,7 +1523,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "125",
+							"id": "121",
 							"uri": "https://pad.incubateur.net/s/release-notes",
 							"method": "GET",
 							"param": "cache-control",
@@ -1414,7 +1532,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "43",
+							"id": "72",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "cache-control",
@@ -1423,7 +1541,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "138",
+							"id": "134",
 							"uri": "https://pad.incubateur.net/slide-example",
 							"method": "GET",
 							"param": "cache-control",
@@ -1432,7 +1550,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "143",
+							"id": "133",
 							"uri": "https://pad.incubateur.net/yaml-metadata",
 							"method": "GET",
 							"param": "cache-control",
@@ -1447,7 +1565,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -1460,8 +1578,8 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "23",
-							"uri": "https://pad.incubateur.net",
+							"id": "40",
+							"uri": "https://pad.incubateur.net/new",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1469,7 +1587,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "53",
+							"id": "28",
 							"uri": "https://pad.incubateur.net/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1478,7 +1596,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "51",
+							"id": "24",
 							"uri": "https://pad.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1493,7 +1611,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "33"
 				},
 				{
 					"pluginid": "90005",
@@ -1506,8 +1624,8 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "22",
-							"uri": "https://pad.incubateur.net",
+							"id": "38",
+							"uri": "https://pad.incubateur.net/new",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1515,7 +1633,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "50",
+							"id": "27",
 							"uri": "https://pad.incubateur.net/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1524,7 +1642,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "49",
+							"id": "23",
 							"uri": "https://pad.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1539,7 +1657,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "33"
 				},
 				{
 					"pluginid": "90005",
@@ -1552,8 +1670,8 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "19",
-							"uri": "https://pad.incubateur.net",
+							"id": "37",
+							"uri": "https://pad.incubateur.net/new",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1561,7 +1679,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "48",
+							"id": "21",
 							"uri": "https://pad.incubateur.net/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1570,7 +1688,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "47",
+							"id": "22",
 							"uri": "https://pad.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1585,7 +1703,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "33"
 				},
 				{
 					"pluginid": "90005",
@@ -1598,8 +1716,8 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "25",
-							"uri": "https://pad.incubateur.net",
+							"id": "42",
+							"uri": "https://pad.incubateur.net/new",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1607,7 +1725,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "55",
+							"id": "29",
 							"uri": "https://pad.incubateur.net/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1616,7 +1734,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "52",
+							"id": "25",
 							"uri": "https://pad.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1631,7 +1749,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "33"
 				},
 				{
 					"pluginid": "10112",
@@ -1644,121 +1762,112 @@
 					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
 					"instances":[ 
 						{
-							"id": "39",
+							"id": "1",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE.3D6VKerLxQi4SwEzIGI2XHcdyXZh3okXkRb6UROqkUI",
+							"evidence": "s%3AXNtNNY_WmTv3Tn1dxKj8lXtzigR8aXXW.JjWhWfYJQcvZ90EwGKK5%2F%2Bk8kVHmXU7%2BqHVy%2B2zOnLw",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
-							"id": "38",
-							"uri": "https://pad.incubateur.net",
-							"method": "GET",
-							"param": "connect.sid",
-							"attack": "",
-							"evidence": "s%3AlFgo3GsJOxEl8xhncZgpPxzBS77ws5bD.RDPDx1Eq%2Fiq%2BM%2FIVZcYnNMhM7VaCLMI%2Bl%2FJ30nilv2g",
-							"otherinfo": "\ncookie:connect.sid"
-						},
-						{
-							"id": "111",
+							"id": "75",
 							"uri": "https://pad.incubateur.net/",
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE.3D6VKerLxQi4SwEzIGI2XHcdyXZh3okXkRb6UROqkUI",
+							"evidence": "s%3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv.JQ4OA9XPH4lti8b5lkhoFmHuJl03nNIryqrKvA6qtfc",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
-							"id": "87",
+							"id": "73",
 							"uri": "https://pad.incubateur.net/auth/oauth2",
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE.3D6VKerLxQi4SwEzIGI2XHcdyXZh3okXkRb6UROqkUI",
+							"evidence": "s%3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv.JQ4OA9XPH4lti8b5lkhoFmHuJl03nNIryqrKvA6qtfc",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
-							"id": "122",
-							"uri": "https://pad.incubateur.net/config",
+							"id": "91",
+							"uri": "https://pad.incubateur.net/features",
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE.3D6VKerLxQi4SwEzIGI2XHcdyXZh3okXkRb6UROqkUI",
+							"evidence": "s%3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv.JQ4OA9XPH4lti8b5lkhoFmHuJl03nNIryqrKvA6qtfc",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
-							"id": "100",
+							"id": "58",
 							"uri": "https://pad.incubateur.net/logout",
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE.3D6VKerLxQi4SwEzIGI2XHcdyXZh3okXkRb6UROqkUI",
+							"evidence": "s%3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv.JQ4OA9XPH4lti8b5lkhoFmHuJl03nNIryqrKvA6qtfc",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
-							"id": "84",
+							"id": "60",
 							"uri": "https://pad.incubateur.net/me/delete/",
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE.3D6VKerLxQi4SwEzIGI2XHcdyXZh3okXkRb6UROqkUI",
+							"evidence": "s%3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv.JQ4OA9XPH4lti8b5lkhoFmHuJl03nNIryqrKvA6qtfc",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
-							"id": "105",
-							"uri": "https://pad.incubateur.net/me/export",
-							"method": "GET",
-							"param": "connect.sid",
-							"attack": "",
-							"evidence": "s%3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE.3D6VKerLxQi4SwEzIGI2XHcdyXZh3okXkRb6UROqkUI",
-							"otherinfo": "\ncookie:connect.sid"
-						},
-						{
-							"id": "101",
+							"id": "34",
 							"uri": "https://pad.incubateur.net/new",
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE.3D6VKerLxQi4SwEzIGI2XHcdyXZh3okXkRb6UROqkUI",
+							"evidence": "s%3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv.JQ4OA9XPH4lti8b5lkhoFmHuJl03nNIryqrKvA6qtfc",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
-							"id": "62",
+							"id": "5",
 							"uri": "https://pad.incubateur.net/robots.txt",
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE.3D6VKerLxQi4SwEzIGI2XHcdyXZh3okXkRb6UROqkUI",
+							"evidence": "s%3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv.JQ4OA9XPH4lti8b5lkhoFmHuJl03nNIryqrKvA6qtfc",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
-							"id": "93",
+							"id": "108",
+							"uri": "https://pad.incubateur.net/s/release-notes",
+							"method": "GET",
+							"param": "connect.sid",
+							"attack": "",
+							"evidence": "s%3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv.JQ4OA9XPH4lti8b5lkhoFmHuJl03nNIryqrKvA6qtfc",
+							"otherinfo": "\ncookie:connect.sid"
+						},
+						{
+							"id": "61",
 							"uri": "https://pad.incubateur.net/s/terms-of-use",
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE.3D6VKerLxQi4SwEzIGI2XHcdyXZh3okXkRb6UROqkUI",
+							"evidence": "s%3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv.JQ4OA9XPH4lti8b5lkhoFmHuJl03nNIryqrKvA6qtfc",
 							"otherinfo": "\ncookie:connect.sid"
 						},
 						{
-							"id": "65",
+							"id": "4",
 							"uri": "https://pad.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "connect.sid",
 							"attack": "",
-							"evidence": "s%3AJ-gJpFPGJomst3Q9d6SV9MRlILjNQMgE.3D6VKerLxQi4SwEzIGI2XHcdyXZh3okXkRb6UROqkUI",
+							"evidence": "s%3Ao2K25Qji9v11x5EAwWpOk-yE8hHW46tv.JQ4OA9XPH4lti8b5lkhoFmHuJl03nNIryqrKvA6qtfc",
 							"otherinfo": "\ncookie:connect.sid"
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
 					"otherinfo": "<p></p><p>cookie:connect.sid</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -1771,7 +1880,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "28",
+							"id": "47",
 							"uri": "https://pad.incubateur.net",
 							"method": "GET",
 							"param": "",
@@ -1780,16 +1889,25 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "88",
-							"uri": "https://pad.incubateur.net/",
+							"id": "66",
+							"uri": "https://pad.incubateur.net/icons/apple-touch-icon.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+							"evidence": "max-age=86400",
+							"otherinfo": ""
 						},
 						{
-							"id": "109",
+							"id": "90",
+							"uri": "https://pad.incubateur.net/icons/favicon-16x16.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=86400",
+							"otherinfo": ""
+						},
+						{
+							"id": "82",
 							"uri": "https://pad.incubateur.net/icons/favicon-32x32.png",
 							"method": "GET",
 							"param": "",
@@ -1798,7 +1916,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "77",
+							"id": "68",
 							"uri": "https://pad.incubateur.net/me/delete/",
 							"method": "GET",
 							"param": "",
@@ -1807,7 +1925,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "4",
+					"count": "5",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
