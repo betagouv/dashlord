@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 13 Apr 2025 06:52:14",
+	"@generated": "Sun, 20 Apr 2025 04:52:17",
 	"site":[ 
 		{
 			"@name": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr",
@@ -9,6 +9,34 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10038",
+					"alertRef": "10038-1",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"id": "1",
+							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "8"
+				},
 				{
 					"pluginid": "10098",
 					"alertRef": "10098",
@@ -29,7 +57,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "4",
+							"id": "3",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -53,7 +81,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10063",
@@ -75,7 +103,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "31",
+							"id": "34",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -90,7 +118,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "7"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "10036",
@@ -136,7 +164,7 @@
 					"reference": "<p>https://httpd.apache.org/docs/current/mod/core.html#servertokens</p><p>https://learn.microsoft.com/en-us/previous-versions/msp-n-p/ff648552(v=pandp.10)</p><p>https://www.troyhunt.com/shhh-dont-let-your-response-headers/</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10035",
@@ -149,7 +177,7 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"id": "10",
+							"id": "11",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -158,7 +186,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "12",
+							"id": "10",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -167,7 +195,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "12",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -195,7 +223,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "24",
+							"id": "26",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -204,7 +232,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "19",
+							"id": "21",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -213,7 +241,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "23",
+							"id": "24",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -241,7 +269,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "21",
+							"id": "18",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -250,7 +278,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "16",
+							"id": "20",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -259,7 +287,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "22",
+							"id": "19",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -305,7 +333,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "18",
+							"id": "17",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -333,7 +361,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "29",
+							"id": "28",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -342,7 +370,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "25",
+							"id": "23",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -351,7 +379,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "28",
+							"id": "25",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -388,7 +416,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "33",
+							"id": "31",
 							"uri": "https://openfisca.mes-aides.1jeune1solution.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -412,7 +440,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				}
 			]
 		}
