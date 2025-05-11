@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 20 Apr 2025 06:38:17",
+	"@generated": "Sun, 11 May 2025 06:36:00",
 	"site":[ 
 		{
 			"@name": "https://www.jeveuxaider.gouv.fr",
@@ -9,6 +9,34 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10062",
+					"alertRef": "10062",
+					"alert": "PII Disclosure",
+					"name": "PII Disclosure",
+					"riskcode": "3",
+					"confidence": "3",
+					"riskdesc": "High (High)",
+					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
+					"instances":[ 
+						{
+							"id": "189",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/communication/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4549454040496",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 454945\nBrand: VISA\nCategory: \nIssuer: WOORI BANK"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
+					"otherinfo": "<p>Credit Card Type detected: Visa</p><p>Bank Identification Number: 454945</p><p>Brand: VISA</p><p>Category: </p><p>Issuer: WOORI BANK</p>",
+					"reference": "",
+					"cweid": "359",
+					"wascid": "13",
+					"sourceid": "17782"
+				},
 				{
 					"pluginid": "10202",
 					"alertRef": "10202",
@@ -20,7 +48,7 @@
 					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
 					"instances":[ 
 						{
-							"id": "215",
+							"id": "185",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/campagnes-mobilisation-nationale/",
 							"method": "GET",
 							"param": "",
@@ -29,7 +57,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 1: \"_wpcf7\" \"_wpcf7_container_post\" \"_wpcf7_locale\" \"_wpcf7_posted_data_hash\" \"_wpcf7_unit_tag\" \"_wpcf7_version\" \"your-company\" \"your-email\" \"your-firstname\" \"your-name\" \"your-phone\" \"your-poste\" ]."
 						},
 						{
-							"id": "194",
+							"id": "207",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/mesure-dimpact/",
 							"method": "GET",
 							"param": "",
@@ -44,7 +72,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "18587"
+					"sourceid": "17791"
 				},
 				{
 					"pluginid": "10038",
@@ -57,7 +85,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "10",
+							"id": "15",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -66,7 +94,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "150",
+							"id": "111",
 							"uri": "https://www.jeveuxaider.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -75,7 +103,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "39",
+							"id": "36",
 							"uri": "https://www.jeveuxaider.gouv.fr/*",
 							"method": "GET",
 							"param": "",
@@ -84,7 +112,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "144",
+							"id": "146",
+							"uri": "https://www.jeveuxaider.gouv.fr/en-ce-moment",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "120",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription",
 							"method": "GET",
 							"param": "",
@@ -93,7 +130,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "125",
+							"id": "131",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/benevole",
 							"method": "GET",
 							"param": "",
@@ -102,7 +139,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "151",
+							"id": "127",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/responsable",
 							"method": "GET",
 							"param": "",
@@ -111,7 +148,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "105",
+							"id": "56",
 							"uri": "https://www.jeveuxaider.gouv.fr/login",
 							"method": "GET",
 							"param": "",
@@ -120,7 +157,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "133",
+							"id": "140",
 							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat",
 							"method": "GET",
 							"param": "",
@@ -129,26 +166,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "56",
+							"id": "136",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat?type=Mission%2520%C3%A0%2520distance",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "49",
 							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "137",
-							"uri": "https://www.jeveuxaider.gouv.fr/territoires",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "160",
-							"uri": "https://www.jeveuxaider.gouv.fr/villes/ablis",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -175,8 +203,8 @@
 					"desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.</p>",
 					"instances":[ 
 						{
-							"id": "120",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/B5Yvzaiw.js",
+							"id": "109",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/B67pwA0x.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -184,7 +212,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "222",
+							"id": "192",
 							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Banner.F7xahtZq.css",
 							"method": "GET",
 							"param": "",
@@ -193,7 +221,16 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "116",
+							"id": "198",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Button.BWYhH5qs.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "108",
 							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/entry.DpDmy2pG.css",
 							"method": "GET",
 							"param": "",
@@ -202,8 +239,8 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "218",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Header.DjdjO7Hb.css",
+							"id": "187",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Footer.C0B4q1ZH.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -211,7 +248,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "220",
+							"id": "204",
 							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/HeaderBanner.CQtEcGdW.css",
 							"method": "GET",
 							"param": "",
@@ -220,7 +257,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "227",
+							"id": "194",
 							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Heading.B2d0t4F5.css",
 							"method": "GET",
 							"param": "",
@@ -229,7 +266,16 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "232",
+							"id": "200",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/index.CLUeDVDv.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "access-control-allow-origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "196",
 							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Input.B2X1WRSL.css",
 							"method": "GET",
 							"param": "",
@@ -238,7 +284,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "228",
+							"id": "202",
 							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/InputAutocomplete.BPHa6hTg.css",
 							"method": "GET",
 							"param": "",
@@ -247,7 +293,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "226",
+							"id": "190",
 							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Link.BKLg8Omi.css",
 							"method": "GET",
 							"param": "",
@@ -256,25 +302,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "230",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Select.ChGpVvYb.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "access-control-allow-origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"id": "224",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/SelectAutocomplete.CL3Yf8aR.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "access-control-allow-origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"id": "113",
+							"id": "104",
 							"uri": "https://www.jeveuxaider.gouv.fr/favicon.png",
 							"method": "GET",
 							"param": "",
@@ -289,7 +317,7 @@
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "1220"
+					"sourceid": "1007"
 				},
 				{
 					"pluginid": "10020",
@@ -302,7 +330,7 @@
 					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "1",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -311,7 +339,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "148",
+							"id": "107",
 							"uri": "https://www.jeveuxaider.gouv.fr/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -320,17 +348,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "143",
-							"uri": "https://www.jeveuxaider.gouv.fr/inscription",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "124",
-							"uri": "https://www.jeveuxaider.gouv.fr/inscription/benevole",
+							"id": "144",
+							"uri": "https://www.jeveuxaider.gouv.fr/en-ce-moment",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -339,6 +358,33 @@
 						},
 						{
 							"id": "149",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "119",
+							"uri": "https://www.jeveuxaider.gouv.fr/inscription",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "128",
+							"uri": "https://www.jeveuxaider.gouv.fr/inscription/benevole",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "124",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/responsable",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -347,7 +393,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "100",
+							"id": "45",
 							"uri": "https://www.jeveuxaider.gouv.fr/login",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -356,7 +402,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "131",
+							"id": "138",
 							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -365,35 +411,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "51",
+							"id": "134",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat?type=Mission%2520%C3%A0%2520distance",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "31",
 							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "135",
-							"uri": "https://www.jeveuxaider.gouv.fr/territoires",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "159",
-							"uri": "https://www.jeveuxaider.gouv.fr/villes/ablis",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "158",
-							"uri": "https://www.jeveuxaider.gouv.fr/villes/acqueville",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -420,7 +448,70 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "173",
+							"id": "161",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"apple-touch-icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "160",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" sizes=\"192x192\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "159",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" sizes=\"32x32\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "158",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"profile\" href=\"https://gmpg.org/xfn/11\">",
+							"otherinfo": ""
+						},
+						{
+							"id": "164",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "163",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "162",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "168",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
 							"method": "GET",
 							"param": "",
@@ -429,12 +520,30 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "172",
+							"id": "167",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<link rel=\"icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" sizes=\"192x192\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "166",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" sizes=\"32x32\" />",
+							"otherinfo": ""
+						},
+						{
+							"id": "165",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link rel=\"profile\" href=\"https://gmpg.org/xfn/11\">",
 							"otherinfo": ""
 						},
 						{
@@ -443,7 +552,7 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" sizes=\"32x32\" />",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
 							"otherinfo": ""
 						},
 						{
@@ -452,93 +561,12 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"profile\" href=\"https://gmpg.org/xfn/11\">",
-							"otherinfo": ""
-						},
-						{
-							"id": "176",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "175",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
 							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>",
 							"otherinfo": ""
 						},
 						{
-							"id": "174",
+							"id": "169",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "180",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/printemps-pour-la-planete/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"apple-touch-icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" />",
-							"otherinfo": ""
-						},
-						{
-							"id": "179",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/printemps-pour-la-planete/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" sizes=\"192x192\" />",
-							"otherinfo": ""
-						},
-						{
-							"id": "178",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/printemps-pour-la-planete/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"icon\" href=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2025/01/favicon.svg\" sizes=\"32x32\" />",
-							"otherinfo": ""
-						},
-						{
-							"id": "177",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/printemps-pour-la-planete/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link rel=\"profile\" href=\"https://gmpg.org/xfn/11\">",
-							"otherinfo": ""
-						},
-						{
-							"id": "183",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/printemps-pour-la-planete/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "182",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/printemps-pour-la-planete/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "181",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/printemps-pour-la-planete/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -552,7 +580,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "18130"
+					"sourceid": "5040"
 				},
 				{
 					"pluginid": "90022",
@@ -565,8 +593,8 @@
 					"desc": "<p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>",
 					"instances":[ 
 						{
-							"id": "197",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/104-oxfam-france",
+							"id": "219",
+							"uri": "https://www.jeveuxaider.gouv.fr/organisations/310-uriopss-occitanie",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -574,8 +602,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "198",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/14-federation-francaise-des-banques-alimentaires",
+							"id": "217",
+							"uri": "https://www.jeveuxaider.gouv.fr/villes/bressey-sur-tille",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -583,8 +611,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "205",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/17-federation-habitat-et-humanisme",
+							"id": "218",
+							"uri": "https://www.jeveuxaider.gouv.fr/villes/bressols",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -592,8 +620,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "207",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/2-entourage",
+							"id": "220",
+							"uri": "https://www.jeveuxaider.gouv.fr/villes/brie-comte-robert",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -601,8 +629,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "199",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/20-article-1",
+							"id": "221",
+							"uri": "https://www.jeveuxaider.gouv.fr/villes/bruyeres",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -610,62 +638,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "201",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/33-la-cravate-solidaire",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "HTTP/1.1 500 Internal Server Error",
-							"otherinfo": ""
-						},
-						{
-							"id": "202",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/35-emmaus-france",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "HTTP/1.1 500 Internal Server Error",
-							"otherinfo": ""
-						},
-						{
-							"id": "206",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/4-les-restos-du-coeur",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "HTTP/1.1 500 Internal Server Error",
-							"otherinfo": ""
-						},
-						{
-							"id": "200",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/58-la-societe-protectrice-des-animaux-la-spa",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "HTTP/1.1 500 Internal Server Error",
-							"otherinfo": ""
-						},
-						{
-							"id": "204",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/79-apf-france-handicap",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "HTTP/1.1 500 Internal Server Error",
-							"otherinfo": ""
-						},
-						{
-							"id": "203",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/8-secours-catholique",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "HTTP/1.1 500 Internal Server Error",
-							"otherinfo": ""
-						},
-						{
-							"id": "188",
-							"uri": "https://www.jeveuxaider.gouv.fr/villes/audun-le-tiche-1",
+							"id": "222",
+							"uri": "https://www.jeveuxaider.gouv.fr/villes/buis-les-baronnies",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -673,13 +647,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "12",
+					"count": "6",
 					"solution": "<p>Review the source code of this page. Implement custom error pages. Consider implementing a mechanism to provide a unique error reference/identifier to the client (browser) while logging the details on the server side and not exposing them to the user.</p>",
 					"otherinfo": "",
 					"reference": "",
 					"cweid": "550",
 					"wascid": "13",
-					"sourceid": "18378"
+					"sourceid": "19201"
 				},
 				{
 					"pluginid": "10010",
@@ -692,7 +666,7 @@
 					"desc": "<p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</p>",
 					"instances":[ 
 						{
-							"id": "210",
+							"id": "173",
 							"uri": "https://www.jeveuxaider.gouv.fr/fresque-benevolat",
 							"method": "GET",
 							"param": "XSRF-TOKEN",
@@ -707,7 +681,7 @@
 					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
 					"cweid": "1004",
 					"wascid": "13",
-					"sourceid": "18514"
+					"sourceid": "17655"
 				},
 				{
 					"pluginid": "10017",
@@ -720,7 +694,34 @@
 					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
 					"instances":[ 
 						{
-							"id": "184",
+							"id": "175",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
+							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
+							"attack": "",
+							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "176",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
+							"param": "https://plausible.io/js/plausible.js",
+							"attack": "",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "177",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
+							"method": "GET",
+							"param": "https://www.googletagmanager.com/gtag/js?id=AW-10823658855",
+							"attack": "",
+							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
+							"otherinfo": ""
+						},
+						{
+							"id": "150",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
 							"method": "GET",
 							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
@@ -729,7 +730,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "185",
+							"id": "151",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
 							"method": "GET",
 							"param": "https://plausible.io/js/plausible.js",
@@ -738,7 +739,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "186",
+							"id": "152",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
 							"method": "GET",
 							"param": "https://www.googletagmanager.com/gtag/js?id=AW-10823658855",
@@ -747,7 +748,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "165",
+							"id": "153",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
 							"method": "GET",
 							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
@@ -756,7 +757,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "166",
+							"id": "154",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
 							"method": "GET",
 							"param": "https://plausible.io/js/plausible.js",
@@ -765,7 +766,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "167",
+							"id": "155",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
 							"method": "GET",
 							"param": "https://www.googletagmanager.com/gtag/js?id=AW-10823658855",
@@ -774,8 +775,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "191",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/mesure-dimpact/",
+							"id": "179",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
 							"method": "GET",
 							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
 							"attack": "",
@@ -783,8 +784,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "192",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/mesure-dimpact/",
+							"id": "180",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
 							"method": "GET",
 							"param": "https://plausible.io/js/plausible.js",
 							"attack": "",
@@ -792,17 +793,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "190",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/mesure-dimpact/",
-							"method": "GET",
-							"param": "https://sibforms.com/forms/end-form/build/main.js",
-							"attack": "",
-							"evidence": "<script defer src=\"https://sibforms.com/forms/end-form/build/main.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "193",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/mesure-dimpact/",
+							"id": "181",
+							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
 							"method": "GET",
 							"param": "https://www.googletagmanager.com/gtag/js?id=AW-10823658855",
 							"attack": "",
@@ -810,30 +802,12 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "162",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/printemps-pour-la-planete/",
+							"id": "174",
+							"uri": "https://www.jeveuxaider.gouv.fr/fresque-benevolat",
 							"method": "GET",
-							"param": "https://code.jquery.com/jquery-3.5.1.min.js",
+							"param": "https://plausible.io/js/script.js",
 							"attack": "",
-							"evidence": "<script src=\"https://code.jquery.com/jquery-3.5.1.min.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "163",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/printemps-pour-la-planete/",
-							"method": "GET",
-							"param": "https://plausible.io/js/plausible.js",
-							"attack": "",
-							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/plausible.js\"></script>",
-							"otherinfo": ""
-						},
-						{
-							"id": "164",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/printemps-pour-la-planete/",
-							"method": "GET",
-							"param": "https://www.googletagmanager.com/gtag/js?id=AW-10823658855",
-							"attack": "",
-							"evidence": "<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-10823658855\"></script>",
+							"evidence": "<script defer data-domain=\"jeveuxaider.gouv.fr\" src=\"https://plausible.io/js/script.js\"></script>",
 							"otherinfo": ""
 						}
 					],
@@ -843,89 +817,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "18234"
-				},
-				{
-					"pluginid": "10023",
-					"alertRef": "10023",
-					"alert": "Information Disclosure - Debug Error Messages",
-					"name": "Information Disclosure - Debug Error Messages",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>The response appeared to contain common error messages returned by platforms such as ASP.NET, and Web-servers such as IIS and Apache. You can configure the list of common debug messages.</p>",
-					"instances":[ 
-						{
-							"id": "238",
-							"uri": "https://www.jeveuxaider.gouv.fr/organisations/20-nightline",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "internal server error",
-							"otherinfo": ""
-						},
-						{
-							"id": "237",
-							"uri": "https://www.jeveuxaider.gouv.fr/organisations/23-groupe-sos",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "internal server error",
-							"otherinfo": ""
-						},
-						{
-							"id": "239",
-							"uri": "https://www.jeveuxaider.gouv.fr/organisations/24-hacktiv",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "internal server error",
-							"otherinfo": ""
-						},
-						{
-							"id": "240",
-							"uri": "https://www.jeveuxaider.gouv.fr/reseaux/16-secours-populaire-francais",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "internal server error",
-							"otherinfo": ""
-						},
-						{
-							"id": "189",
-							"uri": "https://www.jeveuxaider.gouv.fr/villes/audun-le-tiche-1",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "internal server error",
-							"otherinfo": ""
-						},
-						{
-							"id": "208",
-							"uri": "https://www.jeveuxaider.gouv.fr/villes/barre-des-cevennes",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "internal server error",
-							"otherinfo": ""
-						},
-						{
-							"id": "236",
-							"uri": "https://www.jeveuxaider.gouv.fr/villes/boissy-saint-leger",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "internal server error",
-							"otherinfo": ""
-						}
-					],
-					"count": "7",
-					"solution": "<p>Disable debugging messages before pushing to production.</p>",
-					"otherinfo": "",
-					"reference": "",
-					"cweid": "1295",
-					"wascid": "13",
-					"sourceid": "20098"
+					"sourceid": "17656"
 				},
 				{
 					"pluginid": "90004",
@@ -938,7 +830,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "33",
+							"id": "28",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -947,7 +839,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "46",
+							"id": "44",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/pages.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -956,8 +848,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "77",
-							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/villes.xml",
+							"id": "74",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -965,7 +857,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "71",
+							"id": "67",
 							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -974,7 +866,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "4",
 							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -983,7 +875,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "48",
+							"id": "35",
 							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -992,7 +884,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "34",
+							"id": "29",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -1001,7 +893,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "72",
+							"id": "75",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "68",
 							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -1010,7 +911,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "35",
+							"id": "30",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -1019,7 +920,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "73",
+							"id": "76",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "69",
 							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -1028,7 +938,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "10",
+					"count": "12",
 					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
@@ -1047,7 +957,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "32",
+							"id": "27",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -1056,7 +966,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "154",
+							"id": "117",
 							"uri": "https://www.jeveuxaider.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -1065,7 +975,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "67",
+							"id": "54",
 							"uri": "https://www.jeveuxaider.gouv.fr/*",
 							"method": "GET",
 							"param": "",
@@ -1074,8 +984,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "134",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/B5Yvzaiw.js",
+							"id": "125",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/B67pwA0x.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1083,7 +993,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "147",
+							"id": "122",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription",
 							"method": "GET",
 							"param": "",
@@ -1092,7 +1002,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "130",
+							"id": "135",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/benevole",
 							"method": "GET",
 							"param": "",
@@ -1101,7 +1011,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "157",
+							"id": "130",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/responsable",
 							"method": "GET",
 							"param": "",
@@ -1110,7 +1020,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "112",
+							"id": "73",
 							"uri": "https://www.jeveuxaider.gouv.fr/login",
 							"method": "GET",
 							"param": "",
@@ -1119,7 +1029,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "139",
+							"id": "145",
 							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat",
 							"method": "GET",
 							"param": "",
@@ -1128,8 +1038,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "70",
-							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"id": "141",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat?type=Mission%2520%C3%A0%2520distance",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1137,8 +1047,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "142",
-							"uri": "https://www.jeveuxaider.gouv.fr/territoires",
+							"id": "66",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1174,7 +1084,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "152",
+							"id": "116",
 							"uri": "https://www.jeveuxaider.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -1183,7 +1093,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "54",
+							"id": "50",
 							"uri": "https://www.jeveuxaider.gouv.fr/*",
 							"method": "GET",
 							"param": "",
@@ -1192,7 +1102,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "145",
+							"id": "147",
+							"uri": "https://www.jeveuxaider.gouv.fr/en-ce-moment",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "121",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription",
 							"method": "GET",
 							"param": "",
@@ -1201,7 +1120,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "128",
+							"id": "133",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/benevole",
 							"method": "GET",
 							"param": "",
@@ -1210,7 +1129,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "155",
+							"id": "129",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/responsable",
 							"method": "GET",
 							"param": "",
@@ -1219,7 +1138,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "109",
+							"id": "71",
 							"uri": "https://www.jeveuxaider.gouv.fr/login",
 							"method": "GET",
 							"param": "",
@@ -1228,8 +1147,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "136",
+							"id": "142",
 							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "x-powered-by: Nuxt",
+							"otherinfo": ""
+						},
+						{
+							"id": "139",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat?type=Mission%2520%C3%A0%2520distance",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1239,24 +1167,6 @@
 						{
 							"id": "64",
 							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "x-powered-by: Nuxt",
-							"otherinfo": ""
-						},
-						{
-							"id": "140",
-							"uri": "https://www.jeveuxaider.gouv.fr/territoires",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "x-powered-by: Nuxt",
-							"otherinfo": ""
-						},
-						{
-							"id": "161",
-							"uri": "https://www.jeveuxaider.gouv.fr/villes/ablis",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1283,49 +1193,13 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "22",
+							"id": "23",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "1737022174",
 							"otherinfo": "1737022174, which evaluates to: 2025-01-16 10:09:34."
-						},
-						{
-							"id": "17",
-							"uri": "https://www.jeveuxaider.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1737022286",
-							"otherinfo": "1737022286, which evaluates to: 2025-01-16 10:11:26."
-						},
-						{
-							"id": "16",
-							"uri": "https://www.jeveuxaider.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1737022289",
-							"otherinfo": "1737022289, which evaluates to: 2025-01-16 10:11:29."
-						},
-						{
-							"id": "15",
-							"uri": "https://www.jeveuxaider.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1737022292",
-							"otherinfo": "1737022292, which evaluates to: 2025-01-16 10:11:32."
-						},
-						{
-							"id": "14",
-							"uri": "https://www.jeveuxaider.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1737022294",
-							"otherinfo": "1737022294, which evaluates to: 2025-01-16 10:11:34."
 						},
 						{
 							"id": "21",
@@ -1337,7 +1211,7 @@
 							"otherinfo": "1737369547, which evaluates to: 2025-01-20 10:39:07."
 						},
 						{
-							"id": "13",
+							"id": "18",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -1364,7 +1238,7 @@
 							"otherinfo": "1741193364, which evaluates to: 2025-03-05 16:49:24."
 						}
 					],
-					"count": "9",
+					"count": "5",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1737022174, which evaluates to: 2025-01-16 10:09:34.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
@@ -1392,7 +1266,16 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "98",
+							"id": "100",
+							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/activites.xml",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "92",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/departements.xml",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1401,7 +1284,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "44",
+							"id": "42",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/pages.xml",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1410,7 +1293,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "102",
+							"id": "103",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/reseaux.xml",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1419,7 +1302,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "65",
+							"id": "96",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/villes.xml",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1428,16 +1311,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "118",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/entry.DpDmy2pG.css",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"id": "115",
+							"id": "106",
 							"uri": "https://www.jeveuxaider.gouv.fr/favicon.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1446,7 +1320,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "108",
+							"id": "70",
 							"uri": "https://www.jeveuxaider.gouv.fr/login",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1464,7 +1338,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "1",
+							"id": "2",
 							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1473,7 +1347,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "40",
+							"id": "33",
 							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1491,6 +1365,34 @@
 					"sourceid": "1"
 				},
 				{
+					"pluginid": "10111",
+					"alertRef": "10111",
+					"alert": "Authentication Request Identified",
+					"name": "Authentication Request Identified",
+					"riskcode": "0",
+					"confidence": "3",
+					"riskdesc": "Informational (High)",
+					"desc": "<p>The given request has been identified as an authentication request. The 'Other Info' field contains a set of key=value lines which identify any relevant fields. If the request is in a context which has an Authentication Method set to \"Auto-Detect\" then this rule will change the authentication to match the request identified.</p>",
+					"instances":[ 
+						{
+							"id": "212",
+							"uri": "https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "password",
+							"otherinfo": "userParam=email\nuserValue=zaproxy@example.com\npasswordParam=password\nreferer=https://www.jeveuxaider.gouv.fr/login"
+						}
+					],
+					"count": "1",
+					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
+					"otherinfo": "<p>userParam=email</p><p>userValue=zaproxy@example.com</p><p>passwordParam=password</p><p>referer=https://www.jeveuxaider.gouv.fr/login</p>",
+					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "18397"
+				},
+				{
 					"pluginid": "10094",
 					"alertRef": "10094-3",
 					"alert": "Base64 Disclosure",
@@ -1501,7 +1403,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "26",
+							"id": "51",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -1510,7 +1412,7 @@
 							"otherinfo": "\\x000c\uFFFD\uFFFD\uFFFD\uFFFDi\uFFFDL\uFFFDgXZR\uFFFD\uFFFD\uFFFD\uFFFD9\uFFFD\uFFFD@\u01D9\uFFFDw\uFFFD\uFFFD\t$\uFFFD$\n"
 						},
 						{
-							"id": "153",
+							"id": "118",
 							"uri": "https://www.jeveuxaider.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -1519,7 +1421,7 @@
 							"otherinfo": "\\x000c\uFFFD\uFFFD\uFFFD\uFFFDi\uFFFDL\uFFFDgXZR\uFFFD\uFFFD\uFFFD\uFFFD9\uFFFD\uFFFD@\u01D9\uFFFDw\uFFFD\uFFFD\t$\uFFFD$\n"
 						},
 						{
-							"id": "58",
+							"id": "89",
 							"uri": "https://www.jeveuxaider.gouv.fr/*",
 							"method": "GET",
 							"param": "",
@@ -1528,16 +1430,25 @@
 							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
 						},
 						{
-							"id": "132",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/B5Yvzaiw.js",
+							"id": "126",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/B67pwA0x.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",
-							"otherinfo": "\\x0000\\x0010\uFFFD\\x0010Q\uFFFD \uFFFD\uFFFD0\u04CFA\\x0014\uFFFDQU\uFFFDa\uFFFD\uFFFDq\u05DF\uFFFD\\x0018\uFFFD\uFFFDY\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06EF\uFFFD\\x001c\uFFFD\uFFFD]\uFFFD\u37BB\uFFFD"
+							"evidence": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
+							"otherinfo": "\\x0000\\x0010\uFFFD\\x0010Q\uFFFD \uFFFD\uFFFD0\u04CFA\\x0014\uFFFDQU\uFFFDa\uFFFD\uFFFDq\u05DF\uFFFD\\x0018\uFFFD\uFFFDY\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06EF\uFFFD\\x001c\uFFFD\uFFFD]\uFFFD\u37BB\uFFFD\u07FF"
 						},
 						{
-							"id": "146",
+							"id": "148",
+							"uri": "https://www.jeveuxaider.gouv.fr/en-ce-moment",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "0NsllqYC1WoW3UcctUd3UBABzvJgFfhq99AxFDt0",
+							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
+						},
+						{
+							"id": "123",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription",
 							"method": "GET",
 							"param": "",
@@ -1546,7 +1457,7 @@
 							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
 						},
 						{
-							"id": "129",
+							"id": "137",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/benevole",
 							"method": "GET",
 							"param": "",
@@ -1555,7 +1466,7 @@
 							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
 						},
 						{
-							"id": "156",
+							"id": "132",
 							"uri": "https://www.jeveuxaider.gouv.fr/inscription/responsable",
 							"method": "GET",
 							"param": "",
@@ -1564,7 +1475,7 @@
 							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
 						},
 						{
-							"id": "110",
+							"id": "95",
 							"uri": "https://www.jeveuxaider.gouv.fr/login",
 							"method": "GET",
 							"param": "",
@@ -1573,26 +1484,17 @@
 							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
 						},
 						{
-							"id": "138",
-							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat",
+							"id": "143",
+							"uri": "https://www.jeveuxaider.gouv.fr/missions-benevolat?type=Mission%2520%C3%A0%2520distance",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "com/public/production/16692/conversions/CLG9L3OYQwGTxZDcRqR0ITPef33zPv-small",
-							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u9B87nr\u0628\uFFFD\uFFFDz\uFFFD\u077Fr\uFFFD\uFFFDz\uFFFD\"\uFFFD{?\\x0008\uFFFD\uFFFD/s\uFFFDC\\x0001\uFFFD\u0150\uFFFDF\uFFFDt!3\uFFFD}\uFFFD>\uFFFD\uFFFD\uFFFD\uFFFDe"
+							"evidence": "com/public/production/83978/conversions/GQueNHExpf8AVxOrYwHDdsUo34wq8q-small",
+							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u9B87nr\u0628\uFFFD\uFFFD7\uFFFD\uFFFD?r\uFFFD\uFFFDz\uFFFD\"\uFFFD{?\\x0019\\x000b\uFFFD4q1\uFFFD\uFFFD\\x0000W\\x0013\uFFFDc\\x0001\uFFFDv\uFFFD(\u07CC*\uDA7E\uDF19\uFFFDe"
 						},
 						{
-							"id": "68",
+							"id": "90",
 							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "0NsllqYC1WoW3UcctUd3UBABzvJgFfhq99AxFDt0",
-							"otherinfo": "\uFFFD\uFFFD%\uFFFD\uFFFD\\x0002\uFFFDj\\x0016\uFFFDG\\x001c\uFFFDGwP\\x0010\\x0001\uFFFD\uFFFD`\\x0015\uFFFDj\uFFFD\uFFFD1\\x0014;t"
-						},
-						{
-							"id": "141",
-							"uri": "https://www.jeveuxaider.gouv.fr/territoires",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1609,6 +1511,52 @@
 					"sourceid": "1"
 				},
 				{
+					"pluginid": "10024",
+					"alertRef": "10024",
+					"alert": "Information Disclosure - Sensitive Information in URL",
+					"name": "Information Disclosure - Sensitive Information in URL",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The request appeared to contain sensitive information leaked in the URL. This can violate PCI and most organizational compliance policies. You can configure the list of strings for this check to add or remove values specific to your environment.</p>",
+					"instances":[ 
+						{
+							"id": "213",
+							"uri": "https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "zaproxy@example.com",
+							"otherinfo": "The URL contains email address(es)."
+						},
+						{
+							"id": "214",
+							"uri": "https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP",
+							"method": "GET",
+							"param": "password",
+							"attack": "",
+							"evidence": "password",
+							"otherinfo": "The URL contains potentially sensitive information. The following string was found via the pattern: pass\npassword"
+						},
+						{
+							"id": "210",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset?email=zaproxy%40example.com",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "zaproxy@example.com",
+							"otherinfo": "The URL contains email address(es)."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Do not pass sensitive information in URIs.</p>",
+					"otherinfo": "<p>The URL contains email address(es).</p>",
+					"reference": "",
+					"cweid": "598",
+					"wascid": "13",
+					"sourceid": "18397"
+				},
+				{
 					"pluginid": "10027",
 					"alertRef": "10027",
 					"alert": "Information Disclosure - Suspicious Comments",
@@ -1619,7 +1567,7 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "11",
+							"id": "16",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -1628,16 +1576,34 @@
 							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxaider.gouv.fr\",oauth:{clientId:\"2\",clientSecret:\"0NsllqYC1WoW3UcctUd3UBABzv\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "12",
+							"id": "17",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",[\"Set\"],[\"ShallowReactive\",12],{},true,\"/\",[\"Reactive\",16],{\"auth\":17,\"notifications\":20,\"messaging\":\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",[\"Set\"],[\"ShallowReactive\",16],{},true,\"/\",[\"Reactive\",20],{\"auth\":21,\"notifications\":24,\"messaging\":\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "52",
+							"id": "114",
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "admin",
+							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxaider.gouv.fr\",oauth:{clientId:\"2\",clientSecret:\"0NsllqYC1WoW3UcctUd3UBABzv\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "115",
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",[\"Set\"],[\"ShallowReactive\",16],{},true,\"/\",[\"Reactive\",20],{\"auth\":21,\"notifications\":24,\"messaging\":\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "46",
 							"uri": "https://www.jeveuxaider.gouv.fr/*",
 							"method": "GET",
 							"param": "",
@@ -1646,62 +1612,26 @@
 							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxaider.gouv.fr\",oauth:{clientId:\"2\",clientSecret:\"0NsllqYC1WoW3UcctUd3UBABzv\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "53",
+							"id": "47",
 							"uri": "https://www.jeveuxaider.gouv.fr/*",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",[\"Set\"],[\"ShallowReactive\",18],{},true,[\"Reactive\",21],{\"auth\":22,\"notifications\":25,\"messaging\":28,\"\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",[\"Set\"],[\"ShallowReactive\",22],{},true,[\"Reactive\",25],{\"auth\":26,\"notifications\":29,\"messaging\":32,\"\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "122",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/B5Yvzaiw.js",
+							"id": "112",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/B67pwA0x.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Db",
-							"otherinfo": "The following pattern was used: \\bDB\\b and was detected in likely comment: \"//www.w3.org/2000/svg\",T8=\"http://www.w3.org/1998/Math/MathML\",Br=typeof document<\"u\"?document:null,jm=Br&&Br.createElement(\"tem\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "126",
-							"uri": "https://www.jeveuxaider.gouv.fr/inscription/benevole",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "admin",
-							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxaider.gouv.fr\",oauth:{clientId:\"2\",clientSecret:\"0NsllqYC1WoW3UcctUd3UBABzv\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "127",
-							"uri": "https://www.jeveuxaider.gouv.fr/inscription/benevole",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",[\"Set\"],[\"ShallowReactive\",12],{},true,\"/inscription/benevole\",[\"Reactive\",16],{\"auth\":17,\"notificati\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "106",
-							"uri": "https://www.jeveuxaider.gouv.fr/login",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "admin",
-							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxaider.gouv.fr\",oauth:{clientId:\"2\",clientSecret:\"0NsllqYC1WoW3UcctUd3UBABzv\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "107",
-							"uri": "https://www.jeveuxaider.gouv.fr/login",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",[\"Set\"],[\"ShallowReactive\",12],{},true,\"/login\",[\"Reactive\",16],{\"auth\":17,\"notifications\":20,\"messag\", see evidence field for the suspicious comment/snippet."
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//g;function Rm(e){const t={};return e.replace(X8,\"\").split(G8).forEach(n=>{if(n){const r=n.split(K8);r.length>1&&(t[r[0].trim()\", see evidence field for the suspicious comment/snippet."
 						},
 						{
 							"id": "61",
-							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1710,12 +1640,30 @@
 						},
 						{
 							"id": "62",
+							"uri": "https://www.jeveuxaider.gouv.fr/login",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",[\"Set\"],[\"ShallowReactive\",16],{},true,\"/login\",[\"Reactive\",20],{\"auth\":21,\"notifications\":24,\"messag\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "57",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "admin",
+							"otherinfo": "The following pattern was used: \\bADMIN\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",appUrl:\"https://www.jeveuxaider.gouv.fr\",oauth:{clientId:\"2\",clientSecret:\"0NsllqYC1WoW3UcctUd3UBABzv\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "58",
 							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",[\"Set\"],[\"ShallowReactive\",12],{},true,\"/password-reset\",[\"Reactive\",16],{\"auth\":17,\"notifications\":2\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//www.jeveuxaider.gouv.fr\",[\"Set\"],[\"ShallowReactive\",16],{},true,\"/password-reset\",[\"Reactive\",20],{\"auth\":21,\"notifications\":2\", see evidence field for the suspicious comment/snippet."
 						}
 					],
 					"count": "11",
@@ -1737,7 +1685,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "213",
+							"id": "178",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/actualites/",
 							"method": "GET",
 							"param": "",
@@ -1746,7 +1694,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "187",
+							"id": "157",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-la-reunion/",
 							"method": "GET",
 							"param": "",
@@ -1755,7 +1703,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "168",
+							"id": "156",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/aider-mayotte/",
 							"method": "GET",
 							"param": "",
@@ -1764,16 +1712,16 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "216",
+							"id": "186",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/campagnes-mobilisation-nationale/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a tabindex=\"-1\" href=\"#\" class=\"inactive-link pushed\" data-lb-index=\"0\"><div class=\"t-entry-visual-overlay\"><div class=\"t-entry-visual-overlay-in style-dark-bg\" style=\"opacity: 0.5;\"></div></div><img decoding=\"async\" class=\"wp-image-134159\" src=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/10/Logo-le-bon-coin.png\" width=\"494\" height=\"102\" alt=\"\" srcset=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/10/Logo-le-bon-coin.png 494w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/10/Logo-le-bon-coin-300x62.png 300w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/10/Logo-le-bon-coin-350x72.png 350w\" sizes=\"(max-width: 494px) 100vw, 494px\" /></a>",
+							"evidence": "<a tabindex=\"-1\" href=\"#\" class=\"inactive-link pushed\" data-lb-index=\"0\"><div class=\"t-entry-visual-overlay\"><div class=\"t-entry-visual-overlay-in style-dark-bg\" style=\"opacity: 0.5;\"></div></div><img decoding=\"async\" class=\"wp-image-114638\" src=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/05/4.PASS-culture.png\" width=\"2976\" height=\"1240\" alt=\"\" srcset=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/05/4.PASS-culture.png 2976w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/05/4.PASS-culture-300x125.png 300w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/05/4.PASS-culture-1024x427.png 1024w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/05/4.PASS-culture-768x320.png 768w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/05/4.PASS-culture-1536x640.png 1536w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/05/4.PASS-culture-2048x853.png 2048w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/05/4.PASS-culture-350x146.png 350w\" sizes=\"(max-width: 2976px) 100vw, 2976px\" /></a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "196",
+							"id": "209",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/category/actualite/",
 							"method": "GET",
 							"param": "",
@@ -1782,7 +1730,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "212",
+							"id": "183",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/communication/",
 							"method": "GET",
 							"param": "",
@@ -1791,16 +1739,16 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"id": "195",
+							"id": "208",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/mesure-dimpact/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a tabindex=\"-1\" href=\"\" class=\"pushed\" data-lb-index=\"0\"><div class=\"t-entry-visual-overlay\"><div class=\"t-entry-visual-overlay-in style-dark-bg\" style=\"opacity: 0.5;\"></div></div><img decoding=\"async\" class=\"wp-image-132791\" src=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1.png\" width=\"2236\" height=\"837\" alt=\"\" srcset=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1.png 2236w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-300x112.png 300w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-1024x383.png 1024w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-768x287.png 768w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-1536x575.png 1536w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-2048x767.png 2048w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Le-benevolat-tout-le-temps1-350x131.png 350w\" sizes=\"(max-width: 2236px) 100vw, 2236px\" /></a>",
+							"evidence": "<a tabindex=\"-1\" href=\"\" class=\"pushed\" data-lb-index=\"0\"><div class=\"t-entry-visual-overlay\"><div class=\"t-entry-visual-overlay-in style-dark-bg\" style=\"opacity: 0.5;\"></div></div><img decoding=\"async\" class=\"wp-image-132792\" src=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Tout-le-benevolat1.png\" width=\"2236\" height=\"837\" alt=\"\" srcset=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Tout-le-benevolat1.png 2236w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Tout-le-benevolat1-300x112.png 300w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Tout-le-benevolat1-1024x383.png 1024w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Tout-le-benevolat1-768x287.png 768w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Tout-le-benevolat1-1536x575.png 1536w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Tout-le-benevolat1-2048x767.png 2048w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2024/03/Tout-le-benevolat1-350x131.png 350w\" sizes=\"(max-width: 2236px) 100vw, 2236px\" /></a>",
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "217",
+							"id": "182",
 							"uri": "https://www.jeveuxaider.gouv.fr/engagement/presse/",
 							"method": "GET",
 							"param": "",
@@ -1809,40 +1757,22 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "169",
-							"uri": "https://www.jeveuxaider.gouv.fr/engagement/printemps-pour-la-planete/",
+							"id": "184",
+							"uri": "https://www.jeveuxaider.gouv.fr/stats?end_date=2025-05-11&start_date=2024-05-11",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<a tabindex=\"-1\" href=\"\" class=\"pushed\" data-lb-index=\"0\"><div class=\"t-entry-visual-overlay\"><div class=\"t-entry-visual-overlay-in style-dark-bg\" style=\"opacity: 0.5;\"></div></div><img decoding=\"async\" class=\"wp-image-113338\" src=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/03/organization_logo_1657707024_.png\" width=\"1080\" height=\"1080\" alt=\"\" srcset=\"https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/03/organization_logo_1657707024_.png 1080w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/03/organization_logo_1657707024_-300x300.png 300w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/03/organization_logo_1657707024_-1024x1024.png 1024w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/03/organization_logo_1657707024_-150x150.png 150w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/03/organization_logo_1657707024_-768x768.png 768w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/03/organization_logo_1657707024_-350x350.png 350w, https://jeveuxaider-wp.s3.eu-west-3.amazonaws.com/uploads/2023/03/organization_logo_1657707024_-348x348.png 348w\" sizes=\"(max-width: 1080px) 100vw, 1080px\" /></a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "211",
-							"uri": "https://www.jeveuxaider.gouv.fr/fresque-benevolat",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script type=\"text/javascript\">const Ziggy={\"url\":\"https:\\/\\/www.jeveuxaider.gouv.fr\\/fresque-benevolat\",\"port\":null,\"defaults\":{},\"routes\":{\"filament.exports.download\":{\"uri\":\"filament\\/exports\\/{export}\\/download\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"export\"],\"bindings\":{\"export\":\"id\"}},\"filament.imports.failed-rows.download\":{\"uri\":\"filament\\/imports\\/{import}\\/failed-rows\\/download\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"import\"],\"bindings\":{\"import\":\"id\"}},\"filament.admin.auth.login\":{\"uri\":\"admin\\/login\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.auth.password-reset.request\":{\"uri\":\"admin\\/password-reset\\/request\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.auth.password-reset.reset\":{\"uri\":\"admin\\/password-reset\\/reset\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.auth.logout\":{\"uri\":\"admin\\/logout\",\"methods\":[\"POST\"]},\"filament.admin.pages.dashboard\":{\"uri\":\"admin\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.pages.animator-profile\":{\"uri\":\"admin\\/animator-profile\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.pages.animator-profile-charte\":{\"uri\":\"admin\\/animator-profile-charte\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.pages.ressources\":{\"uri\":\"admin\\/ressources\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.resources.animators.index\":{\"uri\":\"admin\\/animators\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.resources.animators.create\":{\"uri\":\"admin\\/animators\\/create\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.resources.animators.view\":{\"uri\":\"admin\\/animators\\/{record}\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.animators.edit\":{\"uri\":\"admin\\/animators\\/{record}\\/edit\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.animators.activities\":{\"uri\":\"admin\\/animators\\/{record}\\/activities\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.fresque-application-feedbacks.index\":{\"uri\":\"admin\\/fresque-application-feedbacks\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.resources.fresque-application-feedbacks.activities\":{\"uri\":\"admin\\/fresque-application-feedbacks\\/{record}\\/activities\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.fresque-applications.index\":{\"uri\":\"admin\\/fresque-applications\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.resources.fresque-applications.view\":{\"uri\":\"admin\\/fresque-applications\\/{record}\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.fresque-applications.edit\":{\"uri\":\"admin\\/fresque-applications\\/{record}\\/edit\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.fresque-applications.activities\":{\"uri\":\"admin\\/fresque-applications\\/{record}\\/activities\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.fresques.index\":{\"uri\":\"admin\\/fresques\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.resources.fresques.create\":{\"uri\":\"admin\\/fresques\\/create\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.resources.fresques.view\":{\"uri\":\"admin\\/fresques\\/{record}\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.fresques.edit\":{\"uri\":\"admin\\/fresques\\/{record}\\/edit\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.fresques.activities\":{\"uri\":\"admin\\/fresques\\/{record}\\/activities\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.fresques.manage\":{\"uri\":\"admin\\/fresques\\/{record}\\/manage\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.places.index\":{\"uri\":\"admin\\/places\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.resources.places.activities\":{\"uri\":\"admin\\/places\\/{record}\\/activities\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"record\"]},\"filament.admin.resources.user-invitations.index\":{\"uri\":\"admin\\/user-invitations\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.admin.resources.users.index\":{\"uri\":\"admin\\/users\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.stats.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/stats\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.workload.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/workload\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.masters.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/masters\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.monitoring.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/monitoring\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.monitoring.store\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/monitoring\",\"methods\":[\"POST\"]},\"horizon.monitoring-tag.paginate\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/monitoring\\/{tag}\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"tag\"]},\"horizon.monitoring-tag.destroy\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/monitoring\\/{tag}\",\"methods\":[\"DELETE\"],\"wheres\":{\"tag\":\".*\"},\"parameters\":[\"tag\"]},\"horizon.jobs-metrics.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/metrics\\/jobs\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.jobs-metrics.show\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/metrics\\/jobs\\/{id}\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"id\"]},\"horizon.queues-metrics.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/metrics\\/queues\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.queues-metrics.show\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/metrics\\/queues\\/{id}\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"id\"]},\"horizon.jobs-batches.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/batches\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.jobs-batches.show\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/batches\\/{id}\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"id\"]},\"horizon.jobs-batches.retry\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/batches\\/retry\\/{id}\",\"methods\":[\"POST\"],\"parameters\":[\"id\"]},\"horizon.pending-jobs.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/jobs\\/pending\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.completed-jobs.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/jobs\\/completed\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.silenced-jobs.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/jobs\\/silenced\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.failed-jobs.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/jobs\\/failed\",\"methods\":[\"GET\",\"HEAD\"]},\"horizon.failed-jobs.show\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/jobs\\/failed\\/{id}\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"id\"]},\"horizon.retry-jobs.show\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/jobs\\/retry\\/{id}\",\"methods\":[\"POST\"],\"parameters\":[\"id\"]},\"horizon.jobs.show\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/api\\/jobs\\/{id}\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"id\"]},\"horizon.index\":{\"uri\":\"horizon-8mPsEtupjqwb6M8A\\/{view?}\",\"methods\":[\"GET\",\"HEAD\"],\"wheres\":{\"view\":\"(.*)\"},\"parameters\":[\"view\"]},\"sanctum.csrf-cookie\":{\"uri\":\"sanctum\\/csrf-cookie\",\"methods\":[\"GET\",\"HEAD\"]},\"livewire.update\":{\"uri\":\"fresque-benevolat\\/livewire\\/update\",\"methods\":[\"POST\"]},\"livewire.upload-file\":{\"uri\":\"livewire\\/upload-file\",\"methods\":[\"POST\"]},\"livewire.preview-file\":{\"uri\":\"livewire\\/preview-file\\/{filename}\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"filename\"]},\"global.kpis\":{\"uri\":\"api\\/global\\/kpis\",\"methods\":[\"GET\",\"HEAD\"]},\"test\":{\"uri\":\"api\\/test\",\"methods\":[\"POST\"]},\"test.mail\":{\"uri\":\"api\\/test\\/mail\",\"methods\":[\"POST\"]},\"test.mail.render\":{\"uri\":\"api\\/test\\/mail\\/render\",\"methods\":[\"POST\"]},\"filament.app.invitation\":{\"uri\":\"invitation\",\"methods\":[\"GET\",\"HEAD\"]},\"home\":{\"uri\":\"\\/\",\"methods\":[\"GET\",\"HEAD\"]},\"fresques.index\":{\"uri\":\"liste\",\"methods\":[\"GET\",\"HEAD\"]},\"fresques.show\":{\"uri\":\"fresques\\/{fresque}\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"fresque\"],\"bindings\":{\"fresque\":\"slug\"}},\"fresques.candidate\":{\"uri\":\"fresques\\/{fresque}\\/candidate\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"fresque\"],\"bindings\":{\"fresque\":\"slug\"}},\"fresques.apply\":{\"uri\":\"fresques-benevolat\\/{fresque}\\/apply\",\"methods\":[\"POST\"],\"parameters\":[\"fresque\"],\"bindings\":{\"fresque\":\"slug\"}},\"newsletter.sync.contact\":{\"uri\":\"newsletter\\/contact\",\"methods\":[\"POST\"]},\"fresques.applications.registered\":{\"uri\":\"fresques-applications\\/{fresqueApplication}\\/registered\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"fresqueApplication\"],\"bindings\":{\"fresqueApplication\":\"token\"}},\"fresques.applications.confirmation-presence\":{\"uri\":\"fresques-applications\\/{fresqueApplication}\\/confirmation-presence\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"fresqueApplication\"],\"bindings\":{\"fresqueApplication\":\"token\"}},\"fresques.applications.confirm\":{\"uri\":\"fresques-applications\\/{fresqueApplication}\\/confirm\",\"methods\":[\"POST\"],\"parameters\":[\"fresqueApplication\"],\"bindings\":{\"fresqueApplication\":\"token\"}},\"fresques.applications.cancel\":{\"uri\":\"fresques-applications\\/{fresqueApplication}\\/cancel\",\"methods\":[\"POST\"],\"parameters\":[\"fresqueApplication\"],\"bindings\":{\"fresqueApplication\":\"token\"}},\"fresques.applications.feedback\":{\"uri\":\"fresques-applications\\/{fresqueApplication}\\/feedback\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"fresqueApplication\"],\"bindings\":{\"fresqueApplication\":\"token\"}},\"fresques.applications.feedback-merci\":{\"uri\":\"fresques-applications\\/{fresqueApplication}\\/feedback-merci\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"fresqueApplication\"],\"bindings\":{\"fresqueApplication\":\"token\"}},\"fresques.applications.engagement\":{\"uri\":\"fresques-applications\\/{fresqueApplication}\\/engagement\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"fresqueApplication\"],\"bindings\":{\"fresqueApplication\":\"token\"}},\"fresques.applications.engagement-merci\":{\"uri\":\"fresques-applications\\/{fresqueApplication}\\/engagement-merci\",\"methods\":[\"GET\",\"HEAD\"],\"parameters\":[\"fresqueApplication\"],\"bindings\":{\"fresqueApplication\":\"token\"}},\"fresques.applications.engagement-benevolat\":{\"uri\":\"fresques-applications\\/{fresqueApplication}\\/engagement-benevolat\",\"methods\":[\"POST\"],\"parameters\":[\"fresqueApplication\"],\"bindings\":{\"fresqueApplication\":\"token\"}},\"fresques.applications.feedback.updateOrCreate\":{\"uri\":\"fresques-applications\\/{fresqueApplication}\\/feedback\",\"methods\":[\"POST\"],\"parameters\":[\"fresqueApplication\"],\"bindings\":{\"fresqueApplication\":\"token\"}},\"filament.app.animator.profile\":{\"uri\":\"profile\\/animator\",\"methods\":[\"GET\",\"HEAD\"]},\"filament.app.animator.charte\":{\"uri\":\"profile\\/animator\\/charte\",\"methods\":[\"GET\",\"HEAD\"]}}};!function(t,r){\"object\"==typeof exports&&\"undefined\"!=typeof module?module.exports=r():\"function\"==typeof define&&define.amd?define(r):(t||self).route=r()}(this,function(){function t(t,r){for(var n=0;n<r.length;n++){var e=r[n];e.enumerable=e.enumerable||!1,e.configurable=!0,\"value\"in e&&(e.writable=!0),Object.defineProperty(t,u(e.key),e)}}function r(r,n,e){return n&&t(r.prototype,n),e&&t(r,e),Object.defineProperty(r,\"prototype\",{writable:!1}),r}function n(){return n=Object.assign?Object.assign.bind():function(t){for(var r=1;r<arguments.length;r++){var n=arguments[r];for(var e in n)({}).hasOwnProperty.call(n,e)&&(t[e]=n[e])}return t},n.apply(null,arguments)}function e(t){return e=Object.setPrototypeOf?Object.getPrototypeOf.bind():function(t){return t.__proto__||Object.getPrototypeOf(t)},e(t)}function o(){try{var t=!Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],function(){}))}catch(t){}return(o=function(){return!!t})()}function i(t,r){return i=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(t,r){return t.__proto__=r,t},i(t,r)}function u(t){var r=function(t){if(\"object\"!=typeof t||!t)return t;var r=t[Symbol.toPrimitive];if(void 0!==r){var n=r.call(t,\"string\");if(\"object\"!=typeof n)return n;throw new TypeError(\"@@toPrimitive must return a primitive value.\")}return String(t)}(t);return\"symbol\"==typeof r?r:r+\"\"}function f(t){var r=\"function\"==typeof Map?new Map:void 0;return f=function(t){if(null===t||!function(t){try{return-1!==Function.toString.call(t).indexOf(\"[native code]\")}catch(r){return\"function\"==typeof t}}(t))return t;if(\"function\"!=typeof t)throw new TypeError(\"Super expression must either be null or a function\");if(void 0!==r){if(r.has(t))return r.get(t);r.set(t,n)}function n(){return function(t,r,n){if(o())return Reflect.construct.apply(null,arguments);var e=[null];e.push.apply(e,r);var u=new(t.bind.apply(t,e));return n&&i(u,n.prototype),u}(t,arguments,e(this).constructor)}return n.prototype=Object.create(t.prototype,{constructor:{value:n,enumerable:!1,writable:!0,configurable:!0}}),i(n,t)},f(t)}var a=String.prototype.replace,c=/%20/g,l=\"RFC3986\",s={default:l,formatters:{RFC1738:function(t){return a.call(t,c,\"+\")},RFC3986:function(t){return String(t)}},RFC1738:\"RFC1738\",RFC3986:l},v=Object.prototype.hasOwnProperty,p=Array.isArray,y=function(){for(var t=[],r=0;r<256;++r)t.push(\"%\"+((r<16?\"0\":\"\")+r.toString(16)).toUpperCase());return t}(),d=function(t,r){for(var n=r&&r.plainObjects?Object.create(null):{},e=0;e<t.length;++e)void 0!==t[e]&&(n[e]=t[e]);return n},b={arrayToObject:d,assign:function(t,r){return Object.keys(r).reduce(function(t,n){return t[n]=r[n],t},t)},combine:function(t,r){return[].concat(t,r)},compact:function(t){for(var r=[{obj:{o:t},prop:\"o\"}],n=[],e=0;e<r.length;++e)for(var o=r[e],i=o.obj[o.prop],u=Object.keys(i),f=0;f<u.length;++f){var a=u[f],c=i[a];\"object\"==typeof c&&null!==c&&-1===n.indexOf(c)&&(r.push({obj:i,prop:a}),n.push(c))}return function(t){for(;t.length>1;){var r=t.pop(),n=r.obj[r.prop];if(p(n)){for(var e=[],o=0;o<n.length;++o)void 0!==n[o]&&e.push(n[o]);r.obj[r.prop]=e}}}(r),t},decode:function(t,r,n){var e=t.replace(/\\+/g,\" \");if(\"iso-8859-1\"===n)return e.replace(/%[0-9a-f]{2}/gi,unescape);try{return decodeURIComponent(e)}catch(t){return e}},encode:function(t,r,n,e,o){if(0===t.length)return t;var i=t;if(\"symbol\"==typeof t?i=Symbol.prototype.toString.call(t):\"string\"!=typeof t&&(i=String(t)),\"iso-8859-1\"===n)return escape(i).replace(/%u[0-9a-f]{4}/gi,function(t){return\"%26%23\"+parseInt(t.slice(2),16)+\"%3B\"});for(var u=\"\",f=0;f<i.length;++f){var a=i.charCodeAt(f);45===a||46===a||95===a||126===a||a>=48&&a<=57||a>=65&&a<=90||a>=97&&a<=122||o===s.RFC1738&&(40===a||41===a)?u+=i.charAt(f):a<128?u+=y[a]:a<2048?u+=y[192|a>>6]+y[128|63&a]:a<55296||a>=57344?u+=y[224|a>>12]+y[128|a>>6&63]+y[128|63&a]:(a=65536+((1023&a)<<10|1023&i.charCodeAt(f+=1)),u+=y[240|a>>18]+y[128|a>>12&63]+y[128|a>>6&63]+y[128|63&a])}return u},isBuffer:function(t){return!(!t||\"object\"!=typeof t||!(t.constructor&&t.constructor.isBuffer&&t.constructor.isBuffer(t)))},isRegExp:function(t){return\"[object RegExp]\"===Object.prototype.toString.call(t)},maybeMap:function(t,r){if(p(t)){for(var n=[],e=0;e<t.length;e+=1)n.push(r(t[e]));return n}return r(t)},merge:function t(r,n,e){if(!n)return r;if(\"object\"!=typeof n){if(p(r))r.push(n);else{if(!r||\"object\"!=typeof r)return[r,n];(e&&(e.plainObjects||e.allowPrototypes)||!v.call(Object.prototype,n))&&(r[n]=!0)}return r}if(!r||\"object\"!=typeof r)return[r].concat(n);var o=r;return p(r)&&!p(n)&&(o=d(r,e)),p(r)&&p(n)?(n.forEach(function(n,o){if(v.call(r,o)){var i=r[o];i&&\"object\"==typeof i&&n&&\"object\"==typeof n?r[o]=t(i,n,e):r.push(n)}else r[o]=n}),r):Object.keys(n).reduce(function(r,o){var i=n[o];return r[o]=v.call(r,o)?t(r[o],i,e):i,r},o)}},h=Object.prototype.hasOwnProperty,g={brackets:function(t){return t+\"[]\"},comma:\"comma\",indices:function(t,r){return t+\"[\"+r+\"]\"},repeat:function(t){return t}},m=Array.isArray,j=String.prototype.split,w=Array.prototype.push,O=function(t,r){w.apply(t,m(r)?r:[r])},E=Date.prototype.toISOString,R=s.default,S={addQueryPrefix:!1,allowDots:!1,charset:\"utf-8\",charsetSentinel:!1,delimiter:\"&\",encode:!0,encoder:b.encode,encodeValuesOnly:!1,format:R,formatter:s.formatters[R],indices:!1,serializeDate:function(t){return E.call(t)},skipNulls:!1,strictNullHandling:!1},k=function t(r,n,e,o,i,u,f,a,c,l,s,v,p,y){var d,h=r;if(\"function\"==typeof f?h=f(n,h):h instanceof Date?h=l(h):\"comma\"===e&&m(h)&&(h=b.maybeMap(h,function(t){return t instanceof Date?l(t):t})),null===h){if(o)return u&&!p?u(n,S.encoder,y,\"key\",s):n;h=\"\"}if(\"string\"==typeof(d=h)||\"number\"==typeof d||\"boolean\"==typeof d||\"symbol\"==typeof d||\"bigint\"==typeof d||b.isBuffer(h)){if(u){var g=p?n:u(n,S.encoder,y,\"key\",s);if(\"comma\"===e&&p){for(var w=j.call(String(h),\",\"),E=\"\",R=0;R<w.length;++R)E+=(0===R?\"\":\",\")+v(u(w[R],S.encoder,y,\"value\",s));return[v(g)+\"=\"+E]}return[v(g)+\"=\"+v(u(h,S.encoder,y,\"value\",s))]}return[v(n)+\"=\"+v(String(h))]}var k,T=[];if(void 0===h)return T;if(\"comma\"===e&&m(h))k=[{value:h.length>0?h.join(\",\")||null:void 0}];else if(m(f))k=f;else{var $=Object.keys(h);k=a?$.sort(a):$}for(var x=0;x<k.length;++x){var N=k[x],C=\"object\"==typeof N&&void 0!==N.value?N.value:h[N];if(!i||null!==C){var A=m(h)?\"function\"==typeof e?e(n,N):n:n+(c?\".\"+N:\"[\"+N+\"]\");O(T,t(C,A,e,o,i,u,f,a,c,l,s,v,p,y))}}return T},T=Object.prototype.hasOwnProperty,$=Array.isArray,x={allowDots:!1,allowPrototypes:!1,arrayLimit:20,charset:\"utf-8\",charsetSentinel:!1,comma:!1,decoder:b.decode,delimiter:\"&\",depth:5,ignoreQueryPrefix:!1,interpretNumericEntities:!1,parameterLimit:1e3,parseArrays:!0,plainObjects:!1,strictNullHandling:!1},N=function(t){return t.replace(/&#(\\d+);/g,function(t,r){return String.fromCharCode(parseInt(r,10))})},C=function(t,r){return t&&\"string\"==typeof t&&r.comma&&t.indexOf(\",\")>-1?t.split(\",\"):t},A=function(t,r,n,e){if(t){var o=n.allowDots?t.replace(/\\.([^.[]+)/g,\"[$1]\"):t,i=/(\\[[^[\\]]*])/g,u=n.depth>0&&/(\\[[^[\\]]*])/.exec(o),f=u?o.slice(0,u.index):o,a=[];if(f){if(!n.plainObjects&&T.call(Object.prototype,f)&&!n.allowPrototypes)return;a.push(f)}for(var c=0;n.depth>0&&null!==(u=i.exec(o))&&c<n.depth;){if(c+=1,!n.plainObjects&&T.call(Object.prototype,u[1].slice(1,-1))&&!n.allowPrototypes)return;a.push(u[1])}return u&&a.push(\"[\"+o.slice(u.index)+\"]\"),function(t,r,n,e){for(var o=e?r:C(r,n),i=t.length-1;i>=0;--i){var u,f=t[i];if(\"[]\"===f&&n.parseArrays)u=[].concat(o);else{u=n.plainObjects?Object.create(null):{};var a=\"[\"===f.charAt(0)&&\"]\"===f.charAt(f.length-1)?f.slice(1,-1):f,c=parseInt(a,10);n.parseArrays||\"\"!==a?!isNaN(c)&&f!==a&&String(c)===a&&c>=0&&n.parseArrays&&c<=n.arrayLimit?(u=[])[c]=o:\"__proto__\"!==a&&(u[a]=o):u={0:o}}o=u}return o}(a,r,n,e)}},D=function(t,r){var n=function(t){if(!t)return x;if(null!=t.decoder&&\"function\"!=typeof t.decoder)throw new TypeError(\"Decoder has to be a function.\");if(void 0!==t.charset&&\"utf-8\"!==t.charset&&\"iso-8859-1\"!==t.charset)throw new TypeError(\"The charset option must be either utf-8, iso-8859-1, or undefined\");return{allowDots:void 0===t.allowDots?x.allowDots:!!t.allowDots,allowPrototypes:\"boolean\"==typeof t.allowPrototypes?t.allowPrototypes:x.allowPrototypes,arrayLimit:\"number\"==typeof t.arrayLimit?t.arrayLimit:x.arrayLimit,charset:void 0===t.charset?x.charset:t.charset,charsetSentinel:\"boolean\"==typeof t.charsetSentinel?t.charsetSentinel:x.charsetSentinel,comma:\"boolean\"==typeof t.comma?t.comma:x.comma,decoder:\"function\"==typeof t.decoder?t.decoder:x.decoder,delimiter:\"string\"==typeof t.delimiter||b.isRegExp(t.delimiter)?t.delimiter:x.delimiter,depth:\"number\"==typeof t.depth||!1===t.depth?+t.depth:x.depth,ignoreQueryPrefix:!0===t.ignoreQueryPrefix,interpretNumericEntities:\"boolean\"==typeof t.interpretNumericEntities?t.interpretNumericEntities:x.interpretNumericEntities,parameterLimit:\"number\"==typeof t.parameterLimit?t.parameterLimit:x.parameterLimit,parseArrays:!1!==t.parseArrays,plainObjects:\"boolean\"==typeof t.plainObjects?t.plainObjects:x.plainObjects,strictNullHandling:\"boolean\"==typeof t.strictNullHandling?t.strictNullHandling:x.strictNullHandling}}(r);if(\"\"===t||null==t)return n.plainObjects?Object.create(null):{};for(var e=\"string\"==typeof t?function(t,r){var n,e={},o=(r.ignoreQueryPrefix?t.replace(/^\\?/,\"\"):t).split(r.delimiter,Infinity===r.parameterLimit?void 0:r.parameterLimit),i=-1,u=r.charset;if(r.charsetSentinel)for(n=0;n<o.length;++n)0===o[n].indexOf(\"utf8=\")&&(\"utf8=%E2%9C%93\"===o[n]?u=\"utf-8\":\"utf8=%26%2310003%3B\"===o[n]&&(u=\"iso-8859-1\"),i=n,n=o.length);for(n=0;n<o.length;++n)if(n!==i){var f,a,c=o[n],l=c.indexOf(\"]=\"),s=-1===l?c.indexOf(\"=\"):l+1;-1===s?(f=r.decoder(c,x.decoder,u,\"key\"),a=r.strictNullHandling?null:\"\"):(f=r.decoder(c.slice(0,s),x.decoder,u,\"key\"),a=b.maybeMap(C(c.slice(s+1),r),function(t){return r.decoder(t,x.decoder,u,\"value\")})),a&&r.interpretNumericEntities&&\"iso-8859-1\"===u&&(a=N(a)),c.indexOf(\"[]=\")>-1&&(a=$(a)?[a]:a),e[f]=T.call(e,f)?b.combine(e[f],a):a}return e}(t,n):t,o=n.plainObjects?Object.create(null):{},i=Object.keys(e),u=0;u<i.length;++u){var f=i[u],a=A(f,e[f],n,\"string\"==typeof t);o=b.merge(o,a,n)}return b.compact(o)},P=/*#__PURE__*/function(){function t(t,r,n){var e,o;this.name=t,this.definition=r,this.bindings=null!=(e=r.bindings)?e:{},this.wheres=null!=(o=r.wheres)?o:{},this.config=n}var n=t.prototype;return n.matchesUrl=function(t){var r,n=this;if(!this.definition.methods.includes(\"GET\"))return!1;var e=this.template.replace(/[.*+$()[\\]]/g,\"\\\\$&\").replace(/(\\/?){([^}?]*)(\\??)}/g,function(t,r,e,o){var i,u=\"(?<\"+e+\">\"+((null==(i=n.wheres[e])?void 0:i.replace(/(^\\^)|(\\$$)/g,\"\"))||\"[^/?]+\")+\")\";return o?\"(\"+r+u+\")?\":\"\"+r+u}).replace(/^\\w+:\\/\\//,\"\"),o=t.replace(/^\\w+:\\/\\//,\"\").split(\"?\"),i=o[0],u=o[1],f=null!=(r=new RegExp(\"^\"+e+\"/?$\").exec(i))?r:new RegExp(\"^\"+e+\"/?$\").exec(decodeURI(i));if(f){for(var a in f.groups)f.groups[a]=\"string\"==typeof f.groups[a]?decodeURIComponent(f.groups[a]):f.groups[a];return{params:f.groups,query:D(u)}}return!1},n.compile=function(t){var r=this;return this.parameterSegments.length?this.template.replace(/{([^}?]+)(\\??)}/g,function(n,e,o){var i,u;if(!o&&[null,void 0].includes(t[e]))throw new Error(\"Ziggy error: '\"+e+\"' parameter is required for route '\"+r.name+\"'.\");if(r.wheres[e]&&!new RegExp(\"^\"+(o?\"(\"+r.wheres[e]+\")?\":r.wheres[e])+\"$\").test(null!=(u=t[e])?u:\"\"))throw new Error(\"Ziggy error: '\"+e+\"' parameter '\"+t[e]+\"' does not match required format '\"+r.wheres[e]+\"' for route '\"+r.name+\"'.\");return encodeURI(null!=(i=t[e])?i:\"\").replace(/%7C/g,\"|\").replace(/%25/g,\"%\").replace(/\\$/g,\"%24\")}).replace(this.config.absolute?/(\\.[^/]+?)(\\/\\/)/:/(^)(\\/\\/)/,\"$1/\").replace(/\\/+$/,\"\"):this.template},r(t,[{key:\"template\",get:function(){var t=(this.origin+\"/\"+this.definition.uri).replace(/\\/+$/,\"\");return\"\"===t?\"/\":t}},{key:\"origin\",get:function(){return this.config.absolute?this.definition.domain?\"\"+this.config.url.match(/^\\w+:\\/\\//)[0]+this.definition.domain+(this.config.port?\":\"+this.config.port:\"\"):this.config.url:\"\"}},{key:\"parameterSegments\",get:function(){var t,r;return null!=(t=null==(r=this.template.match(/{[^}?]+\\??}/g))?void 0:r.map(function(t){return{name:t.replace(/{|\\??}/g,\"\"),required:!/\\?}$/.test(t)}}))?t:[]}}])}(),F=/*#__PURE__*/function(t){function e(r,e,o,i){var u;if(void 0===o&&(o=!0),(u=t.call(this)||this).t=null!=i?i:\"undefined\"!=typeof Ziggy?Ziggy:null==globalThis?void 0:globalThis.Ziggy,u.t=n({},u.t,{absolute:o}),r){if(!u.t.routes[r])throw new Error(\"Ziggy error: route '\"+r+\"' is not in the route list.\");u.i=new P(r,u.t.routes[r],u.t),u.u=u.l(e)}return u}var o,u;u=t,(o=e).prototype=Object.create(u.prototype),o.prototype.constructor=o,i(o,u);var f=e.prototype;return f.toString=function(){var t=this,r=Object.keys(this.u).filter(function(r){return!t.i.parameterSegments.some(function(t){return t.name===r})}).filter(function(t){return\"_query\"!==t}).reduce(function(r,e){var o;return n({},r,((o={})[e]=t.u[e],o))},{});return this.i.compile(this.u)+function(t,r){var n,e=t,o=function(t){if(!t)return S;if(null!=t.encoder&&\"function\"!=typeof t.encoder)throw new TypeError(\"Encoder has to be a function.\");var r=t.charset||S.charset;if(void 0!==t.charset&&\"utf-8\"!==t.charset&&\"iso-8859-1\"!==t.charset)throw new TypeError(\"The charset option must be either utf-8, iso-8859-1, or undefined\");var n=s.default;if(void 0!==t.format){if(!h.call(s.formatters,t.format))throw new TypeError(\"Unknown format option provided.\");n=t.format}var e=s.formatters[n],o=S.filter;return(\"function\"==typeof t.filter||m(t.filter))&&(o=t.filter),{addQueryPrefix:\"boolean\"==typeof t.addQueryPrefix?t.addQueryPrefix:S.addQueryPrefix,allowDots:void 0===t.allowDots?S.allowDots:!!t.allowDots,charset:r,charsetSentinel:\"boolean\"==typeof t.charsetSentinel?t.charsetSentinel:S.charsetSentinel,delimiter:void 0===t.delimiter?S.delimiter:t.delimiter,encode:\"boolean\"==typeof t.encode?t.encode:S.encode,encoder:\"function\"==typeof t.encoder?t.encoder:S.encoder,encodeValuesOnly:\"boolean\"==typeof t.encodeValuesOnly?t.encodeValuesOnly:S.encodeValuesOnly,filter:o,format:n,formatter:e,serializeDate:\"function\"==typeof t.serializeDate?t.serializeDate:S.serializeDate,skipNulls:\"boolean\"==typeof t.skipNulls?t.skipNulls:S.skipNulls,sort:\"function\"==typeof t.sort?t.sort:null,strictNullHandling:\"boolean\"==typeof t.strictNullHandling?t.strictNullHandling:S.strictNullHandling}}(r);\"function\"==typeof o.filter?e=(0,o.filter)(\"\",e):m(o.filter)&&(n=o.filter);var i=[];if(\"object\"!=typeof e||null===e)return\"\";var u=g[r&&r.arrayFormat in g?r.arrayFormat:r&&\"indices\"in r?r.indices?\"indices\":\"repeat\":\"indices\"];n||(n=Object.keys(e)),o.sort&&n.sort(o.sort);for(var f=0;f<n.length;++f){var a=n[f];o.skipNulls&&null===e[a]||O(i,k(e[a],a,u,o.strictNullHandling,o.skipNulls,o.encode?o.encoder:null,o.filter,o.sort,o.allowDots,o.serializeDate,o.format,o.formatter,o.encodeValuesOnly,o.charset))}var c=i.join(o.delimiter),l=!0===o.addQueryPrefix?\"?\":\"\";return o.charsetSentinel&&(l+=\"iso-8859-1\"===o.charset?\"utf8=%26%2310003%3B&\":\"utf8=%E2%9C%93&\"),c.length>0?l+c:\"\"}(n({},r,this.u._query),{addQueryPrefix:!0,arrayFormat:\"indices\",encodeValuesOnly:!0,skipNulls:!0,encoder:function(t,r){return\"boolean\"==typeof t?Number(t):r(t)}})},f.v=function(t){var r=this;t?this.t.absolute&&t.startsWith(\"/\")&&(t=this.p().host+t):t=this.h();var e={},o=Object.entries(this.t.routes).find(function(n){return e=new P(n[0],n[1],r.t).matchesUrl(t)})||[void 0,void 0];return n({name:o[0]},e,{route:o[1]})},f.h=function(){var t=this.p(),r=t.pathname,n=t.search;return(this.t.absolute?t.host+r:r.replace(this.t.url.replace(/^\\w*:\\/\\/[^/]+/,\"\"),\"\").replace(/^\\/+/,\"/\"))+n},f.current=function(t,r){var e=this.v(),o=e.name,i=e.params,u=e.query,f=e.route;if(!t)return o;var a=new RegExp(\"^\"+t.replace(/\\./g,\"\\\\.\").replace(/\\*/g,\".*\")+\"$\").test(o);if([null,void 0].includes(r)||!a)return a;var c=new P(o,f,this.t);r=this.l(r,c);var l=n({},i,u);if(Object.values(r).every(function(t){return!t})&&!Object.values(l).some(function(t){return void 0!==t}))return!0;var s=function(t,r){return Object.entries(t).every(function(t){var n=t[0],e=t[1];return Array.isArray(e)&&Array.isArray(r[n])?e.every(function(t){return r[n].includes(t)}):\"object\"==typeof e&&\"object\"==typeof r[n]&&null!==e&&null!==r[n]?s(e,r[n]):r[n]==e})};return s(r,l)},f.p=function(){var t,r,n,e,o,i,u=\"undefined\"!=typeof window?window.location:{},f=u.host,a=u.pathname,c=u.search;return{host:null!=(t=null==(r=this.t.location)?void 0:r.host)?t:void 0===f?\"\":f,pathname:null!=(n=null==(e=this.t.location)?void 0:e.pathname)?n:void 0===a?\"\":a,search:null!=(o=null==(i=this.t.location)?void 0:i.search)?o:void 0===c?\"\":c}},f.has=function(t){return this.t.routes.hasOwnProperty(t)},f.l=function(t,r){var e=this;void 0===t&&(t={}),void 0===r&&(r=this.i),null!=t||(t={}),t=[\"string\",\"number\"].includes(typeof t)?[t]:t;var o=r.parameterSegments.filter(function(t){return!e.t.defaults[t.name]});if(Array.isArray(t))t=t.reduce(function(t,r,e){var i,u;return n({},t,o[e]?((i={})[o[e].name]=r,i):\"object\"==typeof r?r:((u={})[r]=\"\",u))},{});else if(1===o.length&&!t[o[0].name]&&(t.hasOwnProperty(Object.values(r.bindings)[0])||t.hasOwnProperty(\"id\"))){var i;(i={})[o[0].name]=t,t=i}return n({},this.m(r),this.j(t,r))},f.m=function(t){var r=this;return t.parameterSegments.filter(function(t){return r.t.defaults[t.name]}).reduce(function(t,e,o){var i,u=e.name;return n({},t,((i={})[u]=r.t.defaults[u],i))},{})},f.j=function(t,r){var e=r.bindings,o=r.parameterSegments;return Object.entries(t).reduce(function(t,r){var i,u,f=r[0],a=r[1];if(!a||\"object\"!=typeof a||Array.isArray(a)||!o.some(function(t){return t.name===f}))return n({},t,((u={})[f]=a,u));if(!a.hasOwnProperty(e[f])){if(!a.hasOwnProperty(\"id\"))throw new Error(\"Ziggy error: object passed as '\"+f+\"' parameter is missing route model binding key '\"+e[f]+\"'.\");e[f]=\"id\"}return n({},t,((i={})[f]=a[e[f]],i))},{})},f.valueOf=function(){return this.toString()},r(e,[{key:\"params\",get:function(){var t=this.v();return n({},t.params,t.query)}},{key:\"routeParams\",get:function(){return this.v().params}},{key:\"queryParams\",get:function(){return this.v().query}}])}(/*#__PURE__*/f(String));return function(t,r,n,e){var o=new F(t,r,n,e);return t?o.toString():o}});\n</script>",
-							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "214",
-							"uri": "https://www.jeveuxaider.gouv.fr/stats?end_date=2025-04-20&start_date=2024-04-20",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<script type=\"module\" src=\"/_nuxt/B5Yvzaiw.js\" crossorigin></script>",
+							"evidence": "<script type=\"module\" src=\"/_nuxt/B67pwA0x.js\" crossorigin></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
-					"count": "11",
+					"count": "9",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "18569"
+					"sourceid": "17656"
 				},
 				{
 					"pluginid": "10049",
@@ -1855,7 +1785,7 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"id": "49",
+							"id": "9",
 							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1883,7 +1813,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "9",
+							"id": "14",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -1892,7 +1822,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "119",
+							"id": "110",
+							"uri": "https://www.jeveuxaider.gouv.fr/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "max-age=300, public, no-transform",
+							"otherinfo": ""
+						},
+						{
+							"id": "99",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/activites.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -1901,7 +1840,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "97",
+							"id": "91",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/departements.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -1910,7 +1849,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "37",
+							"id": "41",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/pages.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -1919,7 +1858,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "101",
+							"id": "102",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/reseaux.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -1928,7 +1867,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "57",
+							"id": "94",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/villes.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -1937,16 +1876,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "121",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/builds/meta/c617ae94-997d-4a41-87e6-3fd60244a6fc.json",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "public, max-age=31536000, immutable, no-cache",
-							"otherinfo": ""
-						},
-						{
-							"id": "104",
+							"id": "55",
 							"uri": "https://www.jeveuxaider.gouv.fr/login",
 							"method": "GET",
 							"param": "cache-control",
@@ -1955,7 +1885,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "55",
+							"id": "48",
 							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
 							"method": "GET",
 							"param": "cache-control",
@@ -1973,7 +1903,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
+							"id": "32",
 							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -2001,111 +1931,111 @@
 					"desc": "<p>The content was retrieved from a shared cache. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "235",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/AlgoliaSlideshowMissions.CTHwSpkG.css",
+							"id": "113",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/B67pwA0x.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 1168431",
+							"evidence": "Age: 106273",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"id": "123",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/B5Yvzaiw.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Age: 368597",
-							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
-						},
-						{
-							"id": "223",
+							"id": "193",
 							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Banner.F7xahtZq.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 1451614",
+							"evidence": "Age: 277304",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"id": "117",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/entry.DpDmy2pG.css",
+							"id": "199",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Button.BWYhH5qs.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 1763478",
+							"evidence": "Age: 39050",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"id": "219",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Header.DjdjO7Hb.css",
+							"id": "188",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Footer.C0B4q1ZH.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 1451614",
+							"evidence": "Age: 39050",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"id": "221",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/HeaderBanner.CQtEcGdW.css",
+							"id": "195",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Heading.B2d0t4F5.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 143428",
+							"evidence": "Age: 206119",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"id": "233",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/index.DpEvf7yd.css",
+							"id": "201",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/index.CLUeDVDv.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 143429",
+							"evidence": "Age: 1407055",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"id": "229",
+							"id": "197",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Input.B2X1WRSL.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Age: 1407055",
+							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
+						},
+						{
+							"id": "203",
 							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/InputAutocomplete.BPHa6hTg.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 400495",
+							"evidence": "Age: 13240",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"id": "231",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Select.ChGpVvYb.css",
+							"id": "206",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/jeveuxaider-logo.DGvyNtSI.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 143429",
+							"evidence": "Age: 69200",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"id": "225",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/SelectAutocomplete.CL3Yf8aR.css",
+							"id": "191",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Link.BKLg8Omi.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 176644",
+							"evidence": "Age: 95402",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"id": "234",
-							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/Slideshow.dATDxevh.css",
+							"id": "205",
+							"uri": "https://www.jeveuxaider.gouv.fr/_nuxt/republique-francaise-logo.Wm28Hm9s.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 2657645",
+							"evidence": "Age: 7724793",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						},
 						{
-							"id": "114",
+							"id": "105",
 							"uri": "https://www.jeveuxaider.gouv.fr/favicon.png",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Age: 1300340",
+							"evidence": "Age: 17248084",
 							"otherinfo": "The presence of the 'Age' header indicates that a HTTP/1.1 compliant caching server is in use."
 						}
 					],
@@ -2115,7 +2045,7 @@
 					"reference": "<p>https://tools.ietf.org/html/rfc7234</p><p>https://tools.ietf.org/html/rfc7231</p><p>https://www.rfc-editor.org/rfc/rfc9110.html</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "19070"
+					"sourceid": "1007"
 				},
 				{
 					"pluginid": "90005",
@@ -2128,16 +2058,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "29",
-							"uri": "https://www.jeveuxaider.gouv.fr",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "5",
+							"id": "7",
 							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -2146,8 +2067,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "42",
+							"id": "12",
 							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "39",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -2161,7 +2091,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -2174,16 +2104,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "28",
-							"uri": "https://www.jeveuxaider.gouv.fr",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "4",
+							"id": "6",
 							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -2192,8 +2113,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
+							"id": "11",
 							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "38",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -2207,7 +2137,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -2220,16 +2150,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "27",
-							"uri": "https://www.jeveuxaider.gouv.fr",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "3",
+							"id": "5",
 							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -2238,8 +2159,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "38",
+							"id": "10",
 							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "37",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -2253,7 +2183,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -2266,16 +2196,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "30",
-							"uri": "https://www.jeveuxaider.gouv.fr",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "6",
+							"id": "8",
 							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -2284,8 +2205,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "43",
+							"id": "13",
 							"uri": "https://www.jeveuxaider.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "40",
+							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -2299,7 +2229,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10112",
@@ -2312,12 +2242,12 @@
 					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
 					"instances":[ 
 						{
-							"id": "209",
+							"id": "172",
 							"uri": "https://www.jeveuxaider.gouv.fr/fresque-benevolat",
 							"method": "GET",
 							"param": "la_fresque_du_benevolat_session",
 							"attack": "",
-							"evidence": "eyJpdiI6IjRqNzRsOFJXeWhjTE1GU2RGZkxWNGc9PSIsInZhbHVlIjoibFJiNldIOGN6SUxMQjhORDdGRkl4eDcycHB4U0dQSFJxUG05MHZJT1lMMkR3bFdaczZkU3EyN1d5TmxjZGx3enZYQWk5TW0rQ2svdkVPaWpMLzVIYldoWXJ0K3R4Y1VYbTU0Zko4akYrbEJhcTBDMVg5djdKdjdWS0pxUGF6WTAiLCJtYWMiOiJhOTkwZmI2ZjU3Mjg3ZTQxMzE2NTRmMWNhYzg5NWE3N2QwNzhkNzUyOWEyMjYyNmZmNjE5YWJlNzk0NTRiZjFmIiwidGFnIjoiIn0%3D",
+							"evidence": "eyJpdiI6IkkyLy9qbHFMODdiaXB6bXFTeEF5bGc9PSIsInZhbHVlIjoiVFhXc2JBdVZkeC9ZczNkcDIveVRQNEdMSGY0ZFNaQ0JjbmErS2U4MHNLcWhYcHFzVkhudVNHOW80dEc2MXo2eUVWS3Y2dXVFM0lwZVV1d3V3SXNaMU5kV3FqUC9LWlFKYk1jWG55Nm5uVFJwVWZ5TEVKaURXNkN1NFA2cDBlTDYiLCJtYWMiOiI5NzYwNDNiOWQ2NDliMmEzNzgxOTY5OWI1OTI5NDNmMzVkNTQxNzZhODMwOTNiY2JmMjUwNzU1ZmQ3ZDYwMWI3IiwidGFnIjoiIn0%3D",
 							"otherinfo": "\ncookie:la_fresque_du_benevolat_session\ncookie:XSRF-TOKEN"
 						}
 					],
@@ -2327,7 +2257,7 @@
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "18514"
+					"sourceid": "17655"
 				},
 				{
 					"pluginid": "10049",
@@ -2340,25 +2270,16 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "31",
+							"id": "26",
 							"uri": "https://www.jeveuxaider.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "max-age=300",
 							"otherinfo": ""
-						},
-						{
-							"id": "66",
-							"uri": "https://www.jeveuxaider.gouv.fr/*",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
@@ -2377,7 +2298,25 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
 					"instances":[ 
 						{
-							"id": "99",
+							"id": "52",
+							"uri": "https://www.jeveuxaider.gouv.fr/*",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "101",
+							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/activites.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "no-cache",
+							"otherinfo": ""
+						},
+						{
+							"id": "93",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/departements.xml",
 							"method": "GET",
 							"param": "",
@@ -2386,7 +2325,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "45",
+							"id": "43",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/pages.xml",
 							"method": "GET",
 							"param": "",
@@ -2395,16 +2334,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "103",
-							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/reseaux.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "no-cache",
-							"otherinfo": ""
-						},
-						{
-							"id": "76",
+							"id": "97",
 							"uri": "https://www.jeveuxaider.gouv.fr/__sitemap__/villes.xml",
 							"method": "GET",
 							"param": "",
@@ -2413,7 +2343,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "111",
+							"id": "72",
 							"uri": "https://www.jeveuxaider.gouv.fr/login",
 							"method": "GET",
 							"param": "",
@@ -2422,7 +2352,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "69",
+							"id": "65",
 							"uri": "https://www.jeveuxaider.gouv.fr/password-reset",
 							"method": "GET",
 							"param": "",
@@ -2431,7 +2361,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "7",
+							"id": "3",
 							"uri": "https://www.jeveuxaider.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -2440,7 +2370,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "47",
+							"id": "34",
 							"uri": "https://www.jeveuxaider.gouv.fr/sitemap_index.xml",
 							"method": "GET",
 							"param": "",
@@ -2449,13 +2379,59 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "8",
+					"count": "9",
 					"solution": "",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "140"
+					"sourceid": "12"
+				},
+				{
+					"pluginid": "10031",
+					"alertRef": "10031",
+					"alert": "User Controllable HTML Element Attribute (Potential XSS)",
+					"name": "User Controllable HTML Element Attribute (Potential XSS)",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
+					"instances":[ 
+						{
+							"id": "215",
+							"uri": "https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
+						},
+						{
+							"id": "216",
+							"uri": "https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP",
+							"method": "GET",
+							"param": "password",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\npassword=ZAP\n\nThe user-controlled value was:\nzaproxy@example.com"
+						},
+						{
+							"id": "211",
+							"uri": "https://www.jeveuxaider.gouv.fr/password-reset?email=zaproxy%40example.com",
+							"method": "GET",
+							"param": "email",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://www.jeveuxaider.gouv.fr/password-reset?email=zaproxy%40example.com\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nemail=zaproxy@example.com\n\nThe user-controlled value was:\nzaproxy@example.com"
+						}
+					],
+					"count": "3",
+					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
+					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://www.jeveuxaider.gouv.fr/login?email=zaproxy%40example.com&password=ZAP</p><p></p><p>appears to include user input in:</p><p>a(n) [input] tag [value] attribute</p><p></p><p>The user input found was:</p><p>email=zaproxy@example.com</p><p></p><p>The user-controlled value was:</p><p>zaproxy@example.com</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
+					"cweid": "20",
+					"wascid": "20",
+					"sourceid": "18397"
 				}
 			]
 		}
