@@ -1,27 +1,26 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "C",
+    "grade": "B",
     "error": null,
-    "score": 55,
+    "score": 70,
     "statusCode": 200,
     "testsFailed": 2,
     "testsPassed": 8,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 11 May 2025 06:07:16 GMT",
-      "content-type": "text/html;charset=UTF-8",
+      "date": "Sun, 18 May 2025 06:15:08 GMT",
+      "content-type": "text/html; charset=utf-8",
       "transfer-encoding": "chunked",
       "connection": "close",
-      "referrer-policy": "strict-origin",
+      "x-request-id": "572fa285-4a5b-4c3d-8a7e-1670a3a40aa1",
+      "x-frame-options": "DENY",
+      "vary": "Accept-Language, Cookie",
+      "content-language": "fr",
       "x-content-type-options": "nosniff",
-      "permissions-policy": "accelerometer=(), autoplay=(), camera=*, geolocation=(), gyroscope=(), magnetometer=(), microphone=*, midi=(), payment=(), usb=()",
-      "feature-policy": "accelerometer 'none'; autoplay 'none'; camera *; geolocation 'none'; gyroscope 'none'; magnetometer 'none'; microphone *; midi 'none'; payment 'none'; usb 'none';",
-      "x-xss-protection": "1",
-      "cache-control": "no-cache, no-store, must-revalidate",
-      "pragma": "no-cache",
-      "expires": "0",
-      "strict-transport-security": "max-age=31536000; includeSubdomains; preload"
+      "referrer-policy": "same-origin",
+      "cross-origin-opener-policy": "same-origin",
+      "strict-transport-security": "max-age=31536000"
     }
   },
   "tests": {
@@ -39,17 +38,9 @@
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
       "pass": true,
-      "result": "cookies-secure-with-httponly-sessions",
+      "result": "cookies-not-found",
       "scoreModifier": 0,
-      "data": {
-        "JSESSIONID": {
-          "domain": "osmose.numerique.gouv.fr",
-          "httponly": true,
-          "path": "/",
-          "port": null,
-          "secure": true
-        }
-      },
+      "data": null,
       "sameSite": false
     },
     "cross-origin-resource-sharing": {
@@ -61,15 +52,14 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": true,
-      "result": "redirection-to-https",
-      "scoreModifier": 0,
-      "destination": "https://osmose.numerique.gouv.fr/front/privateLogin.jsp?redirect=https%3A%2F%2Fosmose.numerique.gouv.fr%2Fjcms%2F",
+      "pass": false,
+      "result": "redirection-off-host-from-http",
+      "scoreModifier": -5,
+      "destination": "https://reversibilite-osmose.numerique.gouv.fr/",
       "redirects": true,
       "route": [
         "http://osmose.numerique.gouv.fr/",
-        "https://osmose.numerique.gouv.fr/",
-        "https://osmose.numerique.gouv.fr/front/privateLogin.jsp?redirect=https%3A%2F%2Fosmose.numerique.gouv.fr%2Fjcms%2F"
+        "https://reversibilite-osmose.numerique.gouv.fr/"
       ],
       "statusCode": 200
     },
@@ -78,7 +68,7 @@
       "pass": true,
       "result": "referrer-policy-private",
       "scoreModifier": 5,
-      "data": "strict-origin",
+      "data": "same-origin",
       "http": true,
       "meta": false
     },
@@ -87,17 +77,17 @@
       "pass": true,
       "result": "hsts-implemented-max-age-at-least-six-months",
       "scoreModifier": 0,
-      "data": "max-age=31536000; includeSubdomains; preload",
-      "includeSubDomains": true,
+      "data": "max-age=31536000",
+      "includeSubDomains": false,
       "maxAge": 31536000,
-      "preload": true,
+      "preload": false,
       "preloaded": false
     },
     "subresource-integrity": {
       "expectation": "sri-implemented-and-external-scripts-loaded-securely",
       "pass": true,
-      "result": "sri-not-implemented-but-all-scripts-loaded-from-secure-origin",
-      "scoreModifier": 0,
+      "result": "sri-implemented-and-all-scripts-loaded-securely",
+      "scoreModifier": 5,
       "data": {}
     },
     "x-content-type-options": {
@@ -109,10 +99,10 @@
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
-      "pass": false,
-      "result": "x-frame-options-not-implemented",
-      "scoreModifier": -20,
-      "data": null
+      "pass": true,
+      "result": "x-frame-options-sameorigin-or-deny",
+      "scoreModifier": 0,
+      "data": "DENY"
     },
     "cross-origin-resource-policy": {
       "expectation": "corp-implemented-with-same-site",
