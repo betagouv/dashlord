@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 1 Jun 2025 09:21:10",
+	"@generated": "Sun, 8 Jun 2025 09:13:15",
 	"site":[ 
 		{
 			"@name": "https://mobiville.pole-emploi.fr",
@@ -9,6 +9,34 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10038",
+					"alertRef": "10038-1",
+					"alert": "Content Security Policy (CSP) Header Not Set",
+					"name": "Content Security Policy (CSP) Header Not Set",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"id": "0",
+							"uri": "https://mobiville.pole-emploi.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
 				{
 					"pluginid": "90003",
 					"alertRef": "90003",
@@ -20,7 +48,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "33",
+							"id": "18",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "",
@@ -29,7 +57,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "32",
+							"id": "17",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "",
@@ -38,7 +66,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "35",
+							"id": "20",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "",
@@ -47,7 +75,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "34",
+							"id": "19",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "",
@@ -56,7 +84,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "38",
+							"id": "23",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "",
@@ -65,7 +93,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "37",
+							"id": "22",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "",
@@ -74,7 +102,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
+							"id": "21",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "",
@@ -92,6 +120,34 @@
 					"sourceid": "1"
 				},
 				{
+					"pluginid": "10010",
+					"alertRef": "10010",
+					"alert": "Cookie No HttpOnly Flag",
+					"name": "Cookie No HttpOnly Flag",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>A cookie has been set without the HttpOnly flag, which means that the cookie can be accessed by JavaScript. If a malicious script can be run on this page then the cookie will be accessible and can be transmitted to another site. If this is a session cookie then session hijacking may be possible.</p>",
+					"instances":[ 
+						{
+							"id": "1",
+							"uri": "https://mobiville.pole-emploi.fr",
+							"method": "GET",
+							"param": "TS016fc3b0",
+							"attack": "",
+							"evidence": "Set-Cookie: TS016fc3b0",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that the HttpOnly flag is set for all cookies.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://owasp.org/www-community/HttpOnly</p>",
+					"cweid": "1004",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
 					"pluginid": "10011",
 					"alertRef": "10011",
 					"alert": "Cookie Without Secure Flag",
@@ -102,7 +158,7 @@
 					"desc": "<p>A cookie has been set without the secure flag, which means that the cookie can be accessed via unencrypted connections.</p>",
 					"instances":[ 
 						{
-							"id": "13",
+							"id": "5",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "TS016fc3b0",
@@ -130,7 +186,7 @@
 					"desc": "<p>A cookie has been set without the SameSite attribute, which means that the cookie can be sent as a result of a 'cross-site' request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>",
 					"instances":[ 
 						{
-							"id": "6",
+							"id": "3",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "BIGipServerPOOL_Z2_PROD_MOP_HTTP",
@@ -139,7 +195,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "5",
+							"id": "2",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "Path",
@@ -148,7 +204,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "4",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "TS016fc3b0",
@@ -176,7 +232,7 @@
 					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
 					"instances":[ 
 						{
-							"id": "21",
+							"id": "8",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "https://cdn.francetravail.fr/webco/v1/ft-autoloader.js",
@@ -185,7 +241,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "20",
+							"id": "7",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "https://cdn.francetravail.fr/webco/v1/pe-breadcrumb.js",
@@ -194,7 +250,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "17",
+							"id": "6",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "https://cdn.francetravail.fr/webco/v1/pe-subnav.js",
@@ -222,7 +278,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "29",
+							"id": "14",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -231,7 +287,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "30",
+							"id": "15",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -240,7 +296,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "31",
+							"id": "16",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -268,7 +324,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "28",
+							"id": "13",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "",
@@ -296,7 +352,7 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "25",
+							"id": "10",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "Set-Cookie",
@@ -324,7 +380,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "39",
+							"id": "24",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "",
@@ -352,12 +408,12 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "24",
+							"id": "9",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"text/javascript\" src=\"./ruxitagentjs_ICA7NVfqrux_10313250422105919.js\" data-dtconfig=\"rid=RID_869538604|rpid=-1139073021|domain=francetravail.fr|reportUrl=https://bf95196pdg.bf.dynatrace.com/bf|app=ea7c4b59f27d43eb|coo=1|cors=1|featureHash=ICA7NVfqrux|srsr=10000|rdnt=1|uxrgce=1|cuc=feikm4qw|mel=100000|expw=1|dpvc=1|lastModification=1748362065746|tp=500,50,0|agentUri=./ruxitagentjs_ICA7NVfqrux_10313250422105919.js\"></script>",
+							"evidence": "<script type=\"text/javascript\" src=\"./ruxitagentjs_ICA7NVfqrux_10313250422105919.js\" data-dtconfig=\"rid=RID_869538604|rpid=-619910896|domain=francetravail.fr|reportUrl=https://bf95196pdg.bf.dynatrace.com/bf|app=ea7c4b59f27d43eb|coo=1|cors=1|owasp=1|featureHash=ICA7NVfqrux|srsr=10000|rdnt=1|uxrgce=1|cuc=feikm4qw|mel=100000|expw=1|dpvc=1|lastModification=1749007234285|tp=500,50,0|agentUri=./ruxitagentjs_ICA7NVfqrux_10313250422105919.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
@@ -380,7 +436,7 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"id": "27",
+							"id": "12",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "",
@@ -408,7 +464,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "22",
+							"id": "27",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -417,7 +473,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "34",
 							"uri": "https://mobiville.pole-emploi.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -426,7 +482,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "18",
+							"id": "40",
 							"uri": "https://mobiville.pole-emploi.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -441,7 +497,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -454,7 +510,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "11",
+							"id": "26",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -463,7 +519,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "12",
+							"id": "32",
 							"uri": "https://mobiville.pole-emploi.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -472,7 +528,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "37",
 							"uri": "https://mobiville.pole-emploi.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -487,7 +543,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -500,7 +556,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "9",
+							"id": "25",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -509,7 +565,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "30",
 							"uri": "https://mobiville.pole-emploi.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -518,7 +574,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "7",
+							"id": "36",
 							"uri": "https://mobiville.pole-emploi.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -533,7 +589,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -546,7 +602,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "23",
+							"id": "28",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -555,7 +611,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "16",
+							"id": "39",
 							"uri": "https://mobiville.pole-emploi.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -564,7 +620,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "19",
+							"id": "43",
 							"uri": "https://mobiville.pole-emploi.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -579,7 +635,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10112",
@@ -592,12 +648,12 @@
 					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
 					"instances":[ 
 						{
-							"id": "26",
+							"id": "11",
 							"uri": "https://mobiville.pole-emploi.fr",
 							"method": "GET",
 							"param": "TS016fc3b0",
 							"attack": "",
-							"evidence": "0150c672c326c0fdad6f83d6bf6a838c354f05ce998284b5d05c7640b7cf39187e5a4ea0fac603705543e042773ba569bb92d1eb79",
+							"evidence": "0150c672c374b0f1745694624fde7ba6a09672243521d2360b1d5d128fbde8972747717e6402af6dc28c6b0e7ad0d2435082c82d6d",
 							"otherinfo": "\ncookie:TS016fc3b0\ncookie:BIGipServerPOOL_Z2_PROD_MOP_HTTP"
 						}
 					],
@@ -620,8 +676,26 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "31",
+							"uri": "https://mobiville.pole-emploi.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"id": "29",
 							"uri": "https://mobiville.pole-emploi.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"id": "33",
+							"uri": "https://mobiville.pole-emploi.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -629,13 +703,13 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "1",
+					"count": "3",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "8"
+					"sourceid": "6"
 				}
 			]
 		}
