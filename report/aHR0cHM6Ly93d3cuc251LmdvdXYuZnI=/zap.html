@@ -212,7 +212,7 @@ td {
 	</h2>
 
 	<h3>
-		Generated on Sun, 22 Jun 2025 06:51:59
+		Generated on Sun, 29 Jun 2025 06:52:03
 	</h3>
 
 	<h3>
@@ -245,7 +245,7 @@ td {
 					<div>Medium</div>
 				</td>
 				<td align="center">
-					<div>3</div>
+					<div>4</div>
 				</td>
 			</tr>
 			<tr>
@@ -261,7 +261,7 @@ td {
 					<div>Informational</div>
 				</td>
 				<td align="center">
-					<div>15</div>
+					<div>16</div>
 				</td>
 			</tr>
 			<tr>
@@ -294,6 +294,11 @@ td {
 					align="center">Risk Level</th>
 				<th width="20%"
 					align="center">Number of Instances</th>
+			</tr>
+			<tr>
+				<td><a href="#10202">Absence of Anti-CSRF Tokens</a></td>
+				<td align="center" class="risk-2">Medium</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10038">Content Security Policy (CSP) Header Not Set</a></td>
@@ -343,7 +348,7 @@ td {
 			<tr>
 				<td><a href="#10096">Timestamp Disclosure - Unix</a></td>
 				<td align="center" class="risk-1">Low</td>
-				<td align="center">4</td>
+				<td align="center">5</td>
 			</tr>
 			<tr>
 				<td><a href="#10021">X-Content-Type-Options Header Missing</a></td>
@@ -418,12 +423,17 @@ td {
 			<tr>
 				<td><a href="#10049">Storable and Cacheable Content</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">4</td>
+				<td align="center">3</td>
 			</tr>
 			<tr>
 				<td><a href="#10049">Storable but Non-Cacheable Content</a></td>
 				<td align="center" class="risk-0">Informational</td>
-				<td align="center">7</td>
+				<td align="center">8</td>
+			</tr>
+			<tr>
+				<td><a href="#10031">User Controllable HTML Element Attribute (Potential XSS)</a></td>
+				<td align="center" class="risk-0">Informational</td>
+				<td align="center">25</td>
 			</tr>
 		</table>
 		<div class="spacer-lg"></div>
@@ -431,6 +441,215 @@ td {
 
 	
 		<h3>Alert Detail</h3>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-2"><a
+						id="10202"></a>
+						<div>Medium</div></th>
+					<th class="risk-2">Absence of Anti-CSRF Tokens</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>No Anti-CSRF tokens were found in a HTML submission form.</div>
+							<br />
+						
+							<div>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</div>
+							<br />
+						
+							<div>CSRF attacks are effective in a number of situations, including:</div>
+							<br />
+						
+							<div>    * The victim has an active session on the target site.</div>
+							<br />
+						
+							<div>    * The victim is authenticated via HTTP auth on the target site.</div>
+							<br />
+						
+							<div>    * The victim is on the same local network as the target site.</div>
+							<br />
+						
+							<div>CSRF has primarily been used to perform an action against a target site using the victim&#39;s privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr">https://www.snu.gouv.fr</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;form action=&quot;/#wpcf7-f3676-p16-o1&quot; method=&quot;post&quot; class=&quot;wpcf7-form init&quot; aria-label=&quot;Formulaire de contact&quot; novalidate=&quot;novalidate&quot; data-status=&quot;init&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 1: &quot;_wpcf7&quot; &quot;_wpcf7_container_post&quot; &quot;_wpcf7_locale&quot; &quot;_wpcf7_posted_data_hash&quot; &quot;_wpcf7_unit_tag&quot; &quot;_wpcf7_version&quot; &quot;date-naissance&quot; &quot;email-volontaire&quot; &quot;utm_campaign&quot; &quot;utm_content&quot; &quot;utm_medium&quot; &quot;utm_source&quot; &quot;utm_term&quot; ].</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;form action=&quot;/#wpcf7-f3676-p16-o1&quot; method=&quot;post&quot; class=&quot;wpcf7-form init&quot; aria-label=&quot;Formulaire de contact&quot; novalidate=&quot;novalidate&quot; data-status=&quot;init&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 1: &quot;_wpcf7&quot; &quot;_wpcf7_container_post&quot; &quot;_wpcf7_locale&quot; &quot;_wpcf7_posted_data_hash&quot; &quot;_wpcf7_unit_tag&quot; &quot;_wpcf7_version&quot; &quot;date-naissance&quot; &quot;email-volontaire&quot; &quot;utm_campaign&quot; &quot;utm_content&quot; &quot;utm_medium&quot; &quot;utm_source&quot; &quot;utm_term&quot; ].</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;form action=&quot;/#wpcf7-f3676-p16-o1&quot; method=&quot;post&quot; class=&quot;wpcf7-form invalid&quot; aria-label=&quot;Formulaire de contact&quot; novalidate=&quot;novalidate&quot; data-status=&quot;invalid&quot;&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 1: &quot;_wpcf7&quot; &quot;_wpcf7_container_post&quot; &quot;_wpcf7_locale&quot; &quot;_wpcf7_posted_data_hash&quot; &quot;_wpcf7_unit_tag&quot; &quot;_wpcf7_version&quot; &quot;date-naissance&quot; &quot;email-volontaire&quot; &quot;utm_campaign&quot; &quot;utm_content&quot; &quot;utm_medium&quot; &quot;utm_source&quot; &quot;utm_term&quot; ].</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">3</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Phase: Architecture and Design</div>
+							<br />
+						
+							<div>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</div>
+							<br />
+						
+							<div>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</div>
+							<br />
+						
+							<div>Phase: Implementation</div>
+							<br />
+						
+							<div>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</div>
+							<br />
+						
+							<div>Phase: Architecture and Design</div>
+							<br />
+						
+							<div>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</div>
+							<br />
+						
+							<div>Note that this can be bypassed using XSS.</div>
+							<br />
+						
+							<div>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</div>
+							<br />
+						
+							<div>Note that this can be bypassed using XSS.</div>
+							<br />
+						
+							<div>Use the ESAPI Session Management control.</div>
+							<br />
+						
+							<div>This control includes a component for CSRF.</div>
+							<br />
+						
+							<div>Do not use the GET method for any request that triggers a state change.</div>
+							<br />
+						
+							<div>Phase: Implementation</div>
+							<br />
+						
+							<div>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</a>
+							<br />
+						
+							<a href="https://cwe.mitre.org/data/definitions/352.html">https://cwe.mitre.org/data/definitions/352.html</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/352.html">352</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">9</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10202/">10202</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
 		
 			<table class="results">
 				<tr height="24">
@@ -577,7 +796,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/category/sejour/">https://www.snu.gouv.fr/category/sejour/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/category/actualites/">https://www.snu.gouv.fr/category/actualites/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -989,7 +1208,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/category/sejour/">https://www.snu.gouv.fr/category/sejour/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/category/actualites/">https://www.snu.gouv.fr/category/actualites/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1324,68 +1543,6 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">&lt;script defer data-domain=&quot;snu.gouv.fr&quot; src=&quot;https://plausible.io/js/script.js&quot;&gt;&lt;/script&gt;</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">&lt;script type=&quot;text/javascript&quot; src=&quot;https://tarteaucitron.io/load.js?domain=www.snu.gouv.fr&amp;uuid=116fc2aaf9a8e635ee3bd10f2d6999d8b768651a&quot;&gt;&lt;/script&gt;</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.snu.gouv.fr/blog/">https://www.snu.gouv.fr/blog/</a></td>
 					</tr>
 					<tr>
@@ -1480,6 +1637,68 @@ td {
 						<td width="20%"
 							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;script type=&quot;text/javascript&quot; src=&quot;https://tarteaucitron.io/load.js?domain=www.snu.gouv.fr&amp;uuid=116fc2aaf9a8e635ee3bd10f2d6999d8b768651a&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/phase-2-mission-interet-general/">https://www.snu.gouv.fr/phase-2-mission-interet-general/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">&lt;script defer data-domain=&quot;snu.gouv.fr&quot; src=&quot;https://plausible.io/js/script.js&quot;&gt;&lt;/script&gt;</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/phase-2-mission-interet-general/">https://www.snu.gouv.fr/phase-2-mission-interet-general/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1625,7 +1844,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/blog/">https://www.snu.gouv.fr/blog/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu">https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1656,7 +1875,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/blog/">https://www.snu.gouv.fr/blog/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu">https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1687,7 +1906,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/blog/">https://www.snu.gouv.fr/blog/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu">https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1718,7 +1937,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/blog/">https://www.snu.gouv.fr/blog/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu">https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1749,7 +1968,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/blog/">https://www.snu.gouv.fr/blog/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu">https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1966,7 +2185,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-json/">https://www.snu.gouv.fr/wp-json/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/">https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -1997,7 +2216,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-json/">https://www.snu.gouv.fr/wp-json/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/">https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2028,7 +2247,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-json/">https://www.snu.gouv.fr/wp-json/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/">https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2059,7 +2278,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-json/">https://www.snu.gouv.fr/wp-json/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/">https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2090,7 +2309,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-json/">https://www.snu.gouv.fr/wp-json/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/">https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2680,7 +2899,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2711,69 +2930,7 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/robots.txt">https://www.snu.gouv.fr/robots.txt</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">Cross-Origin-Resource-Policy</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/uploads/2024/06/2024_Lycees_engages_flyer_web-vdef2.pdf">https://www.snu.gouv.fr/wp-content/uploads/2024/06/2024_Lycees_engages_flyer_web-vdef2.pdf</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">Cross-Origin-Resource-Policy</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/uploads/2024/09/Plateforme-SNU-Eleve-CLE2024-2025.pdf">https://www.snu.gouv.fr/wp-content/uploads/2024/09/Plateforme-SNU-Eleve-CLE2024-2025.pdf</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/temoignages/">https://www.snu.gouv.fr/temoignages/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2835,7 +2992,38 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cross-Origin-Embedder-Policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/temoignages/">https://www.snu.gouv.fr/temoignages/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -2897,7 +3085,38 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">Cross-Origin-Opener-Policy</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/temoignages/">https://www.snu.gouv.fr/temoignages/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -3489,6 +3708,68 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/category/temoignages/">https://www.snu.gouv.fr/category/temoignages/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/le-temoignage-des-volontaires-des-parents-et-des-encadrants/">https://www.snu.gouv.fr/le-temoignage-des-volontaires-des-parents-et-des-encadrants/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/">https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/</a></td>
 					</tr>
 					<tr>
@@ -3672,68 +3953,6 @@ td {
 						<td width="80%"></td>
 					</tr>
 				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/uploads/2024/09/Plateforme-SNU-Eleve-CLE2024-2025.pdf">https://www.snu.gouv.fr/wp-content/uploads/2024/09/Plateforme-SNU-Eleve-CLE2024-2025.pdf</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-json/">https://www.snu.gouv.fr/wp-json/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
 				<tr>
 					<td width="20%">Instances</td>
 					<td width="80%">11</td>
@@ -3884,12 +4103,12 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">1749024627</td>
+						<td width="80%">1750668831</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">1749024627, which evaluates to: 2025-06-04 08:10:27.</td>
+						<td width="80%">1750668831, which evaluates to: 2025-06-23 08:53:51.</td>
 					</tr>
 				
 					<tr>
@@ -3915,17 +4134,48 @@ td {
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">1750539318</td>
+						<td width="80%">1750668904</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">1750539318, which evaluates to: 2025-06-21 20:55:18.</td>
+						<td width="80%">1750668904, which evaluates to: 2025-06-23 08:55:04.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr">https://www.snu.gouv.fr</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">1751157679</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">1751157679, which evaluates to: 2025-06-29 00:41:19.</td>
 					</tr>
 				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">4</td>
+					<td width="80%">5</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -4107,6 +4357,38 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/le-temoignage-des-volontaires-des-parents-et-des-encadrants/">https://www.snu.gouv.fr/le-temoignage-des-volontaires-des-parents-et-des-encadrants/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">x-content-type-options</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/">https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/</a></td>
 					</tr>
 					<tr>
@@ -4268,38 +4550,6 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 						<td width="20%"
 							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/uploads/2024/06/2024_Lycees_engages_flyer_web-vdef2.pdf">https://www.snu.gouv.fr/wp-content/uploads/2024/06/2024_Lycees_engages_flyer_web-vdef2.pdf</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">x-content-type-options</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
-At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/uploads/2024/09/Plateforme-SNU-Eleve-CLE2024-2025.pdf">https://www.snu.gouv.fr/wp-content/uploads/2024/09/Plateforme-SNU-Eleve-CLE2024-2025.pdf</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -4596,12 +4846,12 @@ At &quot;High&quot; threshold this scan rule will not alert on client or server 
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">2Fmode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general</td>
+						<td width="80%">PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgNTAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDUwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBkPSJNMjIuNiw4YzAtMC4xLDAtMC4yLDAuMS0wLjJsMC41LTAuNWMwLjEtMC4xLDAuMS0wLjEsMC4yLTAuMWMwLjEsMCwwLjIsMCwwLjIsMC4xbDMuNywzLjdsMy43LTMuN2MwLjEtMC4xLDAuMS0wLjEsMC4yLTAuMXMwLjIsMCwwLjIsMC4xTDMyLDcuOEMzMiw3LjksMzIuMSw4LDMyLjEsOGMwLDAuMSwwLDAuMi0wLjEsMC4ybC00LjQsNC40Yy0wLjEsMC4xLTAuMSwwLjEtMC4yLDAuMXMtMC4yLDAtMC4yLTAuMWwtNC40LTQuNEMyMi43LDguMiwyMi42LDguMSwyMi42LDh6Ii8+PC9zdmc+</td>
 					</tr>
 					<tr>
 						<td width="20%"
 							class="indent2">Other Info</td>
-						<td width="80%">�Y�u�zje�/������&gt;��)�{nW��׾���r۫{�(�g���k��,z��zϦ��&quot;�{&gt;v)�z����z��</td>
+						<td width="80%">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;svg version=&quot;1.1&quot; id=&quot;Layer_1&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; x=&quot;0px&quot; y=&quot;0px&quot; width=&quot;50px&quot; height=&quot;20px&quot; viewBox=&quot;0 0 50 20&quot; enable-background=&quot;new 0 0 50 20&quot; xml:space=&quot;preserve&quot;&gt;&lt;path d=&quot;M22.6,8c0-0.1,0-0.2,0.1-0.2l0.5-0.5c0.1-0.1,0.1-0.1,0.2-0.1c0.1,0,0.2,0,0.2,0.1l3.7,3.7l3.7-3.7c0.1-0.1,0.1-0.1,0.2-0.1s0.2,0,0.2,0.1L32,7.8C32,7.9,32.1,8,32.1,8c0,0.1,0,0.2-0.1,0.2l-4.4,4.4c-0.1,0.1-0.1,0.1-0.2,0.1s-0.2,0-0.2-0.1l-4.4-4.4C22.7,8.2,22.6,8.1,22.6,8z&quot;/&gt;&lt;/svg&gt;</td>
 					</tr>
 				
 					<tr>
@@ -5244,7 +5494,7 @@ This was identified at:
 https://www.snu.gouv.fr/?p=147
 
 User-input was found in the following cookie:
-handl_url=https://www.snu.gouv.fr/?p=147; expires=Tue, 22-Jul-2025 06:51:04 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+handl_url=https://www.snu.gouv.fr/?p=147; expires=Tue, 29-Jul-2025 06:51:13 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
 
 The user input was:
 p=147</td>
@@ -5285,7 +5535,7 @@ This was identified at:
 https://www.snu.gouv.fr/?p=152
 
 User-input was found in the following cookie:
-handl_url=https://www.snu.gouv.fr/?p=152; expires=Tue, 22-Jul-2025 06:51:06 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+handl_url=https://www.snu.gouv.fr/?p=152; expires=Tue, 29-Jul-2025 06:51:16 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
 
 The user input was:
 p=152</td>
@@ -5326,7 +5576,7 @@ This was identified at:
 https://www.snu.gouv.fr/?p=161
 
 User-input was found in the following cookie:
-handl_url=https://www.snu.gouv.fr/?p=161; expires=Tue, 22-Jul-2025 06:51:00 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+handl_url=https://www.snu.gouv.fr/?p=161; expires=Tue, 29-Jul-2025 06:51:13 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
 
 The user input was:
 p=161</td>
@@ -5367,51 +5617,10 @@ This was identified at:
 https://www.snu.gouv.fr/?p=169
 
 User-input was found in the following cookie:
-handl_url=https://www.snu.gouv.fr/?p=169; expires=Tue, 22-Jul-2025 06:51:01 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+handl_url=https://www.snu.gouv.fr/?p=169; expires=Tue, 29-Jul-2025 06:51:13 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
 
 The user input was:
 p=169</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/?p=2852">https://www.snu.gouv.fr/?p=2852</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">p</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">An attacker may be able to poison cookie values through URL parameters. Try injecting a semicolon to see if you can add cookie values (e.g. name=controlledValue;name=anotherValue;).
-
-This was identified at:
-
-https://www.snu.gouv.fr/?p=2852
-
-User-input was found in the following cookie:
-handl_url=https://www.snu.gouv.fr/?p=2852; expires=Tue, 22-Jul-2025 06:51:08 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
-
-The user input was:
-p=2852</td>
 					</tr>
 				
 					<tr>
@@ -5449,7 +5658,7 @@ This was identified at:
 https://www.snu.gouv.fr/wp-json/oembed/1.0/embed?format=xml&amp;url=https%3A%2F%2Fwww.snu.gouv.fr%2Fblog%2F
 
 User-input was found in the following cookie:
-handl_ref=https://www.snu.gouv.fr/blog/; expires=Tue, 22-Jul-2025 06:51:04 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+handl_ref=https://www.snu.gouv.fr/blog/; expires=Tue, 29-Jul-2025 06:51:14 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
 
 The user input was:
 url=https://www.snu.gouv.fr/blog/</td>
@@ -5490,7 +5699,7 @@ This was identified at:
 https://www.snu.gouv.fr/wp-json/oembed/1.0/embed?format=xml&amp;url=https%3A%2F%2Fwww.snu.gouv.fr%2Fphase-1-sejour-cohesion%2F
 
 User-input was found in the following cookie:
-handl_ref=https://www.snu.gouv.fr/phase-1-sejour-cohesion/; expires=Tue, 22-Jul-2025 06:51:05 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+handl_ref=https://www.snu.gouv.fr/phase-1-sejour-cohesion/; expires=Tue, 29-Jul-2025 06:51:13 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
 
 The user input was:
 url=https://www.snu.gouv.fr/phase-1-sejour-cohesion/</td>
@@ -5531,7 +5740,7 @@ This was identified at:
 https://www.snu.gouv.fr/wp-json/oembed/1.0/embed?format=xml&amp;url=https%3A%2F%2Fwww.snu.gouv.fr%2Fphase-2-mission-interet-general%2F
 
 User-input was found in the following cookie:
-handl_ref=https://www.snu.gouv.fr/phase-2-mission-interet-general/; expires=Tue, 22-Jul-2025 06:51:08 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+handl_ref=https://www.snu.gouv.fr/phase-2-mission-interet-general/; expires=Tue, 29-Jul-2025 06:51:16 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
 
 The user input was:
 url=https://www.snu.gouv.fr/phase-2-mission-interet-general/</td>
@@ -5572,7 +5781,7 @@ This was identified at:
 https://www.snu.gouv.fr/wp-json/oembed/1.0/embed?format=xml&amp;url=https%3A%2F%2Fwww.snu.gouv.fr%2Ftemoignages%2F
 
 User-input was found in the following cookie:
-handl_ref=https://www.snu.gouv.fr/temoignages/; expires=Tue, 22-Jul-2025 06:51:04 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+handl_ref=https://www.snu.gouv.fr/temoignages/; expires=Tue, 29-Jul-2025 06:51:13 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
 
 The user input was:
 url=https://www.snu.gouv.fr/temoignages/</td>
@@ -5613,7 +5822,7 @@ This was identified at:
 https://www.snu.gouv.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.snu.gouv.fr%2Fblog%2F
 
 User-input was found in the following cookie:
-handl_ref=https://www.snu.gouv.fr/blog/; expires=Tue, 22-Jul-2025 06:51:04 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+handl_ref=https://www.snu.gouv.fr/blog/; expires=Tue, 29-Jul-2025 06:51:14 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
 
 The user input was:
 url=https://www.snu.gouv.fr/blog/</td>
@@ -5654,10 +5863,51 @@ This was identified at:
 https://www.snu.gouv.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.snu.gouv.fr%2Fphase-1-sejour-cohesion%2F
 
 User-input was found in the following cookie:
-handl_ref=https://www.snu.gouv.fr/phase-1-sejour-cohesion/; expires=Tue, 22-Jul-2025 06:51:04 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+handl_ref=https://www.snu.gouv.fr/phase-1-sejour-cohesion/; expires=Tue, 29-Jul-2025 06:51:13 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
 
 The user input was:
 url=https://www.snu.gouv.fr/phase-1-sejour-cohesion/</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.snu.gouv.fr%2Fphase-2-mission-interet-general%2F">https://www.snu.gouv.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.snu.gouv.fr%2Fphase-2-mission-interet-general%2F</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">url</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">An attacker may be able to poison cookie values through URL parameters. Try injecting a semicolon to see if you can add cookie values (e.g. name=controlledValue;name=anotherValue;).
+
+This was identified at:
+
+https://www.snu.gouv.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.snu.gouv.fr%2Fphase-2-mission-interet-general%2F
+
+User-input was found in the following cookie:
+handl_ref=https://www.snu.gouv.fr/phase-2-mission-interet-general/; expires=Tue, 29-Jul-2025 06:51:16 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+
+The user input was:
+url=https://www.snu.gouv.fr/phase-2-mission-interet-general/</td>
 					</tr>
 				
 					<tr>
@@ -5695,7 +5945,7 @@ This was identified at:
 https://www.snu.gouv.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.snu.gouv.fr%2Ftemoignages%2F
 
 User-input was found in the following cookie:
-handl_ref=https://www.snu.gouv.fr/temoignages/; expires=Tue, 22-Jul-2025 06:51:04 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
+handl_ref=https://www.snu.gouv.fr/temoignages/; expires=Tue, 29-Jul-2025 06:51:13 GMT; Max-Age=2592000; path=/; domain=.snu.gouv.fr; secure; SameSite=Lax
 
 The user input was:
 url=https://www.snu.gouv.fr/temoignages/</td>
@@ -5853,68 +6103,6 @@ url=https://www.snu.gouv.fr/temoignages/</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/category/temoignages/">https://www.snu.gouv.fr/category/temoignages/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">query</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bQUERY\b and was detected in likely comment: &quot;//schema.org&quot;,&quot;@graph&quot;:[{&quot;@type&quot;:&quot;CollectionPage&quot;,&quot;@id&quot;:&quot;https://www.snu.gouv.fr/category/temoignages/&quot;,&quot;url&quot;:&quot;https://www.snu.g&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/">https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">query</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bQUERY\b and was detected in likely comment: &quot;//schema.org&quot;,&quot;@graph&quot;:[{&quot;@type&quot;:&quot;WebPage&quot;,&quot;@id&quot;:&quot;https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-commen&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
 					</tr>
 					<tr>
@@ -5941,37 +6129,6 @@ url=https://www.snu.gouv.fr/temoignages/</td>
 						<td width="20%"
 							class="indent2">Other Info</td>
 						<td width="80%">The following pattern was used: \bQUERY\b and was detected in likely comment: &quot;//schema.org&quot;,&quot;@graph&quot;:[{&quot;@type&quot;:&quot;WebPage&quot;,&quot;@id&quot;:&quot;https://www.snu.gouv.fr/phase-1-sejour-cohesion/&quot;,&quot;url&quot;:&quot;https://www.snu.gouv.&quot;, see evidence field for the suspicious comment/snippet.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/phase-2-mission-interet-general/">https://www.snu.gouv.fr/phase-2-mission-interet-general/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">query</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The following pattern was used: \bQUERY\b and was detected in likely comment: &quot;//schema.org&quot;,&quot;@graph&quot;:[{&quot;@type&quot;:&quot;WebPage&quot;,&quot;@id&quot;:&quot;https://www.snu.gouv.fr/phase-2-mission-interet-general/&quot;,&quot;url&quot;:&quot;https://www.s&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
 					<tr>
@@ -6067,6 +6224,99 @@ url=https://www.snu.gouv.fr/temoignages/</td>
 						<td width="80%">The following pattern was used: \bDEBUG\b and was detected in likely comment: &quot;&lt;!-- This website is like a Rocket, isn&#39;t it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cach&quot;, see evidence field for the suspicious comment/snippet.</td>
 					</tr>
 				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/blog/">https://www.snu.gouv.fr/blog/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">Debug</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bDEBUG\b and was detected in likely comment: &quot;&lt;!-- This website is like a Rocket, isn&#39;t it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cach&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">Debug</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bDEBUG\b and was detected in likely comment: &quot;&lt;!-- This website is like a Rocket, isn&#39;t it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cach&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/temoignages/">https://www.snu.gouv.fr/temoignages/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">Debug</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The following pattern was used: \bDEBUG\b and was detected in likely comment: &quot;&lt;!-- This website is like a Rocket, isn&#39;t it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cach&quot;, see evidence field for the suspicious comment/snippet.</td>
+					</tr>
+				
 				<tr>
 					<td width="20%">Instances</td>
 					<td width="80%">10</td>
@@ -6120,7 +6370,7 @@ url=https://www.snu.gouv.fr/temoignages/</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/aucun-doute-la-snu-sadresse-bien-a-tous-selon-samuel-leila-et-elisa/">https://www.snu.gouv.fr/aucun-doute-la-snu-sadresse-bien-a-tous-selon-samuel-leila-et-elisa/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/activite-physique-entraide-et-rencontre-pour-les-jeunes-du-snu-des-pyrenees-atlantiques-a-anglet/">https://www.snu.gouv.fr/activite-physique-entraide-et-rencontre-pour-les-jeunes-du-snu-des-pyrenees-atlantiques-a-anglet/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -6154,10 +6404,10 @@ utm_content=deleted
 utm_campaign=deleted
 gclid=deleted
 handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_ip=20.241.71.197%2C%20108.162.216.96
+handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Fsitemap.xml
+handl_ip=51.57.63.26%2C%20162.158.187.84
 handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Faucun-doute-la-snu-sadresse-bien-a-tous-selon-samuel-leila-et-elisa%2F
+handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Factivite-physique-entraide-et-rencontre-pour-les-jeunes-du-snu-des-pyrenees-atlantiques-a-anglet%2F
 email=deleted
 username=deleted
 </td>
@@ -6166,7 +6416,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/blog/">https://www.snu.gouv.fr/blog/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/au-lycee-vaucanson-des-mureaux-78-une-histoire-de-mig-classe-engagee/">https://www.snu.gouv.fr/au-lycee-vaucanson-des-mureaux-78-une-histoire-de-mig-classe-engagee/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -6200,10 +6450,10 @@ utm_content=deleted
 utm_campaign=deleted
 gclid=deleted
 handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_ip=20.241.71.197%2C%20172.70.131.162
+handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Fsitemap.xml
+handl_ip=51.57.63.26%2C%20162.158.90.249
 handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fblog%2F
+handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fau-lycee-vaucanson-des-mureaux-78-une-histoire-de-mig-classe-engagee%2F
 email=deleted
 username=deleted
 </td>
@@ -6212,99 +6462,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/category/sejour/">https://www.snu.gouv.fr/category/sejour/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The origin domain used for comparison was:
-www.snu.gouv.fr
-utm_source=deleted
-utm_medium=deleted
-utm_term=deleted
-utm_content=deleted
-utm_campaign=deleted
-gclid=deleted
-handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_ip=20.241.71.197%2C%20172.69.17.38
-handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fcategory%2Fsejour%2F
-email=deleted
-username=deleted
-</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/category/temoignages/">https://www.snu.gouv.fr/category/temoignages/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The origin domain used for comparison was:
-www.snu.gouv.fr
-utm_source=deleted
-utm_medium=deleted
-utm_term=deleted
-utm_content=deleted
-utm_campaign=deleted
-gclid=deleted
-handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_ip=20.241.71.197%2C%20172.69.59.18
-handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fcategory%2Ftemoignages%2F
-email=deleted
-username=deleted
-</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/le-temoignage-des-volontaires-des-parents-et-des-encadrants/">https://www.snu.gouv.fr/le-temoignage-des-volontaires-des-parents-et-des-encadrants/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu">https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -6338,10 +6496,10 @@ utm_content=deleted
 utm_campaign=deleted
 gclid=deleted
 handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_ip=20.241.71.197%2C%20172.71.254.88
+handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Fsitemap.xml
+handl_ip=51.57.63.26%2C%20172.70.211.206
 handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fle-temoignage-des-volontaires-des-parents-et-des-encadrants%2F
+handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fbase-de-connaissance%2Fa-qui-sadresse-le-snu
 email=deleted
 username=deleted
 </td>
@@ -6350,53 +6508,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/">https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The origin domain used for comparison was:
-www.snu.gouv.fr
-utm_source=deleted
-utm_medium=deleted
-utm_term=deleted
-utm_content=deleted
-utm_campaign=deleted
-gclid=deleted
-handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_ip=20.241.71.197%2C%20172.71.254.30
-handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fmode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general%2F
-email=deleted
-username=deleted
-</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/berenice-du-snu-au-terrain-une-histoire-de-depassement-et-dengagement/">https://www.snu.gouv.fr/berenice-du-snu-au-terrain-une-histoire-de-depassement-et-dengagement/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -6430,10 +6542,10 @@ utm_content=deleted
 utm_campaign=deleted
 gclid=deleted
 handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_ip=20.241.71.197%2C%20172.69.17.38
+handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Fsitemap.xml
+handl_ip=51.57.63.26%2C%20162.158.187.159
 handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fphase-1-sejour-cohesion%2F
+handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fberenice-du-snu-au-terrain-une-histoire-de-depassement-et-dengagement%2F
 email=deleted
 username=deleted
 </td>
@@ -6442,7 +6554,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/phase-2-mission-interet-general/">https://www.snu.gouv.fr/phase-2-mission-interet-general/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/category/sejour-de-cohesion/">https://www.snu.gouv.fr/category/sejour-de-cohesion/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -6476,10 +6588,102 @@ utm_content=deleted
 utm_campaign=deleted
 gclid=deleted
 handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_ip=20.241.71.197%2C%20172.71.255.9
+handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Fsitemap.xml
+handl_ip=51.57.63.26%2C%20162.158.90.109
 handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fphase-2-mission-interet-general%2F
+handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fcategory%2Fsejour-de-cohesion%2F
+email=deleted
+username=deleted
+</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/les-volontaires-du-snu-en-ardeche-decouvrent-une-mission-de-la-securite-civile/">https://www.snu.gouv.fr/les-volontaires-du-snu-en-ardeche-decouvrent-une-mission-de-la-securite-civile/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The origin domain used for comparison was:
+www.snu.gouv.fr
+utm_source=deleted
+utm_medium=deleted
+utm_term=deleted
+utm_content=deleted
+utm_campaign=deleted
+gclid=deleted
+handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr
+handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Fsitemap.xml
+handl_ip=51.57.63.26%2C%20162.158.91.14
+handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
+handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fles-volontaires-du-snu-en-ardeche-decouvrent-une-mission-de-la-securite-civile%2F
+email=deleted
+username=deleted
+</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/marwane-un-parcours-engagement-inspirant/">https://www.snu.gouv.fr/marwane-un-parcours-engagement-inspirant/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The origin domain used for comparison was:
+www.snu.gouv.fr
+utm_source=deleted
+utm_medium=deleted
+utm_term=deleted
+utm_content=deleted
+utm_campaign=deleted
+gclid=deleted
+handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr
+handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Fsitemap.xml
+handl_ip=51.57.63.26%2C%20172.70.214.110
+handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
+handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fmarwane-un-parcours-engagement-inspirant%2F
 email=deleted
 username=deleted
 </td>
@@ -6523,7 +6727,7 @@ utm_campaign=deleted
 gclid=deleted
 handl_original_ref=deleted
 handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_ip=20.241.71.197%2C%20172.69.17.15
+handl_ip=51.57.63.26%2C%20162.158.90.241
 handl_ref=deleted
 handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
 email=deleted
@@ -6569,7 +6773,7 @@ utm_campaign=deleted
 gclid=deleted
 handl_original_ref=deleted
 handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Fsitemap.xml
-handl_ip=20.241.71.197%2C%20172.71.1.193
+handl_ip=51.57.63.26%2C%20172.70.214.95
 handl_ref=deleted
 handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fsitemap.xml
 email=deleted
@@ -6580,7 +6784,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/temoignages/">https://www.snu.gouv.fr/temoignages/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/">https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -6614,10 +6818,10 @@ utm_content=deleted
 utm_campaign=deleted
 gclid=deleted
 handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_ip=20.241.71.197%2C%20172.69.7.78
+handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Fsitemap.xml
+handl_ip=51.57.63.26%2C%20162.158.90.184
 handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
-handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Ftemoignages%2F
+handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fvictoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres%2F
 email=deleted
 username=deleted
 </td>
@@ -6626,7 +6830,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-json/">https://www.snu.gouv.fr/wp-json/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/xmlrpc.php">https://www.snu.gouv.fr/xmlrpc.php</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -6659,11 +6863,57 @@ utm_term=deleted
 utm_content=deleted
 utm_campaign=deleted
 gclid=deleted
-handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_ip=20.241.71.197%2C%20172.71.254.26
-handl_ref=https%3A%2F%2Fwww.snu.gouv.fr%2Frobots.txt
-handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fwp-json%2F
+handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr
+handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Fxmlrpc.php
+handl_ip=51.57.63.26%2C%20162.158.187.69
+handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
+handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fxmlrpc.php
+email=deleted
+username=deleted
+</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/xmlrpc.php?rsd">https://www.snu.gouv.fr/xmlrpc.php?rsd</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The origin domain used for comparison was:
+www.snu.gouv.fr
+utm_source=deleted
+utm_medium=deleted
+utm_term=deleted
+utm_content=deleted
+utm_campaign=deleted
+gclid=deleted
+handl_original_ref=https%3A%2F%2Fwww.snu.gouv.fr
+handl_landing_page=https%3A%2F%2Fwww.snu.gouv.fr%2Fxmlrpc.php%3Frsd
+handl_ip=51.57.63.26%2C%20162.158.90.179
+handl_ref=https%3A%2F%2Fwww.snu.gouv.fr
+handl_url=https%3A%2F%2Fwww.snu.gouv.fr%2Fxmlrpc.php%3Frsd
 email=deleted
 username=deleted
 </td>
@@ -7183,6 +7433,37 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/aucun-doute-la-snu-sadresse-bien-a-tous-selon-samuel-leila-et-elisa/">https://www.snu.gouv.fr/aucun-doute-la-snu-sadresse-bien-a-tous-selon-samuel-leila-et-elisa/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">cache-control</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.snu.gouv.fr/blog/">https://www.snu.gouv.fr/blog/</a></td>
 					</tr>
 					<tr>
@@ -7428,37 +7709,6 @@ username=deleted
 						<td width="80%"></td>
 					</tr>
 				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-json/">https://www.snu.gouv.fr/wp-json/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">cache-control</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">max-age=0</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
 				<tr>
 					<td width="20%">Instances</td>
 					<td width="80%">11</td>
@@ -7521,7 +7771,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/handl-utm-grabber.js?ver=1749024627">https://www.snu.gouv.fr/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/handl-utm-grabber.js?ver=1749024627</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/handl-utm-grabber.js?ver=1750668831">https://www.snu.gouv.fr/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/handl-utm-grabber.js?ver=1750668831</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7541,7 +7791,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">Age: 1539254</td>
+						<td width="80%">Age: 19679</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7552,7 +7802,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/js.cookie.js?ver=1749024627">https://www.snu.gouv.fr/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/js.cookie.js?ver=1749024627</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/js.cookie.js?ver=1750668831">https://www.snu.gouv.fr/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/js.cookie.js?ver=1750668831</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7572,38 +7822,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">Age: 157</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The presence of the &#39;Age&#39; header indicates that a HTTP/1.1 compliant caching server is in use.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/themes/uncode/library/fonts/uncode-icons.woff2">https://www.snu.gouv.fr/wp-content/themes/uncode/library/fonts/uncode-icons.woff2</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">Age: 45639</td>
+						<td width="80%">Age: 19679</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7634,7 +7853,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">Age: 2135489</td>
+						<td width="80%">Age: 19680</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7645,7 +7864,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/uploads/2023/03/cropped-SNU_LOGO_RVB_VDEF-1-1-192x192.png">https://www.snu.gouv.fr/wp-content/uploads/2023/03/cropped-SNU_LOGO_RVB_VDEF-1-1-192x192.png</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/themes/uncode/library/js/init.min.js">https://www.snu.gouv.fr/wp-content/themes/uncode/library/js/init.min.js</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7665,7 +7884,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">Age: 45639</td>
+						<td width="80%">Age: 19680</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7696,7 +7915,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">Age: 45639</td>
+						<td width="80%">Age: 202246</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7727,7 +7946,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">Age: 45639</td>
+						<td width="80%">Age: 167</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7738,7 +7957,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/uploads/font/Marianne-Bold.woff2">https://www.snu.gouv.fr/wp-content/uploads/font/Marianne-Bold.woff2</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6">https://www.snu.gouv.fr/wp-includes/js/dist/i18n.min.js?ver=5e580eb46a90c2b997e6</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7758,69 +7977,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">Age: 45639</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The presence of the &#39;Age&#39; header indicates that a HTTP/1.1 compliant caching server is in use.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/uploads/font/Marianne-Light.woff2">https://www.snu.gouv.fr/wp-content/uploads/font/Marianne-Light.woff2</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">Age: 45639</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">The presence of the &#39;Age&#39; header indicates that a HTTP/1.1 compliant caching server is in use.</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/uploads/font/Marianne-Regular.woff2">https://www.snu.gouv.fr/wp-content/uploads/font/Marianne-Regular.woff2</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">Age: 45639</td>
+						<td width="80%">Age: 167</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7851,7 +8008,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">Age: 446767</td>
+						<td width="80%">Age: 19679</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7882,7 +8039,100 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent2">Evidence</td>
-						<td width="80%">Age: 1539254</td>
+						<td width="80%">Age: 19679</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The presence of the &#39;Age&#39; header indicates that a HTTP/1.1 compliant caching server is in use.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.17">https://www.snu.gouv.fr/wp-includes/js/mediaelement/mediaelement-and-player.min.js?ver=4.2.17</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">Age: 19678</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The presence of the &#39;Age&#39; header indicates that a HTTP/1.1 compliant caching server is in use.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=6.8.1">https://www.snu.gouv.fr/wp-includes/js/mediaelement/mediaelement-migrate.min.js?ver=6.8.1</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">Age: 19679</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">The presence of the &#39;Age&#39; header indicates that a HTTP/1.1 compliant caching server is in use.</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=6.8.1">https://www.snu.gouv.fr/wp-includes/js/mediaelement/wp-mediaelement.min.js?ver=6.8.1</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">Age: 19679</td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -7994,7 +8244,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/robots.txt">https://www.snu.gouv.fr/robots.txt</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8025,7 +8275,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/sitemap.xml">https://www.snu.gouv.fr/sitemap.xml</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/temoignages/">https://www.snu.gouv.fr/temoignages/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8140,7 +8390,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/robots.txt">https://www.snu.gouv.fr/robots.txt</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8171,7 +8421,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/sitemap.xml">https://www.snu.gouv.fr/sitemap.xml</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/temoignages/">https://www.snu.gouv.fr/temoignages/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8286,7 +8536,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/robots.txt">https://www.snu.gouv.fr/robots.txt</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8317,7 +8567,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/sitemap.xml">https://www.snu.gouv.fr/sitemap.xml</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/temoignages/">https://www.snu.gouv.fr/temoignages/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8432,7 +8682,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/robots.txt">https://www.snu.gouv.fr/robots.txt</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8463,7 +8713,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/sitemap.xml">https://www.snu.gouv.fr/sitemap.xml</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/temoignages/">https://www.snu.gouv.fr/temoignages/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8547,7 +8797,7 @@ username=deleted
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/aucun-doute-la-snu-sadresse-bien-a-tous-selon-samuel-leila-et-elisa/">https://www.snu.gouv.fr/aucun-doute-la-snu-sadresse-bien-a-tous-selon-samuel-leila-et-elisa/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/activite-physique-entraide-et-rencontre-pour-les-jeunes-du-snu-des-pyrenees-atlantiques-a-anglet/">https://www.snu.gouv.fr/activite-physique-entraide-et-rencontre-pour-les-jeunes-du-snu-des-pyrenees-atlantiques-a-anglet/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8582,7 +8832,7 @@ cookie:handl_ref</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/blog/">https://www.snu.gouv.fr/blog/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/au-lycee-vaucanson-des-mureaux-78-une-histoire-de-mig-classe-engagee/">https://www.snu.gouv.fr/au-lycee-vaucanson-des-mureaux-78-une-histoire-de-mig-classe-engagee/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8617,7 +8867,7 @@ cookie:handl_ref</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/category/actualites/">https://www.snu.gouv.fr/category/actualites/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu">https://www.snu.gouv.fr/base-de-connaissance/a-qui-sadresse-le-snu</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8652,7 +8902,7 @@ cookie:handl_ref</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/category/temoignages/">https://www.snu.gouv.fr/category/temoignages/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/berenice-du-snu-au-terrain-une-histoire-de-depassement-et-dengagement/">https://www.snu.gouv.fr/berenice-du-snu-au-terrain-une-histoire-de-depassement-et-dengagement/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8687,7 +8937,7 @@ cookie:handl_ref</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/le-temoignage-des-volontaires-des-parents-et-des-encadrants/">https://www.snu.gouv.fr/le-temoignage-des-volontaires-des-parents-et-des-encadrants/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/category/sejour-de-cohesion/">https://www.snu.gouv.fr/category/sejour-de-cohesion/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8722,7 +8972,7 @@ cookie:handl_ref</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/">https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/les-volontaires-du-snu-en-ardeche-decouvrent-une-mission-de-la-securite-civile/">https://www.snu.gouv.fr/les-volontaires-du-snu-en-ardeche-decouvrent-une-mission-de-la-securite-civile/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8757,42 +9007,7 @@ cookie:handl_ref</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%">handl_url</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">handl_url</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%">cookie:handl_url
-cookie:handl_ip
-cookie:handl_original_ref
-cookie:handl_landing_page
-cookie:handl_ref</td>
-					</tr>
-				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/phase-2-mission-interet-general/">https://www.snu.gouv.fr/phase-2-mission-interet-general/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/marwane-un-parcours-engagement-inspirant/">https://www.snu.gouv.fr/marwane-un-parcours-engagement-inspirant/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8893,7 +9108,7 @@ cookie:handl_landing_page</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/temoignages/">https://www.snu.gouv.fr/temoignages/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/">https://www.snu.gouv.fr/victoria-15-ans-une-jeune-volontaire-engagee-pour-les-autres/</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -8928,7 +9143,42 @@ cookie:handl_ref</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-json/">https://www.snu.gouv.fr/wp-json/</a></td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/xmlrpc.php">https://www.snu.gouv.fr/xmlrpc.php</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">handl_url</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">handl_url</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">cookie:handl_url
+cookie:handl_ip
+cookie:handl_original_ref
+cookie:handl_landing_page
+cookie:handl_ref</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/xmlrpc.php?rsd">https://www.snu.gouv.fr/xmlrpc.php?rsd</a></td>
 					</tr>
 					<tr>
 						<td width="20%"
@@ -9105,40 +9355,9 @@ cookie:handl_ref</td>
 						<td width="80%"></td>
 					</tr>
 				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-content/uploads/2024/09/Plateforme-SNU-Eleve-CLE2024-2025.pdf">https://www.snu.gouv.fr/wp-content/uploads/2024/09/Plateforme-SNU-Eleve-CLE2024-2025.pdf</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">max-age=31536000</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">4</td>
+					<td width="80%">3</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -9303,6 +9522,68 @@ cookie:handl_ref</td>
 					<tr>
 						<td width="20%"
 							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/category/temoignages/">https://www.snu.gouv.fr/category/temoignages/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/">https://www.snu.gouv.fr/mode-demploi-pour-les-responsables-de-structure-comment-proposer-des-missions-dinteret-general/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">GET</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%">max-age=0</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%"></td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
 						<td width="80%"><a href="https://www.snu.gouv.fr/phase-1-sejour-cohesion/">https://www.snu.gouv.fr/phase-1-sejour-cohesion/</a></td>
 					</tr>
 					<tr>
@@ -9393,40 +9674,9 @@ cookie:handl_ref</td>
 						<td width="80%"></td>
 					</tr>
 				
-					<tr>
-						<td width="20%"
-							class="indent1">URL</td>
-						<td width="80%"><a href="https://www.snu.gouv.fr/wp-json/">https://www.snu.gouv.fr/wp-json/</a></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Method</td>
-						<td width="80%">GET</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Parameter</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Attack</td>
-						<td width="80%"></td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Evidence</td>
-						<td width="80%">max-age=0</td>
-					</tr>
-					<tr>
-						<td width="20%"
-							class="indent2">Other Info</td>
-						<td width="80%"></td>
-					</tr>
-				
 				<tr>
 					<td width="20%">Instances</td>
-					<td width="80%">7</td>
+					<td width="80%">8</td>
 				</tr>
 				<tr>
 					<td width="20%">Solution</td>
@@ -9458,6 +9708,1109 @@ cookie:handl_ref</td>
 					<td width="20%">Plugin Id</td>
 					<td width="80%"><a
 						href="https://www.zaproxy.org/docs/alerts/10049/">10049</a></td>
+				</tr>
+			</table>
+			<div class="spacer"></div>
+		
+			<table class="results">
+				<tr height="24">
+					<th width="20%" class="risk-0"><a
+						id="10031"></a>
+						<div>Informational</div></th>
+					<th class="risk-0">User Controllable HTML Element Attribute (Potential XSS)</th>
+				</tr>
+				<tr>
+					<td width="20%">Description</td>
+					<td width="80%">
+							<div>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</div>
+							
+						</td>
+				</tr>
+				<TR vAlign="top">
+					<TD colspan="2"></TD>
+				</TR>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [data-wpcf7-id] attribute
+
+The user input found was:
+_wpcf7=3676
+
+The user-controlled value was:
+3676</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [input] tag [value] attribute
+
+The user input found was:
+_wpcf7=3676
+
+The user-controlled value was:
+3676</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1658933009-1-71659103208012165929825322916999752798891699977553297</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1658933009-2-2165910310538516591032134661663586815715</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1658933009-2-21659103208012165929825322916999752798891699977553297</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1658933509630-3-3165910310538516591032134661663586815715</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1658933514735-4-8165910310538516591032134661663586815715</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1658933672952-5-5165910310538516591032134661663586815715</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1698944805605-2-616999752798891699977553297</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1699005000311-3-516999752798891699977553297</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1699011254361-5-0</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1699011489185-6-0</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [input] tag [value] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+16</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [li] tag [data-tab-o-id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1658933334-1-76165910310538516591032134661663586815715</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [li] tag [data-tab-o-id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1658933334-2-35165910310538516591032134661663586815715</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_container_post</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [li] tag [data-tab-o-id] attribute
+
+The user input found was:
+_wpcf7_container_post=16
+
+The user-controlled value was:
+1658933504958-2-3165910310538516591032134661663586815715</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_locale</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [input] tag [value] attribute
+
+The user input found was:
+_wpcf7_locale=fr_FR
+
+The user-controlled value was:
+fr_fr</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_locale</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [meta] tag [content] attribute
+
+The user input found was:
+_wpcf7_locale=fr_FR
+
+The user-controlled value was:
+fr_fr</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_unit_tag</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [div] tag [id] attribute
+
+The user input found was:
+_wpcf7_unit_tag=wpcf7-f3676-p16-o1
+
+The user-controlled value was:
+wpcf7-f3676-p16-o1</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_unit_tag</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [input] tag [aria-describedby] attribute
+
+The user input found was:
+_wpcf7_unit_tag=wpcf7-f3676-p16-o1
+
+The user-controlled value was:
+wpcf7-f3676-p16-o1-ve-your-date_naissance</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_unit_tag</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [input] tag [value] attribute
+
+The user input found was:
+_wpcf7_unit_tag=wpcf7-f3676-p16-o1
+
+The user-controlled value was:
+wpcf7-f3676-p16-o1</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_unit_tag</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [li] tag [id] attribute
+
+The user input found was:
+_wpcf7_unit_tag=wpcf7-f3676-p16-o1
+
+The user-controlled value was:
+wpcf7-f3676-p16-o1-ve-your-date_naissance</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">_wpcf7_version</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [input] tag [value] attribute
+
+The user input found was:
+_wpcf7_version=6.1
+
+The user-controlled value was:
+6.1</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">your-date_naissance</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [input] tag [value] attribute
+
+The user input found was:
+your-date_naissance=2025-06-29
+
+The user-controlled value was:
+2025-06-29</td>
+					</tr>
+				
+					<tr>
+						<td width="20%"
+							class="indent1">URL</td>
+						<td width="80%"><a href="https://www.snu.gouv.fr/">https://www.snu.gouv.fr/</a></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Method</td>
+						<td width="80%">POST</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Parameter</td>
+						<td width="80%">your-email</td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Attack</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Evidence</td>
+						<td width="80%"></td>
+					</tr>
+					<tr>
+						<td width="20%"
+							class="indent2">Other Info</td>
+						<td width="80%">User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:
+
+https://www.snu.gouv.fr/
+
+appears to include user input in:
+a(n) [input] tag [value] attribute
+
+The user input found was:
+your-email=foo-bar@example.com
+
+The user-controlled value was:
+foo-bar@example.com</td>
+					</tr>
+				
+				<tr>
+					<td width="20%">Instances</td>
+					<td width="80%">25</td>
+				</tr>
+				<tr>
+					<td width="20%">Solution</td>
+					<td width="80%">
+							<div>Validate all input and sanitize output it before writing to any HTML attributes.</div>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">Reference</td>
+					<td width="80%">
+							<a href="https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</a>
+							
+						</td>
+				</tr>
+				<tr>
+					<td width="20%">CWE Id</td>
+					<td width="80%"><a
+						href="https://cwe.mitre.org/data/definitions/20.html">20</a></td>
+				</tr>
+				<tr>
+					<td width="20%">WASC Id</td>
+					<td width="80%">20</td>
+				</tr>
+				<tr>
+					<td width="20%">Plugin Id</td>
+					<td width="80%"><a
+						href="https://www.zaproxy.org/docs/alerts/10031/">10031</a></td>
 				</tr>
 			</table>
 			<div class="spacer"></div>
