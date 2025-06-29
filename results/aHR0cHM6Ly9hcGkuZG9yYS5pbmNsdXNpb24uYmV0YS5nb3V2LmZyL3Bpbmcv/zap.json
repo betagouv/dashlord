@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 22 Jun 2025 11:46:23",
+	"@generated": "Sun, 29 Jun 2025 11:57:11",
 	"site":[ 
 		{
 			"@name": "https://api.dora.inclusion.beta.gouv.fr",
@@ -20,8 +20,17 @@
 					"desc": "<p>The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.</p>",
 					"instances":[ 
 						{
-							"id": "3",
+							"id": "1",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self'",
+							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
+						},
+						{
+							"id": "3",
+							"uri": "https://api.dora.inclusion.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -38,13 +47,13 @@
 							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "10"
+					"sourceid": "4"
 				},
 				{
 					"pluginid": "90004",
@@ -85,7 +94,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "8",
+							"id": "7",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -94,7 +103,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "9",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -131,7 +140,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "30",
+							"id": "0",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/ping/",
 							"method": "GET",
 							"param": "cache-control",
@@ -146,7 +155,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "13"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -159,7 +168,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "21",
+							"id": "17",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -177,7 +186,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "19",
+							"id": "20",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -205,7 +214,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "17",
+							"id": "14",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -214,7 +223,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "20",
+							"id": "24",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/ping/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -223,7 +232,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "18",
+							"id": "19",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -251,7 +260,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "13",
+							"id": "12",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -260,7 +269,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "16",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/ping/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -269,7 +278,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "18",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -297,7 +306,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "22",
+							"id": "21",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -315,7 +324,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "23",
+							"id": "26",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -343,7 +352,7 @@
 					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
 					"instances":[ 
 						{
-							"id": "12",
+							"id": "28",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/ping/",
 							"method": "GET",
 							"param": "",
@@ -380,7 +389,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "33",
+							"id": "36",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/ping",
 							"method": "GET",
 							"param": "",
@@ -389,7 +398,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "7",
+							"id": "5",
 							"uri": "https://api.dora.inclusion.beta.gouv.fr/ping/",
 							"method": "GET",
 							"param": "",
