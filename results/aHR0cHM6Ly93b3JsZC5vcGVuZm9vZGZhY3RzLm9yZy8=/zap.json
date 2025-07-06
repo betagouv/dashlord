@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 29 Jun 2025 11:19:46",
+	"@generated": "Sun, 6 Jul 2025 11:30:08",
 	"site":[ 
 		{
 			"@name": "https://world.openfoodfacts.org",
@@ -20,22 +20,67 @@
 					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
 					"instances":[ 
 						{
-							"id": "238",
+							"id": "267",
+							"uri": "https://world.openfoodfacts.org/78119",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4046700005712",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 404670\nBrand: VISA\nCategory: \nIssuer: C.P.R. BILLETS, S.A."
+						},
+						{
+							"id": "269",
+							"uri": "https://world.openfoodfacts.org/78119",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4051009038620",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 405100\nBrand: VISA\nCategory: BUSINESS\nIssuer: "
+						},
+						{
+							"id": "271",
+							"uri": "https://world.openfoodfacts.org/78119",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4132500003550",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 413250\nBrand: VISA\nCategory: PLATINUM\nIssuer: CB UNIASTRUM BANK"
+						},
+						{
+							"id": "273",
+							"uri": "https://world.openfoodfacts.org/78119",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4335619188655",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 433561\nBrand: VISA\nCategory: CLASSIC\nIssuer: WELLS FARGO BANK, N.A."
+						},
+						{
+							"id": "257",
 							"uri": "https://world.openfoodfacts.org/?sort_by=created_t",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "4068262058111",
-							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 406826\nBrand: VISA\nCategory: \nIssuer: "
+							"evidence": "4800361373029",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 480036\nBrand: VISA\nCategory: GOLD\nIssuer: MBNA AMERICA BANK"
+						},
+						{
+							"id": "259",
+							"uri": "https://world.openfoodfacts.org/?sort_by=created_t",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "4820168100482",
+							"otherinfo": "Credit Card Type detected: Visa\nBank Identification Number: 482016\nBrand: VISA\nCategory: CLASSIC\nIssuer: JAX F.C.U."
 						}
 					],
-					"count": "1",
+					"count": "6",
 					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
-					"otherinfo": "<p>Credit Card Type detected: Visa</p><p>Bank Identification Number: 406826</p><p>Brand: VISA</p><p>Category: </p><p>Issuer: </p>",
+					"otherinfo": "<p>Credit Card Type detected: Visa</p><p>Bank Identification Number: 404670</p><p>Brand: VISA</p><p>Category: </p><p>Issuer: C.P.R. BILLETS, S.A.</p>",
 					"reference": "",
 					"cweid": "359",
 					"wascid": "13",
-					"sourceid": "2345"
+					"sourceid": "581"
 				},
 				{
 					"pluginid": "10202",
@@ -48,7 +93,16 @@
 					"desc": "<p>No Anti-CSRF tokens were found in a HTML submission form.</p><p>A cross-site request forgery is an attack that involves forcing a victim to send an HTTP request to a target destination without their knowledge or intent in order to perform an action as the victim. The underlying cause is application functionality using predictable URL/form actions in a repeatable way. The nature of the attack is that CSRF exploits the trust that a web site has for a user. By contrast, cross-site scripting (XSS) exploits the trust that a user has for a web site. Like XSS, CSRF attacks are not necessarily cross-site, but they can be. Cross-site request forgery is also known as CSRF, XSRF, one-click attack, session riding, confused deputy, and sea surf.</p><p></p><p>CSRF attacks are effective in a number of situations, including:</p><p>    * The victim has an active session on the target site.</p><p>    * The victim is authenticated via HTTP auth on the target site.</p><p>    * The victim is on the same local network as the target site.</p><p></p><p>CSRF has primarily been used to perform an action against a target site using the victim's privileges, but recent techniques have been discovered to disclose information by gaining access to the response. The risk of information disclosure is dramatically increased when the target site is vulnerable to XSS, because XSS can be used as a platform for CSRF, allowing the attack to operate within the bounds of the same-origin policy.</p>",
 					"instances":[ 
 						{
-							"id": "151",
+							"id": "263",
+							"uri": "https://world.openfoodfacts.org/cgi/product.pl",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" action=\"/cgi/product.pl\" enctype=\"multipart/form-data\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \"action\" \"code\" \"type\" ]."
+						},
+						{
+							"id": "115",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "",
@@ -57,7 +111,16 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \"action\" \"code\" \"type\" ]."
 						},
 						{
-							"id": "190",
+							"id": "248",
+							"uri": "https://world.openfoodfacts.org/cgi/reset_password.pl",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" action=\"/cgi/reset_password.pl\" enctype=\"multipart/form-data\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \".submit\" \"action\" \"type\" \"userid_or_email\" ]."
+						},
+						{
+							"id": "138",
 							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
 							"method": "GET",
 							"param": "",
@@ -66,7 +129,25 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \"action\" \"download\" \"format_csv\" \"format_xlsx\" \"generate_map\" \"graph\" \"graph_title\" \"indifferent_additives\" \"indifferent_ingredients_from_or_that_may_be_from_palm_oil\" \"indifferent_ingredients_from_palm_oil\" \"indifferent_ingredients_that_may_be_from_palm_oil\" \"map_title\" \"nutriment_value_0\" \"nutriment_value_1\" \"search\" \"search_terms2\" \"series_fairtrade\" \"series_nutrition_grades\" \"series_organic\" \"series_with_sweeteners\" \"tag_\" \"with_additives\" \"with_ingredients_from_or_that_may_be_from_palm_oil\" \"with_ingredients_from_palm_oil\" \"with_ingredients_that_may_be_from_palm_oil\" \"without_additives\" \"without_ingredients_from_or_that_may_be_from_palm_oil\" \"without_ingredients_from_palm_oil\" \"without_ingredients_that_may_be_from_palm_oil\" ]."
 						},
 						{
-							"id": "189",
+							"id": "276",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl?action=display&additives=without&axis_x=acidity&axis_y=acidity&generate_map=1&graph_title=ZAP&ingredients_from_or_that_may_be_from_palm_oil=without&ingredients_from_palm_oil=without&ingredients_that_may_be_from_palm_oil=without&map_title=ZAP&nutriment_0=acidity&nutriment_1=acidity&nutriment_compare_0=lte&nutriment_compare_1=lte&nutriment_value_0=ZAP&nutriment_value_1=ZAP&page_size=20&search_terms=ZAP&series_fairtrade=on&series_nutrition_grades=on&series_organic=on&series_with_sweeteners=on&sort_by=product_name&tag_0=ZAP&tag_1=ZAP&tag_contains_0=does_not_contain&tag_contains_1=does_not_contain&tagtype_0=brands&tagtype_1=brands",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" action=\"/cgi/search.pl\" enctype=\"multipart/form-data\" id=\"search_form\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \"action\" \"download\" \"format_csv\" \"format_xlsx\" \"generate_map\" \"graph\" \"graph_title\" \"indifferent_additives\" \"indifferent_ingredients_from_or_that_may_be_from_palm_oil\" \"indifferent_ingredients_from_palm_oil\" \"indifferent_ingredients_that_may_be_from_palm_oil\" \"map_title\" \"nutriment_value_0\" \"nutriment_value_1\" \"search\" \"search_terms2\" \"series_fairtrade\" \"series_nutrition_grades\" \"series_organic\" \"series_with_sweeteners\" \"tag_\" \"with_additives\" \"with_ingredients_from_or_that_may_be_from_palm_oil\" \"with_ingredients_from_palm_oil\" \"with_ingredients_that_may_be_from_palm_oil\" \"without_additives\" \"without_ingredients_from_or_that_may_be_from_palm_oil\" \"without_ingredients_from_palm_oil\" \"without_ingredients_that_may_be_from_palm_oil\" ]."
+						},
+						{
+							"id": "266",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl?action=display&page_size=50&search_terms=ZAP&sort_by=unique_scans_n",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" action=\"/cgi/search.pl\" enctype=\"multipart/form-data\" id=\"search_form\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \"action\" \"download\" \"format_csv\" \"format_xlsx\" \"generate_map\" \"graph\" \"graph_title\" \"indifferent_additives\" \"indifferent_ingredients_from_or_that_may_be_from_palm_oil\" \"indifferent_ingredients_from_palm_oil\" \"indifferent_ingredients_that_may_be_from_palm_oil\" \"map_title\" \"nutriment_value_0\" \"nutriment_value_1\" \"search\" \"search_terms2\" \"series_fairtrade\" \"series_nutrition_grades\" \"series_organic\" \"series_with_sweeteners\" \"tag_\" \"with_additives\" \"with_ingredients_from_or_that_may_be_from_palm_oil\" \"with_ingredients_from_palm_oil\" \"with_ingredients_that_may_be_from_palm_oil\" \"without_additives\" \"without_ingredients_from_or_that_may_be_from_palm_oil\" \"without_ingredients_from_palm_oil\" \"without_ingredients_that_may_be_from_palm_oil\" ]."
+						},
+						{
+							"id": "173",
 							"uri": "https://world.openfoodfacts.org/cgi/search.pl?graph=1",
 							"method": "GET",
 							"param": "",
@@ -75,7 +156,7 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \"action\" \"download\" \"format_csv\" \"format_xlsx\" \"generate_map\" \"graph\" \"graph_title\" \"indifferent_additives\" \"indifferent_ingredients_from_or_that_may_be_from_palm_oil\" \"indifferent_ingredients_from_palm_oil\" \"indifferent_ingredients_that_may_be_from_palm_oil\" \"map_title\" \"nutriment_value_0\" \"nutriment_value_1\" \"search\" \"search_terms2\" \"series_fairtrade\" \"series_nutrition_grades\" \"series_organic\" \"series_with_sweeteners\" \"tag_\" \"with_additives\" \"with_ingredients_from_or_that_may_be_from_palm_oil\" \"with_ingredients_from_palm_oil\" \"with_ingredients_that_may_be_from_palm_oil\" \"without_additives\" \"without_ingredients_from_or_that_may_be_from_palm_oil\" \"without_ingredients_from_palm_oil\" \"without_ingredients_that_may_be_from_palm_oil\" ]."
 						},
 						{
-							"id": "221",
+							"id": "217",
 							"uri": "https://world.openfoodfacts.org/cgi/search.pl?search_terms",
 							"method": "GET",
 							"param": "",
@@ -84,22 +165,49 @@
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \"action\" \"download\" \"format_csv\" \"format_xlsx\" \"generate_map\" \"graph\" \"graph_title\" \"indifferent_additives\" \"indifferent_ingredients_from_or_that_may_be_from_palm_oil\" \"indifferent_ingredients_from_palm_oil\" \"indifferent_ingredients_that_may_be_from_palm_oil\" \"map_title\" \"nutriment_value_0\" \"nutriment_value_1\" \"search\" \"search_terms2\" \"series_fairtrade\" \"series_nutrition_grades\" \"series_organic\" \"series_with_sweeteners\" \"tag_\" \"with_additives\" \"with_ingredients_from_or_that_may_be_from_palm_oil\" \"with_ingredients_from_palm_oil\" \"with_ingredients_that_may_be_from_palm_oil\" \"without_additives\" \"without_ingredients_from_or_that_may_be_from_palm_oil\" \"without_ingredients_from_palm_oil\" \"without_ingredients_that_may_be_from_palm_oil\" ]."
 						},
 						{
-							"id": "170",
+							"id": "161",
 							"uri": "https://world.openfoodfacts.org/cgi/session.pl",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "<form method=\"post\" action=\"/cgi/login.pl\" enctype=\"multipart/form-data\">",
 							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \"login_user_id\" \"login_user_password\" \"redirect\" \"remember_me\" \"submit\" ]."
+						},
+						{
+							"id": "252",
+							"uri": "https://world.openfoodfacts.org/cgi/user.pl",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" action=\"/cgi/user.pl\" enctype=\"multipart/form-data\" id=\"user_form\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \".submit\" \"action\" \"confirm_password\" \"display_barcode\" \"edit_link\" \"email\" \"faxnumber\" \"name\" \"newsletter\" \"password\" \"pro\" \"pro_checkbox\" \"requested_org\" \"team_1\" \"team_2\" \"team_3\" \"type\" \"userid\" ]."
+						},
+						{
+							"id": "220",
+							"uri": "https://world.openfoodfacts.org/cgi/product.pl",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" action=\"/cgi/session.pl\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \".submit\" \"code\" \"next_action\" \"password\" \"prdct_mult\" \"remember_me\" \"user_id\" ]."
+						},
+						{
+							"id": "264",
+							"uri": "https://world.openfoodfacts.org/cgi/user.pl",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "<form method=\"post\" action=\"/cgi/user.pl\" enctype=\"multipart/form-data\" id=\"user_form\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \".submit\" \"action\" \"confirm_password\" \"display_barcode\" \"edit_link\" \"email\" \"faxnumber\" \"name\" \"newsletter\" \"password\" \"pro\" \"pro_checkbox\" \"requested_org\" \"team_1\" \"team_2\" \"team_3\" \"type\" \"userid\" ]."
 						}
 					],
-					"count": "5",
+					"count": "12",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
 					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 3: \"action\" \"code\" \"type\" ].</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "424"
+					"sourceid": "465"
 				},
 				{
 					"pluginid": "10038",
@@ -112,7 +220,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "86",
+							"id": "96",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "",
@@ -121,7 +229,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "150",
+							"id": "114",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "",
@@ -130,7 +238,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "73",
+							"id": "54",
 							"uri": "https://world.openfoodfacts.org/cgi/product_image.pl",
 							"method": "GET",
 							"param": "",
@@ -139,53 +247,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "169",
-							"uri": "https://world.openfoodfacts.org/cgi/session.pl",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "142",
-							"uri": "https://world.openfoodfacts.org/contribute",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "134",
-							"uri": "https://world.openfoodfacts.org/discover",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "124",
-							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "101",
-							"uri": "https://world.openfoodfacts.org/mission",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "102",
-							"uri": "https://world.openfoodfacts.org/missions",
+							"id": "137",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -194,7 +257,7 @@
 						},
 						{
 							"id": "172",
-							"uri": "https://world.openfoodfacts.org/open-food-facts-mobile-app?utf_medium=web",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl?graph=1",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -202,8 +265,53 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1",
-							"uri": "https://world.openfoodfacts.org/sitemap.xml",
+							"id": "158",
+							"uri": "https://world.openfoodfacts.org/cgi/session.pl",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "180",
+							"uri": "https://world.openfoodfacts.org/code-of-conduct",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "80",
+							"uri": "https://world.openfoodfacts.org/contribute",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "112",
+							"uri": "https://world.openfoodfacts.org/discover",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "143",
+							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "152",
+							"uri": "https://world.openfoodfacts.org/open-food-facts-mobile-app?utf_medium=web",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -230,7 +338,7 @@
 					"desc": "<p>Web browser data loading may be possible, due to a Cross Origin Resource Sharing (CORS) misconfiguration on the web server.</p>",
 					"instances":[ 
 						{
-							"id": "67",
+							"id": "53",
 							"uri": "https://world.openfoodfacts.org/cgi/opensearch.pl",
 							"method": "GET",
 							"param": "",
@@ -239,7 +347,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "195",
+							"id": "193",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/apple-touch-icon.png",
 							"method": "GET",
 							"param": "",
@@ -248,7 +356,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "199",
+							"id": "198",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/favicon-16x16.png",
 							"method": "GET",
 							"param": "",
@@ -257,7 +365,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "197",
+							"id": "202",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/favicon-32x32.png",
 							"method": "GET",
 							"param": "",
@@ -266,7 +374,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "207",
+							"id": "212",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/favicon.ico",
 							"method": "GET",
 							"param": "",
@@ -275,7 +383,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "209",
+							"id": "200",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/safari-pinned-tab.svg",
 							"method": "GET",
 							"param": "",
@@ -284,7 +392,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "203",
+							"id": "206",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/site.webmanifest",
 							"method": "GET",
 							"param": "",
@@ -293,16 +401,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "218",
-							"uri": "https://world.openfoodfacts.org/images/icons/dist/x.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"id": "215",
+							"id": "204",
 							"uri": "https://world.openfoodfacts.org/images/illustrations/app-icon-in-the-clouds.svg",
 							"method": "GET",
 							"param": "",
@@ -311,7 +410,7 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "205",
+							"id": "214",
 							"uri": "https://world.openfoodfacts.org/images/logos/logo-variants/CMJN-ICON_WHITE_BG_OFF.svg",
 							"method": "GET",
 							"param": "",
@@ -320,8 +419,8 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "217",
-							"uri": "https://world.openfoodfacts.org/images/misc/app-landing-page/download-apk/download-apk_en.svg",
+							"id": "208",
+							"uri": "https://world.openfoodfacts.org/images/misc/appstore/black/appstore_US.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -329,17 +428,17 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						},
 						{
-							"id": "213",
+							"id": "210",
+							"uri": "https://world.openfoodfacts.org/images/misc/donation-banners/off-days-2025-en.1280x191.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Access-Control-Allow-Origin: *",
+							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
+						},
+						{
+							"id": "215",
 							"uri": "https://world.openfoodfacts.org/images/misc/f-droid/svg/get-it-on-en.svg",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "Access-Control-Allow-Origin: *",
-							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
-						},
-						{
-							"id": "211",
-							"uri": "https://world.openfoodfacts.org/images/misc/playstore/img/latest/GetItOnGooglePlay_Badge_Web_color_English.svg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -347,13 +446,13 @@
 							"otherinfo": "The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing."
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that sensitive data is not available in an unauthenticated manner (using IP address white-listing, for instance).</p><p>Configure the \"Access-Control-Allow-Origin\" HTTP header to a more restrictive set of domains, or remove all CORS headers entirely, to allow the web browser to enforce the Same Origin Policy (SOP) in a more restrictive manner.</p>",
 					"otherinfo": "<p>The CORS misconfiguration on the web server permits cross-domain read requests from arbitrary third party domains, using unauthenticated APIs on this domain. Web browser implementations do not permit arbitrary third parties to read the response from authenticated APIs, however. This reduces the risk somewhat. This misconfiguration could be used by an attacker to access data that is available in an unauthenticated manner, but which uses some other form of security, such as IP address white-listing.</p>",
 					"reference": "<p>https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.html5_overly_permissive_cors_policy</p>",
 					"cweid": "264",
 					"wascid": "14",
-					"sourceid": "185"
+					"sourceid": "59"
 				},
 				{
 					"pluginid": "10020",
@@ -366,7 +465,7 @@
 					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "18",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -375,7 +474,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "145",
+							"id": "108",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -384,7 +483,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "188",
+							"id": "111",
 							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -393,7 +492,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "166",
+							"id": "169",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl?graph=1",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "155",
 							"uri": "https://world.openfoodfacts.org/cgi/session.pl",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -402,7 +510,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "181",
+							"id": "178",
 							"uri": "https://world.openfoodfacts.org/code-of-conduct",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -411,7 +519,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "136",
+							"id": "58",
 							"uri": "https://world.openfoodfacts.org/contribute",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -420,7 +528,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "122",
+							"id": "109",
 							"uri": "https://world.openfoodfacts.org/discover",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -429,7 +537,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "121",
+							"id": "140",
 							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -438,26 +546,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "98",
-							"uri": "https://world.openfoodfacts.org/mission",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "97",
-							"uri": "https://world.openfoodfacts.org/missions",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "167",
+							"id": "144",
 							"uri": "https://world.openfoodfacts.org/open-food-facts-mobile-app?utf_medium=web",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "186",
+							"uri": "https://world.openfoodfacts.org/open-food-facts-vision-mission-values-and-programs",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -474,6 +573,34 @@
 					"sourceid": "1"
 				},
 				{
+					"pluginid": "10099",
+					"alertRef": "10099",
+					"alert": "Source Code Disclosure - SQL",
+					"name": "Source Code Disclosure - SQL",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>Application Source Code was disclosed by the web server. - SQL</p>",
+					"instances":[ 
+						{
+							"id": "218",
+							"uri": "https://world.openfoodfacts.org/help-complete-products",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Select and crop the ingredients list and the nutrition facts table from the photos we have for the product.",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure that application Source Code is not available with alternative extensions, and ensure that source code is not present within other files or data deployed to the web server, or served by the web server.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://www.wsj.com/articles/BL-CIOB-2999</p>",
+					"cweid": "540",
+					"wascid": "13",
+					"sourceid": "229"
+				},
+				{
 					"pluginid": "90003",
 					"alertRef": "90003",
 					"alert": "Sub Resource Integrity Attribute Missing",
@@ -484,16 +611,16 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "37",
+							"id": "60",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<link rel=\"stylesheet\" href=\"https://static.openfoodfacts.org/css/dist/app-ltr.css?v=1749629930\" data-base-layout=\"true\">",
+							"evidence": "<link rel=\"stylesheet\" href=\"https://static.openfoodfacts.org/css/dist/app-ltr.css?v=1751619191\" data-base-layout=\"true\">",
 							"otherinfo": ""
 						},
 						{
-							"id": "38",
+							"id": "61",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -502,7 +629,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "39",
+							"id": "62",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -511,7 +638,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "42",
+							"id": "68",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -520,7 +647,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
+							"id": "65",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -529,7 +656,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "49",
+							"id": "74",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -538,7 +665,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "57",
+							"id": "78",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -547,7 +674,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "48",
+							"id": "73",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -556,7 +683,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "46",
+							"id": "71",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -565,7 +692,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "58",
+							"id": "81",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -574,7 +701,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "45",
+							"id": "70",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -583,7 +710,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "43",
+							"id": "69",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -592,7 +719,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "54",
+							"id": "77",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -601,7 +728,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "60",
+							"id": "82",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -610,7 +737,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "52",
+							"id": "75",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -619,7 +746,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "40",
+							"id": "63",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -634,7 +761,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "108"
+					"sourceid": "14"
 				},
 				{
 					"pluginid": "10017",
@@ -647,7 +774,7 @@
 					"desc": "<p>The page includes one or more script files from a third-party domain.</p>",
 					"instances":[ 
 						{
-							"id": "5",
+							"id": "6",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/barcode-scanner-button.js",
@@ -656,7 +783,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "4",
+							"id": "5",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/barcode-scanner.js",
@@ -665,7 +792,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "13",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/display.js",
@@ -674,7 +801,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "20",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/foundation.js",
@@ -683,7 +810,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "9",
+							"id": "11",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/hc-sticky.js",
@@ -692,7 +819,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "10",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/jquery-ui.js",
@@ -701,7 +828,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "21",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/jquery.cookie.js",
@@ -710,7 +837,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "7",
+							"id": "9",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/jquery.js",
@@ -719,7 +846,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "6",
+							"id": "8",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/modernizr.js",
@@ -728,7 +855,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "3",
+							"id": "4",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/off-webcomponents.bundled.js",
@@ -737,7 +864,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "13",
+							"id": "17",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/scrollNav.js",
@@ -746,7 +873,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "16",
+							"id": "22",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/select2.min.js",
@@ -755,7 +882,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "14",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "https://static.openfoodfacts.org/js/dist/stikelem.js",
@@ -770,7 +897,7 @@
 					"reference": "",
 					"cweid": "829",
 					"wascid": "15",
-					"sourceid": "108"
+					"sourceid": "14"
 				},
 				{
 					"pluginid": "10009",
@@ -783,8 +910,26 @@
 					"desc": "<p>The server returned a version banner string in the response content. Such information leaks may allow attackers to further target specific issues impacting the product and version in use.</p>",
 					"instances":[ 
 						{
-							"id": "219",
+							"id": "228",
+							"uri": "https://world.openfoodfacts.org/cgi/.content",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Apache/2.4.56",
+							"otherinfo": "There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body."
+						},
+						{
+							"id": "216",
 							"uri": "https://world.openfoodfacts.org/images/apps/off.apk",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nginx/1.18.0",
+							"otherinfo": "There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body."
+						},
+						{
+							"id": "275",
+							"uri": "https://world.openfoodfacts.org/images/svg/co2-zoom.jpg",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -792,13 +937,13 @@
 							"otherinfo": "There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body."
 						}
 					],
-					"count": "1",
+					"count": "3",
 					"solution": "<p>Configure the server to prevent such information leaks. For example:</p><p>Under Tomcat this is done via the \"server\" directive and implementation of custom error pages.</p><p>Under Apache this is done via the \"ServerSignature\" and \"ServerTokens\" directives.</p>",
 					"otherinfo": "<p>There is a chance that the highlight in the finding is on a value in the headers, versus the actual matched string in the response body.</p>",
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/08-Testing_for_Error_Handling/</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "505"
+					"sourceid": "289"
 				},
 				{
 					"pluginid": "90004",
@@ -811,7 +956,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "93",
+							"id": "105",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -820,8 +965,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "130",
-							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
+							"id": "38",
+							"uri": "https://world.openfoodfacts.org/api/",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -829,8 +974,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "114",
-							"uri": "https://world.openfoodfacts.org/mission",
+							"id": "91",
+							"uri": "https://world.openfoodfacts.org/contribute",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -838,8 +983,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "110",
-							"uri": "https://world.openfoodfacts.org/missions",
+							"id": "126",
+							"uri": "https://world.openfoodfacts.org/discover",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -847,7 +992,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "22",
+							"id": "51",
+							"uri": "https://world.openfoodfacts.org/facets",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "19",
 							"uri": "https://world.openfoodfacts.org/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -856,7 +1010,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "94",
+							"id": "106",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -865,8 +1019,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "131",
-							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
+							"id": "92",
+							"uri": "https://world.openfoodfacts.org/contribute",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
 							"attack": "",
@@ -874,8 +1028,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "115",
-							"uri": "https://world.openfoodfacts.org/mission",
+							"id": "127",
+							"uri": "https://world.openfoodfacts.org/discover",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
 							"attack": "",
@@ -883,16 +1037,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "111",
-							"uri": "https://world.openfoodfacts.org/missions",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "95",
+							"id": "107",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -901,8 +1046,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "132",
-							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
+							"id": "93",
+							"uri": "https://world.openfoodfacts.org/contribute",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
 							"attack": "",
@@ -910,17 +1055,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "116",
-							"uri": "https://world.openfoodfacts.org/mission",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "112",
-							"uri": "https://world.openfoodfacts.org/missions",
+							"id": "128",
+							"uri": "https://world.openfoodfacts.org/discover",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
 							"attack": "",
@@ -928,7 +1064,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
@@ -947,7 +1083,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "92",
+							"id": "104",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "",
@@ -956,7 +1092,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "161",
+							"id": "135",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "",
@@ -965,7 +1101,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "83",
+							"id": "76",
 							"uri": "https://world.openfoodfacts.org/cgi/product_image.pl",
 							"method": "GET",
 							"param": "",
@@ -974,7 +1110,25 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "175",
+							"id": "156",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "176",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl?graph=1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "166",
 							"uri": "https://world.openfoodfacts.org/cgi/session.pl",
 							"method": "GET",
 							"param": "",
@@ -992,7 +1146,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "148",
+							"id": "90",
 							"uri": "https://world.openfoodfacts.org/contribute",
 							"method": "GET",
 							"param": "",
@@ -1001,7 +1155,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "140",
+							"id": "125",
 							"uri": "https://world.openfoodfacts.org/discover",
 							"method": "GET",
 							"param": "",
@@ -1010,7 +1164,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "129",
+							"id": "149",
 							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
 							"method": "GET",
 							"param": "",
@@ -1019,25 +1173,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "113",
-							"uri": "https://world.openfoodfacts.org/mission",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "109",
-							"uri": "https://world.openfoodfacts.org/missions",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "179",
+							"id": "163",
 							"uri": "https://world.openfoodfacts.org/open-food-facts-mobile-app?utf_medium=web",
 							"method": "GET",
 							"param": "",
@@ -1046,7 +1182,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "28",
+							"id": "47",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1074,7 +1210,7 @@
 					"desc": "<p>A private IP (such as 10.x.x.x, 172.x.x.x, 192.168.x.x) or an Amazon EC2 private hostname (for example, ip-10-0-56-78) has been found in the HTTP response body. This information might be helpful for further attacks targeting internal systems.</p>",
 					"instances":[ 
 						{
-							"id": "87",
+							"id": "97",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "",
@@ -1083,7 +1219,61 @@
 							"otherinfo": "10.1.0.103:16001\n"
 						},
 						{
-							"id": "225",
+							"id": "262",
+							"uri": "https://world.openfoodfacts.org/2",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "10.1.0.103:16001",
+							"otherinfo": "10.1.0.103:16001\n"
+						},
+						{
+							"id": "256",
+							"uri": "https://world.openfoodfacts.org/?sort_by=created_t",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "10.1.0.103:16001",
+							"otherinfo": "10.1.0.103:16001\n"
+						},
+						{
+							"id": "255",
+							"uri": "https://world.openfoodfacts.org/?sort_by=environmental_score_score",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "10.1.0.103:16001",
+							"otherinfo": "10.1.0.103:16001\n"
+						},
+						{
+							"id": "261",
+							"uri": "https://world.openfoodfacts.org/?sort_by=last_modified_t",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "10.1.0.103:16001",
+							"otherinfo": "10.1.0.103:16001\n"
+						},
+						{
+							"id": "254",
+							"uri": "https://world.openfoodfacts.org/?sort_by=nutriscore_score",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "10.1.0.103:16001",
+							"otherinfo": "10.1.0.103:16001\n"
+						},
+						{
+							"id": "253",
+							"uri": "https://world.openfoodfacts.org/?sort_by=popularity",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "10.1.0.103:16001",
+							"otherinfo": "10.1.0.103:16001\n"
+						},
+						{
+							"id": "223",
 							"uri": "https://world.openfoodfacts.org/cgi/search.pl?action=process&search_simple=1&search_terms=ZAP",
 							"method": "GET",
 							"param": "",
@@ -1093,87 +1283,24 @@
 						},
 						{
 							"id": "230",
-							"uri": "https://world.openfoodfacts.org/facets/additives",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "10.1.0.103:16001",
-							"otherinfo": "10.1.0.103:16001\n10.1.0.103:16001\n"
-						},
-						{
-							"id": "224",
-							"uri": "https://world.openfoodfacts.org/facets/allergens",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "10.1.0.103:16001",
-							"otherinfo": "10.1.0.103:16001\n10.1.0.103:16001\n"
-						},
-						{
-							"id": "220",
-							"uri": "https://world.openfoodfacts.org/facets/amino-acids",
-							"method": "GET",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
 							"param": "",
 							"attack": "",
 							"evidence": "10.1.0.103:16001",
 							"otherinfo": "10.1.0.103:16001\n"
 						},
 						{
-							"id": "232",
-							"uri": "https://world.openfoodfacts.org/facets/brands",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "10.1.0.103:16001",
-							"otherinfo": "10.1.0.103:16001\n10.1.0.103:16001\n"
-						},
-						{
-							"id": "222",
-							"uri": "https://world.openfoodfacts.org/facets/checkers",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "10.1.0.103:16001",
-							"otherinfo": "10.1.0.103:16001\n"
-						},
-						{
-							"id": "223",
-							"uri": "https://world.openfoodfacts.org/facets/cities",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "10.1.0.103:16001",
-							"otherinfo": "10.1.0.103:16001\n10.1.0.103:16001\n"
-						},
-						{
-							"id": "231",
-							"uri": "https://world.openfoodfacts.org/facets/countries",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "10.1.0.103:16001",
-							"otherinfo": "10.1.0.103:16001\n10.1.0.103:16001\n"
-						},
-						{
-							"id": "233",
-							"uri": "https://world.openfoodfacts.org/facets/data-quality-bugs",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "10.1.0.103:16001",
-							"otherinfo": "10.1.0.103:16001\n"
-						},
-						{
-							"id": "234",
-							"uri": "https://world.openfoodfacts.org/facets/data-quality-errors",
-							"method": "GET",
+							"id": "250",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
 							"param": "",
 							"attack": "",
 							"evidence": "10.1.0.103:16001",
 							"otherinfo": "10.1.0.103:16001\n10.1.0.103:16001\n"
 						}
 					],
-					"count": "11",
+					"count": "10",
 					"solution": "<p>Remove the private IP address from the HTTP response body. For comments, use JSP/ASP/PHP comment instead of HTML/JavaScript comment which can be seen by client browsers.</p>",
 					"otherinfo": "<p>10.1.0.103:16001</p><p></p>",
 					"reference": "<p>https://tools.ietf.org/html/rfc1918</p>",
@@ -1192,8 +1319,8 @@
 					"desc": "<p>The web/application server is leaking version information via the \"Server\" HTTP response header. Access to such information may facilitate attackers identifying other vulnerabilities your web/application server is subject to.</p>",
 					"instances":[ 
 						{
-							"id": "64",
-							"uri": "https://world.openfoodfacts.org/additives",
+							"id": "100",
+							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1201,34 +1328,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "61",
-							"uri": "https://world.openfoodfacts.org/allergens",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nginx/1.18.0",
-							"otherinfo": ""
-						},
-						{
-							"id": "74",
-							"uri": "https://world.openfoodfacts.org/amino-acid",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nginx/1.18.0",
-							"otherinfo": ""
-						},
-						{
-							"id": "70",
-							"uri": "https://world.openfoodfacts.org/amino-acids",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nginx/1.18.0",
-							"otherinfo": ""
-						},
-						{
-							"id": "44",
+							"id": "2",
 							"uri": "https://world.openfoodfacts.org/api",
 							"method": "GET",
 							"param": "",
@@ -1237,8 +1337,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "76",
-							"uri": "https://world.openfoodfacts.org/brands",
+							"id": "34",
+							"uri": "https://world.openfoodfacts.org/api/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1246,16 +1346,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "77",
-							"uri": "https://world.openfoodfacts.org/categories",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "nginx/1.18.0",
-							"otherinfo": ""
-						},
-						{
-							"id": "17",
+							"id": "40",
 							"uri": "https://world.openfoodfacts.org/cgi",
 							"method": "GET",
 							"param": "",
@@ -1264,7 +1355,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "68",
+							"id": "55",
 							"uri": "https://world.openfoodfacts.org/cgi/opensearch.pl",
 							"method": "GET",
 							"param": "",
@@ -1273,8 +1364,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "56",
-							"uri": "https://world.openfoodfacts.org/code",
+							"id": "121",
+							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1282,7 +1373,43 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "12",
+							"id": "64",
+							"uri": "https://world.openfoodfacts.org/cgi/product_image.pl",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nginx/1.18.0",
+							"otherinfo": ""
+						},
+						{
+							"id": "86",
+							"uri": "https://world.openfoodfacts.org/contribute",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nginx/1.18.0",
+							"otherinfo": ""
+						},
+						{
+							"id": "117",
+							"uri": "https://world.openfoodfacts.org/discover",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nginx/1.18.0",
+							"otherinfo": ""
+						},
+						{
+							"id": "48",
+							"uri": "https://world.openfoodfacts.org/facets",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "nginx/1.18.0",
+							"otherinfo": ""
+						},
+						{
+							"id": "3",
 							"uri": "https://world.openfoodfacts.org/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1291,7 +1418,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "24",
+							"id": "32",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1306,7 +1433,7 @@
 					"reference": "<p>https://httpd.apache.org/docs/current/mod/core.html#servertokens</p><p>https://learn.microsoft.com/en-us/previous-versions/msp-n-p/ff648552(v=pandp.10)</p><p>https://www.troyhunt.com/shhh-dont-let-your-response-headers/</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "183"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10035",
@@ -1319,7 +1446,7 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"id": "90",
+							"id": "101",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "",
@@ -1328,7 +1455,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "18",
+							"id": "36",
+							"uri": "https://world.openfoodfacts.org/api/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "45",
 							"uri": "https://world.openfoodfacts.org/cgi",
 							"method": "GET",
 							"param": "",
@@ -1337,7 +1473,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "69",
+							"id": "56",
 							"uri": "https://world.openfoodfacts.org/cgi/opensearch.pl",
 							"method": "GET",
 							"param": "",
@@ -1346,7 +1482,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "154",
+							"id": "122",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "",
@@ -1355,7 +1491,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "81",
+							"id": "66",
 							"uri": "https://world.openfoodfacts.org/cgi/product_image.pl",
 							"method": "GET",
 							"param": "",
@@ -1364,7 +1500,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "146",
+							"id": "87",
 							"uri": "https://world.openfoodfacts.org/contribute",
 							"method": "GET",
 							"param": "",
@@ -1373,7 +1509,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "138",
+							"id": "119",
 							"uri": "https://world.openfoodfacts.org/discover",
 							"method": "GET",
 							"param": "",
@@ -1382,7 +1518,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "127",
+							"id": "147",
 							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
 							"method": "GET",
 							"param": "",
@@ -1391,8 +1527,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "106",
-							"uri": "https://world.openfoodfacts.org/mission",
+							"id": "49",
+							"uri": "https://world.openfoodfacts.org/facets",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1400,16 +1536,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "105",
-							"uri": "https://world.openfoodfacts.org/missions",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "19",
+							"id": "7",
 							"uri": "https://world.openfoodfacts.org/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1418,7 +1545,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "25",
+							"id": "33",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1446,40 +1573,58 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "91",
+							"id": "102",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1749629930",
-							"otherinfo": "1749629930, which evaluates to: 2025-06-11 08:18:50."
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
 						},
 						{
-							"id": "155",
+							"id": "124",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1749629930",
-							"otherinfo": "1749629930, which evaluates to: 2025-06-11 08:18:50."
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
 						},
 						{
-							"id": "82",
+							"id": "67",
 							"uri": "https://world.openfoodfacts.org/cgi/product_image.pl",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1749629930",
-							"otherinfo": "1749629930, which evaluates to: 2025-06-11 08:18:50."
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
 						},
 						{
-							"id": "174",
+							"id": "153",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
+						},
+						{
+							"id": "175",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl?graph=1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
+						},
+						{
+							"id": "165",
 							"uri": "https://world.openfoodfacts.org/cgi/session.pl",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1749629930",
-							"otherinfo": "1749629930, which evaluates to: 2025-06-11 08:18:50."
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
 						},
 						{
 							"id": "183",
@@ -1487,67 +1632,58 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1749629930",
-							"otherinfo": "1749629930, which evaluates to: 2025-06-11 08:18:50."
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
 						},
 						{
-							"id": "147",
+							"id": "88",
 							"uri": "https://world.openfoodfacts.org/contribute",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1749629930",
-							"otherinfo": "1749629930, which evaluates to: 2025-06-11 08:18:50."
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
 						},
 						{
-							"id": "139",
+							"id": "120",
 							"uri": "https://world.openfoodfacts.org/discover",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1749629930",
-							"otherinfo": "1749629930, which evaluates to: 2025-06-11 08:18:50."
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
 						},
 						{
-							"id": "108",
-							"uri": "https://world.openfoodfacts.org/mission",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1749629930",
-							"otherinfo": "1749629930, which evaluates to: 2025-06-11 08:18:50."
-						},
-						{
-							"id": "107",
-							"uri": "https://world.openfoodfacts.org/missions",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1749629930",
-							"otherinfo": "1749629930, which evaluates to: 2025-06-11 08:18:50."
-						},
-						{
-							"id": "178",
+							"id": "162",
 							"uri": "https://world.openfoodfacts.org/open-food-facts-mobile-app?utf_medium=web",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1749629930",
-							"otherinfo": "1749629930, which evaluates to: 2025-06-11 08:18:50."
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
 						},
 						{
-							"id": "26",
+							"id": "187",
+							"uri": "https://world.openfoodfacts.org/open-food-facts-vision-mission-values-and-programs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
+						},
+						{
+							"id": "35",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1749629930",
-							"otherinfo": "1749629930, which evaluates to: 2025-06-11 08:18:50."
+							"evidence": "1751619191",
+							"otherinfo": "1751619191, which evaluates to: 2025-07-04 08:53:11."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1749629930, which evaluates to: 2025-06-11 08:18:50.</p>",
+					"otherinfo": "<p>1751619191, which evaluates to: 2025-07-04 08:53:11.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "497",
 					"wascid": "13",
@@ -1564,7 +1700,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"id": "194",
+							"id": "191",
 							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1573,7 +1709,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "128",
+							"id": "148",
 							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1582,7 +1718,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "196",
+							"id": "194",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/apple-touch-icon.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1591,7 +1727,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "200",
+							"id": "199",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/favicon-16x16.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1600,7 +1736,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "198",
+							"id": "203",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/favicon-32x32.png",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1609,7 +1745,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "208",
+							"id": "213",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/favicon.ico",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1618,7 +1754,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "210",
+							"id": "201",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/safari-pinned-tab.svg",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1627,7 +1763,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "204",
+							"id": "207",
 							"uri": "https://world.openfoodfacts.org/images/favicon/off/site.webmanifest",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1636,7 +1772,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "216",
+							"id": "205",
 							"uri": "https://world.openfoodfacts.org/images/illustrations/app-icon-in-the-clouds.svg",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -1645,8 +1781,8 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "206",
-							"uri": "https://world.openfoodfacts.org/images/logos/logo-variants/CMJN-ICON_WHITE_BG_OFF.svg",
+							"id": "209",
+							"uri": "https://world.openfoodfacts.org/images/misc/appstore/black/appstore_US.svg",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1654,8 +1790,8 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "214",
-							"uri": "https://world.openfoodfacts.org/images/misc/f-droid/svg/get-it-on-en.svg",
+							"id": "211",
+							"uri": "https://world.openfoodfacts.org/images/misc/donation-banners/off-days-2025-en.1280x191.png",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1663,8 +1799,8 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "212",
-							"uri": "https://world.openfoodfacts.org/images/misc/playstore/img/latest/GetItOnGooglePlay_Badge_Web_color_English.svg",
+							"id": "12",
+							"uri": "https://world.openfoodfacts.org/robots.txt",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -1678,7 +1814,53 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "470"
+					"sourceid": "175"
+				},
+				{
+					"pluginid": "10111",
+					"alertRef": "10111",
+					"alert": "Authentication Request Identified",
+					"name": "Authentication Request Identified",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The given request has been identified as an authentication request. The 'Other Info' field contains a set of key=value lines which identify any relevant fields. If the request is in a context which has an Authentication Method set to \"Auto-Detect\" then this rule will change the authentication to match the request identified.</p>",
+					"instances":[ 
+						{
+							"id": "277",
+							"uri": "https://world.openfoodfacts.org/cgi/user.pl",
+							"method": "POST",
+							"param": "email",
+							"attack": "",
+							"evidence": "password",
+							"otherinfo": "userParam=email\nuserValue=zaproxy@example.com\npasswordParam=password\nreferer=https://world.openfoodfacts.org/cgi/user.pl"
+						},
+						{
+							"id": "265",
+							"uri": "https://world.openfoodfacts.org/cgi/user.pl",
+							"method": "POST",
+							"param": "user_id",
+							"attack": "",
+							"evidence": "password",
+							"otherinfo": "userParam=user_id\nuserValue=ZAP\npasswordParam=password\nreferer=https://world.openfoodfacts.org/cgi/product.pl"
+						},
+						{
+							"id": "251",
+							"uri": "https://world.openfoodfacts.org/cgi/login.pl",
+							"method": "POST",
+							"param": "user_id",
+							"attack": "",
+							"evidence": "password",
+							"otherinfo": "userParam=user_id\nuserValue=ZAP\npasswordParam=password\nreferer=https://world.openfoodfacts.org/cgi/session.pl"
+						}
+					],
+					"count": "3",
+					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
+					"otherinfo": "<p>userParam=email</p><p>userValue=zaproxy@example.com</p><p>passwordParam=password</p><p>referer=https://world.openfoodfacts.org/cgi/user.pl</p>",
+					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/</p>",
+					"cweid": "-1",
+					"wascid": "-1",
+					"sourceid": "747"
 				},
 				{
 					"pluginid": "10094",
@@ -1691,7 +1873,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "164",
+							"id": "141",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "",
@@ -1709,7 +1891,7 @@
 							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
 						},
 						{
-							"id": "192",
+							"id": "177",
 							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
 							"method": "GET",
 							"param": "",
@@ -1718,7 +1900,7 @@
 							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
 						},
 						{
-							"id": "191",
+							"id": "189",
 							"uri": "https://world.openfoodfacts.org/cgi/search.pl?graph=1",
 							"method": "GET",
 							"param": "",
@@ -1727,7 +1909,7 @@
 							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
 						},
 						{
-							"id": "180",
+							"id": "167",
 							"uri": "https://world.openfoodfacts.org/cgi/session.pl",
 							"method": "GET",
 							"param": "",
@@ -1736,7 +1918,7 @@
 							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
 						},
 						{
-							"id": "187",
+							"id": "185",
 							"uri": "https://world.openfoodfacts.org/code-of-conduct",
 							"method": "GET",
 							"param": "",
@@ -1745,7 +1927,7 @@
 							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
 						},
 						{
-							"id": "165",
+							"id": "94",
 							"uri": "https://world.openfoodfacts.org/contribute",
 							"method": "GET",
 							"param": "",
@@ -1754,7 +1936,7 @@
 							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
 						},
 						{
-							"id": "144",
+							"id": "139",
 							"uri": "https://world.openfoodfacts.org/discover",
 							"method": "GET",
 							"param": "",
@@ -1763,7 +1945,7 @@
 							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
 						},
 						{
-							"id": "135",
+							"id": "154",
 							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
 							"method": "GET",
 							"param": "",
@@ -1772,25 +1954,7 @@
 							"otherinfo": "\uFFFDK\uFFFD\uFFFD\uFFFD\uFFFD\u0470\\x000fN?\uFFFD\u056C\uFFFD\uFFFD\uFFFD\uFFFDY\\x0014\uFFFD}I\uFFFD\uFFFD\uFFFD\\x0017T\uFFFD"
 						},
 						{
-							"id": "118",
-							"uri": "https://world.openfoodfacts.org/mission",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z",
-							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
-						},
-						{
-							"id": "117",
-							"uri": "https://world.openfoodfacts.org/missions",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z",
-							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
-						},
-						{
-							"id": "186",
+							"id": "168",
 							"uri": "https://world.openfoodfacts.org/open-food-facts-mobile-app?utf_medium=web",
 							"method": "GET",
 							"param": "",
@@ -1799,7 +1963,16 @@
 							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
 						},
 						{
-							"id": "62",
+							"id": "188",
+							"uri": "https://world.openfoodfacts.org/open-food-facts-vision-mission-values-and-programs",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z",
+							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
+						},
+						{
+							"id": "83",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1808,13 +1981,13 @@
 							"otherinfo": "\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl"
 						}
 					],
-					"count": "13",
+					"count": "12",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>\uFFFDx~\uFFFD\uFFFD\uFFFD\uFFFDk\uFFFD\uFFFD~o\uFFFDhzW\uFFFDv\uFFFD\uFFFDz\uFFFDl</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "424"
+					"sourceid": "66"
 				},
 				{
 					"pluginid": "10027",
@@ -1827,7 +2000,7 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "201",
+							"id": "195",
 							"uri": "https://world.openfoodfacts.org/data",
 							"method": "GET",
 							"param": "",
@@ -1836,7 +2009,16 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"// Get all text content from the row's cells\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "176",
+							"id": "229",
+							"uri": "https://world.openfoodfacts.org/open-food-facts-mobile-app",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"// iOS detection from: https://stackoverflow.com/a/9039885/177710\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "159",
 							"uri": "https://world.openfoodfacts.org/open-food-facts-mobile-app?utf_medium=web",
 							"method": "GET",
 							"param": "",
@@ -1845,7 +2027,7 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"// iOS detection from: https://stackoverflow.com/a/9039885/177710\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "88",
+							"id": "98",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "",
@@ -1854,34 +2036,7 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"<!-- data_debug: data_debug start\nCache-Control: no-cache\nplatform: public\ncan_use_cache: \nestimated_document_count using MongoD\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "237",
-							"uri": "https://world.openfoodfacts.org/?sort_by=created_t",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"<!-- data_debug: data_debug start\nCache-Control: no-cache\nplatform: public\ncan_use_cache: \nestimated_document_count using MongoD\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "235",
-							"uri": "https://world.openfoodfacts.org/?sort_by=nutriscore_score",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"<!-- data_debug: data_debug start\nCache-Control: no-cache\nplatform: public\ncan_use_cache: \nestimated_document_count using MongoD\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "236",
-							"uri": "https://world.openfoodfacts.org/?sort_by=popularity",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"<!-- data_debug: data_debug start\nCache-Control: no-cache\nplatform: public\ncan_use_cache: \nestimated_document_count using MongoD\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "226",
+							"id": "224",
 							"uri": "https://world.openfoodfacts.org/cgi/search.pl?action=process&search_simple=1&search_terms=ZAP",
 							"method": "GET",
 							"param": "",
@@ -1890,7 +2045,7 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"<!-- data_debug: data_debug start\nCache-Control: no-cache\nplatform: public\ncan_use_cache: \nCache-Control: no-cache\nplatform: pub\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "182",
+							"id": "181",
 							"uri": "https://world.openfoodfacts.org/code-of-conduct",
 							"method": "GET",
 							"param": "",
@@ -1899,7 +2054,7 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"<!-- retrieved from https://wiki.openfoodfacts.org/Translations_-_Code_of_conduct_-_English?action=raw on Agasti 28, 2016 4:39:4\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "202",
+							"id": "196",
 							"uri": "https://world.openfoodfacts.org/data",
 							"method": "GET",
 							"param": "",
@@ -1908,7 +2063,16 @@
 							"otherinfo": "The following pattern was used: \\bTODO\\b and was detected in likely comment: \"<!-- TODO: Install locally to get icons -->\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "193",
+							"id": "219",
+							"uri": "https://world.openfoodfacts.org/development",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "bug",
+							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in likely comment: \"<!--\n<hr>\n<div class=\"row text-center\">\n  <div class=\"large-12 columns\">\n    <h2>Android team</h2>\n    <h4 class=\"subheader\">We \", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "190",
 							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts",
 							"method": "GET",
 							"param": "",
@@ -1917,13 +2081,22 @@
 							"otherinfo": "The following pattern was used: \\bWHERE\\b and was detected in likely comment: \"<!-- h3>Where your donation goes</h3>\n\n            <p>\n              <strong>Technology:</strong> Development, maintenance, serv\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "125",
+							"id": "145",
 							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "Where",
 							"otherinfo": "The following pattern was used: \\bWHERE\\b and was detected in likely comment: \"<!-- h3>Where your donation goes</h3>\n\n            <p>\n              <strong>Technology:</strong> Development, maintenance, serv\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "231",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"<!-- data_debug: data_debug start\noff_query: 1\nplatform: public\nquery_url: http://10.1.0.103:16001\ncan_use_off_query: 1\nusing of\", see evidence field for the suspicious comment/snippet."
 						}
 					],
 					"count": "11",
@@ -1932,7 +2105,7 @@
 					"reference": "",
 					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "477"
+					"sourceid": "176"
 				},
 				{
 					"pluginid": "10109",
@@ -1945,7 +2118,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "89",
+							"id": "99",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "",
@@ -1954,7 +2127,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "152",
+							"id": "118",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "",
@@ -1963,7 +2136,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "80",
+							"id": "59",
 							"uri": "https://world.openfoodfacts.org/cgi/product_image.pl",
 							"method": "GET",
 							"param": "",
@@ -1972,7 +2145,25 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "173",
+							"id": "150",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"menu_link\">\n\t\t\t\t\t\t\t\t<span class=\"material-icons\">\n\t\t\t\t\t\t\t\t\tmenu\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "174",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl?graph=1",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"menu_link\">\n\t\t\t\t\t\t\t\t<span class=\"material-icons\">\n\t\t\t\t\t\t\t\t\tmenu\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "164",
 							"uri": "https://world.openfoodfacts.org/cgi/session.pl",
 							"method": "GET",
 							"param": "",
@@ -1981,7 +2172,16 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "143",
+							"id": "182",
+							"uri": "https://world.openfoodfacts.org/code-of-conduct",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a id=\"menu_link\">\n\t\t\t\t\t\t\t\t<span class=\"material-icons\">\n\t\t\t\t\t\t\t\t\tmenu\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "85",
 							"uri": "https://world.openfoodfacts.org/contribute",
 							"method": "GET",
 							"param": "",
@@ -1990,7 +2190,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "137",
+							"id": "116",
 							"uri": "https://world.openfoodfacts.org/discover",
 							"method": "GET",
 							"param": "",
@@ -1999,7 +2199,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "126",
+							"id": "146",
 							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
 							"method": "GET",
 							"param": "",
@@ -2008,25 +2208,7 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"id": "104",
-							"uri": "https://world.openfoodfacts.org/mission",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"menu_link\">\n\t\t\t\t\t\t\t\t<span class=\"material-icons\">\n\t\t\t\t\t\t\t\t\tmenu\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "103",
-							"uri": "https://world.openfoodfacts.org/missions",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a id=\"menu_link\">\n\t\t\t\t\t\t\t\t<span class=\"material-icons\">\n\t\t\t\t\t\t\t\t\tmenu\n\t\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t\t</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "177",
+							"id": "160",
 							"uri": "https://world.openfoodfacts.org/open-food-facts-mobile-app?utf_medium=web",
 							"method": "GET",
 							"param": "",
@@ -2044,7 +2226,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application.</p>",
 					"reference": "",
@@ -2063,7 +2245,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "85",
+							"id": "95",
 							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "cache-control",
@@ -2072,7 +2254,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "66",
+							"id": "52",
 							"uri": "https://world.openfoodfacts.org/cgi/opensearch.pl",
 							"method": "GET",
 							"param": "cache-control",
@@ -2081,7 +2263,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "149",
+							"id": "113",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "cache-control",
@@ -2090,53 +2272,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "168",
-							"uri": "https://world.openfoodfacts.org/cgi/session.pl",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "141",
-							"uri": "https://world.openfoodfacts.org/contribute",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "133",
-							"uri": "https://world.openfoodfacts.org/discover",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "123",
-							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "100",
-							"uri": "https://world.openfoodfacts.org/mission",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "99",
-							"uri": "https://world.openfoodfacts.org/missions",
+							"id": "136",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -2145,6 +2282,60 @@
 						},
 						{
 							"id": "171",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl?graph=1",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "157",
+							"uri": "https://world.openfoodfacts.org/cgi/session.pl",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "179",
+							"uri": "https://world.openfoodfacts.org/code-of-conduct",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "79",
+							"uri": "https://world.openfoodfacts.org/contribute",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "110",
+							"uri": "https://world.openfoodfacts.org/discover",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "142",
+							"uri": "https://world.openfoodfacts.org/donate-to-open-food-facts?utf_medium=web",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "151",
 							"uri": "https://world.openfoodfacts.org/open-food-facts-mobile-app?utf_medium=web",
 							"method": "GET",
 							"param": "cache-control",
@@ -2153,7 +2344,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "0",
+							"id": "1",
 							"uri": "https://world.openfoodfacts.org/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -2162,7 +2353,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "12",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -2181,7 +2372,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "53",
+							"id": "26",
 							"uri": "https://world.openfoodfacts.org/api",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -2190,8 +2381,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "33",
-							"uri": "https://world.openfoodfacts.org/cgi",
+							"id": "42",
+							"uri": "https://world.openfoodfacts.org/api/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -2199,7 +2390,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "35",
+							"id": "30",
 							"uri": "https://world.openfoodfacts.org/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -2214,7 +2405,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "177"
+					"sourceid": "12"
 				},
 				{
 					"pluginid": "90005",
@@ -2227,7 +2418,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "51",
+							"id": "25",
 							"uri": "https://world.openfoodfacts.org/api",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -2236,8 +2427,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "30",
-							"uri": "https://world.openfoodfacts.org/cgi",
+							"id": "41",
+							"uri": "https://world.openfoodfacts.org/api/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -2245,7 +2436,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "32",
+							"id": "29",
 							"uri": "https://world.openfoodfacts.org/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -2260,7 +2451,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "177"
+					"sourceid": "12"
 				},
 				{
 					"pluginid": "90005",
@@ -2273,7 +2464,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "50",
+							"id": "24",
 							"uri": "https://world.openfoodfacts.org/api",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -2282,8 +2473,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "29",
-							"uri": "https://world.openfoodfacts.org/cgi",
+							"id": "39",
+							"uri": "https://world.openfoodfacts.org/api/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -2291,7 +2482,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "31",
+							"id": "27",
 							"uri": "https://world.openfoodfacts.org/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -2306,7 +2497,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "177"
+					"sourceid": "12"
 				},
 				{
 					"pluginid": "90005",
@@ -2319,7 +2510,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "55",
+							"id": "28",
 							"uri": "https://world.openfoodfacts.org/api",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -2328,8 +2519,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "34",
-							"uri": "https://world.openfoodfacts.org/cgi",
+							"id": "43",
+							"uri": "https://world.openfoodfacts.org/api/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -2337,7 +2528,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
+							"id": "31",
 							"uri": "https://world.openfoodfacts.org/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -2352,7 +2543,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "177"
+					"sourceid": "12"
 				},
 				{
 					"pluginid": "10049",
@@ -2365,43 +2556,16 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "65",
-							"uri": "https://world.openfoodfacts.org/additives",
+							"id": "103",
+							"uri": "https://world.openfoodfacts.org/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+							"otherinfo": "The response is stale, and stale responses are not configured to be re-validated or blocked, using the 'must-revalidate', 'proxy-revalidate', 's-maxage', or 'max-age' response 'Cache-Control' directives."
 						},
 						{
-							"id": "63",
-							"uri": "https://world.openfoodfacts.org/allergens",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"id": "75",
-							"uri": "https://world.openfoodfacts.org/amino-acid",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"id": "72",
-							"uri": "https://world.openfoodfacts.org/amino-acids",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"id": "47",
+							"id": "16",
 							"uri": "https://world.openfoodfacts.org/api",
 							"method": "GET",
 							"param": "",
@@ -2410,8 +2574,8 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "78",
-							"uri": "https://world.openfoodfacts.org/brands",
+							"id": "37",
+							"uri": "https://world.openfoodfacts.org/api/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2419,16 +2583,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "79",
-							"uri": "https://world.openfoodfacts.org/categories",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"id": "20",
+							"id": "46",
 							"uri": "https://world.openfoodfacts.org/cgi",
 							"method": "GET",
 							"param": "",
@@ -2437,7 +2592,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "71",
+							"id": "57",
 							"uri": "https://world.openfoodfacts.org/cgi/opensearch.pl",
 							"method": "GET",
 							"param": "",
@@ -2446,8 +2601,44 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "59",
-							"uri": "https://world.openfoodfacts.org/code",
+							"id": "134",
+							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "The response is stale, and stale responses are not configured to be re-validated or blocked, using the 'must-revalidate', 'proxy-revalidate', 's-maxage', or 'max-age' response 'Cache-Control' directives."
+						},
+						{
+							"id": "72",
+							"uri": "https://world.openfoodfacts.org/cgi/product_image.pl",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "The response is stale, and stale responses are not configured to be re-validated or blocked, using the 'must-revalidate', 'proxy-revalidate', 's-maxage', or 'max-age' response 'Cache-Control' directives."
+						},
+						{
+							"id": "89",
+							"uri": "https://world.openfoodfacts.org/contribute",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "The response is stale, and stale responses are not configured to be re-validated or blocked, using the 'must-revalidate', 'proxy-revalidate', 's-maxage', or 'max-age' response 'Cache-Control' directives."
+						},
+						{
+							"id": "123",
+							"uri": "https://world.openfoodfacts.org/discover",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "The response is stale, and stale responses are not configured to be re-validated or blocked, using the 'must-revalidate', 'proxy-revalidate', 's-maxage', or 'max-age' response 'Cache-Control' directives."
+						},
+						{
+							"id": "50",
+							"uri": "https://world.openfoodfacts.org/facets",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -2455,7 +2646,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "21",
+							"id": "15",
 							"uri": "https://world.openfoodfacts.org/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -2464,7 +2655,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "27",
+							"id": "44",
 							"uri": "https://world.openfoodfacts.org/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -2475,11 +2666,11 @@
 					],
 					"count": "12",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
-					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
+					"otherinfo": "<p>The response is stale, and stale responses are not configured to be re-validated or blocked, using the 'must-revalidate', 'proxy-revalidate', 's-maxage', or 'max-age' response 'Cache-Control' directives.</p>",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "183"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10031",
@@ -2492,7 +2683,7 @@
 					"desc": "<p>This check looks at user-supplied input in query string parameters and POST data to identify where certain HTML attribute values might be controlled. This provides hot-spot detection for XSS (cross-site scripting) that will require further review by a security analyst to determine exploitability.</p>",
 					"instances":[ 
 						{
-							"id": "160",
+							"id": "133",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "action",
@@ -2501,7 +2692,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add\n\nappears to include user input in:\na(n) [div] tag [style] attribute\n\nThe user input found was:\naction=display\n\nThe user-controlled value was:\ndisplay:block"
 						},
 						{
-							"id": "156",
+							"id": "129",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "action",
@@ -2510,7 +2701,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add\n\nappears to include user input in:\na(n) [div] tag [style] attribute\n\nThe user input found was:\naction=display\n\nThe user-controlled value was:\ndisplay:none"
 						},
 						{
-							"id": "159",
+							"id": "132",
 							"uri": "https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add",
 							"method": "GET",
 							"param": "type",
@@ -2519,7 +2710,7 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\ntype=search_or_add\n\nThe user-controlled value was:\nsearch_or_add"
 						},
 						{
-							"id": "228",
+							"id": "226",
 							"uri": "https://world.openfoodfacts.org/cgi/search.pl?action=process&search_simple=1&search_terms=ZAP",
 							"method": "GET",
 							"param": "action",
@@ -2528,22 +2719,166 @@
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl?action=process&search_simple=1&search_terms=ZAP\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\naction=process\n\nThe user-controlled value was:\nprocess"
 						},
 						{
-							"id": "227",
+							"id": "225",
 							"uri": "https://world.openfoodfacts.org/cgi/search.pl?action=process&search_simple=1&search_terms=ZAP",
 							"method": "GET",
 							"param": "search_terms",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl?action=process&search_simple=1&search_terms=ZAP\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\nsearch_terms=ZAP\n\nThe user-controlled value was:\nzap"
+						},
+						{
+							"id": "221",
+							"uri": "https://world.openfoodfacts.org/cgi/product.pl",
+							"method": "POST",
+							"param": "action",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/product.pl\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\naction=process\n\nThe user-controlled value was:\nprocess"
+						},
+						{
+							"id": "239",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "action",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [input] tag [value] attribute\n\nThe user input found was:\naction=process\n\nThe user-controlled value was:\nprocess"
+						},
+						{
+							"id": "241",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "graph_title",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [a] tag [title] attribute\n\nThe user input found was:\ngraph_title=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "232",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "graph_title",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [meta] tag [content] attribute\n\nThe user input found was:\ngraph_title=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "242",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "map_title",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [a] tag [title] attribute\n\nThe user input found was:\nmap_title=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "233",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "map_title",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [meta] tag [content] attribute\n\nThe user input found was:\nmap_title=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "243",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "nutriment_value_0",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [a] tag [title] attribute\n\nThe user input found was:\nnutriment_value_0=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "234",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "nutriment_value_0",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [meta] tag [content] attribute\n\nThe user input found was:\nnutriment_value_0=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "244",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "nutriment_value_1",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [a] tag [title] attribute\n\nThe user input found was:\nnutriment_value_1=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "235",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "nutriment_value_1",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [meta] tag [content] attribute\n\nThe user input found was:\nnutriment_value_1=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "245",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "search_terms2",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [a] tag [title] attribute\n\nThe user input found was:\nsearch_terms2=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "236",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "search_terms2",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [meta] tag [content] attribute\n\nThe user input found was:\nsearch_terms2=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "246",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "tag_0",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [a] tag [title] attribute\n\nThe user input found was:\ntag_0=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "237",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "tag_0",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [meta] tag [content] attribute\n\nThe user input found was:\ntag_0=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "247",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "tag_1",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [a] tag [title] attribute\n\nThe user input found was:\ntag_1=ZAP\n\nThe user-controlled value was:\nzap - map"
+						},
+						{
+							"id": "238",
+							"uri": "https://world.openfoodfacts.org/cgi/search.pl",
+							"method": "POST",
+							"param": "tag_1",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:\n\nhttps://world.openfoodfacts.org/cgi/search.pl\n\nappears to include user input in:\na(n) [meta] tag [content] attribute\n\nThe user input found was:\ntag_1=ZAP\n\nThe user-controlled value was:\nzap - map"
 						}
 					],
-					"count": "5",
+					"count": "21",
 					"solution": "<p>Validate all input and sanitize output it before writing to any HTML attributes.</p>",
 					"otherinfo": "<p>User-controlled HTML attribute values were found. Try injecting special characters to see if XSS might be possible. The page at the following URL:</p><p></p><p>https://world.openfoodfacts.org/cgi/product.pl?action=display&type=search_or_add</p><p></p><p>appears to include user input in:</p><p>a(n) [div] tag [style] attribute</p><p></p><p>The user input found was:</p><p>action=display</p><p></p><p>The user-controlled value was:</p><p>display:block</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html</p>",
 					"cweid": "20",
 					"wascid": "20",
-					"sourceid": "424"
+					"sourceid": "66"
 				}
 			]
 		}
