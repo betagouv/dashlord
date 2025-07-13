@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 6 Jul 2025 03:36:03",
+	"@generated": "Sun, 13 Jul 2025 03:37:58",
 	"site":[ 
 		{
 			"@name": "https://datapass.api.gouv.fr",
@@ -20,7 +20,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "6",
+							"id": "7",
 							"uri": "https://datapass.api.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -29,7 +29,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "86",
+							"id": "82",
 							"uri": "https://datapass.api.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -38,7 +38,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "83",
+							"id": "85",
 							"uri": "https://datapass.api.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "",
@@ -47,7 +47,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "102",
+							"id": "97",
 							"uri": "https://datapass.api.gouv.fr/faq",
 							"method": "GET",
 							"param": "",
@@ -56,7 +56,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "91",
+							"id": "109",
+							"uri": "https://datapass.api.gouv.fr/schema_pluriannuel",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "79",
 							"uri": "https://datapass.api.gouv.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -65,13 +74,41 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "6",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10020",
+					"alertRef": "10020-1",
+					"alert": "Missing Anti-clickjacking Header",
+					"name": "Missing Anti-clickjacking Header",
+					"riskcode": "2",
+					"confidence": "2",
+					"riskdesc": "Medium (Medium)",
+					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
+					"instances":[ 
+						{
+							"id": "107",
+							"uri": "https://datapass.api.gouv.fr/schema_pluriannuel",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
+					"cweid": "1021",
+					"wascid": "15",
+					"sourceid": "128"
 				},
 				{
 					"pluginid": "90022",
@@ -84,7 +121,7 @@
 					"desc": "<p>This page contains an error/warning message that may disclose sensitive information like the location of the file that produced the unhandled exception. This information can be used to launch further attacks against the web application. The alert could be a false positive if the error message is found inside a documentation page.</p>",
 					"instances":[ 
 						{
-							"id": "0",
+							"id": "2",
 							"uri": "https://datapass.api.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -99,7 +136,7 @@
 					"reference": "",
 					"cweid": "550",
 					"wascid": "13",
-					"sourceid": "65"
+					"sourceid": "66"
 				},
 				{
 					"pluginid": "10023",
@@ -112,7 +149,7 @@
 					"desc": "<p>The response appeared to contain common error messages returned by platforms such as ASP.NET, and Web-servers such as IIS and Apache. You can configure the list of common debug messages.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "3",
 							"uri": "https://datapass.api.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -127,7 +164,7 @@
 					"reference": "",
 					"cweid": "1295",
 					"wascid": "13",
-					"sourceid": "65"
+					"sourceid": "66"
 				},
 				{
 					"pluginid": "90004",
@@ -140,7 +177,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "46",
+							"id": "39",
 							"uri": "https://datapass.api.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -149,7 +186,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "63",
+							"id": "57",
 							"uri": "https://datapass.api.gouv.fr/assets/application-b0b433f1.css",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -158,7 +195,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "30",
+							"id": "50",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-legal-c86fd649.css",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -167,7 +204,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "29",
+							"id": "54",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-scopes-cf704b0b.css",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -176,8 +213,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "54",
-							"uri": "https://datapass.api.gouv.fr/assets/dsfr-extensions-d46e5337.css",
+							"id": "66",
+							"uri": "https://datapass.api.gouv.fr/assets/components/authorization_header-1a2d94c9.css",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -185,7 +222,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "51",
+							"id": "61",
+							"uri": "https://datapass.api.gouv.fr/assets/dsfr-extensions-c155194a.css",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "21",
 							"uri": "https://datapass.api.gouv.fr/assets/dsfr-fonts-c176c522.css",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -194,7 +240,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "12",
+							"id": "31",
 							"uri": "https://datapass.api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -203,7 +249,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "55",
+							"id": "41",
 							"uri": "https://datapass.api.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -212,7 +258,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "56",
+							"id": "42",
 							"uri": "https://datapass.api.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -221,13 +267,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "9",
+					"count": "10",
 					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
 					"cweid": "693",
 					"wascid": "14",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10063",
@@ -240,7 +286,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "45",
+							"id": "36",
 							"uri": "https://datapass.api.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -249,7 +295,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "94",
+							"id": "92",
 							"uri": "https://datapass.api.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -258,7 +304,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "92",
+							"id": "94",
 							"uri": "https://datapass.api.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "",
@@ -267,7 +313,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "106",
+							"id": "101",
 							"uri": "https://datapass.api.gouv.fr/assets/application-4adccdfd.js",
 							"method": "GET",
 							"param": "",
@@ -285,7 +331,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "119",
+							"id": "114",
 							"uri": "https://datapass.api.gouv.fr/assets/es-module-shims.min-295257ea.js",
 							"method": "GET",
 							"param": "",
@@ -294,7 +340,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "109",
+							"id": "103",
 							"uri": "https://datapass.api.gouv.fr/assets/stimulus-loading-1fc53fe7.js",
 							"method": "GET",
 							"param": "",
@@ -303,7 +349,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "110",
+							"id": "115",
 							"uri": "https://datapass.api.gouv.fr/assets/turbo.min-3a2e143f.js",
 							"method": "GET",
 							"param": "",
@@ -312,7 +358,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "105",
+							"id": "100",
 							"uri": "https://datapass.api.gouv.fr/faq",
 							"method": "GET",
 							"param": "",
@@ -321,7 +367,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "97",
+							"id": "110",
+							"uri": "https://datapass.api.gouv.fr/schema_pluriannuel",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "90",
 							"uri": "https://datapass.api.gouv.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -330,7 +385,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "10",
+					"count": "11",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
@@ -349,7 +404,7 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"id": "57",
+							"id": "48",
 							"uri": "https://datapass.api.gouv.fr/assets/application-b0b433f1.css",
 							"method": "GET",
 							"param": "",
@@ -367,7 +422,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "24",
+							"id": "44",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-legal-c86fd649.css",
 							"method": "GET",
 							"param": "",
@@ -376,7 +431,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "23",
+							"id": "47",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-scopes-cf704b0b.css",
 							"method": "GET",
 							"param": "",
@@ -385,7 +440,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "66",
+							"id": "59",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization_header-1a2d94c9.css",
 							"method": "GET",
 							"param": "",
@@ -394,7 +449,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "68",
+							"id": "62",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization_request_form-3bde0288.css",
 							"method": "GET",
 							"param": "",
@@ -403,7 +458,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "77",
+							"id": "63",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization_row-be5823e9.css",
 							"method": "GET",
 							"param": "",
@@ -412,7 +467,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "67",
+							"id": "77",
 							"uri": "https://datapass.api.gouv.fr/assets/components/basic_card-e692dc58.css",
 							"method": "GET",
 							"param": "",
@@ -421,7 +476,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "80",
+							"id": "72",
 							"uri": "https://datapass.api.gouv.fr/assets/components/blockquote-53fcba5b.css",
 							"method": "GET",
 							"param": "",
@@ -430,8 +485,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "84",
-							"uri": "https://datapass.api.gouv.fr/assets/components/btn-authorization-header-actions-73a21065.css",
+							"id": "95",
+							"uri": "https://datapass.api.gouv.fr/assets/components/cards-86540dd5.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -439,8 +494,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "44",
-							"uri": "https://datapass.api.gouv.fr/assets/dsfr-extensions-d46e5337.css",
+							"id": "46",
+							"uri": "https://datapass.api.gouv.fr/assets/dsfr-extensions-c155194a.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -448,7 +503,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "43",
+							"id": "4",
 							"uri": "https://datapass.api.gouv.fr/assets/dsfr-fonts-c176c522.css",
 							"method": "GET",
 							"param": "",
@@ -463,7 +518,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Strict_Transport_Security_Cheat_Sheet.html</p><p>https://owasp.org/www-community/Security_Headers</p><p>https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security</p><p>https://caniuse.com/stricttransportsecurity</p><p>https://datatracker.ietf.org/doc/html/rfc6797</p>",
 					"cweid": "319",
 					"wascid": "15",
-					"sourceid": "72"
+					"sourceid": "71"
 				},
 				{
 					"pluginid": "10021",
@@ -476,7 +531,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"id": "60",
+							"id": "52",
 							"uri": "https://datapass.api.gouv.fr/assets/application-b0b433f1.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -485,7 +540,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "72",
+							"id": "74",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-request-events-782a1a29.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -494,7 +549,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "27",
+							"id": "45",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-legal-c86fd649.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -503,7 +558,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "25",
+							"id": "51",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-scopes-cf704b0b.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -512,7 +567,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "70",
+							"id": "60",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization_header-1a2d94c9.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -521,7 +576,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "73",
+							"id": "64",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization_request_form-3bde0288.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -530,7 +585,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "79",
+							"id": "67",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization_row-be5823e9.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -539,7 +594,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "69",
+							"id": "80",
 							"uri": "https://datapass.api.gouv.fr/assets/components/basic_card-e692dc58.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -548,7 +603,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "81",
+							"id": "73",
 							"uri": "https://datapass.api.gouv.fr/assets/components/blockquote-53fcba5b.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -557,8 +612,8 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "49",
-							"uri": "https://datapass.api.gouv.fr/assets/dsfr-extensions-d46e5337.css",
+							"id": "56",
+							"uri": "https://datapass.api.gouv.fr/assets/dsfr-extensions-c155194a.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -566,7 +621,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "48",
+							"id": "5",
 							"uri": "https://datapass.api.gouv.fr/assets/dsfr-fonts-c176c522.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -575,7 +630,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "3",
+							"id": "23",
 							"uri": "https://datapass.api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -590,7 +645,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "72"
+					"sourceid": "71"
 				},
 				{
 					"pluginid": "10094",
@@ -603,43 +658,43 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "64",
+							"id": "32",
 							"uri": "https://datapass.api.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "HvOON2INzgMTQyql6gWnfKGP1RJSsOQyPUSA",
-							"otherinfo": "\\x001e\uFFFD7b\r\uFFFD\\x0003\\x0013C*\uFFFD\uFFFD\\x0005\uFFFD|\uFFFD\uFFFD\uFFFD\\x0012R\uFFFD\uFFFD2=D\uFFFD"
+							"evidence": "2B0g3TsSimt35Jkif0yq4EyUtDsroi",
+							"otherinfo": "\uFFFD\\x001d \uFFFD;\\x0012\uFFFDkw\uFFFD\"L\uFFFD\uFFFDL\uFFFD\uFFFD;+\uFFFD"
 						},
 						{
-							"id": "65",
+							"id": "33",
 							"uri": "https://datapass.api.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2FnVb4ErkYjZFIEiA3ClCdatdNyWV4Tk3T1fBWr9OaZhdmBp",
-							"otherinfo": "\uFFFDY\uFFFDo\uFFFD+\uFFFD\uFFFD\uFFFD\\x0014\uFFFD\"\\x0003p\uFFFD\t\u05ADt\u0716W\uFFFD\uFFFD\uFFFD=_\\x0005j\uFFFD9\uFFFDav`i"
+							"evidence": "2Fmjmi3h0i8nfsO5NdIo8Dsi20YAgU7a06r66LucJ1Dv",
+							"otherinfo": "\uFFFDY\uFFFD\uFFFD-\uFFFD\uFFFD/'~\u00F95\uFFFD(\uFFFD;\"\uFFFDF\\x0000\uFFFDN\uFFFD\u04EA\uFFFD\u8EDC'P\uFFFD"
 						},
 						{
-							"id": "99",
+							"id": "91",
 							"uri": "https://datapass.api.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2F5g2W1vQJlwzv2AupRi988VYX24q7D4hbz5wYRcKWpYUb2Amga1bkGtM6PKOcp6Xs6AN7lebcvpRphfmXmxNChphwKQiPDRRP5ZfzqYl7eRnImPMQyi9PCdnTsPIdbYvm0wazRgM8eJXhjxUHImTTcoVf",
-							"otherinfo": "\uFFFD^`\uFFFDmo@\uFFFDp\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDb\uFFFD\uFFFD\\x0015a}\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\)jXQ\uFFFD\uFFFD\uFFFD\\x0006\uFFFDnA\uFFFD3\uFFFD\uFFFD9\uFFFDz^\u03807\uFFFD^m\uFFFD\uFFFDF\uFFFD_\uFFFDy\uFFFD4(i\uFFFD\\x0002\uFFFD\uFFFD\uFFFD\uFFFDD\uFFFDY:\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD1\\x000c\uFFFD\uFFFD\uFFFD;\\x000f!\uFFFD\u063Em0k4`3\u01C9^\\x0018\uFFFDPr&M7(U"
+							"evidence": "2FpJl4DMi1VfDgTJ95kAyTkRJEvGsBJ51RBs0chZ3vVMGkY7RY6",
+							"otherinfo": "\uFFFDZI\uFFFD\uFFFD\u030BU_\\x000e\\x0004\uFFFD\uFFFD\uFFFD\\x0000\uFFFD9\\x0011$K\u01B0\\x0012y\uFFFD\\x0010l\uFFFD\uFFFDY\uFFFD\uFFFDL\\x001aF;E\uFFFD"
 						},
 						{
-							"id": "98",
+							"id": "93",
 							"uri": "https://datapass.api.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2FV4DHpuiDXO8KcLar8PrxAasySC8I8aOK5FIDgr",
-							"otherinfo": "\uFFFDUx\\x000czn\uFFFD5\uFFFD\uFFFD\\x000bj\uFFFD\\x000f\uFFFD\\x0010\\x001a\uFFFD$\uFFFD\uFFFD\uFFFD\\x001a8\uFFFDE 8+"
+							"evidence": "ZvAAviyyLasamS00lBuPNaYT3uwpxlU2FCwBYlPQLTDln5DnZncSETvpr3U",
+							"otherinfo": "f\uFFFD\\x0000\uFFFD,\uFFFD-\uFFFD\\x001a\uFFFD-4\uFFFD\\x001b\uFFFD5\uFFFD\\x0013\uFFFD\uFFFD)\uFFFDU6\\x0014,\\x0001bS\uFFFD-0\u57D0\uFFFDfw\\x0012\\x0011;\uFFFDu"
 						},
 						{
-							"id": "120",
+							"id": "117",
 							"uri": "https://datapass.api.gouv.fr/assets/dsfr-46906334.css",
 							"method": "GET",
 							"param": "",
@@ -648,7 +703,7 @@
 							"otherinfo": "\uFFFDo\uFFFD~\uFFFD\uFFFD~/\uFFFD\\x001dzW\uFFFD~\uFFFD\uFFFD\uFFFD\uFFFDey\uFFFDn"
 						},
 						{
-							"id": "52",
+							"id": "10",
 							"uri": "https://datapass.api.gouv.fr/assets/dsfr-fonts-c176c522.css",
 							"method": "GET",
 							"param": "",
@@ -657,34 +712,34 @@
 							"otherinfo": "\uFFFD\uFFFD,z\uFFFD?1\uFFFD\uFFFDjy\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u07F5w\uFFFD:\uFFFD"
 						},
 						{
-							"id": "116",
+							"id": "112",
 							"uri": "https://datapass.api.gouv.fr/compte",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2F16acuLWJ09rjcUcM4IDLNJ4zcJamgCpdQR9QR3CWLkbqZoRmCcegeK0DFgZRiTdltTqAij7uYT5IuFW0UuF9IeBgEkQJA",
-							"otherinfo": "\uFFFD]zi\u02CBX\uFFFD=\uFFFD7\\x0014p\uFFFD\\x0008\\x000c\uFFFDI\uFFFD7\tjh\\x0002\uFFFD\uFFFD\\x0011\uFFFD\\x0004w\tb\uFFFDn\uFFFDhF`\uFFFDz\\x0007\uFFFD\uFFFD1`e\\x0018\uFFFDv[S\uFFFD\\x0008\uFFFD\uFFFD\uFFFD\\x0013\u42C5[E.\\x0017\uFFFD\\x001e\\x0006\\x0001$@\uFFFD"
+							"evidence": "2F6iv92IiVTnEHPTCqHDXdVZbi3xLpGtifB8uj8E2em1imctPTgBg2H",
+							"otherinfo": "\uFFFD^\uFFFD\uFFFD\u0748\uFFFDT\uFFFD\\x0010s\uFFFD\n\uFFFD\uFFFD]\uFFFDYn-\uFFFD.\uFFFD\uFFFD\uFFFD\uFFFD|\uFFFD?\\x0004\uFFFD\u9D4Ag-=8\\x0001\uFFFDa"
 						},
 						{
-							"id": "107",
+							"id": "99",
 							"uri": "https://datapass.api.gouv.fr/faq",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2Bos78i2G3kKBbFYKrK41k6bv9wmNI0ytWssSULXcEmbojJMRRmSbf7N2YkTiBx66RbD",
-							"otherinfo": "\uFFFD\\x001a,\uFFFD\u0236\\x001by\n\\x0005\uFFFDX*\uFFFD\uFFFD\uFFFDN\uFFFD\uFFFD\uFFFD&4\uFFFD2\uFFFDk,IB\uFFFDpI\uFFFD\uFFFD2LE\\x0019\uFFFDm\uFFFD\uFFFD\u0649\\x0013\uFFFD\\x001cz\uFFFD\\x0016\uFFFD"
+							"evidence": "2FsKIrDgjTq1JWHaQCKLFcnxFwz159ofaEJu",
+							"otherinfo": "\uFFFD[\n\"\uFFFD\uFFFD\uFFFD:\uFFFD%a\uFFFD@\"\uFFFD\\x0015\uFFFD\uFFFD\\x0017\\x000c\uFFFD\uFFFD\uFFFD\\x001fhBn"
 						},
 						{
-							"id": "100",
+							"id": "88",
 							"uri": "https://datapass.api.gouv.fr/stats",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "2BwPDTbsptNuaGVDxOX1P475mqUoL9xSQLOUgazYHDPa",
-							"otherinfo": "\uFFFD\\x001c\\x000f\r6\uFFFD\uFFFDnheC\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD(/\uFFFDR@\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001c3\uFFFD"
+							"evidence": "2BekMXYg8TYS0bm11ikYLb6xFSQMrvCV0Dc8GesJSLMHVgEyYiOrO1LK7L6",
+							"otherinfo": "\uFFFD\\x0017\uFFFD1v \uFFFD6\\x0012\u0479\uFFFD\uFFFD)\\x0018-\uFFFD\uFFFD\\x0015$\\x000c\uFFFD\uFFFD\uFFFD7<\\x0019\uFFFD\tH\uFFFD\\x0007V\\x00012b#\uFFFD;R\uFFFD\uFFFD"
 						},
 						{
-							"id": "114",
+							"id": "106",
 							"uri": "https://datapass.api.gouv.fr/auth/mon_compte_pro",
 							"method": "POST",
 							"param": "",
@@ -695,7 +750,7 @@
 					],
 					"count": "10",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\\x001e\uFFFD7b\r\uFFFD\\x0003\\x0013C*\uFFFD\uFFFD\\x0005\uFFFD|\uFFFD\uFFFD\uFFFD\\x0012R\uFFFD\uFFFD2=D\uFFFD</p>",
+					"otherinfo": "<p>\uFFFD\\x001d \uFFFD;\\x0012\uFFFDkw\uFFFD\"L\uFFFD\uFFFDL\uFFFD\uFFFD;+\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
@@ -712,7 +767,7 @@
 					"desc": "<p>The Content-Type header was either missing or empty.</p>",
 					"instances":[ 
 						{
-							"id": "112",
+							"id": "105",
 							"uri": "https://datapass.api.gouv.fr/auth/mon_compte_pro",
 							"method": "POST",
 							"param": "content-type",
@@ -740,7 +795,7 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "111",
+							"id": "116",
 							"uri": "https://datapass.api.gouv.fr/assets/dsfr.module-42cd036b.js",
 							"method": "GET",
 							"param": "",
@@ -749,7 +804,7 @@
 							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in likely comment: \"// inspector.debug(`failed creation, instance of ${registration.instanceClassName} already exists on element [${this.id}]`);\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "117",
+							"id": "113",
 							"uri": "https://datapass.api.gouv.fr/assets/es-module-shims.min-295257ea.js",
 							"method": "GET",
 							"param": "",
@@ -758,7 +813,7 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//${location.host}${location.pathname.includes(\"/\")?location.pathname.slice(0,location.pathname.lastIndexOf(\"/\")+1):location.pat\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "108",
+							"id": "102",
 							"uri": "https://datapass.api.gouv.fr/assets/stimulus-loading-1fc53fe7.js",
 							"method": "GET",
 							"param": "",
@@ -773,7 +828,7 @@
 					"reference": "",
 					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "124"
+					"sourceid": "131"
 				},
 				{
 					"pluginid": "10109",
@@ -786,7 +841,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "13",
+							"id": "24",
 							"uri": "https://datapass.api.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -795,7 +850,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "88",
+							"id": "86",
 							"uri": "https://datapass.api.gouv.fr/",
 							"method": "GET",
 							"param": "",
@@ -813,7 +868,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "103",
+							"id": "98",
 							"uri": "https://datapass.api.gouv.fr/faq",
 							"method": "GET",
 							"param": "",
@@ -822,7 +877,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "95",
+							"id": "83",
 							"uri": "https://datapass.api.gouv.fr/stats",
 							"method": "GET",
 							"param": "",
@@ -837,7 +892,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10049",
@@ -850,7 +905,7 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"id": "40",
+							"id": "34",
 							"uri": "https://datapass.api.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -859,7 +914,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "9",
+							"id": "20",
 							"uri": "https://datapass.api.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -887,7 +942,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "4",
+							"id": "6",
 							"uri": "https://datapass.api.gouv.fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -896,7 +951,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "85",
+							"id": "81",
 							"uri": "https://datapass.api.gouv.fr/",
 							"method": "GET",
 							"param": "cache-control",
@@ -905,7 +960,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "82",
+							"id": "84",
 							"uri": "https://datapass.api.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "cache-control",
@@ -914,7 +969,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "101",
+							"id": "96",
 							"uri": "https://datapass.api.gouv.fr/faq",
 							"method": "GET",
 							"param": "cache-control",
@@ -923,7 +978,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "1",
+							"id": "22",
 							"uri": "https://datapass.api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -932,7 +987,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "90",
+							"id": "108",
+							"uri": "https://datapass.api.gouv.fr/schema_pluriannuel",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "78",
 							"uri": "https://datapass.api.gouv.fr/stats",
 							"method": "GET",
 							"param": "cache-control",
@@ -941,13 +1005,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "6",
+					"count": "7",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90005",
@@ -960,8 +1024,8 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "33",
-							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-legal-c86fd649.css",
+							"id": "17",
+							"uri": "https://datapass.api.gouv.fr/assets/dsfr-fonts-c176c522.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -969,16 +1033,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "37",
-							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-scopes-cf704b0b.css",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "21",
+							"id": "27",
 							"uri": "https://datapass.api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -987,7 +1042,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "17",
+							"id": "14",
 							"uri": "https://datapass.api.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -996,13 +1051,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "69"
+					"sourceid": "64"
 				},
 				{
 					"pluginid": "90005",
@@ -1015,8 +1070,8 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "32",
-							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-legal-c86fd649.css",
+							"id": "15",
+							"uri": "https://datapass.api.gouv.fr/assets/dsfr-fonts-c176c522.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1024,16 +1079,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
-							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-scopes-cf704b0b.css",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "20",
+							"id": "26",
 							"uri": "https://datapass.api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1042,7 +1088,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "16",
+							"id": "13",
 							"uri": "https://datapass.api.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1051,13 +1097,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "69"
+					"sourceid": "64"
 				},
 				{
 					"pluginid": "90005",
@@ -1070,8 +1116,8 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "31",
-							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-legal-c86fd649.css",
+							"id": "12",
+							"uri": "https://datapass.api.gouv.fr/assets/dsfr-fonts-c176c522.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1079,16 +1125,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "34",
-							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-scopes-cf704b0b.css",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "19",
+							"id": "25",
 							"uri": "https://datapass.api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1097,7 +1134,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "11",
 							"uri": "https://datapass.api.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1106,13 +1143,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "69"
+					"sourceid": "64"
 				},
 				{
 					"pluginid": "90005",
@@ -1125,8 +1162,8 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "35",
-							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-legal-c86fd649.css",
+							"id": "18",
+							"uri": "https://datapass.api.gouv.fr/assets/dsfr-fonts-c176c522.css",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1134,16 +1171,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "38",
-							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-scopes-cf704b0b.css",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "22",
+							"id": "29",
 							"uri": "https://datapass.api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1152,7 +1180,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "18",
+							"id": "16",
 							"uri": "https://datapass.api.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1161,13 +1189,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "69"
+					"sourceid": "64"
 				},
 				{
 					"pluginid": "10112",
@@ -1180,7 +1208,7 @@
 					"desc": "<p>The given response has been identified as containing a session management token. The 'Other Info' field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to \"Auto-Detect\" then this rule will change the session management to use the tokens identified.</p>",
 					"instances":[ 
 						{
-							"id": "39",
+							"id": "1",
 							"uri": "https://datapass.api.gouv.fr",
 							"method": "GET",
 							"param": "_data_pass_session",
@@ -1189,7 +1217,7 @@
 							"otherinfo": "cookie:_data_pass_session"
 						},
 						{
-							"id": "93",
+							"id": "75",
 							"uri": "https://datapass.api.gouv.fr/",
 							"method": "GET",
 							"param": "_data_pass_session",
@@ -1198,7 +1226,7 @@
 							"otherinfo": "cookie:_data_pass_session"
 						},
 						{
-							"id": "89",
+							"id": "76",
 							"uri": "https://datapass.api.gouv.fr/accessibilite",
 							"method": "GET",
 							"param": "_data_pass_session",
@@ -1207,7 +1235,7 @@
 							"otherinfo": "cookie:_data_pass_session"
 						},
 						{
-							"id": "115",
+							"id": "111",
 							"uri": "https://datapass.api.gouv.fr/compte",
 							"method": "GET",
 							"param": "_data_pass_session",
@@ -1216,7 +1244,7 @@
 							"otherinfo": "cookie:_data_pass_session"
 						},
 						{
-							"id": "104",
+							"id": "89",
 							"uri": "https://datapass.api.gouv.fr/faq",
 							"method": "GET",
 							"param": "_data_pass_session",
@@ -1225,7 +1253,7 @@
 							"otherinfo": "cookie:_data_pass_session"
 						},
 						{
-							"id": "96",
+							"id": "70",
 							"uri": "https://datapass.api.gouv.fr/stats",
 							"method": "GET",
 							"param": "_data_pass_session",
@@ -1234,25 +1262,16 @@
 							"otherinfo": "cookie:_data_pass_session"
 						},
 						{
-							"id": "113",
+							"id": "104",
 							"uri": "https://datapass.api.gouv.fr/auth/mon_compte_pro",
 							"method": "POST",
 							"param": "_data_pass_session",
 							"attack": "",
 							"evidence": "_data_pass_session",
 							"otherinfo": "cookie:_data_pass_session"
-						},
-						{
-							"id": "8",
-							"uri": "https://datapass.api.gouv.fr",
-							"method": "GET",
-							"param": "_data_pass_session",
-							"attack": "",
-							"evidence": "_data_pass_session",
-							"otherinfo": "cookie:_data_pass_session"
 						}
 					],
-					"count": "8",
+					"count": "7",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
 					"otherinfo": "<p>cookie:_data_pass_session</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
@@ -1271,7 +1290,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "62",
+							"id": "55",
 							"uri": "https://datapass.api.gouv.fr/assets/application-b0b433f1.css",
 							"method": "GET",
 							"param": "",
@@ -1280,16 +1299,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "76",
-							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-request-events-782a1a29.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=315360000",
-							"otherinfo": ""
-						},
-						{
-							"id": "28",
+							"id": "49",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-legal-c86fd649.css",
 							"method": "GET",
 							"param": "",
@@ -1298,7 +1308,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "26",
+							"id": "53",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization-requests-scopes-cf704b0b.css",
 							"method": "GET",
 							"param": "",
@@ -1307,7 +1317,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "75",
+							"id": "65",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization_header-1a2d94c9.css",
 							"method": "GET",
 							"param": "",
@@ -1316,7 +1326,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "78",
+							"id": "69",
 							"uri": "https://datapass.api.gouv.fr/assets/components/authorization_request_form-3bde0288.css",
 							"method": "GET",
 							"param": "",
@@ -1325,8 +1335,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "74",
-							"uri": "https://datapass.api.gouv.fr/assets/components/basic_card-e692dc58.css",
+							"id": "68",
+							"uri": "https://datapass.api.gouv.fr/assets/components/authorization_row-be5823e9.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1334,8 +1344,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "53",
-							"uri": "https://datapass.api.gouv.fr/assets/dsfr-extensions-d46e5337.css",
+							"id": "58",
+							"uri": "https://datapass.api.gouv.fr/assets/dsfr-extensions-c155194a.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1343,7 +1353,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "50",
+							"id": "19",
 							"uri": "https://datapass.api.gouv.fr/assets/dsfr-fonts-c176c522.css",
 							"method": "GET",
 							"param": "",
@@ -1352,7 +1362,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "30",
 							"uri": "https://datapass.api.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1361,13 +1371,13 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "10",
+					"count": "9",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "72"
+					"sourceid": "71"
 				}
 			]
 		}
