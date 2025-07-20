@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 13 Jul 2025 08:12:46",
+	"@generated": "Sun, 20 Jul 2025 08:17:53",
 	"site":[ 
 		{
 			"@name": "https://dora.inclusion.beta.gouv.fr",
@@ -9,43 +9,6 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
-				{
-					"pluginid": "10062",
-					"alertRef": "10062",
-					"alert": "PII Disclosure",
-					"name": "PII Disclosure",
-					"riskcode": "3",
-					"confidence": "3",
-					"riskdesc": "High (High)",
-					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
-					"instances":[ 
-						{
-							"id": "129",
-							"uri": "https://dora.inclusion.beta.gouv.fr/services/cidff67-bilan-de-competences",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "30583369100028",
-							"otherinfo": "Credit Card Type detected: DinersClub\nBank Identification Number: 305833\nBrand: DISCOVER\nCategory: BUSINESS CARD\nIssuer: DINERS CLUB INTERNATIONAL"
-						},
-						{
-							"id": "127",
-							"uri": "https://dora.inclusion.beta.gouv.fr/services/etp-synergie-esat-as-etp-synergie-est-un-",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "501282691036",
-							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 501282\nBrand: MAESTRO\nCategory: \nIssuer: "
-						}
-					],
-					"count": "2",
-					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
-					"otherinfo": "<p>Credit Card Type detected: DinersClub</p><p>Bank Identification Number: 305833</p><p>Brand: DISCOVER</p><p>Category: BUSINESS CARD</p><p>Issuer: DINERS CLUB INTERNATIONAL</p>",
-					"reference": "",
-					"cweid": "359",
-					"wascid": "13",
-					"sourceid": "23055"
-				},
 				{
 					"pluginid": "10055",
 					"alertRef": "10055-13",
@@ -66,8 +29,17 @@
 							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
 						},
 						{
-							"id": "87",
-							"uri": "https://dora.inclusion.beta.gouv.fr/auth/",
+							"id": "96",
+							"uri": "https://dora.inclusion.beta.gouv.fr/contribuer",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; frame-src 'self' https://metabase.dora.inclusion.gouv.fr https://cse.google.com https://syndicatedsearch.goog https://tally.so https://tube.numerique.gouv.fr; worker-src 'self' blob:; connect-src 'self' data: https://api.dora.inclusion.beta.gouv.fr https://*.sentry.io https://api-adresse.data.gouv.fr/ https://openmaptiles.data.gouv.fr https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr https://api.collectivite.fr https://cse.google.com; font-src 'self'; img-src 'self' data: https://www.google.com http://clients1.google.com https://ssl.gstatic.com https://encrypted-tbn0.gstatic.com; script-src 'self' 'unsafe-inline' https://tally.so/widgets/embed.js https://matomo.inclusion.beta.gouv.fr https://cse.google.com https://www.google.com http://clients1.google.com http://cse.google.com/adsense/search/async-ads.js 'unsafe-eval'; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline' https://www.google.com; base-uri 'self'",
+							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
+						},
+						{
+							"id": "90",
+							"uri": "https://dora.inclusion.beta.gouv.fr/services/creer",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
@@ -75,7 +47,7 @@
 							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -103,8 +75,17 @@
 							"otherinfo": "script-src includes unsafe-eval."
 						},
 						{
-							"id": "91",
-							"uri": "https://dora.inclusion.beta.gouv.fr/auth/",
+							"id": "101",
+							"uri": "https://dora.inclusion.beta.gouv.fr/contribuer",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; frame-src 'self' https://metabase.dora.inclusion.gouv.fr https://cse.google.com https://syndicatedsearch.goog https://tally.so https://tube.numerique.gouv.fr; worker-src 'self' blob:; connect-src 'self' data: https://api.dora.inclusion.beta.gouv.fr https://*.sentry.io https://api-adresse.data.gouv.fr/ https://openmaptiles.data.gouv.fr https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr https://api.collectivite.fr https://cse.google.com; font-src 'self'; img-src 'self' data: https://www.google.com http://clients1.google.com https://ssl.gstatic.com https://encrypted-tbn0.gstatic.com; script-src 'self' 'unsafe-inline' https://tally.so/widgets/embed.js https://matomo.inclusion.beta.gouv.fr https://cse.google.com https://www.google.com http://clients1.google.com http://cse.google.com/adsense/search/async-ads.js 'unsafe-eval'; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline' https://www.google.com; base-uri 'self'",
+							"otherinfo": "script-src includes unsafe-eval."
+						},
+						{
+							"id": "94",
+							"uri": "https://dora.inclusion.beta.gouv.fr/services/creer",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
@@ -112,7 +93,7 @@
 							"otherinfo": "script-src includes unsafe-eval."
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-eval.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -140,8 +121,17 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "88",
-							"uri": "https://dora.inclusion.beta.gouv.fr/auth/",
+							"id": "98",
+							"uri": "https://dora.inclusion.beta.gouv.fr/contribuer",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; frame-src 'self' https://metabase.dora.inclusion.gouv.fr https://cse.google.com https://syndicatedsearch.goog https://tally.so https://tube.numerique.gouv.fr; worker-src 'self' blob:; connect-src 'self' data: https://api.dora.inclusion.beta.gouv.fr https://*.sentry.io https://api-adresse.data.gouv.fr/ https://openmaptiles.data.gouv.fr https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr https://api.collectivite.fr https://cse.google.com; font-src 'self'; img-src 'self' data: https://www.google.com http://clients1.google.com https://ssl.gstatic.com https://encrypted-tbn0.gstatic.com; script-src 'self' 'unsafe-inline' https://tally.so/widgets/embed.js https://matomo.inclusion.beta.gouv.fr https://cse.google.com https://www.google.com http://clients1.google.com http://cse.google.com/adsense/search/async-ads.js 'unsafe-eval'; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline' https://www.google.com; base-uri 'self'",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"id": "91",
+							"uri": "https://dora.inclusion.beta.gouv.fr/services/creer",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
@@ -149,7 +139,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -177,8 +167,17 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "89",
-							"uri": "https://dora.inclusion.beta.gouv.fr/auth/",
+							"id": "99",
+							"uri": "https://dora.inclusion.beta.gouv.fr/contribuer",
+							"method": "GET",
+							"param": "content-security-policy",
+							"attack": "",
+							"evidence": "child-src https://aide.dora.inclusion.beta.gouv.fr/ https://metabase.dora.inclusion.gouv.fr https://tally.so https://tube.numerique.gouv.fr; default-src 'none'; frame-src 'self' https://metabase.dora.inclusion.gouv.fr https://cse.google.com https://syndicatedsearch.goog https://tally.so https://tube.numerique.gouv.fr; worker-src 'self' blob:; connect-src 'self' data: https://api.dora.inclusion.beta.gouv.fr https://*.sentry.io https://api-adresse.data.gouv.fr/ https://openmaptiles.data.gouv.fr https://openmaptiles.geo.data.gouv.fr/ https://openmaptiles.github.io/osm-bright-gl-style/ https://matomo.inclusion.beta.gouv.fr https://api.collectivite.fr https://cse.google.com; font-src 'self'; img-src 'self' data: https://www.google.com http://clients1.google.com https://ssl.gstatic.com https://encrypted-tbn0.gstatic.com; script-src 'self' 'unsafe-inline' https://tally.so/widgets/embed.js https://matomo.inclusion.beta.gouv.fr https://cse.google.com https://www.google.com http://clients1.google.com http://cse.google.com/adsense/search/async-ads.js 'unsafe-eval'; style-src 'self' https://tally.so/widgets/embed.js 'unsafe-inline' https://www.google.com; base-uri 'self'",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"id": "93",
+							"uri": "https://dora.inclusion.beta.gouv.fr/services/creer",
 							"method": "GET",
 							"param": "content-security-policy",
 							"attack": "",
@@ -186,7 +185,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -205,7 +204,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "13",
+							"id": "12",
 							"uri": "https://dora.inclusion.beta.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -214,7 +213,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "30",
+							"id": "49",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/7.AMu1MCvF.css",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "41",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/checkbox-mark.DBNASBcj.css",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -223,7 +231,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "39",
+							"id": "40",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/modal.4NHsZpg7.css",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -232,7 +240,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "31",
+							"id": "21",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/radio-buttons.WWv-JLEi.css",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -241,7 +249,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "47",
+							"id": "53",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/select-field.D6zP4dol.css",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -250,17 +258,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "48",
+							"id": "30",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/select.DNLT1t2x.css",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "42",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/service-search.LT9-aN2X.css",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -277,8 +276,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "54",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/entry/start.KfgUktZL.js",
+							"id": "62",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/uGuEUWxe.js",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -286,7 +285,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
+							"id": "37",
 							"uri": "https://dora.inclusion.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -295,7 +294,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "13",
 							"uri": "https://dora.inclusion.beta.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -304,7 +303,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "14",
 							"uri": "https://dora.inclusion.beta.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -332,7 +331,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "12",
+							"id": "11",
 							"uri": "https://dora.inclusion.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -341,8 +340,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "83",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/BHepzFFY.js",
+							"id": "79",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/B28xSJAH.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -350,7 +349,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "72",
+							"id": "66",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/BOChK0X5.js",
 							"method": "GET",
 							"param": "",
@@ -359,34 +358,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "79",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/Cdez0BdG.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "76",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/CNEwUI4o.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "75",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/CqukaOUz.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "78",
+							"id": "72",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/CtMdLze5.js",
 							"method": "GET",
 							"param": "",
@@ -395,8 +367,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "56",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/NA5w3Voy.js",
+							"id": "75",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/CYT9pE_S.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "76",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/DdhTrEVj.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -405,7 +386,7 @@
 						},
 						{
 							"id": "80",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/ojq6rEBq.js",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/DohiEWh0.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -413,7 +394,25 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "64",
+							"id": "57",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/NA5w3Voy.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "73",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/QM8C3cxv.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "61",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/uGuEUWxe.js",
 							"method": "GET",
 							"param": "",
@@ -422,8 +421,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "53",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/entry/start.KfgUktZL.js",
+							"id": "74",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/entry/start.BeeKBcuB.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -450,26 +449,8 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "5",
-							"uri": "https://dora.inclusion.beta.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1752068181",
-							"otherinfo": "1752068181, which evaluates to: 2025-07-09 13:36:21."
-						},
-						{
-							"id": "117",
-							"uri": "https://dora.inclusion.beta.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1752068181",
-							"otherinfo": "1752068181, which evaluates to: 2025-07-09 13:36:21."
-						},
-						{
-							"id": "93",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/BPgl_GQv.js",
+							"id": "84",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/BCIPetm2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -477,43 +458,16 @@
 							"otherinfo": "2013269055, which evaluates to: 2033-10-18 17:24:15."
 						},
 						{
-							"id": "73",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/CqukaOUz.js",
+							"id": "118",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/nodes/27.C0aisUa2.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1752068181",
-							"otherinfo": "1752068181, which evaluates to: 2025-07-09 13:36:21."
+							"evidence": "1675174056",
+							"otherinfo": "1675174056, which evaluates to: 2023-01-31 14:07:36."
 						},
 						{
-							"id": "119",
-							"uri": "https://dora.inclusion.beta.gouv.fr/accessibilite",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1752068181",
-							"otherinfo": "1752068181, which evaluates to: 2025-07-09 13:36:21."
-						},
-						{
-							"id": "104",
-							"uri": "https://dora.inclusion.beta.gouv.fr/contribuer",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1752068181",
-							"otherinfo": "1752068181, which evaluates to: 2025-07-09 13:36:21."
-						},
-						{
-							"id": "115",
-							"uri": "https://dora.inclusion.beta.gouv.fr/mentions-legales",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1752068181",
-							"otherinfo": "1752068181, which evaluates to: 2025-07-09 13:36:21."
-						},
-						{
-							"id": "123",
+							"id": "116",
 							"uri": "https://dora.inclusion.beta.gouv.fr/politique-de-confidentialite",
 							"method": "GET",
 							"param": "",
@@ -522,49 +476,76 @@
 							"otherinfo": "1675174056, which evaluates to: 2023-01-31 14:07:36."
 						},
 						{
+							"id": "126",
+							"uri": "https://dora.inclusion.beta.gouv.fr/services/ass-communication-ec-auto-ecole-pour-bene",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1753085826",
+							"otherinfo": "1753085826, which evaluates to: 2025-07-21 08:17:06."
+						},
+						{
+							"id": "127",
+							"uri": "https://dora.inclusion.beta.gouv.fr/services/association-feu-vert-aia-2g-action-dinser",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1753085827",
+							"otherinfo": "1753085827, which evaluates to: 2025-07-21 08:17:07."
+						},
+						{
+							"id": "128",
+							"uri": "https://dora.inclusion.beta.gouv.fr/services/defis-plateforme-defis-mob",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1753085827",
+							"otherinfo": "1753085827, which evaluates to: 2025-07-21 08:17:07."
+						},
+						{
+							"id": "124",
+							"uri": "https://dora.inclusion.beta.gouv.fr/services/fondation-apprentis--efos-louvre-boite-compieg-dvna",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1753085826",
+							"otherinfo": "1753085826, which evaluates to: 2025-07-21 08:17:06."
+						},
+						{
 							"id": "122",
-							"uri": "https://dora.inclusion.beta.gouv.fr/politique-de-confidentialite",
+							"uri": "https://dora.inclusion.beta.gouv.fr/services/hypra-mediation-numerique-ylrl",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1752068181",
-							"otherinfo": "1752068181, which evaluates to: 2025-07-09 13:36:21."
+							"evidence": "1753085825",
+							"otherinfo": "1753085825, which evaluates to: 2025-07-21 08:17:05."
 						},
 						{
-							"id": "106",
-							"uri": "https://dora.inclusion.beta.gouv.fr/recherche-textuelle",
+							"id": "123",
+							"uri": "https://dora.inclusion.beta.gouv.fr/services/lentraide-unoj-aide-au-demenagement",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1752068181",
-							"otherinfo": "1752068181, which evaluates to: 2025-07-09 13:36:21."
+							"evidence": "1753085826",
+							"otherinfo": "1753085826, which evaluates to: 2025-07-21 08:17:06."
 						},
 						{
-							"id": "100",
-							"uri": "https://dora.inclusion.beta.gouv.fr/services/creer",
+							"id": "125",
+							"uri": "https://dora.inclusion.beta.gouv.fr/services/lentraide-unoj-entraide-berruyere",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1752068181",
-							"otherinfo": "1752068181, which evaluates to: 2025-07-09 13:36:21."
-						},
-						{
-							"id": "113",
-							"uri": "https://dora.inclusion.beta.gouv.fr/stats",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1752068181",
-							"otherinfo": "1752068181, which evaluates to: 2025-07-09 13:36:21."
+							"evidence": "1753085826",
+							"otherinfo": "1753085826, which evaluates to: 2025-07-21 08:17:06."
 						}
 					],
-					"count": "12",
+					"count": "10",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1752068181, which evaluates to: 2025-07-09 13:36:21.</p>",
+					"otherinfo": "<p>2013269055, which evaluates to: 2033-10-18 17:24:15.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "188"
 				},
 				{
 					"pluginid": "10021",
@@ -577,7 +558,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"id": "67",
+							"id": "69",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/0.2vu6Ywjg.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -586,7 +567,16 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "17",
+							"id": "44",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/7.AMu1MCvF.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "32",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/checkbox-mark.DBNASBcj.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -595,7 +585,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "37",
+							"id": "36",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/modal.4NHsZpg7.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -604,7 +594,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "16",
+							"id": "15",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/radio-buttons.WWv-JLEi.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -613,7 +603,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "43",
+							"id": "47",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/select-field.D6zP4dol.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -622,7 +612,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "44",
+							"id": "22",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/select.DNLT1t2x.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -631,7 +621,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "40",
+							"id": "63",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/service-search.LT9-aN2X.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -640,7 +630,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "69",
+							"id": "60",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/BOChK0X5.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -649,7 +639,16 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "52",
+							"id": "67",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/CtMdLze5.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "46",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/NA5w3Voy.js",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -658,26 +657,8 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "68",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/ojq6rEBq.js",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"id": "62",
+							"id": "55",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/uGuEUWxe.js",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"id": "49",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/entry/start.KfgUktZL.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -691,7 +672,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "123"
+					"sourceid": "124"
 				},
 				{
 					"pluginid": "10094",
@@ -704,26 +685,26 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "6",
+							"id": "5",
 							"uri": "https://dora.inclusion.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_app/immutable/chunks/ojq6rEBq",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\u83AE\uFFFD\\x0010\\x001a"
+							"evidence": "/_app/immutable/chunks/B28xSJAH",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR$\\x0001"
 						},
 						{
-							"id": "96",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/DNzagtJz.js",
+							"id": "110",
+							"uri": "https://dora.inclusion.beta.gouv.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "disableForced4SpacesIndentedSublists",
-							"otherinfo": "v+\\x001anW\uFFFD\uFFFD\uFFFD\\x001ew\uFFFD\uFFFDi\u01EC\"w^\uFFFD\u05DDJ\uFFFD\uFFFD\uFFFDl"
+							"evidence": "/_app/immutable/chunks/B28xSJAH",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR$\\x0001"
 						},
 						{
-							"id": "77",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/ojq6rEBq.js",
+							"id": "78",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/B28xSJAH.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -731,8 +712,17 @@
 							"otherinfo": "\\x0000\\x0010\uFFFD\\x0010Q\uFFFD \uFFFD\uFFFD0\u04CFA\\x0014\uFFFDQU\uFFFDa\uFFFD\uFFFDq\u05DF\uFFFD\\x0018\uFFFD\uFFFDY\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06EF\uFFFD\\x001c\uFFFD\uFFFD]\uFFFD\u37BB\uFFFD\u07FF"
 						},
 						{
-							"id": "90",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/entry/app.9ln8oWjo.js",
+							"id": "88",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/C5QAIXtU.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "disableForced4SpacesIndentedSublists",
+							"otherinfo": "v+\\x001anW\uFFFD\uFFFD\uFFFD\\x001ew\uFFFD\uFFFDi\u01EC\"w^\uFFFD\u05DDJ\uFFFD\uFFFD\uFFFDl"
+						},
+						{
+							"id": "87",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/entry/app.CilzUH-5.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -740,8 +730,8 @@
 							"otherinfo": "\uFFFD\uFFFD-\uFFFDf\uFFFDx\uFFFD|.\uFFFD\uFFFDz\uFFFDH\uFFFD\u05EBi\uFFFDb\uFFFD"
 						},
 						{
-							"id": "86",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/nodes/0.DDeckHTJ.js",
+							"id": "85",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/nodes/0.BGbSu-TX.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -749,40 +739,40 @@
 							"otherinfo": "r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD{\uFFFD\\x0014 @\\x0004\uFFFD\uFFFD'j\uFFFDW\\x0004\uFFFD\uFFFD5\uFFFD`\uFFFDC\uFFFD?\\&\uFFFD\uFFFD\uFFFD\uFFFDy\uFFFD\uFFFD\uFFFD`\uFFFDv>\uFFFD\uFFFD\uFFFD\uFFFD<\uFFFD@\uFFFD\u036AE\uFFFD&*\uFFFD\u05AA\uFFFD\\x0003\uFFFDTVI\uFFFD\\x0008\uFFFD\uFFFD\uFFFDS\uFFFD\uFFFD\uFFFDKvSB\uFFFD)$\uFFFD t\\x001b\uFFFD\uFFFD\uFFFD2\uFFFD1e\uFFFD\uFFFD\uFFFD\\x001e!\uFFFD\uFFFDV\\\uFFFDE\uFFFDC\uFFFD\uFFFD\uFFFD\uFFFD\\x001cb\uFFFD\uFFFD\rH\\x0015\uFFFD\uFFFDU\uFFFD\uFFFD{\\x0011%\n\\x00027\\x0006|\uFFFD\uFFFD\\x0016\uFFFD\uFFFD,\\x00137\u02B90;H\uFFFD\uFFFD\uFFFD\u055E\uFFFD\uFFFD\uFFFD\uFFFD\u0726\uFFFDF\uFFFD\\x001d"
 						},
 						{
-							"id": "92",
-							"uri": "https://dora.inclusion.beta.gouv.fr/auth/",
+							"id": "111",
+							"uri": "https://dora.inclusion.beta.gouv.fr/cgu",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_app/immutable/chunks/ojq6rEBq",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\u83AE\uFFFD\\x0010\\x001a"
+							"evidence": "/_app/immutable/chunks/B28xSJAH",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR$\\x0001"
 						},
 						{
-							"id": "108",
+							"id": "105",
 							"uri": "https://dora.inclusion.beta.gouv.fr/contribuer",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_app/immutable/chunks/ojq6rEBq",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\u83AE\uFFFD\\x0010\\x001a"
+							"evidence": "/_app/immutable/chunks/B28xSJAH",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR$\\x0001"
 						},
 						{
-							"id": "116",
+							"id": "107",
 							"uri": "https://dora.inclusion.beta.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_app/immutable/chunks/ojq6rEBq",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\u83AE\uFFFD\\x0010\\x001a"
+							"evidence": "/_app/immutable/chunks/B28xSJAH",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR$\\x0001"
 						},
 						{
-							"id": "109",
+							"id": "103",
 							"uri": "https://dora.inclusion.beta.gouv.fr/recherche-textuelle",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_app/immutable/chunks/ojq6rEBq",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\u83AE\uFFFD\\x0010\\x001a"
+							"evidence": "/_app/immutable/chunks/B28xSJAH",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR$\\x0001"
 						},
 						{
 							"id": "102",
@@ -790,22 +780,13 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "/_app/immutable/chunks/ojq6rEBq",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\u83AE\uFFFD\\x0010\\x001a"
-						},
-						{
-							"id": "114",
-							"uri": "https://dora.inclusion.beta.gouv.fr/stats",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "/_app/immutable/chunks/ojq6rEBq",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\u83AE\uFFFD\\x0010\\x001a"
+							"evidence": "/_app/immutable/chunks/B28xSJAH",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR$\\x0001"
 						}
 					],
 					"count": "11",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\u83AE\uFFFD\\x0010\\x001a</p>",
+					"otherinfo": "<p>\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDZnW\uFFFDr\\x001b\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR$\\x0001</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
@@ -822,7 +803,7 @@
 					"desc": "<p>The Content-Type header was either missing or empty.</p>",
 					"instances":[ 
 						{
-							"id": "120",
+							"id": "112",
 							"uri": "https://dora.inclusion.beta.gouv.fr/favicon.v2.ico",
 							"method": "GET",
 							"param": "content-type",
@@ -837,7 +818,7 @@
 					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
 					"cweid": "345",
 					"wascid": "12",
-					"sourceid": "252"
+					"sourceid": "248"
 				},
 				{
 					"pluginid": "10027",
@@ -850,16 +831,16 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "85",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/60adfZVS.js",
+							"id": "68",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/B28xSJAH.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "user",
-							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//${a}${e&&s?`:${s}`:\"\"}@${n}${i?`:${i}`:\"\"}/${r&&`${r}/`}${o}`}function We(t){const e=Ke.exec(t);if(!e){et(()=>{console.error(`\", see evidence field for the suspicious comment/snippet."
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//\");function Pt(e,t){return e===\"/\"||t===\"ignore\"?e:t===\"never\"?e.endsWith(\"/\")?e.slice(0,-1):e:t===\"always\"&&!e.endsWith(\"/\")?\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "66",
+							"id": "56",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/BOChK0X5.js",
 							"method": "GET",
 							"param": "",
@@ -868,26 +849,8 @@
 							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//www.w3.org/2000/svg\",t)}function tt(t){return document.createTextNode(t)}function te(){return tt(\" \")}function ee(){return tt(\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "94",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/CixMvEzs.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//www.w3.org/2000/svg\"><path d=\"M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "95",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/DNzagtJz.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "bug",
-							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in likely comment: \"//;function Ie(){var f=[];return f.lastItem=function(){return f[f.length-1]},f}function Ne(f,g){for(var k=Ie(),r=f,v;f;)C();V();\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "97",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/DpBUaum_.js",
+							"id": "108",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/BRMCy6_I.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -895,31 +858,49 @@
 							"otherinfo": "The following pattern was used: \\bFIXME\\b and was detected in likely comment: \"//wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:rule_modifier:closed.',switched:'The selector \"{{first}}\" \", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "65",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/ojq6rEBq.js",
+							"id": "83",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/C5QAIXtU.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "from",
-							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//\");function Pt(e,t){return e===\"/\"||t===\"ignore\"?e:t===\"never\"?e.endsWith(\"/\")?e.slice(0,-1):e:t===\"always\"&&!e.endsWith(\"/\")?\", see evidence field for the suspicious comment/snippet."
+							"evidence": "bug",
+							"otherinfo": "The following pattern was used: \\bBUG\\b and was detected in likely comment: \"//;function Ie(){var f=[];return f.lastItem=function(){return f[f.length-1]},f}function Ne(f,g){for(var k=Ie(),r=f,v;f;)C();V();\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "84",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/entry/app.9ln8oWjo.js",
+							"id": "77",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/CM4W45CV.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//${a}${e&&s?`:${s}`:\"\"}@${n}${i?`:${i}`:\"\"}/${r&&`${r}/`}${o}`}function un(t){const e=an.exec(t);if(!e){nt(()=>{console.error(`\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "86",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/DSWfGEeS.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//www.w3.org/2000/svg\"><path d=\"M11.9997 10.5865L16.9495 5.63672L18.3637 7.05093L13.4139 12.0007L18.3637 16.9504L16.9495 18.3646\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "82",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/entry/app.CilzUH-5.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "query",
-							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//\")<=0&&t.indexOf(\"//\")!==0,r=n?Ao:void 0;try{if(\"canParse\"in URL&&!URL.canParse(t,r))return;const s=new URL(t,r);return n?{isR\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//\")<=0&&t.indexOf(\"//\")!==0,r=n?Do:void 0;try{if(\"canParse\"in URL&&!URL.canParse(t,r))return;const s=new URL(t,r);return n?{isR\", see evidence field for the suspicious comment/snippet."
 						}
 					],
 					"count": "7",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//${a}${e&&s?`:${s}`:\"\"}@${n}${i?`:${i}`:\"\"}/${r&&`${r}/`}${o}`}function We(t){const e=Ke.exec(t);if(!e){et(()=>{console.error(`\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//\");function Pt(e,t){return e===\"/\"||t===\"ignore\"?e:t===\"never\"?e.endsWith(\"/\")?e.slice(0,-1):e:t===\"always\"&&!e.endsWith(\"/\")?\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "163"
+					"sourceid": "126"
 				},
 				{
 					"pluginid": "10109",
@@ -932,121 +913,58 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "126",
+							"id": "120",
 							"uri": "https://dora.inclusion.beta.gouv.fr/mon-compte",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"eks50G4RjinNZqACf4Yl4g==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_1y35glgB.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
+							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"Bxldbq69pLswMoewY1liOw==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_1y35glgB.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "125",
+							"id": "121",
 							"uri": "https://dora.inclusion.beta.gouv.fr/orientations",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"0cHLrDol/Nbns5XhhXR4cQ==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_1y35glgB.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
+							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"MV46wm3kGjLs9V8uk6tJfg==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_1y35glgB.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "105",
+							"id": "100",
 							"uri": "https://dora.inclusion.beta.gouv.fr/recherche-textuelle",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"narDlbILzJFhZkK4d3L1Fw==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_1y35glgB.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
+							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"yJMxtmCK6lfl+Btn0Bc/jg==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_1y35glgB.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "99",
+							"id": "95",
 							"uri": "https://dora.inclusion.beta.gouv.fr/services/creer",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"gTjH2X5G2ckOEEfoiOj9ug==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_1y35glgB.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
+							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"vzfSe50B7MWIquSVR47bAQ==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_1y35glgB.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "134",
-							"uri": "https://dora.inclusion.beta.gouv.fr/services/wimoov-kuai--kynb",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"\" target=\"_blank\" class=\"text-magenta-cta underline\">Faire une demande<svg width=\"20\" height=\"20\" fill=\"currentColor\" class=\"pl-s4 pb-s4 inline-block\" role=\"img\" aria-label=\"external link line\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z\"></path></svg> </a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "137",
-							"uri": "https://dora.inclusion.beta.gouv.fr/services/wimoov-msgo-accompagnement-autoe",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"\" target=\"_blank\" class=\"text-magenta-cta underline\">Faire une demande<svg width=\"20\" height=\"20\" fill=\"currentColor\" class=\"pl-s4 pb-s4 inline-block\" role=\"img\" aria-label=\"external link line\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z\"></path></svg> </a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "139",
-							"uri": "https://dora.inclusion.beta.gouv.fr/services/wimoov-provence-alpe--svob",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"\" target=\"_blank\" class=\"text-magenta-cta underline\">Faire une demande<svg width=\"20\" height=\"20\" fill=\"currentColor\" class=\"pl-s4 pb-s4 inline-block\" role=\"img\" aria-label=\"external link line\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z\"></path></svg> </a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "138",
-							"uri": "https://dora.inclusion.beta.gouv.fr/services/wimoov-seine-et-marn--kycv",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"\" target=\"_blank\" class=\"text-magenta-cta underline\">Faire une demande<svg width=\"20\" height=\"20\" fill=\"currentColor\" class=\"pl-s4 pb-s4 inline-block\" role=\"img\" aria-label=\"external link line\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z\"></path></svg> </a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "135",
-							"uri": "https://dora.inclusion.beta.gouv.fr/services/wimoov-sqxq-accompagnement-autoe",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"\" target=\"_blank\" class=\"text-magenta-cta underline\">Faire une demande<svg width=\"20\" height=\"20\" fill=\"currentColor\" class=\"pl-s4 pb-s4 inline-block\" role=\"img\" aria-label=\"external link line\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z\"></path></svg> </a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "136",
-							"uri": "https://dora.inclusion.beta.gouv.fr/services/wimoov-val-doise--sdxc",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"\" target=\"_blank\" class=\"text-magenta-cta underline\">Faire une demande<svg width=\"20\" height=\"20\" fill=\"currentColor\" class=\"pl-s4 pb-s4 inline-block\" role=\"img\" aria-label=\"external link line\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z\"></path></svg> </a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "133",
-							"uri": "https://dora.inclusion.beta.gouv.fr/services/wimoov-vosges--xhox",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"\" target=\"_blank\" class=\"text-magenta-cta underline\">Faire une demande<svg width=\"20\" height=\"20\" fill=\"currentColor\" class=\"pl-s4 pb-s4 inline-block\" role=\"img\" aria-label=\"external link line\" viewBox=\"0 0 24 24\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M10 6V8H5V19H16V14H18V20C18 20.5523 17.5523 21 17 21H4C3.44772 21 3 20.5523 3 20V7C3 6.44772 3.44772 6 4 6H10ZM21 3V11H19L18.9999 6.413L11.2071 14.2071L9.79289 12.7929L17.5849 5H13V3H21Z\"></path></svg> </a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "112",
+							"id": "114",
 							"uri": "https://dora.inclusion.beta.gouv.fr/stats",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"wpZT2nAx3TvSFWNhHT8qNg==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_1y35glgB.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
+							"evidence": "<script\n      type=\"text/javascript\"\n      nonce=\"wdqDUydtqqOfu4u5uUz2DA==\"\n      data-container=\"https://matomo.inclusion.beta.gouv.fr/js/container_1y35glgB.js\"\n    >\n      (function (containerUrl) {\n        if (!containerUrl) return;\n        var _mtm = (window._mtm = window._mtm || []);\n        _mtm.push([\"enableDebugMode\"]);\n        _mtm.push([\"HeatmapSessionRecording::disable\"]);\n        _mtm.push({\n          \"mtm.startTime\": new Date().getTime(),\n          event: \"mtm.Start\",\n        });\n        var d = document,\n          g = d.createElement(\"script\"),\n          s = d.getElementsByTagName(\"script\")[0];\n        g.async = true;\n        g.src = containerUrl;\n        s.parentNode.insertBefore(g, s);\n      })(document.currentScript.dataset.container);\n    </script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
-					"count": "12",
+					"count": "5",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "17455"
+					"sourceid": "18835"
 				},
 				{
 					"pluginid": "10015",
@@ -1068,7 +986,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "107",
+							"id": "106",
 							"uri": "https://dora.inclusion.beta.gouv.fr/",
 							"method": "GET",
 							"param": "cache-control",
@@ -1077,8 +995,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "118",
-							"uri": "https://dora.inclusion.beta.gouv.fr/accessibilite",
+							"id": "109",
+							"uri": "https://dora.inclusion.beta.gouv.fr/cgu",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1086,7 +1004,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "101",
+							"id": "92",
 							"uri": "https://dora.inclusion.beta.gouv.fr/contribuer",
 							"method": "GET",
 							"param": "cache-control",
@@ -1095,7 +1013,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "110",
+							"id": "104",
 							"uri": "https://dora.inclusion.beta.gouv.fr/mentions-legales",
 							"method": "GET",
 							"param": "cache-control",
@@ -1104,7 +1022,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "121",
+							"id": "115",
 							"uri": "https://dora.inclusion.beta.gouv.fr/politique-de-confidentialite",
 							"method": "GET",
 							"param": "cache-control",
@@ -1113,7 +1031,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "103",
+							"id": "97",
 							"uri": "https://dora.inclusion.beta.gouv.fr/recherche-textuelle",
 							"method": "GET",
 							"param": "cache-control",
@@ -1122,7 +1040,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "21",
+							"id": "23",
 							"uri": "https://dora.inclusion.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -1131,7 +1049,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "98",
+							"id": "89",
 							"uri": "https://dora.inclusion.beta.gouv.fr/services/creer",
 							"method": "GET",
 							"param": "cache-control",
@@ -1140,7 +1058,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "71",
+							"id": "81",
 							"uri": "https://dora.inclusion.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -1149,7 +1067,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "111",
+							"id": "113",
 							"uri": "https://dora.inclusion.beta.gouv.fr/stats",
 							"method": "GET",
 							"param": "cache-control",
@@ -1177,7 +1095,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "9",
+							"id": "8",
 							"uri": "https://dora.inclusion.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1186,8 +1104,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "20",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/checkbox-mark.DBNASBcj.css",
+							"id": "18",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/radio-buttons.WWv-JLEi.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1195,8 +1113,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "24",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/radio-buttons.WWv-JLEi.css",
+							"id": "27",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/select.DNLT1t2x.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1232,7 +1150,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "8",
+							"id": "7",
 							"uri": "https://dora.inclusion.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1241,16 +1159,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "19",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/checkbox-mark.DBNASBcj.css",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "23",
+							"id": "17",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/radio-buttons.WWv-JLEi.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1259,7 +1168,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "32",
+							"id": "25",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/select.DNLT1t2x.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "31",
 							"uri": "https://dora.inclusion.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1287,7 +1205,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "7",
+							"id": "6",
 							"uri": "https://dora.inclusion.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1296,16 +1214,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "18",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/checkbox-mark.DBNASBcj.css",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "22",
+							"id": "16",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/radio-buttons.WWv-JLEi.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1314,7 +1223,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "28",
+							"id": "24",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/select.DNLT1t2x.css",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "26",
 							"uri": "https://dora.inclusion.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1342,7 +1260,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "10",
+							"id": "9",
 							"uri": "https://dora.inclusion.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1351,8 +1269,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "26",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/checkbox-mark.DBNASBcj.css",
+							"id": "19",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/radio-buttons.WWv-JLEi.css",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1360,8 +1278,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "25",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/radio-buttons.WWv-JLEi.css",
+							"id": "28",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/select.DNLT1t2x.css",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1397,7 +1315,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "11",
+							"id": "10",
 							"uri": "https://dora.inclusion.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -1406,17 +1324,8 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "70",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/0.2vu6Ywjg.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=31536000",
-							"otherinfo": ""
-						},
-						{
-							"id": "27",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/checkbox-mark.DBNASBcj.css",
+							"id": "48",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/7.AMu1MCvF.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1425,6 +1334,15 @@
 						},
 						{
 							"id": "38",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/checkbox-mark.DBNASBcj.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "39",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/modal.4NHsZpg7.css",
 							"method": "GET",
 							"param": "",
@@ -1433,7 +1351,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "29",
+							"id": "20",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/radio-buttons.WWv-JLEi.css",
 							"method": "GET",
 							"param": "",
@@ -1442,7 +1360,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "45",
+							"id": "51",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/select-field.D6zP4dol.css",
 							"method": "GET",
 							"param": "",
@@ -1451,7 +1369,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "46",
+							"id": "29",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/select.DNLT1t2x.css",
 							"method": "GET",
 							"param": "",
@@ -1460,7 +1378,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
+							"id": "64",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/assets/service-search.LT9-aN2X.css",
 							"method": "GET",
 							"param": "",
@@ -1469,7 +1387,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "55",
+							"id": "65",
+							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/BOChK0X5.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "54",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/NA5w3Voy.js",
 							"method": "GET",
 							"param": "",
@@ -1478,17 +1405,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "63",
+							"id": "59",
 							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/chunks/uGuEUWxe.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=31536000",
-							"otherinfo": ""
-						},
-						{
-							"id": "51",
-							"uri": "https://dora.inclusion.beta.gouv.fr/_app/immutable/entry/start.KfgUktZL.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
