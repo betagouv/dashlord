@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 27 Jul 2025 06:49:46",
+	"@generated": "Sun, 3 Aug 2025 06:47:53",
 	"site":[ 
 		{
 			"@name": "https://anais.beta.gouv.fr",
@@ -25,13 +25,13 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<form id=\"kc-form-login\" onsubmit=\"login.disabled = true; return true;\" action=\"https://sso.anais.beta.gouv.fr/realms/VIGIE/login-actions/authenticate?session_code=UbHGr6VXivc--6y2BUae6vxFl-kQ41kbJT_JLmM14Lo&amp;execution=3718dc01-139c-45f1-b2fa-46f780c4dae4&amp;client_id=anais-api&amp;tab_id=Tq6jRI9yPXk&amp;client_data=eyJydSI6Imh0dHBzOi8vYW5haXMuYmV0YS5nb3V2LmZyL29hdXRoMi9jYWxsYmFjayIsInJ0IjoiY29kZSIsInN0IjoiV1EzODF0V3VyZjA5WEJZUFJvZ19NeUtaVnFFRGE1dlNVTDdvMFRaV21zTTpodHRwczovL2FuYWlzLmJldGEuZ291di5mci8ifQ\" method=\"post\">",
-							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 1: \"id-hidden-input\" \"kc-login\" \"password\" \"rememberMe\" \"username\" ]."
+							"evidence": "<form id=\"kc-form-login\" onsubmit=\"login.disabled = true; return true;\" action=\"https://sso.anais.beta.gouv.fr/realms/VIGIE/login-actions/authenticate?session_code=Mh9CpOTupkF9JN_0HHCDVsl-Eyv6-s42VHI3ypo_moM&amp;execution=3718dc01-139c-45f1-b2fa-46f780c4dae4&amp;client_id=anais-api&amp;tab_id=YoCE-VG-MvY&amp;client_data=eyJydSI6Imh0dHBzOi8vYW5haXMuYmV0YS5nb3V2LmZyL29hdXRoMi9jYWxsYmFjayIsInJ0IjoiY29kZSIsInN0IjoiQlUtRzZVTVZMdFVJQVRWekc2bGkzcW0teHkyak1sZnpQOWgyUk9oWUFrODpodHRwczovL2FuYWlzLmJldGEuZ291di5mci8ifQ\" method=\"post\">",
+							"otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 1: \"askAccess\" \"id-hidden-input\" \"kc-login\" \"password\" \"rememberMe\" \"username\" ]."
 						}
 					],
 					"count": "1",
 					"solution": "<p>Phase: Architecture and Design</p><p>Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.</p><p>For example, use anti-CSRF packages such as the OWASP CSRFGuard.</p><p></p><p>Phase: Implementation</p><p>Ensure that your application is free of cross-site scripting issues, because most CSRF defenses can be bypassed using attacker-controlled script.</p><p></p><p>Phase: Architecture and Design</p><p>Generate a unique nonce for each form, place the nonce into the form, and verify the nonce upon receipt of the form. Be sure that the nonce is not predictable (CWE-330).</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Identify especially dangerous operations. When the user performs a dangerous operation, send a separate confirmation request to ensure that the user intended to perform that operation.</p><p>Note that this can be bypassed using XSS.</p><p></p><p>Use the ESAPI Session Management control.</p><p>This control includes a component for CSRF.</p><p></p><p>Do not use the GET method for any request that triggers a state change.</p><p></p><p>Phase: Implementation</p><p>Check the HTTP Referer header to see if the request originated from an expected page. This could break legitimate functionality, because users or proxies may have disabled sending the Referer for privacy reasons.</p>",
-					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 1: \"id-hidden-input\" \"kc-login\" \"password\" \"rememberMe\" \"username\" ].</p>",
+					"otherinfo": "<p>No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _csrf, _csrfSecret, __csrf_magic, CSRF, _token, _csrf_token, _csrfToken] was found in the following HTML form: [Form 1: \"askAccess\" \"id-hidden-input\" \"kc-login\" \"password\" \"rememberMe\" \"username\" ].</p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html</p><p>https://cwe.mitre.org/data/definitions/352.html</p>",
 					"cweid": "352",
 					"wascid": "9",
@@ -188,7 +188,7 @@
 					"desc": "<p>A cookie has been set with its SameSite attribute set to \"none\", which means that the cookie can be sent as a result of a 'cross-site' request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.</p>",
 					"instances":[ 
 						{
-							"id": "14",
+							"id": "18",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "_oauth2_proxy_csrf",
@@ -215,7 +215,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "45",
+							"id": "46",
 							"uri": "https://anais.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "_oauth2_proxy_csrf",
@@ -280,7 +280,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "16",
+							"id": "15",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -289,7 +289,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "17",
+							"id": "16",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -298,7 +298,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "18",
+							"id": "17",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -326,7 +326,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "15",
+							"id": "14",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -354,13 +354,13 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "19",
+							"id": "20",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "Set-Cookie",
 							"attack": "",
-							"evidence": "1753598983",
-							"otherinfo": "1753598983, which evaluates to: 2025-07-27 06:49:43."
+							"evidence": "1754203670",
+							"otherinfo": "1754203670, which evaluates to: 2025-08-03 06:47:50."
 						},
 						{
 							"id": "47",
@@ -368,22 +368,22 @@
 							"method": "GET",
 							"param": "Set-Cookie",
 							"attack": "",
-							"evidence": "1753598983",
-							"otherinfo": "1753598983, which evaluates to: 2025-07-27 06:49:43."
+							"evidence": "1754203671",
+							"otherinfo": "1754203671, which evaluates to: 2025-08-03 06:47:51."
 						},
 						{
-							"id": "46",
+							"id": "45",
 							"uri": "https://anais.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Set-Cookie",
 							"attack": "",
-							"evidence": "1753598983",
-							"otherinfo": "1753598983, which evaluates to: 2025-07-27 06:49:43."
+							"evidence": "1754203671",
+							"otherinfo": "1754203671, which evaluates to: 2025-08-03 06:47:51."
 						}
 					],
 					"count": "3",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1753598983, which evaluates to: 2025-07-27 06:49:43.</p>",
+					"otherinfo": "<p>1754203670, which evaluates to: 2025-08-03 06:47:50.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "497",
 					"wascid": "13",
@@ -400,7 +400,16 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "8",
+							"id": "3",
+							"uri": "https://anais.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X6zxqSYkK5XZ6eVoVvS6Zgw-y-uje5PbyQXPeYX9Qo4",
+							"otherinfo": "_\uFFFD\uFFFD&$+\uFFFD\uFFFD\uFFFD\uFFFDhV\uFFFD\uFFFDf\\x000c>\uFFFD\uFFFD{\uFFFD\uFFFD\uFFFD\\x0005\uFFFDy\uFFFD\uFFFDB\uFFFD"
+						},
+						{
+							"id": "2",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -409,22 +418,13 @@
 							"otherinfo": "{\"alg\":\"dir\",\"enc\":\"A128CBC-HS256\"}"
 						},
 						{
-							"id": "2",
-							"uri": "https://anais.beta.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "4exAP6LbD1d1R_OxJJXUl-zztNe3cbuOMsabNwX1-gc",
-							"otherinfo": "\uFFFD\uFFFD@?\uFFFD\uFFFD\\x000fWuG\uFFFD$\uFFFD\u0517\uFFFD\uFFFD\u05F7q\uFFFD\uFFFD2\u019B7\\x0005\uFFFD\uFFFD\\x0007"
-						},
-						{
-							"id": "33",
+							"id": "36",
 							"uri": "https://anais.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "K77nQ1CpquuapwCqpi-B0nDKKZK-peUn-hqV0It7jcM",
-							"otherinfo": "+\uFFFD\uFFFDCP\uFFFD\uFFFD\uB6A7\\x0000\uFFFD\uFFFD/\uFFFD\uFFFDp\uFFFD)\uFFFD\uFFFD\uFFFD\uFFFD'\uFFFD\\x001a\uFFFD\u040B{\uFFFD\uFFFD"
+							"evidence": "kTyYp0jGqtZ3NwgMlxy-24_9l30Jkbm9d3JiFDftw34",
+							"otherinfo": "\uFFFD<\uFFFD\uFFFDH\u01AA\uFFFDw7\\x0008\\x000c\uFFFD\\x001c\uFFFD\u06CF\uFFFD\uFFFD}\t\uFFFD\uFFFD\uFFFDwrb\\x00147\uFFFD\uFFFD~"
 						},
 						{
 							"id": "32",
@@ -432,17 +432,17 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "zADH8TnkpUUGh7kMa2P5-IiOPXsmtAHydH02imKn7Lw",
-							"otherinfo": "\uFFFD\\x0000\uFFFD\uFFFD9\uFFFDE\\x0006\uFFFD\uFFFD\\x000ckc\uFFFD\uFFFD\uFFFD\uFFFD={&\uFFFD\\x0001\uFFFDt}6\uFFFDb\uFFFD\uFFFD"
+							"evidence": "nfjDxywg4jIblFjqzBjCoU2EFp5px3F-_saW52fDGiI",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD, \uFFFD2\\x001b\uFFFDX\uFFFD\uFFFD\\x0018\u00A1M\uFFFD\\x0016\uFFFDi\uFFFDq~\uFFFD\u0196\uFFFDg\uFFFD\\x001a\""
 						}
 					],
 					"count": "4",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>{\"alg\":\"dir\",\"enc\":\"A128CBC-HS256\"}</p>",
+					"otherinfo": "<p>_\uFFFD\uFFFD&$+\uFFFD\uFFFD\uFFFD\uFFFDhV\uFFFD\uFFFDf\\x000c>\uFFFD\uFFFD{\uFFFD\uFFFD\uFFFD\\x0005\uFFFDy\uFFFD\uFFFDB\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10049",
@@ -455,7 +455,7 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"id": "7",
+							"id": "12",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -473,7 +473,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
+							"id": "40",
 							"uri": "https://anais.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -488,7 +488,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10015",
@@ -501,7 +501,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "20",
+							"id": "19",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -529,7 +529,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "5",
+							"id": "7",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -538,7 +538,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "40",
+							"id": "41",
 							"uri": "https://anais.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -547,7 +547,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "37",
+							"id": "35",
 							"uri": "https://anais.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -575,7 +575,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "4",
+							"id": "6",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -593,7 +593,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
+							"id": "34",
 							"uri": "https://anais.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -621,7 +621,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "3",
+							"id": "5",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -630,7 +630,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "35",
+							"id": "38",
 							"uri": "https://anais.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -639,7 +639,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "34",
+							"id": "33",
 							"uri": "https://anais.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -654,7 +654,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -667,7 +667,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "6",
+							"id": "9",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -685,7 +685,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "38",
+							"id": "37",
 							"uri": "https://anais.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -716,22 +716,13 @@
 							"id": "0",
 							"uri": "https://anais.beta.gouv.fr",
 							"method": "GET",
-							"param": "_oauth2_proxy_csrf",
-							"attack": "",
-							"evidence": "_oauth2_proxy_csrf",
-							"otherinfo": "cookie:_oauth2_proxy_csrf"
-						},
-						{
-							"id": "1",
-							"uri": "https://anais.beta.gouv.fr",
-							"method": "GET",
 							"param": "AUTH_SESSION_ID_LEGACY",
 							"attack": "",
 							"evidence": "AUTH_SESSION_ID_LEGACY",
 							"otherinfo": "cookie:AUTH_SESSION_ID_LEGACY\ncookie:KC_RESTART\ncookie:AUTH_SESSION_ID"
 						},
 						{
-							"id": "30",
+							"id": "31",
 							"uri": "https://anais.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "_oauth2_proxy_csrf",
@@ -740,7 +731,7 @@
 							"otherinfo": "cookie:_oauth2_proxy_csrf"
 						},
 						{
-							"id": "31",
+							"id": "30",
 							"uri": "https://anais.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "_oauth2_proxy_csrf",
@@ -749,13 +740,13 @@
 							"otherinfo": "cookie:_oauth2_proxy_csrf"
 						}
 					],
-					"count": "4",
+					"count": "3",
 					"solution": "<p>This is an informational alert rather than a vulnerability and so there is nothing to fix.</p>",
-					"otherinfo": "<p>cookie:_oauth2_proxy_csrf</p>",
+					"otherinfo": "<p>cookie:AUTH_SESSION_ID_LEGACY</p><p>cookie:KC_RESTART</p><p>cookie:AUTH_SESSION_ID</p>",
 					"reference": "<p>https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id</p>",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "1"
 				}
 			]
 		}
