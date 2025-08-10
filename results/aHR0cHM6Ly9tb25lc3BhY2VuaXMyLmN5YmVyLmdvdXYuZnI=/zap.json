@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 3 Aug 2025 09:37:15",
+	"@generated": "Sun, 10 Aug 2025 09:36:33",
 	"site":[ 
 		{
 			"@name": "https://monespacenis2.cyber.gouv.fr",
@@ -20,7 +20,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "50",
+							"id": "4",
 							"uri": "https://monespacenis2.cyber.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -29,7 +29,199 @@
 							"otherinfo": ""
 						},
 						{
+							"id": "6",
+							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "7",
+							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "90003",
+					"alertRef": "90003",
+					"alert": "Sub Resource Integrity Attribute Missing",
+					"name": "Sub Resource Integrity Attribute Missing",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
+					"instances":[ 
+						{
+							"id": "32",
+							"uri": "https://monespacenis2.cyber.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
+							"otherinfo": ""
+						},
+						{
+							"id": "54",
+							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
+							"otherinfo": ""
+						},
+						{
+							"id": "55",
+							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
+					"cweid": "345",
+					"wascid": "15",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "90004",
+					"alertRef": "90004-1",
+					"alert": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"name": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
+					"instances":[ 
+						{
+							"id": "26",
+							"uri": "https://monespacenis2.cyber.gouv.fr",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "50",
+							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "46",
+							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "27",
+							"uri": "https://monespacenis2.cyber.gouv.fr",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
 							"id": "52",
+							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "49",
+							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "28",
+							"uri": "https://monespacenis2.cyber.gouv.fr",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "53",
+							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "51",
+							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "9",
+					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
+					"cweid": "693",
+					"wascid": "14",
+					"sourceid": "7"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063-1",
+					"alert": "Permissions Policy Header Not Set",
+					"name": "Permissions Policy Header Not Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+					"instances":[ 
+						{
+							"id": "24",
+							"uri": "https://monespacenis2.cyber.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "48",
 							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -48,204 +240,12 @@
 						}
 					],
 					"count": "3",
-					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
-					"cweid": "693",
-					"wascid": "15",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "90003",
-					"alertRef": "90003",
-					"alert": "Sub Resource Integrity Attribute Missing",
-					"name": "Sub Resource Integrity Attribute Missing",
-					"riskcode": "2",
-					"confidence": "3",
-					"riskdesc": "Medium (High)",
-					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
-					"instances":[ 
-						{
-							"id": "42",
-							"uri": "https://monespacenis2.cyber.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
-							"otherinfo": ""
-						},
-						{
-							"id": "41",
-							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
-							"otherinfo": ""
-						},
-						{
-							"id": "40",
-							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
-							"otherinfo": ""
-						}
-					],
-					"count": "3",
-					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
-					"cweid": "345",
-					"wascid": "15",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "90004",
-					"alertRef": "90004-1",
-					"alert": "Insufficient Site Isolation Against Spectre Vulnerability",
-					"name": "Insufficient Site Isolation Against Spectre Vulnerability",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
-					"instances":[ 
-						{
-							"id": "30",
-							"uri": "https://monespacenis2.cyber.gouv.fr",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "31",
-							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "25",
-							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "34",
-							"uri": "https://monespacenis2.cyber.gouv.fr",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "36",
-							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "29",
-							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "35",
-							"uri": "https://monespacenis2.cyber.gouv.fr",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "39",
-							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "32",
-							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "9",
-					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
-					"cweid": "693",
-					"wascid": "14",
-					"sourceid": "8"
-				},
-				{
-					"pluginid": "10063",
-					"alertRef": "10063-1",
-					"alert": "Permissions Policy Header Not Set",
-					"name": "Permissions Policy Header Not Set",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
-					"instances":[ 
-						{
-							"id": "27",
-							"uri": "https://monespacenis2.cyber.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "26",
-							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "24",
-							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10094",
@@ -258,49 +258,49 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "0",
+							"id": "12",
 							"uri": "https://monespacenis2.cyber.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "NqORk0X6wGivssZZdK1KfBSDODyndt0-s3pDpCXhDaVSvOcGYZv5Ki3D--YSXNOzn2WjYxiGqDwixuW_74xWDq_WaaqB7PToBzsUxnyU2i33nVZbyNgcgEZqvnpTIZ5R-FwbJF4ZHUa5h6VOjAP7tGDtT3I0Rt2OoDVr77xhXgualgcxDJe4MIJImilpbtGcMTv3j_Zrkxw3Fs7Gh2B2muk8tZL40_b18QyVM6EkQPb4IwRGkzEbtvyUci1Pm2mu___Ccci08uNBR7nNrKmyDp_X60U7VK4pHwThSp9YOg-3VHzKiavMYqGeLyFty5x0",
-							"otherinfo": "6\uFFFD\uFFFD\uFFFDE\uFFFD\uFFFDh\uFFFD\uFFFD\uFFFDYt\uFFFDJ|\\x0014\uFFFD8<\uFFFDv\uFFFD>\uFFFDzC\uFFFD%\uFFFD\r\uFFFDR\uFFFD\uFFFD\\x0006a\uFFFD\uFFFD*-\uFFFD\uFFFD\uFFFD\\x0012\\\u04F3\uFFFDe\uFFFDc\\x0018\uFFFD\uFFFD<\"\uFFFD\uFFFD\uFFFDV\\x000e\uFFFD\uFFFDi\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0007;\\x0014\uFFFD|\uFFFD\uFFFD-\uFFFD\uFFFDV[\uFFFD\uFFFD\\x001c\uFFFDFj\uFFFDzS!\uFFFDQ\uFFFD\\\\x001b$^\\x0019\\x001dF\uFFFD\uFFFD\uFFFDN\uFFFD\\x0003\uFFFD\uFFFD`\uFFFDOr4F\u074E\uFFFD5k\uFFFDa^\\x000b\uFFFD\uFFFD\\x00071\\x000c\uFFFD\uFFFD0\uFFFDH\uFFFD)in\u045C1;\uFFFD\uFFFD\uFFFDk\uFFFD\\x001c7\\x0016\uFFFD\u0187`v\uFFFD\uFFFD<\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x000c\uFFFD3\uFFFD$@\uFFFD\uFFFD#\\x0004F\uFFFD1\\x001b\uFFFD\uFFFD\uFFFDr-O\uFFFDi\uFFFD\uFFFD\uFFFD\uFFFDq\u0234\uFFFD\uFFFDAG\uFFFD\u036C\uFFFD\uFFFD\\x000e\uFFFD\uFFFD\uFFFDE;T\uFFFD)\\x001f\\x0004\uFFFDJ\uFFFDX:\\x000f\uFFFDT|\u0289\uFFFD\uFFFDb\uFFFD\uFFFD/!m\u02DCt"
+							"evidence": "a4yEXbQPks6gkf9DqrZU-N7jE4TNkRgSxJ8f1eFItupDEGxL0nmBLcoO1YT2j-sbYDUYuiNfWBnLr7N4v1rKs9T3wIre3lPehvSzi-Hx80daAqycET2lkTpzlKL30g2KE_CIYJtALf6CiZuw3CvZ5Q",
+							"otherinfo": "k\uFFFD\uFFFD]\uFFFD\\x000f\uFFFD\u03A0\uFFFD\uFFFDC\uFFFD\uFFFDT\uFFFD\uFFFD\uFFFD\\x0013\uFFFD\u0351\\x0018\\x0012\u011F\\x001f\uFFFD\uFFFDH\uFFFD\uFFFDC\\x0010lK\uFFFDy\uFFFD-\uFFFD\\x000e\u0544\uFFFD\uFFFD\uFFFD\\x001b`5\\x0018\uFFFD#_X\\x0019\u02EF\uFFFDx\uFFFDZ\u02B3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDS\u0786\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDGZ\\x0002\uFFFD\uFFFD\\x0011=\uFFFD\uFFFD:s\uFFFD\uFFFD\uFFFD\uFFFD\r\uFFFD\\x0013\uFFFD\uFFFD`\uFFFD@-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD+\uFFFD\uFFFD"
 						},
 						{
-							"id": "1",
+							"id": "13",
 							"uri": "https://monespacenis2.cyber.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "Q6nobQRcjnpvtl_YE29oHS2sYr2hz9R7ELZMJpz5bOHGNmifNfLlhlzlyYS3rH8IoGQ1epDvlNBhy4iR9vSGGBzjHIUT8mQGKalx2Miv67WMvznUdXgEr6FtzLoQWyTJ-pCLRBnEm7onD2diooAg8A",
-							"otherinfo": "C\uFFFD\uFFFDm\\x0004\\\uFFFDzo\uFFFD_\uFFFD\\x0013oh\\x001d-\uFFFDb\uFFFD\uFFFD\uFFFD\uFFFD{\\x0010\uFFFDL&\uFFFD\uFFFDl\uFFFD\uFFFD6h\uFFFD5\uFFFD\uFFFD\\\uFFFD\u0244\uFFFD\uFFFD\\x0008\uFFFDd5z\uFFFD\uFFFD\uFFFDa\u02C8\uFFFD\uFFFD\uFFFD\\x0018\\x001c\uFFFD\\x001c\uFFFD\\x0013\uFFFDd\\x0006)\uFFFDq\uFFFD\u022F\uBD4C\uFFFD9\uFFFDux\\x0004\uFFFD\uFFFDm\u033A\\x0010[$\uFFFD\uFFFD\uFFFD\uFFFDD\\x0019\u011B\uFFFD'\\x000fgb\uFFFD\uFFFD \uFFFD"
+							"evidence": "mLzGI5VuygUV47IHc2qVZO47wXfmNEWkgfyf_gss05a9OxukVDJyFE7bTfUNDjeuiapJfNZdai5cikaK8vcKHUKCXWsFwEbJ7bfvN0fNJDTK43oGlS7QWPC4G6W23iBBrZjr8w1BYZIZrJK0acSNcL4WDSL9k-HZFFpAFstCeWOYB5a8PahWNd_IboAveuPhAcyVjFqGjHjbeQbtzdKESKl0RTCq9bp4LP6q-6aBUJxERQB0MmmCoacz3L1VInC1iDp-EGXU3ePcH8RlY0s7arJFnlh9cdUV-5cJSmICwZBW-v06DQFv1S1hN7U3OVaR",
+							"otherinfo": "\uFFFD\uFFFD\uFFFD#\uFFFDn\uFFFD\\x0005\\x0015\uFFFD\\x0007sj\uFFFDd\uFFFD;\uFFFDw\uFFFD4E\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x000b,\u04D6\uFFFD;\\x001b\uFFFDT2r\\x0014N\uFFFDM\uFFFD\r\\x000e7\uFFFD\uFFFD\uFFFDI|\uFFFD]j.\\\uFFFDF\uFFFD\uFFFD\uFFFD\n\\x001dB\uFFFD]k\\x0005\uFFFDF\uFFFD\uFFFD\uFFFD7G\uFFFD$4\uFFFD\uFFFDz\\x0006\uFFFD.\uFFFDX\uFFFD\\x001b\uFFFD\uFFFD\uFFFD A\uFFFD\uFFFD\uFFFD\uFFFD\rAa\uFFFD\\x0019\uFFFD\uFFFD\uFFFDi\u010Dp\uFFFD\\x0016\r\"\uFFFD\uFFFD\uFFFD\uFFFD\\x0014Z@\\x0016\uFFFDByc\uFFFD\\x0007\uFFFD\uFFFD=\uFFFDV5\uFFFD\uFFFDn\uFFFD/z\uFFFD\uFFFD\\x0001\u0315\uFFFDZ\uFFFD\uFFFDx\uFFFDy\\x0006\uFFFD\uFFFD\u0484H\uFFFDtE0\uFFFD\uFFFD\uFFFDx,\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDP\uFFFDDE\\x0000t2i\uFFFD\uFFFD\uFFFD3\u073DU\"p\uFFFD\uFFFD:~\\x0010e\uFFFD\uFFFD\uFFFD\uFFFD\\x001f\uFFFDecK;j\uFFFDE\uFFFDX}q\uFFFD\\x0015\uFFFD\uFFFD\tJb\\x0002\uFFFD\uFFFDV\uFFFD\uFFFD:\r\\x0001o\uFFFD-a7\uFFFD79V\uFFFD"
 						},
 						{
-							"id": "2",
+							"id": "35",
 							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "ba10tLvjRRIDz1cAU0zvPTBaEyKBC-ZTBmme3SG38FH-2FDPtSZFVSM2wIC6gy3PM_NbDB8Tx0dwGKKQZ8V9ItWhNR5MXfGZZWwDmKyjBTwGu9CCI3D5FRvhJFLIL0XAEzonuuevLukY_Blg0RDMvA",
-							"otherinfo": "m\uFFFDt\uFFFD\uFFFD\uFFFDE\\x0012\\x0003\uFFFDW\\x0000SL\uFFFD=0Z\\x0013\"\uFFFD\\x000b\uFFFDS\\x0006i\uFFFD\uFFFD!\uFFFD\uFFFDQ\uFFFD\uFFFDP\u03F5&EU#6\uFFFD\uFFFD\uFFFD\uFFFD-\uFFFD3\uFFFD[\\x000c\\x001f\\x0013\uFFFDGp\\x0018\uFFFD\uFFFDg\uFFFD}\"\u05615\\x001eL]\uFFFDel\\x0003\uFFFD\uFFFD\uFFFD\\x0005<\\x0006\uFFFD\u0402#p\uFFFD\\x0015\\x001b\uFFFD$R\uFFFD/E\uFFFD\\x0013:'\uFFFD\uFFFD.\uFFFD\\x0018\uFFFD\\x0019`\uFFFD\\x0010\u033C"
+							"evidence": "a4yEXbQPks6gkf9DqrZU-HklI6RE_6v8mR9WY27L7lVLmZeDMJzjHsvdAYzAOwTObfIdc_9BNKHcVqu2QZOP9m2WzH4Xb1pp1fW1N_3cb0io1a6mSu1_PaqAuMqfupBT-eEqQ2ETzJL1dIaZ29z1dg",
+							"otherinfo": "k\uFFFD\uFFFD]\uFFFD\\x000f\uFFFD\u03A0\uFFFD\uFFFDC\uFFFD\uFFFDT\uFFFDy%#\uFFFDD\uFFFD\uFFFD\uFFFD\uFFFD\\x001fVcn\uFFFD\uFFFDUK\uFFFD\uFFFD\uFFFD0\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\\x0001\uFFFD\uFFFD;\\x0004\uFFFDm\uFFFD\\x001ds\uFFFDA4\uFFFD\uFFFDV\uFFFD\uFFFDA\uFFFD\uFFFD\uFFFDm\uFFFD\uFFFD~\\x0017oZi\uFFFD\uFFFD\uFFFD7\uFFFD\uFFFDoH\uFFFD\u056E\uFFFDJ\uFFFD=\uFFFD\uFFFD\uFFFD\u029F\uFFFD\uFFFDS\uFFFD\uFFFD*Ca\\x0013\u0312\uFFFDt\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDv"
 						},
 						{
-							"id": "3",
+							"id": "34",
 							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "dczkqLBONYZZeUwFlDTdZZeZYVPEP4BGYilrowhinAUWGYAqDYRwrD6v74yX5YRfZ7eZHj80cP88ZZzNzhfeJ46DpDFECsvIJpPLqdt_z3DgneR5cth4ekl9XcpSFFnLuLMoBT8PFseMYzQKtffJEA",
-							"otherinfo": "u\uFFFD\u4A30N5\uFFFDYyL\\x0005\uFFFD4\uFFFDe\uFFFD\uFFFDaS\uFFFD?\uFFFDFb)k\uFFFD\\x0008b\uFFFD\\x0005\\x0016\\x0019\uFFFD*\r\uFFFDp\uFFFD>\uFFFD\uF317\uFFFD_g\uFFFD\uFFFD\\x001e?4p\uFFFD<e\uFFFD\uFFFD\uFFFD\\x0017\uFFFD'\uFFFD\uFFFD\uFFFD1D\n\uFFFD\uFFFD&\uFFFD\u02E9\uFFFD\uFFFDp\uFFFD\uFFFD\uFFFDyr\uFFFDxzI}]\uFFFDR\\x0014Y\u02F8\uFFFD(\\x0005?\\x000f\\x0016\u01CCc4\n\uFFFD\uFFFD\uFFFD\\x0010"
+							"evidence": "xO2VVOoTvUz1IWG2eMnmLdjWm741WMIH40Re4f-V_kXBfVuQeUc-TOkudWjZXB83DhsgFN-VbTZheSNWnJVGfjlYtjN3szKybvLaldrY61I9ZP4R5Vd87DZ1YzsmwwIfSVB_w1R1MN6mj3gBFsNJvg",
+							"otherinfo": "\uFFFD\uFFFDT\uFFFD\\x0013\uFFFDL\uFFFD!a\uFFFDx\uFFFD\uFFFD-\uFFFD\u059B\uFFFD5X\uFFFD\\x0007\uFFFDD^\uFFFD\uFFFD\uFFFD\uFFFDE\uFFFD}[\uFFFDyG>L\uFFFD.uh\uFFFD\\\\x001f7\\x000e\\x001b \\x0014\u07D5m6ay#V\uFFFD\uFFFDF~9X\uFFFD3w\uFFFD2\uFFFDn\uFFFD\u0695\uFFFD\uFFFD\uFFFDR=d\uFFFD\\x0011\uFFFDW|\uFFFD6uc;&\uFFFD\\x0002\\x001fIP\uFFFDTu0\u07A6\uFFFDx\\x0001\\x0016\uFFFDI\uFFFD"
 						}
 					],
 					"count": "4",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>6\uFFFD\uFFFD\uFFFDE\uFFFD\uFFFDh\uFFFD\uFFFD\uFFFDYt\uFFFDJ|\\x0014\uFFFD8<\uFFFDv\uFFFD>\uFFFDzC\uFFFD%\uFFFD\r\uFFFDR\uFFFD\uFFFD\\x0006a\uFFFD\uFFFD*-\uFFFD\uFFFD\uFFFD\\x0012\\\u04F3\uFFFDe\uFFFDc\\x0018\uFFFD\uFFFD<\"\uFFFD\uFFFD\uFFFDV\\x000e\uFFFD\uFFFDi\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0007;\\x0014\uFFFD|\uFFFD\uFFFD-\uFFFD\uFFFDV[\uFFFD\uFFFD\\x001c\uFFFDFj\uFFFDzS!\uFFFDQ\uFFFD\\\\x001b$^\\x0019\\x001dF\uFFFD\uFFFD\uFFFDN\uFFFD\\x0003\uFFFD\uFFFD`\uFFFDOr4F\u074E\uFFFD5k\uFFFDa^\\x000b\uFFFD\uFFFD\\x00071\\x000c\uFFFD\uFFFD0\uFFFDH\uFFFD)in\u045C1;\uFFFD\uFFFD\uFFFDk\uFFFD\\x001c7\\x0016\uFFFD\u0187`v\uFFFD\uFFFD<\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x000c\uFFFD3\uFFFD$@\uFFFD\uFFFD#\\x0004F\uFFFD1\\x001b\uFFFD\uFFFD\uFFFDr-O\uFFFDi\uFFFD\uFFFD\uFFFD\uFFFDq\u0234\uFFFD\uFFFDAG\uFFFD\u036C\uFFFD\uFFFD\\x000e\uFFFD\uFFFD\uFFFDE;T\uFFFD)\\x001f\\x0004\uFFFDJ\uFFFDX:\\x000f\uFFFDT|\u0289\uFFFD\uFFFDb\uFFFD\uFFFD/!m\u02DCt</p>",
+					"otherinfo": "<p>k\uFFFD\uFFFD]\uFFFD\\x000f\uFFFD\u03A0\uFFFD\uFFFDC\uFFFD\uFFFDT\uFFFD\uFFFD\uFFFD\\x0013\uFFFD\u0351\\x0018\\x0012\u011F\\x001f\uFFFD\uFFFDH\uFFFD\uFFFDC\\x0010lK\uFFFDy\uFFFD-\uFFFD\\x000e\u0544\uFFFD\uFFFD\uFFFD\\x001b`5\\x0018\uFFFD#_X\\x0019\u02EF\uFFFDx\uFFFDZ\u02B3\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDS\u0786\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDGZ\\x0002\uFFFD\uFFFD\\x0011=\uFFFD\uFFFD:s\uFFFD\uFFFD\uFFFD\uFFFD\r\uFFFD\\x0013\uFFFD\uFFFD`\uFFFD@-\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD+\uFFFD\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10109",
@@ -313,7 +313,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "54",
+							"id": "9",
 							"uri": "https://monespacenis2.cyber.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -322,7 +322,7 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"id": "55",
+							"id": "8",
 							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -331,7 +331,7 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"id": "46",
+							"id": "10",
 							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -346,7 +346,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10015",
@@ -359,26 +359,8 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "47",
+							"id": "0",
 							"uri": "https://monespacenis2.cyber.gouv.fr",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "no-cache",
-							"otherinfo": ""
-						},
-						{
-							"id": "48",
-							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "no-cache",
-							"otherinfo": ""
-						},
-						{
-							"id": "44",
-							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -386,7 +368,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "1",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -405,7 +387,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "12",
+							"id": "18",
 							"uri": "https://monespacenis2.cyber.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -414,7 +396,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "16",
+							"id": "41",
 							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -423,7 +405,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "13",
+							"id": "40",
 							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -438,7 +420,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -451,7 +433,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "10",
+							"id": "16",
 							"uri": "https://monespacenis2.cyber.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -460,7 +442,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "39",
 							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -469,7 +451,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "6",
+							"id": "38",
 							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -484,7 +466,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -497,7 +479,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "5",
+							"id": "14",
 							"uri": "https://monespacenis2.cyber.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -506,7 +488,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "9",
+							"id": "37",
 							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -515,7 +497,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "4",
+							"id": "36",
 							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -530,7 +512,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -543,7 +525,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "15",
+							"id": "21",
 							"uri": "https://monespacenis2.cyber.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -552,7 +534,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "21",
+							"id": "43",
 							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -561,7 +543,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "42",
 							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -626,7 +608,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
 					"instances":[ 
 						{
-							"id": "20",
+							"id": "22",
 							"uri": "https://monespacenis2.cyber.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -635,7 +617,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "22",
+							"id": "47",
 							"uri": "https://monespacenis2.cyber.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -644,7 +626,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "18",
+							"id": "44",
 							"uri": "https://monespacenis2.cyber.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -659,7 +641,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "7"
 				}
 			]
 		}
