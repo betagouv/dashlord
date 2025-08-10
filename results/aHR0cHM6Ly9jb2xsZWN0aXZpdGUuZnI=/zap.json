@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 3 Aug 2025 10:21:45",
+	"@generated": "Sun, 10 Aug 2025 10:19:29",
 	"site":[ 
 		{
 			"@name": "https://collectivite.fr",
@@ -9,43 +9,6 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
-				{
-					"pluginid": "10062",
-					"alertRef": "10062",
-					"alert": "PII Disclosure",
-					"name": "PII Disclosure",
-					"riskcode": "3",
-					"confidence": "3",
-					"riskdesc": "High (High)",
-					"desc": "<p>The response contains Personally Identifiable Information, such as CC number, SSN and similar sensitive data.</p>",
-					"instances":[ 
-						{
-							"id": "113",
-							"uri": "https://collectivite.fr/carantec",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "507960574840",
-							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 507960\nBrand: MAESTRO\nCategory: \nIssuer: "
-						},
-						{
-							"id": "117",
-							"uri": "https://collectivite.fr/henvic",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "507960574840",
-							"otherinfo": "Credit Card Type detected: Maestro\nBank Identification Number: 507960\nBrand: MAESTRO\nCategory: \nIssuer: "
-						}
-					],
-					"count": "2",
-					"solution": "<p>Check the response for the potential presence of personally identifiable information (PII), ensure nothing sensitive is leaked by the application.</p>",
-					"otherinfo": "<p>Credit Card Type detected: Maestro</p><p>Bank Identification Number: 507960</p><p>Brand: MAESTRO</p><p>Category: </p><p>Issuer: </p>",
-					"reference": "",
-					"cweid": "359",
-					"wascid": "13",
-					"sourceid": "36036"
-				},
 				{
 					"pluginid": "10055",
 					"alertRef": "10055-13",
@@ -57,7 +20,7 @@
 					"desc": "<p>The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.</p>",
 					"instances":[ 
 						{
-							"id": "16",
+							"id": "2",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -66,17 +29,8 @@
 							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
 						},
 						{
-							"id": "59",
-							"uri": "https://collectivite.fr/bretagne",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'self'; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://*.contentsquare.net https://sentry.anct.cloud-ed.fr; connect-src 'self' https://api.collectivite.fr https://stats.beta.gouv.fr https://*.contentsquare.net https://sentry.anct.cloud-ed.fr https://quotient-familial.numerique.gouv.fr https://datanova.laposte.fr https://data-api.publication-actes.fr https://data-api.megalis.bretagne.bzh; worker-src 'self' blob:;; frame-src 'self' https://data.megalis.bretagne.bzh https://publication-actes.fr; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://annuaire-des-collectivites-production-storage.s3.fr-par.scw.cloud https://*.contentsquare.net; font-src 'self' https:; object-src 'none'; upgrade-insecure-requests",
-							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
-						},
-						{
-							"id": "54",
-							"uri": "https://collectivite.fr/sitemap.xml",
+							"id": "26",
+							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -84,7 +38,7 @@
 							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -103,7 +57,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "17",
+							"id": "3",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -112,17 +66,8 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nfont-src"
 						},
 						{
-							"id": "60",
-							"uri": "https://collectivite.fr/bretagne",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'self'; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://*.contentsquare.net https://sentry.anct.cloud-ed.fr; connect-src 'self' https://api.collectivite.fr https://stats.beta.gouv.fr https://*.contentsquare.net https://sentry.anct.cloud-ed.fr https://quotient-familial.numerique.gouv.fr https://datanova.laposte.fr https://data-api.publication-actes.fr https://data-api.megalis.bretagne.bzh; worker-src 'self' blob:;; frame-src 'self' https://data.megalis.bretagne.bzh https://publication-actes.fr; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://annuaire-des-collectivites-production-storage.s3.fr-par.scw.cloud https://*.contentsquare.net; font-src 'self' https:; object-src 'none'; upgrade-insecure-requests",
-							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nfont-src"
-						},
-						{
-							"id": "55",
-							"uri": "https://collectivite.fr/sitemap.xml",
+							"id": "27",
+							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -130,7 +75,7 @@
 							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nfont-src"
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:</p><p>font-src</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -149,7 +94,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "18",
+							"id": "4",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -158,17 +103,8 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "61",
-							"uri": "https://collectivite.fr/bretagne",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'self'; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://*.contentsquare.net https://sentry.anct.cloud-ed.fr; connect-src 'self' https://api.collectivite.fr https://stats.beta.gouv.fr https://*.contentsquare.net https://sentry.anct.cloud-ed.fr https://quotient-familial.numerique.gouv.fr https://datanova.laposte.fr https://data-api.publication-actes.fr https://data-api.megalis.bretagne.bzh; worker-src 'self' blob:;; frame-src 'self' https://data.megalis.bretagne.bzh https://publication-actes.fr; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://annuaire-des-collectivites-production-storage.s3.fr-par.scw.cloud https://*.contentsquare.net; font-src 'self' https:; object-src 'none'; upgrade-insecure-requests",
-							"otherinfo": "script-src includes unsafe-inline."
-						},
-						{
-							"id": "56",
-							"uri": "https://collectivite.fr/sitemap.xml",
+							"id": "28",
+							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -176,7 +112,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -195,7 +131,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "19",
+							"id": "5",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -204,17 +140,8 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "62",
-							"uri": "https://collectivite.fr/bretagne",
-							"method": "GET",
-							"param": "Content-Security-Policy",
-							"attack": "",
-							"evidence": "default-src 'self'; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr https://*.contentsquare.net https://sentry.anct.cloud-ed.fr; connect-src 'self' https://api.collectivite.fr https://stats.beta.gouv.fr https://*.contentsquare.net https://sentry.anct.cloud-ed.fr https://quotient-familial.numerique.gouv.fr https://datanova.laposte.fr https://data-api.publication-actes.fr https://data-api.megalis.bretagne.bzh; worker-src 'self' blob:;; frame-src 'self' https://data.megalis.bretagne.bzh https://publication-actes.fr; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://annuaire-des-collectivites-production-storage.s3.fr-par.scw.cloud https://*.contentsquare.net; font-src 'self' https:; object-src 'none'; upgrade-insecure-requests",
-							"otherinfo": "style-src includes unsafe-inline."
-						},
-						{
-							"id": "57",
-							"uri": "https://collectivite.fr/sitemap.xml",
+							"id": "29",
+							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "Content-Security-Policy",
 							"attack": "",
@@ -222,7 +149,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						}
 					],
-					"count": "3",
+					"count": "2",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
@@ -241,7 +168,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "12",
+							"id": "17",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -250,7 +177,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "47",
+							"id": "42",
 							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -259,8 +186,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "46",
-							"uri": "https://collectivite.fr/bretagne",
+							"id": "49",
+							"uri": "https://collectivite.fr/plan-du-site",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -268,7 +195,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "11",
 							"uri": "https://collectivite.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -277,7 +204,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
+							"id": "52",
 							"uri": "https://collectivite.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -286,7 +213,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "13",
+							"id": "18",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -295,7 +222,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "51",
+							"id": "47",
 							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -304,8 +231,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "49",
-							"uri": "https://collectivite.fr/bretagne",
+							"id": "50",
+							"uri": "https://collectivite.fr/plan-du-site",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
 							"attack": "",
@@ -313,7 +240,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "42",
+							"id": "54",
 							"uri": "https://collectivite.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -322,7 +249,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "19",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -331,7 +258,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "52",
+							"id": "48",
 							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -340,8 +267,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "50",
-							"uri": "https://collectivite.fr/bretagne",
+							"id": "53",
+							"uri": "https://collectivite.fr/plan-du-site",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
 							"attack": "",
@@ -349,7 +276,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "44",
+							"id": "55",
 							"uri": "https://collectivite.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -377,7 +304,97 @@
 					"desc": "<p>The page includes mixed content, that is content accessed via HTTP instead of HTTPS.</p>",
 					"instances":[ 
 						{
-							"id": "94",
+							"id": "85",
+							"uri": "https://collectivite.fr/auvergne-rhone-alpes/ain",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Ain.svg",
+							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Ain.svg\n"
+						},
+						{
+							"id": "84",
+							"uri": "https://collectivite.fr/auvergne-rhone-alpes/allier",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20comte%20fr%20Clermont%20%28Bourbon%29.svg",
+							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20comte%20fr%20Clermont%20%28Bourbon%29.svg\n"
+						},
+						{
+							"id": "81",
+							"uri": "https://collectivite.fr/auvergne-rhone-alpes/ardeche",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Ard%C3%A8che.svg",
+							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Ard%C3%A8che.svg\n"
+						},
+						{
+							"id": "82",
+							"uri": "https://collectivite.fr/auvergne-rhone-alpes/cantal",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Cantal.svg",
+							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Cantal.svg\n"
+						},
+						{
+							"id": "87",
+							"uri": "https://collectivite.fr/auvergne-rhone-alpes/drome",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Dr%C3%B4me.svg",
+							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Dr%C3%B4me.svg\n"
+						},
+						{
+							"id": "89",
+							"uri": "https://collectivite.fr/auvergne-rhone-alpes/haute-loire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Haute-Loire.svg",
+							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Haute-Loire.svg\n"
+						},
+						{
+							"id": "86",
+							"uri": "https://collectivite.fr/auvergne-rhone-alpes/isere",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Is%C3%A8re.svg",
+							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Is%C3%A8re.svg\n"
+						},
+						{
+							"id": "88",
+							"uri": "https://collectivite.fr/auvergne-rhone-alpes/loire",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Loire.svg",
+							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Loire.svg\n"
+						},
+						{
+							"id": "91",
+							"uri": "https://collectivite.fr/auvergne-rhone-alpes/puy-de-dome",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Puy-de-D%C3%B4me.svg",
+							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Puy-de-D%C3%B4me.svg\n"
+						},
+						{
+							"id": "90",
+							"uri": "https://collectivite.fr/auvergne-rhone-alpes/rhone",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Rh%C3%B4ne.svg",
+							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Rh%C3%B4ne.svg\n"
+						},
+						{
+							"id": "92",
 							"uri": "https://collectivite.fr/bourgogne-franche-comte/cote-d-or",
 							"method": "GET",
 							"param": "",
@@ -386,112 +403,22 @@
 							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20C%C3%B4te-d%E2%80%99Or.svg\n"
 						},
 						{
-							"id": "95",
-							"uri": "https://collectivite.fr/bourgogne-franche-comte/doubs",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Doubs.svg",
-							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Doubs.svg\n"
-						},
-						{
-							"id": "98",
-							"uri": "https://collectivite.fr/bourgogne-franche-comte/haute-saone",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Haute-Sa%C3%B4ne.svg",
-							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Haute-Sa%C3%B4ne.svg\n"
-						},
-						{
-							"id": "99",
-							"uri": "https://collectivite.fr/bourgogne-franche-comte/jura",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Jura.svg",
-							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Jura.svg\n"
-						},
-						{
-							"id": "97",
+							"id": "93",
 							"uri": "https://collectivite.fr/bourgogne-franche-comte/nievre",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Ni%C3%A8vre.svg",
 							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Ni%C3%A8vre.svg\n"
-						},
-						{
-							"id": "100",
-							"uri": "https://collectivite.fr/bourgogne-franche-comte/saone-et-loire",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Sa%C3%B4ne-et-Loire.svg",
-							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Sa%C3%B4ne-et-Loire.svg\n"
-						},
-						{
-							"id": "96",
-							"uri": "https://collectivite.fr/bourgogne-franche-comte/territoire-de-belfort",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Territoire%20de%20Belfort.svg",
-							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Territoire%20de%20Belfort.svg\n"
-						},
-						{
-							"id": "92",
-							"uri": "https://collectivite.fr/bretagne/cotes-d-armor",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20C%C3%B4tes-d%E2%80%99Armor.svg",
-							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20C%C3%B4tes-d%E2%80%99Armor.svg\n"
-						},
-						{
-							"id": "90",
-							"uri": "https://collectivite.fr/bretagne/finistere",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason29.svg",
-							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason29.svg\n"
-						},
-						{
-							"id": "93",
-							"uri": "https://collectivite.fr/bretagne/ille-et-vilaine",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Ille-et-Vilaine.svg",
-							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Ille-et-Vilaine.svg\n"
-						},
-						{
-							"id": "91",
-							"uri": "https://collectivite.fr/bretagne/morbihan",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Morbihan.svg",
-							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Morbihan.svg\n"
-						},
-						{
-							"id": "101",
-							"uri": "https://collectivite.fr/centre-val-de-loire/cher",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Cher.svg",
-							"otherinfo": "tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Cher.svg\n"
 						}
 					],
 					"count": "12",
 					"solution": "<p>A page that is available over SSL/TLS must be comprised completely of content which is transmitted over SSL/TLS.</p><p>The page must not contain any content that is transmitted over unencrypted HTTP.</p><p>This includes content from third party sites.</p>",
-					"otherinfo": "<p>tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20C%C3%B4te-d%E2%80%99Or.svg</p><p></p>",
+					"otherinfo": "<p>tag=img src=http://commons.wikimedia.org/wiki/Special:FilePath/Blason%20d%C3%A9partement%20fr%20Ain.svg</p><p></p>",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html</p>",
 					"cweid": "311",
 					"wascid": "4",
-					"sourceid": "1027"
+					"sourceid": "887"
 				},
 				{
 					"pluginid": "10096",
@@ -504,94 +431,22 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "123",
-							"uri": "https://collectivite.fr/aiti",
+							"id": "105",
+							"uri": "https://collectivite.fr/beaulieu-07460",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "1939349576",
-							"otherinfo": "1939349576, which evaluates to: 2031-06-16 04:12:56."
-						},
-						{
-							"id": "114",
-							"uri": "https://collectivite.fr/altagene",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1479184934",
-							"otherinfo": "1479184934, which evaluates to: 2016-11-15 04:42:14."
-						},
-						{
-							"id": "115",
-							"uri": "https://collectivite.fr/aullene",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1479184934",
-							"otherinfo": "1479184934, which evaluates to: 2016-11-15 04:42:14."
-						},
-						{
-							"id": "116",
-							"uri": "https://collectivite.fr/bastelica",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1467850086",
-							"otherinfo": "1467850086, which evaluates to: 2016-07-07 00:08:06."
-						},
-						{
-							"id": "118",
-							"uri": "https://collectivite.fr/carbini",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1479184934",
-							"otherinfo": "1479184934, which evaluates to: 2016-11-15 04:42:14."
-						},
-						{
-							"id": "119",
-							"uri": "https://collectivite.fr/ciamannacce",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1467850086",
-							"otherinfo": "1467850086, which evaluates to: 2016-07-07 00:08:06."
-						},
-						{
-							"id": "120",
-							"uri": "https://collectivite.fr/conca",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1479184934",
-							"otherinfo": "1479184934, which evaluates to: 2016-11-15 04:42:14."
-						},
-						{
-							"id": "121",
-							"uri": "https://collectivite.fr/cozzano",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1467850086",
-							"otherinfo": "1467850086, which evaluates to: 2016-07-07 00:08:06."
-						},
-						{
-							"id": "122",
-							"uri": "https://collectivite.fr/foce",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1479184934",
-							"otherinfo": "1479184934, which evaluates to: 2016-11-15 04:42:14."
+							"evidence": "1974994993",
+							"otherinfo": "1974994993, which evaluates to: 2032-08-01 17:43:13."
 						}
 					],
-					"count": "9",
+					"count": "1",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1939349576, which evaluates to: 2031-06-16 04:12:56.</p>",
+					"otherinfo": "<p>1974994993, which evaluates to: 2032-08-01 17:43:13.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "36342"
+					"sourceid": "36053"
 				},
 				{
 					"pluginid": "10094",
@@ -604,7 +459,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "68",
+							"id": "65",
 							"uri": "https://collectivite.fr/auvergne-rhone-alpes",
 							"method": "GET",
 							"param": "",
@@ -613,7 +468,7 @@
 							"otherinfo": "rZ.w\uFFFD|\u049C\\x0006V\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDw\uFFFDF\\x001a'{\uFFFD%\uFFFD\uFFFD?\uFFFD\uFFFD?s\uFFFD\uFFFD\uFFFD\uFFFD:}"
 						},
 						{
-							"id": "21",
+							"id": "59",
 							"uri": "https://collectivite.fr/bretagne",
 							"method": "GET",
 							"param": "",
@@ -622,7 +477,7 @@
 							"otherinfo": "rZ.w\uFFFDej\uFFFD'\uFFFD\\x001a\u07B5\uFFFD'{\uFFFD/\uFFFD\uFFFD}w\uFFFD\uFFFD\uFFFDw;"
 						},
 						{
-							"id": "70",
+							"id": "69",
 							"uri": "https://collectivite.fr/centre-val-de-loire",
 							"method": "GET",
 							"param": "",
@@ -631,7 +486,7 @@
 							"otherinfo": "rZ.w\uFFFDej\uFFFD'\uFFFD'\uFFFD\uFFFD\uFFFD\uFFFDU\uFFFDu\uFFFD\u02E2*\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDtww4\uFFFD\uFFFD"
 						},
 						{
-							"id": "64",
+							"id": "71",
 							"uri": "https://collectivite.fr/corse",
 							"method": "GET",
 							"param": "",
@@ -649,7 +504,7 @@
 							"otherinfo": "rZ.w\uFFFDej\uFFFD'\uFFFD\u06FF\\x001a\uFFFD\uFFFDw\uFFFD,\uFFFD\uFFFD/\uFFFD\uFFFD}\uFFFD\uFFFD\uFFFD\uFFFD"
 						},
 						{
-							"id": "82",
+							"id": "75",
 							"uri": "https://collectivite.fr/ile-de-france",
 							"method": "GET",
 							"param": "",
@@ -658,7 +513,7 @@
 							"otherinfo": "rZ.w\uFFFD^\uFFFD*'\uFFFD\\x0019Z\uFFFD\uFFFD\uFFFD\"W\uFFFDu\uFFFD\u016D\uFFFD\uFFFD{\uFFFD\uFFFD\uFFFD}\uFFFD\uFFFD\uFFFD\\x001d"
 						},
 						{
-							"id": "81",
+							"id": "77",
 							"uri": "https://collectivite.fr/martinique",
 							"method": "GET",
 							"param": "",
@@ -667,7 +522,7 @@
 							"otherinfo": "rZ.w\uFFFDej\uFFFD'\uFFFD\u01AB\uFFFD)\uFFFD\u7FF2\uFFFD?}\uFFFD\uFFFD\uFFFDx\uFFFD"
 						},
 						{
-							"id": "83",
+							"id": "78",
 							"uri": "https://collectivite.fr/mayotte",
 							"method": "GET",
 							"param": "",
@@ -676,7 +531,7 @@
 							"otherinfo": "rZ.w\uFFFDj\uFFFD\uFFFD\uFFFD+\uFFFD\uFFFD\uFFFD\uFFFD\\x001a\u028Bm{\uFFFD/\uFFFD\uFFFD7\u06C6\uFFFD\uFFFDM\uFFFD"
 						},
 						{
-							"id": "84",
+							"id": "79",
 							"uri": "https://collectivite.fr/normandie",
 							"method": "GET",
 							"param": "",
@@ -685,16 +540,7 @@
 							"otherinfo": "rZ.w\uFFFDej\uFFFD'\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD~\uFFFD\u0362\uFFFD\uFFFD\uFFFD\u061E\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDo^\uFFFD\uFFFD"
 						},
 						{
-							"id": "85",
-							"uri": "https://collectivite.fr/occitanie",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "cloud/Blason_region_fr_Occitanie_svg_f924816dfd",
-							"otherinfo": "rZ.w\uFFFDej\uFFFD'\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD~\uFFFD\uFFFDq\u022Djx\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDv\uFFFD\uFFFDzu\uFFFD"
-						},
-						{
-							"id": "86",
+							"id": "76",
 							"uri": "https://collectivite.fr/pays-de-la-loire",
 							"method": "GET",
 							"param": "",
@@ -703,7 +549,16 @@
 							"otherinfo": "rZ.w\uFFFDej\uFFFD'\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD~\uFFFD\uFFFDk+?u\uFFFD\uFFFDk\uFFFD\u82B7\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFD\uFFFD\\x001c\uFFFD"
 						},
 						{
-							"id": "87",
+							"id": "72",
+							"uri": "https://collectivite.fr/politique-de-confidentialite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2Fpolitique-de-confidentialite",
+							"otherinfo": "\uFFFDZh\uFFFD+b\uFFFD\uFFFDu\uF722w\uFFFDu\uFFFD\uD269b\uFFFD"
+						},
+						{
+							"id": "80",
 							"uri": "https://collectivite.fr/provence-alpes-cote-d-azur",
 							"method": "GET",
 							"param": "",
@@ -718,7 +573,7 @@
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "64"
+					"sourceid": "162"
 				},
 				{
 					"pluginid": "10027",
@@ -731,7 +586,7 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "89",
+							"id": "83",
 							"uri": "https://collectivite.fr/_astro/page.lOCo7fYb.js",
 							"method": "GET",
 							"param": "",
@@ -746,7 +601,7 @@
 					"reference": "",
 					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "202"
+					"sourceid": "213"
 				},
 				{
 					"pluginid": "10109",
@@ -759,8 +614,62 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
+							"id": "97",
+							"uri": "https://collectivite.fr/accons",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "95",
+							"uri": "https://collectivite.fr/ailhon",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "94",
+							"uri": "https://collectivite.fr/aizac",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "96",
+							"uri": "https://collectivite.fr/ajoux",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "99",
+							"uri": "https://collectivite.fr/alba-la-romaine",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "98",
+							"uri": "https://collectivite.fr/albon-d'ardeche",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
+							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
+						},
+						{
 							"id": "102",
-							"uri": "https://collectivite.fr/argol",
+							"uri": "https://collectivite.fr/alboussiere",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -768,8 +677,8 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "107",
-							"uri": "https://collectivite.fr/arzano",
+							"id": "100",
+							"uri": "https://collectivite.fr/alissas",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -777,17 +686,8 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "109",
-							"uri": "https://collectivite.fr/audierne",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "105",
-							"uri": "https://collectivite.fr/bannalec",
+							"id": "101",
+							"uri": "https://collectivite.fr/andance",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -796,25 +696,7 @@
 						},
 						{
 							"id": "103",
-							"uri": "https://collectivite.fr/baye-29300",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "108",
-							"uri": "https://collectivite.fr/benodet",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "106",
-							"uri": "https://collectivite.fr/berrien",
+							"uri": "https://collectivite.fr/annonay",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -823,7 +705,7 @@
 						},
 						{
 							"id": "104",
-							"uri": "https://collectivite.fr/beuzec-cap-sizun",
+							"uri": "https://collectivite.fr/ardoix",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -831,34 +713,7 @@
 							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "110",
-							"uri": "https://collectivite.fr/bodilis",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "111",
-							"uri": "https://collectivite.fr/bolazec",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "112",
-							"uri": "https://collectivite.fr/botsorhel",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<a href=\"#\" onclick=\"goToEspace()\" class=\"fr-btn fr-icon-lock-line\" data-astro-cid-f5h6fp72>\nEspace commune\n</a>",
-							"otherinfo": "Links have been found that do not have traditional href attributes, which is an indication that this is a modern web application."
-						},
-						{
-							"id": "88",
+							"id": "73",
 							"uri": "https://collectivite.fr/communication",
 							"method": "GET",
 							"param": "",
@@ -873,7 +728,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "35988"
+					"sourceid": "35998"
 				},
 				{
 					"pluginid": "10015",
@@ -886,7 +741,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "15",
+							"id": "1",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -895,7 +750,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "66",
+							"id": "25",
 							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "cache-control",
@@ -904,7 +759,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "78",
+							"id": "56",
+							"uri": "https://collectivite.fr/accessibilite",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "61",
 							"uri": "https://collectivite.fr/auvergne-rhone-alpes",
 							"method": "GET",
 							"param": "cache-control",
@@ -913,7 +777,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "73",
+							"id": "63",
 							"uri": "https://collectivite.fr/bourgogne-franche-comte",
 							"method": "GET",
 							"param": "cache-control",
@@ -922,7 +786,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "58",
+							"id": "57",
 							"uri": "https://collectivite.fr/bretagne",
 							"method": "GET",
 							"param": "cache-control",
@@ -931,7 +795,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "76",
+							"id": "67",
 							"uri": "https://collectivite.fr/centre-val-de-loire",
 							"method": "GET",
 							"param": "cache-control",
@@ -940,8 +804,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "72",
-							"uri": "https://collectivite.fr/corse",
+							"id": "62",
+							"uri": "https://collectivite.fr/mentions-legales",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -949,8 +813,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "79",
-							"uri": "https://collectivite.fr/guadeloupe",
+							"id": "30",
+							"uri": "https://collectivite.fr/plan-du-site",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -958,16 +822,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "80",
-							"uri": "https://collectivite.fr/guyane",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "11",
+							"id": "0",
 							"uri": "https://collectivite.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -976,7 +831,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "53",
+							"id": "31",
 							"uri": "https://collectivite.fr/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -1004,7 +859,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "7",
+							"id": "14",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1013,7 +868,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "37",
+							"id": "39",
 							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1022,26 +877,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "28",
-							"uri": "https://collectivite.fr/bretagne",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "3",
+							"id": "8",
 							"uri": "https://collectivite.fr/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "29",
-							"uri": "https://collectivite.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1049,7 +886,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
@@ -1068,7 +905,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "5",
+							"id": "13",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1077,7 +914,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "36",
+							"id": "38",
 							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1086,26 +923,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "27",
-							"uri": "https://collectivite.fr/bretagne",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "1",
+							"id": "7",
 							"uri": "https://collectivite.fr/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "24",
-							"uri": "https://collectivite.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1113,7 +932,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
@@ -1132,7 +951,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "12",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1141,7 +960,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "25",
+							"id": "36",
 							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1150,26 +969,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "23",
-							"uri": "https://collectivite.fr/bretagne",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "0",
+							"id": "6",
 							"uri": "https://collectivite.fr/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "22",
-							"uri": "https://collectivite.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1177,7 +978,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
@@ -1196,7 +997,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "8",
+							"id": "15",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1205,7 +1006,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "39",
+							"id": "40",
 							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1214,26 +1015,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "32",
-							"uri": "https://collectivite.fr/bretagne",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "4",
+							"id": "9",
 							"uri": "https://collectivite.fr/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "31",
-							"uri": "https://collectivite.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1241,7 +1024,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "5",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
@@ -1260,7 +1043,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "9",
+							"id": "16",
 							"uri": "https://collectivite.fr",
 							"method": "GET",
 							"param": "",
@@ -1269,7 +1052,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "40",
+							"id": "41",
 							"uri": "https://collectivite.fr/",
 							"method": "GET",
 							"param": "",
@@ -1278,7 +1061,16 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "69",
+							"id": "58",
+							"uri": "https://collectivite.fr/accessibilite",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"id": "66",
 							"uri": "https://collectivite.fr/auvergne-rhone-alpes",
 							"method": "GET",
 							"param": "",
@@ -1287,7 +1079,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "67",
+							"id": "68",
 							"uri": "https://collectivite.fr/bourgogne-franche-comte",
 							"method": "GET",
 							"param": "",
@@ -1296,7 +1088,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "33",
+							"id": "60",
 							"uri": "https://collectivite.fr/bretagne",
 							"method": "GET",
 							"param": "",
@@ -1305,7 +1097,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "71",
+							"id": "70",
 							"uri": "https://collectivite.fr/centre-val-de-loire",
 							"method": "GET",
 							"param": "",
@@ -1314,8 +1106,8 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "65",
-							"uri": "https://collectivite.fr/corse",
+							"id": "64",
+							"uri": "https://collectivite.fr/mentions-legales",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1323,8 +1115,8 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "75",
-							"uri": "https://collectivite.fr/grand-est",
+							"id": "46",
+							"uri": "https://collectivite.fr/plan-du-site",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1332,16 +1124,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "77",
-							"uri": "https://collectivite.fr/guadeloupe",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"id": "34",
+							"id": "51",
 							"uri": "https://collectivite.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1369,7 +1152,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
 					"instances":[ 
 						{
-							"id": "6",
+							"id": "10",
 							"uri": "https://collectivite.fr/robots.txt",
 							"method": "GET",
 							"param": "",
