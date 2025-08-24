@@ -1,20 +1,26 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "F",
+    "grade": "D",
     "error": null,
-    "score": 10,
+    "score": 30,
     "statusCode": 200,
-    "testsFailed": 5,
-    "testsPassed": 5,
+    "testsFailed": 4,
+    "testsPassed": 6,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 17 Aug 2025 09:16:56 GMT",
-      "server": "Apache",
-      "x-powered-by": "PleskLin",
-      "content-length": "4229",
+      "date": "Sun, 24 Aug 2025 09:06:50 GMT",
+      "content-type": "text/html",
+      "transfer-encoding": "chunked",
       "connection": "close",
-      "content-type": "text/html"
+      "server": "cloudflare",
+      "nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+      "last-modified": "Sun, 24 Aug 2025 07:30:51 GMT",
+      "report-to": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=8NDkKx0CFyOnRha2riGh98YsFoSMOWg7TTF8tqIdKI1I9ruIDkM6IiaSGFhEUqEjKtQptae7hQpyW8yjThLpRU6TrU1FaAGECvJh%2BXmTJrjl4Qf%2Beg%3D%3D\"}]}",
+      "server-timing": "cfCacheStatus;desc=\"DYNAMIC\", cfEdge;dur=25,cfOrigin;dur=9",
+      "cf-cache-status": "DYNAMIC",
+      "cf-ray": "9741b229af1d10d5-ORD",
+      "alt-svc": "h3=\":443\"; ma=86400"
     }
   },
   "tests": {
@@ -46,13 +52,14 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": false,
-      "result": "redirection-missing",
-      "scoreModifier": -20,
-      "destination": "http://open-collectivites.fr/",
-      "redirects": false,
+      "pass": true,
+      "result": "redirection-to-https",
+      "scoreModifier": 0,
+      "destination": "https://open-collectivites.fr/",
+      "redirects": true,
       "route": [
-        "http://open-collectivites.fr/"
+        "http://open-collectivites.fr/",
+        "https://open-collectivites.fr/"
       ],
       "statusCode": 200
     },
@@ -68,7 +75,7 @@
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
       "pass": false,
-      "result": "hsts-invalid-cert",
+      "result": "hsts-not-implemented",
       "scoreModifier": -20,
       "data": null,
       "includeSubDomains": false,
@@ -79,7 +86,7 @@
     "subresource-integrity": {
       "expectation": "sri-implemented-and-external-scripts-loaded-securely",
       "pass": true,
-      "result": "sri-not-implemented-but-all-scripts-loaded-from-secure-origin",
+      "result": "sri-not-implemented-but-no-scripts-loaded",
       "scoreModifier": 0,
       "data": {}
     },
