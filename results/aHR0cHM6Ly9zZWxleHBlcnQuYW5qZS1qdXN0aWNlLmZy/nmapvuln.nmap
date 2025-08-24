@@ -1,4 +1,4 @@
-# Nmap 7.92 scan initiated Sun Aug 17 11:36:06 2025 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln selexpert.anje-justice.fr
+# Nmap 7.92 scan initiated Sun Aug 24 11:35:41 2025 as: nmap -sV --script vulners --script-args mincvss=5.0 -oA /data/nmapvuln selexpert.anje-justice.fr
 Nmap scan report for selexpert.anje-justice.fr (93.187.45.149)
 Host is up (0.15s latency).
 Other addresses for selexpert.anje-justice.fr (not scanned): 93.187.45.150
@@ -12,7 +12,7 @@ PORT     STATE    SERVICE       VERSION
 |     Cache-Control: no-cache
 |     Connection: close
 |     Content-Length: 6160
-|     Sozu-Id: 01K2VX1KJFPDS933HXGYX1YKZK
+|     Sozu-Id: 01K3DXSWCS6AA6DVXRX374A690
 |     <!doctype html>
 |     <html lang=en-US>
 |     <head>
@@ -25,7 +25,7 @@ PORT     STATE    SERVICE       VERSION
 |     Cache-Control: no-cache
 |     Connection: close
 |     Content-Length: 6164
-|     Sozu-Id: 01K2VX1SQ4XKMK9YT66M6N7VS2
+|     Sozu-Id: 01K3DXT2HSJAF4KGYS7E9FYQT0
 |     <!doctype html>
 |     <html lang=en-US>
 |     <head>
@@ -42,8 +42,26 @@ PORT     STATE    SERVICE       VERSION
 5221/tcp open     smtp          Postfix smtpd
 5357/tcp open     ssh           FortiSSH (protocol 2.0)
 5666/tcp open     tcpwrapped
-5800/tcp open     amqp          Advanced Message Queue Protocol
-|_amqp-info: ERROR: AMQP:handshake connection closed unexpectedly while reading frame header
+5800/tcp open     amqp          RabbitMQ 3.12.14 (0-9)
+| amqp-info: 
+|   capabilities: 
+|     publisher_confirms: YES
+|     exchange_exchange_bindings: YES
+|     basic.nack: YES
+|     consumer_cancel_notify: YES
+|     connection.blocked: YES
+|     consumer_priorities: YES
+|     authentication_failure_close: YES
+|     per_consumer_qos: YES
+|     direct_reply_to: YES
+|   cluster_name: rabbit@7d1e3edd5ec9
+|   copyright: Copyright (c) 2007-2024 Broadcom Inc and/or its subsidiaries
+|   information: Licensed under the MPL 2.0. Website: https://rabbitmq.com
+|   platform: Erlang/OTP 25.3.2.15
+|   product: RabbitMQ
+|   version: 3.12.14
+|   mechanisms: PLAIN AMQPLAIN
+|_  locales: en_US
 5850/tcp open     tcpwrapped
 5902/tcp open     tcpwrapped
 5961/tcp open     smtp
@@ -66,52 +84,57 @@ PORT     STATE    SERVICE       VERSION
 5962/tcp open     unknown
 8200/tcp open     ssl/trivnet1?
 | fingerprint-strings: 
-|   DNSStatusRequestTCP, Help: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP: 
 |     HTTP/1.1 400 Bad Request
 |     content-length: 0
 |     connection: close
-|     date: Sun, 17 Aug 2025 11:36:31 GMT
-|   DNSVersionBindReqTCP: 
-|     HTTP/1.1 400 Bad Request
+|     date: Sun, 24 Aug 2025 11:36:06 GMT
+|   GenericLines: 
+|     HTTP/1.1 408 Request Timeout
 |     content-length: 0
 |     connection: close
-|     date: Sun, 17 Aug 2025 11:36:30 GMT
+|     date: Sun, 24 Aug 2025 11:36:02 GMT
 |   GetRequest, HTTPOptions: 
 |     HTTP/1.0 404 Not Found
 |     content-length: 0
-|     date: Sun, 17 Aug 2025 11:36:28 GMT
-|   Kerberos, SMBProgNeg: 
+|     date: Sun, 24 Aug 2025 11:36:03 GMT
+|   Help, SSLSessionReq: 
 |     HTTP/1.1 400 Bad Request
 |     content-length: 0
 |     connection: close
-|     date: Sun, 17 Aug 2025 11:36:34 GMT
+|     date: Sun, 24 Aug 2025 11:36:07 GMT
+|   Kerberos: 
+|     HTTP/1.1 400 Bad Request
+|     content-length: 0
+|     connection: close
+|     date: Sun, 24 Aug 2025 11:36:09 GMT
 |   NULL: 
 |     HTTP/1.1 408 Request Timeout
 |     content-length: 0
 |     connection: close
-|     date: Sun, 17 Aug 2025 11:36:22 GMT
-|   RPCCheck, RTSPRequest: 
+|     date: Sun, 24 Aug 2025 11:35:57 GMT
+|   RPCCheck: 
 |     HTTP/1.1 400 Bad Request
 |     content-length: 0
 |     connection: close
-|     date: Sun, 17 Aug 2025 11:36:29 GMT
-|   SSLSessionReq: 
+|     date: Sun, 24 Aug 2025 11:36:05 GMT
+|   RTSPRequest: 
 |     HTTP/1.1 400 Bad Request
 |     content-length: 0
 |     connection: close
-|     date: Sun, 17 Aug 2025 11:36:32 GMT
+|     date: Sun, 24 Aug 2025 11:36:04 GMT
 |   TLSSessionReq, TerminalServerCookie: 
 |     HTTP/1.1 400 Bad Request
 |     content-length: 0
 |     connection: close
-|_    date: Sun, 17 Aug 2025 11:36:33 GMT
+|_    date: Sun, 24 Aug 2025 11:36:08 GMT
 9999/tcp filtered abyss
 3 services unrecognized despite returning data. If you know the service/version, please submit the following fingerprints at https://nmap.org/cgi-bin/submit.cgi?new-service :
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port80-TCP:V=7.92%I=7%D=8/17%Time=68A1BEB1%P=x86_64-alpine-linux-musl%r
+SF-Port80-TCP:V=7.92%I=7%D=8/24%Time=68AAF918%P=x86_64-alpine-linux-musl%r
 SF:(GetRequest,1893,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nCache-Control:\
 SF:x20no-cache\r\nConnection:\x20close\r\nContent-Length:\x206160\r\nSozu-
-SF:Id:\x2001K2VX1KJFPDS933HXGYX1YKZK\r\n\r\n<!doctype\x20html>\r\n<html\x2
+SF:Id:\x2001K3DXSWCS6AA6DVXRX374A690\r\n\r\n<!doctype\x20html>\r\n<html\x2
 SF:0lang=en-US>\r\n\x20\x20<head>\r\n\x20\x20\x20\x20<meta\x20charset=utf-
 SF:8>\r\n\x20\x20\x20\x20<meta\x20name=\"viewport\"\x20content=\"width=dev
 SF:ice-width\"\x20/>\r\n\x20\x20\x20\x20<title>400\x20Bad\x20Request</titl
@@ -126,7 +149,7 @@ SF:scroll-behavior:smooth;height:100%;-webkit-font-smoothing:antialiased;f
 SF:ont-family:var\(--font-family\);background-color:var\(--bg-color\)}butt
 SF:on#copy-btn,code{")%r(HTTPOptions,1897,"HTTP/1\.1\x20400\x20Bad\x20Requ
 SF:est\r\nCache-Control:\x20no-cache\r\nConnection:\x20close\r\nContent-Le
-SF:ngth:\x206164\r\nSozu-Id:\x2001K2VX1SQ4XKMK9YT66M6N7VS2\r\n\r\n<!doctyp
+SF:ngth:\x206164\r\nSozu-Id:\x2001K3DXT2HSJAF4KGYS7E9FYQT0\r\n\r\n<!doctyp
 SF:e\x20html>\r\n<html\x20lang=en-US>\r\n\x20\x20<head>\r\n\x20\x20\x20\x2
 SF:0<meta\x20charset=utf-8>\r\n\x20\x20\x20\x20<meta\x20name=\"viewport\"\
 SF:x20content=\"width=device-width\"\x20/>\r\n\x20\x20\x20\x20<title>400\x
@@ -141,7 +164,7 @@ SF:isplay:flex}body,html{scroll-behavior:smooth;height:100%;-webkit-font-s
 SF:moothing:antialiased;font-family:var\(--font-family\);background-color:
 SF:var\(--bg-color\)}button#copy-btn,code{");
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port5961-TCP:V=7.92%I=7%D=8/17%Time=68A1BEB1%P=x86_64-alpine-linux-musl
+SF-Port5961-TCP:V=7.92%I=7%D=8/24%Time=68AAF918%P=x86_64-alpine-linux-musl
 SF:%r(NULL,46,"220\x204c1617ac-677e-4c8c-9fc7-bf3b8f46cd07\x20Mailpit\x20E
 SF:SMTP\x20Service\x20ready\r\n")%r(GenericLines,A2,"220\x204c1617ac-677e-
 SF:4c8c-9fc7-bf3b8f46cd07\x20Mailpit\x20ESMTP\x20Service\x20ready\r\n500\x
@@ -157,39 +180,39 @@ SF:0\x20SMTPUTF8\r\n")%r(Help,69,"220\x204c1617ac-677e-4c8c-9fc7-bf3b8f46c
 SF:d07\x20Mailpit\x20ESMTP\x20Service\x20ready\r\n502\x205\.5\.1\x20Comman
 SF:d\x20not\x20implemented\r\n");
 ==============NEXT SERVICE FINGERPRINT (SUBMIT INDIVIDUALLY)==============
-SF-Port8200-TCP:V=7.92%T=SSL%I=7%D=8/17%Time=68A1BEB6%P=x86_64-alpine-linu
+SF-Port8200-TCP:V=7.92%T=SSL%I=7%D=8/24%Time=68AAF91D%P=x86_64-alpine-linu
 SF:x-musl%r(NULL,6B,"HTTP/1\.1\x20408\x20Request\x20Timeout\r\ncontent-len
-SF:gth:\x200\r\nconnection:\x20close\r\ndate:\x20Sun,\x2017\x20Aug\x202025
-SF:\x2011:36:22\x20GMT\r\n\r\n")%r(GetRequest,52,"HTTP/1\.0\x20404\x20Not\
-SF:x20Found\r\ncontent-length:\x200\r\ndate:\x20Sun,\x2017\x20Aug\x202025\
-SF:x2011:36:28\x20GMT\r\n\r\n")%r(HTTPOptions,52,"HTTP/1\.0\x20404\x20Not\
-SF:x20Found\r\ncontent-length:\x200\r\ndate:\x20Sun,\x2017\x20Aug\x202025\
-SF:x2011:36:28\x20GMT\r\n\r\n")%r(RTSPRequest,67,"HTTP/1\.1\x20400\x20Bad\
+SF:gth:\x200\r\nconnection:\x20close\r\ndate:\x20Sun,\x2024\x20Aug\x202025
+SF:\x2011:35:57\x20GMT\r\n\r\n")%r(GenericLines,6B,"HTTP/1\.1\x20408\x20Re
+SF:quest\x20Timeout\r\ncontent-length:\x200\r\nconnection:\x20close\r\ndat
+SF:e:\x20Sun,\x2024\x20Aug\x202025\x2011:36:02\x20GMT\r\n\r\n")%r(GetReque
+SF:st,52,"HTTP/1\.0\x20404\x20Not\x20Found\r\ncontent-length:\x200\r\ndate
+SF::\x20Sun,\x2024\x20Aug\x202025\x2011:36:03\x20GMT\r\n\r\n")%r(HTTPOptio
+SF:ns,52,"HTTP/1\.0\x20404\x20Not\x20Found\r\ncontent-length:\x200\r\ndate
+SF::\x20Sun,\x2024\x20Aug\x202025\x2011:36:03\x20GMT\r\n\r\n")%r(RTSPReque
+SF:st,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x200\r\nco
+SF:nnection:\x20close\r\ndate:\x20Sun,\x2024\x20Aug\x202025\x2011:36:04\x2
+SF:0GMT\r\n\r\n")%r(RPCCheck,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncon
+SF:tent-length:\x200\r\nconnection:\x20close\r\ndate:\x20Sun,\x2024\x20Aug
+SF:\x202025\x2011:36:05\x20GMT\r\n\r\n")%r(DNSVersionBindReqTCP,67,"HTTP/1
+SF:\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x200\r\nconnection:\x20
+SF:close\r\ndate:\x20Sun,\x2024\x20Aug\x202025\x2011:36:06\x20GMT\r\n\r\n"
+SF:)%r(DNSStatusRequestTCP,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nconte
+SF:nt-length:\x200\r\nconnection:\x20close\r\ndate:\x20Sun,\x2024\x20Aug\x
+SF:202025\x2011:36:06\x20GMT\r\n\r\n")%r(Help,67,"HTTP/1\.1\x20400\x20Bad\
 SF:x20Request\r\ncontent-length:\x200\r\nconnection:\x20close\r\ndate:\x20
-SF:Sun,\x2017\x20Aug\x202025\x2011:36:29\x20GMT\r\n\r\n")%r(RPCCheck,67,"H
-SF:TTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x200\r\nconnection
-SF::\x20close\r\ndate:\x20Sun,\x2017\x20Aug\x202025\x2011:36:29\x20GMT\r\n
-SF:\r\n")%r(DNSVersionBindReqTCP,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\
-SF:ncontent-length:\x200\r\nconnection:\x20close\r\ndate:\x20Sun,\x2017\x2
-SF:0Aug\x202025\x2011:36:30\x20GMT\r\n\r\n")%r(DNSStatusRequestTCP,67,"HTT
-SF:P/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x200\r\nconnection:\
-SF:x20close\r\ndate:\x20Sun,\x2017\x20Aug\x202025\x2011:36:31\x20GMT\r\n\r
-SF:\n")%r(Help,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x
-SF:200\r\nconnection:\x20close\r\ndate:\x20Sun,\x2017\x20Aug\x202025\x2011
-SF::36:31\x20GMT\r\n\r\n")%r(SSLSessionReq,67,"HTTP/1\.1\x20400\x20Bad\x20
-SF:Request\r\ncontent-length:\x200\r\nconnection:\x20close\r\ndate:\x20Sun
-SF:,\x2017\x20Aug\x202025\x2011:36:32\x20GMT\r\n\r\n")%r(TerminalServerCoo
-SF:kie,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x200\r\nc
-SF:onnection:\x20close\r\ndate:\x20Sun,\x2017\x20Aug\x202025\x2011:36:33\x
-SF:20GMT\r\n\r\n")%r(TLSSessionReq,67,"HTTP/1\.1\x20400\x20Bad\x20Request\
-SF:r\ncontent-length:\x200\r\nconnection:\x20close\r\ndate:\x20Sun,\x2017\
-SF:x20Aug\x202025\x2011:36:33\x20GMT\r\n\r\n")%r(Kerberos,67,"HTTP/1\.1\x2
-SF:0400\x20Bad\x20Request\r\ncontent-length:\x200\r\nconnection:\x20close\
-SF:r\ndate:\x20Sun,\x2017\x20Aug\x202025\x2011:36:34\x20GMT\r\n\r\n")%r(SM
-SF:BProgNeg,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x200
-SF:\r\nconnection:\x20close\r\ndate:\x20Sun,\x2017\x20Aug\x202025\x2011:36
-SF::34\x20GMT\r\n\r\n");
+SF:Sun,\x2024\x20Aug\x202025\x2011:36:07\x20GMT\r\n\r\n")%r(SSLSessionReq,
+SF:67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x200\r\nconne
+SF:ction:\x20close\r\ndate:\x20Sun,\x2024\x20Aug\x202025\x2011:36:07\x20GM
+SF:T\r\n\r\n")%r(TerminalServerCookie,67,"HTTP/1\.1\x20400\x20Bad\x20Reque
+SF:st\r\ncontent-length:\x200\r\nconnection:\x20close\r\ndate:\x20Sun,\x20
+SF:24\x20Aug\x202025\x2011:36:08\x20GMT\r\n\r\n")%r(TLSSessionReq,67,"HTTP
+SF:/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\x200\r\nconnection:\x
+SF:20close\r\ndate:\x20Sun,\x2024\x20Aug\x202025\x2011:36:08\x20GMT\r\n\r\
+SF:n")%r(Kerberos,67,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length
+SF::\x200\r\nconnection:\x20close\r\ndate:\x20Sun,\x2024\x20Aug\x202025\x2
+SF:011:36:09\x20GMT\r\n\r\n");
 Service Info: Host: mailhog.example; CPE: cpe:/o:fortinet:fortios
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-# Nmap done at Sun Aug 17 11:36:49 2025 -- 1 IP address (1 host up) scanned in 43.93 seconds
+# Nmap done at Sun Aug 24 11:36:25 2025 -- 1 IP address (1 host up) scanned in 43.91 seconds
