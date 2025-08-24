@@ -1,7 +1,7 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 17 Aug 2025 04:46:03",
+	"@generated": "Sun, 24 Aug 2025 04:35:13",
 	"site":[ 
 		{
 			"@name": "https://mediature.incubateur.net",
@@ -10,50 +10,269 @@
 			"@ssl": "true",
 			"alerts": [ 
 				{
-					"pluginid": "10038",
-					"alertRef": "10038-1",
-					"alert": "Content Security Policy (CSP) Header Not Set",
-					"name": "Content Security Policy (CSP) Header Not Set",
+					"pluginid": "10055",
+					"alertRef": "10055-4",
+					"alert": "CSP: Wildcard Directive",
+					"name": "CSP: Wildcard Directive",
 					"riskcode": "2",
 					"confidence": "3",
 					"riskdesc": "Medium (High)",
-					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "0",
+							"id": "10",
 							"uri": "https://mediature.incubateur.net",
 							"method": "GET",
-							"param": "",
+							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, font-src"
 						},
 						{
-							"id": "2",
-							"uri": "https://mediature.incubateur.net/robots.txt",
+							"id": "95",
+							"uri": "https://mediature.incubateur.net/",
 							"method": "GET",
-							"param": "",
+							"param": "Content-Security-Policy",
 							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, font-src"
 						},
 						{
-							"id": "1",
+							"id": "40",
 							"uri": "https://mediature.incubateur.net/sitemap.xml",
 							"method": "GET",
-							"param": "",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests",
+							"otherinfo": "The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:\nstyle-src, font-src"
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:</p><p>style-src, font-src</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "1"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-5",
+					"alert": "CSP: script-src unsafe-inline",
+					"name": "CSP: script-src unsafe-inline",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"id": "13",
+							"uri": "https://mediature.incubateur.net",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"id": "96",
+							"uri": "https://mediature.incubateur.net/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests",
+							"otherinfo": "script-src includes unsafe-inline."
+						},
+						{
+							"id": "41",
+							"uri": "https://mediature.incubateur.net/sitemap.xml",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests",
+							"otherinfo": "script-src includes unsafe-inline."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>script-src includes unsafe-inline.</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-6",
+					"alert": "CSP: style-src unsafe-inline",
+					"name": "CSP: style-src unsafe-inline",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
+					"instances":[ 
+						{
+							"id": "14",
+							"uri": "https://mediature.incubateur.net",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"id": "98",
+							"uri": "https://mediature.incubateur.net/",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests",
+							"otherinfo": "style-src includes unsafe-inline."
+						},
+						{
+							"id": "42",
+							"uri": "https://mediature.incubateur.net/sitemap.xml",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests",
+							"otherinfo": "style-src includes unsafe-inline."
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>style-src includes unsafe-inline.</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "90004",
+					"alertRef": "90004-1",
+					"alert": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"name": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
+					"instances":[ 
+						{
+							"id": "57",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/4057-df35d379df8579e0.js",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "80",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/5559-df66423e09e96de2.js",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "69",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/5613-af5001c21f9dc7a3.js",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "74",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/7664-b57865a918d7507a.js",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "76",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/9445-ace8c88b67018e58.js",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "51",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/main-app-1bf87ab7985b31ad.js",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "39",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/webpack-b99237d0453d5976.js",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "32",
+							"uri": "https://mediature.incubateur.net/_next/static/css/36883c7086c34668.css",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "30",
+							"uri": "https://mediature.incubateur.net/_next/static/css/8c589b579ac1ecba.css",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "37",
+							"uri": "https://mediature.incubateur.net/_next/static/media/apple-touch-icon.1db30588.png",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "23",
+							"uri": "https://mediature.incubateur.net/_next/static/media/favicon.8c087985.ico",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "46",
+							"uri": "https://mediature.incubateur.net/_next/static/media/favicon.f453a8cf.svg",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
-					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"count": "12",
+					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
 					"cweid": "693",
-					"wascid": "15",
-					"sourceid": "6"
+					"wascid": "14",
+					"sourceid": "59"
 				},
 				{
 					"pluginid": "10063",
@@ -66,7 +285,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "19",
+							"id": "60",
 							"uri": "https://mediature.incubateur.net",
 							"method": "GET",
 							"param": "",
@@ -75,8 +294,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "21",
-							"uri": "https://mediature.incubateur.net/robots.txt",
+							"id": "56",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/4057-df35d379df8579e0.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -84,7 +303,79 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "18",
+							"id": "81",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/4325-4e69b4e5903b84dc.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "82",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/4968-38f5e4d4eb1aa0f3.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "79",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/5559-df66423e09e96de2.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "68",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/5613-af5001c21f9dc7a3.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "73",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/7664-b57865a918d7507a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "75",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/9445-ace8c88b67018e58.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "50",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/main-app-1bf87ab7985b31ad.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "38",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/webpack-b99237d0453d5976.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "53",
 							"uri": "https://mediature.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -93,12 +384,441 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "11",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
+					"sourceid": "6"
+				},
+				{
+					"pluginid": "10096",
+					"alertRef": "10096",
+					"alert": "Timestamp Disclosure - Unix",
+					"name": "Timestamp Disclosure - Unix",
+					"riskcode": "1",
+					"confidence": "1",
+					"riskdesc": "Low (Low)",
+					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
+					"instances":[ 
+						{
+							"id": "102",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/3640-de22fc5707248893.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1540483477",
+							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37."
+						},
+						{
+							"id": "64",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/7664-b57865a918d7507a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "1540483477",
+							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
+					"otherinfo": "<p>1540483477, which evaluates to: 2018-10-25 16:04:37.</p>",
+					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
+					"cweid": "497",
+					"wascid": "13",
+					"sourceid": "77"
+				},
+				{
+					"pluginid": "10021",
+					"alertRef": "10021",
+					"alert": "X-Content-Type-Options Header Missing",
+					"name": "X-Content-Type-Options Header Missing",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
+					"instances":[ 
+						{
+							"id": "54",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/4057-df35d379df8579e0.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "78",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/5559-df66423e09e96de2.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "62",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/5613-af5001c21f9dc7a3.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "71",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/7664-b57865a918d7507a.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "72",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/9445-ace8c88b67018e58.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "48",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/main-app-1bf87ab7985b31ad.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "34",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/webpack-b99237d0453d5976.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "7",
+							"uri": "https://mediature.incubateur.net/_next/static/css/36883c7086c34668.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "24",
+							"uri": "https://mediature.incubateur.net/_next/static/css/8c589b579ac1ecba.css",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "33",
+							"uri": "https://mediature.incubateur.net/_next/static/media/apple-touch-icon.1db30588.png",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "1",
+							"uri": "https://mediature.incubateur.net/_next/static/media/favicon.8c087985.ico",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "44",
+							"uri": "https://mediature.incubateur.net/_next/static/media/favicon.f453a8cf.svg",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						}
+					],
+					"count": "12",
+					"solution": "<p>Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.</p>",
+					"otherinfo": "<p>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.</p><p>At \"High\" threshold this scan rule will not alert on client or server error responses.</p>",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p><p>https://owasp.org/www-community/Security_Headers</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "59"
+				},
+				{
+					"pluginid": "10094",
+					"alertRef": "10094-3",
+					"alert": "Base64 Disclosure",
+					"name": "Base64 Disclosure",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
+					"instances":[ 
+						{
+							"id": "104",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/3640-de22fc5707248893.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",
+							"otherinfo": "\\x0000\\x0010\uFFFD\\x0010Q\uFFFD \uFFFD\uFFFD0\u04CFA\\x0014\uFFFDQU\uFFFDa\uFFFD\uFFFDq\u05DF\uFFFD\\x0018\uFFFD\uFFFDY\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06EF\uFFFD\\x001c\uFFFD\uFFFD]\uFFFD\u37BB\uFFFD\u07FF"
+						},
+						{
+							"id": "88",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/7047-1559e7ed0505606f.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Hour1to12Parser_defineProperties",
+							"otherinfo": "\\x001e\uFFFD\uFFFD\uFFFD\uFFFD5\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uB897\uFFFD\uFFFD'\uFFFD"
+						},
+						{
+							"id": "93",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/app/(public)/(home)/page-ccf9d8a6f7798c0c.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAMAAADJ2y/JAAAAXVBMVEVMaXHU3eVgYpeou9hbYXne5/bL2/cxMGPR///M1fF8f8/T2+vC2vu+zuoODjx8g7GPoMd7gK3g5PrJvMfM4fsWFj9fYYsmKVlES4e+naIeAAByjPmxsbp1ivPq/v/pyHQAAAAAHnRSTlMADq9yJzZwggUbfF1M8H+uTsnci5Nk2q6YNxG2Vtn2NCNaAAAACXBIWXMAACE4AAAhOAFFljFgAAAAOElEQVR4nAXBBwLAEBAAwVUPKUgh/f/PzAzuubBDAFJidQTUe5+Lt2D0EVveIl5mev1GjOxK9FR+Ne4CEG0mgjAAAAAASUVORK5CYII=",
+							"otherinfo": "\uFFFDPNG\r\n\\x001a\n\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0000\\x0008\\x0000\\x0000\\x0000\\x0006\\x0008\\x0003\\x0000\\x0000\\x0000\uFFFD\uFFFD/\uFFFD\\x0000\\x0000\\x0000]PLTELiq\uFFFD\uFFFD\uFFFD`b\uFFFD\uFFFD\uFFFD\uFFFD[ay\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD10c\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD|\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x000e\\x000e<|\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD{\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u027C\uFFFD\uFFFD\uFFFD\uFFFD\\x0016\\x0016?_a\uFFFD&)YDK\uFFFD\uFFFD\uFFFD\uFFFD\\x001e\\x0000\\x0000r\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDu\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDt\\x0000\\x0000\\x0000\\x0000\\x001etRNS\\x0000\\x000e\uFFFDr'6p\uFFFD\\x0005\\x001b|]L\uFFFD\uFFFDN\uFFFD\u070B\uFFFDd\u06AE\uFFFD7\\x0011\uFFFDV\uFFFD\uFFFD4#Z\\x0000\\x0000\\x0000\tpHYs\\x0000\\x0000!8\\x0000\\x0000!8\\x0001E\uFFFD1`\\x0000\\x0000\\x00008IDATx\uFFFD\\x0005\uFFFD\\x0007\\x0002\uFFFD\\x0010\\x0010\\x0000\uFFFDU\\x000f)H!\uFFFD\uFFFD\uFFFD\uFFFD\\x000c\uEE70C\\x0000Rbu\\x0004\uFFFD{\uFFFD\uFFFD\uFFFD`\uFFFD\\x0011[\uFFFD\"^fz\uFFFDF\uFFFD\uFFFDJ\uFFFDT~5\uFFFD\\x0002\\x0010m&\uFFFD0\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD"
+						},
+						{
+							"id": "85",
+							"uri": "https://mediature.incubateur.net/_next/static/css/22b0be4d5ad068d3.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "2H9v2H7V5H4v4h16V5h-3v2h-2V5zm5",
+							"otherinfo": "\uFFFDo\uFFFD~\uFFFD\uFFFD~/\uFFFD\\x001dzW\uFFFD~\uFFFD\uFFFD\uFFFD\uFFFDey\uFFFDn"
+						}
+					],
+					"count": "4",
+					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
+					"otherinfo": "<p>\\x0000\\x0010\uFFFD\\x0010Q\uFFFD \uFFFD\uFFFD0\u04CFA\\x0014\uFFFDQU\uFFFDa\uFFFD\uFFFDq\u05DF\uFFFD\\x0018\uFFFD\uFFFDY\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\u06EF\uFFFD\\x001c\uFFFD\uFFFD]\uFFFD\u37BB\uFFFD\u07FF</p>",
+					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
+					"cweid": "319",
+					"wascid": "13",
+					"sourceid": "77"
+				},
+				{
+					"pluginid": "10019",
+					"alertRef": "10019-1",
+					"alert": "Content-Type Header Missing",
+					"name": "Content-Type Header Missing",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The Content-Type header was either missing or empty.</p>",
+					"instances":[ 
+						{
+							"id": "97",
+							"uri": "https://mediature.incubateur.net/.well-known/",
+							"method": "GET",
+							"param": "content-type",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>Ensure each page is setting the specific and appropriate content-type value for the content being delivered.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)</p>",
+					"cweid": "345",
+					"wascid": "12",
+					"sourceid": "92"
+				},
+				{
+					"pluginid": "10027",
+					"alertRef": "10027",
+					"alert": "Information Disclosure - Suspicious Comments",
+					"name": "Information Disclosure - Suspicious Comments",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
+					"instances":[ 
+						{
+							"id": "91",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/1721-cbc5343eb49405bd.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//nextjs.org/docs/messages/next-image-missing-loader')}else{var T,H=F;F=function(e){return e.config,H(o._(e,[\"config\"]))}}if(x){\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "89",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/4804-8a431307ad292ad6.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//www.mediateur-public.fr\",color:\"inherit\",children:\"www.mediateur-public.fr\"})]}),isClosable:!0}):null}},34269:function(e,n,t){\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "86",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/5077-7349d2b106c46a05.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//github.com/trpc/trpc/issues/new\")};function dataLoader(e){let t=null,n=null,destroyTimerAndPendingItems=()=>{clearTimeout(n),n\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "77",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/5559-df66423e09e96de2.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//'.\"])}},Path_may_have_at_most_one_parameter_per_segment:{errorCode:1005,getDetails:function(e,t){return[].concat(getBuildPathD\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "84",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/6ef13c73-3f7d6a9cae5cf3ae.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "Db",
+							"otherinfo": "The following pattern was used: \\bDB\\b and was detected in likely comment: \"//reactjs.org/docs/error-decoder.html?invariant=\"+n,a=1;a<arguments.length;a++)l+=\"&args[]=\"+encodeURIComponent(arguments[a]);re\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "87",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/7047-1559e7ed0505606f.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//client.crisp.chat/l.js\",this.websiteId=\"\",this.autoload=!0,this.injected=!1,this.chat=new y(this),this.session=new p(this),thi\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "63",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/7664-b57865a918d7507a.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"/*\"+Utility_substr(m,t,p-1)+\"*\"+a(47===e?e:next())}(next(),p),t,n,b,a(d),Utility_substr(g,2,-2),0),y);break;default:j+=\"/\"}break\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "83",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/8256-48ac224f9aa3efb2.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "from",
+							"otherinfo": "The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//next-auth.js.org/errors#\".concat(e.toLowerCase()),t.message,t)},warn:function(e){console.warn(\"[next-auth][warn][\".concat(e,\"]\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "90",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/9742-e3d6f6e064d76ead.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "select",
+							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//github.com/date-fns/date-fns/blob/master/docs/unicodeTokens.md\"));if(\"YY\"===e)throw RangeError(\"Use `yy` instead of `YY` (in `\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "92",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/app/layout-52fd0a0b23ecd226.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "user",
+							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//mock.local\")},87444:function(e,t,n){\"use strict\";n.d(t,{Bq:function(){return m},Ki:function(){return p},Rx:function(){return x\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "47",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/main-app-1bf87ab7985b31ad.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "debug",
+							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in likely comment: \"//73d6edc9ce2b49c693baabf30cab28c5@sentry.incubateur.net/70\",o=i.env.NEXT_PUBLIC_APP_MODE,b=window;b.__sentryRewritesTunnelPath_\", see evidence field for the suspicious comment/snippet."
+						},
+						{
+							"id": "101",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/polyfills-c67a75d1b6f99dc8.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//a\"),e=t.searchParams,r=\"\";return t.pathname=\"c%20d\",e.forEach(function(t,n){e.delete(\"b\"),r+=n+t}),!e.sort||\"http://a/c%20d?a=\", see evidence field for the suspicious comment/snippet."
+						}
+					],
+					"count": "12",
+					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bFROM\\b and was detected in likely comment: \"//nextjs.org/docs/messages/next-image-missing-loader')}else{var T,H=F;F=function(e){return e.config,H(o._(e,[\"config\"]))}}if(x){\", see evidence field for the suspicious comment/snippet.</p>",
+					"reference": "",
+					"cweid": "615",
+					"wascid": "13",
+					"sourceid": "85"
+				},
+				{
+					"pluginid": "10109",
+					"alertRef": "10109",
+					"alert": "Modern Web Application",
+					"name": "Modern Web Application",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
+					"instances":[ 
+						{
+							"id": "16",
+							"uri": "https://mediature.incubateur.net",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"/_next/static/chunks/6ef13c73-3f7d6a9cae5cf3ae.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "99",
+							"uri": "https://mediature.incubateur.net/",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"/_next/static/chunks/6ef13c73-3f7d6a9cae5cf3ae.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "100",
+							"uri": "https://mediature.incubateur.net/.well-known",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"/_next/static/chunks/6ef13c73-3f7d6a9cae5cf3ae.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						},
+						{
+							"id": "43",
+							"uri": "https://mediature.incubateur.net/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<script src=\"/_next/static/chunks/6ef13c73-3f7d6a9cae5cf3ae.js\" async=\"\"></script>",
+							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
+						}
+					],
+					"count": "4",
+					"solution": "<p>This is an informational alert and so no changes are required.</p>",
+					"otherinfo": "<p>No links have been found while there are scripts, which is an indication that this is a modern web application.</p>",
+					"reference": "",
+					"cweid": "-1",
+					"wascid": "-1",
 					"sourceid": "6"
 				},
 				{
@@ -112,38 +832,57 @@
 					"desc": "<p>The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.</p>",
 					"instances":[ 
 						{
-							"id": "17",
-							"uri": "https://mediature.incubateur.net",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "503",
-							"otherinfo": ""
-						},
-						{
-							"id": "20",
-							"uri": "https://mediature.incubateur.net/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "503",
-							"otherinfo": ""
-						},
-						{
-							"id": "16",
+							"id": "52",
 							"uri": "https://mediature.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "503",
+							"evidence": "no-store",
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "1",
 					"solution": "<p>The content may be marked as storable by ensuring that the following conditions are satisfied:</p><p>The request method must be understood by the cache and defined as being cacheable (\"GET\", \"HEAD\", and \"POST\" are currently defined as cacheable)</p><p>The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)</p><p>The \"no-store\" cache directive must not appear in the request or response header fields</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"private\" response directive must not appear in the response</p><p>For caching by \"shared\" caches such as \"proxy\" caches, the \"Authorization\" header field must not appear in the request, unless the response explicitly allows it (using one of the \"must-revalidate\", \"public\", or \"s-maxage\" Cache-Control response directives)</p><p>In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:</p><p>It must contain an \"Expires\" header field</p><p>It must contain a \"max-age\" response directive</p><p>For \"shared\" caches such as \"proxy\" caches, it must contain a \"s-maxage\" response directive</p><p>It must contain a \"Cache Control Extension\" that allows it to be cached</p><p>It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
+					"wascid": "13",
+					"sourceid": "57"
+				},
+				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"id": "8",
+							"uri": "https://mediature.incubateur.net",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
+						},
+						{
+							"id": "94",
+							"uri": "https://mediature.incubateur.net/",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "s-maxage=31536000, stale-while-revalidate",
+							"otherinfo": ""
+						}
+					],
+					"count": "2",
+					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"cweid": "525",
 					"wascid": "13",
 					"sourceid": "6"
 				},
@@ -158,8 +897,8 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "6",
-							"uri": "https://mediature.incubateur.net",
+							"id": "27",
+							"uri": "https://mediature.incubateur.net/_next/static/css/8c589b579ac1ecba.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -167,17 +906,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "20",
+							"uri": "https://mediature.incubateur.net/_next/static/media/favicon.8c087985.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "4",
 							"uri": "https://mediature.incubateur.net/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Dest",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "11",
-							"uri": "https://mediature.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -191,7 +930,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "52"
 				},
 				{
 					"pluginid": "90005",
@@ -204,8 +943,8 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "5",
-							"uri": "https://mediature.incubateur.net",
+							"id": "26",
+							"uri": "https://mediature.incubateur.net/_next/static/css/8c589b579ac1ecba.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -213,17 +952,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "13",
+							"id": "19",
+							"uri": "https://mediature.incubateur.net/_next/static/media/favicon.8c087985.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "3",
 							"uri": "https://mediature.incubateur.net/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Mode",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "10",
-							"uri": "https://mediature.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -237,7 +976,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "52"
 				},
 				{
 					"pluginid": "90005",
@@ -250,8 +989,8 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "4",
-							"uri": "https://mediature.incubateur.net",
+							"id": "25",
+							"uri": "https://mediature.incubateur.net/_next/static/css/8c589b579ac1ecba.css",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -259,17 +998,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "7",
+							"id": "18",
+							"uri": "https://mediature.incubateur.net/_next/static/media/favicon.8c087985.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "2",
 							"uri": "https://mediature.incubateur.net/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "8",
-							"uri": "https://mediature.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -283,7 +1022,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "52"
 				},
 				{
 					"pluginid": "90005",
@@ -296,8 +1035,8 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "9",
-							"uri": "https://mediature.incubateur.net",
+							"id": "28",
+							"uri": "https://mediature.incubateur.net/_next/static/css/8c589b579ac1ecba.css",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -305,17 +1044,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "21",
+							"uri": "https://mediature.incubateur.net/_next/static/media/favicon.8c087985.ico",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "5",
 							"uri": "https://mediature.incubateur.net/robots.txt",
-							"method": "GET",
-							"param": "Sec-Fetch-User",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "12",
-							"uri": "https://mediature.incubateur.net/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -329,6 +1068,115 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
+					"sourceid": "52"
+				},
+				{
+					"pluginid": "10049",
+					"alertRef": "10049",
+					"alert": "Storable and Cacheable Content",
+					"name": "Storable and Cacheable Content",
+					"riskcode": "0",
+					"confidence": "2",
+					"riskdesc": "Informational (Medium)",
+					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
+					"instances":[ 
+						{
+							"id": "58",
+							"uri": "https://mediature.incubateur.net",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "s-maxage=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "55",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/4057-df35d379df8579e0.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "49",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/main-app-1bf87ab7985b31ad.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "36",
+							"uri": "https://mediature.incubateur.net/_next/static/chunks/webpack-b99237d0453d5976.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "31",
+							"uri": "https://mediature.incubateur.net/_next/static/css/36883c7086c34668.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "29",
+							"uri": "https://mediature.incubateur.net/_next/static/css/8c589b579ac1ecba.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "35",
+							"uri": "https://mediature.incubateur.net/_next/static/media/apple-touch-icon.1db30588.png",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "22",
+							"uri": "https://mediature.incubateur.net/_next/static/media/favicon.8c087985.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "45",
+							"uri": "https://mediature.incubateur.net/_next/static/media/favicon.f453a8cf.svg",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=31536000",
+							"otherinfo": ""
+						},
+						{
+							"id": "6",
+							"uri": "https://mediature.incubateur.net/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						}
+					],
+					"count": "10",
+					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
+					"cweid": "524",
+					"wascid": "13",
 					"sourceid": "6"
 				}
 			]
