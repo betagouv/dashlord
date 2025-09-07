@@ -1,7 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 31 Aug 2025 12:06:50",
+	"@generated": "Sun, 7 Sept 2025 11:53:03",
+	"created": "2025-09-07T11:53:03.420065584Z",
 	"site":[ 
 		{
 			"@name": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io",
@@ -9,6 +10,43 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10055",
+					"alertRef": "10055-13",
+					"alert": "CSP: Failure to Define Directive with No Fallback",
+					"name": "CSP: Failure to Define Directive with No Fallback",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.</p>",
+					"instances":[ 
+						{
+							"id": "2",
+							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/robots.txt",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'none'",
+							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
+						},
+						{
+							"id": "3",
+							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/sitemap.xml",
+							"method": "GET",
+							"param": "Content-Security-Policy",
+							"attack": "",
+							"evidence": "default-src 'none'",
+							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
+						}
+					],
+					"count": "2",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "<p>The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src.</p>",
+					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "7"
+				},
 				{
 					"pluginid": "10063",
 					"alertRef": "10063-1",
@@ -20,7 +58,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "12",
+							"id": "17",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -29,7 +67,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "13",
+							"id": "9",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -44,7 +82,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "8"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10037",
@@ -90,7 +128,7 @@
 					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10015",
@@ -118,7 +156,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -131,7 +169,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "20",
+							"id": "25",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -140,7 +178,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "23",
+							"id": "22",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -149,7 +187,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "25",
+							"id": "12",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -164,7 +202,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "90005",
@@ -177,7 +215,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "17",
+							"id": "23",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -186,7 +224,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "22",
+							"id": "21",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -195,7 +233,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "24",
+							"id": "11",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -223,7 +261,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "16",
+							"id": "19",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -232,7 +270,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "20",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -241,7 +279,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "21",
+							"id": "10",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -269,7 +307,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "27",
+							"id": "28",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -278,7 +316,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "28",
+							"id": "27",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -287,7 +325,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "29",
+							"id": "13",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -315,7 +353,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "9",
+							"id": "14",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io",
 							"method": "GET",
 							"param": "",
@@ -324,7 +362,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "15",
 							"uri": "https://api-datasubvention-preprod.osc-secnum-fr1.scalingo.io/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -348,7 +386,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "6"
 				}
 			]
 		}
