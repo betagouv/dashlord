@@ -1,156 +1,9 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 31 Aug 2025 03:55:15",
+	"@generated": "Sun, 7 Sept 2025 03:53:40",
+	"created": "2025-09-07T03:53:40.899700383Z",
 	"site":[ 
-		{
-			"@name": "https://immersion-facile.beta.gouv.fr.",
-			"@host": "immersion-facile.beta.gouv.fr.",
-			"@port": "443",
-			"@ssl": "true",
-			"alerts": [ 
-				{
-					"pluginid": "10020",
-					"alertRef": "10020-1",
-					"alert": "Missing Anti-clickjacking Header",
-					"name": "Missing Anti-clickjacking Header",
-					"riskcode": "2",
-					"confidence": "2",
-					"riskdesc": "Medium (Medium)",
-					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
-					"instances":[ 
-						{
-							"id": "109",
-							"uri": "https://immersion-facile.beta.gouv.fr./",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "1",
-					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
-					"cweid": "1021",
-					"wascid": "15",
-					"sourceid": "115"
-				},
-				{
-					"pluginid": "10096",
-					"alertRef": "10096",
-					"alert": "Timestamp Disclosure - Unix",
-					"name": "Timestamp Disclosure - Unix",
-					"riskcode": "1",
-					"confidence": "1",
-					"riskdesc": "Low (Low)",
-					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
-					"instances":[ 
-						{
-							"id": "121",
-							"uri": "https://immersion-facile.beta.gouv.fr./assets/main-CA6WeB8E.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1540483477",
-							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37."
-						}
-					],
-					"count": "1",
-					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
-					"otherinfo": "<p>1540483477, which evaluates to: 2018-10-25 16:04:37.</p>",
-					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
-					"cweid": "497",
-					"wascid": "13",
-					"sourceid": "137"
-				},
-				{
-					"pluginid": "10027",
-					"alertRef": "10027",
-					"alert": "Information Disclosure - Suspicious Comments",
-					"name": "Information Disclosure - Suspicious Comments",
-					"riskcode": "0",
-					"confidence": "1",
-					"riskdesc": "Informational (Low)",
-					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
-					"instances":[ 
-						{
-							"id": "120",
-							"uri": "https://immersion-facile.beta.gouv.fr./assets/main-CA6WeB8E.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "debug",
-							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in likely comment: \"//\")&&!/^https?:\\/\\//.test(l))break e;return F.createElement(\"a\",Object.assign({href:l,target:\"_blank\",rel:\"noreferrer\"},s))}e:{\", see evidence field for the suspicious comment/snippet."
-						}
-					],
-					"count": "1",
-					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bDEBUG\\b and was detected in likely comment: \"//\")&&!/^https?:\\/\\//.test(l))break e;return F.createElement(\"a\",Object.assign({href:l,target:\"_blank\",rel:\"noreferrer\"},s))}e:{\", see evidence field for the suspicious comment/snippet.</p>",
-					"reference": "",
-					"cweid": "615",
-					"wascid": "13",
-					"sourceid": "137"
-				},
-				{
-					"pluginid": "10109",
-					"alertRef": "10109",
-					"alert": "Modern Web Application",
-					"name": "Modern Web Application",
-					"riskcode": "0",
-					"confidence": "2",
-					"riskdesc": "Informational (Medium)",
-					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
-					"instances":[ 
-						{
-							"id": "112",
-							"uri": "https://immersion-facile.beta.gouv.fr./",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript>\n  <h1>\n    Immersion Facilit\u00E9e: Faciliter la r\u00E9alisation des immersions\n    professionnelles\n  </h1>\n  <h2>La meilleure fa\u00E7on de faire \u00E9merger de nouveaux talents</h2>\n  <p>\n    Avec Immersion Facilit\u00E9e, trouvez un m\u00E9tier \u00E0 tester, entrez en relation\n    imm\u00E9diatement avec une entreprise accueillante, remplissez une demande\n    de convention et obtenez une r\u00E9ponse en temps record !\n  </p>\n  <p>\n    Ce site a besoin de JavaScript pour fonctionner correctement, nous vous\n    conseillons\n    <a href=\"https://enablejavascript.co/fr/\" target=\"_blank\">\n      d'activer JavaScript\n    </a>\n  </p>\n  <h3>Liens utiles:</h3>\n\n  <ul>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Contactez l'\u00E9quipe\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://www.linkedin.com/company/l-immersion-facilitee/\"\n          target=\"_blank\"\n      >\n        Rejoignez-nous sur Linkedin\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Acc\u00E9dez \u00E0 notre FAQ\n      </a>\n    </li>\n  </ul>\n</noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						}
-					],
-					"count": "1",
-					"solution": "<p>This is an informational alert and so no changes are required.</p>",
-					"otherinfo": "<p>A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not.</p>",
-					"reference": "",
-					"cweid": "-1",
-					"wascid": "-1",
-					"sourceid": "115"
-				},
-				{
-					"pluginid": "10015",
-					"alertRef": "10015",
-					"alert": "Re-examine Cache-control Directives",
-					"name": "Re-examine Cache-control Directives",
-					"riskcode": "0",
-					"confidence": "1",
-					"riskdesc": "Informational (Low)",
-					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
-					"instances":[ 
-						{
-							"id": "111",
-							"uri": "https://immersion-facile.beta.gouv.fr./",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "1",
-					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
-					"otherinfo": "",
-					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
-					"cweid": "525",
-					"wascid": "13",
-					"sourceid": "115"
-				}
-			]
-		},
 		{
 			"@name": "https://immersion-facile.beta.gouv.fr",
 			"@host": "immersion-facile.beta.gouv.fr",
@@ -168,7 +21,7 @@
 					"desc": "<p>The Content Security Policy fails to define one of the directives that has no fallback. Missing/excluding them is the same as allowing anything.</p>",
 					"instances":[ 
 						{
-							"id": "4",
+							"id": "10",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -177,7 +30,7 @@
 							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
 						},
 						{
-							"id": "44",
+							"id": "8",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -186,7 +39,7 @@
 							"otherinfo": "The directive(s): frame-ancestors, form-action is/are among the directives that do not fallback to default-src."
 						},
 						{
-							"id": "43",
+							"id": "11",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -201,7 +54,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10055",
@@ -214,7 +67,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "6",
+							"id": "15",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -223,7 +76,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "49",
+							"id": "9",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -232,7 +85,7 @@
 							"otherinfo": "script-src includes unsafe-inline."
 						},
 						{
-							"id": "45",
+							"id": "16",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -260,7 +113,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "7",
+							"id": "18",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -269,7 +122,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "51",
+							"id": "13",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -278,7 +131,7 @@
 							"otherinfo": "style-src includes unsafe-inline."
 						},
 						{
-							"id": "46",
+							"id": "19",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Content-Security-Policy",
@@ -293,7 +146,7 @@
 					"reference": "<p>https://www.w3.org/TR/CSP/</p><p>https://caniuse.com/#search=content+security+policy</p><p>https://content-security-policy.com/</p><p>https://github.com/HtmlUnit/htmlunit-csp</p><p>https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10020",
@@ -306,7 +159,7 @@
 					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
 					"instances":[ 
 						{
-							"id": "1",
+							"id": "0",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -315,70 +168,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "109",
-							"uri": "https://immersion-facile.beta.gouv.fr./",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "76",
-							"uri": "https://immersion-facile.beta.gouv.fr/",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "75",
-							"uri": "https://immersion-facile.beta.gouv.fr/$",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "91",
-							"uri": "https://immersion-facile.beta.gouv.fr/ajouter-prescripteur",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "97",
-							"uri": "https://immersion-facile.beta.gouv.fr/demande-immersion",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "105",
-							"uri": "https://immersion-facile.beta.gouv.fr/establishment",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "93",
-							"uri": "https://immersion-facile.beta.gouv.fr/recherche",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "33",
+							"id": "2",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -387,17 +177,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "32",
+							"id": "1",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "x-frame-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "83",
-							"uri": "https://immersion-facile.beta.gouv.fr/tableau-de-bord-agence",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -405,7 +186,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "3",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
@@ -424,7 +205,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "14",
+							"id": "26",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -433,43 +214,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "56",
-							"uri": "https://immersion-facile.beta.gouv.fr/assets/apple-touch-icon-DrfPSIlu.png",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "50",
-							"uri": "https://immersion-facile.beta.gouv.fr/assets/css/custom.css",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "52",
-							"uri": "https://immersion-facile.beta.gouv.fr/assets/favicon-BMkCb9zi.ico",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "42",
-							"uri": "https://immersion-facile.beta.gouv.fr/manifest.webmanifest",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "62",
+							"id": "39",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -478,7 +223,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "60",
+							"id": "45",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -487,7 +232,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "15",
+							"id": "27",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -496,7 +241,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "66",
+							"id": "41",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -505,7 +250,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "63",
+							"id": "47",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -514,7 +259,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "16",
+							"id": "28",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -523,7 +268,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "68",
+							"id": "44",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -532,7 +277,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "64",
+							"id": "49",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -541,13 +286,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "13",
+					"count": "9",
 					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
 					"cweid": "693",
 					"wascid": "14",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10063",
@@ -560,7 +305,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "13",
+							"id": "25",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -569,8 +314,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "84",
-							"uri": "https://immersion-facile.beta.gouv.fr/",
+							"id": "81",
+							"uri": "https://immersion-facile.beta.gouv.fr/assets/main-P_Iw8kfD.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -578,34 +323,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "80",
-							"uri": "https://immersion-facile.beta.gouv.fr/$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "101",
-							"uri": "https://immersion-facile.beta.gouv.fr/ajouter-prescripteur",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "102",
-							"uri": "https://immersion-facile.beta.gouv.fr/demande-immersion",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "73",
+							"id": "69",
 							"uri": "https://immersion-facile.beta.gouv.fr/env-config.js",
 							"method": "GET",
 							"param": "",
@@ -614,16 +332,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "98",
-							"uri": "https://immersion-facile.beta.gouv.fr/recherche",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "74",
+							"id": "66",
 							"uri": "https://immersion-facile.beta.gouv.fr/registerSW.js",
 							"method": "GET",
 							"param": "",
@@ -632,7 +341,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "61",
+							"id": "36",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -641,59 +350,22 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "59",
+							"id": "40",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
-						},
-						{
-							"id": "88",
-							"uri": "https://immersion-facile.beta.gouv.fr/tableau-de-bord-agence",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "6",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "6"
-				},
-				{
-					"pluginid": "10037",
-					"alertRef": "10037",
-					"alert": "Server Leaks Information via \"X-Powered-By\" HTTP Response Header Field(s)",
-					"name": "Server Leaks Information via \"X-Powered-By\" HTTP Response Header Field(s)",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>The web/application server is leaking information via one or more \"X-Powered-By\" HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</p>",
-					"instances":[ 
-						{
-							"id": "107",
-							"uri": "https://immersion-facile.beta.gouv.fr/api",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						}
-					],
-					"count": "1",
-					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress \"X-Powered-By\" headers.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
-					"cweid": "497",
-					"wascid": "13",
-					"sourceid": "114"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10096",
@@ -706,17 +378,8 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "121",
-							"uri": "https://immersion-facile.beta.gouv.fr./assets/main-CA6WeB8E.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "1540483477",
-							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37."
-						},
-						{
-							"id": "115",
-							"uri": "https://immersion-facile.beta.gouv.fr/assets/main-CA6WeB8E.js",
+							"id": "76",
+							"uri": "https://immersion-facile.beta.gouv.fr/assets/main-P_Iw8kfD.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -724,13 +387,13 @@
 							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37."
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "<p>Manually confirm that the timestamp data is not sensitive, and that the data cannot be aggregated to disclose exploitable patterns.</p>",
 					"otherinfo": "<p>1540483477, which evaluates to: 2018-10-25 16:04:37.</p>",
 					"reference": "<p>https://cwe.mitre.org/data/definitions/200.html</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "137"
+					"sourceid": "32"
 				},
 				{
 					"pluginid": "10094",
@@ -743,7 +406,7 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "17",
+							"id": "29",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -752,34 +415,7 @@
 							"otherinfo": ".\uFFFD\uFFFD'K\uFFFDc\uFFFDN\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFDJ\uFFFD\uFFFD\uFFFD-\\x0012x\\x000b\uFFFD9\uFFFD\uFFFD\\x0017\uFFFD\uFFFD-"
 						},
 						{
-							"id": "86",
-							"uri": "https://immersion-facile.beta.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "LsGoJ0vVY7hOl4PgphuQ7UqvurMtEngLqjmjnBevsi0",
-							"otherinfo": ".\uFFFD\uFFFD'K\uFFFDc\uFFFDN\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFDJ\uFFFD\uFFFD\uFFFD-\\x0012x\\x000b\uFFFD9\uFFFD\uFFFD\\x0017\uFFFD\uFFFD-"
-						},
-						{
-							"id": "82",
-							"uri": "https://immersion-facile.beta.gouv.fr/$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "LsGoJ0vVY7hOl4PgphuQ7UqvurMtEngLqjmjnBevsi0",
-							"otherinfo": ".\uFFFD\uFFFD'K\uFFFDc\uFFFDN\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFDJ\uFFFD\uFFFD\uFFFD-\\x0012x\\x000b\uFFFD9\uFFFD\uFFFD\\x0017\uFFFD\uFFFD-"
-						},
-						{
-							"id": "103",
-							"uri": "https://immersion-facile.beta.gouv.fr/ajouter-prescripteur",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "LsGoJ0vVY7hOl4PgphuQ7UqvurMtEngLqjmjnBevsi0",
-							"otherinfo": ".\uFFFD\uFFFD'K\uFFFDc\uFFFDN\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFDJ\uFFFD\uFFFD\uFFFD-\\x0012x\\x000b\uFFFD9\uFFFD\uFFFD\\x0017\uFFFD\uFFFD-"
-						},
-						{
-							"id": "90",
+							"id": "74",
 							"uri": "https://immersion-facile.beta.gouv.fr/assets/main-C7WPJCF2.css",
 							"method": "GET",
 							"param": "",
@@ -788,34 +424,16 @@
 							"otherinfo": "\uFFFDMy\uFFFD\uFFFD\uFFFD\\x001d\uFFFD\uFFFDff\uFFFD\uFFFD!\uFFFDk\uFFFD\uFFFDk\uFFFD\u0659\uFFFD\uFFFD\uFFFD~\uFFFD\uFFFD\uFFFD\uFFFD^\u065B\uFFFD"
 						},
 						{
-							"id": "106",
-							"uri": "https://immersion-facile.beta.gouv.fr/demande-immersion",
+							"id": "82",
+							"uri": "https://immersion-facile.beta.gouv.fr/assets/main-P_Iw8kfD.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "LsGoJ0vVY7hOl4PgphuQ7UqvurMtEngLqjmjnBevsi0",
-							"otherinfo": ".\uFFFD\uFFFD'K\uFFFDc\uFFFDN\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFDJ\uFFFD\uFFFD\uFFFD-\\x0012x\\x000b\uFFFD9\uFFFD\uFFFD\\x0017\uFFFD\uFFFD-"
+							"evidence": "org/TR/xhtml1/DTD/xhtml1-strict",
+							"otherinfo": "\uFFFD\uFFFD?M\\x001f\uFFFD\u0665\uFFFD\uFFFD\uFFFD\\x000f\uFFFDa\uFFFDiu\uFFFD\uFFFDk\uFFFD\uFFFD"
 						},
 						{
-							"id": "113",
-							"uri": "https://immersion-facile.beta.gouv.fr/establishment",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "LsGoJ0vVY7hOl4PgphuQ7UqvurMtEngLqjmjnBevsi0",
-							"otherinfo": ".\uFFFD\uFFFD'K\uFFFDc\uFFFDN\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFDJ\uFFFD\uFFFD\uFFFD-\\x0012x\\x000b\uFFFD9\uFFFD\uFFFD\\x0017\uFFFD\uFFFD-"
-						},
-						{
-							"id": "104",
-							"uri": "https://immersion-facile.beta.gouv.fr/recherche",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "LsGoJ0vVY7hOl4PgphuQ7UqvurMtEngLqjmjnBevsi0",
-							"otherinfo": ".\uFFFD\uFFFD'K\uFFFDc\uFFFDN\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFDJ\uFFFD\uFFFD\uFFFD-\\x0012x\\x000b\uFFFD9\uFFFD\uFFFD\\x0017\uFFFD\uFFFD-"
-						},
-						{
-							"id": "69",
+							"id": "48",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -824,17 +442,8 @@
 							"otherinfo": ".\uFFFD\uFFFD'K\uFFFDc\uFFFDN\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFDJ\uFFFD\uFFFD\uFFFD-\\x0012x\\x000b\uFFFD9\uFFFD\uFFFD\\x0017\uFFFD\uFFFD-"
 						},
 						{
-							"id": "70",
+							"id": "53",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "LsGoJ0vVY7hOl4PgphuQ7UqvurMtEngLqjmjnBevsi0",
-							"otherinfo": ".\uFFFD\uFFFD'K\uFFFDc\uFFFDN\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFDJ\uFFFD\uFFFD\uFFFD-\\x0012x\\x000b\uFFFD9\uFFFD\uFFFD\\x0017\uFFFD\uFFFD-"
-						},
-						{
-							"id": "89",
-							"uri": "https://immersion-facile.beta.gouv.fr/tableau-de-bord-agence",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -842,13 +451,13 @@
 							"otherinfo": ".\uFFFD\uFFFD'K\uFFFDc\uFFFDN\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFDJ\uFFFD\uFFFD\uFFFD-\\x0012x\\x000b\uFFFD9\uFFFD\uFFFD\\x0017\uFFFD\uFFFD-"
 						}
 					],
-					"count": "11",
+					"count": "5",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
 					"otherinfo": "<p>.\uFFFD\uFFFD'K\uFFFDc\uFFFDN\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFDJ\uFFFD\uFFFD\uFFFD-\\x0012x\\x000b\uFFFD9\uFFFD\uFFFD\\x0017\uFFFD\uFFFD-</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10027",
@@ -861,31 +470,22 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "120",
-							"uri": "https://immersion-facile.beta.gouv.fr./assets/main-CA6WeB8E.js",
+							"id": "75",
+							"uri": "https://immersion-facile.beta.gouv.fr/assets/main-P_Iw8kfD.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "debug",
-							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in likely comment: \"//\")&&!/^https?:\\/\\//.test(l))break e;return F.createElement(\"a\",Object.assign({href:l,target:\"_blank\",rel:\"noreferrer\"},s))}e:{\", see evidence field for the suspicious comment/snippet."
-						},
-						{
-							"id": "114",
-							"uri": "https://immersion-facile.beta.gouv.fr/assets/main-CA6WeB8E.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "debug",
-							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in likely comment: \"//\")&&!/^https?:\\/\\//.test(l))break e;return F.createElement(\"a\",Object.assign({href:l,target:\"_blank\",rel:\"noreferrer\"},s))}e:{\", see evidence field for the suspicious comment/snippet."
+							"otherinfo": "The following pattern was used: \\bDEBUG\\b and was detected in likely comment: \"//\")&&!/^https?:\\/\\//.test(l))break e;return M.createElement(\"a\",Object.assign({href:l,target:\"_blank\",rel:\"noreferrer\"},s))}e:{\", see evidence field for the suspicious comment/snippet."
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "<p>Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.</p>",
-					"otherinfo": "<p>The following pattern was used: \\bDEBUG\\b and was detected in likely comment: \"//\")&&!/^https?:\\/\\//.test(l))break e;return F.createElement(\"a\",Object.assign({href:l,target:\"_blank\",rel:\"noreferrer\"},s))}e:{\", see evidence field for the suspicious comment/snippet.</p>",
+					"otherinfo": "<p>The following pattern was used: \\bDEBUG\\b and was detected in likely comment: \"//\")&&!/^https?:\\/\\//.test(l))break e;return M.createElement(\"a\",Object.assign({href:l,target:\"_blank\",rel:\"noreferrer\"},s))}e:{\", see evidence field for the suspicious comment/snippet.</p>",
 					"reference": "",
 					"cweid": "615",
 					"wascid": "13",
-					"sourceid": "137"
+					"sourceid": "32"
 				},
 				{
 					"pluginid": "10109",
@@ -898,7 +498,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "10",
+							"id": "20",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -907,70 +507,7 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"id": "112",
-							"uri": "https://immersion-facile.beta.gouv.fr./",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript>\n  <h1>\n    Immersion Facilit\u00E9e: Faciliter la r\u00E9alisation des immersions\n    professionnelles\n  </h1>\n  <h2>La meilleure fa\u00E7on de faire \u00E9merger de nouveaux talents</h2>\n  <p>\n    Avec Immersion Facilit\u00E9e, trouvez un m\u00E9tier \u00E0 tester, entrez en relation\n    imm\u00E9diatement avec une entreprise accueillante, remplissez une demande\n    de convention et obtenez une r\u00E9ponse en temps record !\n  </p>\n  <p>\n    Ce site a besoin de JavaScript pour fonctionner correctement, nous vous\n    conseillons\n    <a href=\"https://enablejavascript.co/fr/\" target=\"_blank\">\n      d'activer JavaScript\n    </a>\n  </p>\n  <h3>Liens utiles:</h3>\n\n  <ul>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Contactez l'\u00E9quipe\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://www.linkedin.com/company/l-immersion-facilitee/\"\n          target=\"_blank\"\n      >\n        Rejoignez-nous sur Linkedin\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Acc\u00E9dez \u00E0 notre FAQ\n      </a>\n    </li>\n  </ul>\n</noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"id": "81",
-							"uri": "https://immersion-facile.beta.gouv.fr/",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript>\n  <h1>\n    Immersion Facilit\u00E9e: Faciliter la r\u00E9alisation des immersions\n    professionnelles\n  </h1>\n  <h2>La meilleure fa\u00E7on de faire \u00E9merger de nouveaux talents</h2>\n  <p>\n    Avec Immersion Facilit\u00E9e, trouvez un m\u00E9tier \u00E0 tester, entrez en relation\n    imm\u00E9diatement avec une entreprise accueillante, remplissez une demande\n    de convention et obtenez une r\u00E9ponse en temps record !\n  </p>\n  <p>\n    Ce site a besoin de JavaScript pour fonctionner correctement, nous vous\n    conseillons\n    <a href=\"https://enablejavascript.co/fr/\" target=\"_blank\">\n      d'activer JavaScript\n    </a>\n  </p>\n  <h3>Liens utiles:</h3>\n\n  <ul>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Contactez l'\u00E9quipe\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://www.linkedin.com/company/l-immersion-facilitee/\"\n          target=\"_blank\"\n      >\n        Rejoignez-nous sur Linkedin\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Acc\u00E9dez \u00E0 notre FAQ\n      </a>\n    </li>\n  </ul>\n</noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"id": "78",
-							"uri": "https://immersion-facile.beta.gouv.fr/$",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript>\n  <h1>\n    Immersion Facilit\u00E9e: Faciliter la r\u00E9alisation des immersions\n    professionnelles\n  </h1>\n  <h2>La meilleure fa\u00E7on de faire \u00E9merger de nouveaux talents</h2>\n  <p>\n    Avec Immersion Facilit\u00E9e, trouvez un m\u00E9tier \u00E0 tester, entrez en relation\n    imm\u00E9diatement avec une entreprise accueillante, remplissez une demande\n    de convention et obtenez une r\u00E9ponse en temps record !\n  </p>\n  <p>\n    Ce site a besoin de JavaScript pour fonctionner correctement, nous vous\n    conseillons\n    <a href=\"https://enablejavascript.co/fr/\" target=\"_blank\">\n      d'activer JavaScript\n    </a>\n  </p>\n  <h3>Liens utiles:</h3>\n\n  <ul>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Contactez l'\u00E9quipe\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://www.linkedin.com/company/l-immersion-facilitee/\"\n          target=\"_blank\"\n      >\n        Rejoignez-nous sur Linkedin\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Acc\u00E9dez \u00E0 notre FAQ\n      </a>\n    </li>\n  </ul>\n</noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"id": "95",
-							"uri": "https://immersion-facile.beta.gouv.fr/ajouter-prescripteur",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript>\n  <h1>\n    Immersion Facilit\u00E9e: Faciliter la r\u00E9alisation des immersions\n    professionnelles\n  </h1>\n  <h2>La meilleure fa\u00E7on de faire \u00E9merger de nouveaux talents</h2>\n  <p>\n    Avec Immersion Facilit\u00E9e, trouvez un m\u00E9tier \u00E0 tester, entrez en relation\n    imm\u00E9diatement avec une entreprise accueillante, remplissez une demande\n    de convention et obtenez une r\u00E9ponse en temps record !\n  </p>\n  <p>\n    Ce site a besoin de JavaScript pour fonctionner correctement, nous vous\n    conseillons\n    <a href=\"https://enablejavascript.co/fr/\" target=\"_blank\">\n      d'activer JavaScript\n    </a>\n  </p>\n  <h3>Liens utiles:</h3>\n\n  <ul>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Contactez l'\u00E9quipe\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://www.linkedin.com/company/l-immersion-facilitee/\"\n          target=\"_blank\"\n      >\n        Rejoignez-nous sur Linkedin\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Acc\u00E9dez \u00E0 notre FAQ\n      </a>\n    </li>\n  </ul>\n</noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"id": "100",
-							"uri": "https://immersion-facile.beta.gouv.fr/demande-immersion",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript>\n  <h1>\n    Immersion Facilit\u00E9e: Faciliter la r\u00E9alisation des immersions\n    professionnelles\n  </h1>\n  <h2>La meilleure fa\u00E7on de faire \u00E9merger de nouveaux talents</h2>\n  <p>\n    Avec Immersion Facilit\u00E9e, trouvez un m\u00E9tier \u00E0 tester, entrez en relation\n    imm\u00E9diatement avec une entreprise accueillante, remplissez une demande\n    de convention et obtenez une r\u00E9ponse en temps record !\n  </p>\n  <p>\n    Ce site a besoin de JavaScript pour fonctionner correctement, nous vous\n    conseillons\n    <a href=\"https://enablejavascript.co/fr/\" target=\"_blank\">\n      d'activer JavaScript\n    </a>\n  </p>\n  <h3>Liens utiles:</h3>\n\n  <ul>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Contactez l'\u00E9quipe\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://www.linkedin.com/company/l-immersion-facilitee/\"\n          target=\"_blank\"\n      >\n        Rejoignez-nous sur Linkedin\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Acc\u00E9dez \u00E0 notre FAQ\n      </a>\n    </li>\n  </ul>\n</noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"id": "110",
-							"uri": "https://immersion-facile.beta.gouv.fr/establishment",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript>\n  <h1>\n    Immersion Facilit\u00E9e: Faciliter la r\u00E9alisation des immersions\n    professionnelles\n  </h1>\n  <h2>La meilleure fa\u00E7on de faire \u00E9merger de nouveaux talents</h2>\n  <p>\n    Avec Immersion Facilit\u00E9e, trouvez un m\u00E9tier \u00E0 tester, entrez en relation\n    imm\u00E9diatement avec une entreprise accueillante, remplissez une demande\n    de convention et obtenez une r\u00E9ponse en temps record !\n  </p>\n  <p>\n    Ce site a besoin de JavaScript pour fonctionner correctement, nous vous\n    conseillons\n    <a href=\"https://enablejavascript.co/fr/\" target=\"_blank\">\n      d'activer JavaScript\n    </a>\n  </p>\n  <h3>Liens utiles:</h3>\n\n  <ul>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Contactez l'\u00E9quipe\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://www.linkedin.com/company/l-immersion-facilitee/\"\n          target=\"_blank\"\n      >\n        Rejoignez-nous sur Linkedin\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Acc\u00E9dez \u00E0 notre FAQ\n      </a>\n    </li>\n  </ul>\n</noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"id": "96",
-							"uri": "https://immersion-facile.beta.gouv.fr/recherche",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript>\n  <h1>\n    Immersion Facilit\u00E9e: Faciliter la r\u00E9alisation des immersions\n    professionnelles\n  </h1>\n  <h2>La meilleure fa\u00E7on de faire \u00E9merger de nouveaux talents</h2>\n  <p>\n    Avec Immersion Facilit\u00E9e, trouvez un m\u00E9tier \u00E0 tester, entrez en relation\n    imm\u00E9diatement avec une entreprise accueillante, remplissez une demande\n    de convention et obtenez une r\u00E9ponse en temps record !\n  </p>\n  <p>\n    Ce site a besoin de JavaScript pour fonctionner correctement, nous vous\n    conseillons\n    <a href=\"https://enablejavascript.co/fr/\" target=\"_blank\">\n      d'activer JavaScript\n    </a>\n  </p>\n  <h3>Liens utiles:</h3>\n\n  <ul>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Contactez l'\u00E9quipe\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://www.linkedin.com/company/l-immersion-facilitee/\"\n          target=\"_blank\"\n      >\n        Rejoignez-nous sur Linkedin\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Acc\u00E9dez \u00E0 notre FAQ\n      </a>\n    </li>\n  </ul>\n</noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"id": "55",
+							"id": "21",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -979,17 +516,8 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"id": "53",
+							"id": "23",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<noscript>\n  <h1>\n    Immersion Facilit\u00E9e: Faciliter la r\u00E9alisation des immersions\n    professionnelles\n  </h1>\n  <h2>La meilleure fa\u00E7on de faire \u00E9merger de nouveaux talents</h2>\n  <p>\n    Avec Immersion Facilit\u00E9e, trouvez un m\u00E9tier \u00E0 tester, entrez en relation\n    imm\u00E9diatement avec une entreprise accueillante, remplissez une demande\n    de convention et obtenez une r\u00E9ponse en temps record !\n  </p>\n  <p>\n    Ce site a besoin de JavaScript pour fonctionner correctement, nous vous\n    conseillons\n    <a href=\"https://enablejavascript.co/fr/\" target=\"_blank\">\n      d'activer JavaScript\n    </a>\n  </p>\n  <h3>Liens utiles:</h3>\n\n  <ul>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Contactez l'\u00E9quipe\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://www.linkedin.com/company/l-immersion-facilitee/\"\n          target=\"_blank\"\n      >\n        Rejoignez-nous sur Linkedin\n      </a>\n    </li>\n    <li>\n      <a\n          href=\"https://immersion-facile.beta.gouv.fr/aide/\"\n          target=\"_blank\"\n      >\n        Acc\u00E9dez \u00E0 notre FAQ\n      </a>\n    </li>\n  </ul>\n</noscript>",
-							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
-						},
-						{
-							"id": "87",
-							"uri": "https://immersion-facile.beta.gouv.fr/tableau-de-bord-agence",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -997,13 +525,13 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						}
 					],
-					"count": "11",
+					"count": "3",
 					"solution": "<p>This is an informational alert and so no changes are required.</p>",
 					"otherinfo": "<p>A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not.</p>",
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10015",
@@ -1016,7 +544,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "5",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -1025,70 +553,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "111",
-							"uri": "https://immersion-facile.beta.gouv.fr./",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "79",
-							"uri": "https://immersion-facile.beta.gouv.fr/",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "77",
-							"uri": "https://immersion-facile.beta.gouv.fr/$",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "92",
-							"uri": "https://immersion-facile.beta.gouv.fr/ajouter-prescripteur",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "99",
-							"uri": "https://immersion-facile.beta.gouv.fr/demande-immersion",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "108",
-							"uri": "https://immersion-facile.beta.gouv.fr/establishment",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "94",
-							"uri": "https://immersion-facile.beta.gouv.fr/recherche",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "39",
+							"id": "4",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -1097,17 +562,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "34",
+							"id": "6",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "cache-control",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "85",
-							"uri": "https://immersion-facile.beta.gouv.fr/tableau-de-bord-agence",
 							"method": "GET",
 							"param": "cache-control",
 							"attack": "",
@@ -1115,7 +571,7 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "11",
+					"count": "3",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
@@ -1134,7 +590,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "20",
+							"id": "32",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -1143,8 +599,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "40",
-							"uri": "https://immersion-facile.beta.gouv.fr/aide/",
+							"id": "52",
+							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "58",
+							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -1152,13 +617,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1171,7 +636,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "19",
+							"id": "31",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -1180,8 +645,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "38",
-							"uri": "https://immersion-facile.beta.gouv.fr/aide/",
+							"id": "51",
+							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "55",
+							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -1189,13 +663,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1208,7 +682,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "18",
+							"id": "30",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -1217,8 +691,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "37",
-							"uri": "https://immersion-facile.beta.gouv.fr/aide/",
+							"id": "50",
+							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "54",
+							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1226,13 +709,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -1245,7 +728,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "21",
+							"id": "33",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1254,8 +737,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
-							"uri": "https://immersion-facile.beta.gouv.fr/aide/",
+							"id": "56",
+							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "60",
+							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1263,13 +755,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
@@ -1282,7 +774,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "12",
+							"id": "24",
 							"uri": "https://immersion-facile.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -1291,7 +783,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "35",
+							"id": "67",
 							"uri": "https://immersion-facile.beta.gouv.fr/aide/",
 							"method": "GET",
 							"param": "",
@@ -1300,7 +792,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "54",
+							"id": "71",
 							"uri": "https://immersion-facile.beta.gouv.fr/assets/apple-touch-icon-DrfPSIlu.png",
 							"method": "GET",
 							"param": "",
@@ -1309,7 +801,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "47",
+							"id": "64",
 							"uri": "https://immersion-facile.beta.gouv.fr/assets/css/custom.css",
 							"method": "GET",
 							"param": "",
@@ -1318,7 +810,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "48",
+							"id": "73",
 							"uri": "https://immersion-facile.beta.gouv.fr/assets/favicon-BMkCb9zi.ico",
 							"method": "GET",
 							"param": "",
@@ -1327,7 +819,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "67",
+							"id": "72",
 							"uri": "https://immersion-facile.beta.gouv.fr/assets/favicon-CduWKyBp.svg",
 							"method": "GET",
 							"param": "",
@@ -1336,7 +828,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "65",
+							"id": "70",
 							"uri": "https://immersion-facile.beta.gouv.fr/assets/manifest-Ysg1ohlc.webmanifest",
 							"method": "GET",
 							"param": "",
@@ -1345,7 +837,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "72",
+							"id": "68",
 							"uri": "https://immersion-facile.beta.gouv.fr/env-config.js",
 							"method": "GET",
 							"param": "",
@@ -1354,16 +846,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "36",
-							"uri": "https://immersion-facile.beta.gouv.fr/manifest.webmanifest",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
-						},
-						{
-							"id": "71",
+							"id": "65",
 							"uri": "https://immersion-facile.beta.gouv.fr/registerSW.js",
 							"method": "GET",
 							"param": "",
@@ -1372,7 +855,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "58",
+							"id": "34",
 							"uri": "https://immersion-facile.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -1381,7 +864,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "57",
+							"id": "37",
 							"uri": "https://immersion-facile.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -1390,13 +873,13 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "12",
+					"count": "11",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "<p>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</p>",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "7"
 				}
 			]
 		}
