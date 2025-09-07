@@ -1,28 +1,36 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "C",
+    "grade": "B+",
     "error": null,
-    "score": 55,
+    "score": 80,
     "statusCode": 200,
-    "testsFailed": 3,
-    "testsPassed": 7,
+    "testsFailed": 1,
+    "testsPassed": 9,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 31 Aug 2025 13:29:01 GMT",
+      "date": "Sun, 07 Sep 2025 13:11:09 GMT",
       "content-type": "text/html; charset=utf-8",
       "transfer-encoding": "chunked",
       "connection": "close",
       "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Accept-Encoding",
       "x-nextjs-cache": "HIT",
+      "x-powered-by": "Next.js",
       "cache-control": "s-maxage=31536000, stale-while-revalidate",
-      "etag": "\"6w2xf6pftmltg\"",
-      "strict-transport-security": "max-age=31536000; includeSubdomains",
-      "x-content-type-options": "nosniff",
-      "referrer-policy": "no-referrer-when-downgrade",
+      "etag": "\"11z01ptt62nltg\"",
+      "strict-transport-security": "max-age=31536000; includeSubDomains",
       "content-security-policy": "default-src 'self' https://img.notionusercontent.com/ https://www.notion.so/ https://plausible.io/ https://openmaptiles.github.io/ https://*.inserjeunes.beta.gouv.fr/ https://*.beta.gouv.fr/ https://*.data.gouv.fr/ https://*.lrkt-in.com/ https://*.inserjeunes.incubateur.net/ 'unsafe-inline' data: blob:;",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "x-content-type-options": "nosniff",
+      "x-environment": "production",
+      "x-frame-options": "SAMEORIGIN",
       "x-robots-tag": "all",
-      "x-frame-options": "SAMEORIGIN"
+      "x-xss-protection": "1; mode=block",
+      "access-control-allow-origin": "*",
+      "access-control-allow-credentials": "true",
+      "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
+      "access-control-allow-headers": "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization",
+      "access-control-max-age": "1728000"
     }
   },
   "tests": {
@@ -76,28 +84,29 @@
     "cross-origin-resource-sharing": {
       "expectation": "cross-origin-resource-sharing-not-implemented",
       "pass": true,
-      "result": "cross-origin-resource-sharing-not-implemented",
+      "result": "cross-origin-resource-sharing-implemented-with-public-access",
       "scoreModifier": 0,
-      "data": null
+      "data": "*"
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": false,
-      "result": "redirection-missing",
-      "scoreModifier": -20,
-      "destination": "http://cestquilepro.inserjeunes.beta.gouv.fr/",
-      "redirects": false,
+      "pass": true,
+      "result": "redirection-to-https",
+      "scoreModifier": 0,
+      "destination": "https://cestquilepro.inserjeunes.beta.gouv.fr/",
+      "redirects": true,
       "route": [
-        "http://cestquilepro.inserjeunes.beta.gouv.fr/"
+        "http://cestquilepro.inserjeunes.beta.gouv.fr/",
+        "https://cestquilepro.inserjeunes.beta.gouv.fr/"
       ],
       "statusCode": 200
     },
     "referrer-policy": {
       "expectation": "referrer-policy-private",
-      "pass": false,
-      "result": "referrer-policy-unsafe",
-      "scoreModifier": -5,
-      "data": "no-referrer-when-downgrade",
+      "pass": true,
+      "result": "referrer-policy-private",
+      "scoreModifier": 5,
+      "data": "strict-origin-when-cross-origin",
       "http": true,
       "meta": false
     },
@@ -106,7 +115,7 @@
       "pass": true,
       "result": "hsts-implemented-max-age-at-least-six-months",
       "scoreModifier": 0,
-      "data": "max-age=31536000; includeSubdomains",
+      "data": "max-age=31536000; includeSubDomains",
       "includeSubDomains": true,
       "maxAge": 31536000,
       "preload": false,
