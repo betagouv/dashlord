@@ -1,8 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 7 Sept 2025 04:17:10",
-	"created": "2025-09-07T04:17:10.729827021Z",
+	"@generated": "Sun, 14 Sept 2025 04:11:07",
+	"created": "2025-09-14T04:11:07.841426778Z",
 	"site":[ 
 		{
 			"@name": "https://mediature.beta.gouv.fr",
@@ -189,7 +189,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "4",
+							"id": "6",
 							"uri": "https://mediature.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -198,7 +198,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "7",
 							"uri": "https://mediature.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -222,7 +222,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -235,7 +235,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "3",
+							"id": "5",
 							"uri": "https://mediature.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -244,7 +244,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "7",
+							"id": "3",
 							"uri": "https://mediature.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -268,7 +268,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -281,7 +281,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "4",
 							"uri": "https://mediature.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -290,7 +290,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "5",
+							"id": "2",
 							"uri": "https://mediature.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -314,7 +314,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -327,7 +327,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "6",
+							"id": "9",
 							"uri": "https://mediature.beta.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -336,7 +336,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "9",
+							"id": "8",
 							"uri": "https://mediature.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -360,11 +360,11 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "6"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
-					"alertRef": "10049",
+					"alertRef": "10049-3",
 					"alert": "Storable and Cacheable Content",
 					"name": "Storable and Cacheable Content",
 					"riskcode": "0",
@@ -383,6 +383,15 @@
 						},
 						{
 							"id": "1",
+							"uri": "https://mediature.beta.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
+						},
+						{
+							"id": "0",
 							"uri": "https://mediature.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -400,7 +409,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:</p><p>Cache-Control: no-cache, no-store, must-revalidate, private</p><p>Pragma: no-cache</p><p>Expires: 0</p><p>This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
