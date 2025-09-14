@@ -1,8 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 7 Sept 2025 06:39:43",
-	"created": "2025-09-07T06:39:43.577056720Z",
+	"@generated": "Sun, 14 Sept 2025 06:20:25",
+	"created": "2025-09-14T06:20:25.054971594Z",
 	"site":[ 
 		{
 			"@name": "https://admin.snu.gouv.fr",
@@ -30,7 +30,199 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "29",
+							"id": "7",
+							"uri": "https://admin.snu.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "6",
+							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"cweid": "693",
+					"wascid": "15",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "90003",
+					"alertRef": "90003",
+					"alert": "Sub Resource Integrity Attribute Missing",
+					"name": "Sub Resource Integrity Attribute Missing",
+					"riskcode": "2",
+					"confidence": "3",
+					"riskdesc": "Medium (High)",
+					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
+					"instances":[ 
+						{
+							"id": "28",
+							"uri": "https://admin.snu.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
+							"otherinfo": ""
+						},
+						{
+							"id": "31",
+							"uri": "https://admin.snu.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
+							"otherinfo": ""
+						},
+						{
+							"id": "27",
+							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
+							"otherinfo": ""
+						}
+					],
+					"count": "3",
+					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
+					"cweid": "345",
+					"wascid": "15",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "90004",
+					"alertRef": "90004-1",
+					"alert": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"name": "Insufficient Site Isolation Against Spectre Vulnerability",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
+					"instances":[ 
+						{
+							"id": "21",
+							"uri": "https://admin.snu.gouv.fr",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "24",
+							"uri": "https://admin.snu.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "17",
+							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "22",
+							"uri": "https://admin.snu.gouv.fr",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "25",
+							"uri": "https://admin.snu.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "19",
+							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "23",
+							"uri": "https://admin.snu.gouv.fr",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "26",
+							"uri": "https://admin.snu.gouv.fr/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "20",
+							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "9",
+					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
+					"otherinfo": "",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
+					"cweid": "693",
+					"wascid": "14",
+					"sourceid": "8"
+				},
+				{
+					"pluginid": "10063",
+					"alertRef": "10063-1",
+					"alert": "Permissions Policy Header Not Set",
+					"name": "Permissions Policy Header Not Set",
+					"riskcode": "1",
+					"confidence": "2",
+					"riskdesc": "Low (Medium)",
+					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
+					"instances":[ 
+						{
+							"id": "18",
+							"uri": "https://admin.snu.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "16",
 							"uri": "https://admin.snu.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -49,222 +241,12 @@
 						}
 					],
 					"count": "3",
-					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
-					"cweid": "693",
-					"wascid": "15",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "90003",
-					"alertRef": "90003",
-					"alert": "Sub Resource Integrity Attribute Missing",
-					"name": "Sub Resource Integrity Attribute Missing",
-					"riskcode": "2",
-					"confidence": "3",
-					"riskdesc": "Medium (High)",
-					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
-					"instances":[ 
-						{
-							"id": "8",
-							"uri": "https://admin.snu.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
-							"otherinfo": ""
-						},
-						{
-							"id": "54",
-							"uri": "https://admin.snu.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
-							"otherinfo": ""
-						},
-						{
-							"id": "36",
-							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "<link href=\"https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap\"rel=\"stylesheet\">",
-							"otherinfo": ""
-						}
-					],
-					"count": "3",
-					"solution": "<p>Provide a valid integrity attribute to the tag.</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
-					"cweid": "345",
-					"wascid": "15",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "90004",
-					"alertRef": "90004-1",
-					"alert": "Insufficient Site Isolation Against Spectre Vulnerability",
-					"name": "Insufficient Site Isolation Against Spectre Vulnerability",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
-					"instances":[ 
-						{
-							"id": "5",
-							"uri": "https://admin.snu.gouv.fr",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "49",
-							"uri": "https://admin.snu.gouv.fr/.well-known/baleen/challengejs/assets/logo.svg",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "17",
-							"uri": "https://admin.snu.gouv.fr/.well-known/baleen/challengejs/assets/style.css",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "48",
-							"uri": "https://admin.snu.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "28",
-							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "6",
-							"uri": "https://admin.snu.gouv.fr",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "52",
-							"uri": "https://admin.snu.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "31",
-							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "7",
-							"uri": "https://admin.snu.gouv.fr",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "53",
-							"uri": "https://admin.snu.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "32",
-							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "11",
-					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
-					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
-					"cweid": "693",
-					"wascid": "14",
-					"sourceid": "1"
-				},
-				{
-					"pluginid": "10063",
-					"alertRef": "10063-1",
-					"alert": "Permissions Policy Header Not Set",
-					"name": "Permissions Policy Header Not Set",
-					"riskcode": "1",
-					"confidence": "2",
-					"riskdesc": "Low (Medium)",
-					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
-					"instances":[ 
-						{
-							"id": "4",
-							"uri": "https://admin.snu.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "45",
-							"uri": "https://admin.snu.gouv.fr/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "26",
-							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						}
-					],
-					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "10094",
@@ -277,49 +259,49 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
+							"id": "30",
+							"uri": "https://admin.snu.gouv.fr",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "EB5Sq0ZC08mBdrutYAVjxINauOAbrD5gC_Hplx1ewP4yh091rKx0ye83zQvZkf41ZCMq5tIyKNepK8Y6T7IUSrnRzAEDVYmJz_NKVXwNdBRpz7YoRxNle3aNHgNoVfnoGwBJY2rK0IJ0hZRt4DQGdA",
+							"otherinfo": "\\x0010\\x001eR\uFFFDFB\uFFFD\u0241v\uFFFD\uFFFD`\\x0005c\u0103Z\uFFFD\uFFFD\\x001b\uFFFD>`\\x000b\uFFFD\uFFFD\\x001d^\uFFFD\uFFFD2\uFFFDOu\uFFFD\uFFFDt\uFFFD\uFFFD7\uFFFD\\x000b\u0651\uFFFD5d#*\uFFFD\uFFFD2(\u05E9+\uFFFD:O\uFFFD\\x0014J\uFFFD\uFFFD\uFFFD\\x0001\\x0003U\uFFFD\uFFFD\uFFFD\uFFFDJU|\rt\\x0014i\u03F6(G\\x0013e{v\uFFFD\\x001e\\x0003hU\uFFFD\uFFFD\\x001b\\x0000Icj\uFFFD\u0402t\uFFFD\uFFFDm\uFFFD4\\x0006t"
+						},
+						{
 							"id": "51",
 							"uri": "https://admin.snu.gouv.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "eDtj1u_joIszHOusNkA-dYwbHjnuiKiN4uXG4xDTAnyVOd3u__bBmABDFi7q6gX0aoJ7rqjBkGjigobSvaJvReSs6Z2FpOsHqzNCLscIDGC2tSwEq_7dwP8BLRkdxzKxWfcoIVtboxoCpj-Lz6_KYA",
-							"otherinfo": "x;c\uFFFD\uFFFD\u380B3\\x001c\uFFFD6@>u\uFFFD\\x001b\\x001e9\uE228\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0010\uFFFD\\x0002|\uFFFD9\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0000C\\x0016.\uFFFD\uFFFD\\x0005\uFFFDj\uFFFD{\uFFFD\uFFFD\uFFFD\uFFFDh\u2086\u04BD\uFFFDoE\uFFFD\u9745\uFFFD\uFFFD\\x0007\uFFFD3B.\uFFFD\\x0008\\x000c`\uFFFD\uFFFD,\\x0004\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0001-\\x0019\\x001d\uFFFD2\uFFFDY\uFFFD(![[\uFFFD\\x001a\\x0002\uFFFD?\uFFFD\u03EF\uFFFD`"
+							"evidence": "xFlD3qOtJCbKh2DJsu8cJ6Bwl26FR9Ct2WfwIu-QVizmP6K1AZ_YUBlb1VKzjFkG1v8tUzGEYq533CAS4RmLz3ezNUKES5aZWA-AiycWS27FgwZQRf38VcUDr5wXFwinqVJyZmW03sm3aB0O-2VfYsIov1kdVC7rFUQfZ4FRGKZyVqJ4td8kDQ0vcWE9nVE3QvF0g3pFDc2rlf-oEwA5Zz-uTR8h7ly5-4U3KsxHlyXxUM5dbEQw_EJV3y5vJxCsOjWy2GjW8oA8LGeoSXYoAjj9lklxhxi8qgzLDXV61Ks",
+							"otherinfo": "\uFFFDYC\u07A3\uFFFD$&\u0287`\u0272\uFFFD\\x001c'\uFFFDp\uFFFDn\uFFFDG\u042D\uFFFDg\uFFFD\"\uFFFDV,\uFFFD?\uFFFD\uFFFD\\x0001\uFFFD\uFFFDP\\x0019[\uFFFDR\uFFFD\uFFFDY\\x0006\uFFFD\uFFFD-S1\uFFFDb\uFFFDw\uFFFD \\x0012\uFFFD\\x0019\uFFFD\uFFFDw\uFFFD5B\uFFFDK\uFFFD\uFFFDX\\x000f\uFFFD\uFFFD'\\x0016Kn\u0143\\x0006PE\uFFFD\uFFFDU\uFFFD\\x0003\uFFFD\uFFFD\\x0017\\x0017\\x0008\uFFFD\uFFFDRrfe\uFFFD\uFFFD\u0277h\\x001d\\x000e\uFFFDe_b\uFFFD(\uFFFDY\\x001dT.\uFFFD\\x0015D\\x001fg\uFFFDQ\\x0018\uFFFDrV\uFFFDx\uFFFD\uFFFD$\r\r/qa=\uFFFDQ7B\uFFFDt\uFFFDzE\r\u036B\uFFFD\uFFFD\uFFFD\\x0013\\x00009g?\uFFFDM\\x001f!\uFFFD\\\uFFFD\uFFFD\uFFFD7*\uFFFDG\uFFFD%\uFFFDP\uFFFD]lD0\uFFFDBU\uFFFD.o'\\x0010\uFFFD:5\uFFFD\uFFFDh\uFFFD\uFFFD<,g\uFFFDIv(\\x00028\uFFFD\uFFFDIq\uFFFD\\x0018\uFFFD\uFFFD\\x000c\uFFFD\ruz\u052B"
 						},
 						{
-							"id": "9",
-							"uri": "https://admin.snu.gouv.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "wKuSt7tQ4ECrWMdC3ZhCXzh9AnmMGU-KKQrO_CP4FFiZcQh0qDQiox2xLOJBmKR3-_Zy1aaqO_-T8bK0KxOkWNH2ejBv-FWnO2fv4GC3087qGPNmVBpKXJAPJOrcyT7HQ2Rar3Q1L7ljiEurlStWPL1iRXa2BhXzWcYC0NYuOGWu1x8NtpaDUPjtaul9aI6BLVNGjAQqaIPpDvBiVR_-DvEQD_fJHoH_g39SI1F6PuzYFze6E8RHEfU8EHYlHy2Fn3Kx01Va-h9jZWwXa5h-Z3N8YvRB6wsJnVr9Wrua0f3dfXDIRvK5n8F6PzeVKsA0",
-							"otherinfo": "\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDP\uFFFD@\uFFFDX\uFFFDB\u0758B_8}\\x0002y\uFFFD\\x0019O\uFFFD)\n\uFFFD\uFFFD#\uFFFD\\x0014X\uFFFDq\\x0008t\uFFFD4\"\uFFFD\\x001d\uFFFD,\uFFFDA\uFFFD\uFFFDw\uFFFD\uFFFDr\u0566\uFFFD;\uFFFD\uFFFD\uFFFD+\\x0013\uFFFDX\uFFFD\uFFFDz0o\uFFFDU\uFFFD;g\uFFFD\uFFFD`\uFFFD\uFFFD\uFFFD\uFFFD\\x0018\uFFFDfT\\x001aJ\\\uFFFD\\x000f$\uFFFD\uFFFD\uFFFD>\uFFFDCdZ\uFFFDt5/\uFFFDc\uFFFDK\uFFFD\uFFFD+V<\uFFFDbEv\uFFFD\\x0006\\x0015\uFFFDY\uFFFD\\x0002\uFFFD\uFFFD.8e\uFFFD\uFFFD\\x001f\r\uFFFD\uFFFD\uFFFDP\uFFFD\uFFFDj\uFFFD}h\uFFFD\uFFFD-SF\uFFFD\\x0004*h\uFFFD\uFFFD\\x000e\uFFFDbU\\x001f\uFFFD\\x000e\uFFFD\\x0010\\x000f\uFFFD\uFFFD\\x001e\uFFFD\uFFFD\uFFFDR#Qz>\uFFFD\uFFFD\\x00177\uFFFD\\x0013\uFFFDG\\x0011\uFFFD<\\x0010v%\\x001f-\uFFFD\uFFFDr\uFFFD\uFFFDUZ\uFFFD\\x001fcel\\x0017k\uFFFD~gs|b\uFFFDA\uFFFD\\x000b\t\uFFFDZ\uFFFDZ\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD}p\uFFFDF\uFFFD\uFFFDz?7\uFFFD*\uFFFD4"
-						},
-						{
-							"id": "55",
+							"id": "33",
 							"uri": "https://admin.snu.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "7nd5FOTT33EVf02nRX_UdsOEKLeww1PH2Uxk1Z4nM1bQrkKHZhFYb2wmR0BmKKFuShrOEMVxLKyQ-o62kz-fkWiz8g8hCjwM_ZMn6AB2E6MMs6cjUhMiQxomLWANynbllKDMSSPMQXVvkvUYczvmlw",
-							"otherinfo": "\uFFFDwy\\x0014\uFFFD\uFFFD\uFFFDq\\x0015M\uFFFDE\uFFFDv\u00C4(\uFFFD\uFFFD\uFFFDS\uFFFD\uFFFDLd\u055E'3V\u042EB\uFFFDf\\x0011Xol&G@f(\uFFFDnJ\\x001a\uFFFD\\x0010\uFFFDq,\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD?\uFFFD\uFFFDh\uFFFD\uFFFD\\x000f!\n<\\x000c\uFFFD\uFFFD'\uFFFD\\x0000v\\x0013\uFFFD\\x000c\uFFFD\uFFFD#R\\x0013\"C\\x001a&-`\r\uFFFDv\u5520\uFFFDI#\uFFFDAuo\uFFFD\uFFFD\\x0018s;\uFFFD"
+							"evidence": "a_PAGCqWO5_duMncn4KhkK38iaKyKVKxSrhWhFAM6o1AKN4O2-GnTPCBGIlFEzuW5Yj_v9_0cATHNs6nxZFU3Cn1jmjUHS5R4cCRovOG9KvQyR_BzKdtII-cbcx38Pnck67esKyHkTx6rqKlIi-A5Q",
+							"otherinfo": "k\uFFFD\uFFFD\\x0018*\uFFFD;\uFFFD\u0778\uFFFD\u071F\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD)R\uFFFDJ\uFFFDV\uFFFDP\\x000c\uFFFD@(\uFFFD\\x000e\uFFFD\uFFFDL\uFFFD\uFFFD\\x0018\uFFFDE\\x0013;\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDp\\x0004\uFFFD6\u03A7\u0151T\uFFFD)\uFFFD\uFFFDh\uFFFD\\x001d.Q\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001f\uFFFD\u0327m \uFFFD\uFFFDm\uFFFDw\uFFFD\uFFFD\u0713\uFFFD\u07B0\uFFFD\uFFFD\uFFFD<z\uFFFD\uFFFD\uFFFD\"/\uFFFD\uFFFD"
 						},
 						{
-							"id": "39",
+							"id": "29",
 							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "eDtj1u_joIszHOusNkA-dYwbHjnuiKiN4uXG4xDTAnyVOd3u__bBmABDFi7q6gX0P0BkY00r2eRczCyhFlv9N9vcvXYxqms_m50gQKwhbn-kdxnAoZilNLVEKYgM-CcfuK3_F2cOiDdOjX_pjsj3IQ",
-							"otherinfo": "x;c\uFFFD\uFFFD\u380B3\\x001c\uFFFD6@>u\uFFFD\\x001b\\x001e9\uE228\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0010\uFFFD\\x0002|\uFFFD9\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0000C\\x0016.\uFFFD\uFFFD\\x0005\uFFFD?@dcM+\uFFFD\uFFFD\\\uFFFD,\uFFFD\\x0016[\uFFFD7\uFFFD\u073Dv1\uFFFDk?\uFFFD\uFFFD @\uFFFD!n\uFFFDw\\x0019\uFFFD\uFFFD\uFFFD\uFFFD4\uFFFDD)\uFFFD\\x000c\uFFFD'\\x001f\uFFFD\uFFFD\uFFFD\\x0017g\\x000e\uFFFD7N\uFFFD\uFFFD\uFFFD\uFFFD!"
+							"evidence": "xFlD3qOtJCbKh2DJsu8cJ3ebxaThr_29zwgAx7PyOsYIcSDjhPX5MxGH3f-C7fYbjfrrcoPYReOA3oQuihaxSGKaZrA2yIbHEL0r-G4GzvEZrGulZMX8AO-kHCsEVP2SLLDEJw7ECnL3taCVnwyizQ",
+							"otherinfo": "\uFFFDYC\u07A3\uFFFD$&\u0287`\u0272\uFFFD\\x001c'w\uFFFD\u0164\uFFFD\uFFFD\uFFFD\uFFFD\\x0008\\x0000\u01F3\uFFFD:\uFFFD\\x0008q \uFFFD\uFFFD\uFFFD3\\x0011\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\uFFFD\uFFFDr\uFFFD\uFFFDE\uFFFD\u0784.\uFFFD\\x0016\uFFFDHb\uFFFDf\uFFFD6\u0206\uFFFD\\x0010\uFFFD+\uFFFDn\\x0006\uFFFD\uFFFD\\x0019\uFFFDk\uFFFDd\uFFFD\uFFFD\\x0000\uFFFD\\x001c+\\x0004T\uFFFD\uFFFD,\uFFFD\uFFFD'\\x000e\uFFFD\nr\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x000c\uFFFD\uFFFD"
 						}
 					],
 					"count": "4",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>x;c\uFFFD\uFFFD\u380B3\\x001c\uFFFD6@>u\uFFFD\\x001b\\x001e9\uE228\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0010\uFFFD\\x0002|\uFFFD9\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0000C\\x0016.\uFFFD\uFFFD\\x0005\uFFFDj\uFFFD{\uFFFD\uFFFD\uFFFD\uFFFDh\u2086\u04BD\uFFFDoE\uFFFD\u9745\uFFFD\uFFFD\\x0007\uFFFD3B.\uFFFD\\x0008\\x000c`\uFFFD\uFFFD,\\x0004\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0001-\\x0019\\x001d\uFFFD2\uFFFDY\uFFFD(![[\uFFFD\\x001a\\x0002\uFFFD?\uFFFD\u03EF\uFFFD`</p>",
+					"otherinfo": "<p>\\x0010\\x001eR\uFFFDFB\uFFFD\u0241v\uFFFD\uFFFD`\\x0005c\u0103Z\uFFFD\uFFFD\\x001b\uFFFD>`\\x000b\uFFFD\uFFFD\\x001d^\uFFFD\uFFFD2\uFFFDOu\uFFFD\uFFFDt\uFFFD\uFFFD7\uFFFD\\x000b\u0651\uFFFD5d#*\uFFFD\uFFFD2(\u05E9+\uFFFD:O\uFFFD\\x0014J\uFFFD\uFFFD\uFFFD\\x0001\\x0003U\uFFFD\uFFFD\uFFFD\uFFFDJU|\rt\\x0014i\u03F6(G\\x0013e{v\uFFFD\\x001e\\x0003hU\uFFFD\uFFFD\\x001b\\x0000Icj\uFFFD\u0402t\uFFFD\uFFFDm\uFFFD4\\x0006t</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "10109",
@@ -332,7 +314,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "8",
 							"uri": "https://admin.snu.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -341,7 +323,7 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"id": "34",
+							"id": "11",
 							"uri": "https://admin.snu.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -350,7 +332,7 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"id": "18",
+							"id": "9",
 							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -387,7 +369,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "27",
+							"id": "4",
 							"uri": "https://admin.snu.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -396,7 +378,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "14",
+							"id": "5",
 							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -411,7 +393,7 @@
 					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "90005",
@@ -424,7 +406,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "12",
+							"id": "40",
 							"uri": "https://admin.snu.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -433,8 +415,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "21",
-							"uri": "https://admin.snu.gouv.fr/.well-known/baleen/challengejs/assets/style.css",
+							"id": "43",
+							"uri": "https://admin.snu.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -442,7 +424,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "43",
+							"id": "36",
 							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -457,7 +439,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "90005",
@@ -470,7 +452,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "11",
+							"id": "37",
 							"uri": "https://admin.snu.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -479,8 +461,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "20",
-							"uri": "https://admin.snu.gouv.fr/.well-known/baleen/challengejs/assets/style.css",
+							"id": "42",
+							"uri": "https://admin.snu.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -488,7 +470,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "42",
+							"id": "35",
 							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -503,7 +485,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "90005",
@@ -516,7 +498,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "10",
+							"id": "34",
 							"uri": "https://admin.snu.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -525,8 +507,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "19",
-							"uri": "https://admin.snu.gouv.fr/.well-known/baleen/challengejs/assets/style.css",
+							"id": "39",
+							"uri": "https://admin.snu.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -534,7 +516,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "41",
+							"id": "32",
 							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -549,7 +531,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "90005",
@@ -562,7 +544,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "13",
+							"id": "41",
 							"uri": "https://admin.snu.gouv.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -571,8 +553,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "24",
-							"uri": "https://admin.snu.gouv.fr/.well-known/baleen/challengejs/assets/style.css",
+							"id": "44",
+							"uri": "https://admin.snu.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -580,7 +562,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "47",
+							"id": "38",
 							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -595,11 +577,11 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "8"
 				},
 				{
 					"pluginid": "10049",
-					"alertRef": "10049",
+					"alertRef": "10049-3",
 					"alert": "Storable and Cacheable Content",
 					"name": "Storable and Cacheable Content",
 					"riskcode": "0",
@@ -608,7 +590,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "46",
+							"id": "53",
 							"uri": "https://admin.snu.gouv.fr/.well-known/baleen/challengejs/assets/logo.svg",
 							"method": "GET",
 							"param": "",
@@ -617,7 +599,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "16",
+							"id": "52",
 							"uri": "https://admin.snu.gouv.fr/.well-known/baleen/challengejs/assets/style.css",
 							"method": "GET",
 							"param": "",
@@ -636,7 +618,7 @@
 				},
 				{
 					"pluginid": "10049",
-					"alertRef": "10049",
+					"alertRef": "10049-2",
 					"alert": "Storable but Non-Cacheable Content",
 					"name": "Storable but Non-Cacheable Content",
 					"riskcode": "0",
@@ -645,7 +627,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
 					"instances":[ 
 						{
-							"id": "3",
+							"id": "14",
 							"uri": "https://admin.snu.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -654,7 +636,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "44",
+							"id": "13",
 							"uri": "https://admin.snu.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -663,7 +645,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "22",
+							"id": "12",
 							"uri": "https://admin.snu.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -678,7 +660,7 @@
 					"reference": "<p>https://datatracker.ietf.org/doc/html/rfc7234</p><p>https://datatracker.ietf.org/doc/html/rfc7231</p><p>https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html</p>",
 					"cweid": "524",
 					"wascid": "13",
-					"sourceid": "1"
+					"sourceid": "8"
 				}
 			]
 		}
