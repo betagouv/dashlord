@@ -1,8 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 14 Sept 2025 05:11:41",
-	"created": "2025-09-14T05:11:41.510863474Z",
+	"@generated": "Sun, 21 Sept 2025 05:17:47",
+	"created": "2025-09-21T05:17:47.088550868Z",
 	"site":[ 
 		{
 			"@name": "https://conseillers-entreprises.service-public.fr",
@@ -21,7 +21,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "6",
+							"id": "49",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "",
@@ -30,7 +30,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "55",
 							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -39,7 +39,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "8",
+							"id": "53",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -51,7 +51,7 @@
 					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "7"
@@ -67,8 +67,26 @@
 					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
 					"instances":[ 
 						{
-							"id": "2",
+							"id": "46",
 							"uri": "https://conseillers-entreprises.service-public.fr",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "45",
+							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "44",
+							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "x-frame-options",
 							"attack": "",
@@ -76,10 +94,10 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "1",
+					"count": "3",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
 					"sourceid": "7"
@@ -95,7 +113,7 @@
 					"desc": "<p>The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.</p>",
 					"instances":[ 
 						{
-							"id": "21",
+							"id": "41",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "",
@@ -104,7 +122,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "51",
+							"id": "43",
 							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -113,7 +131,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "42",
+							"id": "40",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -128,7 +146,7 @@
 					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity</p>",
 					"cweid": "345",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90004",
@@ -141,7 +159,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "18",
+							"id": "30",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -150,8 +168,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "37",
+							"id": "36",
 							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "29",
+							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
 							"attack": "",
@@ -160,15 +187,6 @@
 						},
 						{
 							"id": "33",
-							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "19",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -177,7 +195,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "40",
+							"id": "37",
 							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -186,7 +204,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "34",
+							"id": "32",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Embedder-Policy",
@@ -195,17 +213,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "20",
+							"id": "35",
 							"uri": "https://conseillers-entreprises.service-public.fr",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "43",
-							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
 							"attack": "",
@@ -214,6 +223,15 @@
 						},
 						{
 							"id": "38",
+							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Opener-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "39",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -225,7 +243,7 @@
 					"count": "9",
 					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cross-Origin-Embedder-Policy</p>",
 					"cweid": "693",
 					"wascid": "14",
 					"sourceid": "1"
@@ -241,7 +259,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "17",
+							"id": "24",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "",
@@ -250,7 +268,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "32",
+							"id": "26",
 							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -259,7 +277,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "30",
+							"id": "25",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -271,10 +289,10 @@
 					"count": "3",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10094",
@@ -287,49 +305,22 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "45",
-							"uri": "https://conseillers-entreprises.service-public.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "AiAi7E22R4NmvJXT5_tyIYo8FMhDUSvz94EbhcO3_ECYnWvJCMpumQgGZGGmH-uSo4IYxhA6xkfedYYmSszdKAT26uwmQfaHubJLibBeotUIX82mSnLNZK6qQ04U5JbRoDOxUEuqg_rV8i5hTmumSQ",
-							"otherinfo": "\\x0002 \"\uFFFDM\uFFFDG\uFFFDf\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDr!\uFFFD<\\x0014\uFFFDCQ+\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\u00F7\uFFFD@\uFFFD\uFFFDk\uFFFD\\x0008\uFFFDn\uFFFD\\x0008\\x0006da\uFFFD\\x001f\uB4A3\uFFFD\\x0018\uFFFD\\x0010:\uFFFDG\uFFFDu\uFFFD&J\uFFFD\uFFFD(\\x0004\uFFFD\uFFFD\uFFFD&A\uFFFD\uFFFD\uFFFD\uFFFDK\uFFFD\uFFFD^\uFFFD\uFFFD\\x0008_\u0366Jr\uFFFDd\uFFFD\uFFFDCN\\x0014\uFFFD\u04603\uFFFDPK\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD.aNk\uFFFDI"
-						},
-						{
-							"id": "22",
-							"uri": "https://conseillers-entreprises.service-public.fr",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "cf3XebT18fsiMLB9kDs4KaNk7jIPARAEKvDyn92rbhPylOCA2J3RUqc8m29ng0yENmNeLWebLe7WSB-i6vXvg41O6TpbBKm2YmGe2G8ipjXFQiJGlY5hhpwpsmAiQoRqDINs6PLP1aM8ggv9U9mfogQCfDLhuGbvYHHzocVUYL-GflAzxmIFivJKFShZ9reMteB9EhXoLqEdXNmT9bV-vB0Y-1vuBYnU4NsTpqh05qm0mN_7ECED48lNMb7Bblqir-r8QjwEnBnjuzxLcwdc_D-NTIJD6OMn6_WJyGYI42I",
-							"otherinfo": "q\uFFFD\uFFFDy\uFFFD\uFFFD\uFFFD\uFFFD\"0\uFFFD}\uFFFD;8)\uFFFDd\uFFFD2\\x000f\\x0001\\x0010\\x0004*\uFFFD\uFFFD\u076Bn\\x0013\uFFFD\uFFFD\uFFFD\u061D\uFFFDR\uFFFD<\uFFFDog\uFFFDL\uFFFD6c^-g\uFFFD-\uFFFD\uFFFDH\\x001f\uFFFD\uFFFD\uFFFD\uF0CDN\uFFFD:[\\x0004\uFFFD\uFFFDba\uFFFD\uFFFDo\"\uFFFD5\uFFFDB\"F\uFFFD\uFFFDa\uFFFD\uFFFD)\uFFFD`\"B\uFFFDj\\x000c\uFFFDl\uFFFD\uFFFD\uFFFD\u0563<\uFFFD\\x000b\uFFFDS\u065F\uFFFD\\x0004\\x0002|2\uFFFDf\uFFFD`q\uFFFD\uFFFDT`\uFFFD\uFFFD~P3\uFFFDb\\x0005\uFFFD\uFFFDJ\\x0015(Y\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD}\\x0012\\x0015\uFFFD.\uFFFD\\x001d\\\u0653\uFFFD\uFFFD~\uFFFD\\x001d\\x0018\uFFFD[\uFFFD\\x0005\uFFFD\uFFFD\uFFFD\uFFFD\\x0013\uFFFD\uFFFDt\u6A74\uFFFD\uFFFD\uFFFD\\x0010!\\x0003\uFFFD\uFFFDM1\uFFFD\uFFFDnZ\uFFFD\uFFFD\uFFFD\uFFFDB<\\x0004\uFFFD\\x0019\uFFFD<Ks\\x0007\\\uFFFD?\uFFFDL\uFFFDC\uFFFD\uFFFD'\uFFFD\uFFFD\uFFFD\uFFFDf\\x0008\uFFFDb"
-						},
-						{
-							"id": "55",
-							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "H1ySJc13SY3D2-aDCMkE2dA5kgTlsCO5CTaLsbr1qlIPeRcVOWFclYism6_qn3hK6S64H1eMVU2L54J_IE-YJu6Ebs4Y5RwfDbpNLzpohEgA2WtDeqFFWD0QYUDfS5BsVLJzsuMeNxq0XY0W9_zJPg",
-							"otherinfo": "\\x001f\\\uFFFD%\uFFFDwI\uFFFD\uFFFD\uFFFD\uFFFD\\x0008\uFFFD\\x0004\uFFFD\uFFFD9\uFFFD\\x0004\uFFFD#\uFFFD\t6\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDR\\x000fy\\x0017\\x00159a\\\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDxJ\uFFFD.\uFFFD\\x001fW\uFFFDUM\uFFFD\uFFFD O\uFFFD&\uFFFDn\uFFFD\\x0018\uFFFD\\x001c\\x001f\r\uFFFDM/:h\uFFFDH\\x0000\uFFFDkCz\uFFFDEX=\\x0010a@\uFFFDK\uFFFDlT\uFFFDs\uFFFD\uFFFD\\x001e7\\x001a\uFFFD]\uFFFD\\x0016\uFFFD\uFFFD\uFFFD>"
-						},
-						{
-							"id": "44",
+							"id": "3",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "H1ySJc13SY3D2-aDCMkE2WTLNyE23fZNa5jzxxr5pfzG_wm2Q2kBQGOnvUR68oCKtT0X-XEJHJ_G1U7sYJRvHHlzbfjPBKWsjCtPaIdNyKubDod8LwSLvUsWxTRJ4bNXPJGvSwjT2gRhFu22SP0x8g",
-							"otherinfo": "\\x001f\\\uFFFD%\uFFFDwI\uFFFD\uFFFD\uFFFD\uFFFD\\x0008\uFFFD\\x0004\uFFFDd\uFFFD7!6\uFFFD\uFFFDMk\uFFFD\uFFFD\uFFFD\\x001a\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\t\uFFFDCi\\x0001@c\uFFFD\uFFFDDz\uD9C0\uDEB5=\\x0017\uFFFDq\t\\x001c\uFFFD\uFFFD\uFFFDN\uFFFD`\uFFFDo\\x001cysm\uFFFD\uFFFD\\x0004\uFFFD\uFFFD\uFFFD+Oh\uFFFDM\u022B\uFFFD\\x000e\uFFFD|/\\x0004\uFFFD\uFFFDK\\x0016\uFFFD4I\uFFFDW<\uFFFD\uFFFDK\\x0008\uFFFD\uFFFD\\x0004a\\x0016\uFFFDH\uFFFD1\uFFFD"
+							"evidence": "Fl-c8NSEFgWqkFRQWXLtGjSR3kvu8FJB7A3mjHh2f0PSLP4YuXx1Aj5vxZFjqAwz2pd0MoVn7JtEewCjSTT3Gke1Z7dg9hpE8nnsBJv31nFUcYFNszaVda4Y3WGlQKq8I7ipYWobQstOnoZg2eQPtA",
+							"otherinfo": "\\x0016_\uFFFD\uFFFD\u0504\\x0016\\x0005\uFFFD\uFFFDTPYr\uFFFD\\x001a4\uFFFD\uFFFDK\uFFFD\uFFFDRA\uFFFD\r\uFFFDxvC\uFFFD,\uFFFD\\x0018\uFFFD|u\\x0002>o\u0151c\uFFFD\\x000c3\u0697t2\uFFFDg\uFFFDD{\\x0000\uFFFDI4\uFFFD\\x001aG\uFFFDg\uFFFD`\uFFFD\\x001aD\uFFFDy\uFFFD\\x0004\uFFFD\uFFFD\uFFFDqTq\uFFFDM\uFFFD6\uFFFDu\uFFFD\\x0018\uFFFDa\uFFFD@\uFFFD\uFFFD#\uFFFD\uFFFDaj\\x001bB\uFFFDN\uFFFD\uFFFD`\uFFFD\uFFFD\\x000f\uFFFD"
 						}
 					],
-					"count": "4",
+					"count": "1",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>\\x0002 \"\uFFFDM\uFFFDG\uFFFDf\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDr!\uFFFD<\\x0014\uFFFDCQ+\uFFFD\uFFFD\uFFFD\\x001b\uFFFD\u00F7\uFFFD@\uFFFD\uFFFDk\uFFFD\\x0008\uFFFDn\uFFFD\\x0008\\x0006da\uFFFD\\x001f\uB4A3\uFFFD\\x0018\uFFFD\\x0010:\uFFFDG\uFFFDu\uFFFD&J\uFFFD\uFFFD(\\x0004\uFFFD\uFFFD\uFFFD&A\uFFFD\uFFFD\uFFFD\uFFFDK\uFFFD\uFFFD^\uFFFD\uFFFD\\x0008_\u0366Jr\uFFFDd\uFFFD\uFFFDCN\\x0014\uFFFD\u04603\uFFFDPK\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD.aNk\uFFFDI</p>",
+					"otherinfo": "<p>\\x0016_\uFFFD\uFFFD\u0504\\x0016\\x0005\uFFFD\uFFFDTPYr\uFFFD\\x001a4\uFFFD\uFFFDK\uFFFD\uFFFDRA\uFFFD\r\uFFFDxvC\uFFFD,\uFFFD\\x0018\uFFFD|u\\x0002>o\u0151c\uFFFD\\x000c3\u0697t2\uFFFDg\uFFFDD{\\x0000\uFFFDI4\uFFFD\\x001aG\uFFFDg\uFFFD`\uFFFD\\x001aD\uFFFDy\uFFFD\\x0004\uFFFD\uFFFD\uFFFDqTq\uFFFDM\uFFFD6\uFFFDu\uFFFD\\x0018\uFFFDa\uFFFD@\uFFFD\uFFFD#\uFFFD\uFFFDaj\\x001bB\uFFFDN\uFFFD\uFFFD`\uFFFD\uFFFD\\x000f\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
-					"sourceid": "7"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "10109",
@@ -342,7 +333,7 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "15",
+							"id": "59",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "",
@@ -351,7 +342,7 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"id": "13",
+							"id": "57",
 							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -360,7 +351,7 @@
 							"otherinfo": "A noScript tag has been found, which is an indication that the application works differently with JavaScript enabled compared to when it is not."
 						},
 						{
-							"id": "12",
+							"id": "56",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -375,7 +366,7 @@
 					"reference": "",
 					"cweid": "-1",
 					"wascid": "-1",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10015",
@@ -388,7 +379,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "4",
+							"id": "48",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -397,7 +388,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "10",
+							"id": "51",
 							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -406,7 +397,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "5",
+							"id": "52",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -418,7 +409,7 @@
 					"count": "3",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
-					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
 					"sourceid": "7"
@@ -434,7 +425,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "25",
+							"id": "10",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -443,7 +434,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "49",
+							"id": "12",
+							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "14",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -452,13 +452,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -471,7 +471,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "24",
+							"id": "7",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -480,7 +480,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "48",
+							"id": "9",
+							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "11",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -489,13 +498,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -508,7 +517,7 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "23",
+							"id": "4",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -517,7 +526,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "46",
+							"id": "6",
+							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Site",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "5",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -526,13 +544,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "90005",
@@ -545,7 +563,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "26",
+							"id": "15",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -554,7 +572,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "50",
+							"id": "16",
+							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "17",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -563,13 +590,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
-					"sourceid": "1"
+					"sourceid": "7"
 				},
 				{
 					"pluginid": "10049",
@@ -582,7 +609,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where \"shared\" caching servers such as \"proxy\" caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.</p>",
 					"instances":[ 
 						{
-							"id": "57",
+							"id": "61",
 							"uri": "https://conseillers-entreprises.service-public.fr/.well-known/baleen/challengejs/assets/logo.svg",
 							"method": "GET",
 							"param": "",
@@ -591,7 +618,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "56",
+							"id": "60",
 							"uri": "https://conseillers-entreprises.service-public.fr/.well-known/baleen/challengejs/assets/style.css",
 							"method": "GET",
 							"param": "",
@@ -619,7 +646,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
 					"instances":[ 
 						{
-							"id": "16",
+							"id": "20",
 							"uri": "https://conseillers-entreprises.service-public.fr",
 							"method": "GET",
 							"param": "",
@@ -628,7 +655,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "29",
+							"id": "23",
 							"uri": "https://conseillers-entreprises.service-public.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -637,7 +664,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "27",
+							"id": "21",
 							"uri": "https://conseillers-entreprises.service-public.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
