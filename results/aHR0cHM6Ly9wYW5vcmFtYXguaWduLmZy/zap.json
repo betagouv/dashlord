@@ -1,8 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 14 Sept 2025 11:00:33",
-	"created": "2025-09-14T11:00:33.810397187Z",
+	"@generated": "Sun, 21 Sept 2025 11:09:11",
+	"created": "2025-09-21T11:09:11.373079475Z",
 	"site":[ 
 		{
 			"@name": "https://panoramax.ign.fr",
@@ -10,6 +10,34 @@
 			"@port": "443",
 			"@ssl": "true",
 			"alerts": [ 
+				{
+					"pluginid": "10003",
+					"alertRef": "10003",
+					"alert": "Vulnerable JS Library",
+					"name": "Vulnerable JS Library",
+					"riskcode": "3",
+					"confidence": "2",
+					"riskdesc": "High (Medium)",
+					"desc": "<p>The identified library appears to be vulnerable.</p>",
+					"instances":[ 
+						{
+							"id": "79",
+							"uri": "https://panoramax.ign.fr/assets/main-B7RdLMni.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "return\"[Axios v1.11.0] Transitional",
+							"otherinfo": "The identified library axios, version 1.11.0 is vulnerable.\nCVE-2025-58754\nhttps://github.com/axios/axios/releases/tag/v1.12.0\nhttps://github.com/axios/axios/commit/945435fc51467303768202250debb8d4ae892593\nhttps://github.com/axios/axios/security/advisories/GHSA-4hjh-wcwx-xvwj\nhttps://github.com/axios/axios/pull/7011\n"
+						}
+					],
+					"count": "1",
+					"solution": "<p>Upgrade to the latest version of the affected library.</p>",
+					"otherinfo": "<p>The identified library axios, version 1.11.0 is vulnerable.</p><p>CVE-2025-58754</p><p>https://github.com/axios/axios/releases/tag/v1.12.0</p><p>https://github.com/axios/axios/commit/945435fc51467303768202250debb8d4ae892593</p><p>https://github.com/axios/axios/security/advisories/GHSA-4hjh-wcwx-xvwj</p><p>https://github.com/axios/axios/pull/7011</p><p></p>",
+					"reference": "<p>https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/</p>",
+					"cweid": "1395",
+					"wascid": "-1",
+					"sourceid": "18"
+				},
 				{
 					"pluginid": "10038",
 					"alertRef": "10038-1",
@@ -21,7 +49,7 @@
 					"desc": "<p>Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page \u2014 covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.</p>",
 					"instances":[ 
 						{
-							"id": "8",
+							"id": "46",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "",
@@ -30,7 +58,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "67",
+							"id": "75",
 							"uri": "https://panoramax.ign.fr/",
 							"method": "GET",
 							"param": "",
@@ -39,7 +67,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "9",
+							"id": "41",
 							"uri": "https://panoramax.ign.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -48,7 +76,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "11",
+							"id": "47",
 							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -60,7 +88,7 @@
 					"count": "4",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP</p><p>https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html</p><p>https://www.w3.org/TR/CSP/</p><p>https://w3c.github.io/webappsec-csp/</p><p>https://web.dev/articles/csp</p><p>https://caniuse.com/#feat=contentsecuritypolicy</p><p>https://content-security-policy.com/</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "1"
@@ -76,7 +104,7 @@
 					"desc": "<p>The response does not protect against 'ClickJacking' attacks. It should include either Content-Security-Policy with 'frame-ancestors' directive or X-Frame-Options.</p>",
 					"instances":[ 
 						{
-							"id": "0",
+							"id": "37",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -85,7 +113,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "65",
+							"id": "73",
 							"uri": "https://panoramax.ign.fr/",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -94,7 +122,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "2",
+							"id": "38",
+							"uri": "https://panoramax.ign.fr/robots.txt",
+							"method": "GET",
+							"param": "x-frame-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "36",
 							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "x-frame-options",
@@ -103,13 +140,13 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "3",
+					"count": "4",
 					"solution": "<p>Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.</p><p>If you expect the page to be framed only by pages on your server (e.g. it's part of a FRAMESET) then you'll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy's \"frame-ancestors\" directive.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options</p>",
 					"cweid": "1021",
 					"wascid": "15",
-					"sourceid": "1"
+					"sourceid": "6"
 				},
 				{
 					"pluginid": "90004",
@@ -122,7 +159,7 @@
 					"desc": "<p>Cross-Origin-Resource-Policy header is an opt-in header designed to counter side-channels attacks like Spectre. Resource should be specifically set as shareable amongst different origins.</p>",
 					"instances":[ 
 						{
-							"id": "32",
+							"id": "27",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
@@ -131,79 +168,70 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "58",
-							"uri": "https://panoramax.ign.fr/assets/main-BwTtPO_8.css",
+							"id": "26",
+							"uri": "https://panoramax.ign.fr/robots.txt",
 							"method": "GET",
 							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "23",
+							"uri": "https://panoramax.ign.fr/sitemap.xml",
+							"method": "GET",
+							"param": "Cross-Origin-Resource-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "29",
+							"uri": "https://panoramax.ign.fr",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "32",
+							"uri": "https://panoramax.ign.fr/robots.txt",
+							"method": "GET",
+							"param": "Cross-Origin-Embedder-Policy",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
 						},
 						{
 							"id": "30",
-							"uri": "https://panoramax.ign.fr/robots.txt",
+							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
+							"param": "Cross-Origin-Embedder-Policy",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
 						},
 						{
-							"id": "62",
-							"uri": "https://panoramax.ign.fr/sitemap.xml",
+							"id": "31",
+							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
-							"param": "Cross-Origin-Resource-Policy",
+							"param": "Cross-Origin-Opener-Policy",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
 						},
 						{
 							"id": "35",
-							"uri": "https://panoramax.ign.fr",
+							"uri": "https://panoramax.ign.fr/robots.txt",
 							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
+							"param": "Cross-Origin-Opener-Policy",
 							"attack": "",
 							"evidence": "",
 							"otherinfo": ""
 						},
 						{
 							"id": "33",
-							"uri": "https://panoramax.ign.fr/robots.txt",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "63",
-							"uri": "https://panoramax.ign.fr/sitemap.xml",
-							"method": "GET",
-							"param": "Cross-Origin-Embedder-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "36",
-							"uri": "https://panoramax.ign.fr",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "34",
-							"uri": "https://panoramax.ign.fr/robots.txt",
-							"method": "GET",
-							"param": "Cross-Origin-Opener-Policy",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "64",
 							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Cross-Origin-Opener-Policy",
@@ -212,10 +240,10 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "10",
+					"count": "9",
 					"solution": "<p>Ensure that the application/web server sets the Cross-Origin-Resource-Policy header appropriately, and that it sets the Cross-Origin-Resource-Policy header to 'same-origin' for all web pages.</p><p>'same-site' is considered as less secured and should be avoided.</p><p>If resources must be shared, set the header to 'cross-origin'.</p><p>If possible, ensure that the end user uses a standards-compliant and modern web browser that supports the Cross-Origin-Resource-Policy header (https://caniuse.com/mdn-http_headers_cross-origin-resource-policy).</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Cross-Origin_Resource_Policy</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cross-Origin-Embedder-Policy</p>",
 					"cweid": "693",
 					"wascid": "14",
 					"sourceid": "1"
@@ -231,7 +259,7 @@
 					"desc": "<p>Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.</p>",
 					"instances":[ 
 						{
-							"id": "26",
+							"id": "21",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "",
@@ -249,8 +277,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "130",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "90",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -258,8 +286,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "82",
-							"uri": "https://panoramax.ign.fr/assets/main-Cliz2af1.js",
+							"id": "81",
+							"uri": "https://panoramax.ign.fr/assets/main-B7RdLMni.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -267,7 +295,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "27",
+							"id": "22",
 							"uri": "https://panoramax.ign.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -276,7 +304,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "61",
+							"id": "17",
 							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -288,7 +316,7 @@
 					"count": "6",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy</p><p>https://developer.chrome.com/blog/feature-policy/</p><p>https://scotthelme.co.uk/a-new-security-header-feature-policy/</p><p>https://w3c.github.io/webappsec-feature-policy/</p><p>https://www.smashingmagazine.com/2018/12/feature-policy/</p>",
 					"cweid": "693",
 					"wascid": "15",
 					"sourceid": "6"
@@ -304,7 +332,7 @@
 					"desc": "<p>The web/application server is leaking information via one or more \"X-Powered-By\" HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.</p>",
 					"instances":[ 
 						{
-							"id": "21",
+							"id": "58",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "",
@@ -313,7 +341,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "70",
+							"id": "78",
 							"uri": "https://panoramax.ign.fr/",
 							"method": "GET",
 							"param": "",
@@ -322,8 +350,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "128",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "135",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -331,8 +359,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "54",
-							"uri": "https://panoramax.ign.fr/assets/app-OY1PvXWt.css",
+							"id": "67",
+							"uri": "https://panoramax.ign.fr/assets/app-DsWXLYzg.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -340,7 +368,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "52",
+							"id": "62",
 							"uri": "https://panoramax.ign.fr/assets/favicon--EcUXM57.ico",
 							"method": "GET",
 							"param": "",
@@ -349,7 +377,16 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "56",
+							"id": "88",
+							"uri": "https://panoramax.ign.fr/assets/main-B7RdLMni.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "X-Powered-By: Express",
+							"otherinfo": ""
+						},
+						{
+							"id": "69",
 							"uri": "https://panoramax.ign.fr/assets/main-BwTtPO_8.css",
 							"method": "GET",
 							"param": "",
@@ -358,16 +395,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "80",
-							"uri": "https://panoramax.ign.fr/assets/main-Cliz2af1.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "X-Powered-By: Express",
-							"otherinfo": ""
-						},
-						{
-							"id": "20",
+							"id": "56",
 							"uri": "https://panoramax.ign.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -376,7 +404,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "23",
+							"id": "54",
 							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -388,10 +416,10 @@
 					"count": "9",
 					"solution": "<p>Ensure that your web server, application server, load balancer, etc. is configured to suppress \"X-Powered-By\" headers.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html</p>",
+					"reference": "<p>https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework</p><p>https://www.troyhunt.com/shhh-dont-let-your-response-headers/</p>",
 					"cweid": "497",
 					"wascid": "13",
-					"sourceid": "6"
+					"sourceid": "1"
 				},
 				{
 					"pluginid": "10096",
@@ -404,8 +432,8 @@
 					"desc": "<p>A timestamp was disclosed by the application/web server. - Unix</p>",
 					"instances":[ 
 						{
-							"id": "93",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "100",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -413,8 +441,8 @@
 							"otherinfo": "1444681467, which evaluates to: 2015-10-12 20:24:27."
 						},
 						{
-							"id": "87",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "94",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -422,8 +450,8 @@
 							"otherinfo": "1473231341, which evaluates to: 2016-09-07 06:55:41."
 						},
 						{
-							"id": "92",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "99",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -431,8 +459,8 @@
 							"otherinfo": "1502002290, which evaluates to: 2017-08-06 06:51:30."
 						},
 						{
-							"id": "98",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "105",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -440,8 +468,8 @@
 							"otherinfo": "1530992060, which evaluates to: 2018-07-07 19:34:20."
 						},
 						{
-							"id": "106",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "113",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -449,8 +477,8 @@
 							"otherinfo": "1540483477, which evaluates to: 2018-10-25 16:04:37."
 						},
 						{
-							"id": "103",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "110",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -458,8 +486,8 @@
 							"otherinfo": "1560198380, which evaluates to: 2019-06-10 20:26:20."
 						},
 						{
-							"id": "99",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "106",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -467,8 +495,8 @@
 							"otherinfo": "1700485571, which evaluates to: 2023-11-20 13:06:11."
 						},
 						{
-							"id": "104",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "111",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -476,8 +504,8 @@
 							"otherinfo": "1732584193, which evaluates to: 2024-11-26 01:23:13."
 						},
 						{
-							"id": "85",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "92",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -485,8 +513,8 @@
 							"otherinfo": "1732584194, which evaluates to: 2024-11-26 01:23:14."
 						},
 						{
-							"id": "94",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "101",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -494,8 +522,8 @@
 							"otherinfo": "1735328473, which evaluates to: 2024-12-27 19:41:13."
 						},
 						{
-							"id": "88",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "95",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -503,8 +531,8 @@
 							"otherinfo": "1770035416, which evaluates to: 2026-02-02 12:30:16."
 						},
 						{
-							"id": "91",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "98",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -512,8 +540,8 @@
 							"otherinfo": "1804603682, which evaluates to: 2027-03-09 14:48:02."
 						},
 						{
-							"id": "126",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "133",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -521,8 +549,8 @@
 							"otherinfo": "1831565813, which evaluates to: 2028-01-15 16:16:53."
 						},
 						{
-							"id": "97",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "104",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -530,8 +558,8 @@
 							"otherinfo": "1839030562, which evaluates to: 2028-04-11 01:49:22."
 						},
 						{
-							"id": "102",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "109",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -539,8 +567,8 @@
 							"otherinfo": "1873313359, which evaluates to: 2029-05-12 20:49:19."
 						},
 						{
-							"id": "100",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "107",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -548,8 +576,8 @@
 							"otherinfo": "1894986606, which evaluates to: 2030-01-18 17:10:06."
 						},
 						{
-							"id": "95",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "102",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -557,8 +585,8 @@
 							"otherinfo": "1926607734, which evaluates to: 2031-01-19 16:48:54."
 						},
 						{
-							"id": "89",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "96",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -566,8 +594,8 @@
 							"otherinfo": "1958414417, which evaluates to: 2032-01-22 20:00:17."
 						},
 						{
-							"id": "90",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "97",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -575,8 +603,8 @@
 							"otherinfo": "1990404162, which evaluates to: 2033-01-27 02:02:42."
 						},
 						{
-							"id": "86",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "93",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -584,8 +612,8 @@
 							"otherinfo": "2004318071, which evaluates to: 2033-07-07 03:01:11."
 						},
 						{
-							"id": "96",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "103",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -593,8 +621,8 @@
 							"otherinfo": "2022574463, which evaluates to: 2034-02-03 10:14:23."
 						},
 						{
-							"id": "101",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "108",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -602,8 +630,8 @@
 							"otherinfo": "2054922799, which evaluates to: 2035-02-12 19:53:19."
 						},
 						{
-							"id": "76",
-							"uri": "https://panoramax.ign.fr/assets/main-Cliz2af1.js",
+							"id": "84",
+							"uri": "https://panoramax.ign.fr/assets/main-B7RdLMni.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -630,7 +658,7 @@
 					"desc": "<p>The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.</p>",
 					"instances":[ 
 						{
-							"id": "16",
+							"id": "55",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -639,7 +667,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "69",
+							"id": "77",
 							"uri": "https://panoramax.ign.fr/",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -648,8 +676,8 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "127",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "134",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -657,8 +685,8 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "53",
-							"uri": "https://panoramax.ign.fr/assets/app-OY1PvXWt.css",
+							"id": "66",
+							"uri": "https://panoramax.ign.fr/assets/app-DsWXLYzg.css",
 							"method": "GET",
 							"param": "x-content-type-options",
 							"attack": "",
@@ -666,7 +694,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "51",
+							"id": "61",
 							"uri": "https://panoramax.ign.fr/assets/favicon--EcUXM57.ico",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -675,7 +703,16 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "55",
+							"id": "87",
+							"uri": "https://panoramax.ign.fr/assets/main-B7RdLMni.js",
+							"method": "GET",
+							"param": "x-content-type-options",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
+						},
+						{
+							"id": "68",
 							"uri": "https://panoramax.ign.fr/assets/main-BwTtPO_8.css",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -684,16 +721,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "79",
-							"uri": "https://panoramax.ign.fr/assets/main-Cliz2af1.js",
-							"method": "GET",
-							"param": "x-content-type-options",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
-						},
-						{
-							"id": "17",
+							"id": "53",
 							"uri": "https://panoramax.ign.fr/robots.txt",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -702,7 +730,7 @@
 							"otherinfo": "This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.\nAt \"High\" threshold this scan rule will not alert on client or server error responses."
 						},
 						{
-							"id": "19",
+							"id": "52",
 							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "x-content-type-options",
@@ -730,8 +758,8 @@
 					"desc": "<p>Base64 encoded data was disclosed by the application/web server. Note: in the interests of performance not all base64 strings in the response were analyzed individually, the entire response should be looked at by the analyst/security team/developer(s).</p>",
 					"instances":[ 
 						{
-							"id": "131",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "83",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -739,22 +767,22 @@
 							"otherinfo": "\uFFFDPNG\r\n\\x001a\n\\x0000\\x0000\\x0000\rIHDR\\x0000\\x0000\\x0002\\x0000\\x0000\\x0000\\x0002\\x0000\\x0001\\x0003\\x0000\\x0000\\x0000\u03B6F\uFFFD\\x0000\\x0000\\x0000\\x0001sRGB\\x0001\uFFFD\uFFFD,\\x0000\\x0000\\x0000\\x0006PLTE\\x0000\\x0000\\x0000)T\uFFFD\uFFFD\\x0006,\\x0000\\x0000\\x0000\\x0002tRNS\\x0000\uFFFD[\uFFFD\"\uFFFD\\x0000\\x0000\\x0001QIDATx\uFFFD\uFFFD\uFFFDAJ\\x00041\\x0010\\x0005\u0434\n\uFFFD\uFFFD\\x001b\uFFFDM\uFFFDf\uFFFD\u035C\uFFFD\uFFFD7\u041D\uFFFD:\uFFFD\u00B4\uFFFDvaY\r%\u04EF\uFFFDy\uFFFD$$E\uFFFD\u04125\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFDU\uFFFDw\uFFFD\\x001e\uFFFD;\uFFFD\\x00018~\\x000b\u033B\uFFFD\uFFFD\\x0003\uFFFDO\\x0001\uFFFD\uFFFDb\\x000e\\?\\x0004\uFFFD\uFFFD\uFFFD9\\x0010X\uFFFD~\\x0011&`\uFFFD\\x0008\uFFFDo\uFFFD~?\uFFFD\\x0004\uFFFD\u05B0[\uFFFD\t8}\t\\x0001\uFFFDW\uFFFD\\x0003\uFFFD]\uFFFD\uFFFDq\\x0002.\uFFFD!\uFFFD\uFFFDlq t\uFFFD\uFFFD\uFFFD\uFFFD\\x001c\\x0010:\uFFFD\uFFFDQ\uFFFDG\uFFFD.4\uFFFD{ \\x0000\\x0000X\\x001a\uFFFD\uFFFD\\x000f\uFFFD@\uFFFD\uFFFD\\\uFFFD2\uFFFD\\x001f\uFFFD\uFFFD\uFFFD \uFFFD\u291B\uFFFDt\uFFFD\uFFFDo4\u04EDn\uFFFD\uFFFDN\uFFFD\uFFFD,\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000k\\x0002\uFFFD\uFFFDFy\uFFFDX\uFFFD?\uFFFD\uFFFD\uFFFD\uFFFD\uFFFDF\\x0000\uFFFD`\uFFFD\uFFFD\uFFFD@\uFFFD(o\\x001cK\uFFFD\uFFFD\uFFFD\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFD\\x0001\uFFFD\\x001b\uFFFD\uFFFD\u01B1\uFFFD\uFFFD\uFFFD\uFFFD\uFFFD\\x0000\uFFFD\uFFFD\\x0000\uFFFD\uFFFD\uFFFD\uFFFDQ\uFFFD8\uFFFD\uFFFD\uFFFD\uFFFD\\x001b\\x0001\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\\x0000\uFFFDR\uFFFD\\x0013\uFFFD\uFFFD\uFFFD\\x0001\u02A7\uFFFD)\\x0000\\x0000\\x0000\\x0000IEND\uFFFDB`\uFFFD"
 						},
 						{
-							"id": "59",
+							"id": "70",
+							"uri": "https://panoramax.ign.fr/assets/main-B7RdLMni.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "I18nErrorCodes_INVALID_ARGUMENT=",
+							"otherinfo": "#_'\\x0012\uFFFD\uFFFD*\\x001dz\uFFFD\uFFFD5P\\x000b ?\uFFFDDe\\x000c\\x0010\uFFFD"
+						},
+						{
+							"id": "64",
 							"uri": "https://panoramax.ign.fr/assets/main-BwTtPO_8.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
 							"evidence": "/assets/bootstrap-icons-mSm7cUeB",
 							"otherinfo": "\uFFFD\uFFFD,z\uFFFD?n\uFFFD-\uFFFD\uFFFD\u06A7\u8722{>\uFFFD)\uFFFDqG\uFFFD"
-						},
-						{
-							"id": "83",
-							"uri": "https://panoramax.ign.fr/assets/main-Cliz2af1.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "I18nErrorCodes_INVALID_ARGUMENT=",
-							"otherinfo": "#_'\\x0012\uFFFD\uFFFD*\\x001dz\uFFFD\uFFFD5P\\x000b ?\uFFFDDe\\x000c\\x0010\uFFFD"
 						}
 					],
 					"count": "3",
@@ -776,8 +804,8 @@
 					"desc": "<p>The response appears to contain suspicious comments which may help an attacker.</p>",
 					"instances":[ 
 						{
-							"id": "84",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "91",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -785,13 +813,13 @@
 							"otherinfo": "The following pattern was used: \\bUSER\\b and was detected in likely comment: \"//panoramax.fr/\",look:\"link--blue-dark\",image:{url:\"logo.jpeg\",alt:_ctx.$t(\"general.footer.gitlab_logo\")},onClick:_cache[9]||(_c\", see evidence field for the suspicious comment/snippet."
 						},
 						{
-							"id": "75",
-							"uri": "https://panoramax.ign.fr/assets/main-Cliz2af1.js",
+							"id": "82",
+							"uri": "https://panoramax.ign.fr/assets/main-B7RdLMni.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "select",
-							"otherinfo": "The following pattern was used: \\bSELECT\\b and was detected in likely comment: \"//vuejs.org/error-reference/#runtime-${type}`;for(;cur;){const errorCapturedHooks=cur.ec;if(errorCapturedHooks)for(let i=0;i<err\", see evidence field for the suspicious comment/snippet."
+							"evidence": "query",
+							"otherinfo": "The following pattern was used: \\bQUERY\\b and was detected in likely comment: \"//vuejs.org/error-reference/#runtime-${type}`;for(;cur;){const errorCapturedHooks=cur.ec;if(errorCapturedHooks)for(let i=0;i<err\", see evidence field for the suspicious comment/snippet."
 						}
 					],
 					"count": "2",
@@ -813,39 +841,39 @@
 					"desc": "<p>The application appears to be a modern web application. If you need to explore it automatically then the Ajax Spider may well be more effective than the standard one.</p>",
 					"instances":[ 
 						{
-							"id": "13",
+							"id": "50",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/app-CTiqt3-A.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/app-4Sm0Sovc.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "68",
+							"id": "76",
 							"uri": "https://panoramax.ign.fr/",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/app-CTiqt3-A.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/app-4Sm0Sovc.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "15",
+							"id": "44",
 							"uri": "https://panoramax.ign.fr/robots.txt",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/app-CTiqt3-A.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/app-4Sm0Sovc.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						},
 						{
-							"id": "14",
+							"id": "49",
 							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "<script type=\"module\" crossorigin src=\"/assets/app-CTiqt3-A.js\"></script>",
+							"evidence": "<script type=\"module\" crossorigin src=\"/assets/app-4Sm0Sovc.js\"></script>",
 							"otherinfo": "No links have been found while there are scripts, which is an indication that this is a modern web application."
 						}
 					],
@@ -868,7 +896,7 @@
 					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
 					"instances":[ 
 						{
-							"id": "4",
+							"id": "42",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "cache-control",
@@ -877,7 +905,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "66",
+							"id": "74",
 							"uri": "https://panoramax.ign.fr/",
 							"method": "GET",
 							"param": "cache-control",
@@ -886,7 +914,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "5",
+							"id": "40",
 							"uri": "https://panoramax.ign.fr/robots.txt",
 							"method": "GET",
 							"param": "cache-control",
@@ -895,7 +923,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "7",
+							"id": "45",
 							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "cache-control",
@@ -907,7 +935,7 @@
 					"count": "4",
 					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
 					"otherinfo": "",
-					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
 					"cweid": "525",
 					"wascid": "13",
 					"sourceid": "1"
@@ -923,7 +951,7 @@
 					"desc": "<p>Specifies how and where the data would be used. For instance, if the value is audio, then the requested resource must be audio data and not any other type of resource.</p>",
 					"instances":[ 
 						{
-							"id": "43",
+							"id": "9",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -932,8 +960,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "46",
+							"id": "5",
 							"uri": "https://panoramax.ign.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Dest",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "11",
+							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
 							"attack": "",
@@ -941,10 +978,10 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Dest header is included in request headers.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Dest</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Dest</p>",
 					"cweid": "352",
 					"wascid": "9",
 					"sourceid": "1"
@@ -960,7 +997,7 @@
 					"desc": "<p>Allows to differentiate between requests for navigating between HTML pages and requests for loading resources like images, audio etc.</p>",
 					"instances":[ 
 						{
-							"id": "42",
+							"id": "7",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -969,8 +1006,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "45",
+							"id": "4",
 							"uri": "https://panoramax.ign.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-Mode",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "6",
+							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
 							"attack": "",
@@ -978,10 +1024,10 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-Mode header is included in request headers.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Mode</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Mode</p>",
 					"cweid": "352",
 					"wascid": "9",
 					"sourceid": "1"
@@ -997,17 +1043,8 @@
 					"desc": "<p>Specifies the relationship between request initiator's origin and target's origin.</p>",
 					"instances":[ 
 						{
-							"id": "39",
+							"id": "2",
 							"uri": "https://panoramax.ign.fr",
-							"method": "GET",
-							"param": "Sec-Fetch-Site",
-							"attack": "",
-							"evidence": "",
-							"otherinfo": ""
-						},
-						{
-							"id": "41",
-							"uri": "https://panoramax.ign.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
 							"attack": "",
@@ -1015,10 +1052,10 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "1",
 					"solution": "<p>Ensure that Sec-Fetch-Site header is included in request headers.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-Site</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-Site</p>",
 					"cweid": "352",
 					"wascid": "9",
 					"sourceid": "1"
@@ -1034,7 +1071,7 @@
 					"desc": "<p>Specifies if a navigation request was initiated by a user.</p>",
 					"instances":[ 
 						{
-							"id": "47",
+							"id": "14",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -1043,8 +1080,17 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "48",
+							"id": "8",
 							"uri": "https://panoramax.ign.fr/robots.txt",
+							"method": "GET",
+							"param": "Sec-Fetch-User",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						},
+						{
+							"id": "13",
+							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
 							"attack": "",
@@ -1052,10 +1098,10 @@
 							"otherinfo": ""
 						}
 					],
-					"count": "2",
+					"count": "3",
 					"solution": "<p>Ensure that Sec-Fetch-User header is included in user initiated requests.</p>",
 					"otherinfo": "",
-					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Sec-Fetch-User</p>",
+					"reference": "<p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Sec-Fetch-User</p>",
 					"cweid": "352",
 					"wascid": "9",
 					"sourceid": "1"
@@ -1071,7 +1117,7 @@
 					"desc": "<p>The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.</p>",
 					"instances":[ 
 						{
-							"id": "24",
+							"id": "19",
 							"uri": "https://panoramax.ign.fr",
 							"method": "GET",
 							"param": "",
@@ -1089,8 +1135,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "129",
-							"uri": "https://panoramax.ign.fr/assets/app-CTiqt3-A.js",
+							"id": "89",
+							"uri": "https://panoramax.ign.fr/assets/app-4Sm0Sovc.js",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1098,44 +1144,8 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "74",
-							"uri": "https://panoramax.ign.fr/assets/app-OY1PvXWt.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"id": "73",
-							"uri": "https://panoramax.ign.fr/assets/favicon--EcUXM57.ico",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"id": "57",
-							"uri": "https://panoramax.ign.fr/assets/main-BwTtPO_8.css",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"id": "81",
-							"uri": "https://panoramax.ign.fr/assets/main-Cliz2af1.js",
-							"method": "GET",
-							"param": "",
-							"attack": "",
-							"evidence": "max-age=0",
-							"otherinfo": ""
-						},
-						{
-							"id": "25",
-							"uri": "https://panoramax.ign.fr/robots.txt",
+							"id": "63",
+							"uri": "https://panoramax.ign.fr/assets/app-DsWXLYzg.css",
 							"method": "GET",
 							"param": "",
 							"attack": "",
@@ -1144,6 +1154,42 @@
 						},
 						{
 							"id": "60",
+							"uri": "https://panoramax.ign.fr/assets/favicon--EcUXM57.ico",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "80",
+							"uri": "https://panoramax.ign.fr/assets/main-B7RdLMni.js",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "65",
+							"uri": "https://panoramax.ign.fr/assets/main-BwTtPO_8.css",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "18",
+							"uri": "https://panoramax.ign.fr/robots.txt",
+							"method": "GET",
+							"param": "",
+							"attack": "",
+							"evidence": "max-age=0",
+							"otherinfo": ""
+						},
+						{
+							"id": "16",
 							"uri": "https://panoramax.ign.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
