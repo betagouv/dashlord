@@ -10,10 +10,10 @@
     "testsQuantity": 10,
     "responseHeaders": {
       "referrer-policy": "no-referrer",
-      "strict-transport-security": "max-age=15552000; includeSubDomains",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
       "x-content-type-options": "nosniff",
       "x-download-options": "noopen",
-      "x-frame-options": "SAMEORIGIN",
+      "x-frame-options": "DENY",
       "x-permitted-cross-domain-policies": "none",
       "x-xss-protection": "0",
       "vary": "Accept-Encoding",
@@ -21,15 +21,15 @@
       "cross-origin-resource-policy": "same-origin",
       "cross-origin-opener-policy": "same-origin",
       "cross-origin-embedder-policy": "unsafe-none",
-      "content-security-policy": "base-uri 'none'; font-src 'self' https: data:; form-action 'self'; frame-ancestors 'self'; img-src 'self' data: https://romin-justice.directus.app/assets/; object-src 'none'; script-src-attr 'none'; style-src 'self' https: 'unsafe-inline'; script-src 'self' https: 'unsafe-inline' 'strict-dynamic' 'nonce-DnqnECsgOKCYC6Zo1wnL7Wik'; upgrade-insecure-requests;",
+      "content-security-policy": "base-uri 'none'; default-src 'none'; connect-src 'self' https://romin-justice.directus.app https://stats.beta.gouv.fr; font-src 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' https://stats.beta.gouv.fr https://tally.so; img-src 'self' data: https://romin-justice.directus.app/assets/; manifest-src 'self'; media-src 'self'; object-src 'none'; script-src-attr 'none'; style-src 'self' 'unsafe-inline'; script-src 'strict-dynamic' 'nonce-s6/qWsPi/6AsVc7y3TZK1pNU' 'wasm-unsafe-eval'; upgrade-insecure-requests; worker-src 'self';",
       "origin-agent-cluster": "?1",
       "x-dns-prefetch-control": "off",
-      "permissions-policy": "camera=(), display-capture=(), fullscreen=(), geolocation=(), microphone=()",
+      "permissions-policy": "accelerometer=(), autoplay=(), camera=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(self), usb=(), web-share=(), xr-spatial-tracking=()",
       "content-type": "text/html;charset=utf-8",
-      "date": "Sun, 14 Sep 2025 12:05:56 GMT",
+      "date": "Sun, 21 Sep 2025 12:12:35 GMT",
       "connection": "close",
       "content-length": "28930",
-      "sozu-id": "01K541W6P0JVTQ4Z2QH01QEQ2C"
+      "sozu-id": "01K5P31CPSJQJJJWDFA3R5BSSV"
     }
   },
   "tests": {
@@ -42,10 +42,16 @@
         "base-uri": [
           "'none'"
         ],
-        "font-src": [
+        "default-src": [
+          "'none'"
+        ],
+        "connect-src": [
           "'self'",
-          "data:",
-          "https:"
+          "https://romin-justice.directus.app",
+          "https://stats.beta.gouv.fr"
+        ],
+        "font-src": [
+          "'self'"
         ],
         "form-action": [
           "'self'"
@@ -53,10 +59,21 @@
         "frame-ancestors": [
           "'self'"
         ],
+        "frame-src": [
+          "'self'",
+          "https://stats.beta.gouv.fr",
+          "https://tally.so"
+        ],
         "img-src": [
           "'self'",
           "data:",
           "https://romin-justice.directus.app/assets/"
+        ],
+        "manifest-src": [
+          "'self'"
+        ],
+        "media-src": [
+          "'self'"
         ],
         "object-src": [
           "'none'"
@@ -66,22 +83,25 @@
         ],
         "style-src": [
           "'self'",
-          "'unsafe-inline'",
-          "https:"
+          "'unsafe-inline'"
         ],
         "script-src": [
-          "'nonce-dnqnecsgokcyc6zo1wnl7wik'",
-          "'strict-dynamic'"
+          "'nonce-s6/qwspi/6asvc7y3tzk1pnu'",
+          "'strict-dynamic'",
+          "'wasm-unsafe-eval'"
         ],
         "upgrade-insecure-requests": [
           "'none'"
+        ],
+        "worker-src": [
+          "'self'"
         ]
       },
       "http": true,
       "meta": false,
       "policy": {
         "antiClickjacking": true,
-        "defaultNone": false,
+        "defaultNone": true,
         "insecureBaseUri": false,
         "insecureFormAction": false,
         "insecureSchemeActive": false,
@@ -136,10 +156,10 @@
       "pass": true,
       "result": "hsts-implemented-max-age-at-least-six-months",
       "scoreModifier": 0,
-      "data": "max-age=15552000; includeSubDomains",
+      "data": "max-age=31536000; includeSubDomains; preload",
       "includeSubDomains": true,
-      "maxAge": 15552000,
-      "preload": false,
+      "maxAge": 31536000,
+      "preload": true,
       "preloaded": false
     },
     "subresource-integrity": {
@@ -166,7 +186,7 @@
       "pass": true,
       "result": "x-frame-options-implemented-via-csp",
       "scoreModifier": 5,
-      "data": "SAMEORIGIN"
+      "data": "DENY"
     },
     "cross-origin-resource-policy": {
       "expectation": "corp-implemented-with-same-site",
