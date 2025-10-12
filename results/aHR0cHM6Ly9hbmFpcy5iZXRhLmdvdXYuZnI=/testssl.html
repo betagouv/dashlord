@@ -21,7 +21,7 @@
   Using <i>OpenSSL 1.0.2-bad (Mar 28 2025)</i>  [~183 ciphers]
   on runnervmwhb2z:/home/testssl/bin/openssl.Linux.x86_64
 
-<span style="color:white;background-color:black;"> Start 2025-10-05 06:25:50        --&gt;&gt; 91.134.110.2:443 (anais.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Start 2025-10-12 06:21:10        --&gt;&gt; 91.134.110.2:443 (anais.beta.gouv.fr) &lt;&lt;--</span>
 
  rDNS (91.134.110.2):    ip2.ip-91-134-110.eu.
  Service detected:       HTTP
@@ -50,6 +50,7 @@
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing server&apos;s cipher preferences </span>
 
+<span style="color:#cd00cd;">Fixme: something weird happened around line 7086</span>
 Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Cipher Suite Name (IANA/RFC)
 -----------------------------------------------------------------------------------------------------------------------------
 <u>SSLv2</u>
@@ -62,9 +63,9 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
  - 
 <u>TLSv1.2</u> (server order)
 <u>TLSv1.3</u>
-<span style="color:#cd00cd;">Local problem: Your /home/testssl/bin/openssl.Linux.x86_64 does not support -tls1_3</span>
+<span style="color:#cd00cd;">Local problem: /home/testssl/bin/openssl.Linux.x86_64 doesn&apos;t support &quot;s_client -tls1_3&quot;</span>
 
-<span style="font-weight:bold;"> Has server cipher order?     </span><span style="color:#008817;">yes (OK)</span> -- only for &lt; TLS 1.3
+<span style="font-weight:bold;"> Has server cipher order?     </span><span style="color:#008817;font-weight:bold;">yes (OK)</span> -- TLS 1.3 and below
 
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing robust forward secrecy (FS)</span><u> -- omitting Null Authentication/Encryption, 3DES, RC4 </u>
@@ -91,17 +92,18 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Server key size              </span>RSA <span style="color:#008817;">4096</span> bits (exponent is 65537)
 <span style="font-weight:bold;"> Server key usage             </span>Digital Signature, Key Encipherment
 <span style="font-weight:bold;"> Server extended key usage    </span>TLS Web Server Authentication, TLS Web Client Authentication
-<span style="font-weight:bold;"> Serial                       </span>0623D7C52B83E17CCA9C53C426CDE2BE8F08 (OK: length 18)
-<span style="font-weight:bold;"> Fingerprints                 </span>SHA1 48EEC4785D5E174DE70BAD8F55737AF0F15F34B3
-                              SHA256 BA29763E77ECB0866F5CAC5B351BFB6842D1C1C34CBC6F71EEB8576C86502550
-<span style="font-weight:bold;"> Common Name (CN)             </span><i>anais.beta.gouv.fr </i> (request w/o SNI didn&apos;t succeed)
-<span style="font-weight:bold;"> subjectAltName (SAN)         </span><i>anais.beta.gouv.fr </i>
-<span style="font-weight:bold;"> Trust (hostname)             </span><span style="color:#008817;">Ok via SAN and CN</span> (SNI mandatory)
+<span style="font-weight:bold;"> Serial                       </span>064B7C80AA5BC7CE1E93569D1B7B18A7CA66 (OK: length 18)
+<span style="font-weight:bold;"> Fingerprints                 </span>SHA1 1C08D44CB8470C0AEBE8E9DBEAB8E6C8FF4AE6E3
+                              SHA256 F4E500FB9B1CE497D514E63B49A6B92851FFCEB70A2BA34751D0C24DCA43DC52
+<span style="font-weight:bold;"> Common Name (CN)             </span><i>anais.snc.seanais.fr </i> (request w/o SNI didn&apos;t succeed)
+<span style="font-weight:bold;"> subjectAltName (SAN)         </span><i>anais.beta.gouv.fr anais.snc.seanais.fr
+                              maps.anais.beta.gouv.fr </i>
+<span style="font-weight:bold;"> Trust (hostname)             </span><span style="color:#008817;">Ok via SAN</span> (SNI mandatory)
 <span style="font-weight:bold;"> Chain of trust</span>               <span style="color:#008817;">Ok   </span><span style="color:#cd00cd;"></span>
 <span style="font-weight:bold;"> EV cert</span> (experimental)       no 
-<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">52 &gt;= 30 days</span> (2025-08-28 10:43 --&gt; 2025-11-26 10:43)
+<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">71 &gt;= 30 days</span> (2025-09-23 13:52 --&gt; 2025-12-22 13:52)
 <span style="font-weight:bold;"> ETS/&quot;eTLS&quot;</span>, visibility info  not present
-<span style="font-weight:bold;"> Certificate Revocation List  </span>http://r12.c.lencr.org/9.crl
+<span style="font-weight:bold;"> Certificate Revocation List  </span>http://r12.c.lencr.org/103.crl
 <span style="font-weight:bold;"> OCSP URI                     </span>--
 <span style="font-weight:bold;"> OCSP stapling                </span>not offered
 <span style="font-weight:bold;"> OCSP must staple extension   </span>--
@@ -117,7 +119,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing HTTP header response @ &quot;/&quot; </span>
 
-<span style="font-weight:bold;"> HTTP Status Code           </span>  302 Found, redirecting to &quot;<a href="https://sso.anais.beta.gouv.fr/realms/VIGIE/protocol/openid-connect/auth?approval_prompt=force&client_id=anais-api&code_challenge=_VcTrGm5y6i5Mr43aYUPhiXc2xAgHpgzv_uRy6hByBU&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fanais.beta.gouv.fr%2Foauth2%2Fcallback&response_type=code&scope=openid+email+profile&state=kawgbIkS1kEQrtpcid34u-xGG9B5aRqZt7cCDztd0ro%3Ahttps%3A%2F%2Fanais.beta.gouv.fr%2F" style="color:black;text-decoration:none;">https://sso.anais.beta.gouv.fr/realms/VIGIE/protocol/openid-connect/auth?approval_prompt=force&client_id=anais-api&code_challenge=_VcTrGm5y6i5Mr43aYUPhiXc2xAgHpgzv_uRy6hByBU&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fanais.beta.gouv.fr%2Foauth2%2Fcallback&response_type=code&scope=openid+email+profile&state=kawgbIkS1kEQrtpcid34u-xGG9B5aRqZt7cCDztd0ro%3Ahttps%3A%2F%2Fanais.beta.gouv.fr%2F</a>&quot;
+<span style="font-weight:bold;"> HTTP Status Code           </span>  302 Found, redirecting to &quot;<a href="https://sso.anais.beta.gouv.fr/realms/VIGIE/protocol/openid-connect/auth?approval_prompt=force&client_id=anais-api&code_challenge=BI1pgc35wtsNcJKQtBhBOqDOwFMwxoP_IzTlmNyjbkU&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fanais.beta.gouv.fr%2Foauth2%2Fcallback&response_type=code&scope=openid+email+profile&state=gWnlRuv8RU1wlG-aoS5iJTKdy78M2l8VbOcZR4FpOOI%3Ahttps%3A%2F%2Fanais.beta.gouv.fr%2F" style="color:black;text-decoration:none;">https://sso.anais.beta.gouv.fr/realms/VIGIE/protocol/openid-connect/auth?approval_prompt=force&client_id=anais-api&code_challenge=BI1pgc35wtsNcJKQtBhBOqDOwFMwxoP_IzTlmNyjbkU&code_challenge_method=S256&redirect_uri=https%3A%2F%2Fanais.beta.gouv.fr%2Foauth2%2Fcallback&response_type=code&scope=openid+email+profile&state=gWnlRuv8RU1wlG-aoS5iJTKdy78M2l8VbOcZR4FpOOI%3Ahttps%3A%2F%2Fanais.beta.gouv.fr%2F</a>&quot;
 <span style="font-weight:bold;"> HTTP clock skew              </span>0 sec from localtime
 <span style="font-weight:bold;"> Strict Transport Security    </span><span style="color:#008817;">3650 days</span>=315360000 s<span style="color:#008817;">, includeSubDomains</span>
 <span style="font-weight:bold;"> Public Key Pinning           </span>--
@@ -149,7 +151,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> FREAK</span> (CVE-2015-0204)                     <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
 <span style="font-weight:bold;"> DROWN</span> (CVE-2016-0800, CVE-2016-0703)      <span style="color:#008817;font-weight:bold;">not vulnerable on this host and port (OK)</span>
                                            make sure you don&apos;t use this certificate elsewhere with SSLv2 enabled services, see
-                                           <a href="https://search.censys.io/search?resource=hosts&virtual_hosts=INCLUDE&q=BA29763E77ECB0866F5CAC5B351BFB6842D1C1C34CBC6F71EEB8576C86502550" style="color:black;text-decoration:none;">https://search.censys.io/search?resource=hosts&virtual_hosts=INCLUDE&q=BA29763E77ECB0866F5CAC5B351BFB6842D1C1C34CBC6F71EEB8576C86502550</a>
+                                           <a href="https://search.censys.io/search?resource=hosts&virtual_hosts=INCLUDE&q=F4E500FB9B1CE497D514E63B49A6B92851FFCEB70A2BA34751D0C24DCA43DC52" style="color:black;text-decoration:none;">https://search.censys.io/search?resource=hosts&virtual_hosts=INCLUDE&q=F4E500FB9B1CE497D514E63B49A6B92851FFCEB70A2BA34751D0C24DCA43DC52</a>
 <span style="font-weight:bold;"> LOGJAM</span> (CVE-2015-4000), experimental      <span style="color:#008817;">not vulnerable (OK):</span> no DH EXPORT ciphers, no DH key detected with &lt;= TLS 1.2
 <span style="font-weight:bold;"> BEAST</span> (CVE-2011-3389)                     <span style="color:#008817;">not vulnerable (OK)</span>, no SSL3 or TLS1
 <span style="font-weight:bold;"> LUCKY13</span> (CVE-2013-0169), experimental     <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
@@ -208,7 +210,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Final Score                  </span>84
 <span style="font-weight:bold;"> Overall Grade                </span><span style="color:#008817;font-weight:bold;">A+</span>
 
-<span style="color:white;background-color:black;"> Done 2025-10-05 06:27:11 [  83s] --&gt;&gt; 91.134.110.2:443 (anais.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Done 2025-10-12 06:23:09 [ 120s] --&gt;&gt; 91.134.110.2:443 (anais.beta.gouv.fr) &lt;&lt;--</span>
 
 
 </pre>
