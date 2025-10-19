@@ -1,8 +1,8 @@
 {
 	"@programName": "ZAP",
 	"@version": "2.16.1",
-	"@generated": "Sun, 12 Oct 2025 05:01:00",
-	"created": "2025-10-12T05:01:00.613942132Z",
+	"@generated": "Sun, 19 Oct 2025 05:09:53",
+	"created": "2025-10-19T05:09:53.375936565Z",
 	"site":[ 
 		{
 			"@name": "https://partaj.beta.gouv.fr",
@@ -235,7 +235,7 @@
 					"desc": "<p>HTTP Strict Transport Security (HSTS) is a web security policy mechanism whereby a web server declares that complying user agents (such as a web browser) are to interact with it using only secure HTTPS connections (i.e. HTTP layered over TLS/SSL). HSTS is an IETF standards track protocol and is specified in RFC 6797.</p>",
 					"instances":[ 
 						{
-							"id": "1",
+							"id": "0",
 							"uri": "https://partaj.beta.gouv.fr",
 							"method": "GET",
 							"param": "",
@@ -244,7 +244,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "25",
+							"id": "24",
 							"uri": "https://partaj.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -253,7 +253,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "24",
+							"id": "25",
 							"uri": "https://partaj.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
@@ -286,13 +286,13 @@
 							"method": "GET",
 							"param": "",
 							"attack": "",
-							"evidence": "fj9IEsGJn9uavVC8vssCb4dGHfOVBzzbwz0TIEqF7caYkZ1RWHTzZIEBolvbdC3n",
-							"otherinfo": "~?H\\x0012\uFFFD\uFFFD\uFFFD\u06DA\uFFFDP\uFFFD\uFFFD\uFFFD\\x0002o\uFFFDF\\x001d\uFFFD\\x0007<\uFFFD\uFFFD=\\x0013 J\uFFFD\uFFFD\u0198\uFFFD\uFFFDQXt\uFFFDd\uFFFD\\x0001\uFFFD[\uFFFDt-\uFFFD"
+							"evidence": "OCyPd3X9kCFGIhbNnbIsiTs4lupJRP7VrAtC8o69dlQ30YqTWesmlAwhGttU3A7I",
+							"otherinfo": "8,\uFFFDwu\uFFFD\uFFFD!F\"\\x0016\u035D\uFFFD,\uFFFD;8\uFFFD\uFFFDID\uFFFD\u056C\\x000bB\uFFFDvT7\u044A\uFFFDY\uFFFD&\uFFFD\\x000c!\\x001a\uFFFDT\uFFFD\\x000e\uFFFD"
 						}
 					],
 					"count": "1",
 					"solution": "<p>Manually confirm that the Base64 data does not leak sensitive information, and that the data cannot be aggregated/used to exploit other vulnerabilities.</p>",
-					"otherinfo": "<p>~?H\\x0012\uFFFD\uFFFD\uFFFD\u06DA\uFFFDP\uFFFD\uFFFD\uFFFD\\x0002o\uFFFDF\\x001d\uFFFD\\x0007<\uFFFD\uFFFD=\\x0013 J\uFFFD\uFFFD\u0198\uFFFD\uFFFDQXt\uFFFDd\uFFFD\\x0001\uFFFD[\uFFFDt-\uFFFD</p>",
+					"otherinfo": "<p>8,\uFFFDwu\uFFFD\uFFFD!F\"\\x0016\u035D\uFFFD,\uFFFD;8\uFFFD\uFFFDID\uFFFD\u056C\\x000bB\uFFFDvT7\u044A\uFFFDY\uFFFD&\uFFFD\\x000c!\\x001a\uFFFDT\uFFFD\\x000e\uFFFD</p>",
 					"reference": "<p>https://projects.webappsec.org/w/page/13246936/Information%20Leakage</p>",
 					"cweid": "319",
 					"wascid": "13",
@@ -327,6 +327,34 @@
 					"sourceid": "1"
 				},
 				{
+					"pluginid": "10015",
+					"alertRef": "10015",
+					"alert": "Re-examine Cache-control Directives",
+					"name": "Re-examine Cache-control Directives",
+					"riskcode": "0",
+					"confidence": "1",
+					"riskdesc": "Informational (Low)",
+					"desc": "<p>The cache-control header has not been set properly or is missing, allowing the browser and proxies to cache content. For static assets like css, js, or image files this might be intended, however, the resources should be reviewed to ensure that no sensitive content will be cached.</p>",
+					"instances":[ 
+						{
+							"id": "1",
+							"uri": "https://partaj.beta.gouv.fr",
+							"method": "GET",
+							"param": "cache-control",
+							"attack": "",
+							"evidence": "",
+							"otherinfo": ""
+						}
+					],
+					"count": "1",
+					"solution": "<p>For secure content, ensure the cache-control HTTP header is set with \"no-cache, no-store, must-revalidate\". If an asset should be cached consider setting the directives \"public, max-age, immutable\".</p>",
+					"otherinfo": "",
+					"reference": "<p>https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#web-content-caching</p><p>https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Cache-Control</p><p>https://grayduck.mn/2021/09/13/cache-control-recommendations/</p>",
+					"cweid": "525",
+					"wascid": "13",
+					"sourceid": "1"
+				},
+				{
 					"pluginid": "90005",
 					"alertRef": "90005-3",
 					"alert": "Sec-Fetch-Dest Header is Missing",
@@ -346,7 +374,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "33",
+							"id": "29",
 							"uri": "https://partaj.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -355,7 +383,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "29",
+							"id": "33",
 							"uri": "https://partaj.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Dest",
@@ -392,7 +420,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "32",
+							"id": "28",
 							"uri": "https://partaj.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -401,7 +429,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "27",
+							"id": "31",
 							"uri": "https://partaj.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Mode",
@@ -438,7 +466,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "28",
+							"id": "26",
 							"uri": "https://partaj.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -447,7 +475,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "26",
+							"id": "27",
 							"uri": "https://partaj.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-Site",
@@ -484,7 +512,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "34",
+							"id": "30",
 							"uri": "https://partaj.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -493,7 +521,7 @@
 							"otherinfo": ""
 						},
 						{
-							"id": "30",
+							"id": "34",
 							"uri": "https://partaj.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "Sec-Fetch-User",
@@ -558,7 +586,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "35",
+							"id": "32",
 							"uri": "https://partaj.beta.gouv.fr/robots.txt",
 							"method": "GET",
 							"param": "",
@@ -567,7 +595,7 @@
 							"otherinfo": "In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234."
 						},
 						{
-							"id": "31",
+							"id": "35",
 							"uri": "https://partaj.beta.gouv.fr/sitemap.xml",
 							"method": "GET",
 							"param": "",
