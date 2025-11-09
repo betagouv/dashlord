@@ -1,32 +1,25 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "F",
+    "grade": "D-",
     "error": null,
-    "score": 10,
+    "score": 25,
     "statusCode": 200,
     "testsFailed": 5,
     "testsPassed": 5,
     "testsQuantity": 10,
     "responseHeaders": {
-      "cache-control": "max-age=15",
-      "content-type": "text/html; charset=utf-8",
-      "date": "Sun, 19 Oct 2025 09:33:17 GMT",
-      "expires": "Sun, 19 Oct 2025 09:33:32 GMT",
-      "last-modified": "Fri, 26 Sep 2025 14:25:55 GMT",
-      "server-timing": "dtSInfo;desc=\"0\", dtRpid;desc=\"291377093\"",
-      "vary": "Accept-Encoding",
+      "content-language": "fr-FR",
+      "content-type": "text/html;charset=UTF-8",
+      "server-timing": "dtRpid;desc=\"-511494938\", dtSInfo;desc=\"0\"",
       "x-oneagent-js-injection": "true",
-      "x-robots-tag": "index, noarchive, nofollow, nosnippet",
-      "x-ruxit-js-agent": "true",
-      "x-vcap-request-id": "e14eb617-7ec3-4630-6e70-848915199693",
+      "x-vcap-request-id": "96e193b4-fb1b-49d5-46a3-2e39608729ac",
+      "vary": "Accept-Encoding",
+      "accept-ranges": "bytes",
       "connection": "close",
-      "x-content-type-options": "nosniff'",
-      "set-cookie": [
-        "BIGipServerPOOL_TAS_SDDC_HTTP=1687358218.20480.0000; path=/; Httponly; Secure;",
-        "TS016fc3b0=0150c672c3a9f7c0b5765d51861448789ec8a50792f1b5daab8d27633312ae13e0a20e8a4ade5859480d62378cd95c1d5432cd886f; Path=/; Domain=.candidat.francetravail.fr"
-      ],
-      "transfer-encoding": "chunked"
+      "date": "Sun, 09 Nov 2025 09:25:48 GMT",
+      "age": "33",
+      "content-length": "3203"
     }
   },
   "tests": {
@@ -43,17 +36,19 @@
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
-      "pass": false,
-      "result": "cookies-without-secure-flag",
-      "scoreModifier": -20,
+      "pass": true,
+      "result": "cookies-secure-with-httponly-sessions",
+      "scoreModifier": 0,
       "data": {
-        "TS016fc3b0": {
-          "domain": "candidat.francetravail.fr",
+        "JSESSIONID": {
+          "domain": "secours-hp.francetravail.fr",
+          "httponly": true,
           "path": "/",
-          "port": null
+          "port": null,
+          "secure": true
         },
-        "BIGipServerPOOL_TAS_SDDC_HTTP": {
-          "domain": "candidat.francetravail.fr",
+        "__VCAP_ID__": {
+          "domain": "secours-hp.francetravail.fr",
           "httponly": true,
           "path": "/",
           "port": null,
@@ -71,16 +66,14 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": true,
-      "result": "redirection-to-https",
-      "scoreModifier": 0,
-      "destination": "https://candidat.francetravail.fr/portail-simulateurs/",
+      "pass": false,
+      "result": "redirection-off-host-from-http",
+      "scoreModifier": -5,
+      "destination": "https://secours-hp.francetravail.fr/accueil/",
       "redirects": true,
       "route": [
         "http://candidat.pole-emploi.fr/simucalculreprise",
-        "https://candidat.pole-emploi.fr/simucalculreprise",
-        "https://candidat.francetravail.fr/simucalculreprise",
-        "https://candidat.francetravail.fr/portail-simulateurs/"
+        "https://secours-hp.francetravail.fr/accueil/"
       ],
       "statusCode": 200
     },
@@ -96,7 +89,7 @@
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
       "pass": false,
-      "result": "hsts-not-implemented",
+      "result": "hsts-invalid-cert",
       "scoreModifier": -20,
       "data": null,
       "includeSubDomains": false,
@@ -114,9 +107,9 @@
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
       "pass": false,
-      "result": "x-content-type-options-header-invalid",
+      "result": "x-content-type-options-not-implemented",
       "scoreModifier": -5,
-      "data": "nosniff'"
+      "data": null
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
