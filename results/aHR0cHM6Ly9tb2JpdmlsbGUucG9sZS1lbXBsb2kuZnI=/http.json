@@ -1,34 +1,25 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "C+",
+    "grade": "F",
     "error": null,
-    "score": 60,
+    "score": 10,
     "statusCode": 200,
-    "testsFailed": 4,
-    "testsPassed": 6,
+    "testsFailed": 5,
+    "testsPassed": 5,
     "testsQuantity": 10,
     "responseHeaders": {
-      "cache-control": "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0",
-      "content-type": "text/html",
-      "date": "Sun, 19 Oct 2025 09:43:25 GMT",
-      "last-modified": "Wed, 09 Apr 2025 14:27:17 GMT",
-      "referrer-policy": "no-referrer-when-downgrade",
-      "server-timing": "dtSInfo;desc=\"0\", dtRpid;desc=\"-2110528987\"",
-      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
-      "vary": "Accept-Encoding",
-      "x-content-type-options": "nosniff",
-      "x-frame-options": "DENY",
+      "content-language": "fr-FR",
+      "content-type": "text/html;charset=UTF-8",
+      "server-timing": "dtRpid;desc=\"1574667450\", dtSInfo;desc=\"0\"",
       "x-oneagent-js-injection": "true",
-      "x-ruxit-js-agent": "true",
-      "x-xss-protection": "1; mode=block",
+      "x-vcap-request-id": "c837f4a0-c1ac-4759-60a0-9fa5a8ff1388",
+      "vary": "Accept-Encoding",
+      "accept-ranges": "bytes",
       "connection": "close",
-      "set-cookie": [
-        "Path=/; HttpOnly; Secure",
-        "BIGipServerPOOL_Z2_PROD_MOP_HTTP=2023492362.20480.0000; path=/; Httponly; Secure;",
-        "TS016fc3b0=0150c672c35e5e69b4abff64fb21f505212083c1d3be990d3b0c43d2b22212a60a02bc184c5afb5eb924b7def3ce76d33f66316f45; Path=/; Domain=.candidat.francetravail.fr"
-      ],
-      "transfer-encoding": "chunked"
+      "date": "Sun, 09 Nov 2025 09:36:52 GMT",
+      "age": "95",
+      "content-length": "3201"
     }
   },
   "tests": {
@@ -45,28 +36,23 @@
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
-      "pass": false,
-      "result": "cookies-without-secure-flag-but-protected-by-hsts",
-      "scoreModifier": -5,
+      "pass": true,
+      "result": "cookies-secure-with-httponly-sessions",
+      "scoreModifier": 0,
       "data": {
-        "Path": {
-          "domain": "candidat.francetravail.fr",
-          "httponly": true,
-          "path": "/mobiville",
-          "port": null,
-          "secure": true
-        },
-        "BIGipServerPOOL_Z2_PROD_MOP_HTTP": {
-          "domain": "candidat.francetravail.fr",
+        "JSESSIONID": {
+          "domain": "secours-hp.francetravail.fr",
           "httponly": true,
           "path": "/",
           "port": null,
           "secure": true
         },
-        "TS016fc3b0": {
-          "domain": "candidat.francetravail.fr",
+        "__VCAP_ID__": {
+          "domain": "secours-hp.francetravail.fr",
+          "httponly": true,
           "path": "/",
-          "port": null
+          "port": null,
+          "secure": true
         }
       },
       "sameSite": false
@@ -80,72 +66,54 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": true,
-      "result": "redirection-to-https",
-      "scoreModifier": 0,
-      "destination": "https://candidat.francetravail.fr/mobiville/",
+      "pass": false,
+      "result": "redirection-invalid-cert",
+      "scoreModifier": -20,
+      "destination": "https://secours-hp.francetravail.fr/accueil/",
       "redirects": true,
-      "route": [
-        "http://mobiville.pole-emploi.fr/",
-        "https://mobiville.pole-emploi.fr/",
-        "https://candidat.pole-emploi.fr/mobiville/",
-        "https://candidat.francetravail.fr/mobiville/"
-      ],
+      "route": [],
       "statusCode": 200
     },
     "referrer-policy": {
       "expectation": "referrer-policy-private",
-      "pass": false,
-      "result": "referrer-policy-unsafe",
-      "scoreModifier": -5,
-      "data": "no-referrer-when-downgrade",
-      "http": true,
+      "pass": true,
+      "result": "referrer-policy-not-implemented",
+      "scoreModifier": 0,
+      "data": null,
+      "http": false,
       "meta": false
     },
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
-      "pass": true,
-      "result": "hsts-implemented-max-age-at-least-six-months",
-      "scoreModifier": 0,
-      "data": "max-age=31536000; includeSubDomains; preload",
-      "includeSubDomains": true,
-      "maxAge": 31536000,
-      "preload": true,
+      "pass": false,
+      "result": "hsts-invalid-cert",
+      "scoreModifier": -20,
+      "data": null,
+      "includeSubDomains": false,
+      "maxAge": null,
+      "preload": false,
       "preloaded": false
     },
     "subresource-integrity": {
       "expectation": "sri-implemented-and-external-scripts-loaded-securely",
-      "pass": false,
-      "result": "sri-not-implemented-but-external-scripts-loaded-securely",
-      "scoreModifier": -5,
-      "data": {
-        "https://cdn.francetravail.fr/webco/v1/pe-subnav.js": {
-          "crossorigin": null,
-          "integrity": null
-        },
-        "https://cdn.francetravail.fr/webco/v1/pe-breadcrumb.js": {
-          "crossorigin": null,
-          "integrity": null
-        },
-        "https://cdn.francetravail.fr/webco/v1/ft-autoloader.js": {
-          "crossorigin": null,
-          "integrity": null
-        }
-      }
+      "pass": true,
+      "result": "sri-not-implemented-but-all-scripts-loaded-from-secure-origin",
+      "scoreModifier": 0,
+      "data": {}
     },
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
-      "pass": true,
-      "result": "x-content-type-options-nosniff",
-      "scoreModifier": 0,
-      "data": "nosniff"
+      "pass": false,
+      "result": "x-content-type-options-not-implemented",
+      "scoreModifier": -5,
+      "data": null
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
-      "pass": true,
-      "result": "x-frame-options-sameorigin-or-deny",
-      "scoreModifier": 0,
-      "data": "DENY"
+      "pass": false,
+      "result": "x-frame-options-not-implemented",
+      "scoreModifier": -20,
+      "data": null
     },
     "cross-origin-resource-policy": {
       "expectation": "corp-implemented-with-same-site",
