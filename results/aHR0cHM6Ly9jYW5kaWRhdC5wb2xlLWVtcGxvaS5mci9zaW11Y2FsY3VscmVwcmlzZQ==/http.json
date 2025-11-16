@@ -1,25 +1,32 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "D-",
+    "grade": "F",
     "error": null,
-    "score": 25,
+    "score": 10,
     "statusCode": 200,
     "testsFailed": 5,
     "testsPassed": 5,
     "testsQuantity": 10,
     "responseHeaders": {
-      "content-language": "fr-FR",
-      "content-type": "text/html;charset=UTF-8",
-      "server-timing": "dtRpid;desc=\"-511494938\", dtSInfo;desc=\"0\"",
-      "x-oneagent-js-injection": "true",
-      "x-vcap-request-id": "96e193b4-fb1b-49d5-46a3-2e39608729ac",
+      "cache-control": "max-age=15",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Sun, 16 Nov 2025 09:26:33 GMT",
+      "expires": "Sun, 16 Nov 2025 09:26:48 GMT",
+      "last-modified": "Fri, 26 Sep 2025 14:25:55 GMT",
+      "server-timing": "dtSInfo;desc=\"0\", dtRpid;desc=\"1476781193\"",
       "vary": "Accept-Encoding",
-      "accept-ranges": "bytes",
+      "x-oneagent-js-injection": "true",
+      "x-robots-tag": "index, noarchive, nofollow, nosnippet",
+      "x-ruxit-js-agent": "true",
+      "x-vcap-request-id": "b32b9c8c-65e9-473c-5447-eace9ec10511",
       "connection": "close",
-      "date": "Sun, 09 Nov 2025 09:25:48 GMT",
-      "age": "33",
-      "content-length": "3203"
+      "x-content-type-options": "nosniff'",
+      "set-cookie": [
+        "BIGipServerPOOL_TAS_SDDC_HTTP=1754467082.20480.0000; path=/; Httponly; Secure;",
+        "TS016fc3b0=0150c672c3180d67a2261b052396835a3d12f1fa34a2705b4587b95f4bc20d2247140367654bc2d3caf64ed62316c5ddeec0b18082; Path=/; Domain=.candidat.francetravail.fr"
+      ],
+      "transfer-encoding": "chunked"
     }
   },
   "tests": {
@@ -36,19 +43,17 @@
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
-      "pass": true,
-      "result": "cookies-secure-with-httponly-sessions",
-      "scoreModifier": 0,
+      "pass": false,
+      "result": "cookies-without-secure-flag",
+      "scoreModifier": -20,
       "data": {
-        "JSESSIONID": {
-          "domain": "secours-hp.francetravail.fr",
-          "httponly": true,
+        "TS016fc3b0": {
+          "domain": "candidat.francetravail.fr",
           "path": "/",
-          "port": null,
-          "secure": true
+          "port": null
         },
-        "__VCAP_ID__": {
-          "domain": "secours-hp.francetravail.fr",
+        "BIGipServerPOOL_TAS_SDDC_HTTP": {
+          "domain": "candidat.francetravail.fr",
           "httponly": true,
           "path": "/",
           "port": null,
@@ -66,14 +71,16 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": false,
-      "result": "redirection-off-host-from-http",
-      "scoreModifier": -5,
-      "destination": "https://secours-hp.francetravail.fr/accueil/",
+      "pass": true,
+      "result": "redirection-to-https",
+      "scoreModifier": 0,
+      "destination": "https://candidat.francetravail.fr/portail-simulateurs/",
       "redirects": true,
       "route": [
         "http://candidat.pole-emploi.fr/simucalculreprise",
-        "https://secours-hp.francetravail.fr/accueil/"
+        "https://candidat.pole-emploi.fr/simucalculreprise",
+        "https://candidat.francetravail.fr/simucalculreprise",
+        "https://candidat.francetravail.fr/portail-simulateurs/"
       ],
       "statusCode": 200
     },
@@ -89,7 +96,7 @@
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
       "pass": false,
-      "result": "hsts-invalid-cert",
+      "result": "hsts-not-implemented",
       "scoreModifier": -20,
       "data": null,
       "includeSubDomains": false,
@@ -107,9 +114,9 @@
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
       "pass": false,
-      "result": "x-content-type-options-not-implemented",
+      "result": "x-content-type-options-header-invalid",
       "scoreModifier": -5,
-      "data": null
+      "data": "nosniff'"
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
