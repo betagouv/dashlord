@@ -1,25 +1,30 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "D-",
+    "grade": "F",
     "error": null,
-    "score": 25,
+    "score": 10,
     "statusCode": 200,
     "testsFailed": 5,
     "testsPassed": 5,
     "testsQuantity": 10,
     "responseHeaders": {
-      "content-language": "fr-FR",
-      "content-type": "text/html;charset=UTF-8",
-      "server-timing": "dtRpid;desc=\"-511494938\", dtSInfo;desc=\"0\"",
-      "x-oneagent-js-injection": "true",
-      "x-vcap-request-id": "96e193b4-fb1b-49d5-46a3-2e39608729ac",
+      "content-type": "text/html; charset=utf-8",
+      "date": "Sun, 16 Nov 2025 09:34:21 GMT",
+      "last-modified": "Thu, 02 Oct 2025 13:01:35 GMT",
+      "server-timing": "dtSInfo;desc=\"0\", dtRpid;desc=\"715027212\"",
       "vary": "Accept-Encoding",
-      "accept-ranges": "bytes",
+      "x-oneagent-js-injection": "true",
+      "x-robots-tag": "noindex, nofollow, nosnippet, noarchive",
+      "x-ruxit-js-agent": "true",
+      "x-vcap-request-id": "b5db4460-d703-4978-498e-d764b5321233",
       "connection": "close",
-      "date": "Sun, 09 Nov 2025 09:30:10 GMT",
-      "age": "295",
-      "content-length": "3203"
+      "x-content-type-options": "nosniff'",
+      "set-cookie": [
+        "BIGipServerPOOL_TAS_SDDC_HTTP=1720912650.20480.0000; path=/; Httponly; Secure;",
+        "TS016fc3b0=0150c672c318e73aa1aa8225c8e7817145f1dc43df28978cbef8c65427d940a2bd05da3ecf452279884ec138e615177bb3480f6356; Path=/; Domain=.candidat.francetravail.fr"
+      ],
+      "transfer-encoding": "chunked"
     }
   },
   "tests": {
@@ -36,23 +41,21 @@
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
-      "pass": true,
-      "result": "cookies-secure-with-httponly-sessions",
-      "scoreModifier": 0,
+      "pass": false,
+      "result": "cookies-without-secure-flag",
+      "scoreModifier": -20,
       "data": {
-        "JSESSIONID": {
-          "domain": "secours-hp.francetravail.fr",
+        "BIGipServerPOOL_TAS_SDDC_HTTP": {
+          "domain": "candidat.francetravail.fr",
           "httponly": true,
           "path": "/",
           "port": null,
           "secure": true
         },
-        "__VCAP_ID__": {
-          "domain": "secours-hp.francetravail.fr",
-          "httponly": true,
+        "TS016fc3b0": {
+          "domain": "candidat.francetravail.fr",
           "path": "/",
-          "port": null,
-          "secure": true
+          "port": null
         }
       },
       "sameSite": false
@@ -66,14 +69,15 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": false,
-      "result": "redirection-off-host-from-http",
-      "scoreModifier": -5,
-      "destination": "https://secours-hp.francetravail.fr/accueil/",
+      "pass": true,
+      "result": "redirection-to-https",
+      "scoreModifier": 0,
+      "destination": "https://candidat.francetravail.fr/simulation-ressources-formation",
       "redirects": true,
       "route": [
         "http://candidat.pole-emploi.fr/simulation-ressources-formation",
-        "https://secours-hp.francetravail.fr/accueil/"
+        "https://candidat.pole-emploi.fr/simulation-ressources-formation",
+        "https://candidat.francetravail.fr/simulation-ressources-formation"
       ],
       "statusCode": 200
     },
@@ -89,7 +93,7 @@
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
       "pass": false,
-      "result": "hsts-invalid-cert",
+      "result": "hsts-not-implemented",
       "scoreModifier": -20,
       "data": null,
       "includeSubDomains": false,
@@ -107,9 +111,9 @@
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
       "pass": false,
-      "result": "x-content-type-options-not-implemented",
+      "result": "x-content-type-options-header-invalid",
       "scoreModifier": -5,
-      "data": null
+      "data": "nosniff'"
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
