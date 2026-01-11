@@ -1,24 +1,31 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "B",
+    "grade": "D-",
     "error": null,
-    "score": 75,
+    "score": 25,
     "statusCode": 200,
-    "testsFailed": 1,
-    "testsPassed": 9,
+    "testsFailed": 2,
+    "testsPassed": 8,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 23 Nov 2025 12:32:56 GMT",
-      "content-type": "text/html",
+      "date": "Sun, 11 Jan 2026 12:47:25 GMT",
+      "content-type": "text/html; charset=UTF-8",
       "transfer-encoding": "chunked",
       "connection": "close",
-      "referrer-policy": "no-referrer",
-      "cache-control": "no-cache",
-      "strict-transport-security": "max-age=63072000",
-      "x-frame-options": "DENY",
+      "x-request-id": "c9094ebd-c5e0-4476-aa11-8eb0ba8d6444",
+      "vary": "Accept-Encoding, Cookie",
+      "cache-control": "max-age=1728000, public",
+      "x-drupal-dynamic-cache": "MISS",
+      "content-language": "fr",
       "x-content-type-options": "nosniff",
-      "x-xss-protection": "1; mode=block"
+      "x-frame-options": "SAMEORIGIN",
+      "expires": "Sun, 19 Nov 1978 05:00:00 GMT",
+      "last-modified": "Fri, 09 Jan 2026 17:12:09 GMT",
+      "etag": "W/\"1767978729\"",
+      "x-generator": "Drupal 11 (https://www.drupal.org)",
+      "x-drupal-cache": "HIT",
+      "strict-transport-security": "max-age=31536000"
     }
   },
   "tests": {
@@ -64,10 +71,10 @@
     "referrer-policy": {
       "expectation": "referrer-policy-private",
       "pass": true,
-      "result": "referrer-policy-private",
-      "scoreModifier": 5,
-      "data": "no-referrer",
-      "http": true,
+      "result": "referrer-policy-not-implemented",
+      "scoreModifier": 0,
+      "data": null,
+      "http": false,
       "meta": false
     },
     "strict-transport-security": {
@@ -75,18 +82,23 @@
       "pass": true,
       "result": "hsts-implemented-max-age-at-least-six-months",
       "scoreModifier": 0,
-      "data": "max-age=63072000",
+      "data": "max-age=31536000",
       "includeSubDomains": false,
-      "maxAge": 63072000,
+      "maxAge": 31536000,
       "preload": false,
       "preloaded": false
     },
     "subresource-integrity": {
       "expectation": "sri-implemented-and-external-scripts-loaded-securely",
-      "pass": true,
-      "result": "sri-not-implemented-but-all-scripts-loaded-from-secure-origin",
-      "scoreModifier": 0,
-      "data": {}
+      "pass": false,
+      "result": "sri-not-implemented-and-external-scripts-not-loaded-securely",
+      "scoreModifier": -50,
+      "data": {
+        "//cdn.jsdelivr.net/npm/tarteaucitronjs@1.10.0/tarteaucitron.min.js": {
+          "crossorigin": null,
+          "integrity": null
+        }
+      }
     },
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
@@ -100,7 +112,7 @@
       "pass": true,
       "result": "x-frame-options-sameorigin-or-deny",
       "scoreModifier": 0,
-      "data": "DENY"
+      "data": "SAMEORIGIN"
     },
     "cross-origin-resource-policy": {
       "expectation": "corp-implemented-with-same-site",
