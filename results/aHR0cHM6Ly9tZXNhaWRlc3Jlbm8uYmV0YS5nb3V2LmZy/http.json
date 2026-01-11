@@ -1,24 +1,32 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "C",
+    "grade": "D+",
     "error": null,
-    "score": 50,
+    "score": 40,
     "statusCode": 200,
-    "testsFailed": 3,
-    "testsPassed": 7,
+    "testsFailed": 5,
+    "testsPassed": 5,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 23 Nov 2025 12:04:40 GMT",
-      "content-type": "text/html; charset=utf-8",
-      "transfer-encoding": "chunked",
-      "connection": "close",
-      "x-request-id": "eb47249a-85be-4d78-9648-eda21c151511",
       "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
       "link": "</_next/static/media/21121b35b3f73ab2-s.p.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/23c9e5fb3281b3bd-s.p.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/38d7e532303165ab-s.p.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/4b521e8198f4604a-s.p.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/6d8d8dfacab5a192-s.p.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/d8d156f058e97361-s.p.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </logo-service-de-FR.svg>; rel=preload; as=\"image\", </logo.svg>; rel=preload; as=\"image\", </logo-france-renov-blanc.svg>; rel=preload; as=\"image\", </logo-partenaire/logo-ademe.svg>; rel=preload; as=\"image\", </logo-partenaire/logo-nos-gestes-climat.png>; rel=preload; as=\"image\", </logo-partenaire/logo-jagis.svg>; rel=preload; as=\"image\", </logo-partenaire/logo-zero-logement-vacant.svg>; rel=preload; as=\"image\", </logo-partenaire/logo-fcu.jpg>; rel=preload; as=\"image\", </illuPlusValue.png>; rel=preload; as=\"image\"",
       "x-powered-by": "Next.js",
       "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
-      "strict-transport-security": "max-age=31536000"
+      "content-type": "text/html; charset=utf-8",
+      "server-timing": "dtSInfo;desc=\"0\", dtRpid;desc=\"1472342948\"",
+      "set-cookie": [
+        "dtCookie=v_4_srv_1_sn_A1758778799D4CBDE083BF2EE021BA1C_perc_100000_ol_0_mul_1_app-3A3c72f5e53b5a9b9c_1_rcs-3Acss_0; Path=/; Domain=.france-renov.gouv.fr"
+      ],
+      "x-oneagent-js-injection": "true",
+      "x-ruxit-js-agent": "true",
+      "transfer-encoding": "chunked",
+      "date": "Sun, 11 Jan 2026 12:18:51 GMT",
+      "strict-transport-security": "max-age=16000000;includeSubDomains;",
+      "x-content-type-options": "nosniff",
+      "referrer-policy": "no-referrer-when-downgrade",
+      "x-xss-protection": "1 ;mode=block",
+      "connection": "close"
     }
   },
   "tests": {
@@ -35,10 +43,16 @@
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
-      "pass": true,
-      "result": "cookies-not-found",
-      "scoreModifier": 0,
-      "data": null,
+      "pass": false,
+      "result": "cookies-without-secure-flag-but-protected-by-hsts",
+      "scoreModifier": -5,
+      "data": {
+        "dtCookie": {
+          "domain": "france-renov.gouv.fr",
+          "path": "/",
+          "port": null
+        }
+      },
       "sameSite": false
     },
     "cross-origin-resource-sharing": {
@@ -50,24 +64,24 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": true,
-      "result": "redirection-to-https",
-      "scoreModifier": 0,
-      "destination": "https://mesaidesreno.beta.gouv.fr/",
+      "pass": false,
+      "result": "redirection-off-host-from-http",
+      "scoreModifier": -5,
+      "destination": "https://mesaides.france-renov.gouv.fr/",
       "redirects": true,
       "route": [
         "http://mesaidesreno.beta.gouv.fr/",
-        "https://mesaidesreno.beta.gouv.fr/"
+        "https://mesaides.france-renov.gouv.fr/"
       ],
       "statusCode": 200
     },
     "referrer-policy": {
       "expectation": "referrer-policy-private",
-      "pass": true,
-      "result": "referrer-policy-not-implemented",
-      "scoreModifier": 0,
-      "data": null,
-      "http": false,
+      "pass": false,
+      "result": "referrer-policy-unsafe",
+      "scoreModifier": -5,
+      "data": "no-referrer-when-downgrade",
+      "http": true,
       "meta": false
     },
     "strict-transport-security": {
@@ -75,9 +89,9 @@
       "pass": true,
       "result": "hsts-implemented-max-age-at-least-six-months",
       "scoreModifier": 0,
-      "data": "max-age=31536000",
-      "includeSubDomains": false,
-      "maxAge": 31536000,
+      "data": "max-age=16000000;includeSubDomains;",
+      "includeSubDomains": true,
+      "maxAge": 16000000,
       "preload": false,
       "preloaded": false
     },
@@ -90,10 +104,10 @@
     },
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
-      "pass": false,
-      "result": "x-content-type-options-not-implemented",
-      "scoreModifier": -5,
-      "data": null
+      "pass": true,
+      "result": "x-content-type-options-nosniff",
+      "scoreModifier": 0,
+      "data": "nosniff"
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
