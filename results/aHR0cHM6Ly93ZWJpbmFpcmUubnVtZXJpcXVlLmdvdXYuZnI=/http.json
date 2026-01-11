@@ -1,20 +1,23 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "B",
+    "grade": "B-",
     "error": null,
-    "score": 75,
+    "score": 65,
     "statusCode": 200,
-    "testsFailed": 1,
-    "testsPassed": 9,
+    "testsFailed": 2,
+    "testsPassed": 8,
     "testsQuantity": 10,
     "responseHeaders": {
       "server": "nginx",
-      "date": "Sun, 23 Nov 2025 05:52:42 GMT",
+      "date": "Sun, 11 Jan 2026 05:53:34 GMT",
       "content-type": "text/html; charset=utf-8",
       "transfer-encoding": "chunked",
       "connection": "close",
       "vary": "Cookie",
+      "set-cookie": [
+        "session=eyJjc3JmX3Rva2VuIjoiYzQ4MjVhOTM4MzM4OTI1MDY1MzQyZDIwMGM2ZGI0OGY2NmZhNDYwYyJ9.aWM63g.tuQEEIBUvOzOWcou5_D45jSPfRM; HttpOnly; Path=/"
+      ],
       "strict-transport-security": "max-age=15552000;preload",
       "x-content-type-options": "nosniff",
       "x-frame-options": "SAMEORIGIN",
@@ -38,10 +41,17 @@
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
-      "pass": true,
-      "result": "cookies-not-found",
-      "scoreModifier": 0,
-      "data": null,
+      "pass": false,
+      "result": "cookies-session-without-secure-flag-but-protected-by-hsts",
+      "scoreModifier": -10,
+      "data": {
+        "session": {
+          "domain": "webinaire.numerique.gouv.fr",
+          "httponly": true,
+          "path": "/",
+          "port": null
+        }
+      },
       "sameSite": false
     },
     "cross-origin-resource-sharing": {
