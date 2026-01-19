@@ -1,26 +1,27 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "F",
+    "grade": "C-",
     "error": null,
-    "score": 0,
+    "score": 45,
     "statusCode": 200,
-    "testsFailed": 6,
-    "testsPassed": 4,
+    "testsFailed": 4,
+    "testsPassed": 6,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 11 Jan 2026 12:37:11 GMT",
+      "date": "Mon, 19 Jan 2026 00:56:11 GMT",
       "content-type": "text/html; charset=utf-8",
       "transfer-encoding": "chunked",
       "connection": "close",
-      "x-request-id": "597738a9-19ba-4f4e-8112-37d31a1f9e77",
+      "x-request-id": "a7cfc474-e97e-49ec-a94e-cdf5e97a5194",
       "set-cookie": [
-        "NEXT_LOCALE=fr; Path=/; Expires=Mon, 11 Jan 2027 12:37:11 GMT; Max-Age=31536000"
+        "NEXT_LOCALE=fr; Path=/; Expires=Tue, 19 Jan 2027 00:56:11 GMT; Max-Age=31536000"
       ],
       "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
-      "link": "</>; rel=preconnect; crossorigin=\"\", </_next/static/chunks/2227755a161806c1.css>; rel=preload; as=\"style\", </_next/static/chunks/223ff82cf098462d.css>; rel=preload; as=\"style\"",
+      "link": "</>; rel=preconnect; crossorigin=\"\", </_next/static/chunks/2227755a161806c1.css>; rel=preload; as=\"style\", </_next/static/chunks/00bfd4b0a48db4c1.css>; rel=preload; as=\"style\"",
       "x-powered-by": "Next.js",
-      "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate"
+      "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate",
+      "strict-transport-security": "max-age=31536000"
     }
   },
   "tests": {
@@ -38,12 +39,12 @@
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
       "pass": false,
-      "result": "cookies-without-secure-flag",
-      "scoreModifier": -20,
+      "result": "cookies-without-secure-flag-but-protected-by-hsts",
+      "scoreModifier": -5,
       "data": {
         "NEXT_LOCALE": {
           "domain": "monlogementetudiant.beta.gouv.fr",
-          "expires": "2027-01-11T12:37:11.000Z",
+          "expires": "2027-01-19T00:56:11.000Z",
           "max-age": 31536000,
           "path": "/",
           "port": null
@@ -60,13 +61,14 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": false,
-      "result": "redirection-missing",
-      "scoreModifier": -20,
-      "destination": "http://monlogementetudiant.beta.gouv.fr/",
-      "redirects": false,
+      "pass": true,
+      "result": "redirection-to-https",
+      "scoreModifier": 0,
+      "destination": "https://monlogementetudiant.beta.gouv.fr/",
+      "redirects": true,
       "route": [
-        "http://monlogementetudiant.beta.gouv.fr/"
+        "http://monlogementetudiant.beta.gouv.fr/",
+        "https://monlogementetudiant.beta.gouv.fr/"
       ],
       "statusCode": 200
     },
@@ -81,12 +83,12 @@
     },
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
-      "pass": false,
-      "result": "hsts-not-implemented",
-      "scoreModifier": -20,
-      "data": null,
+      "pass": true,
+      "result": "hsts-implemented-max-age-at-least-six-months",
+      "scoreModifier": 0,
+      "data": "max-age=31536000",
       "includeSubDomains": false,
-      "maxAge": null,
+      "maxAge": 31536000,
       "preload": false,
       "preloaded": false
     },
