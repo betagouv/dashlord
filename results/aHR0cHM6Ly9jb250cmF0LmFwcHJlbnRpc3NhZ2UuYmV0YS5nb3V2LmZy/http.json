@@ -9,21 +9,21 @@
     "testsPassed": 7,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 18 Jan 2026 15:02:13 GMT",
+      "date": "Sun, 25 Jan 2026 03:02:58 GMT",
       "content-type": "text/html;charset=UTF-8",
       "connection": "close",
       "vary": "Accept-Encoding",
       "cache-control": "max-age=0, s-maxage=28800, public",
-      "expires": "Sun, 18 Jan 2026 10:12:10 GMT",
+      "expires": "Sun, 25 Jan 2026 01:59:12 GMT",
       "x-content-type-options": "nosniff",
-      "x-xss-protection": "0",
+      "x-xss-protection": "1; mode=block",
       "x-frame-options": "SAMEORIGIN",
-      "content-language": "fr-FR",
-      "age": "17402",
+      "content-language": "fr",
+      "age": "3826",
       "set-cookie": [
-        "SP_SESSION=YWMwYjM0YzgtNGY2Zi00MjcxLWI2NzktYjA0N2ZhMzI2Y2Uy; Domain=service-public.gouv.fr; Path=/; Secure; HttpOnly; SameSite=Lax",
-        "TS01ad993f=012a7f58e0b57ec773124b600cd2436e8e1875c44299e483ceb0b37cc02cb152717cfab8639b0c027c4a578cbde29b4d9295ba236f; Path=/; Secure; HttpOnly",
-        "TS015ce0c6=012a7f58e0ccec24a5ac9b67463f3c20eae32a20f199e483ceb0b37cc02cb152717cfab863c633fb34411a3226f6021036a82b2972ff761dccfc5ddaaa18ee92e4dd089836; path=/; domain=service-public.gouv.fr; HttpOnly; Secure"
+        "SP_SESSION=Mjg4ZjhkYTAtYTBkOC00MDI5LWFhZTUtYzlkZmY3ZjdlMzEy; Domain=service-public.gouv.fr; Path=/; Secure; HttpOnly; SameSite=Lax",
+        "TS01ad993f=012a7f58e029cd7819deb593ba21992a32299dd7448811c6546db6a3f83d574c084e889793e82bbf6f60d730f863bb0797f8729242; Path=/; Secure; HttpOnly",
+        "TS015ce0c6=012a7f58e0643cf56841e718abe1b56ae61f0dbd928811c6546db6a3f83d574c084e889793cd3914c15d5c43592223556c157605e2f54acfff0784475ee6accd9e6fd90019; path=/; domain=service-public.gouv.fr; HttpOnly; Secure"
       ],
       "access-control-allow-origin": "https://lannuaire.service-public.gouv.fr",
       "access-control-allow-headers": "Origin, X-Requested-With, Content-Type, Accept, Authorization,  x-csrf-token",
@@ -35,7 +35,7 @@
       "cross-origin-opener-policy": "same-origin-allow-popups",
       "cross-origin-resource-policy": "cross-origin",
       "cross-origin-embedder-policy": "unsafe-none",
-      "content-security-policy": "frame-ancestors 'self' https://www.service-public.fr https://entreprendre.service-public.fr",
+      "content-security-policy": "default-src 'self' *.service-public.fr *.gouv.fr; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.abtasty.com https://policevss.minint.chat https://gendarmerie-nationale.minint.chat *.gouv.fr *.service-public.fr; connect-src 'self' *.abtasty.com *.service-public.fr *.gouv.fr *.readspeaker.com; img-src 'self' data: *.service-public.fr *.gouv.fr; font-src 'self' data: *.service-public.fr *.gouv.fr; style-src 'self' 'unsafe-inline' *.service-public.fr *.gouv.fr; object-src 'none'; frame-src *.gouv.fr *.service-public.fr https://gendarmerie-nationale.minint.chat https://policevss.minint.chat https://dggn.my.site.com https://www.youtube.com https://www.dailymotion.com https://vimeo.com https://www.youtube-nocookie.com *.readspeaker.com; frame-ancestors 'self' https://www.service-public.gouv.fr https://entreprendre.service-public.gouv.fr",
       "transfer-encoding": "chunked"
     }
   },
@@ -46,10 +46,65 @@
       "result": "csp-implemented-with-unsafe-inline",
       "scoreModifier": -20,
       "data": {
+        "default-src": [
+          "'self'",
+          "*.gouv.fr",
+          "*.service-public.fr"
+        ],
+        "script-src": [
+          "'self'",
+          "'unsafe-eval'",
+          "'unsafe-inline'",
+          "*.abtasty.com",
+          "*.gouv.fr",
+          "*.service-public.fr",
+          "https://gendarmerie-nationale.minint.chat",
+          "https://policevss.minint.chat"
+        ],
+        "connect-src": [
+          "'self'",
+          "*.abtasty.com",
+          "*.gouv.fr",
+          "*.readspeaker.com",
+          "*.service-public.fr"
+        ],
+        "img-src": [
+          "'self'",
+          "*.gouv.fr",
+          "*.service-public.fr",
+          "data:"
+        ],
+        "font-src": [
+          "'self'",
+          "*.gouv.fr",
+          "*.service-public.fr",
+          "data:"
+        ],
+        "style-src": [
+          "'self'",
+          "'unsafe-inline'",
+          "*.gouv.fr",
+          "*.service-public.fr"
+        ],
+        "object-src": [
+          "'none'"
+        ],
+        "frame-src": [
+          "*.gouv.fr",
+          "*.readspeaker.com",
+          "*.service-public.fr",
+          "https://dggn.my.site.com",
+          "https://gendarmerie-nationale.minint.chat",
+          "https://policevss.minint.chat",
+          "https://vimeo.com",
+          "https://www.dailymotion.com",
+          "https://www.youtube-nocookie.com",
+          "https://www.youtube.com"
+        ],
         "frame-ancestors": [
           "'self'",
-          "https://entreprendre.service-public.fr",
-          "https://www.service-public.fr"
+          "https://entreprendre.service-public.gouv.fr",
+          "https://www.service-public.gouv.fr"
         ]
       },
       "http": true,
@@ -62,10 +117,10 @@
         "insecureSchemeActive": false,
         "insecureSchemePassive": false,
         "strictDynamic": false,
-        "unsafeEval": false,
+        "unsafeEval": true,
         "unsafeInline": true,
         "unsafeInlineStyle": true,
-        "unsafeObjects": true
+        "unsafeObjects": false
       },
       "numPolicies": 1
     },
@@ -150,39 +205,39 @@
           "crossorigin": null,
           "integrity": null
         },
-        "https://www.service-public.gouv.fr/resources/v-1651b31105/assets/js/readspeaker/webReader.js?pids=wr&notools=1": {
+        "https://www.service-public.gouv.fr/resources/v-62b9215d3c/assets/js/readspeaker/webReader.js?pids=wr&notools=1": {
           "crossorigin": "anonymous",
           "integrity": "sha384-lzKF3q93rwr6Dkx85dTWD73+IApvfO/ZfAeThrWcxQW6VdVUlHXEEv3kVyK04oYp"
         },
-        "https://www.service-public.gouv.fr/resources/v-1651b31105/assets/dsfr-1.14/dist/dsfr.module.min.js": {
+        "https://www.service-public.gouv.fr/resources/v-62b9215d3c/assets/dsfr-1.14/dist/dsfr.module.min.js": {
           "crossorigin": null,
           "integrity": null
         },
-        "https://www.service-public.gouv.fr/resources/v-1651b31105/assets/dsfr-1.14/dist/dsfr.nomodule.min.js": {
+        "https://www.service-public.gouv.fr/resources/v-62b9215d3c/assets/dsfr-1.14/dist/dsfr.nomodule.min.js": {
           "crossorigin": null,
           "integrity": null
         },
-        "https://www.service-public.gouv.fr/resources/v-1651b31105/assets/dsfr-1.14/dist/analytics/analytics.module.min.js": {
+        "https://www.service-public.gouv.fr/resources/v-62b9215d3c/assets/dsfr-1.14/dist/analytics/analytics.module.min.js": {
           "crossorigin": null,
           "integrity": null
         },
-        "https://www.service-public.gouv.fr/resources/v-1651b31105/assets/dsfr-1.14/dist/analytics/analytics.nomodule.min.js": {
+        "https://www.service-public.gouv.fr/resources/v-62b9215d3c/assets/dsfr-1.14/dist/analytics/analytics.nomodule.min.js": {
           "crossorigin": null,
           "integrity": null
         },
-        "https://www.service-public.gouv.fr/resources/v-1651b31105/assets/js/require.js": {
+        "https://www.service-public.gouv.fr/resources/v-62b9215d3c/assets/js/require.js": {
           "crossorigin": null,
           "integrity": null
         },
-        "https://www.service-public.gouv.fr/resources/v-1651b31105/assets/js/common.js": {
+        "https://www.service-public.gouv.fr/resources/v-62b9215d3c/assets/js/common.js": {
           "crossorigin": null,
           "integrity": null
         },
-        "https://www.service-public.gouv.fr/resources/v-1651b31105/assets/dsfr-1.14/js/configRgpdPart.js": {
+        "https://www.service-public.gouv.fr/resources/v-62b9215d3c/assets/dsfr-1.14/js/configRgpdPart.js": {
           "crossorigin": null,
           "integrity": null
         },
-        "https://www.service-public.gouv.fr/resources/v-1651b31105/assets/js/coperia.js": {
+        "https://www.service-public.gouv.fr/resources/v-62b9215d3c/assets/js/coperia.js": {
           "crossorigin": null,
           "integrity": null
         }
