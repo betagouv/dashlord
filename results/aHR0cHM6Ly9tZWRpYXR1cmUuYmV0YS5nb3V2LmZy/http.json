@@ -1,23 +1,20 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "B",
+    "grade": "A+",
     "error": null,
-    "score": 75,
+    "score": 105,
     "statusCode": 200,
-    "testsFailed": 2,
-    "testsPassed": 8,
+    "testsFailed": 1,
+    "testsPassed": 9,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 25 Jan 2026 04:24:22 GMT",
+      "date": "Sun, 01 Feb 2026 05:02:10 GMT",
       "content-type": "text/html; charset=utf-8",
       "transfer-encoding": "chunked",
       "connection": "close",
-      "x-request-id": "dccb4305-abf6-40d7-9f7a-e0af23c1c6e3",
-      "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'self' 'unsafe-inline' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' https://api-adresse.data.gouv.fr/ wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://client.crisp.chat/settings/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/;style-src 'self' https: 'unsafe-inline' https://client.crisp.chat/;upgrade-insecure-requests",
-      "cross-origin-embedder-policy": "require-corp",
-      "cross-origin-opener-policy": "same-origin",
-      "cross-origin-resource-policy": "same-origin",
+      "x-request-id": "95339b66-9ff6-4222-9612-37ddf5dc576f",
+      "content-security-policy": "default-src 'self';base-uri 'self';font-src 'self' https: data: https://client.crisp.chat/static/;form-action 'self';frame-ancestors 'self';img-src 'self' data: https://*.crisp.chat/;object-src 'none';script-src 'nonce-OWVlMmI4ZTUtZmM1ZC00YzQ1LTk3ODMtOWY0YWQxNzc5MTcx' 'self' https://client.crisp.chat/;script-src-attr 'none';connect-src 'self' wss://client.relay.crisp.chat/ https://client.crisp.chat/static/ https://client.crisp.chat/settings/ https://storage.crisp.chat/users/upload/ https://sentry.incubateur.net/ https://api-adresse.data.gouv.fr/;worker-src 'self' blob:;style-src 'self' https: https://client.crisp.chat/;style-src-elem 'unsafe-inline' 'self' https: https://client.crisp.chat/;style-src-attr 'self' 'unsafe-inline';upgrade-insecure-requests",
       "origin-agent-cluster": "?1",
       "referrer-policy": "no-referrer",
       "strict-transport-security": "max-age=15552000; includeSubDomains",
@@ -25,20 +22,19 @@
       "x-dns-prefetch-control": "off",
       "x-download-options": "noopen",
       "x-frame-options": "SAMEORIGIN",
+      "x-nonce": "OWVlMmI4ZTUtZmM1ZC00YzQ1LTk3ODMtOWY0YWQxNzc5MTcx",
       "x-permitted-cross-domain-policies": "none",
       "x-xss-protection": "0",
-      "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url, Accept-Encoding",
-      "x-nextjs-cache": "HIT",
-      "cache-control": "s-maxage=31536000, stale-while-revalidate",
-      "etag": "\"krv25p2ylxhmr\""
+      "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Accept-Encoding",
+      "cache-control": "private, no-cache, no-store, max-age=0, must-revalidate"
     }
   },
   "tests": {
     "content-security-policy": {
       "expectation": "csp-implemented-with-no-unsafe",
-      "pass": false,
-      "result": "csp-implemented-with-unsafe-inline",
-      "scoreModifier": -20,
+      "pass": true,
+      "result": "csp-implemented-with-unsafe-inline-in-style-src-only",
+      "scoreModifier": 0,
       "data": {
         "default-src": [
           "'self'"
@@ -66,8 +62,8 @@
           "'none'"
         ],
         "script-src": [
+          "'nonce-owvlmmi4ztutzmm1zc00yzq1ltk3odmtowy0ywqxnzc5mtcx'",
           "'self'",
-          "'unsafe-inline'",
           "https://client.crisp.chat/"
         ],
         "script-src-attr": [
@@ -82,10 +78,22 @@
           "https://storage.crisp.chat/users/upload/",
           "wss://client.relay.crisp.chat/"
         ],
+        "worker-src": [
+          "'self'",
+          "blob:"
+        ],
         "style-src": [
+          "'self'",
+          "https:"
+        ],
+        "style-src-elem": [
           "'self'",
           "'unsafe-inline'",
           "https:"
+        ],
+        "style-src-attr": [
+          "'self'",
+          "'unsafe-inline'"
         ],
         "upgrade-insecure-requests": [
           "'none'"
@@ -102,7 +110,7 @@
         "insecureSchemePassive": false,
         "strictDynamic": false,
         "unsafeEval": false,
-        "unsafeInline": true,
+        "unsafeInline": false,
         "unsafeInlineStyle": true,
         "unsafeObjects": false
       },
@@ -180,10 +188,10 @@
     "cross-origin-resource-policy": {
       "expectation": "corp-implemented-with-same-site",
       "pass": true,
-      "result": "corp-implemented-with-same-origin",
-      "scoreModifier": 10,
-      "data": "same-origin",
-      "http": true,
+      "result": "corp-not-implemented",
+      "scoreModifier": 0,
+      "data": null,
+      "http": false,
       "meta": false
     }
   }
