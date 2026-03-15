@@ -1,38 +1,27 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "B+",
+    "grade": "C+",
     "error": null,
-    "score": 80,
+    "score": 60,
     "statusCode": 200,
-    "testsFailed": 1,
-    "testsPassed": 9,
+    "testsFailed": 2,
+    "testsPassed": 8,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 08 Mar 2026 12:54:24 GMT",
-      "content-type": "text/html; charset=utf-8",
+      "server": "openresty",
+      "date": "Sun, 15 Mar 2026 13:20:41 GMT",
+      "content-type": "text/html",
       "transfer-encoding": "chunked",
       "connection": "close",
-      "vary": "rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch, Accept-Encoding",
-      "x-nextjs-cache": "HIT",
-      "x-nextjs-prerender": "1, 1",
-      "x-nextjs-stale-time": "300",
-      "x-powered-by": "Next.js",
-      "cache-control": "s-maxage=31536000",
-      "etag": "\"16q3vc2yfwk1mcn\"",
-      "strict-transport-security": "max-age=31536000; includeSubDomains",
-      "content-security-policy": "default-src 'self' https://img.notionusercontent.com/ https://www.notion.so/ https://plausible.io/ https://openmaptiles.github.io/ https://*.inserjeunes.beta.gouv.fr/ https://*.beta.gouv.fr/ https://*.data.gouv.fr/ https://data.geopf.fr/ https://*.lrkt-in.com/ https://*.inserjeunes.incubateur.net/ 'unsafe-inline' data: blob:;",
-      "referrer-policy": "strict-origin-when-cross-origin",
-      "x-content-type-options": "nosniff",
-      "x-environment": "production",
-      "x-frame-options": "SAMEORIGIN",
-      "x-robots-tag": "all",
+      "last-modified": "Thu, 12 Mar 2026 08:42:39 GMT",
+      "etag": "W/\"69b27c7f-212f\"",
+      "strict-transport-security": "max-age=31536000;includeSubdomains",
       "x-xss-protection": "1; mode=block",
-      "access-control-allow-origin": "*",
-      "access-control-allow-credentials": "true",
-      "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "access-control-allow-headers": "DNT,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Range,Authorization",
-      "access-control-max-age": "1728000"
+      "x-content-type-options": "nosniff",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "content-security-policy": "upgrade-insecure-requests;",
+      "x-ua-compatible": "IE=edge"
     }
   },
   "tests": {
@@ -42,21 +31,8 @@
       "result": "csp-implemented-with-unsafe-inline",
       "scoreModifier": -20,
       "data": {
-        "default-src": [
-          "'self'",
-          "'unsafe-inline'",
-          "blob:",
-          "data:",
-          "https://*.beta.gouv.fr/",
-          "https://*.data.gouv.fr/",
-          "https://*.inserjeunes.beta.gouv.fr/",
-          "https://*.inserjeunes.incubateur.net/",
-          "https://*.lrkt-in.com/",
-          "https://data.geopf.fr/",
-          "https://img.notionusercontent.com/",
-          "https://openmaptiles.github.io/",
-          "https://plausible.io/",
-          "https://www.notion.so/"
+        "upgrade-insecure-requests": [
+          "'none'"
         ]
       },
       "http": true,
@@ -72,7 +48,7 @@
         "unsafeEval": false,
         "unsafeInline": true,
         "unsafeInlineStyle": true,
-        "unsafeObjects": false
+        "unsafeObjects": true
       },
       "numPolicies": 1
     },
@@ -87,20 +63,21 @@
     "cross-origin-resource-sharing": {
       "expectation": "cross-origin-resource-sharing-not-implemented",
       "pass": true,
-      "result": "cross-origin-resource-sharing-implemented-with-public-access",
+      "result": "cross-origin-resource-sharing-not-implemented",
       "scoreModifier": 0,
-      "data": "*"
+      "data": null
     },
     "redirection": {
       "expectation": "redirection-to-https",
       "pass": true,
       "result": "redirection-to-https",
       "scoreModifier": 0,
-      "destination": "https://futurpro.inserjeunes.beta.gouv.fr/",
+      "destination": "https://data.education.gouv.fr/futur-pro/",
       "redirects": true,
       "route": [
         "http://futurpro.inserjeunes.beta.gouv.fr/",
-        "https://futurpro.inserjeunes.beta.gouv.fr/"
+        "https://futurpro.inserjeunes.beta.gouv.fr/",
+        "https://data.education.gouv.fr/futur-pro/"
       ],
       "statusCode": 200
     },
@@ -118,7 +95,7 @@
       "pass": true,
       "result": "hsts-implemented-max-age-at-least-six-months",
       "scoreModifier": 0,
-      "data": "max-age=31536000; includeSubDomains",
+      "data": "max-age=31536000;includeSubdomains",
       "includeSubDomains": true,
       "maxAge": 31536000,
       "preload": false,
@@ -140,10 +117,10 @@
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
-      "pass": true,
-      "result": "x-frame-options-sameorigin-or-deny",
-      "scoreModifier": 0,
-      "data": "SAMEORIGIN"
+      "pass": false,
+      "result": "x-frame-options-not-implemented",
+      "scoreModifier": -20,
+      "data": null
     },
     "cross-origin-resource-policy": {
       "expectation": "corp-implemented-with-same-site",
