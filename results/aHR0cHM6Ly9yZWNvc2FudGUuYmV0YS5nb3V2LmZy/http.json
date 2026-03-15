@@ -1,24 +1,36 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "C",
+    "grade": "D+",
     "error": null,
-    "score": 50,
+    "score": 40,
     "statusCode": 200,
-    "testsFailed": 3,
-    "testsPassed": 7,
+    "testsFailed": 5,
+    "testsPassed": 5,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 08 Mar 2026 05:51:58 GMT",
-      "content-type": "text/html; charset=utf-8",
-      "transfer-encoding": "chunked",
       "connection": "close",
-      "vary": "RSC, Next-Router-State-Tree, Next-Router-Prefetch, Accept-Encoding",
-      "x-nextjs-cache": "HIT",
-      "x-powered-by": "Next.js",
-      "cache-control": "s-maxage=31536000, stale-while-revalidate",
-      "etag": "\"7dg7k8utm053w8\"",
-      "strict-transport-security": "max-age=31536000; includeSubDomains"
+      "content-length": "1743",
+      "server": "GitHub.com",
+      "content-type": "text/html; charset=utf-8",
+      "last-modified": "Tue, 10 Mar 2026 16:18:16 GMT",
+      "access-control-allow-origin": "*",
+      "strict-transport-security": "max-age=31556952",
+      "etag": "W/\"69b04448-1a80\"",
+      "expires": "Sun, 15 Mar 2026 06:28:34 GMT",
+      "cache-control": "max-age=600",
+      "x-proxy-cache": "MISS",
+      "x-github-request-id": "32A9:1999C2:E7414E:EDF7F2:69B64F39",
+      "accept-ranges": "bytes",
+      "date": "Sun, 15 Mar 2026 06:20:27 GMT",
+      "via": "1.1 varnish",
+      "age": "80",
+      "x-served-by": "cache-pao-kpao1770076-PAO",
+      "x-cache": "HIT",
+      "x-cache-hits": "1",
+      "x-timer": "S1773555627.486973,VS0,VE1",
+      "vary": "Accept-Encoding",
+      "x-fastly-request-id": "2472822e051557a38538e12c0d743431823558c6"
     }
   },
   "tests": {
@@ -50,14 +62,14 @@
     },
     "redirection": {
       "expectation": "redirection-to-https",
-      "pass": true,
-      "result": "redirection-to-https",
-      "scoreModifier": 0,
-      "destination": "https://recosante.beta.gouv.fr/",
+      "pass": false,
+      "result": "redirection-off-host-from-http",
+      "scoreModifier": -5,
+      "destination": "https://socialgouv.github.io/recosante/",
       "redirects": true,
       "route": [
         "http://recosante.beta.gouv.fr/",
-        "https://recosante.beta.gouv.fr/"
+        "https://socialgouv.github.io/recosante/"
       ],
       "statusCode": 200
     },
@@ -75,18 +87,23 @@
       "pass": true,
       "result": "hsts-implemented-max-age-at-least-six-months",
       "scoreModifier": 0,
-      "data": "max-age=31536000; includeSubDomains",
-      "includeSubDomains": true,
-      "maxAge": 31536000,
+      "data": "max-age=31556952",
+      "includeSubDomains": false,
+      "maxAge": 31556952,
       "preload": false,
       "preloaded": false
     },
     "subresource-integrity": {
       "expectation": "sri-implemented-and-external-scripts-loaded-securely",
-      "pass": true,
-      "result": "sri-not-implemented-but-all-scripts-loaded-from-secure-origin",
-      "scoreModifier": 0,
-      "data": {}
+      "pass": false,
+      "result": "sri-not-implemented-but-external-scripts-loaded-securely",
+      "scoreModifier": -5,
+      "data": {
+        "https://unpkg.com/@gouvfr/dsfr@1.12.1/dist/dsfr.module.min.js": {
+          "crossorigin": null,
+          "integrity": null
+        }
+      }
     },
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
