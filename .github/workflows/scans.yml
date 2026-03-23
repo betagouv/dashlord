@@ -36,7 +36,7 @@ jobs:
       sites: ${{ steps.init.outputs.sites }}
       config: ${{ steps.init.outputs.config }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v6
       - id: init
         uses: "SocialGouv/dashlord-actions/init@v1"
         with:
@@ -58,12 +58,12 @@ jobs:
       matrix:
         sites: ${{ fromJson(needs.init.outputs.sites) }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - run: |
           mkdir scans
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
@@ -88,7 +88,7 @@ jobs:
 
       - name: Screenshot Website
         if: ${{ matrix.sites.tools.screenshot }}
-        uses: swinton/screenshot-website@v1.x
+        uses: swinton/screenshot-website@5fcf4889015d277ef5e9635eba1fd1c2304a0d3e
         continue-on-error: true
         timeout-minutes: 10
         with:
@@ -109,7 +109,7 @@ jobs:
 
       - name: Wappalyzer scan
         if: ${{ matrix.sites.tools.wappalyzer }}
-        uses: "socialgouv/wappalyzer-action@master"
+        uses: "socialgouv/wappalyzer-action@v1"
         continue-on-error: true
         timeout-minutes: 10
         with:
@@ -118,7 +118,7 @@ jobs:
 
       - name: ZAP Scan
         if: ${{ matrix.sites.tools.zap }}
-        uses: zaproxy/action-baseline@v0.14.0
+        uses: zaproxy/action-baseline@de8ad967d3548d44ef623df22cf95c3b0baf8b25
         continue-on-error: true
         timeout-minutes: 10
         with:
@@ -141,7 +141,7 @@ jobs:
         continue-on-error: true
         id: http
         timeout-minutes: 10
-        uses: SocialGouv/httpobs-action@master
+        uses: SocialGouv/httpobs-action@v1
         with:
           url: "${{ matrix.sites.url }}"
           output: "scans/http.json"
@@ -150,7 +150,7 @@ jobs:
         if: steps.http.outcome=='failure'
         continue-on-error: true
         timeout-minutes: 10
-        uses: SocialGouv/httpobs-action@master
+        uses: SocialGouv/httpobs-action@v1
         with:
           url: "${{ matrix.sites.url }}"
           output: "scans/http.json"
@@ -159,7 +159,7 @@ jobs:
         if: ${{ matrix.sites.tools.thirdparties }}
         continue-on-error: true
         timeout-minutes: 10
-        uses: SocialGouv/thirdparties-action@master
+        uses: SocialGouv/thirdparties-action@v1
         id: thirdparties
         with:
           url: "${{ matrix.sites.url }}"
@@ -186,7 +186,7 @@ jobs:
         if: ${{ matrix.sites.tools.testssl }}
         continue-on-error: true
         timeout-minutes: 10
-        uses: "mbogh/test-ssl-action@v1.1"
+        uses: "mbogh/test-ssl-action@4e4ac62e9e3f886675fd3f6f339524700cdb20f8"
         with:
           host: ${{ steps.hostname.outputs.value }}
           output: scans
@@ -197,7 +197,7 @@ jobs:
         if: ${{ matrix.sites.tools.nmap }}
         continue-on-error: true
         timeout-minutes: 10
-        uses: "MTES-MCT/nmap-action@main"
+        uses: "MTES-MCT/nmap-action@35d94744caa271668174832306f9db5e61bd20c1"
         with:
           host: ${{ steps.hostname.outputs.value }}
           outputDir: "scans"
@@ -209,7 +209,7 @@ jobs:
         if: ${{ matrix.sites.tools.nuclei }}
         continue-on-error: true
         timeout-minutes: 10
-        uses: "SocialGouv/dashlord-nuclei-action@master"
+        uses: "SocialGouv/dashlord-nuclei-action@v1"
         with:
           url: ${{ matrix.sites.url }}
           output: "scans/nuclei.log"
@@ -218,7 +218,7 @@ jobs:
         if: ${{ matrix.sites.tools.updownio }}
         continue-on-error: true
         timeout-minutes: 10
-        uses: "MTES-MCT/updownio-action@main"
+        uses: "MTES-MCT/updownio-action@52e2d79dc7390e9a139bbce9c62ecc5aefab8cf4"
         with:
           apiKey: ${{ secrets.UPDOWNIO_API_KEY }}
           url: ${{ matrix.sites.url }}
@@ -229,7 +229,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10
         id: betagouv
-        uses: betagouv/dashlord-startup-action@main
+        uses: betagouv/dashlord-startup-action@v1
         with:
           id: "${{ matrix.sites.betaId }}"
           output: "scans/betagouv.json"
@@ -265,7 +265,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 10
         if: ${{ matrix.sites.tools.dependabot && matrix.sites.repositories }}
-        uses: "MTES-MCT/dependabotalerts-action@main"
+        uses: "MTES-MCT/dependabotalerts-action@3d7d27756ad09279b6893a050aa79bcc5cdd3c48"
         with:
           token: ${{ secrets.DEPENDABOTALERTS_TOKEN }}
           repositories: ${{ join(matrix.sites.repositories) }}
@@ -275,7 +275,7 @@ jobs:
         if: ${{ matrix.sites.tools.codescan && matrix.sites.repositories }}
         continue-on-error: true
         timeout-minutes: 10
-        uses: "MTES-MCT/codescanalerts-action@main"
+        uses: "MTES-MCT/codescanalerts-action@e8fe792a23b2378c1428a24de787011333a37518"
         with:
           token: ${{ secrets.CODESCANALERTS_TOKEN }}
           repositories: ${{ join(matrix.sites.repositories) }}
@@ -287,7 +287,7 @@ jobs:
           # only clean up previous stats when all tools runned
           cleanup: ${{ github.event.inputs.tool == 'all' && true || false }}
 
-      - uses: EndBug/add-and-commit@v9
+      - uses: EndBug/add-and-commit@v10
         with:
           add: "results"
           author_name: "DashlordBetaGouvBot"
