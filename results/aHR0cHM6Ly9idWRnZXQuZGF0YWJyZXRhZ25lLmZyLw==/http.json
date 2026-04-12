@@ -1,45 +1,56 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "C+",
+    "grade": "B+",
     "error": null,
-    "score": 60,
+    "score": 80,
     "statusCode": 200,
-    "testsFailed": 2,
-    "testsPassed": 8,
+    "testsFailed": 1,
+    "testsPassed": 9,
     "testsQuantity": 10,
     "responseHeaders": {
       "server": "nginx",
-      "date": "Sun, 05 Apr 2026 13:54:50 GMT",
+      "date": "Sun, 12 Apr 2026 14:07:21 GMT",
       "content-type": "text/html",
-      "content-length": "140737",
+      "content-length": "1431",
       "connection": "close",
       "accept-ranges": "bytes",
       "cache-control": "max-age=0, no-cache",
-      "content-security-policy": "default-src 'none'; connect-src 'self' https://*.databretagne.fr https://*.dataregion.fr https://stats.beta.gouv.fr/matomo.php https://geo.api.gouv.fr; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline' https://stats.beta.gouv.fr/matomo.js; style-src 'self' 'unsafe-inline'",
-      "etag": "\"69c10d93-225c1\"",
-      "expires": "Sun, 05 Apr 2026 13:54:50 GMT",
-      "last-modified": "Mon, 23 Mar 2026 09:53:23 GMT",
-      "strict-transport-security": "max-age=31536000; includeSubDomains",
-      "vary": "Origin",
+      "content-security-policy": "default-src 'none'; base-uri 'self'; frame-ancestors 'none'; frame-src 'none'; connect-src 'self' https://data.geopf.fr https://auth.dataregion.fr https://api.databretagne.fr https://stats.beta.gouv.fr/matomo.php https://geo.api.gouv.fr; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://*.basemaps.cartocdn.com data:; script-src 'self' https://stats.beta.gouv.fr/matomo.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "etag": "\"69d5079b-597\"",
+      "expires": "Sun, 12 Apr 2026 14:07:21 GMT",
+      "last-modified": "Tue, 07 Apr 2026 13:33:15 GMT",
+      "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
       "x-content-type-options": "nosniff",
-      "x-frame-options": "DENY"
+      "x-frame-options": "DENY",
+      "x-robots-tag": "noindex, nofollow, noarchive",
+      "x-xss-protection": "1; mode=block"
     }
   },
   "tests": {
     "content-security-policy": {
       "expectation": "csp-implemented-with-no-unsafe",
-      "pass": false,
-      "result": "csp-implemented-with-unsafe-inline",
-      "scoreModifier": -20,
+      "pass": true,
+      "result": "csp-implemented-with-unsafe-inline-in-style-src-only",
+      "scoreModifier": 0,
       "data": {
         "default-src": [
           "'none'"
         ],
+        "base-uri": [
+          "'self'"
+        ],
+        "frame-ancestors": [
+          "'none'"
+        ],
+        "frame-src": [
+          "'none'"
+        ],
         "connect-src": [
           "'self'",
-          "https://*.databretagne.fr",
-          "https://*.dataregion.fr",
+          "https://api.databretagne.fr",
+          "https://auth.dataregion.fr",
+          "https://data.geopf.fr",
           "https://geo.api.gouv.fr",
           "https://stats.beta.gouv.fr/matomo.php"
         ],
@@ -49,30 +60,31 @@
         ],
         "img-src": [
           "'self'",
-          "data:"
+          "data:",
+          "https://*.basemaps.cartocdn.com"
         ],
         "script-src": [
           "'self'",
-          "'unsafe-inline'",
           "https://stats.beta.gouv.fr/matomo.js"
         ],
         "style-src": [
           "'self'",
-          "'unsafe-inline'"
+          "'unsafe-inline'",
+          "https://fonts.googleapis.com"
         ]
       },
       "http": true,
       "meta": false,
       "policy": {
-        "antiClickjacking": false,
+        "antiClickjacking": true,
         "defaultNone": true,
-        "insecureBaseUri": true,
+        "insecureBaseUri": false,
         "insecureFormAction": true,
         "insecureSchemeActive": false,
         "insecureSchemePassive": false,
         "strictDynamic": false,
         "unsafeEval": false,
-        "unsafeInline": true,
+        "unsafeInline": false,
         "unsafeInlineStyle": true,
         "unsafeObjects": false
       },
@@ -119,10 +131,10 @@
       "pass": true,
       "result": "hsts-implemented-max-age-at-least-six-months",
       "scoreModifier": 0,
-      "data": "max-age=31536000; includeSubDomains",
+      "data": "max-age=31536000; includeSubDomains; preload",
       "includeSubDomains": true,
       "maxAge": 31536000,
-      "preload": false,
+      "preload": true,
       "preloaded": false
     },
     "subresource-integrity": {
@@ -142,8 +154,8 @@
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
       "pass": true,
-      "result": "x-frame-options-sameorigin-or-deny",
-      "scoreModifier": 0,
+      "result": "x-frame-options-implemented-via-csp",
+      "scoreModifier": 5,
       "data": "DENY"
     },
     "cross-origin-resource-policy": {
