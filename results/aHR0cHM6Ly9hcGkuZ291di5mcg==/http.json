@@ -1,24 +1,24 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "D",
+    "grade": "D+",
     "error": null,
-    "score": 30,
+    "score": 40,
     "statusCode": 200,
     "testsFailed": 4,
     "testsPassed": 6,
     "testsQuantity": 10,
     "responseHeaders": {
-      "server": "nginx/1.18.0 (Ubuntu)",
-      "date": "Sun, 19 Apr 2026 12:50:18 GMT",
-      "content-type": "text/html; charset=utf-8",
+      "server": "nginx/1.29.1",
+      "date": "Sun, 26 Apr 2026 12:45:25 GMT",
+      "content-type": "text/html;charset=utf-8",
       "transfer-encoding": "chunked",
-      "connection": "close",
-      "x-nextjs-cache": "HIT",
-      "x-powered-by": "Next.js",
-      "cache-control": "s-maxage=31536000, stale-while-revalidate",
-      "etag": "\"o5mseux6g21e9q\"",
-      "vary": "Accept-Encoding"
+      "vary": "Accept-Encoding",
+      "x-powered-by": "Nuxt",
+      "cache-control": "public",
+      "x-cache-status": "HIT",
+      "strict-transport-security": "max-age=86400; includeSubDomains; preload;",
+      "connection": "close"
     }
   },
   "tests": {
@@ -44,20 +44,21 @@
     "cross-origin-resource-sharing": {
       "expectation": "cross-origin-resource-sharing-not-implemented",
       "pass": true,
-      "result": "cross-origin-resource-sharing-not-implemented",
+      "result": "cross-origin-resource-sharing-implemented-with-public-access",
       "scoreModifier": 0,
-      "data": null
+      "data": "*"
     },
     "redirection": {
       "expectation": "redirection-to-https",
       "pass": true,
       "result": "redirection-to-https",
       "scoreModifier": 0,
-      "destination": "https://api.gouv.fr/",
+      "destination": "https://www.data.gouv.fr/dataservices",
       "redirects": true,
       "route": [
         "http://api.gouv.fr/",
-        "https://api.gouv.fr/"
+        "https://api.gouv.fr/",
+        "https://www.data.gouv.fr/dataservices"
       ],
       "statusCode": 200
     },
@@ -73,12 +74,12 @@
     "strict-transport-security": {
       "expectation": "hsts-implemented-max-age-at-least-six-months",
       "pass": false,
-      "result": "hsts-not-implemented",
-      "scoreModifier": -20,
-      "data": null,
-      "includeSubDomains": false,
-      "maxAge": null,
-      "preload": false,
+      "result": "hsts-implemented-max-age-less-than-six-months",
+      "scoreModifier": -10,
+      "data": "max-age=86400; includeSubDomains; preload;",
+      "includeSubDomains": true,
+      "maxAge": 86400,
+      "preload": true,
       "preloaded": false
     },
     "subresource-integrity": {
