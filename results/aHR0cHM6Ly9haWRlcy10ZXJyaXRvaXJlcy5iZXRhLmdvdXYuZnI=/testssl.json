@@ -3,8 +3,8 @@
               "id"           : "service",
               "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
               "port"         : "443",
-              "severity"     : "DEBUG",
-              "finding"      : "Couldn't determine service, skipping all HTTP checks"
+              "severity"     : "INFO",
+              "finding"      : "HTTP"
           }
 ,         {
               "id"           : "pre_128cipher",
@@ -213,7 +213,7 @@
               "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "not supported"
+              "finding"      : "supported"
           }
 ,         {
               "id"           : "TLS_timestamp",
@@ -360,7 +360,7 @@
               "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
               "port"         : "443",
               "severity"     : "OK",
-              "finding"      : "88 >= 30 days"
+              "finding"      : "81 >= 30 days"
           }
 ,         {
               "id"           : "cert_notBefore",
@@ -503,6 +503,161 @@
               "finding"      : "intermediate certificate(s) is/are ok"
           }
 ,         {
+              "id"           : "HTTP_status_code",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "200 OK ('/')"
+          }
+,         {
+              "id"           : "HTTP_clock_skew",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "-1 seconds from localtime"
+          }
+,         {
+              "id"           : "HTTP_headerTime",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "1777779542"
+          }
+,         {
+              "id"           : "HSTS_time",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "365 days (=31536000 seconds) > 15552000 seconds"
+          }
+,         {
+              "id"           : "HSTS_subdomains",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "only for this domain"
+          }
+,         {
+              "id"           : "HSTS_preload",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "domain is NOT marked for preloading"
+          }
+,         {
+              "id"           : "HPKP",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "No support for HTTP Public Key Pinning"
+          }
+,         {
+              "id"           : "banner_server",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "No Server banner line in header, interesting!"
+          }
+,         {
+              "id"           : "banner_application",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "No application banner found"
+          }
+,         {
+              "id"           : "cookie_count",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "1 at '/'"
+          }
+,         {
+              "id"           : "cookie_secure",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "All (1) at '/' marked as secure"
+          }
+,         {
+              "id"           : "cookie_httponly",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "All (1) at '/' marked as HttpOnly"
+          }
+,         {
+              "id"           : "X-Frame-Options_multiple",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "MEDIUM",
+              "finding"      : "Multiple X-Frame-Options headers. Using first header: DENY"
+          }
+,         {
+              "id"           : "X-Frame-Options",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "DENY"
+          }
+,         {
+              "id"           : "X-Content-Type-Options",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "nosniff"
+          }
+,         {
+              "id"           : "Content-Security-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "default-src 'self' https://in-automate.brevo.com https://stats.beta.gouv.fr https://aides-territoires.beta.gouv.fr; base-uri 'self'; block-all-mixed-content; connect-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://in-automate.brevo.com https://stats.beta.gouv.fr; font-src 'self' https://fonts.gstatic.com/; frame-ancestors 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://monespacecollectivite.anct.gouv.fr https://app.territoiresentransitions.fr; frame-src https://stats.beta.gouv.fr https://tally.so/; img-src 'self' data: https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://a.forte.tiles.quaidorsay.fr https://b.forte.tiles.quaidorsay.fr https://c.forte.tiles.quaidorsay.fr https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org https://stats.beta.gouv.fr; media-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud; object-src 'none'; script-src 'self' https://sibautomation.com https://stats.beta.gouv.fr/ https://cdn.brevo.com/js/sdk-loader.js https://tally.so/widgets/embed.js 'sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=' 'sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=' 'sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://stats.beta.gouv.fr"
+          }
+,         {
+              "id"           : "X-Content-Security-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "default-src 'self' https://in-automate.brevo.com https://stats.beta.gouv.fr https://aides-territoires.beta.gouv.fr; base-uri 'self'; block-all-mixed-content; connect-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://in-automate.brevo.com https://stats.beta.gouv.fr; font-src 'self' https://fonts.gstatic.com/; frame-ancestors 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://monespacecollectivite.anct.gouv.fr https://app.territoiresentransitions.fr; frame-src https://stats.beta.gouv.fr https://tally.so/; img-src 'self' data: https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://a.forte.tiles.quaidorsay.fr https://b.forte.tiles.quaidorsay.fr https://c.forte.tiles.quaidorsay.fr https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org https://stats.beta.gouv.fr; media-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud; object-src 'none'; script-src 'self' https://sibautomation.com https://stats.beta.gouv.fr/ https://cdn.brevo.com/js/sdk-loader.js https://tally.so/widgets/embed.js 'sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=' 'sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=' 'sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://stats.beta.gouv.fr"
+          }
+,         {
+              "id"           : "Permissions-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "geolocation=(self), microphone=(self), sync-xhr=(self), fullscreen=(self)"
+          }
+,         {
+              "id"           : "Permissions-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "geolocation=(self), microphone=(self), sync-xhr=(self), fullscreen=(self)"
+          }
+,         {
+              "id"           : "Referrer-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "no-referrer, strict-origin-when-cross-origin"
+          }
+,         {
+              "id"           : "Cache-Control",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "max-age=0, must-revalidate, private"
+          }
+,         {
+              "id"           : "banner_reverseproxy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "cwe"          : "CWE-200",
+              "finding"      : "--"
+          }
+,         {
               "id"           : "heartbleed",
               "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
               "port"         : "443",
@@ -524,10 +679,10 @@
               "id"           : "ticketbleed",
               "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
               "port"         : "443",
-              "severity"     : "INFO",
+              "severity"     : "OK",
               "cve"          : "CVE-2016-9244",
               "cwe"          : "CWE-200",
-              "finding"      : "not applicable, not HTTP"
+              "finding"      : "not vulnerable"
           }
 ,         {
               "id"           : "ROBOT",
@@ -562,7 +717,16 @@
               "severity"     : "OK",
               "cve"          : "CVE-2012-4929",
               "cwe"          : "CWE-310",
-              "finding"      : "not vulnerable (not using HTTP anyway)"
+              "finding"      : "not vulnerable"
+          }
+,         {
+              "id"           : "BREACH",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.12.255",
+              "port"         : "443",
+              "severity"     : "MEDIUM",
+              "cve"          : "CVE-2013-3587",
+              "cwe"          : "CWE-310",
+              "finding"      : "potentially VULNERABLE, gzip HTTP compression detected  - only supplied '/' tested"
           }
 ,         {
               "id"           : "POODLE_SSL",
@@ -1346,7 +1510,7 @@
               "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
               "port"         : "443",
               "severity"     : "OK",
-              "finding"      : "88 >= 30 days"
+              "finding"      : "81 >= 30 days"
           }
 ,         {
               "id"           : "cert_notBefore",
@@ -1492,15 +1656,156 @@
               "id"           : "HTTP_status_code",
               "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
               "port"         : "443",
-              "severity"     : "WARN",
-              "finding"      : "HTTP header request failed"
+              "severity"     : "INFO",
+              "finding"      : "200 OK ('/')"
           }
 ,         {
-              "id"           : "scanProblem",
+              "id"           : "HTTP_clock_skew",
               "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
               "port"         : "443",
-              "severity"     : "WARN",
-              "finding"      : "HTTP header was repeatedly zero."
+              "severity"     : "INFO",
+              "finding"      : "0 seconds from localtime"
+          }
+,         {
+              "id"           : "HTTP_headerTime",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "1777779594"
+          }
+,         {
+              "id"           : "HSTS_time",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "365 days (=31536000 seconds) > 15552000 seconds"
+          }
+,         {
+              "id"           : "HSTS_subdomains",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "only for this domain"
+          }
+,         {
+              "id"           : "HSTS_preload",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "domain is NOT marked for preloading"
+          }
+,         {
+              "id"           : "HPKP",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "No support for HTTP Public Key Pinning"
+          }
+,         {
+              "id"           : "banner_server",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "No Server banner line in header, interesting!"
+          }
+,         {
+              "id"           : "banner_application",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "No application banner found"
+          }
+,         {
+              "id"           : "cookie_count",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "1 at '/'"
+          }
+,         {
+              "id"           : "cookie_secure",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "All (1) at '/' marked as secure"
+          }
+,         {
+              "id"           : "cookie_httponly",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "All (1) at '/' marked as HttpOnly"
+          }
+,         {
+              "id"           : "X-Frame-Options_multiple",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "MEDIUM",
+              "finding"      : "Multiple X-Frame-Options headers. Using first header: DENY"
+          }
+,         {
+              "id"           : "X-Frame-Options",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "DENY"
+          }
+,         {
+              "id"           : "X-Content-Type-Options",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "nosniff"
+          }
+,         {
+              "id"           : "Content-Security-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "default-src 'self' https://in-automate.brevo.com https://stats.beta.gouv.fr https://aides-territoires.beta.gouv.fr; base-uri 'self'; block-all-mixed-content; connect-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://in-automate.brevo.com https://stats.beta.gouv.fr; font-src 'self' https://fonts.gstatic.com/; frame-ancestors 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://monespacecollectivite.anct.gouv.fr https://app.territoiresentransitions.fr; frame-src https://stats.beta.gouv.fr https://tally.so/; img-src 'self' data: https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://a.forte.tiles.quaidorsay.fr https://b.forte.tiles.quaidorsay.fr https://c.forte.tiles.quaidorsay.fr https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org https://stats.beta.gouv.fr; media-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud; object-src 'none'; script-src 'self' https://sibautomation.com https://stats.beta.gouv.fr/ https://cdn.brevo.com/js/sdk-loader.js https://tally.so/widgets/embed.js 'sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=' 'sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=' 'sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://stats.beta.gouv.fr"
+          }
+,         {
+              "id"           : "X-Content-Security-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "default-src 'self' https://in-automate.brevo.com https://stats.beta.gouv.fr https://aides-territoires.beta.gouv.fr; base-uri 'self'; block-all-mixed-content; connect-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://in-automate.brevo.com https://stats.beta.gouv.fr; font-src 'self' https://fonts.gstatic.com/; frame-ancestors 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://monespacecollectivite.anct.gouv.fr https://app.territoiresentransitions.fr; frame-src https://stats.beta.gouv.fr https://tally.so/; img-src 'self' data: https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://a.forte.tiles.quaidorsay.fr https://b.forte.tiles.quaidorsay.fr https://c.forte.tiles.quaidorsay.fr https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org https://stats.beta.gouv.fr; media-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud; object-src 'none'; script-src 'self' https://sibautomation.com https://stats.beta.gouv.fr/ https://cdn.brevo.com/js/sdk-loader.js https://tally.so/widgets/embed.js 'sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=' 'sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=' 'sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://stats.beta.gouv.fr"
+          }
+,         {
+              "id"           : "Permissions-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "geolocation=(self), microphone=(self), sync-xhr=(self), fullscreen=(self)"
+          }
+,         {
+              "id"           : "Permissions-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "geolocation=(self), microphone=(self), sync-xhr=(self), fullscreen=(self)"
+          }
+,         {
+              "id"           : "Referrer-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "no-referrer, strict-origin-when-cross-origin"
+          }
+,         {
+              "id"           : "Cache-Control",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "max-age=0, must-revalidate, private"
+          }
+,         {
+              "id"           : "banner_reverseproxy",
+              "ip"           : "aides-territoires.beta.gouv.fr/80.247.13.145",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "cwe"          : "CWE-200",
+              "finding"      : "--"
           }
 ,         {
               "id"           : "heartbleed",
@@ -2355,7 +2660,7 @@
               "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
               "port"         : "443",
               "severity"     : "OK",
-              "finding"      : "88 >= 30 days"
+              "finding"      : "81 >= 30 days"
           }
 ,         {
               "id"           : "cert_notBefore",
@@ -2501,8 +2806,8 @@
               "id"           : "HTTP_status_code",
               "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
               "port"         : "443",
-              "severity"     : "WARN",
-              "finding"      : "Unexpected 504 Gateway Time-out @ '/'"
+              "severity"     : "INFO",
+              "finding"      : "200 OK ('/')"
           }
 ,         {
               "id"           : "HTTP_clock_skew",
@@ -2516,7 +2821,7 @@
               "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "1777173564"
+              "finding"      : "1777779646"
           }
 ,         {
               "id"           : "HSTS_time",
@@ -2565,14 +2870,84 @@
               "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "0 at '/' (maybe missed the application)"
+              "finding"      : "1 at '/'"
           }
 ,         {
-              "id"           : "security_headers",
+              "id"           : "cookie_secure",
+              "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "All (1) at '/' marked as secure"
+          }
+,         {
+              "id"           : "cookie_httponly",
+              "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "All (1) at '/' marked as HttpOnly"
+          }
+,         {
+              "id"           : "X-Frame-Options_multiple",
               "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
               "port"         : "443",
               "severity"     : "MEDIUM",
-              "finding"      : "--"
+              "finding"      : "Multiple X-Frame-Options headers. Using first header: DENY"
+          }
+,         {
+              "id"           : "X-Frame-Options",
+              "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "DENY"
+          }
+,         {
+              "id"           : "X-Content-Type-Options",
+              "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "nosniff"
+          }
+,         {
+              "id"           : "Content-Security-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "default-src 'self' https://in-automate.brevo.com https://stats.beta.gouv.fr https://aides-territoires.beta.gouv.fr; base-uri 'self'; block-all-mixed-content; connect-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://in-automate.brevo.com https://stats.beta.gouv.fr; font-src 'self' https://fonts.gstatic.com/; frame-ancestors 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://monespacecollectivite.anct.gouv.fr https://app.territoiresentransitions.fr; frame-src https://stats.beta.gouv.fr https://tally.so/; img-src 'self' data: https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://a.forte.tiles.quaidorsay.fr https://b.forte.tiles.quaidorsay.fr https://c.forte.tiles.quaidorsay.fr https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org https://stats.beta.gouv.fr; media-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud; object-src 'none'; script-src 'self' https://sibautomation.com https://stats.beta.gouv.fr/ https://cdn.brevo.com/js/sdk-loader.js https://tally.so/widgets/embed.js 'sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=' 'sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=' 'sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://stats.beta.gouv.fr"
+          }
+,         {
+              "id"           : "X-Content-Security-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "default-src 'self' https://in-automate.brevo.com https://stats.beta.gouv.fr https://aides-territoires.beta.gouv.fr; base-uri 'self'; block-all-mixed-content; connect-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://in-automate.brevo.com https://stats.beta.gouv.fr; font-src 'self' https://fonts.gstatic.com/; frame-ancestors 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://monespacecollectivite.anct.gouv.fr https://app.territoiresentransitions.fr; frame-src https://stats.beta.gouv.fr https://tally.so/; img-src 'self' data: https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://a.forte.tiles.quaidorsay.fr https://b.forte.tiles.quaidorsay.fr https://c.forte.tiles.quaidorsay.fr https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org https://stats.beta.gouv.fr; media-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud; object-src 'none'; script-src 'self' https://sibautomation.com https://stats.beta.gouv.fr/ https://cdn.brevo.com/js/sdk-loader.js https://tally.so/widgets/embed.js 'sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=' 'sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=' 'sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://stats.beta.gouv.fr"
+          }
+,         {
+              "id"           : "Permissions-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "geolocation=(self), microphone=(self), sync-xhr=(self), fullscreen=(self)"
+          }
+,         {
+              "id"           : "Permissions-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "geolocation=(self), microphone=(self), sync-xhr=(self), fullscreen=(self)"
+          }
+,         {
+              "id"           : "Referrer-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "no-referrer, strict-origin-when-cross-origin"
+          }
+,         {
+              "id"           : "Cache-Control",
+              "ip"           : "aides-territoires.beta.gouv.fr/148.253.96.193",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "max-age=0, must-revalidate, private"
           }
 ,         {
               "id"           : "banner_reverseproxy",
@@ -3078,8 +3453,8 @@
               "id"           : "service",
               "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
               "port"         : "443",
-              "severity"     : "DEBUG",
-              "finding"      : "Couldn't determine service, skipping all HTTP checks"
+              "severity"     : "INFO",
+              "finding"      : "HTTP"
           }
 ,         {
               "id"           : "pre_128cipher",
@@ -3281,7 +3656,7 @@
               "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "supported"
+              "finding"      : "not supported"
           }
 ,         {
               "id"           : "sessionresumption_ID",
@@ -3435,7 +3810,7 @@
               "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
               "port"         : "443",
               "severity"     : "OK",
-              "finding"      : "88 >= 30 days"
+              "finding"      : "81 >= 30 days"
           }
 ,         {
               "id"           : "cert_notBefore",
@@ -3578,6 +3953,161 @@
               "finding"      : "intermediate certificate(s) is/are ok"
           }
 ,         {
+              "id"           : "HTTP_status_code",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "200 OK ('/')"
+          }
+,         {
+              "id"           : "HTTP_clock_skew",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "-1 seconds from localtime"
+          }
+,         {
+              "id"           : "HTTP_headerTime",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "1777779698"
+          }
+,         {
+              "id"           : "HSTS_time",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "365 days (=31536000 seconds) > 15552000 seconds"
+          }
+,         {
+              "id"           : "HSTS_subdomains",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "only for this domain"
+          }
+,         {
+              "id"           : "HSTS_preload",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "domain is NOT marked for preloading"
+          }
+,         {
+              "id"           : "HPKP",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "No support for HTTP Public Key Pinning"
+          }
+,         {
+              "id"           : "banner_server",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "No Server banner line in header, interesting!"
+          }
+,         {
+              "id"           : "banner_application",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "No application banner found"
+          }
+,         {
+              "id"           : "cookie_count",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "1 at '/'"
+          }
+,         {
+              "id"           : "cookie_secure",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "All (1) at '/' marked as secure"
+          }
+,         {
+              "id"           : "cookie_httponly",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "All (1) at '/' marked as HttpOnly"
+          }
+,         {
+              "id"           : "X-Frame-Options_multiple",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "MEDIUM",
+              "finding"      : "Multiple X-Frame-Options headers. Using first header: DENY"
+          }
+,         {
+              "id"           : "X-Frame-Options",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "DENY"
+          }
+,         {
+              "id"           : "X-Content-Type-Options",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "nosniff"
+          }
+,         {
+              "id"           : "Content-Security-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "default-src 'self' https://in-automate.brevo.com https://stats.beta.gouv.fr https://aides-territoires.beta.gouv.fr; base-uri 'self'; block-all-mixed-content; connect-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://in-automate.brevo.com https://stats.beta.gouv.fr; font-src 'self' https://fonts.gstatic.com/; frame-ancestors 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://monespacecollectivite.anct.gouv.fr https://app.territoiresentransitions.fr; frame-src https://stats.beta.gouv.fr https://tally.so/; img-src 'self' data: https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://a.forte.tiles.quaidorsay.fr https://b.forte.tiles.quaidorsay.fr https://c.forte.tiles.quaidorsay.fr https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org https://stats.beta.gouv.fr; media-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud; object-src 'none'; script-src 'self' https://sibautomation.com https://stats.beta.gouv.fr/ https://cdn.brevo.com/js/sdk-loader.js https://tally.so/widgets/embed.js 'sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=' 'sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=' 'sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://stats.beta.gouv.fr"
+          }
+,         {
+              "id"           : "X-Content-Security-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "default-src 'self' https://in-automate.brevo.com https://stats.beta.gouv.fr https://aides-territoires.beta.gouv.fr; base-uri 'self'; block-all-mixed-content; connect-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://in-automate.brevo.com https://stats.beta.gouv.fr; font-src 'self' https://fonts.gstatic.com/; frame-ancestors 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://monespacecollectivite.anct.gouv.fr https://app.territoiresentransitions.fr; frame-src https://stats.beta.gouv.fr https://tally.so/; img-src 'self' data: https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud https://a.forte.tiles.quaidorsay.fr https://b.forte.tiles.quaidorsay.fr https://c.forte.tiles.quaidorsay.fr https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org https://stats.beta.gouv.fr; media-src 'self' https://aides-territoires-prod.s3.fr-par.scw.cloud https://aides-territoires-prod-2.s3.fr-par.scw.cloud; object-src 'none'; script-src 'self' https://sibautomation.com https://stats.beta.gouv.fr/ https://cdn.brevo.com/js/sdk-loader.js https://tally.so/widgets/embed.js 'sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=' 'sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=' 'sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=' 'sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=' 'sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://stats.beta.gouv.fr"
+          }
+,         {
+              "id"           : "Permissions-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "OK",
+              "finding"      : "geolocation=(self), microphone=(self), sync-xhr=(self), fullscreen=(self)"
+          }
+,         {
+              "id"           : "Permissions-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "geolocation=(self), microphone=(self), sync-xhr=(self), fullscreen=(self)"
+          }
+,         {
+              "id"           : "Referrer-Policy",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "no-referrer, strict-origin-when-cross-origin"
+          }
+,         {
+              "id"           : "Cache-Control",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "finding"      : "max-age=0, must-revalidate, private"
+          }
+,         {
+              "id"           : "banner_reverseproxy",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "INFO",
+              "cwe"          : "CWE-200",
+              "finding"      : "--"
+          }
+,         {
               "id"           : "heartbleed",
               "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
               "port"         : "443",
@@ -3599,10 +4129,10 @@
               "id"           : "ticketbleed",
               "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
               "port"         : "443",
-              "severity"     : "INFO",
+              "severity"     : "OK",
               "cve"          : "CVE-2016-9244",
               "cwe"          : "CWE-200",
-              "finding"      : "not applicable, not HTTP"
+              "finding"      : "not vulnerable"
           }
 ,         {
               "id"           : "ROBOT",
@@ -3637,7 +4167,16 @@
               "severity"     : "OK",
               "cve"          : "CVE-2012-4929",
               "cwe"          : "CWE-310",
-              "finding"      : "not vulnerable (not using HTTP anyway)"
+              "finding"      : "not vulnerable"
+          }
+,         {
+              "id"           : "BREACH",
+              "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
+              "port"         : "443",
+              "severity"     : "MEDIUM",
+              "cve"          : "CVE-2013-3587",
+              "cwe"          : "CWE-310",
+              "finding"      : "potentially VULNERABLE, gzip HTTP compression detected  - only supplied '/' tested"
           }
 ,         {
               "id"           : "POODLE_SSL",
@@ -4065,6 +4604,6 @@
               "ip"           : "aides-territoires.beta.gouv.fr/185.21.194.105",
               "port"         : "443",
               "severity"     : "INFO",
-              "finding"      : "434"
+              "finding"      : "211"
           }
 ]

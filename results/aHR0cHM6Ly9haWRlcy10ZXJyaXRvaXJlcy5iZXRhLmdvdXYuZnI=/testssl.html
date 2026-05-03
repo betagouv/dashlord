@@ -23,11 +23,11 @@
 
 <span style="font-weight:bold;">Testing all IP addresses (port 443): </span>80.247.12.255 80.247.13.145 148.253.96.193 185.21.194.105
 -----------------------------------------------------
-<span style="color:white;background-color:black;"> Start 2026-04-26 03:14:24        --&gt;&gt; 80.247.12.255:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Start 2026-05-03 03:38:40        --&gt;&gt; 80.247.12.255:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
 
- Further IP addresses:   185.21.194.105 148.253.96.193 80.247.13.145 
+ Further IP addresses:   148.253.96.193 80.247.13.145 185.21.194.105 
  rDNS (80.247.12.255):   ows-80-247-12-255.cloudgouv-eu-west-1.compute.outscale.com.
- Service detected:       Couldn&apos;t determine what&apos;s running on port 443, assuming no HTTP service =&gt; skipping all HTTP checks
+ Service detected:       HTTP
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing protocols </span><u>via sockets except NPN+ALPN </u>
 
@@ -89,7 +89,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
                               &quot;renegotiation info/#65281&quot;
 <span style="font-weight:bold;"> Session Ticket RFC 5077 hint </span>300 seconds, session tickets keys seems to be rotated &lt; daily
 <span style="font-weight:bold;"> SSL Session ID support       </span>yes
-<span style="font-weight:bold;"> Session Resumption           </span>Tickets no, ID: no
+<span style="font-weight:bold;"> Session Resumption           </span>Tickets no, ID: yes
 <span style="font-weight:bold;"> TLS clock skew</span>               Random values, no fingerprinting possible 
 <span style="font-weight:bold;"> Certificate Compression      </span>none
 <span style="font-weight:bold;"> Client Authentication        </span>none
@@ -107,7 +107,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
                               https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=4101CC69B5895403A4A5D6CB274E54A15E3743E696E6ADA2C1B9D16340A47541
 <span style="font-weight:bold;"> Chain of trust</span>               <span style="color:#008817;">Ok   </span><span style="color:#cd00cd;"></span>
 <span style="font-weight:bold;"> EV cert</span> (experimental)       no 
-<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">88 &gt;= 30 days</span> (2026-04-24 06:37 --&gt; 2026-07-23 06:37)
+<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">81 &gt;= 30 days</span> (2026-04-24 06:37 --&gt; 2026-07-23 06:37)
 <span style="font-weight:bold;"> ETS/&quot;eTLS&quot;</span>, visibility info  not present
 <span style="font-weight:bold;"> Certificate Revocation List  </span>http://r13.c.lencr.org/15.crl
 <span style="font-weight:bold;"> OCSP URI                     </span>--
@@ -121,15 +121,126 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Intermediate Bad OCSP</span> (exp.) <span style="color:#008817;">Ok</span>
 
 
+<span style="text-decoration:underline;font-weight:bold;"> Testing HTTP header response @ &quot;/&quot; </span>
+
+<span style="font-weight:bold;"> HTTP Status Code           </span>  200 OK
+<span style="font-weight:bold;"> HTTP clock skew              </span>-1 sec from localtime
+<span style="font-weight:bold;"> Strict Transport Security    </span><span style="color:#008817;">365 days</span>=31536000 s<span style="color:#168092;">, just this domain</span>
+<span style="font-weight:bold;"> Public Key Pinning           </span>--
+<span style="font-weight:bold;"> Server banner                </span>(no &quot;Server&quot; line in header, interesting!)
+<span style="font-weight:bold;"> Application banner           </span>--
+<span style="font-weight:bold;"> Cookie(s)                    </span>1 issued: <span style="color:#008817;">1/1</span> secure, <span style="color:#008817;">1/1</span> HttpOnly
+<span style="font-weight:bold;"> Security headers             </span><span style="color:#c05600;">misconfiguration: </span><i>X-Frame-Options</i><span style="color:#c05600;"> 2x</span> -- checking first one only
+                              <span style="color:#008817;">X-Frame-Options</span>: DENY
+                              <span style="color:#008817;">X-Content-Type-Options</span>: nosniff
+                              <span style="color:#008817;">Content-Security-Policy</span>: default-src &apos;self&apos;
+                                https://in-automate.brevo.com
+                                https://stats.beta.gouv.fr
+                                https://aides-territoires.beta.gouv.fr;
+                                base-uri &apos;self&apos;; block-all-mixed-content;
+                                connect-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://in-automate.brevo.com
+                                https://stats.beta.gouv.fr; font-src &apos;self&apos;
+                                https://fonts.gstatic.com/; frame-ancestors
+                                &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://monespacecollectivite.anct.gouv.fr
+                                https://app.territoiresentransitions.fr;
+                                frame-src https://stats.beta.gouv.fr
+                                https://tally.so/; img-src &apos;self&apos; data:
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://a.forte.tiles.quaidorsay.fr
+                                https://b.forte.tiles.quaidorsay.fr
+                                https://c.forte.tiles.quaidorsay.fr
+                                https://a.tile.openstreetmap.org
+                                https://b.tile.openstreetmap.org
+                                https://c.tile.openstreetmap.org
+                                https://stats.beta.gouv.fr; media-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud; 
+                                bject-src &apos;none&apos;; script-src &apos;self&apos;
+                                https://sibautomation.com
+                                https://stats.beta.gouv.fr/
+                                https://cdn.brevo.com/js/sdk-loader.js
+                                https://tally.so/widgets/embed.js
+                                &apos;sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=&apos; 
+                                sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=&apos; 
+                                sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&apos; 
+                                sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=&apos; 
+                                sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw=&apos;; 
+                                tyle-src &apos;self&apos; &apos;unsafe-inline&apos;
+                                https://fonts.googleapis.com
+                                https://stats.beta.gouv.fr
+                              X-Content-Security-Policy: default-src &apos;self&apos;
+                                https://in-automate.brevo.com
+                                https://stats.beta.gouv.fr
+                                https://aides-territoires.beta.gouv.fr;
+                                base-uri &apos;self&apos;; block-all-mixed-content;
+                                connect-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://in-automate.brevo.com
+                                https://stats.beta.gouv.fr; font-src &apos;self&apos;
+                                https://fonts.gstatic.com/; frame-ancestors
+                                &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://monespacecollectivite.anct.gouv.fr
+                                https://app.territoiresentransitions.fr;
+                                frame-src https://stats.beta.gouv.fr
+                                https://tally.so/; img-src &apos;self&apos; data:
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://a.forte.tiles.quaidorsay.fr
+                                https://b.forte.tiles.quaidorsay.fr
+                                https://c.forte.tiles.quaidorsay.fr
+                                https://a.tile.openstreetmap.org
+                                https://b.tile.openstreetmap.org
+                                https://c.tile.openstreetmap.org
+                                https://stats.beta.gouv.fr; media-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud; 
+                                bject-src &apos;none&apos;; script-src &apos;self&apos;
+                                https://sibautomation.com
+                                https://stats.beta.gouv.fr/
+                                https://cdn.brevo.com/js/sdk-loader.js
+                                https://tally.so/widgets/embed.js
+                                &apos;sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=&apos; 
+                                sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=&apos; 
+                                sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&apos; 
+                                sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=&apos; 
+                                sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw=&apos;; 
+                                tyle-src &apos;self&apos; &apos;unsafe-inline&apos;
+                                https://fonts.googleapis.com
+                                https://stats.beta.gouv.fr
+                              <span style="color:#008817;">Permissions-Policy</span>: geolocation=(self),
+                                microphone=(self), sync-xhr=(self),
+                                fullscreen=(self)
+                              Permissions-Policy: geolocation=(self),
+                                microphone=(self), sync-xhr=(self),
+                                fullscreen=(self)
+                              Referrer-Policy: no-referrer,
+                                strict-origin-when-cross-origin
+                              Cache-Control: max-age=0, must-revalidate,
+                                private
+<span style="font-weight:bold;"> Reverse Proxy banner         </span>--
+
+
 <span style="text-decoration:underline;font-weight:bold;"> Testing vulnerabilities </span>
 
 <span style="font-weight:bold;"> Heartbleed</span> (CVE-2014-0160)                <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>, no heartbeat extension
 <span style="font-weight:bold;"> CCS</span> (CVE-2014-0224)                       <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
-<span style="font-weight:bold;"> Ticketbleed</span> (CVE-2016-9244), experiment.  (applicable only for HTTP service)
+<span style="font-weight:bold;"> Ticketbleed</span> (CVE-2016-9244), experiment.  <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
 <span style="font-weight:bold;"> ROBOT                                     </span><span style="color:#008817;font-weight:bold;">Server does not support any cipher suites that use RSA key transport</span>
 <span style="font-weight:bold;"> Secure Renegotiation (RFC 5746)           </span><span style="color:#008817;font-weight:bold;">supported (OK)</span>
 <span style="font-weight:bold;"> Secure Client-Initiated Renegotiation     </span><span style="color:#008817;">not vulnerable (OK)</span>
-<span style="font-weight:bold;"> CRIME, TLS </span>(CVE-2012-4929)                <span style="color:#008817;">not vulnerable (OK)</span> (not using HTTP anyway)
+<span style="font-weight:bold;"> CRIME, TLS </span>(CVE-2012-4929)                <span style="color:#008817;">not vulnerable (OK)</span>
+<span style="font-weight:bold;"> BREACH</span> (CVE-2013-3587)                    <span style="color:#c05600;">potentially NOT ok, &quot;gzip&quot; HTTP compression detected.</span> - only supplied &quot;/&quot; tested
+                                           Can be ignored for static pages or if no secrets in the page
 <span style="font-weight:bold;"> POODLE, SSL</span> (CVE-2014-3566)               <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>, no SSLv3 support
 <span style="font-weight:bold;"> TLS_FALLBACK_SCSV</span> (RFC 7507)              <span style="color:#008817;">No fallback possible (OK)</span>, no protocol below TLS 1.2 offered
 <span style="font-weight:bold;"> SWEET32</span> (CVE-2016-2183, CVE-2016-6329)    <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
@@ -143,9 +254,8 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Winshock</span> (CVE-2014-6321), experimental    <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
 <span style="font-weight:bold;"> RC4</span> (CVE-2013-2566, CVE-2015-2808)        <span style="color:#008817;">no RC4 ciphers detected (OK)</span>
 
-Could not determine the protocol, only simulating generic clients.
 
-<span style="text-decoration:underline;font-weight:bold;"> Running client simulations </span><span style="text-decoration:underline;font-weight:bold;">via sockets </span>
+<span style="text-decoration:underline;font-weight:bold;"> Running client simulations </span><span style="text-decoration:underline;font-weight:bold;">(HTTP) </span><span style="text-decoration:underline;font-weight:bold;">via sockets </span>
 
  Browser                      Protocol  Cipher Suite Name (OpenSSL)       Forward Secrecy
 ------------------------------------------------------------------------------------------------
@@ -196,12 +306,12 @@ Could not determine the protocol, only simulating generic clients.
 <span style="font-weight:bold;"> Final Score                  </span>81
 <span style="font-weight:bold;"> Overall Grade                </span><span style="color:#008817;font-weight:bold;">A+</span>
 
-<span style="color:white;background-color:black;"> Done 2026-04-26 03:15:52 [  91s] --&gt;&gt; 80.247.12.255:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Done 2026-05-03 03:39:32 [  55s] --&gt;&gt; 80.247.12.255:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
 
 -----------------------------------------------------
-<span style="color:white;background-color:black;"> Start 2026-04-26 03:15:53        --&gt;&gt; 80.247.13.145:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Start 2026-05-03 03:39:32        --&gt;&gt; 80.247.13.145:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
 
- Further IP addresses:   185.21.194.105 148.253.96.193 80.247.12.255 
+ Further IP addresses:   148.253.96.193 80.247.12.255 185.21.194.105 
  rDNS (80.247.13.145):   ows-80-247-13-145.cloudgouv-eu-west-1.compute.outscale.com.
  Service detected:       HTTP
 
@@ -283,7 +393,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
                               https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=4101CC69B5895403A4A5D6CB274E54A15E3743E696E6ADA2C1B9D16340A47541
 <span style="font-weight:bold;"> Chain of trust</span>               <span style="color:#008817;">Ok   </span><span style="color:#cd00cd;"></span>
 <span style="font-weight:bold;"> EV cert</span> (experimental)       no 
-<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">88 &gt;= 30 days</span> (2026-04-24 06:37 --&gt; 2026-07-23 06:37)
+<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">81 &gt;= 30 days</span> (2026-04-24 06:37 --&gt; 2026-07-23 06:37)
 <span style="font-weight:bold;"> ETS/&quot;eTLS&quot;</span>, visibility info  not present
 <span style="font-weight:bold;"> Certificate Revocation List  </span>http://r13.c.lencr.org/15.crl
 <span style="font-weight:bold;"> OCSP URI                     </span>--
@@ -299,11 +409,111 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing HTTP header response @ &quot;/&quot; </span>
 
-<span style="font-weight:bold;"> HTTP Status Code           </span><span style="color:#cd00cd;"> likely HTTP header requests failed (#lines: 0)</span>
-Rerun with DEBUG&gt;=1 and inspect /tmp/testssl.Mmc8hz/80.247.13.145.http_header.txt
-
-<span style="color:#be32d0;font-weight:bold;">HTTP header was repeatedly zero.</span>
-Skipping complete HTTP header section.
+<span style="font-weight:bold;"> HTTP Status Code           </span>  200 OK
+<span style="font-weight:bold;"> HTTP clock skew              </span>0 sec from localtime
+<span style="font-weight:bold;"> Strict Transport Security    </span><span style="color:#008817;">365 days</span>=31536000 s<span style="color:#168092;">, just this domain</span>
+<span style="font-weight:bold;"> Public Key Pinning           </span>--
+<span style="font-weight:bold;"> Server banner                </span>(no &quot;Server&quot; line in header, interesting!)
+<span style="font-weight:bold;"> Application banner           </span>--
+<span style="font-weight:bold;"> Cookie(s)                    </span>1 issued: <span style="color:#008817;">1/1</span> secure, <span style="color:#008817;">1/1</span> HttpOnly
+<span style="font-weight:bold;"> Security headers             </span><span style="color:#c05600;">misconfiguration: </span><i>X-Frame-Options</i><span style="color:#c05600;"> 2x</span> -- checking first one only
+                              <span style="color:#008817;">X-Frame-Options</span>: DENY
+                              <span style="color:#008817;">X-Content-Type-Options</span>: nosniff
+                              <span style="color:#008817;">Content-Security-Policy</span>: default-src &apos;self&apos;
+                                https://in-automate.brevo.com
+                                https://stats.beta.gouv.fr
+                                https://aides-territoires.beta.gouv.fr;
+                                base-uri &apos;self&apos;; block-all-mixed-content;
+                                connect-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://in-automate.brevo.com
+                                https://stats.beta.gouv.fr; font-src &apos;self&apos;
+                                https://fonts.gstatic.com/; frame-ancestors
+                                &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://monespacecollectivite.anct.gouv.fr
+                                https://app.territoiresentransitions.fr;
+                                frame-src https://stats.beta.gouv.fr
+                                https://tally.so/; img-src &apos;self&apos; data:
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://a.forte.tiles.quaidorsay.fr
+                                https://b.forte.tiles.quaidorsay.fr
+                                https://c.forte.tiles.quaidorsay.fr
+                                https://a.tile.openstreetmap.org
+                                https://b.tile.openstreetmap.org
+                                https://c.tile.openstreetmap.org
+                                https://stats.beta.gouv.fr; media-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud; 
+                                bject-src &apos;none&apos;; script-src &apos;self&apos;
+                                https://sibautomation.com
+                                https://stats.beta.gouv.fr/
+                                https://cdn.brevo.com/js/sdk-loader.js
+                                https://tally.so/widgets/embed.js
+                                &apos;sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=&apos; 
+                                sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=&apos; 
+                                sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&apos; 
+                                sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=&apos; 
+                                sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw=&apos;; 
+                                tyle-src &apos;self&apos; &apos;unsafe-inline&apos;
+                                https://fonts.googleapis.com
+                                https://stats.beta.gouv.fr
+                              X-Content-Security-Policy: default-src &apos;self&apos;
+                                https://in-automate.brevo.com
+                                https://stats.beta.gouv.fr
+                                https://aides-territoires.beta.gouv.fr;
+                                base-uri &apos;self&apos;; block-all-mixed-content;
+                                connect-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://in-automate.brevo.com
+                                https://stats.beta.gouv.fr; font-src &apos;self&apos;
+                                https://fonts.gstatic.com/; frame-ancestors
+                                &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://monespacecollectivite.anct.gouv.fr
+                                https://app.territoiresentransitions.fr;
+                                frame-src https://stats.beta.gouv.fr
+                                https://tally.so/; img-src &apos;self&apos; data:
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://a.forte.tiles.quaidorsay.fr
+                                https://b.forte.tiles.quaidorsay.fr
+                                https://c.forte.tiles.quaidorsay.fr
+                                https://a.tile.openstreetmap.org
+                                https://b.tile.openstreetmap.org
+                                https://c.tile.openstreetmap.org
+                                https://stats.beta.gouv.fr; media-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud; 
+                                bject-src &apos;none&apos;; script-src &apos;self&apos;
+                                https://sibautomation.com
+                                https://stats.beta.gouv.fr/
+                                https://cdn.brevo.com/js/sdk-loader.js
+                                https://tally.so/widgets/embed.js
+                                &apos;sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=&apos; 
+                                sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=&apos; 
+                                sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&apos; 
+                                sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=&apos; 
+                                sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw=&apos;; 
+                                tyle-src &apos;self&apos; &apos;unsafe-inline&apos;
+                                https://fonts.googleapis.com
+                                https://stats.beta.gouv.fr
+                              <span style="color:#008817;">Permissions-Policy</span>: geolocation=(self),
+                                microphone=(self), sync-xhr=(self),
+                                fullscreen=(self)
+                              Permissions-Policy: geolocation=(self),
+                                microphone=(self), sync-xhr=(self),
+                                fullscreen=(self)
+                              Referrer-Policy: no-referrer,
+                                strict-origin-when-cross-origin
+                              Cache-Control: max-age=0, must-revalidate,
+                                private
+<span style="font-weight:bold;"> Reverse Proxy banner         </span>--
 
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing vulnerabilities </span>
@@ -382,12 +592,12 @@ Skipping complete HTTP header section.
 <span style="font-weight:bold;"> Final Score                  </span>81
 <span style="font-weight:bold;"> Overall Grade                </span><span style="color:#008817;font-weight:bold;">A+</span>
 
-<span style="color:white;background-color:black;"> Done 2026-04-26 03:17:32 [ 191s] --&gt;&gt; 80.247.13.145:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Done 2026-05-03 03:40:24 [ 107s] --&gt;&gt; 80.247.13.145:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
 
 -----------------------------------------------------
-<span style="color:white;background-color:black;"> Start 2026-04-26 03:17:32        --&gt;&gt; 148.253.96.193:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Start 2026-05-03 03:40:24        --&gt;&gt; 148.253.96.193:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
 
- Further IP addresses:   185.21.194.105 80.247.12.255 80.247.13.145 
+ Further IP addresses:   80.247.12.255 80.247.13.145 185.21.194.105 
  rDNS (148.253.96.193):  ows-148-253-96-193.cloudgouv-eu-west-1.compute.outscale.com.
  Service detected:       HTTP
 
@@ -469,7 +679,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
                               https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=4101CC69B5895403A4A5D6CB274E54A15E3743E696E6ADA2C1B9D16340A47541
 <span style="font-weight:bold;"> Chain of trust</span>               <span style="color:#008817;">Ok   </span><span style="color:#cd00cd;"></span>
 <span style="font-weight:bold;"> EV cert</span> (experimental)       no 
-<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">88 &gt;= 30 days</span> (2026-04-24 06:37 --&gt; 2026-07-23 06:37)
+<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">81 &gt;= 30 days</span> (2026-04-24 06:37 --&gt; 2026-07-23 06:37)
 <span style="font-weight:bold;"> ETS/&quot;eTLS&quot;</span>, visibility info  not present
 <span style="font-weight:bold;"> Certificate Revocation List  </span>http://r13.c.lencr.org/15.crl
 <span style="font-weight:bold;"> OCSP URI                     </span>--
@@ -485,14 +695,110 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing HTTP header response @ &quot;/&quot; </span>
 
-<span style="font-weight:bold;"> HTTP Status Code           </span>  504 Gateway Time-out<span style="color:#cd00cd;">. Oh, didn&apos;t expect &quot;504 Gateway Time-out&quot;</span>
+<span style="font-weight:bold;"> HTTP Status Code           </span>  200 OK
 <span style="font-weight:bold;"> HTTP clock skew              </span>0 sec from localtime
 <span style="font-weight:bold;"> Strict Transport Security    </span><span style="color:#008817;">365 days</span>=31536000 s<span style="color:#168092;">, just this domain</span>
 <span style="font-weight:bold;"> Public Key Pinning           </span>--
 <span style="font-weight:bold;"> Server banner                </span>(no &quot;Server&quot; line in header, interesting!)
 <span style="font-weight:bold;"> Application banner           </span>--
-<span style="font-weight:bold;"> Cookie(s)                    </span>(none issued at &quot;/&quot;) -- HTTP status 504 signals you maybe missed the web application
-<span style="font-weight:bold;"> Security headers             </span><span style="color:#c05600;">--</span>
+<span style="font-weight:bold;"> Cookie(s)                    </span>1 issued: <span style="color:#008817;">1/1</span> secure, <span style="color:#008817;">1/1</span> HttpOnly
+<span style="font-weight:bold;"> Security headers             </span><span style="color:#c05600;">misconfiguration: </span><i>X-Frame-Options</i><span style="color:#c05600;"> 2x</span> -- checking first one only
+                              <span style="color:#008817;">X-Frame-Options</span>: DENY
+                              <span style="color:#008817;">X-Content-Type-Options</span>: nosniff
+                              <span style="color:#008817;">Content-Security-Policy</span>: default-src &apos;self&apos;
+                                https://in-automate.brevo.com
+                                https://stats.beta.gouv.fr
+                                https://aides-territoires.beta.gouv.fr;
+                                base-uri &apos;self&apos;; block-all-mixed-content;
+                                connect-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://in-automate.brevo.com
+                                https://stats.beta.gouv.fr; font-src &apos;self&apos;
+                                https://fonts.gstatic.com/; frame-ancestors
+                                &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://monespacecollectivite.anct.gouv.fr
+                                https://app.territoiresentransitions.fr;
+                                frame-src https://stats.beta.gouv.fr
+                                https://tally.so/; img-src &apos;self&apos; data:
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://a.forte.tiles.quaidorsay.fr
+                                https://b.forte.tiles.quaidorsay.fr
+                                https://c.forte.tiles.quaidorsay.fr
+                                https://a.tile.openstreetmap.org
+                                https://b.tile.openstreetmap.org
+                                https://c.tile.openstreetmap.org
+                                https://stats.beta.gouv.fr; media-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud; 
+                                bject-src &apos;none&apos;; script-src &apos;self&apos;
+                                https://sibautomation.com
+                                https://stats.beta.gouv.fr/
+                                https://cdn.brevo.com/js/sdk-loader.js
+                                https://tally.so/widgets/embed.js
+                                &apos;sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=&apos; 
+                                sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=&apos; 
+                                sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&apos; 
+                                sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=&apos; 
+                                sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw=&apos;; 
+                                tyle-src &apos;self&apos; &apos;unsafe-inline&apos;
+                                https://fonts.googleapis.com
+                                https://stats.beta.gouv.fr
+                              X-Content-Security-Policy: default-src &apos;self&apos;
+                                https://in-automate.brevo.com
+                                https://stats.beta.gouv.fr
+                                https://aides-territoires.beta.gouv.fr;
+                                base-uri &apos;self&apos;; block-all-mixed-content;
+                                connect-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://in-automate.brevo.com
+                                https://stats.beta.gouv.fr; font-src &apos;self&apos;
+                                https://fonts.gstatic.com/; frame-ancestors
+                                &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://monespacecollectivite.anct.gouv.fr
+                                https://app.territoiresentransitions.fr;
+                                frame-src https://stats.beta.gouv.fr
+                                https://tally.so/; img-src &apos;self&apos; data:
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://a.forte.tiles.quaidorsay.fr
+                                https://b.forte.tiles.quaidorsay.fr
+                                https://c.forte.tiles.quaidorsay.fr
+                                https://a.tile.openstreetmap.org
+                                https://b.tile.openstreetmap.org
+                                https://c.tile.openstreetmap.org
+                                https://stats.beta.gouv.fr; media-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud; 
+                                bject-src &apos;none&apos;; script-src &apos;self&apos;
+                                https://sibautomation.com
+                                https://stats.beta.gouv.fr/
+                                https://cdn.brevo.com/js/sdk-loader.js
+                                https://tally.so/widgets/embed.js
+                                &apos;sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=&apos; 
+                                sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=&apos; 
+                                sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&apos; 
+                                sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=&apos; 
+                                sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw=&apos;; 
+                                tyle-src &apos;self&apos; &apos;unsafe-inline&apos;
+                                https://fonts.googleapis.com
+                                https://stats.beta.gouv.fr
+                              <span style="color:#008817;">Permissions-Policy</span>: geolocation=(self),
+                                microphone=(self), sync-xhr=(self),
+                                fullscreen=(self)
+                              Permissions-Policy: geolocation=(self),
+                                microphone=(self), sync-xhr=(self),
+                                fullscreen=(self)
+                              Referrer-Policy: no-referrer,
+                                strict-origin-when-cross-origin
+                              Cache-Control: max-age=0, must-revalidate,
+                                private
 <span style="font-weight:bold;"> Reverse Proxy banner         </span>--
 
 
@@ -572,14 +878,14 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Final Score                  </span>81
 <span style="font-weight:bold;"> Overall Grade                </span><span style="color:#008817;font-weight:bold;">A+</span>
 
-<span style="color:white;background-color:black;"> Done 2026-04-26 03:20:07 [ 346s] --&gt;&gt; 148.253.96.193:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Done 2026-05-03 03:41:16 [ 159s] --&gt;&gt; 148.253.96.193:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
 
 -----------------------------------------------------
-<span style="color:white;background-color:black;"> Start 2026-04-26 03:20:07        --&gt;&gt; 185.21.194.105:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Start 2026-05-03 03:41:16        --&gt;&gt; 185.21.194.105:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
 
  Further IP addresses:   148.253.96.193 80.247.12.255 80.247.13.145 
  rDNS (185.21.194.105):  ows-185-21-194-105.cloudgouv-eu-west-1.compute.outscale.com.
- Service detected:       Couldn&apos;t determine what&apos;s running on port 443, assuming no HTTP service =&gt; skipping all HTTP checks
+ Service detected:       HTTP
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing protocols </span><u>via sockets except NPN+ALPN </u>
 
@@ -641,7 +947,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
                               &quot;renegotiation info/#65281&quot;
 <span style="font-weight:bold;"> Session Ticket RFC 5077 hint </span>300 seconds, session tickets keys seems to be rotated &lt; daily
 <span style="font-weight:bold;"> SSL Session ID support       </span>yes
-<span style="font-weight:bold;"> Session Resumption           </span>Tickets: yes, ID: no
+<span style="font-weight:bold;"> Session Resumption           </span>Tickets no, ID: no
 <span style="font-weight:bold;"> TLS clock skew</span>               Random values, no fingerprinting possible 
 <span style="font-weight:bold;"> Certificate Compression      </span>none
 <span style="font-weight:bold;"> Client Authentication        </span>none
@@ -659,7 +965,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
                               https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=4101CC69B5895403A4A5D6CB274E54A15E3743E696E6ADA2C1B9D16340A47541
 <span style="font-weight:bold;"> Chain of trust</span>               <span style="color:#008817;">Ok   </span><span style="color:#cd00cd;"></span>
 <span style="font-weight:bold;"> EV cert</span> (experimental)       no 
-<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">88 &gt;= 30 days</span> (2026-04-24 06:37 --&gt; 2026-07-23 06:37)
+<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">81 &gt;= 30 days</span> (2026-04-24 06:37 --&gt; 2026-07-23 06:37)
 <span style="font-weight:bold;"> ETS/&quot;eTLS&quot;</span>, visibility info  not present
 <span style="font-weight:bold;"> Certificate Revocation List  </span>http://r13.c.lencr.org/15.crl
 <span style="font-weight:bold;"> OCSP URI                     </span>--
@@ -673,15 +979,126 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Intermediate Bad OCSP</span> (exp.) <span style="color:#008817;">Ok</span>
 
 
+<span style="text-decoration:underline;font-weight:bold;"> Testing HTTP header response @ &quot;/&quot; </span>
+
+<span style="font-weight:bold;"> HTTP Status Code           </span>  200 OK
+<span style="font-weight:bold;"> HTTP clock skew              </span>-1 sec from localtime
+<span style="font-weight:bold;"> Strict Transport Security    </span><span style="color:#008817;">365 days</span>=31536000 s<span style="color:#168092;">, just this domain</span>
+<span style="font-weight:bold;"> Public Key Pinning           </span>--
+<span style="font-weight:bold;"> Server banner                </span>(no &quot;Server&quot; line in header, interesting!)
+<span style="font-weight:bold;"> Application banner           </span>--
+<span style="font-weight:bold;"> Cookie(s)                    </span>1 issued: <span style="color:#008817;">1/1</span> secure, <span style="color:#008817;">1/1</span> HttpOnly
+<span style="font-weight:bold;"> Security headers             </span><span style="color:#c05600;">misconfiguration: </span><i>X-Frame-Options</i><span style="color:#c05600;"> 2x</span> -- checking first one only
+                              <span style="color:#008817;">X-Frame-Options</span>: DENY
+                              <span style="color:#008817;">X-Content-Type-Options</span>: nosniff
+                              <span style="color:#008817;">Content-Security-Policy</span>: default-src &apos;self&apos;
+                                https://in-automate.brevo.com
+                                https://stats.beta.gouv.fr
+                                https://aides-territoires.beta.gouv.fr;
+                                base-uri &apos;self&apos;; block-all-mixed-content;
+                                connect-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://in-automate.brevo.com
+                                https://stats.beta.gouv.fr; font-src &apos;self&apos;
+                                https://fonts.gstatic.com/; frame-ancestors
+                                &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://monespacecollectivite.anct.gouv.fr
+                                https://app.territoiresentransitions.fr;
+                                frame-src https://stats.beta.gouv.fr
+                                https://tally.so/; img-src &apos;self&apos; data:
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://a.forte.tiles.quaidorsay.fr
+                                https://b.forte.tiles.quaidorsay.fr
+                                https://c.forte.tiles.quaidorsay.fr
+                                https://a.tile.openstreetmap.org
+                                https://b.tile.openstreetmap.org
+                                https://c.tile.openstreetmap.org
+                                https://stats.beta.gouv.fr; media-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud; 
+                                bject-src &apos;none&apos;; script-src &apos;self&apos;
+                                https://sibautomation.com
+                                https://stats.beta.gouv.fr/
+                                https://cdn.brevo.com/js/sdk-loader.js
+                                https://tally.so/widgets/embed.js
+                                &apos;sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=&apos; 
+                                sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=&apos; 
+                                sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&apos; 
+                                sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=&apos; 
+                                sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw=&apos;; 
+                                tyle-src &apos;self&apos; &apos;unsafe-inline&apos;
+                                https://fonts.googleapis.com
+                                https://stats.beta.gouv.fr
+                              X-Content-Security-Policy: default-src &apos;self&apos;
+                                https://in-automate.brevo.com
+                                https://stats.beta.gouv.fr
+                                https://aides-territoires.beta.gouv.fr;
+                                base-uri &apos;self&apos;; block-all-mixed-content;
+                                connect-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://in-automate.brevo.com
+                                https://stats.beta.gouv.fr; font-src &apos;self&apos;
+                                https://fonts.gstatic.com/; frame-ancestors
+                                &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://monespacecollectivite.anct.gouv.fr
+                                https://app.territoiresentransitions.fr;
+                                frame-src https://stats.beta.gouv.fr
+                                https://tally.so/; img-src &apos;self&apos; data:
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud 
+                                ttps://a.forte.tiles.quaidorsay.fr
+                                https://b.forte.tiles.quaidorsay.fr
+                                https://c.forte.tiles.quaidorsay.fr
+                                https://a.tile.openstreetmap.org
+                                https://b.tile.openstreetmap.org
+                                https://c.tile.openstreetmap.org
+                                https://stats.beta.gouv.fr; media-src &apos;self&apos;
+                                https://aides-territoires-prod.s3.fr-par.scw.cloud 
+                                ttps://aides-territoires-prod-2.s3.fr-par.scw.cloud; 
+                                bject-src &apos;none&apos;; script-src &apos;self&apos;
+                                https://sibautomation.com
+                                https://stats.beta.gouv.fr/
+                                https://cdn.brevo.com/js/sdk-loader.js
+                                https://tally.so/widgets/embed.js
+                                &apos;sha256-LGq+8wK5S+uNOC5tf2iVU2P+d10HNCw6e1aGKOU9NKk=&apos; 
+                                sha256-mzCfKtjtKqQ7MIc84zRZ99WZXcdUOI9IhVQNdr2emaI=&apos; 
+                                sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=&apos; 
+                                sha256-t0exHt6czA31ZVcPqDiJ6W1J9PY7p3JAtg5otOv7Yzc=&apos; 
+                                sha256-xc9M0KfVSAVqyKRMBMwsO91fkyQiB38pwYxSmiboaUw=&apos;; 
+                                tyle-src &apos;self&apos; &apos;unsafe-inline&apos;
+                                https://fonts.googleapis.com
+                                https://stats.beta.gouv.fr
+                              <span style="color:#008817;">Permissions-Policy</span>: geolocation=(self),
+                                microphone=(self), sync-xhr=(self),
+                                fullscreen=(self)
+                              Permissions-Policy: geolocation=(self),
+                                microphone=(self), sync-xhr=(self),
+                                fullscreen=(self)
+                              Referrer-Policy: no-referrer,
+                                strict-origin-when-cross-origin
+                              Cache-Control: max-age=0, must-revalidate,
+                                private
+<span style="font-weight:bold;"> Reverse Proxy banner         </span>--
+
+
 <span style="text-decoration:underline;font-weight:bold;"> Testing vulnerabilities </span>
 
 <span style="font-weight:bold;"> Heartbleed</span> (CVE-2014-0160)                <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>, no heartbeat extension
 <span style="font-weight:bold;"> CCS</span> (CVE-2014-0224)                       <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
-<span style="font-weight:bold;"> Ticketbleed</span> (CVE-2016-9244), experiment.  (applicable only for HTTP service)
+<span style="font-weight:bold;"> Ticketbleed</span> (CVE-2016-9244), experiment.  <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
 <span style="font-weight:bold;"> ROBOT                                     </span><span style="color:#008817;font-weight:bold;">Server does not support any cipher suites that use RSA key transport</span>
 <span style="font-weight:bold;"> Secure Renegotiation (RFC 5746)           </span><span style="color:#008817;font-weight:bold;">supported (OK)</span>
 <span style="font-weight:bold;"> Secure Client-Initiated Renegotiation     </span><span style="color:#008817;">not vulnerable (OK)</span>
-<span style="font-weight:bold;"> CRIME, TLS </span>(CVE-2012-4929)                <span style="color:#008817;">not vulnerable (OK)</span> (not using HTTP anyway)
+<span style="font-weight:bold;"> CRIME, TLS </span>(CVE-2012-4929)                <span style="color:#008817;">not vulnerable (OK)</span>
+<span style="font-weight:bold;"> BREACH</span> (CVE-2013-3587)                    <span style="color:#c05600;">potentially NOT ok, &quot;gzip&quot; HTTP compression detected.</span> - only supplied &quot;/&quot; tested
+                                           Can be ignored for static pages or if no secrets in the page
 <span style="font-weight:bold;"> POODLE, SSL</span> (CVE-2014-3566)               <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>, no SSLv3 support
 <span style="font-weight:bold;"> TLS_FALLBACK_SCSV</span> (RFC 7507)              <span style="color:#008817;">No fallback possible (OK)</span>, no protocol below TLS 1.2 offered
 <span style="font-weight:bold;"> SWEET32</span> (CVE-2016-2183, CVE-2016-6329)    <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
@@ -695,9 +1112,8 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Winshock</span> (CVE-2014-6321), experimental    <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
 <span style="font-weight:bold;"> RC4</span> (CVE-2013-2566, CVE-2015-2808)        <span style="color:#008817;">no RC4 ciphers detected (OK)</span>
 
-Could not determine the protocol, only simulating generic clients.
 
-<span style="text-decoration:underline;font-weight:bold;"> Running client simulations </span><span style="text-decoration:underline;font-weight:bold;">via sockets </span>
+<span style="text-decoration:underline;font-weight:bold;"> Running client simulations </span><span style="text-decoration:underline;font-weight:bold;">(HTTP) </span><span style="text-decoration:underline;font-weight:bold;">via sockets </span>
 
  Browser                      Protocol  Cipher Suite Name (OpenSSL)       Forward Secrecy
 ------------------------------------------------------------------------------------------------
@@ -748,7 +1164,7 @@ Could not determine the protocol, only simulating generic clients.
 <span style="font-weight:bold;"> Final Score                  </span>81
 <span style="font-weight:bold;"> Overall Grade                </span><span style="color:#008817;font-weight:bold;">A+</span>
 
-<span style="color:white;background-color:black;"> Done 2026-04-26 03:21:35 [ 434s] --&gt;&gt; 185.21.194.105:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Done 2026-05-03 03:42:08 [ 211s] --&gt;&gt; 185.21.194.105:443 (aides-territoires.beta.gouv.fr) &lt;&lt;--</span>
 
 -----------------------------------------------------
 <span style="font-weight:bold;">Done testing now all IP addresses (on port 443): </span>80.247.12.255 80.247.13.145 148.253.96.193 185.21.194.105
