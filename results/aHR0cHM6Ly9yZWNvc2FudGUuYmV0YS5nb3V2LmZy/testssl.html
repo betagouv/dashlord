@@ -19,9 +19,9 @@
 <span style="font-weight:bold;">#####################################################################</span>
 
   Using <i>OpenSSL 1.0.2-bad (Mar 28 2025)</i>  [~183 ciphers]
-  on runnervmg397c:/home/testssl/bin/openssl.Linux.x86_64
+  on runnervm3jyl0:/home/testssl/bin/openssl.Linux.x86_64
 
-<span style="color:white;background-color:black;"> Start 2026-05-24 07:38:42        --&gt;&gt; 57.128.91.43:443 (recosante.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Start 2026-05-31 07:56:12        --&gt;&gt; 57.128.91.43:443 (recosante.beta.gouv.fr) &lt;&lt;--</span>
 
  rDNS (57.128.91.43):    --
  Service detected:       HTTP
@@ -50,7 +50,6 @@
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing server&apos;s cipher preferences </span>
 
-<span style="color:#cd00cd;">Fixme: something weird happened around line 7091</span>
 Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Cipher Suite Name (IANA/RFC)
 -----------------------------------------------------------------------------------------------------------------------------
 <u>SSLv2</u>
@@ -63,9 +62,9 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
  - 
 <u>TLSv1.2</u> (server order)
 <u>TLSv1.3</u>
-<span style="color:#cd00cd;">Local problem: /home/testssl/bin/openssl.Linux.x86_64 doesn&apos;t support &quot;s_client -tls1_3&quot;</span>
+<span style="color:#cd00cd;">Local problem: Your /home/testssl/bin/openssl.Linux.x86_64 does not support -tls1_3</span>
 
-<span style="font-weight:bold;"> Has server cipher order?     </span><span style="color:#008817;font-weight:bold;">yes (OK)</span> -- TLS 1.3 and below
+<span style="font-weight:bold;"> Has server cipher order?     </span><span style="color:#008817;">yes (OK)</span> -- only for &lt; TLS 1.3
 
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing robust forward secrecy (FS)</span><u> -- omitting Null Authentication/Encryption, 3DES, RC4 </u>
@@ -89,30 +88,58 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> TLS clock skew</span>               Random values, no fingerprinting possible 
 <span style="font-weight:bold;"> Certificate Compression      </span>none
 <span style="font-weight:bold;"> Client Authentication        </span>none
-<span style="font-weight:bold;"> Signature Algorithm          </span><span style="color:#008817;">SHA256 with RSA</span>
-<span style="font-weight:bold;"> Server key size              </span>RSA 2048 bits (exponent is 65537)
-<span style="font-weight:bold;"> Server key usage             </span>Digital Signature, Key Encipherment
-<span style="font-weight:bold;"> Server extended key usage    </span>TLS Web Server Authentication
-<span style="font-weight:bold;"> Serial                       </span>067D89BC91B815E2DB147B31280636C927DF (OK: length 18)
-<span style="font-weight:bold;"> Fingerprints                 </span>SHA1 606D9DC5483F6C6D2A0BE176B7B7B95B6761D147
-                              SHA256 D6B95723DBB52C0C9AA6F008C5312F19732EBEF47641FCDC4101D4A1E22A3C5A
-<span style="font-weight:bold;"> Common Name (CN)             </span><i>recosante.beta.gouv.fr </i> (CN in response to request w/o SNI: <i>TRAEFIK DEFAULT CERT </i>)
-<span style="font-weight:bold;"> subjectAltName (SAN)         </span><i>recosante.beta.gouv.fr </i>
-<span style="font-weight:bold;"> Trust (hostname)             </span><span style="color:#008817;">Ok via SAN and CN</span> (SNI mandatory)
-<span style="font-weight:bold;"> Chain of trust</span>               <span style="color:#008817;">Ok   </span><span style="color:#cd00cd;"></span>
-<span style="font-weight:bold;"> EV cert</span> (experimental)       no 
-<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">84 &gt;= 30 days</span> (2026-05-18 10:38 --&gt; 2026-08-16 10:38)
-<span style="font-weight:bold;"> ETS/&quot;eTLS&quot;</span>, visibility info  not present
-<span style="font-weight:bold;"> Certificate Revocation List  </span>http://r12.c.lencr.org/96.crl
-<span style="font-weight:bold;"> OCSP URI                     </span>--
-<span style="font-weight:bold;"> OCSP stapling                </span>not offered
-<span style="font-weight:bold;"> OCSP must staple extension   </span>--
-<span style="font-weight:bold;"> DNS CAA RR</span> (experimental)    <span style="color:#a86437;">not offered</span>
-<span style="font-weight:bold;"> Certificate Transparency     </span><span style="color:#008817;">yes</span> (certificate extension)
-<span style="font-weight:bold;"> Certificates provided</span>        2
-<span style="font-weight:bold;"> Issuer                       </span><i>R12</i> (<i>Let&apos;s Encrypt</i> from <i>US</i>)
-<span style="font-weight:bold;"> Intermediate cert validity   </span>#1: <span style="color:#008817;">ok &gt; 40 days</span> (2027-03-12 23:59). <i>R12</i> &lt;-- <i>ISRG Root X1</i>
-<span style="font-weight:bold;"> Intermediate Bad OCSP</span> (exp.) <span style="color:#008817;">Ok</span>
+
+  <span style="text-decoration:underline;font-weight:bold;">Server Certificate #1</span>
+  <span style="font-weight:bold;"> Signature Algorithm          </span><span style="color:#008817;">SHA256 with RSA</span>
+  <span style="font-weight:bold;"> Server key size              </span>RSA 2048 bits (exponent is 65537)
+  <span style="font-weight:bold;"> Server key usage             </span>Digital Signature, Key Encipherment
+  <span style="font-weight:bold;"> Server extended key usage    </span>TLS Web Server Authentication
+  <span style="font-weight:bold;"> Serial                       </span>067D89BC91B815E2DB147B31280636C927DF (OK: length 18)
+  <span style="font-weight:bold;"> Fingerprints                 </span>SHA1 606D9DC5483F6C6D2A0BE176B7B7B95B6761D147
+                                SHA256 D6B95723DBB52C0C9AA6F008C5312F19732EBEF47641FCDC4101D4A1E22A3C5A
+  <span style="font-weight:bold;"> Common Name (CN)             </span><i>recosante.beta.gouv.fr </i> (CN in response to request w/o SNI: <i>TRAEFIK DEFAULT CERT </i>)
+  <span style="font-weight:bold;"> subjectAltName (SAN)         </span><i>recosante.beta.gouv.fr </i>
+  <span style="font-weight:bold;"> Trust (hostname)             </span><span style="color:#008817;">Ok via SAN and CN</span> (SNI mandatory)
+  <span style="font-weight:bold;"> Chain of trust</span>               <span style="color:#008817;">Ok   </span><span style="color:#cd00cd;"></span>
+  <span style="font-weight:bold;"> EV cert</span> (experimental)       no 
+  <span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">77 &gt;= 30 days</span> (2026-05-18 10:38 --&gt; 2026-08-16 10:38)
+  <span style="font-weight:bold;"> ETS/&quot;eTLS&quot;</span>, visibility info  not present
+  <span style="font-weight:bold;"> Certificate Revocation List  </span>http://r12.c.lencr.org/96.crl
+  <span style="font-weight:bold;"> OCSP URI                     </span>--
+  <span style="font-weight:bold;"> OCSP stapling                </span>not offered
+  <span style="font-weight:bold;"> OCSP must staple extension   </span>--
+  <span style="font-weight:bold;"> DNS CAA RR</span> (experimental)    <span style="color:#a86437;">not offered</span>
+  <span style="font-weight:bold;"> Certificate Transparency     </span><span style="color:#008817;">yes</span> (certificate extension)
+  <span style="font-weight:bold;"> Certificates provided</span>        2
+  <span style="font-weight:bold;"> Issuer                       </span><i>R12</i> (<i>Let&apos;s Encrypt</i> from <i>US</i>)
+  <span style="font-weight:bold;"> Intermediate cert validity   </span>#1: <span style="color:#008817;">ok &gt; 40 days</span> (2027-03-12 23:59). <i>R12</i> &lt;-- <i>ISRG Root X1</i>
+  <span style="font-weight:bold;"> Intermediate Bad OCSP</span> (exp.) <span style="color:#008817;">Ok</span>
+
+  <span style="text-decoration:underline;font-weight:bold;">Server Certificate #2</span>
+  <span style="font-weight:bold;"> Signature Algorithm          </span><span style="color:#008817;">SHA256 with RSA</span>
+  <span style="font-weight:bold;"> Server key size              </span>RSA 2048 bits (exponent is 65537)
+  <span style="font-weight:bold;"> Server key usage             </span>Digital Signature, Key Encipherment
+  <span style="font-weight:bold;"> Server extended key usage    </span>TLS Web Server Authentication
+  <span style="font-weight:bold;"> Serial                       </span>06EEA349EE001AA9F44C4C112C182C6BC80A (OK: length 18)
+  <span style="font-weight:bold;"> Fingerprints                 </span>SHA1 93A86A595BBC6CABA0D37979D3C11824D2B43208
+                                SHA256 4DFE4CB9550ADD80F5E04915FD20851BB80021AF3D730D153F28A3928AC442CA
+  <span style="font-weight:bold;"> Common Name (CN)             </span><i>recosante.beta.gouv.fr </i> (CN in response to request w/o SNI: <i>TRAEFIK DEFAULT CERT </i>)
+  <span style="font-weight:bold;"> subjectAltName (SAN)         </span><i>recosante.beta.gouv.fr </i>
+  <span style="font-weight:bold;"> Trust (hostname)             </span><span style="color:#008817;">Ok via SAN and CN</span> (SNI mandatory)
+  <span style="font-weight:bold;"> Chain of trust</span>               <span style="color:#008817;">Ok   </span><span style="color:#cd00cd;"></span>
+  <span style="font-weight:bold;"> EV cert</span> (experimental)       no 
+  <span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">69 &gt;= 30 days</span> (2026-05-10 13:03 --&gt; 2026-08-08 13:03)
+  <span style="font-weight:bold;"> ETS/&quot;eTLS&quot;</span>, visibility info  not present
+  <span style="font-weight:bold;"> Certificate Revocation List  </span>http://r12.c.lencr.org/11.crl
+  <span style="font-weight:bold;"> OCSP URI                     </span>--
+  <span style="font-weight:bold;"> OCSP stapling                </span>not offered
+  <span style="font-weight:bold;"> OCSP must staple extension   </span>--
+  <span style="font-weight:bold;"> DNS CAA RR</span> (experimental)    <span style="color:#a86437;">not offered</span>
+  <span style="font-weight:bold;"> Certificate Transparency     </span><span style="color:#008817;">yes</span> (certificate extension)
+  <span style="font-weight:bold;"> Certificates provided</span>        2
+  <span style="font-weight:bold;"> Issuer                       </span><i>R12</i> (<i>Let&apos;s Encrypt</i> from <i>US</i>)
+  <span style="font-weight:bold;"> Intermediate cert validity   </span>#1: <span style="color:#008817;">ok &gt; 40 days</span> (2027-03-12 23:59). <i>R12</i> &lt;-- <i>ISRG Root X1</i>
+  <span style="font-weight:bold;"> Intermediate Bad OCSP</span> (exp.) <span style="color:#008817;">Ok</span>
 
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing HTTP header response @ &quot;/&quot; </span>
@@ -203,7 +230,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Final Score                  </span>81
 <span style="font-weight:bold;"> Overall Grade                </span><span style="color:#008817;font-weight:bold;">A+</span>
 
-<span style="color:white;background-color:black;"> Done 2026-05-24 07:39:52 [  72s] --&gt;&gt; 57.128.91.43:443 (recosante.beta.gouv.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Done 2026-05-31 07:57:23 [  73s] --&gt;&gt; 57.128.91.43:443 (recosante.beta.gouv.fr) &lt;&lt;--</span>
 
 
 </pre>
