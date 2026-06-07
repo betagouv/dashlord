@@ -1,36 +1,79 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "D",
+    "grade": "C",
     "error": null,
-    "score": 30,
+    "score": 55,
     "statusCode": 200,
-    "testsFailed": 4,
-    "testsPassed": 6,
+    "testsFailed": 3,
+    "testsPassed": 7,
     "testsQuantity": 10,
     "responseHeaders": {
       "cache-control": "no-cache, private",
+      "content-security-policy": "default-src 'self' data: https:; base-uri 'self'; object-src 'self' blob:; script-src 'self' stats.beta.gouv.fr sentry.incubateur.net client.crisp.chat 'nonce-ebb031efbb'; img-src 'self' blob: data:; style-src 'self' client.crisp.chat 'unsafe-inline';",
       "content-type": "text/html; charset=UTF-8",
-      "date": "Sun, 31 May 2026 15:02:09 GMT",
+      "date": "Sun, 07 Jun 2026 14:55:03 GMT",
       "server": "FrankenPHP Caddy",
       "vary": "Accept-Encoding",
       "x-powered-by": "PHP/8.4.18",
       "connection": "close",
       "transfer-encoding": "chunked",
-      "sozu-id": "01KSZ8X0DSY9QZY44EWWTA7A5E"
+      "sozu-id": "01KTH9921SHZ6HSEKF27RVSTZ9"
     }
   },
   "tests": {
     "content-security-policy": {
       "expectation": "csp-implemented-with-no-unsafe",
-      "pass": false,
-      "result": "csp-not-implemented",
-      "scoreModifier": -25,
-      "data": null,
-      "http": false,
+      "pass": true,
+      "result": "csp-implemented-with-unsafe-inline-in-style-src-only",
+      "scoreModifier": 0,
+      "data": {
+        "default-src": [
+          "'self'",
+          "data:",
+          "https:"
+        ],
+        "base-uri": [
+          "'self'"
+        ],
+        "object-src": [
+          "'self'",
+          "blob:"
+        ],
+        "script-src": [
+          "'nonce-ebb031efbb'",
+          "'self'",
+          "client.crisp.chat",
+          "sentry.incubateur.net",
+          "stats.beta.gouv.fr"
+        ],
+        "img-src": [
+          "'self'",
+          "blob:",
+          "data:"
+        ],
+        "style-src": [
+          "'self'",
+          "'unsafe-inline'",
+          "client.crisp.chat"
+        ]
+      },
+      "http": true,
       "meta": false,
-      "policy": null,
-      "numPolicies": 0
+      "policy": {
+        "antiClickjacking": false,
+        "defaultNone": false,
+        "insecureBaseUri": false,
+        "insecureFormAction": true,
+        "insecureSchemeActive": false,
+        "insecureSchemePassive": false,
+        "strictDynamic": false,
+        "unsafeEval": false,
+        "unsafeInline": false,
+        "unsafeInlineStyle": true,
+        "unsafeObjects": false
+      },
+      "numPolicies": 1
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
