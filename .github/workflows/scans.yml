@@ -180,7 +180,7 @@ jobs:
         id: hostname
         run: |
           HOSTNAME=$(echo "${{ matrix.sites.url }}" | sed -e 's/[^/]*\/\/\([^@]*@\)\?\([^:/]*\).*/\2/')
-          echo "::set-output name=value::$HOSTNAME"
+          echo "value=$HOSTNAME" >> "$GITHUB_OUTPUT"
 
       - name: testssl.sh scan
         if: ${{ matrix.sites.tools.testssl }}
