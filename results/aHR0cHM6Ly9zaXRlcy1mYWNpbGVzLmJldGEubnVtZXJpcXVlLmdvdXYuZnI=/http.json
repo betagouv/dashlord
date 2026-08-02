@@ -1,21 +1,22 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "B-",
+    "grade": "B",
     "error": null,
-    "score": 65,
+    "score": 70,
     "statusCode": 200,
     "testsFailed": 3,
     "testsPassed": 7,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 26 Jul 2026 15:04:12 GMT",
+      "date": "Sun, 02 Aug 2026 15:35:15 GMT",
       "content-type": "text/html; charset=utf-8",
       "transfer-encoding": "chunked",
       "connection": "close",
-      "x-request-id": "3aba2501-5540-4bc4-b73e-24be9e7c0743",
-      "x-frame-options": "DENY",
-      "vary": "Accept-Language, Cookie",
+      "x-request-id": "790d9896-02cd-409f-8cc7-495c4909eed0",
+      "x-frame-options": "SAMEORIGIN",
+      "content-security-policy": "frame-ancestors 'self'",
+      "vary": "Sec-Fetch-Dest, Accept-Language, Cookie",
       "content-language": "fr",
       "x-content-type-options": "nosniff",
       "referrer-policy": "strict-origin-when-cross-origin",
@@ -27,13 +28,29 @@
     "content-security-policy": {
       "expectation": "csp-implemented-with-no-unsafe",
       "pass": false,
-      "result": "csp-not-implemented",
-      "scoreModifier": -25,
-      "data": null,
-      "http": false,
+      "result": "csp-implemented-with-unsafe-inline",
+      "scoreModifier": -20,
+      "data": {
+        "frame-ancestors": [
+          "'self'"
+        ]
+      },
+      "http": true,
       "meta": false,
-      "policy": null,
-      "numPolicies": 0
+      "policy": {
+        "antiClickjacking": true,
+        "defaultNone": false,
+        "insecureBaseUri": true,
+        "insecureFormAction": true,
+        "insecureSchemeActive": false,
+        "insecureSchemePassive": false,
+        "strictDynamic": false,
+        "unsafeEval": false,
+        "unsafeInline": true,
+        "unsafeInlineStyle": true,
+        "unsafeObjects": true
+      },
+      "numPolicies": 1
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
@@ -105,9 +122,9 @@
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
       "pass": true,
-      "result": "x-frame-options-sameorigin-or-deny",
-      "scoreModifier": 0,
-      "data": "DENY"
+      "result": "x-frame-options-implemented-via-csp",
+      "scoreModifier": 5,
+      "data": "SAMEORIGIN"
     },
     "cross-origin-resource-policy": {
       "expectation": "corp-implemented-with-same-site",
