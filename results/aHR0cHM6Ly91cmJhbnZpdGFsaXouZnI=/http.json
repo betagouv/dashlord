@@ -1,9 +1,9 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "A+",
+    "grade": "B+",
     "error": null,
-    "score": 100,
+    "score": 80,
     "statusCode": 200,
     "testsFailed": 1,
     "testsPassed": 9,
@@ -12,7 +12,7 @@
       "connection": "close",
       "content-length": "47347",
       "content-type": "text/html; charset=utf-8",
-      "content-security-policy": "script-src 'self' https://stats.beta.gouv.fr/ https://client.crisp.chat 'unsafe-eval'; form-action 'self'; font-src 'self' https://client.crisp.chat/; frame-src https://www.google.com; style-src 'self' https://client.crisp.chat 'unsafe-inline'; frame-ancestors 'self'; connect-src 'self' https://client.crisp.chat/ wss://client.relay.crisp.chat/ https://geo.api.gouv.fr/ https://api-adresse.data.gouv.fr/https://www.google.com/recaptcha; img-src 'self' data: https://client.crisp.chat https://image.crisp.chat https://www.gravatar.com https://secure.gravatar.com https://data.geopf.fr https://*.tile.openstreetmap.fr; default-src 'none'",
+      "content-security-policy": "form-action 'self' https://auth.agentconnect.gouv.fr; worker-src 'self' blob: https://*.crisp.chat; font-src 'self' https://client.crisp.chat/; style-src 'self' https://client.crisp.chat 'unsafe-inline'; frame-src 'self' https://www.google.com https://*.crisp.help; frame-ancestors 'self'; img-src 'self' data: https://client.crisp.chat https://image.crisp.chat https://www.gravatar.com https://secure.gravatar.com https://data.geopf.fr https://*.tile.openstreetmap.fr; default-src 'none'; script-src 'self' https://stats.beta.gouv.fr/ https://client.crisp.chat https://www.google.com https://www.gstatic.com/ 'unsafe-eval' 'unsafe-inline'; connect-src 'self' https://client.crisp.chat/ wss://client.relay.crisp.chat/ https://geo.api.gouv.fr/ https://api-adresse.data.gouv.fr/ https://www.google.com https://stats.beta.gouv.fr",
       "x-frame-options": "SAMEORIGIN",
       "vary": "Cookie",
       "strict-transport-security": "max-age=31536000; includeSubDomains",
@@ -20,46 +20,41 @@
       "referrer-policy": "same-origin",
       "cross-origin-opener-policy": "same-origin",
       "via": "1.1 alproxy",
-      "date": "Sun, 30 Aug 2026 14:05:54 GMT"
+      "date": "Sun, 06 Sep 2026 13:00:53 GMT"
     }
   },
   "tests": {
     "content-security-policy": {
       "expectation": "csp-implemented-with-no-unsafe",
       "pass": false,
-      "result": "csp-implemented-with-unsafe-eval",
-      "scoreModifier": -10,
+      "result": "csp-implemented-with-unsafe-inline",
+      "scoreModifier": -20,
       "data": {
-        "script-src": [
-          "'self'",
-          "'unsafe-eval'",
-          "https://client.crisp.chat",
-          "https://stats.beta.gouv.fr/"
-        ],
         "form-action": [
-          "'self'"
+          "'self'",
+          "https://auth.agentconnect.gouv.fr"
+        ],
+        "worker-src": [
+          "'self'",
+          "blob:",
+          "https://*.crisp.chat"
         ],
         "font-src": [
           "'self'",
           "https://client.crisp.chat/"
-        ],
-        "frame-src": [
-          "https://www.google.com"
         ],
         "style-src": [
           "'self'",
           "'unsafe-inline'",
           "https://client.crisp.chat"
         ],
+        "frame-src": [
+          "'self'",
+          "https://*.crisp.help",
+          "https://www.google.com"
+        ],
         "frame-ancestors": [
           "'self'"
-        ],
-        "connect-src": [
-          "'self'",
-          "https://api-adresse.data.gouv.fr/https://www.google.com/recaptcha",
-          "https://client.crisp.chat/",
-          "https://geo.api.gouv.fr/",
-          "wss://client.relay.crisp.chat/"
         ],
         "img-src": [
           "'self'",
@@ -73,6 +68,24 @@
         ],
         "default-src": [
           "'none'"
+        ],
+        "script-src": [
+          "'self'",
+          "'unsafe-eval'",
+          "'unsafe-inline'",
+          "https://client.crisp.chat",
+          "https://stats.beta.gouv.fr/",
+          "https://www.google.com",
+          "https://www.gstatic.com/"
+        ],
+        "connect-src": [
+          "'self'",
+          "https://api-adresse.data.gouv.fr/",
+          "https://client.crisp.chat/",
+          "https://geo.api.gouv.fr/",
+          "https://stats.beta.gouv.fr",
+          "https://www.google.com",
+          "wss://client.relay.crisp.chat/"
         ]
       },
       "http": true,
@@ -86,7 +99,7 @@
         "insecureSchemePassive": false,
         "strictDynamic": false,
         "unsafeEval": true,
-        "unsafeInline": false,
+        "unsafeInline": true,
         "unsafeInlineStyle": true,
         "unsafeObjects": false
       },
