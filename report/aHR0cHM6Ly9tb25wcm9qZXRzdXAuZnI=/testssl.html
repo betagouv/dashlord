@@ -8,6 +8,8 @@
 </head>
 <body>
 <pre>
+
+<span style="color:#cd00cd;">&apos;--fast&apos; can have some undesired side effects thus it is not recommended to use anymore</span>
 <span style="font-weight:bold;">
 #####################################################################</span>
   <span style="font-weight:bold;">testssl.sh</span> version <span style="font-weight:bold;">3.2.4</span> from <a href="https://testssl.sh/" style="font-weight:bold;color:black;text-decoration:none;">https://testssl.sh/</a>
@@ -23,7 +25,7 @@
 
 <span style="font-weight:bold;">Testing all IP addresses (port 443): </span>163.172.174.124 51.159.149.206
 -----------------------------------------------------
-<span style="color:white;background-color:black;"> Start 2026-09-13 14:33:28        --&gt;&gt; 163.172.174.124:443 (monprojetsup.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Start 2026-09-20 14:34:05        --&gt;&gt; 163.172.174.124:443 (monprojetsup.fr) &lt;&lt;--</span>
 
  Further IP addresses:   51.159.149.206 
  rDNS (163.172.174.124): 124-174-172-163.instances.scw.cloud.
@@ -53,7 +55,6 @@
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing server&apos;s cipher preferences </span>
 
-<span style="color:#cd00cd;">Fixme: something weird happened around line 7092</span>
 Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Cipher Suite Name (IANA/RFC)
 -----------------------------------------------------------------------------------------------------------------------------
 <u>SSLv2</u>
@@ -66,9 +67,9 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
  - 
 <u>TLSv1.2</u> (server order)
 <u>TLSv1.3</u>
-<span style="color:#cd00cd;">Local problem: /home/testssl/bin/openssl.Linux.x86_64 doesn&apos;t support &quot;s_client -tls1_3&quot;</span>
+<span style="color:#cd00cd;">Local problem: Your /home/testssl/bin/openssl.Linux.x86_64 does not support -tls1_3</span>
 
-<span style="font-weight:bold;"> Has server cipher order?     </span><span style="color:#008817;font-weight:bold;">yes (OK)</span> -- TLS 1.3 and below
+<span style="font-weight:bold;"> Has server cipher order?     </span><span style="color:#008817;">yes (OK)</span> -- only for &lt; TLS 1.3
 
 
 <span style="text-decoration:underline;font-weight:bold;"> Testing robust forward secrecy (FS)</span><u> -- omitting Null Authentication/Encryption, 3DES, RC4 </u>
@@ -96,25 +97,25 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Server key size              </span>RSA 2048 bits (exponent is 65537)
 <span style="font-weight:bold;"> Server key usage             </span>Digital Signature, Key Encipherment
 <span style="font-weight:bold;"> Server extended key usage    </span>TLS Web Server Authentication
-<span style="font-weight:bold;"> Serial                       </span>059DAF3312A28154E81BFC943D91D1B58E36 (OK: length 18)
-<span style="font-weight:bold;"> Fingerprints                 </span>SHA1 19C73B64EA483BA5128E4B42C1256D167916E509
-                              SHA256 AF4A022922074BF592D9EA855E92CDCF67568554BEEC72591ABA696200D81D08
+<span style="font-weight:bold;"> Serial                       </span>06942DE7A29AEE3877C485ED4B69AA429C87 (OK: length 18)
+<span style="font-weight:bold;"> Fingerprints                 </span>SHA1 A36B997EA04BD5CCFCC33F6929B42E674918FA4A
+                              SHA256 C85ABC3D032680442F2DF7B1FDB49666C69B476F43C20204D1EC3A5009B3E059
 <span style="font-weight:bold;"> Common Name (CN)             </span><i>monprojetsup.fr </i> (CN in response to request w/o SNI: <i>TRAEFIK DEFAULT CERT </i>)
 <span style="font-weight:bold;"> subjectAltName (SAN)         </span><i>monprojetsup.fr www.monprojetsup.fr </i>
 <span style="font-weight:bold;"> Trust (hostname)             </span><span style="color:#008817;">Ok via SAN and CN</span> (SNI mandatory)
 <span style="font-weight:bold;"> Chain of trust</span>               <span style="color:#008817;">Ok   </span><span style="color:#cd00cd;"></span>
 <span style="font-weight:bold;"> EV cert</span> (experimental)       no 
-<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">34 &gt;= 30 days</span> (2026-07-20 05:42 --&gt; 2026-10-18 05:42)
+<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">87 &gt;= 30 days</span> (2026-09-18 05:00 --&gt; 2026-12-17 05:00)
 <span style="font-weight:bold;"> ETS/&quot;eTLS&quot;</span>, visibility info  not present
-<span style="font-weight:bold;"> Certificate Revocation List  </span>http://yr2.c.lencr.org/55.crl
+<span style="font-weight:bold;"> Certificate Revocation List  </span>http://yr1.c.lencr.org/8.crl
 <span style="font-weight:bold;"> OCSP URI                     </span>--
 <span style="font-weight:bold;"> OCSP stapling                </span>not offered
 <span style="font-weight:bold;"> OCSP must staple extension   </span>--
 <span style="font-weight:bold;"> DNS CAA RR</span> (experimental)    <span style="color:#a86437;">not offered</span>
 <span style="font-weight:bold;"> Certificate Transparency     </span><span style="color:#008817;">yes</span> (certificate extension)
 <span style="font-weight:bold;"> Certificates provided</span>        3
-<span style="font-weight:bold;"> Issuer                       </span><i>YR2</i> (<i>Let&apos;s Encrypt</i> from <i>US</i>)
-<span style="font-weight:bold;"> Intermediate cert validity   </span>#1: <span style="color:#008817;">ok &gt; 40 days</span> (2028-09-02 23:59). <i>YR2</i> &lt;-- <i>Root YR</i>
+<span style="font-weight:bold;"> Issuer                       </span><i>YR1</i> (<i>Let&apos;s Encrypt</i> from <i>US</i>)
+<span style="font-weight:bold;"> Intermediate cert validity   </span>#1: <span style="color:#008817;">ok &gt; 40 days</span> (2028-09-02 23:59). <i>YR1</i> &lt;-- <i>Root YR</i>
                               #2: <span style="color:#008817;">ok &gt; 40 days</span> (2032-09-02 23:59). <i>Root YR</i> &lt;-- <i>ISRG Root X1</i>
 <span style="font-weight:bold;"> Intermediate Bad OCSP</span> (exp.) <span style="color:#008817;">Ok</span>
 
@@ -122,7 +123,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="text-decoration:underline;font-weight:bold;"> Testing HTTP header response @ &quot;/&quot; </span>
 
 <span style="font-weight:bold;"> HTTP Status Code           </span>  301 Moved Permanently, redirecting to &quot;<a href="https://app-mps.avenirs.onisep.fr/" style="color:black;text-decoration:none;">https://app-mps.avenirs.onisep.fr/</a>&quot;
-<span style="font-weight:bold;"> HTTP clock skew              </span>-1 sec from localtime
+<span style="font-weight:bold;"> HTTP clock skew              </span>0 sec from localtime
 <span style="font-weight:bold;"> Strict Transport Security    </span><span style="color:#008817;">186 days</span>=16070400 s<span style="color:#008817;">, includeSubDomains</span><span style="color:#008817;">, preload</span>
 <span style="font-weight:bold;"> Public Key Pinning           </span>--
 <span style="font-weight:bold;"> Server banner                </span>ONISEP-AVENIRS-PROD&apos;
@@ -153,7 +154,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> FREAK</span> (CVE-2015-0204)                     <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
 <span style="font-weight:bold;"> DROWN</span> (CVE-2016-0800, CVE-2016-0703)      <span style="color:#008817;font-weight:bold;">not vulnerable on this host and port (OK)</span>
                                            make sure you don&apos;t use this certificate elsewhere with SSLv2 enabled services, see
-                                           <a href="https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=AF4A022922074BF592D9EA855E92CDCF67568554BEEC72591ABA696200D81D08" style="color:black;text-decoration:none;">https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=AF4A022922074BF592D9EA855E92CDCF67568554BEEC72591ABA696200D81D08</a>
+                                           <a href="https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=C85ABC3D032680442F2DF7B1FDB49666C69B476F43C20204D1EC3A5009B3E059" style="color:black;text-decoration:none;">https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=C85ABC3D032680442F2DF7B1FDB49666C69B476F43C20204D1EC3A5009B3E059</a>
 <span style="font-weight:bold;"> LOGJAM</span> (CVE-2015-4000), experimental      <span style="color:#008817;">not vulnerable (OK):</span> no DH EXPORT ciphers, no DH key detected with &lt;= TLS 1.2
 <span style="font-weight:bold;"> BEAST</span> (CVE-2011-3389)                     <span style="color:#008817;">not vulnerable (OK)</span>, no SSL3 or TLS1
 <span style="font-weight:bold;"> LUCKY13</span> (CVE-2013-0169), experimental     <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
@@ -212,10 +213,10 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Final Score                  </span>81
 <span style="font-weight:bold;"> Overall Grade                </span><span style="color:#008817;font-weight:bold;">A+</span>
 
-<span style="color:white;background-color:black;"> Done 2026-09-13 14:35:32 [ 126s] --&gt;&gt; 163.172.174.124:443 (monprojetsup.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Done 2026-09-20 14:35:29 [  86s] --&gt;&gt; 163.172.174.124:443 (monprojetsup.fr) &lt;&lt;--</span>
 
 -----------------------------------------------------
-<span style="color:white;background-color:black;"> Start 2026-09-13 14:35:32        --&gt;&gt; 51.159.149.206:443 (monprojetsup.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Start 2026-09-20 14:35:29        --&gt;&gt; 51.159.149.206:443 (monprojetsup.fr) &lt;&lt;--</span>
 
  Further IP addresses:   163.172.174.124 
  rDNS (51.159.149.206):  206-149-159-51.instances.scw.cloud.
@@ -287,25 +288,25 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Server key size              </span>RSA 2048 bits (exponent is 65537)
 <span style="font-weight:bold;"> Server key usage             </span>Digital Signature, Key Encipherment
 <span style="font-weight:bold;"> Server extended key usage    </span>TLS Web Server Authentication
-<span style="font-weight:bold;"> Serial                       </span>059DAF3312A28154E81BFC943D91D1B58E36 (OK: length 18)
-<span style="font-weight:bold;"> Fingerprints                 </span>SHA1 19C73B64EA483BA5128E4B42C1256D167916E509
-                              SHA256 AF4A022922074BF592D9EA855E92CDCF67568554BEEC72591ABA696200D81D08
+<span style="font-weight:bold;"> Serial                       </span>06942DE7A29AEE3877C485ED4B69AA429C87 (OK: length 18)
+<span style="font-weight:bold;"> Fingerprints                 </span>SHA1 A36B997EA04BD5CCFCC33F6929B42E674918FA4A
+                              SHA256 C85ABC3D032680442F2DF7B1FDB49666C69B476F43C20204D1EC3A5009B3E059
 <span style="font-weight:bold;"> Common Name (CN)             </span><i>monprojetsup.fr </i> (CN in response to request w/o SNI: <i>TRAEFIK DEFAULT CERT </i>)
 <span style="font-weight:bold;"> subjectAltName (SAN)         </span><i>monprojetsup.fr www.monprojetsup.fr </i>
 <span style="font-weight:bold;"> Trust (hostname)             </span><span style="color:#008817;">Ok via SAN and CN</span> (SNI mandatory)
 <span style="font-weight:bold;"> Chain of trust</span>               <span style="color:#008817;">Ok   </span><span style="color:#cd00cd;"></span>
 <span style="font-weight:bold;"> EV cert</span> (experimental)       no 
-<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">34 &gt;= 30 days</span> (2026-07-20 05:42 --&gt; 2026-10-18 05:42)
+<span style="font-weight:bold;"> Certificate Validity (UTC)   </span><span style="color:#008817;">87 &gt;= 30 days</span> (2026-09-18 05:00 --&gt; 2026-12-17 05:00)
 <span style="font-weight:bold;"> ETS/&quot;eTLS&quot;</span>, visibility info  not present
-<span style="font-weight:bold;"> Certificate Revocation List  </span>http://yr2.c.lencr.org/55.crl
+<span style="font-weight:bold;"> Certificate Revocation List  </span>http://yr1.c.lencr.org/8.crl
 <span style="font-weight:bold;"> OCSP URI                     </span>--
 <span style="font-weight:bold;"> OCSP stapling                </span>not offered
 <span style="font-weight:bold;"> OCSP must staple extension   </span>--
 <span style="font-weight:bold;"> DNS CAA RR</span> (experimental)    <span style="color:#a86437;">not offered</span>
 <span style="font-weight:bold;"> Certificate Transparency     </span><span style="color:#008817;">yes</span> (certificate extension)
 <span style="font-weight:bold;"> Certificates provided</span>        3
-<span style="font-weight:bold;"> Issuer                       </span><i>YR2</i> (<i>Let&apos;s Encrypt</i> from <i>US</i>)
-<span style="font-weight:bold;"> Intermediate cert validity   </span>#1: <span style="color:#008817;">ok &gt; 40 days</span> (2028-09-02 23:59). <i>YR2</i> &lt;-- <i>Root YR</i>
+<span style="font-weight:bold;"> Issuer                       </span><i>YR1</i> (<i>Let&apos;s Encrypt</i> from <i>US</i>)
+<span style="font-weight:bold;"> Intermediate cert validity   </span>#1: <span style="color:#008817;">ok &gt; 40 days</span> (2028-09-02 23:59). <i>YR1</i> &lt;-- <i>Root YR</i>
                               #2: <span style="color:#008817;">ok &gt; 40 days</span> (2032-09-02 23:59). <i>Root YR</i> &lt;-- <i>ISRG Root X1</i>
 <span style="font-weight:bold;"> Intermediate Bad OCSP</span> (exp.) <span style="color:#008817;">Ok</span>
 
@@ -344,7 +345,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> FREAK</span> (CVE-2015-0204)                     <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
 <span style="font-weight:bold;"> DROWN</span> (CVE-2016-0800, CVE-2016-0703)      <span style="color:#008817;font-weight:bold;">not vulnerable on this host and port (OK)</span>
                                            make sure you don&apos;t use this certificate elsewhere with SSLv2 enabled services, see
-                                           <a href="https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=AF4A022922074BF592D9EA855E92CDCF67568554BEEC72591ABA696200D81D08" style="color:black;text-decoration:none;">https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=AF4A022922074BF592D9EA855E92CDCF67568554BEEC72591ABA696200D81D08</a>
+                                           <a href="https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=C85ABC3D032680442F2DF7B1FDB49666C69B476F43C20204D1EC3A5009B3E059" style="color:black;text-decoration:none;">https://search.censys.io/search?resource=hosts&amp;virtual_hosts=INCLUDE&amp;q=C85ABC3D032680442F2DF7B1FDB49666C69B476F43C20204D1EC3A5009B3E059</a>
 <span style="font-weight:bold;"> LOGJAM</span> (CVE-2015-4000), experimental      <span style="color:#008817;">not vulnerable (OK):</span> no DH EXPORT ciphers, no DH key detected with &lt;= TLS 1.2
 <span style="font-weight:bold;"> BEAST</span> (CVE-2011-3389)                     <span style="color:#008817;">not vulnerable (OK)</span>, no SSL3 or TLS1
 <span style="font-weight:bold;"> LUCKY13</span> (CVE-2013-0169), experimental     <span style="color:#008817;font-weight:bold;">not vulnerable (OK)</span>
@@ -403,7 +404,7 @@ Hexcode  Cipher Suite Name (OpenSSL)       KeyExch.   Encryption  Bits     Ciphe
 <span style="font-weight:bold;"> Final Score                  </span>81
 <span style="font-weight:bold;"> Overall Grade                </span><span style="color:#008817;font-weight:bold;">A+</span>
 
-<span style="color:white;background-color:black;"> Done 2026-09-13 14:37:35 [ 249s] --&gt;&gt; 51.159.149.206:443 (monprojetsup.fr) &lt;&lt;--</span>
+<span style="color:white;background-color:black;"> Done 2026-09-20 14:36:52 [ 169s] --&gt;&gt; 51.159.149.206:443 (monprojetsup.fr) &lt;&lt;--</span>
 
 -----------------------------------------------------
 <span style="font-weight:bold;">Done testing now all IP addresses (on port 443): </span>163.172.174.124 51.159.149.206
