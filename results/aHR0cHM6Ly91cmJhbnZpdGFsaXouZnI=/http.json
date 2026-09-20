@@ -12,7 +12,7 @@
       "connection": "close",
       "content-length": "47378",
       "content-type": "text/html; charset=utf-8",
-      "content-security-policy": "font-src 'self' https://client.crisp.chat/; style-src 'self' https://client.crisp.chat 'unsafe-inline'; frame-src 'self' https://www.google.com https://*.crisp.help; form-action 'self' https://auth.agentconnect.gouv.fr; connect-src 'self' https://client.crisp.chat/ wss://client.relay.crisp.chat/ https://geo.api.gouv.fr/ https://api-adresse.data.gouv.fr/ https://www.google.com https://stats.beta.gouv.fr; worker-src 'self' blob: https://*.crisp.chat; default-src 'none'; img-src 'self' data: https://client.crisp.chat https://image.crisp.chat https://www.gravatar.com https://secure.gravatar.com https://data.geopf.fr https://*.tile.openstreetmap.fr; script-src 'self' https://stats.beta.gouv.fr/ https://client.crisp.chat https://www.google.com https://www.gstatic.com/ 'unsafe-eval' 'unsafe-inline'; frame-ancestors 'self'",
+      "content-security-policy": "script-src 'self' https://stats.beta.gouv.fr/ https://client.crisp.chat https://www.google.com https://www.gstatic.com/ 'unsafe-eval' 'unsafe-inline'; style-src 'self' https://client.crisp.chat 'unsafe-inline'; connect-src 'self' https://client.crisp.chat/ wss://client.relay.crisp.chat/ https://geo.api.gouv.fr/ https://api-adresse.data.gouv.fr/ https://www.google.com https://stats.beta.gouv.fr; form-action 'self' https://auth.agentconnect.gouv.fr; frame-src 'self' https://www.google.com https://*.crisp.help; default-src 'none'; img-src 'self' data: https://client.crisp.chat https://image.crisp.chat https://www.gravatar.com https://secure.gravatar.com https://data.geopf.fr https://*.tile.openstreetmap.fr; frame-ancestors 'self'; worker-src 'self' blob: https://*.crisp.chat; font-src 'self' https://client.crisp.chat/",
       "x-frame-options": "SAMEORIGIN",
       "vary": "Cookie",
       "strict-transport-security": "max-age=31536000; includeSubDomains",
@@ -20,7 +20,7 @@
       "referrer-policy": "same-origin",
       "cross-origin-opener-policy": "same-origin",
       "via": "1.1 alproxy",
-      "date": "Sun, 13 Sep 2026 13:29:16 GMT"
+      "date": "Sun, 20 Sep 2026 13:37:10 GMT"
     }
   },
   "tests": {
@@ -30,23 +30,19 @@
       "result": "csp-implemented-with-unsafe-inline",
       "scoreModifier": -20,
       "data": {
-        "font-src": [
+        "script-src": [
           "'self'",
-          "https://client.crisp.chat/"
+          "'unsafe-eval'",
+          "'unsafe-inline'",
+          "https://client.crisp.chat",
+          "https://stats.beta.gouv.fr/",
+          "https://www.google.com",
+          "https://www.gstatic.com/"
         ],
         "style-src": [
           "'self'",
           "'unsafe-inline'",
           "https://client.crisp.chat"
-        ],
-        "frame-src": [
-          "'self'",
-          "https://*.crisp.help",
-          "https://www.google.com"
-        ],
-        "form-action": [
-          "'self'",
-          "https://auth.agentconnect.gouv.fr"
         ],
         "connect-src": [
           "'self'",
@@ -57,10 +53,14 @@
           "https://www.google.com",
           "wss://client.relay.crisp.chat/"
         ],
-        "worker-src": [
+        "form-action": [
           "'self'",
-          "blob:",
-          "https://*.crisp.chat"
+          "https://auth.agentconnect.gouv.fr"
+        ],
+        "frame-src": [
+          "'self'",
+          "https://*.crisp.help",
+          "https://www.google.com"
         ],
         "default-src": [
           "'none'"
@@ -75,17 +75,17 @@
           "https://secure.gravatar.com",
           "https://www.gravatar.com"
         ],
-        "script-src": [
-          "'self'",
-          "'unsafe-eval'",
-          "'unsafe-inline'",
-          "https://client.crisp.chat",
-          "https://stats.beta.gouv.fr/",
-          "https://www.google.com",
-          "https://www.gstatic.com/"
-        ],
         "frame-ancestors": [
           "'self'"
+        ],
+        "worker-src": [
+          "'self'",
+          "blob:",
+          "https://*.crisp.chat"
+        ],
+        "font-src": [
+          "'self'",
+          "https://client.crisp.chat/"
         ]
       },
       "http": true,
