@@ -1,35 +1,77 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "C",
+    "grade": "A+",
     "error": null,
-    "score": 50,
-    "statusCode": 200,
-    "testsFailed": 3,
-    "testsPassed": 7,
+    "score": 120,
+    "statusCode": 403,
+    "testsFailed": 0,
+    "testsPassed": 10,
     "testsQuantity": 10,
     "responseHeaders": {
-      "date": "Sun, 20 Sep 2026 10:45:20 GMT",
-      "content-type": "text/html",
+      "date": "Sun, 27 Sep 2026 11:00:04 GMT",
+      "content-type": "text/html; charset=utf-8",
       "transfer-encoding": "chunked",
-      "connection": "close",
-      "x-request-id": "b0d39119-f852-488a-85aa-439618490b08",
-      "last-modified": "Fri, 18 Sep 2026 07:36:50 GMT",
-      "etag": "W/\"6aacea12-b6ae\"",
-      "strict-transport-security": "max-age=31536000"
+      "content-security-policy": "default-src 'none'; script-src 'strict-dynamic' 'nonce-i398VudwevWPq0ZhjkyGVnFKQrst4182'; style-src 'nonce-WO87vnMQusgSa6wfrNrY36RLvuNiR8uf'; frame-ancestors 'none'; base-uri 'none'; img-src data:; font-src data:; require-trusted-types-for 'script';",
+      "x-content-type-options": "nosniff",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "permissions-policy": "accelerometer=(), ambient-light-sensor=(), attribution-reporting=(), autoplay=(), battery=(), bluetooth=(), browsing-topics=(), camera=(), compute-pressure=(), display-capture=(), encrypted-media=(), execution-while-not-rendered=(), execution-while-out-of-viewport=(), fullscreen=(), gamepad=(), geolocation=(), gyroscope=(), hid=(), identity-credentials-get=(), idle-detection=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), otp-credentials=(), payment=(), picture-in-picture=(), publickey-credentials-create=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), speaker-selection=(), storage-access=(), usb=(), web-share=(), window-management=(), xr-spatial-tracking=(), interest-cohort=()",
+      "cache-control": "no-cache, no-store, must-revalidate",
+      "x-dns-prefetch-control": "off",
+      "x-frame-options": "SAMEORIGIN",
+      "strict-transport-security": "max-age=63072000",
+      "connection": "close"
     }
   },
   "tests": {
     "content-security-policy": {
       "expectation": "csp-implemented-with-no-unsafe",
-      "pass": false,
-      "result": "csp-not-implemented",
-      "scoreModifier": -25,
-      "data": null,
-      "http": false,
+      "pass": true,
+      "result": "csp-implemented-with-no-unsafe-default-src-none",
+      "scoreModifier": 10,
+      "data": {
+        "default-src": [
+          "'none'"
+        ],
+        "script-src": [
+          "'nonce-i398vudwevwpq0zhjkygvnfkqrst4182'",
+          "'strict-dynamic'"
+        ],
+        "style-src": [
+          "'nonce-wo87vnmqusgsa6wfrnry36rlvunir8uf'"
+        ],
+        "frame-ancestors": [
+          "'none'"
+        ],
+        "base-uri": [
+          "'none'"
+        ],
+        "img-src": [
+          "data:"
+        ],
+        "font-src": [
+          "data:"
+        ],
+        "require-trusted-types-for": [
+          "'script'"
+        ]
+      },
+      "http": true,
       "meta": false,
-      "policy": null,
-      "numPolicies": 0
+      "policy": {
+        "antiClickjacking": true,
+        "defaultNone": true,
+        "insecureBaseUri": false,
+        "insecureFormAction": true,
+        "insecureSchemeActive": false,
+        "insecureSchemePassive": false,
+        "strictDynamic": true,
+        "unsafeEval": false,
+        "unsafeInline": false,
+        "unsafeInlineStyle": false,
+        "unsafeObjects": false
+      },
+      "numPolicies": 1
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
@@ -51,22 +93,21 @@
       "pass": true,
       "result": "redirection-to-https",
       "scoreModifier": 0,
-      "destination": "https://beta.gouv.fr/startups/disinfo.html",
+      "destination": "https://disinfo.quaidorsay.fr/",
       "redirects": true,
       "route": [
         "http://disinfo.quaidorsay.fr/",
-        "https://disinfo.quaidorsay.fr/",
-        "https://beta.gouv.fr/startups/disinfo.html"
+        "https://disinfo.quaidorsay.fr/"
       ],
-      "statusCode": 200
+      "statusCode": 403
     },
     "referrer-policy": {
       "expectation": "referrer-policy-private",
       "pass": true,
-      "result": "referrer-policy-not-implemented",
-      "scoreModifier": 0,
-      "data": null,
-      "http": false,
+      "result": "referrer-policy-private",
+      "scoreModifier": 5,
+      "data": "strict-origin-when-cross-origin",
+      "http": true,
       "meta": false
     },
     "strict-transport-security": {
@@ -74,32 +115,32 @@
       "pass": true,
       "result": "hsts-implemented-max-age-at-least-six-months",
       "scoreModifier": 0,
-      "data": "max-age=31536000",
+      "data": "max-age=63072000",
       "includeSubDomains": false,
-      "maxAge": 31536000,
+      "maxAge": 63072000,
       "preload": false,
       "preloaded": false
     },
     "subresource-integrity": {
       "expectation": "sri-implemented-and-external-scripts-loaded-securely",
       "pass": true,
-      "result": "sri-not-implemented-but-all-scripts-loaded-from-secure-origin",
+      "result": "sri-not-implemented-but-no-scripts-loaded",
       "scoreModifier": 0,
       "data": {}
     },
     "x-content-type-options": {
       "expectation": "x-content-type-options-nosniff",
-      "pass": false,
-      "result": "x-content-type-options-not-implemented",
-      "scoreModifier": -5,
-      "data": null
+      "pass": true,
+      "result": "x-content-type-options-nosniff",
+      "scoreModifier": 0,
+      "data": "nosniff"
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
-      "pass": false,
-      "result": "x-frame-options-not-implemented",
-      "scoreModifier": -20,
-      "data": null
+      "pass": true,
+      "result": "x-frame-options-implemented-via-csp",
+      "scoreModifier": 5,
+      "data": "SAMEORIGIN"
     },
     "cross-origin-resource-policy": {
       "expectation": "corp-implemented-with-same-site",
