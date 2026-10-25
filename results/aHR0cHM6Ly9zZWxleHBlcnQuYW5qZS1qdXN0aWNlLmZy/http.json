@@ -1,44 +1,121 @@
 {
   "scan": {
     "algorithmVersion": 4,
-    "grade": "D",
+    "grade": "B",
     "error": null,
-    "score": 30,
+    "score": 75,
     "statusCode": 200,
-    "testsFailed": 4,
-    "testsPassed": 6,
+    "testsFailed": 2,
+    "testsPassed": 8,
     "testsQuantity": 10,
     "responseHeaders": {
-      "server": "nginx/1.31.5",
-      "date": "Sun, 18 Oct 2026 13:00:21 GMT",
+      "server": "nginx",
+      "date": "Sun, 25 Oct 2026 12:41:03 GMT",
       "content-type": "text/html",
-      "last-modified": "Thu, 03 Sep 2026 16:07:16 GMT",
+      "last-modified": "Thu, 22 Oct 2026 08:17:29 GMT",
       "transfer-encoding": "chunked",
       "connection": "close",
       "vary": "Accept-Encoding",
-      "etag": "W/\"6a999b34-e4a0\"",
+      "etag": "W/\"6ad9c699-454\"",
       "cache-control": "no-cache, no-store, must-revalidate",
       "pragma": "no-cache",
       "expires": "0",
       "x-accel-expires": "0",
+      "content-security-policy": "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://stats.beta.gouv.fr https://client.crisp.chat; style-src 'self' 'unsafe-inline' https://client.crisp.chat; img-src 'self' data: blob: https://stats.beta.gouv.fr https://client.crisp.chat https://image.crisp.chat https://storage.crisp.chat; font-src 'self' data: https://client.crisp.chat; connect-src 'self' https://stats.beta.gouv.fr https://client.crisp.chat https://storage.crisp.chat wss://client.relay.crisp.chat wss://client.relay.rescue.crisp.chat; frame-src 'self' https://metabase.selexpert.app.cc-snc.anje-justice.fr https://faqselexpert.crisp.help; media-src 'self' blob: https://client.crisp.chat https://storage.crisp.chat; worker-src 'self' blob: https://client.crisp.chat;",
       "access-control-allow-origin": "*",
       "access-control-allow-credentials": "true",
       "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
       "access-control-allow-headers": "*",
-      "sozu-id": "01M57HJM84NXT8S6TBKT9VHM72"
+      "sozu-id": "01M5SH8A3PPNH02WZFVN0ZW3G1"
     }
   },
   "tests": {
     "content-security-policy": {
       "expectation": "csp-implemented-with-no-unsafe",
-      "pass": false,
-      "result": "csp-not-implemented",
-      "scoreModifier": -25,
-      "data": null,
-      "http": false,
+      "pass": true,
+      "result": "csp-implemented-with-unsafe-inline-in-style-src-only",
+      "scoreModifier": 0,
+      "data": {
+        "default-src": [
+          "'self'"
+        ],
+        "base-uri": [
+          "'self'"
+        ],
+        "object-src": [
+          "'none'"
+        ],
+        "frame-ancestors": [
+          "'none'"
+        ],
+        "form-action": [
+          "'self'"
+        ],
+        "script-src": [
+          "'self'",
+          "https://client.crisp.chat",
+          "https://stats.beta.gouv.fr"
+        ],
+        "style-src": [
+          "'self'",
+          "'unsafe-inline'",
+          "https://client.crisp.chat"
+        ],
+        "img-src": [
+          "'self'",
+          "blob:",
+          "data:",
+          "https://client.crisp.chat",
+          "https://image.crisp.chat",
+          "https://stats.beta.gouv.fr",
+          "https://storage.crisp.chat"
+        ],
+        "font-src": [
+          "'self'",
+          "data:",
+          "https://client.crisp.chat"
+        ],
+        "connect-src": [
+          "'self'",
+          "https://client.crisp.chat",
+          "https://stats.beta.gouv.fr",
+          "https://storage.crisp.chat",
+          "wss://client.relay.crisp.chat",
+          "wss://client.relay.rescue.crisp.chat"
+        ],
+        "frame-src": [
+          "'self'",
+          "https://faqselexpert.crisp.help",
+          "https://metabase.selexpert.app.cc-snc.anje-justice.fr"
+        ],
+        "media-src": [
+          "'self'",
+          "blob:",
+          "https://client.crisp.chat",
+          "https://storage.crisp.chat"
+        ],
+        "worker-src": [
+          "'self'",
+          "blob:",
+          "https://client.crisp.chat"
+        ]
+      },
+      "http": true,
       "meta": false,
-      "policy": null,
-      "numPolicies": 0
+      "policy": {
+        "antiClickjacking": true,
+        "defaultNone": false,
+        "insecureBaseUri": false,
+        "insecureFormAction": false,
+        "insecureSchemeActive": false,
+        "insecureSchemePassive": false,
+        "strictDynamic": false,
+        "unsafeEval": false,
+        "unsafeInline": false,
+        "unsafeInlineStyle": true,
+        "unsafeObjects": false
+      },
+      "numPolicies": 1
     },
     "cookies": {
       "expectation": "cookies-secure-with-httponly-sessions",
@@ -104,9 +181,9 @@
     },
     "x-frame-options": {
       "expectation": "x-frame-options-sameorigin-or-deny",
-      "pass": false,
-      "result": "x-frame-options-not-implemented",
-      "scoreModifier": -20,
+      "pass": true,
+      "result": "x-frame-options-implemented-via-csp",
+      "scoreModifier": 5,
       "data": null
     },
     "cross-origin-resource-policy": {
